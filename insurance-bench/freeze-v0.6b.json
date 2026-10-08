@@ -1,0 +1,247 @@
+{
+  "frozenAt": "2026-10-04T02:49:36.702Z",
+  "version": "insurance-bench-workflows-v0.6",
+  "candidate": 4,
+  "generation": "b",
+  "supersedes": "freeze-v0.6.json",
+  "sourceCommit": "3caf9c457ccdd45a330861c322193531a5dac313",
+  "corpusHash": "62cf8ea6e4838ac69f33f3e9eed2951623441c272b323abbe83806586c4397cf",
+  "developmentHash": "91703311b20fcb51c78f409c1efa18a18c74ef45d677bd74c62d9b8c212ccdf3",
+  "holdoutHash": "edc1f20f03218b7b8427fc18f842f75ea5abd7d4be43cf2ae4e76eb1bc6e3b85",
+  "sourceFingerprint": "812d026350614579757b118818853cf300ae46be6d8e764b7f703bcfa5e3b576",
+  "promptHash": "4cd6628372e2853be4b1bfbab40894ae4a636b76141dc16440bc008d61a428e3",
+  "harnessHash": "7f9b217a20f956f796309942acac0955d84aa550aa459ae33f60bc5373670e96",
+  "devTaskIds": [
+    "ibw-deadline-triage-dev-1-4a187165",
+    "ibw-financial-reconciliation-dev-1-320cfdad",
+    "ibw-workflow-handoff-dev-1-e63722f9"
+  ],
+  "holdoutTaskIds": [
+    "ibw-deadline-triage-holdout-1-db4b50df",
+    "ibw-coverage-review-holdout-1-e7025a83",
+    "ibw-financial-reconciliation-holdout-1-5e5cc67",
+    "ibw-evidence-brief-holdout-1-99420a8b",
+    "ibw-fraud-referral-holdout-1-ef97b8ef",
+    "ibw-workflow-handoff-holdout-1-17bfbb93"
+  ],
+  "limits": {
+    "maxTurns": 20,
+    "maxOutputTokens": 16384,
+    "transportDeadlineMs": 300000
+  },
+  "repeat": 2,
+  "devStages": [
+    [
+      "gpt-6.1-sol-low",
+      "gpt-6-luna-low"
+    ],
+    [
+      "gpt-6.1-sol-high",
+      "gpt-6-luna-high"
+    ],
+    [
+      "qwen3-32b",
+      "qwen3-235b"
+    ],
+    [
+      "gpt-oss-20b",
+      "gpt-oss-120b"
+    ]
+  ],
+  "finalPrimary": [
+    "gpt-6.1-sol-high",
+    "gpt-6-luna-high"
+  ],
+  "finalOptionalOrder": [
+    "claude-sonnet-4.6",
+    "qwen3-235b",
+    "gpt-oss-120b",
+    "deepseek-v3.2",
+    "qwen3-32b",
+    "gpt-oss-20b"
+  ],
+  "modelConfigurations": {
+    "gpt-6.1-sol": {
+      "provider": "openai",
+      "model": "gpt-6.1-sol",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 10,
+      "reasoningEffort": "low"
+    },
+    "claude-sonnet-5.5": {
+      "provider": "bedrock",
+      "model": "global.anthropic.claude-sonnet-5-5",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 10,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "claude-opus-5.5": {
+      "provider": "bedrock",
+      "model": "global.anthropic.claude-opus-5-5",
+      "inputUsdPerMillion": 4,
+      "outputUsdPerMillion": 20,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "deepseek-v3.2": {
+      "provider": "bedrock",
+      "model": "deepseek.v3.2",
+      "inputUsdPerMillion": 0.62,
+      "outputUsdPerMillion": 1.85,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "qwen3-235b": {
+      "provider": "bedrock",
+      "model": "qwen.qwen3-235b-a22b-2507-v1:0",
+      "inputUsdPerMillion": 0.22,
+      "outputUsdPerMillion": 0.88,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "grok-4.7": {
+      "provider": "bedrock",
+      "model": "global.xai.grok-4.7",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 6,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "gpt-oss-120b": {
+      "provider": "bedrock",
+      "model": "openai.gpt-oss-120b-1:0",
+      "inputUsdPerMillion": 0.15,
+      "outputUsdPerMillion": 0.6,
+      "profile": "sentanis-phase0",
+      "region": "us-east-1"
+    },
+    "kimi-k3": {
+      "provider": "bedrock",
+      "model": "us.moonshotai.kimi-k3",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 8,
+      "profile": "sentanis-phase0",
+      "region": "us-east-1"
+    },
+    "claude-sonnet-5": {
+      "provider": "bedrock",
+      "model": "global.anthropic.claude-sonnet-5",
+      "inputUsdPerMillion": 3,
+      "outputUsdPerMillion": 15,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "claude-sonnet-4.6": {
+      "provider": "bedrock",
+      "model": "us.anthropic.claude-sonnet-4-6",
+      "inputUsdPerMillion": 3.3,
+      "outputUsdPerMillion": 16.5,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "gpt-6.1-sol-low": {
+      "provider": "openai",
+      "model": "gpt-6.1-sol",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 10,
+      "reasoningEffort": "low",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "gpt-6.1-sol-high": {
+      "provider": "openai",
+      "model": "gpt-6.1-sol",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 10,
+      "reasoningEffort": "high",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "gpt-6-luna-low": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "inputUsdPerMillion": 0.1,
+      "outputUsdPerMillion": 0.5,
+      "reasoningEffort": "low",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "gpt-6-luna-high": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "inputUsdPerMillion": 0.1,
+      "outputUsdPerMillion": 0.5,
+      "reasoningEffort": "high",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "gpt-5.4-nano-low": {
+      "provider": "openai",
+      "model": "gpt-5.4-nano",
+      "inputUsdPerMillion": 0.2,
+      "outputUsdPerMillion": 1.25,
+      "reasoningEffort": "low",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-5.4-nano",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "qwen3-32b": {
+      "provider": "bedrock",
+      "profile": "sentanis-phase0",
+      "region": "us-west-2",
+      "pricingVerifiedAt": "2026-10-03",
+      "model": "qwen.qwen3-32b-v1:0",
+      "inputUsdPerMillion": 0.15,
+      "outputUsdPerMillion": 0.6,
+      "pricingSource": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-west-2/index.json"
+    },
+    "gpt-oss-20b": {
+      "provider": "bedrock",
+      "profile": "sentanis-phase0",
+      "region": "us-west-2",
+      "pricingVerifiedAt": "2026-10-03",
+      "model": "openai.gpt-oss-20b-1:0",
+      "inputUsdPerMillion": 0.07,
+      "outputUsdPerMillion": 0.3,
+      "pricingSource": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-west-2/index.json"
+    },
+    "claude-haiku-4.5": {
+      "provider": "bedrock",
+      "profile": "sentanis-phase0",
+      "region": "us-west-2",
+      "pricingVerifiedAt": "2026-10-03",
+      "model": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "inputUsdPerMillion": 1,
+      "outputUsdPerMillion": 5,
+      "pricingSource": "https://platform.claude.com/docs/en/about-claude/pricing"
+    }
+  },
+  "budget": {
+    "ledgerPath": ".tmp/insurance-bench/session-budget.json",
+    "capUsd": 25,
+    "atFreeze": {
+      "reservedUsd": 12.34798026250002,
+      "capUsd": 25,
+      "updatedAt": "2026-10-04T02:49:35.400Z"
+    },
+    "stage1Decision": "Dispatch complete low-effort pair; estimate $1.8 for pair, $1.5 pending v5, $6 reserved planning allowance for primary high dev+holdout. Estimates are not guarantees; per-call atomic cap remains authoritative."
+  },
+  "sourceAudit": "results/meta/workflow-source-audit-v0.6b.json",
+  "independentReview": "../specs/features/insurance-bench/review-v0.6.md",
+  "typeOnlyExclusions": [
+    "planning-types.ts: no executable workflow behavior"
+  ],
+  "uncertainty": {
+    "samples": 10000,
+    "seed": 1729,
+    "unit": "family cluster, repeats averaged within case"
+  },
+  "rules": [
+    "No generation-b paid output existed at freeze; original incomplete v6 panels superseded by contract repair",
+    "No score caps or reweighting",
+    "No holdout tuning or selective repairs",
+    "Any justified repair supersedes generation and reruns every affected condition",
+    "Shared evidence bundle can make evidence track facts; memo prose ungraded",
+    "Difficulty target50-60 unproven; no insurance-expert validation"
+  ]
+}

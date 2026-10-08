@@ -1,0 +1,127 @@
+{
+  "verificationAt": "2026-10-04T04:06:12.418503+00:00",
+  "hydratedEpisodeCount": 14,
+  "source": "Durable full native c development Run JSONs under insurance-bench/results; all14 serialized terminal episode content hashes and independent audit metrics match original ignored .episode files. No grades changed; independent verification report written to a separate scratch path.",
+  "checks": [
+    {
+      "condition": "gpt-6-luna-low",
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "episodeContentHashMatchesOriginal": true,
+      "allIndependentMetricsMatch": true
+    },
+    {
+      "condition": "gpt-6.1-sol-low",
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "episodeContentHashMatchesOriginal": true,
+      "allIndependentMetricsMatch": true
+    },
+    {
+      "condition": "gpt-6-luna-low",
+      "taskId": "ibc-financial-reconciliation-dev-1-6bebb17e",
+      "episodeContentHashMatchesOriginal": true,
+      "allIndependentMetricsMatch": true
+    },
+    {
+      "condition": "gpt-6.1-sol-low",
+      "taskId": "ibc-financial-reconciliation-dev-1-6bebb17e",
+      "episodeContentHashMatchesOriginal": true,
+      "allIndependentMetricsMatch": true
+    },
+    {
+      "condition": "gpt-6-luna-low",
+      "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+      "episodeContentHashMatchesOriginal": true,
+      "allIndependentMetricsMatch": true
+    },
+    {
+      "condition": "gpt-6.1-sol-low",
+      "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+      "episodeContentHashMatchesOriginal": true,
+      "allIndependentMetricsMatch": true
+    },
+    {
+      "condition": "gpt-6-luna-high",
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "episodeContentHashMatchesOriginal": true,
+      "allIndependentMetricsMatch": true
+    },
+    {
+      "condition": "gpt-6-luna-high",
+      "taskId": "ibc-financial-reconciliation-dev-1-6bebb17e",
+      "episodeContentHashMatchesOriginal": true,
+      "allIndependentMetricsMatch": true
+    },
+    {
+      "condition": "gpt-6.1-sol-high",
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "episodeContentHashMatchesOriginal": true,
+      "allIndependentMetricsMatch": true
+    },
+    {
+      "condition": "gpt-6-luna-high",
+      "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+      "episodeContentHashMatchesOriginal": true,
+      "allIndependentMetricsMatch": true
+    },
+    {
+      "condition": "gpt-6.1-sol-high",
+      "taskId": "ibc-financial-reconciliation-dev-1-6bebb17e",
+      "episodeContentHashMatchesOriginal": true,
+      "allIndependentMetricsMatch": true
+    },
+    {
+      "condition": "gpt-6.1-sol-high",
+      "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+      "episodeContentHashMatchesOriginal": true,
+      "allIndependentMetricsMatch": true
+    },
+    {
+      "condition": "qwen3-235b",
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "episodeContentHashMatchesOriginal": true,
+      "allIndependentMetricsMatch": true
+    },
+    {
+      "condition": "qwen3-32b",
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "episodeContentHashMatchesOriginal": true,
+      "allIndependentMetricsMatch": true
+    }
+  ],
+  "exclusionControls": {
+    "hydratedEpisodes": 0,
+    "skipped": [
+      {
+        "input": ".tmp/insurance-bench/v07c-hydration-exclusion-other-generation.json",
+        "reason": "Other benchmark generation"
+      },
+      {
+        "input": ".tmp/insurance-bench/v07c-hydration-exclusion-holdout.json",
+        "reason": "Not the exact registered development task set; holdouts and mixed runs excluded"
+      },
+      {
+        "input": ".tmp/insurance-bench/v07c-hydration-exclusion-mixed.json",
+        "reason": "Not the exact registered development task set; holdouts and mixed runs excluded"
+      },
+      {
+        "input": ".tmp/insurance-bench/v07c-hydration-exclusion.partial",
+        "reason": "Not a full Run JSON; partial and episode inputs excluded"
+      }
+    ],
+    "malformedPayloadsWereNotParsed": true,
+    "passed": true
+  },
+  "allPassMetadataVerification": "Hydrated and original raw episode.score.allPass values match exactly; summary counts use that field only, with finished/status separately recorded.",
+  "matchedOpenAIEpisodes": 12,
+  "unscoredProviderEpisodes": 2,
+  "durableDevelopmentRunHashes": {
+    "insurance-bench/results/2026-10-04T03-39-43-210Z-gpt-6.1-sol-baseline.json": "04692ed1e8c7c0453f45608ead46a5bfa807b0c6dc8570e377bb536170d29feb",
+    "insurance-bench/results/2026-10-04T03-39-43-210Z-gpt-6-luna-baseline.json": "f3f47037d1168dd42b45d3840236a79e604b482f09a26338cc452ccc489c6819",
+    "insurance-bench/results/2026-10-04T03-46-16-198Z-gpt-6.1-sol-baseline.json": "2eee985d0f8d6cc878d78e93e7578663b2e35a997d1884a12ac65f9878aff89d",
+    "insurance-bench/results/2026-10-04T03-46-16-197Z-gpt-6-luna-baseline.json": "655633eb0c6159b6d912451d9010d10afc3e4293ca904f4d975e1cf3cf1c2837",
+    "insurance-bench/results/2026-10-04T03-56-32-949Z-qwen.qwen3-235b-a22b-2507-v1-0-baseline.json": "b760b01896092cd65d247d31e11ad269742777a6c32fd0bfcb402bf198f71a2c",
+    "insurance-bench/results/2026-10-04T03-56-32-950Z-qwen.qwen3-32b-v1-0-baseline.json": "9233cbde763bf900c48653e66696fe798fb2d4fd234fa89f9c1622949d8d25d3"
+  },
+  "reproAuditScriptSha256": "1f5410805328baede3167cc5a238917b37e527ff2930ced783c3fd80f53c7d85",
+  "finalMatchedSummaryAndGapMetadataMatch": true
+}

@@ -1,0 +1,406 @@
+{
+  "status": "prepaid-source-controls-not-model-results",
+  "createdAt": "2026-10-04T21:27:49.219319+00:00",
+  "noPaidV08Calls": true,
+  "sourceSha256": {
+    "insurance-bench/evidence-types.ts": "6539e79d4bb499ba7a7fbcc507b745c7eca7368cf7c4e5b0066ed6a3d7929d52",
+    "insurance-bench/evidence-cases.ts": "1fe561fbdccc959bf28d7caa3c3bdb3f35fc36ce6f0154107e4ca758c18856ae",
+    "insurance-bench/evidence-engine.ts": "fd15fc242f7658d226db3a1bac7a83446fbc99652f1f84ce8c7564b033df5659",
+    "insurance-bench/evidence-runner.ts": "fa9d8f039b627515a62eec5e074ea7e32c89933cebdfeb592814f96ae0b0e835",
+    "scripts/insurance-bench-evidence.ts": "fe6885723075a446fa987f8b2b763dab0a56548f6a911c0e72416614fce5459a",
+    "test/insurance-bench-evidence.test.ts": "731e18a94ecb3b11930fee9db55fceef31e7257cf1065b1bade7272be474113c",
+    "specs/features/insurance-bench/difficulty-calibration-v0.8.md": "44db486fbcf74f0a411ec4509fbcc38f8ae6b0ce4dd7da51c563af653e69bc73"
+  },
+  "controls": [
+    {
+      "control": "always-supported",
+      "group": "all",
+      "correctFacts": 36,
+      "totalFacts": 108,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-refuted",
+      "group": "all",
+      "correctFacts": 36,
+      "totalFacts": 108,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-unresolved",
+      "group": "all",
+      "correctFacts": 36,
+      "totalFacts": 108,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-supported",
+      "group": "dev",
+      "correctFacts": 18,
+      "totalFacts": 54,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-refuted",
+      "group": "dev",
+      "correctFacts": 18,
+      "totalFacts": 54,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-unresolved",
+      "group": "dev",
+      "correctFacts": 18,
+      "totalFacts": 54,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-supported",
+      "group": "holdout",
+      "correctFacts": 18,
+      "totalFacts": 54,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-refuted",
+      "group": "holdout",
+      "correctFacts": 18,
+      "totalFacts": 54,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-unresolved",
+      "group": "holdout",
+      "correctFacts": 18,
+      "totalFacts": 54,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-supported",
+      "group": "coverage-review/dev",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-refuted",
+      "group": "coverage-review/dev",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-unresolved",
+      "group": "coverage-review/dev",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-supported",
+      "group": "coverage-review/holdout",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-refuted",
+      "group": "coverage-review/holdout",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-unresolved",
+      "group": "coverage-review/holdout",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-supported",
+      "group": "evidence-brief/dev",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-refuted",
+      "group": "evidence-brief/dev",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-unresolved",
+      "group": "evidence-brief/dev",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-supported",
+      "group": "evidence-brief/holdout",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-refuted",
+      "group": "evidence-brief/holdout",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-unresolved",
+      "group": "evidence-brief/holdout",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-supported",
+      "group": "fraud-referral/dev",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-refuted",
+      "group": "fraud-referral/dev",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-unresolved",
+      "group": "fraud-referral/dev",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-supported",
+      "group": "fraud-referral/holdout",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-refuted",
+      "group": "fraud-referral/holdout",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    },
+    {
+      "control": "always-unresolved",
+      "group": "fraud-referral/holdout",
+      "correctFacts": 6,
+      "totalFacts": 18,
+      "meanWeightedScore": 56.66,
+      "components": {
+        "facts": 33.33,
+        "evidence": 33.33,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "allPass": 0
+    }
+  ],
+  "limitations": [
+    "Three correlated families and author-only fictional gold",
+    "Constant-label plus author source certificates and perfect lifecycle is an optimistic structural-oracle baseline",
+    "56.66 constant controls are within frontier target; entering50-60 alone cannot establish calibration",
+    "Facts and semantic evidence are dependent",
+    "Insurance/legal/clinical expert validity and application staging acceptance remain open"
+  ],
+  "checks": {
+    "focusedTests": 13,
+    "lint": "pass",
+    "npmRunCheck": "earlier pass before concurrent Gemini additions; latest fails only separately-owned Gemini test lines36/73/75 (TS2532)"
+  }
+}

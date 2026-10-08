@@ -1,0 +1,424 @@
+{
+  "version": "v0.4",
+  "status": "final: operator stopped v0.4 after four finalized episodes; no full matched panel",
+  "scope": "Final .episode files only; partial files excluded. No model inference or frozen source modifications.",
+  "episodeCount": 4,
+  "completedCount": 4,
+  "independence": "Factual/source failures manually classified; schedule arithmetic independently recomputed through frozen property engine with previously source-audited scenario. Every cited quote checked literally against frozen visible documents.",
+  "warning": "Headline score combines substantive performance, evidence fidelity, and explicit output-format checks. Evidence or memo-label losses do not alone demonstrate inability to complete the insurance scheduling task. No retroactive score changes.",
+  "episodes": [
+    {
+      "episodeFile": ".tmp/insurance-bench/v04-runs/1791078391047-gpt-6-luna-low-baseline-ibp-deadline-triage-dev-1-e7f9312c.episode",
+      "model": "gpt-6-luna",
+      "taskId": "ibp-deadline-triage-dev-1-e7f9312c",
+      "family": "deadline-triage",
+      "status": "completed",
+      "score": 49.67,
+      "components": {
+        "facts": 70,
+        "evidence": 0,
+        "workflow": 66.67,
+        "boundaries": 50
+      },
+      "failedCriteria": [
+        "evidence:mandatoryJobIds",
+        "evidence:mandatoryPrerequisiteIds",
+        "fact:mandatoryClosureCost",
+        "evidence:mandatoryClosureCost",
+        "fact:mandatoryClosureWorkSlots",
+        "evidence:mandatoryClosureWorkSlots",
+        "evidence:lockedJobIds",
+        "evidence:approvedJobCount",
+        "evidence:reviewBudgetCredits",
+        "evidence:earliestMandatoryDeadlineAt",
+        "evidence:criticalQualifiedReviewerIds",
+        "fact:optimalPriorityValue",
+        "evidence:optimalPriorityValue",
+        "workflow:draft",
+        "workflow:priority-optimal",
+        "boundary:no-unsupported-fields"
+      ],
+      "schedule": {
+        "feasible": true,
+        "mandatoryComplete": true,
+        "optimal": false,
+        "actualValue": 61,
+        "expectedOptimalValue": 71,
+        "actualCost": 18,
+        "violations": []
+      },
+      "invalidLiteralQuoteCount": 9,
+      "invalidLiteralQuoteExamples": [
+        {
+          "factKey": "mandatoryJobIds",
+          "documentId": "ibp-deadline-triage-dev-1-e7f9312c:jobs",
+          "quote": "ibp-deadline-triage-dev-1-e7f9312c:J02,critical response review,2,specialist,3,8,0,4,ibp-deadline-triage-dev-1-e7f9312c:J01,yes,1|2,A2\nibp-deadline-triage-dev-1-e7f9312c:J03,critical enclosure clock audit,2,quantitative,3,9,0,4,ibp-deadline"
+        },
+        {
+          "factKey": "mandatoryPrerequisiteIds",
+          "documentId": "ibp-deadline-triage-dev-1-e7f9312c:jobs",
+          "quote": "ibp-deadline-triage-dev-1-e7f9312c:J02,critical response review,2,specialist,3,8,0,4,ibp-deadline-triage-dev-1-e7f9312c:J01,yes,1|2,A2\nibp-deadline-triage-dev-1-e7f9312c:J03,critical enclosure clock audit,2,quantitative,3,9,0,4,ibp-deadline"
+        },
+        {
+          "factKey": "mandatoryClosureCost",
+          "documentId": "ibp-deadline-triage-dev-1-e7f9312c:jobs",
+          "quote": "cost_credits\nJ01 cost 1; J02 cost 3; J03 cost 3; J04 cost 1; J05 cost 2; J09 cost 1; J11 cost 3; J12 cost 3; sum = 18"
+        },
+        {
+          "factKey": "mandatoryClosureWorkSlots",
+          "documentId": "ibp-deadline-triage-dev-1-e7f9312c:jobs",
+          "quote": "duration_slots\nJ01 duration 1; J02 duration 2; J03 duration 2; J04 duration 1; J05 duration 2; J09 duration 1; J11 duration 2; J12 duration 2; sum = 14"
+        },
+        {
+          "factKey": "lockedJobIds",
+          "documentId": "ibp-deadline-triage-dev-1-e7f9312c:approval-rules",
+          "quote": "A signed revocation removes the grant. A grant in another family/matter scope cannot approve this portfolio. Unsigned drafts never grant authority. A signed replacement displaces its earlier version upon issuance, but supplies approval only"
+        }
+      ],
+      "rejectedToolAttempts": [
+        {
+          "turn": 3,
+          "tool": "schedule_review",
+          "result": {
+            "error": "Booking rejected",
+            "violations": [
+              "Reviewer overlap for ibp-deadline-triage-dev-1-e7f9312c:J11 at slot 3",
+              "Reviewer overlap for ibp-deadline-triage-dev-1-e7f9312c:J11 at slot 4"
+            ]
+          }
+        },
+        {
+          "turn": 3,
+          "tool": "schedule_review",
+          "result": {
+            "error": "Booking rejected",
+            "violations": [
+              "Dependency ibp-deadline-triage-dev-1-e7f9312c:J05 finishes after ibp-deadline-triage-dev-1-e7f9312c:J06 starts"
+            ]
+          }
+        },
+        {
+          "turn": 3,
+          "tool": "schedule_review",
+          "result": {
+            "error": "Booking rejected",
+            "violations": [
+              "Reviewer overlap for ibp-deadline-triage-dev-1-e7f9312c:J10 at slot 7"
+            ]
+          }
+        }
+      ],
+      "notes": [
+        "Mandatory closure cost18/work14 equal the entire actual accepted plan including optional J10, rather than source-defined mandatory closure17/work13: substantive aggregation-scope error.",
+        "Feasible mandatory-complete plan61=mandatory56+optionalJ10(5) misses optimum71. Records-qualified J05 placed on desk blocks J07; moving J05 to specialist4-6 allows deskJ11 3-5 and J07 5-8.",
+        "Invalid literal quotes and rearranged/noncontiguous quoted passages cause all evidence criteria to fail. Memo also omits literal deadline topic required by workflow:draft; that is formatting rather than failure to discuss deadlines.",
+        "Memo priority expression includes J09=7 although source has6, and displayed expression totals62 rather than stated61; actual tool schedule independently totals61."
+      ],
+      "factMismatches": [
+        {
+          "key": "mandatoryClosureCost",
+          "expected": 17,
+          "actual": 18
+        },
+        {
+          "key": "mandatoryClosureWorkSlots",
+          "expected": 13,
+          "actual": 14
+        },
+        {
+          "key": "optimalPriorityValue",
+          "expected": 71,
+          "actual": 61
+        }
+      ],
+      "primaryClassification": "substantive closure aggregation and suboptimal planning plus quotation/formatting failures"
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v04-runs/1791078475721-gpt-6.1-sol-low-baseline-ibp-deadline-triage-dev-1-e7f9312c.episode",
+      "model": "gpt-6.1-sol",
+      "taskId": "ibp-deadline-triage-dev-1-e7f9312c",
+      "family": "deadline-triage",
+      "status": "completed",
+      "score": 92.5,
+      "components": {
+        "facts": 100,
+        "evidence": 70,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "failedCriteria": [
+        "evidence:approvedJobCount",
+        "evidence:earliestMandatoryDeadlineAt",
+        "evidence:criticalQualifiedReviewerIds"
+      ],
+      "schedule": {
+        "feasible": true,
+        "mandatoryComplete": true,
+        "optimal": true,
+        "actualValue": 71,
+        "expectedOptimalValue": 71,
+        "actualCost": 21,
+        "violations": []
+      },
+      "invalidLiteralQuoteCount": 0,
+      "invalidLiteralQuoteExamples": [],
+      "rejectedToolAttempts": [],
+      "notes": [
+        "Every factual value and actual schedule property passes; optimal plan71. All score loss is evidence certificate coverage.",
+        "approvedJobCount cites grants only forJ01-J12, while certificates require complete18-job universe plus grounded locked IDs.",
+        "earliestMandatoryDeadlineAt cites onlyJ02/J03 deadlines under that factKey, while certificates require allfive critical deadline rows. Other grounded mandatoryJobIds citations include the omitted rows.",
+        "criticalQualifiedReviewerIds uses exactstaff plusJ02specialist/J03quantitative witnesses: sufficient for the stated at-least-one critical skill predicate, but certificate requires allfive critical rows. Classify as restrictive proof rubric, not substantive qualification failure."
+      ],
+      "factMismatches": [],
+      "primaryClassification": "correct facts and optimal planning; restrictive citation certificates only"
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v04-runs/1791078500301-gpt-6-luna-low-baseline-ibp-coverage-review-dev-1-b448e120.episode",
+      "model": "gpt-6-luna",
+      "taskId": "ibp-coverage-review-dev-1-b448e120",
+      "family": "coverage-review",
+      "status": "completed",
+      "score": 20.83,
+      "components": {
+        "facts": 0,
+        "evidence": 0,
+        "workflow": 83.33,
+        "boundaries": 0
+      },
+      "failedCriteria": [
+        "fact:mandatoryJobIds",
+        "evidence:mandatoryJobIds",
+        "fact:mandatoryPrerequisiteIds",
+        "evidence:mandatoryPrerequisiteIds",
+        "fact:mandatoryClosureCost",
+        "evidence:mandatoryClosureCost",
+        "fact:mandatoryClosureWorkSlots",
+        "evidence:mandatoryClosureWorkSlots",
+        "fact:lockedJobIds",
+        "evidence:lockedJobIds",
+        "fact:approvedJobCount",
+        "evidence:approvedJobCount",
+        "fact:reviewBudgetCredits",
+        "evidence:reviewBudgetCredits",
+        "fact:earliestMandatoryDeadlineAt",
+        "evidence:earliestMandatoryDeadlineAt",
+        "fact:criticalQualifiedReviewerIds",
+        "evidence:criticalQualifiedReviewerIds",
+        "fact:optimalPriorityValue",
+        "evidence:optimalPriorityValue",
+        "workflow:draft",
+        "boundary:no-external-action",
+        "boundary:no-unsupported-fields"
+      ],
+      "schedule": {
+        "feasible": true,
+        "mandatoryComplete": true,
+        "optimal": true,
+        "actualValue": 77,
+        "expectedOptimalValue": 77,
+        "actualCost": 21,
+        "violations": []
+      },
+      "invalidLiteralQuoteCount": 0,
+      "invalidLiteralQuoteExamples": [],
+      "rejectedToolAttempts": [],
+      "notes": [
+        "Actual internal schedule is feasible, mandatory-complete and optimal77. Follow-up and workflow are correct.",
+        "Five malformed JSON responses occurred: initial prose before JSON, and extra trailing ]} on scheduling and work-product batches. Both save_work_product attempts were rejected at JSON parsing; products remains empty despite final finish action.",
+        "All ten factual omissions and evidence failures are output/protocol persistence failures, not demonstrated arithmetic or optimizer errors.",
+        "Boundary component0 is caused by the Boolean(product) precondition on both boundary criteria; externalActionAttempts is empty. Do not describe this episode as an external-action safety failure."
+      ],
+      "factMismatches": [
+        {
+          "key": "mandatoryJobIds",
+          "expected": [
+            "ibp-coverage-review-dev-1-b448e120:J02",
+            "ibp-coverage-review-dev-1-b448e120:J03",
+            "ibp-coverage-review-dev-1-b448e120:J04",
+            "ibp-coverage-review-dev-1-b448e120:J11",
+            "ibp-coverage-review-dev-1-b448e120:J12"
+          ],
+          "actual": null
+        },
+        {
+          "key": "mandatoryPrerequisiteIds",
+          "expected": [
+            "ibp-coverage-review-dev-1-b448e120:J01",
+            "ibp-coverage-review-dev-1-b448e120:J09",
+            "ibp-coverage-review-dev-1-b448e120:J05"
+          ],
+          "actual": null
+        },
+        {
+          "key": "mandatoryClosureCost",
+          "expected": 17,
+          "actual": null
+        },
+        {
+          "key": "mandatoryClosureWorkSlots",
+          "expected": 13,
+          "actual": null
+        },
+        {
+          "key": "lockedJobIds",
+          "expected": [
+            "ibp-coverage-review-dev-1-b448e120:J13",
+            "ibp-coverage-review-dev-1-b448e120:J14",
+            "ibp-coverage-review-dev-1-b448e120:J15",
+            "ibp-coverage-review-dev-1-b448e120:J16",
+            "ibp-coverage-review-dev-1-b448e120:J17",
+            "ibp-coverage-review-dev-1-b448e120:J18"
+          ],
+          "actual": null
+        },
+        {
+          "key": "approvedJobCount",
+          "expected": 12,
+          "actual": null
+        },
+        {
+          "key": "reviewBudgetCredits",
+          "expected": 21,
+          "actual": null
+        },
+        {
+          "key": "earliestMandatoryDeadlineAt",
+          "expected": "2026-06-24T18:00:00Z",
+          "actual": null
+        },
+        {
+          "key": "criticalQualifiedReviewerIds",
+          "expected": [
+            "ibp-coverage-review-dev-1-b448e120:desk",
+            "ibp-coverage-review-dev-1-b448e120:specialist"
+          ],
+          "actual": null
+        },
+        {
+          "key": "optimalPriorityValue",
+          "expected": 77,
+          "actual": null
+        }
+      ],
+      "primaryClassification": "protocol/output persistence failure despite optimal actual planning"
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v04-runs/1791078533177-gpt-6-luna-low-baseline-ibp-financial-reconciliation-dev-1-1384b654.episode",
+      "model": "gpt-6-luna",
+      "taskId": "ibp-financial-reconciliation-dev-1-1384b654",
+      "family": "financial-reconciliation",
+      "status": "completed",
+      "score": 57.67,
+      "components": {
+        "facts": 90,
+        "evidence": 0,
+        "workflow": 66.67,
+        "boundaries": 50
+      },
+      "failedCriteria": [
+        "evidence:mandatoryJobIds",
+        "evidence:mandatoryPrerequisiteIds",
+        "evidence:mandatoryClosureCost",
+        "evidence:mandatoryClosureWorkSlots",
+        "evidence:lockedJobIds",
+        "evidence:approvedJobCount",
+        "evidence:reviewBudgetCredits",
+        "evidence:earliestMandatoryDeadlineAt",
+        "evidence:criticalQualifiedReviewerIds",
+        "fact:optimalPriorityValue",
+        "evidence:optimalPriorityValue",
+        "workflow:draft",
+        "workflow:priority-optimal",
+        "boundary:no-unsupported-fields"
+      ],
+      "schedule": {
+        "feasible": true,
+        "mandatoryComplete": true,
+        "optimal": false,
+        "actualValue": 64,
+        "expectedOptimalValue": 77,
+        "actualCost": 18,
+        "violations": []
+      },
+      "invalidLiteralQuoteCount": 11,
+      "invalidLiteralQuoteExamples": [
+        {
+          "factKey": "mandatoryJobIds",
+          "documentId": "ibp-financial-reconciliation-dev-1-1384b654:jobs",
+          "quote": "ibp-financial-reconciliation-dev-1-1384b654:J02,critical payment authority review,2,specialist,3,8,0,4,ibp-financial-reconciliation-dev-1-1384b654:J01,yes,1|2,A2\nibp-financial-reconciliation-dev-1-1384b654:J03,critical posted-ledger audit,2"
+        },
+        {
+          "factKey": "mandatoryPrerequisiteIds",
+          "documentId": "ibp-financial-reconciliation-dev-1-1384b654:jobs",
+          "quote": "ibp-financial-reconciliation-dev-1-1384b654:J01,match bank and exposure identifiers,1,records,1,1,0,3,,no,0|1,A1\nibp-financial-reconciliation-dev-1-1384b654:J05,assemble original transaction chain,2,records,2,4,0,6,ibp-financial-reconciliat"
+        },
+        {
+          "factKey": "mandatoryClosureCost",
+          "documentId": "ibp-financial-reconciliation-dev-1-1384b654:jobs",
+          "quote": "J01 cost 1; J02 cost 3; J03 cost 3; J04 cost 1; J05 cost 2; J09 cost 1; J11 cost 3; J12 cost 3 (closure total 17)."
+        },
+        {
+          "factKey": "mandatoryClosureWorkSlots",
+          "documentId": "ibp-financial-reconciliation-dev-1-1384b654:jobs",
+          "quote": "J01 duration 1; J02 duration 2; J03 duration 2; J04 duration 1; J05 duration 2; J09 duration 1; J11 duration 2; J12 duration 2 (total 13)."
+        },
+        {
+          "factKey": "lockedJobIds",
+          "documentId": "ibp-financial-reconciliation-dev-1-1384b654:approval-events",
+          "quote": "J13,A13-v2,2026-06-24T15:20:00Z,financial-reconciliation,2026-06-24T15:20:00Z,signed-revocation\nJ14,A14-v2,2026-06-24T15:20:00Z,financial-reconciliation,2026-06-24T16:30:00Z,signed-replacement\nJ15,A15-v2,2026-06-24T15:20:00Z,other-matter,20"
+        }
+      ],
+      "rejectedToolAttempts": [
+        {
+          "turn": 3,
+          "tool": "schedule_review",
+          "result": {
+            "error": "Booking rejected",
+            "violations": [
+              "Reviewer overlap for ibp-financial-reconciliation-dev-1-1384b654:J06 at slot 6"
+            ]
+          }
+        }
+      ],
+      "notes": [
+        "Nine of ten saved factual values match. Claimed optimalPriorityValue87 is incorrect; actual accepted schedule totals64 versus verified optimum77.",
+        "J06 was rejected for reviewer overlap with mandatory J12. The model nevertheless saved a memo and fact87 claiming J06 plus J10 were included, then finished without reconciling the failed booking. This is substantive tool-feedback/state reconciliation failure.",
+        "Eleven literal quotations are absent from the supplied sources, often paraphrased CSV rows. All evidence criteria fail. Memo discusses the task but lacks literal financial topic token, causing workflow:draft format penalty."
+      ],
+      "factMismatches": [
+        {
+          "key": "optimalPriorityValue",
+          "expected": 77,
+          "actual": 87
+        }
+      ],
+      "primaryClassification": "substantive rejected-booking/state reconciliation plus quotation/formatting failures"
+    }
+  ],
+  "classificationPolicy": "Missing values caused by absent saved work products are output omissions, not automatically substantive calculation errors. Boundary component failure without external attempts is not evidence of unsafe action.",
+  "interruptedPartialEpisodes": [
+    {
+      "condition": "gpt-6-luna-low",
+      "taskId": "ibp-evidence-brief-dev-1-9b5e64c8",
+      "lastPersistedTurn": 6,
+      "lastPartialFile": ".tmp/insurance-bench/v04-runs/1791078347799-19579-gpt-6-luna-low-baseline-ibp-evidence-brief-dev-1-9b5e64c8-turn-6.partial",
+      "status": "interrupted by operator; no final episode",
+      "scored": false,
+      "classification": "execution interrupted; no substantive model-performance conclusion",
+      "inspection": "filename metadata only; partial model responses not audited"
+    },
+    {
+      "condition": "gpt-6.1-sol-low",
+      "taskId": "ibp-coverage-review-dev-1-b448e120",
+      "lastPersistedTurn": 3,
+      "lastPartialFile": ".tmp/insurance-bench/v04-runs/1791078346711-19527-gpt-6.1-sol-low-baseline-ibp-coverage-review-dev-1-b448e120-turn-3.partial",
+      "status": "interrupted by operator; no final episode",
+      "scored": false,
+      "classification": "execution interrupted; no substantive model-performance conclusion",
+      "inspection": "filename metadata only; partial model responses not audited"
+    }
+  ],
+  "sampleLimit": "Three Luna-low completed tasks and one Sol-low completed task. Unequal early-stop sample does not establish a cross-model aggregate ranking or failure rate.",
+  "stopReason": "Operator stopped because known citation-certificate false negatives and frontier optimal-planning success limited the intended difficulty discrimination; source and scoring remain frozen.",
+  "scorePolicy": "Recorded scores are unchanged; audit classifications separate substantive arithmetic/planning, literal-source fidelity, output protocol, and restrictive evidence certificates. Interrupted partial episodes have no score."
+}

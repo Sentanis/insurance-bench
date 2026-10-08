@@ -1,0 +1,209 @@
+{
+  "generation": "insurance-bench-coupled-v0.7c",
+  "primaryRunIds": [
+    "2026-10-04T04-05-33-650Z-gpt-6.1-sol-baseline",
+    "2026-10-04T04-05-33-650Z-gpt-6-luna-baseline",
+    "2026-10-04T20-51-36-162Z-us.anthropic.claude-sonnet-4-6-baseline",
+    "2026-10-04T21-07-51-258Z-openai.gpt-oss-120b-1-0-baseline",
+    "2026-10-04T21-21-21-009Z-openai.gpt-oss-20b-1-0-baseline",
+    "2026-10-04T21-26-42-462Z-global.anthropic.claude-haiku-4-5-20251001-v1-0-baseline",
+    "2026-10-04T21-32-54-094Z-gpt-6-astra-baseline",
+    "2026-10-04T20-51-36-164Z-qwen.qwen3-235b-a22b-2507-v1-0-baseline",
+    "2026-10-04T20-51-36-166Z-qwen.qwen3-32b-v1-0-baseline"
+  ],
+  "invalidRunIds": [
+    "2026-10-04T01-23-23-972Z-gpt-6.1-sol-baseline",
+    "2026-10-04T01-23-24-904Z-gpt-6-luna-baseline",
+    "v04-interrupted-gpt-6.1-sol-low",
+    "v04-interrupted-gpt-6-luna-low",
+    "2026-10-04T01-57-57-826Z-gpt-6-luna-baseline",
+    "2026-10-04T01-57-56-708Z-gpt-6.1-sol-baseline",
+    "2026-10-04T02-10-33-126Z-gpt-6-luna-baseline",
+    "2026-10-04T02-10-33-124Z-gpt-6.1-sol-baseline",
+    "2026-10-04T02-49-39-592Z-gpt-6-luna-baseline",
+    "2026-10-04T02-49-38-445Z-gpt-6.1-sol-baseline",
+    "2026-10-04T03-15-58-814Z-gpt-6.1-sol-baseline",
+    "2026-10-04T03-22-56-392Z-gpt-6.1-sol-baseline",
+    "2026-10-04T03-22-56-388Z-gpt-6-luna-baseline",
+    "2026-10-04T22-01-56-859Z-gpt-6.1-sol-high-baseline-evidence"
+  ],
+  "comparisons": [
+    {
+      "axis": "effort",
+      "baselineRunId": "2026-10-04T03-39-43-210Z-gpt-6.1-sol-baseline",
+      "treatmentRunId": "2026-10-04T03-46-16-198Z-gpt-6.1-sol-baseline",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 0,
+      "completionDelta": 0,
+      "componentDeltas": {
+        "facts": 0,
+        "evidence": 0,
+        "workflow": 0,
+        "boundaries": 0
+      },
+      "currentStateDelta": 0,
+      "caseWins": 0,
+      "caseTies": 3,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        0,
+        0
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 0
+        },
+        {
+          "family": "financial-reconciliation",
+          "scoreDelta": 0
+        },
+        {
+          "family": "deadline-triage",
+          "scoreDelta": 0
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    },
+    {
+      "axis": "effort",
+      "baselineRunId": "2026-10-04T03-39-43-210Z-gpt-6-luna-baseline",
+      "treatmentRunId": "2026-10-04T03-46-16-197Z-gpt-6-luna-baseline",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 41.19,
+      "completionDelta": 66.67,
+      "componentDeltas": {
+        "facts": 45.62,
+        "evidence": 40.35,
+        "workflow": 38.09,
+        "boundaries": 33.33
+      },
+      "currentStateDelta": 66.67,
+      "caseWins": 3,
+      "caseTies": 0,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        23.2,
+        72.71
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 72.71
+        },
+        {
+          "family": "financial-reconciliation",
+          "scoreDelta": 27.67
+        },
+        {
+          "family": "deadline-triage",
+          "scoreDelta": 23.2
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    },
+    {
+      "axis": "tier",
+      "baselineRunId": "2026-10-04T03-39-43-210Z-gpt-6-luna-baseline",
+      "treatmentRunId": "2026-10-04T03-39-43-210Z-gpt-6.1-sol-baseline",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 49.1,
+      "completionDelta": 100,
+      "componentDeltas": {
+        "facts": 47.37,
+        "evidence": 59.65,
+        "workflow": 47.62,
+        "boundaries": 33.33
+      },
+      "currentStateDelta": 100,
+      "caseWins": 3,
+      "caseTies": 0,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        23.2,
+        96.43
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 96.43
+        },
+        {
+          "family": "financial-reconciliation",
+          "scoreDelta": 27.67
+        },
+        {
+          "family": "deadline-triage",
+          "scoreDelta": 23.2
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    },
+    {
+      "axis": "tier",
+      "baselineRunId": "2026-10-04T03-46-16-197Z-gpt-6-luna-baseline",
+      "treatmentRunId": "2026-10-04T03-46-16-198Z-gpt-6.1-sol-baseline",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 7.91,
+      "completionDelta": 33.33,
+      "componentDeltas": {
+        "facts": 1.75,
+        "evidence": 19.3,
+        "workflow": 9.52,
+        "boundaries": 0
+      },
+      "currentStateDelta": 33.33,
+      "caseWins": 1,
+      "caseTies": 2,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        0,
+        23.72
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 23.72
+        },
+        {
+          "family": "financial-reconciliation",
+          "scoreDelta": 0
+        },
+        {
+          "family": "deadline-triage",
+          "scoreDelta": 0
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    }
+  ],
+  "conditionWarnings": {
+    "2026-10-04T20-51-36-164Z-qwen.qwen3-235b-a22b-2507-v1-0-baseline": "Development diagnostic only. The provider advertises an 8K output maximum against the requested frozen 16384 cap. Accepted calls do not establish identical resource limits; this run is excluded from clean matched contrasts.",
+    "2026-10-04T20-51-36-166Z-qwen.qwen3-32b-v1-0-baseline": "No scored terminal cases: provider ValidationException after eight successful nonempty responses. Exact rejection cause is unknown. Advertised8K maximum differs from the requested 16384 cap; no ability score or clean tier contrast.",
+    "2026-10-04T22-01-56-859Z-gpt-6.1-sol-high-baseline-evidence": "Superseded v0.8 measurement. Required current custodian evidence resolves capture time but Q9 gold remained unresolved. The defensible supported answer lost dependent fact/evidence credit; raw grades are preserved, not capability evidence. Four of six tasks scored before a 300-second provider timeout; no headline or contrast."
+  },
+  "findings": [
+    "The requested frontier difficulty target of roughly 50–60 is UNMET. Sol scores100 at both development efforts and on its fresh high-effort holdout; the prospectively registered Astra-high complete three-case reference also scores100 with3/3 actual current optimal reviewed writes.",
+    "Fresh frozen holdout: Sol-high 100.00, Luna-high 93.01. Each profile attempted the same first untouched case in each of three correlated families once. Raw scores, failed criteria and traces are retained; no holdout-driven grader changes or selective reruns occurred.",
+    "The Luna holdout deadline case reached the16384-token inclusive output ceiling. Later turns recovered, but this resource-limit exposure confounds a clean matched tier contrast. The comparison module refuses it; no holdout contrast or bootstrap interval is shown. These raw scores describe configured systems under the recorded limit. Development contrasts below are untruncated.",
+    "Development effort control: Sol-low100→Sol-high100,57/57 facts and3/3 actual optimal current writes at both efforts. Luna-low50.90→Luna-high92.09,30/57→56/57 facts and 0/3→2/3 actual optimal current writes. This establishes a narrow Luna effort difference while retaining the null Sol contrast and frontier ceiling.",
+    "Extended frozen c holdout references, three cases once each: Astra-high 100, Sonnet 4.6 67.02, GPT-OSS 120B 4.76, GPT-OSS 20B 3.57 and Haiku 4.5 18.18. Astra achieves 3/3 actual current feasible optimal reviewed writes; the other four achieve 0/3. These are configured-run observations. Low protocol/work-product scores do not establish general insurance incompetence. All-pass is3/3 for Astra and 0/3 for these other references; there are no critical or truncation flags in these five panels.",
+    "Qwen 235B development completes three cases at 43.38; Qwen 32B has zero scored terminal cases and is unavailable as an ability result. Their provider advertises 8K output against the frozen 16384 request. The accepted Qwen 235B run is a diagnostic only; clean Qwen tier contrasts are excluded. Qwen 32B/235B and DeepSeek fresh holdouts were deferred before inference on this resource mismatch, not omitted after seeing holdout results.",
+    "In all three Luna holdout cases, the same eligible-package omission loses about6.99 points through correlated fact, evidence and current-draft accuracy gates. All source operands, draft revisions, material versions and actual review histories pass; all three actual selected plans are feasible and optimal. Eligibility under public rule7 and selected-subset capacity feasibility are separate. Do not interpret these losses as three independent failures or worse actual plan quality.",
+    "The score weights are unchanged at40/25/25/10; a wrong actual selected plan alone costs only25/7≈3.57 points. Actual optimal current written outcomes are shown separately. The task labels share one occurrence engine, evidence partly tracks facts, and draft accuracy requires all facts correct. Memo prose and real-world legal correctness are not semantically validated.",
+    "Seeded family bootstrap intervals are descriptive resamples of three correlated single-attempt cases, not population confidence or a stable industry ranking. Engineering source/trace audits do not replace independent insurance-professional validation.",
+    "Historical v0.2 evaluated five complete reachable-model holdouts, all scoring86–98; those six-family basic workflows remain separate from this three-family coupled track. Superseded measurement candidates preserve raw grades and cannot establish capability conclusions.",
+    "The v0.8 evidence candidate is PAUSED/SUPERSEDED. Its first Sol-high six-case development dispatch scored four terminal cases before a 300-second provider timeout. No complete-panel headline or clean comparison exists. A trace audit found a common source-propagation fault (new v08-cross-source-measurement-finding receipt): prepaid derivation and author labels shared an incomplete per-proposition decomposition; the required current custodian response establishes original capture time for evidence-brief dev1 Q9, while frozen gold still marks it unresolved. The model supported answer is defensible; the raw 92.78 case grade is not capability evidence. Raw bytes, gold, reviews and prior audits are unchanged; the native run stays in history with ability scores suppressed. The separate v0.9 candidate is being implemented and has no reviewed source freeze or scored results. Whole-task success was prospective for v0.8, with unchanged weighted diagnostics; no older generation is regraded."
+  ],
+  "accessGaps": [
+    "AWS existing-profile access recovered. Five extended holdout reference panels completed; Qwen 235B development completed and Qwen 32B remains unscored. New Qwen/DeepSeek holdouts are deferred under the advertised 8K limit; earlier expired-SSO failures remain historical access evidence.",
+    "The user approved a $75 TOTAL cap with prior reservations preserved. Astra-high completed under that shared cap; the old$25 constraint is historical.",
+    "Fresh access-only probes returned AccessDenied for Claude Sonnet 5, Sonnet 5.5, Opus 5.5 and Grok 4.7 on the configured path. Reviewed pinned Gemini Flash3.8 and Pro3.1 access-only probes both ended access-unconfirmed / existing-login-required. Public pins/auth-file-existence checks passed but required existing login/tier/project admission failed; no onboarding, retry, fallback or ability inference occurred. Both$0.032768 reservations are retained; installed login artifacts do not prove reachability. Kimi retains only1/12 historical coverage and no headline score. These are admission gaps, not ability failures.",
+    "Token-rate estimates are not invoices. The shared session ledger records $34.651582 against a$75 cap, including retained uncertain-call reservations.",
+    "CA-IB03 accepts the extended c static report at code 901c0218 on the protected ghxqxmua9 preview. This acceptance predates the later v0.8 false-grade update; the changed report still needs a new commit-bound preview and Chrome check. The protected static synthetic report is development evidence. Production-classified AWS staging is not deployed or accepted; no production claim data, database connection, application credentials or provider keys are served."
+  ]
+}

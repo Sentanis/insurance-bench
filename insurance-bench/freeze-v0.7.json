@@ -1,0 +1,241 @@
+{
+  "frozenAt": "2026-10-04T03:15:53.271Z",
+  "version": "insurance-bench-coupled-v0.7",
+  "candidate": 5,
+  "sourceCommit": "c2bd80b98e9316ab7d01ebd9c454ad38cdb6ff26",
+  "corpusHash": "0c9b0f041db219d670b7cf152bfc66dea25651e6694f5b4c9e5f162cd19c2f98",
+  "developmentHash": "55ea74f1e893f012e540fc4e6ea44b2c540bad9c15577fa07888d96c82fa6026",
+  "holdoutHash": "38421edb1f1cd4ee59aac56635a7b16a18e2ef6c1c8f60f637d55866ff15a6c2",
+  "sourceFingerprint": "054d7087e6e7461d7f8a3eb6cb1950ec445a600828d0bda0b34ba57adc60808e",
+  "promptHash": "635222f560e0836abbda6dd4f2a9f05dbe8e86d609bf0b4fae3695a3c9b958b1",
+  "harnessHash": "60583dc5ed712ee820cdfcd7f3f9ca98d5a98fdda0ec33474799eac24e971c3f",
+  "devTaskIds": [
+    "ibc-coverage-review-dev-1-693918aa",
+    "ibc-financial-reconciliation-dev-1-6bebb17e",
+    "ibc-deadline-triage-dev-1-cb2f8d92"
+  ],
+  "holdoutTaskIds": [
+    "ibc-coverage-review-holdout-1-ee0e896c",
+    "ibc-financial-reconciliation-holdout-1-5f419d60",
+    "ibc-deadline-triage-holdout-1-96851694"
+  ],
+  "limits": {
+    "maxTurns": 20,
+    "maxOutputTokens": 16384,
+    "transportDeadlineMs": 300000
+  },
+  "repeat": 1,
+  "devStages": [
+    [
+      "gpt-6.1-sol-low",
+      "gpt-6-luna-low"
+    ],
+    [
+      "gpt-6.1-sol-high",
+      "gpt-6-luna-high"
+    ],
+    [
+      "qwen3-32b",
+      "qwen3-235b"
+    ],
+    [
+      "gpt-oss-20b",
+      "gpt-oss-120b"
+    ]
+  ],
+  "finalPrimary": [
+    "gpt-6.1-sol-high",
+    "gpt-6-luna-high"
+  ],
+  "finalOptionalOrder": [
+    "claude-sonnet-4.6",
+    "qwen3-235b",
+    "gpt-oss-120b",
+    "deepseek-v3.2",
+    "qwen3-32b",
+    "gpt-oss-20b",
+    "claude-haiku-4.5"
+  ],
+  "modelConfigurations": {
+    "gpt-6.1-sol": {
+      "provider": "openai",
+      "model": "gpt-6.1-sol",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 10,
+      "reasoningEffort": "low"
+    },
+    "claude-sonnet-5.5": {
+      "provider": "bedrock",
+      "model": "global.anthropic.claude-sonnet-5-5",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 10,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "claude-opus-5.5": {
+      "provider": "bedrock",
+      "model": "global.anthropic.claude-opus-5-5",
+      "inputUsdPerMillion": 4,
+      "outputUsdPerMillion": 20,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "deepseek-v3.2": {
+      "provider": "bedrock",
+      "model": "deepseek.v3.2",
+      "inputUsdPerMillion": 0.62,
+      "outputUsdPerMillion": 1.85,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "qwen3-235b": {
+      "provider": "bedrock",
+      "model": "qwen.qwen3-235b-a22b-2507-v1:0",
+      "inputUsdPerMillion": 0.22,
+      "outputUsdPerMillion": 0.88,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "grok-4.7": {
+      "provider": "bedrock",
+      "model": "global.xai.grok-4.7",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 6,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "gpt-oss-120b": {
+      "provider": "bedrock",
+      "model": "openai.gpt-oss-120b-1:0",
+      "inputUsdPerMillion": 0.15,
+      "outputUsdPerMillion": 0.6,
+      "profile": "sentanis-phase0",
+      "region": "us-east-1"
+    },
+    "kimi-k3": {
+      "provider": "bedrock",
+      "model": "us.moonshotai.kimi-k3",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 8,
+      "profile": "sentanis-phase0",
+      "region": "us-east-1"
+    },
+    "claude-sonnet-5": {
+      "provider": "bedrock",
+      "model": "global.anthropic.claude-sonnet-5",
+      "inputUsdPerMillion": 3,
+      "outputUsdPerMillion": 15,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "claude-sonnet-4.6": {
+      "provider": "bedrock",
+      "model": "us.anthropic.claude-sonnet-4-6",
+      "inputUsdPerMillion": 3.3,
+      "outputUsdPerMillion": 16.5,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "gpt-6.1-sol-low": {
+      "provider": "openai",
+      "model": "gpt-6.1-sol",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 10,
+      "reasoningEffort": "low",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "gpt-6.1-sol-high": {
+      "provider": "openai",
+      "model": "gpt-6.1-sol",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 10,
+      "reasoningEffort": "high",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "gpt-6-luna-low": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "inputUsdPerMillion": 0.1,
+      "outputUsdPerMillion": 0.5,
+      "reasoningEffort": "low",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "gpt-6-luna-high": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "inputUsdPerMillion": 0.1,
+      "outputUsdPerMillion": 0.5,
+      "reasoningEffort": "high",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "gpt-5.4-nano-low": {
+      "provider": "openai",
+      "model": "gpt-5.4-nano",
+      "inputUsdPerMillion": 0.2,
+      "outputUsdPerMillion": 1.25,
+      "reasoningEffort": "low",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-5.4-nano",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "qwen3-32b": {
+      "provider": "bedrock",
+      "profile": "sentanis-phase0",
+      "region": "us-west-2",
+      "pricingVerifiedAt": "2026-10-03",
+      "model": "qwen.qwen3-32b-v1:0",
+      "inputUsdPerMillion": 0.15,
+      "outputUsdPerMillion": 0.6,
+      "pricingSource": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-west-2/index.json"
+    },
+    "gpt-oss-20b": {
+      "provider": "bedrock",
+      "profile": "sentanis-phase0",
+      "region": "us-west-2",
+      "pricingVerifiedAt": "2026-10-03",
+      "model": "openai.gpt-oss-20b-1:0",
+      "inputUsdPerMillion": 0.07,
+      "outputUsdPerMillion": 0.3,
+      "pricingSource": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-west-2/index.json"
+    },
+    "claude-haiku-4.5": {
+      "provider": "bedrock",
+      "profile": "sentanis-phase0",
+      "region": "us-west-2",
+      "pricingVerifiedAt": "2026-10-03",
+      "model": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "inputUsdPerMillion": 1,
+      "outputUsdPerMillion": 5,
+      "pricingSource": "https://platform.claude.com/docs/en/about-claude/pricing"
+    }
+  },
+  "budget": {
+    "ledgerPath": ".tmp/insurance-bench/session-budget.json",
+    "capUsd": 25,
+    "atFreeze": {
+      "reservedUsd": 13.95560471250004,
+      "capUsd": 25,
+      "updatedAt": "2026-10-04T03:02:48.986Z"
+    },
+    "stage1Decision": "Dispatch complete low-effort pair; estimated $1.5 for low pair, preserve $6 planning allowance for matched high dev and primary final; optional pairs/references dispatched only after recorded affordability check. Forecasts are not guarantees; atomic cap authoritative."
+  },
+  "sourceAudit": "results/meta/coupled-source-audit-v0.7.json",
+  "independentReview": "../specs/features/insurance-bench/review-v0.7.md",
+  "uncertainty": {
+    "samples": 10000,
+    "seed": 1729,
+    "unit": "three correlated family clusters, single attempts; descriptive only"
+  },
+  "rules": [
+    "No v07 paid output at freeze",
+    "No score caps/reweighting or holdout tuning",
+    "Any justified repair starts superseding generation and reruns all affected matched conditions",
+    "Shared evidence bundle correlates facts/evidence; prose ungraded",
+    "Optimizer is a small fraction of weighted headline; report actual optimal current business outcome separately",
+    "Difficulty50-60 unproven; no insurance-expert validation",
+    "All historical raw grades preserved, superseded generations excluded from valid headline"
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "schema": "insurance-bench-candidate-development-only-controller-independent-review-v1",
+  "reviewedAt": "2026-10-05T01:03:45.747Z",
+  "preparedBy": "Independent non-author code-review agent",
+  "disposition": "approve-engineering-only",
+  "controllerPath": ".tmp/insurance-bench/candidate-panels.ts",
+  "controllerCopy": "insurance-bench/results/meta/candidate-controller-repro.txt",
+  "controllerSha256": "c929cbcc69cd6d052ae5096d01531e2cb8cca7421467cf7be55925ce908c91f7",
+  "sourceFingerprint": {
+    "interaction": "a6922f85d03bc6180610a8ac06ff8cdaf78c8a74c0e0ebb6cc410f429f0c69d8",
+    "json": "107e4af647e3ee1e64a771b8702eebece95e88223a220d8c3560104f994d5385"
+  },
+  "amendment": {
+    "status": "prospective-before-new-registration-or-inference",
+    "previousInteractionProposal": {
+      "panels": 4,
+      "forecastUsd": 11
+    },
+    "currentInteractionProposal": {
+      "panels": 2,
+      "split": "dev",
+      "episodesPerPanel": 6,
+      "attemptsPerCase": 1,
+      "variant": "baseline",
+      "modelOrder": [
+        "gpt-6.1-sol-high",
+        "gpt-6-luna-high"
+      ],
+      "forecastUsd": [
+        4.75,
+        0.75
+      ],
+      "totalForecastUsd": 5.5
+    },
+    "jsonProposal": {
+      "unchanged": true,
+      "panels": 2,
+      "split": "dev",
+      "episodesPerPanel": 3,
+      "modelOrder": [
+        "gpt-6-luna-low",
+        "gpt-6-luna-high"
+      ],
+      "forecastUsd": [
+        0.5,
+        0.75
+      ],
+      "totalForecastUsd": 1.25
+    },
+    "capUsd": 75,
+    "futureHoldouts": "No held panel in either new registration. Fresh held evaluation requires separate prospective registration and approval; this controller refuses stage holdout without registered held panels."
+  },
+  "historicalReview": {
+    "commit": "559e2d3cf15e9bc0368e441bc855ab97ef1b1ee4",
+    "controllerSha256": "4f8f84276ae6da299e1cd4f29ef3605d7e428f6f9b753b3eb89ee4f09b874e05",
+    "reviewPath": "insurance-bench/results/meta/candidate-prepaid-gate-independent-review.json",
+    "reviewSha256": "85660a9cff71d2e8cf51661290eeecbd74416f32344cd0f533f4b6474d70e759",
+    "preserved": true
+  },
+  "checks": [
+    {
+      "id": "exact-controller-reproduction",
+      "result": "pass",
+      "evidence": "Ignored runnable bytes equal tracked reproduction; prior committed four-panel bytes match historical approval SHA."
+    },
+    {
+      "id": "bounded-prospective-amendment",
+      "result": "pass-source",
+      "evidence": "Only v0.10 held definitions removed and independent amendment review binding added; JSON conditions unchanged; full six dev cases per interaction panel retained."
+    },
+    {
+      "id": "review-freeze-binding",
+      "result": "pass-source",
+      "evidence": "Prepare requires approve-engineering-only and exact current controllerSHA; registration includes reviewSHA; validate detects current review byte drift; paid run requires exact committed amendment review and controller copy."
+    },
+    {
+      "id": "serial-budget-native-controls",
+      "result": "pass-source",
+      "evidence": "Canonical existing75 ledger/floor; whole remaining prospective cost before each panel; wx controller lock; fixed order; existing receipt rejection; committed current source/control/model/task conditions; predecessor nativeSHA/coverage/process/provider/model/spend checks and post-terminal stop flags all retained."
+    },
+    {
+      "id": "development-only-held-stage-rejection",
+      "result": "pass-source",
+      "evidence": "Both plans contain dev panels only; stage holdout rejection occurs before controller lock/output directory/dispatch. No held task output or outcome selected the amendment."
+    }
+  ],
+  "issues": [],
+  "verification": {
+    "mode": "Read-only source/diff/static controls; candidate controller not executed",
+    "candidateRegistrationsAbsentAtReview": true,
+    "actualLedgerRead": false,
+    "authRead": false,
+    "providerCalls": 0,
+    "heldModelOutputRead": false,
+    "nativeOrPartialOutputRead": false,
+    "sourceFilesEdited": false
+  },
+  "limitations": [
+    "Engineering admission for exact controller bytes and current candidate source only; not provider acceptance or model ability/domain/professional validity.",
+    "Prospective forecasts remain estimates; unchanged total budget and native stop gates govern paid execution.",
+    "Historical four-panel review remains historical; it is not rewritten to pretend this plan existed earlier."
+  ],
+  "reproduction": {
+    "command": "node --import tsx .tmp/insurance-bench/candidate-development-only-review.ts",
+    "scriptSha256": "4d7e1b10895b39f41fadbf3fae0015c7d9e5e1b29db25d41e7b12b3ce3f6cb2d"
+  }
+}

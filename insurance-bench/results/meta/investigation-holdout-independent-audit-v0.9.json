@@ -1,0 +1,1213 @@
+{
+  "schema": "insurance-bench-v09-native-holdout-independent-audit-v1",
+  "preparedBy": "Independent non-author code-review agent; source-only native-trace replay and separate numeric three-valued raw-row interpreter",
+  "auditedAt": "2026-10-05T01:16:14.126Z",
+  "disposition": "approve-engineering-only",
+  "status": "both-terminal-holdout-panels-source-consistent",
+  "sourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+  "freezeCommit": "cf4075d6fbeea1a9d882bbdea471824101b5f07d",
+  "registrationPath": "insurance-bench/results/meta/v09-registration.json",
+  "registrationSha256": "8eb37ff89467dad06611f0e7d258ac2e818d13db0e1bd86077b9cb1f5dfbc2f2",
+  "releasePath": "insurance-bench/results/meta/v09-holdout-release.json",
+  "releaseSha256": "4615df85171577bdf15eeb7ec8d9f894388a6547e02894b3aead3c383fc255c9",
+  "releaseCommit": "74b404334129582a5b91445e02416d3d1acd4333",
+  "developmentCommit": "8cdf085ddc4c2b80310bc167bd97e5c4b0511f54",
+  "developmentAuditPath": "insurance-bench/results/meta/investigation-development-independent-audit-v0.9.json",
+  "developmentAuditSha256": "66cb0fcc17e32bad90f61c149e62f8c372d3109b56ccade6015adade92962eeb",
+  "counts": {
+    "registeredHoldoutPanels": 2,
+    "terminalPanelsAudited": 2,
+    "pendingPanels": 0,
+    "terminalEpisodesAudited": 6,
+    "interimTerminalEpisodesAudited": 0
+  },
+  "checks": {
+    "allBothTerminal": true,
+    "allBothAdmitted": true,
+    "replayedToolResultsAndState": true,
+    "sourceGoldConsistency": true,
+    "nativeConditions": true,
+    "wholeTaskCriteriaCheckedIndependently": true,
+    "receiptAndTraceCostsChecked": true,
+    "noProviderCallsByAuditor": true,
+    "onlyReleasedNotifiedTerminalOutputsRead": true
+  },
+  "independentControls": [
+    {
+      "taskId": "ibi-fleet-assignment-holdout-1-74f18798",
+      "generation": 1,
+      "obligations": [
+        "U",
+        "N",
+        "A",
+        "N",
+        "A",
+        "U",
+        "N",
+        "A",
+        "N",
+        "A",
+        "N",
+        "A"
+      ],
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "74f18798-historical-approval-0",
+        "74f18798-historical-approval-1",
+        "74f18798-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-fleet-assignment-holdout-1-74f18798",
+      "generation": 2,
+      "obligations": [
+        "N",
+        "A",
+        "N",
+        "N",
+        "A",
+        "U",
+        "N",
+        "A",
+        "N",
+        "A",
+        "N",
+        "A"
+      ],
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "74f18798-historical-approval-1",
+        "74f18798-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": [
+        "74f18798-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-fleet-assignment-holdout-1-74f18798",
+      "generation": 3,
+      "obligations": [
+        "N",
+        "A",
+        "N",
+        "N",
+        "A",
+        "U",
+        "N",
+        "A",
+        "N",
+        "A",
+        "N",
+        "A"
+      ],
+      "requestCount": 5,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "74f18798-historical-approval-0",
+        "74f18798-historical-approval-1",
+        "74f18798-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-1-47f9484c",
+      "generation": 1,
+      "obligations": [
+        "A",
+        "N",
+        "A",
+        "N",
+        "A",
+        "N",
+        "U",
+        "A",
+        "U",
+        "U",
+        "A",
+        "N"
+      ],
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "47f9484c-historical-approval-0",
+        "47f9484c-historical-approval-1",
+        "47f9484c-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-1-47f9484c",
+      "generation": 2,
+      "obligations": [
+        "N",
+        "N",
+        "N",
+        "A",
+        "A",
+        "N",
+        "U",
+        "A",
+        "U",
+        "U",
+        "A",
+        "N"
+      ],
+      "requestCount": 4,
+      "retainedApprovalIds": [
+        "47f9484c-historical-approval-1",
+        "47f9484c-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": [
+        "47f9484c-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-1-47f9484c",
+      "generation": 3,
+      "obligations": [
+        "N",
+        "N",
+        "N",
+        "A",
+        "A",
+        "N",
+        "U",
+        "A",
+        "U",
+        "A",
+        "A",
+        "N"
+      ],
+      "requestCount": 5,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "47f9484c-historical-approval-0",
+        "47f9484c-historical-approval-1",
+        "47f9484c-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-1-3753da40",
+      "generation": 1,
+      "obligations": [
+        "A",
+        "N",
+        "A",
+        "N",
+        "N",
+        "A",
+        "A",
+        "U",
+        "N",
+        "A",
+        "N",
+        "A"
+      ],
+      "requestCount": 6,
+      "retainedApprovalIds": [
+        "3753da40-historical-approval-0",
+        "3753da40-historical-approval-1",
+        "3753da40-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-1-3753da40",
+      "generation": 2,
+      "obligations": [
+        "A",
+        "N",
+        "A",
+        "N",
+        "N",
+        "N",
+        "A",
+        "U",
+        "N",
+        "A",
+        "N",
+        "A"
+      ],
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "3753da40-historical-approval-0",
+        "3753da40-historical-approval-1",
+        "3753da40-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-1-3753da40",
+      "generation": 3,
+      "obligations": [
+        "A",
+        "N",
+        "A",
+        "N",
+        "N",
+        "N",
+        "A",
+        "U",
+        "N",
+        "A",
+        "N",
+        "A"
+      ],
+      "requestCount": 5,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "3753da40-historical-approval-0",
+        "3753da40-historical-approval-1",
+        "3753da40-historical-approval-2"
+      ]
+    }
+  ],
+  "issues": [],
+  "pending": [],
+  "panels": [
+    {
+      "id": "07-sol-high-holdout",
+      "receiptPath": "insurance-bench/results/meta/v09-dispatch-07-sol-high-holdout.json",
+      "receiptSha256": "21783e31af57e5ba4a646147330f9263c5c29b369788166bd145e48fd0a68e0b",
+      "nativeRunPath": "insurance-bench/results/2026-10-05T00-34-57-306Z-gpt-6.1-sol-high-baseline-investigation.json",
+      "nativeRunSha256": "f407c6bd45ff204520b0bc0fd30a6bfdea841f5f0b842d4e9359411d6e709ba1",
+      "model": {
+        "provider": "openai",
+        "model": "gpt-6.1-sol",
+        "inputUsdPerMillion": 2,
+        "outputUsdPerMillion": 10,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "variant": "baseline",
+      "benchmarkScore": 100,
+      "diagnosticScore": 100,
+      "completeCoverage": true,
+      "receiptFlags": {
+        "observedTruncation": false,
+        "modelOrEffortMismatch": false,
+        "providerOrBudgetFailure": false,
+        "processFailure": false,
+        "materialSpendOverrun": false
+      },
+      "episodes": [
+        {
+          "taskId": "ibi-fleet-assignment-holdout-1-74f18798",
+          "status": "completed",
+          "traceSha256": "52049fb4c66e100eff9a8efedb45d2f19e0cb425e5926fd3a6bfcf8ab9d3dd10",
+          "score": 100,
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "turns": 13,
+          "flags": {
+            "truncatedOutput": false,
+            "finishReasons": [
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed"
+            ],
+            "terminalStatus": "completed",
+            "providerOrBudgetFailure": false,
+            "interfaceErrors": 0
+          },
+          "packets": [
+            {
+              "turn": 6,
+              "generation": 1,
+              "packetRevision": 1,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            },
+            {
+              "turn": 9,
+              "generation": 2,
+              "packetRevision": 2,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            },
+            {
+              "turn": 11,
+              "generation": 3,
+              "packetRevision": 3,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            }
+          ],
+          "toolErrors": [],
+          "protocolProblems": [],
+          "failedCriteria": [],
+          "fullCurrentSourceFacts": {
+            "E1.R1": "not-applicable",
+            "E1.R2": "applicable",
+            "E1.R3": "not-applicable",
+            "E1.R4": "not-applicable",
+            "E1.R5": "applicable",
+            "E1.R6": "unresolved",
+            "E2.R1": "not-applicable",
+            "E2.R2": "applicable",
+            "E2.R3": "not-applicable",
+            "E2.R4": "applicable",
+            "E2.R5": "not-applicable",
+            "E2.R6": "applicable",
+            "resolvedAssetIds": [
+              "E1:74f18798-asset-A",
+              "E2:74f18798-asset-B"
+            ],
+            "resolvedActorIds": [
+              "E1:74f18798-party-A-substitute",
+              "E2:74f18798-party-B"
+            ],
+            "currentPolicyVersionIds": [
+              "E1:74f18798-operating-pack@1",
+              "E2:74f18798-operating-pack@2"
+            ],
+            "unresolvedSubjectIds": []
+          },
+          "fullCurrentSourceRequests": [
+            {
+              "obligationId": "E1.R2",
+              "eventId": "E1",
+              "subjectId": "74f18798-party-A-substitute",
+              "material": "substitute-assignment",
+              "custodianId": "74f18798-party-A-substitute-records-desk",
+              "periodStart": "2026-06-23T05:00:00.000Z",
+              "periodEnd": "2026-06-23T11:00:00.000Z"
+            },
+            {
+              "obligationId": "E1.R5",
+              "eventId": "E1",
+              "subjectId": "74f18798-site-A",
+              "material": "maintenance-inspection",
+              "custodianId": "74f18798-site-A-records-desk",
+              "periodStart": "2026-06-23T05:00:00.000Z",
+              "periodEnd": "2026-06-23T09:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R2",
+              "eventId": "E2",
+              "subjectId": "74f18798-party-B",
+              "material": "substitute-assignment",
+              "custodianId": "74f18798-party-B-records-desk",
+              "periodStart": "2026-06-23T22:00:00.000Z",
+              "periodEnd": "2026-06-24T04:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R4",
+              "eventId": "E2",
+              "subjectId": "74f18798-asset-B",
+              "material": "route-record-amended-scope",
+              "custodianId": "74f18798-asset-B-records-desk",
+              "periodStart": "2026-06-23T13:00:00.000Z",
+              "periodEnd": "2026-06-24T04:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R6",
+              "eventId": "E2",
+              "subjectId": "74f18798-asset-B",
+              "material": "asset-assignment-audit",
+              "custodianId": "74f18798-asset-B-records-desk",
+              "periodStart": "2026-06-23T21:00:00.000Z",
+              "periodEnd": "2026-06-24T04:00:00.000Z"
+            }
+          ],
+          "approvalClassifications": {
+            "retained": [],
+            "invalidated": [
+              "74f18798-historical-approval-0",
+              "74f18798-historical-approval-1",
+              "74f18798-historical-approval-2"
+            ]
+          },
+          "sourceConsistency": true
+        },
+        {
+          "taskId": "ibi-premises-chronology-holdout-1-47f9484c",
+          "status": "completed",
+          "traceSha256": "758c6294889546abee5937f82bc9b982c7825ed8d7615d2adbc76981b5e97162",
+          "score": 100,
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "turns": 13,
+          "flags": {
+            "truncatedOutput": false,
+            "finishReasons": [
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed"
+            ],
+            "terminalStatus": "completed",
+            "providerOrBudgetFailure": false,
+            "interfaceErrors": 0
+          },
+          "packets": [
+            {
+              "turn": 7,
+              "generation": 1,
+              "packetRevision": 1,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            },
+            {
+              "turn": 9,
+              "generation": 2,
+              "packetRevision": 2,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            },
+            {
+              "turn": 11,
+              "generation": 3,
+              "packetRevision": 3,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            }
+          ],
+          "toolErrors": [],
+          "protocolProblems": [],
+          "failedCriteria": [],
+          "fullCurrentSourceFacts": {
+            "E1.R1": "not-applicable",
+            "E1.R2": "not-applicable",
+            "E1.R3": "not-applicable",
+            "E1.R4": "applicable",
+            "E1.R5": "applicable",
+            "E1.R6": "not-applicable",
+            "E2.R1": "unresolved",
+            "E2.R2": "applicable",
+            "E2.R3": "unresolved",
+            "E2.R4": "applicable",
+            "E2.R5": "applicable",
+            "E2.R6": "not-applicable",
+            "resolvedAssetIds": [
+              "E1:47f9484c-asset-A",
+              "E2:47f9484c-asset-B"
+            ],
+            "resolvedActorIds": [
+              "E1:47f9484c-party-A-substitute",
+              "E2:47f9484c-party-B"
+            ],
+            "currentPolicyVersionIds": [
+              "E1:47f9484c-operating-pack@1",
+              "E2:47f9484c-operating-pack@2"
+            ],
+            "unresolvedSubjectIds": []
+          },
+          "fullCurrentSourceRequests": [
+            {
+              "obligationId": "E1.R4",
+              "eventId": "E1",
+              "subjectId": "47f9484c-party-A-substitute",
+              "material": "control-contract",
+              "custodianId": "47f9484c-party-A-substitute-records-desk",
+              "periodStart": "2026-06-23T06:00:00.000Z",
+              "periodEnd": "2026-06-23T11:00:00.000Z"
+            },
+            {
+              "obligationId": "E1.R5",
+              "eventId": "E1",
+              "subjectId": "47f9484c-asset-A",
+              "material": "custody-register",
+              "custodianId": "47f9484c-asset-A-records-desk",
+              "periodStart": "2026-06-23T05:00:00.000Z",
+              "periodEnd": "2026-06-23T09:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R2",
+              "eventId": "E2",
+              "subjectId": "47f9484c-site-B",
+              "material": "inspection-log",
+              "custodianId": "47f9484c-site-B-records-desk",
+              "periodStart": "2026-06-23T22:00:00.000Z",
+              "periodEnd": "2026-06-24T04:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R4",
+              "eventId": "E2",
+              "subjectId": "47f9484c-party-B",
+              "material": "control-contract-amended-scope",
+              "custodianId": "47f9484c-party-B-records-desk",
+              "periodStart": "2026-06-23T13:00:00.000Z",
+              "periodEnd": "2026-06-24T04:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R5",
+              "eventId": "E2",
+              "subjectId": "47f9484c-asset-B",
+              "material": "custody-register",
+              "custodianId": "47f9484c-asset-B-records-desk",
+              "periodStart": "2026-06-23T22:00:00.000Z",
+              "periodEnd": "2026-06-24T02:00:00.000Z"
+            }
+          ],
+          "approvalClassifications": {
+            "retained": [],
+            "invalidated": [
+              "47f9484c-historical-approval-0",
+              "47f9484c-historical-approval-1",
+              "47f9484c-historical-approval-2"
+            ]
+          },
+          "sourceConsistency": true
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-holdout-1-3753da40",
+          "status": "completed",
+          "traceSha256": "dd91ab5580fbee27c393acca3d41494909bb5c8ce2aa1b332e142658e5e59e07",
+          "score": 100,
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "turns": 13,
+          "flags": {
+            "truncatedOutput": false,
+            "finishReasons": [
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed"
+            ],
+            "terminalStatus": "completed",
+            "providerOrBudgetFailure": false,
+            "interfaceErrors": 0
+          },
+          "packets": [
+            {
+              "turn": 6,
+              "generation": 1,
+              "packetRevision": 1,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            },
+            {
+              "turn": 9,
+              "generation": 2,
+              "packetRevision": 2,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            },
+            {
+              "turn": 11,
+              "generation": 3,
+              "packetRevision": 3,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            }
+          ],
+          "toolErrors": [],
+          "protocolProblems": [],
+          "failedCriteria": [],
+          "fullCurrentSourceFacts": {
+            "E1.R1": "applicable",
+            "E1.R2": "not-applicable",
+            "E1.R3": "applicable",
+            "E1.R4": "not-applicable",
+            "E1.R5": "not-applicable",
+            "E1.R6": "not-applicable",
+            "E2.R1": "applicable",
+            "E2.R2": "unresolved",
+            "E2.R3": "not-applicable",
+            "E2.R4": "applicable",
+            "E2.R5": "not-applicable",
+            "E2.R6": "applicable",
+            "resolvedAssetIds": [
+              "E1:3753da40-asset-A",
+              "E2:3753da40-asset-B"
+            ],
+            "resolvedActorIds": [
+              "E1:3753da40-party-A-substitute",
+              "E2:3753da40-party-B"
+            ],
+            "currentPolicyVersionIds": [
+              "E1:3753da40-operating-pack@1",
+              "E2:3753da40-operating-pack@2"
+            ],
+            "unresolvedSubjectIds": []
+          },
+          "fullCurrentSourceRequests": [
+            {
+              "obligationId": "E1.R1",
+              "eventId": "E1",
+              "subjectId": "3753da40-asset-A",
+              "material": "scoped-policy-record",
+              "custodianId": "3753da40-asset-A-records-desk",
+              "periodStart": "2026-06-23T06:00:00.000Z",
+              "periodEnd": "2026-06-23T09:00:00.000Z"
+            },
+            {
+              "obligationId": "E1.R3",
+              "eventId": "E1",
+              "subjectId": "3753da40-asset-A",
+              "material": "missing-underlying-material",
+              "custodianId": "3753da40-asset-A-records-desk",
+              "periodStart": "2026-06-23T04:00:00.000Z",
+              "periodEnd": "2026-06-23T09:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R1",
+              "eventId": "E2",
+              "subjectId": "3753da40-asset-B",
+              "material": "scoped-policy-record",
+              "custodianId": "3753da40-asset-B-records-desk",
+              "periodStart": "2026-06-23T23:00:00.000Z",
+              "periodEnd": "2026-06-24T02:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R4",
+              "eventId": "E2",
+              "subjectId": "3753da40-asset-B",
+              "material": "gate-review-pack-amended-scope",
+              "custodianId": "3753da40-asset-B-records-desk",
+              "periodStart": "2026-06-23T13:00:00.000Z",
+              "periodEnd": "2026-06-24T04:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R6",
+              "eventId": "E2",
+              "subjectId": "3753da40-party-B",
+              "material": "authority-instrument",
+              "custodianId": "3753da40-party-B-records-desk",
+              "periodStart": "2026-06-23T21:00:00.000Z",
+              "periodEnd": "2026-06-24T04:00:00.000Z"
+            }
+          ],
+          "approvalClassifications": {
+            "retained": [],
+            "invalidated": [
+              "3753da40-historical-approval-0",
+              "3753da40-historical-approval-1",
+              "3753da40-historical-approval-2"
+            ]
+          },
+          "sourceConsistency": true
+        }
+      ]
+    },
+    {
+      "id": "08-astra-high-holdout",
+      "receiptPath": "insurance-bench/results/meta/v09-dispatch-08-astra-high-holdout.json",
+      "receiptSha256": "45966bde856ffde6aeb40d5f4b6479c057421ebbb893a1595cf01939ec6cc984",
+      "nativeRunPath": "insurance-bench/results/2026-10-05T00-49-28-690Z-gpt-6-astra-high-baseline-investigation.json",
+      "nativeRunSha256": "47a5318c657931cd95588235f52a3b154424c6b4059410b09d2f795195d5cf2e",
+      "model": {
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputUsdPerMillion": 10,
+        "outputUsdPerMillion": 50,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/pricing",
+        "pricingVerifiedAt": "2026-10-04"
+      },
+      "variant": "baseline",
+      "benchmarkScore": 100,
+      "diagnosticScore": 100,
+      "completeCoverage": true,
+      "receiptFlags": {
+        "observedTruncation": false,
+        "modelOrEffortMismatch": false,
+        "providerOrBudgetFailure": false,
+        "processFailure": false,
+        "materialSpendOverrun": false
+      },
+      "episodes": [
+        {
+          "taskId": "ibi-fleet-assignment-holdout-1-74f18798",
+          "status": "completed",
+          "traceSha256": "0a0c1e7c72e2aedcfcd05cd49277c07dc1b1ec548813fb3e5f7eea83800797dd",
+          "score": 100,
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "turns": 12,
+          "flags": {
+            "truncatedOutput": false,
+            "finishReasons": [
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed"
+            ],
+            "terminalStatus": "completed",
+            "providerOrBudgetFailure": false,
+            "interfaceErrors": 0
+          },
+          "packets": [
+            {
+              "turn": 6,
+              "generation": 1,
+              "packetRevision": 1,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            },
+            {
+              "turn": 8,
+              "generation": 2,
+              "packetRevision": 2,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            },
+            {
+              "turn": 10,
+              "generation": 3,
+              "packetRevision": 3,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            }
+          ],
+          "toolErrors": [],
+          "protocolProblems": [],
+          "failedCriteria": [],
+          "fullCurrentSourceFacts": {
+            "E1.R1": "not-applicable",
+            "E1.R2": "applicable",
+            "E1.R3": "not-applicable",
+            "E1.R4": "not-applicable",
+            "E1.R5": "applicable",
+            "E1.R6": "unresolved",
+            "E2.R1": "not-applicable",
+            "E2.R2": "applicable",
+            "E2.R3": "not-applicable",
+            "E2.R4": "applicable",
+            "E2.R5": "not-applicable",
+            "E2.R6": "applicable",
+            "resolvedAssetIds": [
+              "E1:74f18798-asset-A",
+              "E2:74f18798-asset-B"
+            ],
+            "resolvedActorIds": [
+              "E1:74f18798-party-A-substitute",
+              "E2:74f18798-party-B"
+            ],
+            "currentPolicyVersionIds": [
+              "E1:74f18798-operating-pack@1",
+              "E2:74f18798-operating-pack@2"
+            ],
+            "unresolvedSubjectIds": []
+          },
+          "fullCurrentSourceRequests": [
+            {
+              "obligationId": "E1.R2",
+              "eventId": "E1",
+              "subjectId": "74f18798-party-A-substitute",
+              "material": "substitute-assignment",
+              "custodianId": "74f18798-party-A-substitute-records-desk",
+              "periodStart": "2026-06-23T05:00:00.000Z",
+              "periodEnd": "2026-06-23T11:00:00.000Z"
+            },
+            {
+              "obligationId": "E1.R5",
+              "eventId": "E1",
+              "subjectId": "74f18798-site-A",
+              "material": "maintenance-inspection",
+              "custodianId": "74f18798-site-A-records-desk",
+              "periodStart": "2026-06-23T05:00:00.000Z",
+              "periodEnd": "2026-06-23T09:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R2",
+              "eventId": "E2",
+              "subjectId": "74f18798-party-B",
+              "material": "substitute-assignment",
+              "custodianId": "74f18798-party-B-records-desk",
+              "periodStart": "2026-06-23T22:00:00.000Z",
+              "periodEnd": "2026-06-24T04:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R4",
+              "eventId": "E2",
+              "subjectId": "74f18798-asset-B",
+              "material": "route-record-amended-scope",
+              "custodianId": "74f18798-asset-B-records-desk",
+              "periodStart": "2026-06-23T13:00:00.000Z",
+              "periodEnd": "2026-06-24T04:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R6",
+              "eventId": "E2",
+              "subjectId": "74f18798-asset-B",
+              "material": "asset-assignment-audit",
+              "custodianId": "74f18798-asset-B-records-desk",
+              "periodStart": "2026-06-23T21:00:00.000Z",
+              "periodEnd": "2026-06-24T04:00:00.000Z"
+            }
+          ],
+          "approvalClassifications": {
+            "retained": [],
+            "invalidated": [
+              "74f18798-historical-approval-0",
+              "74f18798-historical-approval-1",
+              "74f18798-historical-approval-2"
+            ]
+          },
+          "sourceConsistency": true
+        },
+        {
+          "taskId": "ibi-premises-chronology-holdout-1-47f9484c",
+          "status": "completed",
+          "traceSha256": "0524b8947160caf8c569c7e70fd6f058a5244bf46190556d35aee4e8fd6997ce",
+          "score": 100,
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "turns": 14,
+          "flags": {
+            "truncatedOutput": false,
+            "finishReasons": [
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed"
+            ],
+            "terminalStatus": "completed",
+            "providerOrBudgetFailure": false,
+            "interfaceErrors": 0
+          },
+          "packets": [
+            {
+              "turn": 7,
+              "generation": 1,
+              "packetRevision": 1,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            },
+            {
+              "turn": 10,
+              "generation": 2,
+              "packetRevision": 2,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            },
+            {
+              "turn": 12,
+              "generation": 3,
+              "packetRevision": 3,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            }
+          ],
+          "toolErrors": [],
+          "protocolProblems": [],
+          "failedCriteria": [],
+          "fullCurrentSourceFacts": {
+            "E1.R1": "not-applicable",
+            "E1.R2": "not-applicable",
+            "E1.R3": "not-applicable",
+            "E1.R4": "applicable",
+            "E1.R5": "applicable",
+            "E1.R6": "not-applicable",
+            "E2.R1": "unresolved",
+            "E2.R2": "applicable",
+            "E2.R3": "unresolved",
+            "E2.R4": "applicable",
+            "E2.R5": "applicable",
+            "E2.R6": "not-applicable",
+            "resolvedAssetIds": [
+              "E1:47f9484c-asset-A",
+              "E2:47f9484c-asset-B"
+            ],
+            "resolvedActorIds": [
+              "E1:47f9484c-party-A-substitute",
+              "E2:47f9484c-party-B"
+            ],
+            "currentPolicyVersionIds": [
+              "E1:47f9484c-operating-pack@1",
+              "E2:47f9484c-operating-pack@2"
+            ],
+            "unresolvedSubjectIds": []
+          },
+          "fullCurrentSourceRequests": [
+            {
+              "obligationId": "E1.R4",
+              "eventId": "E1",
+              "subjectId": "47f9484c-party-A-substitute",
+              "material": "control-contract",
+              "custodianId": "47f9484c-party-A-substitute-records-desk",
+              "periodStart": "2026-06-23T06:00:00.000Z",
+              "periodEnd": "2026-06-23T11:00:00.000Z"
+            },
+            {
+              "obligationId": "E1.R5",
+              "eventId": "E1",
+              "subjectId": "47f9484c-asset-A",
+              "material": "custody-register",
+              "custodianId": "47f9484c-asset-A-records-desk",
+              "periodStart": "2026-06-23T05:00:00.000Z",
+              "periodEnd": "2026-06-23T09:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R2",
+              "eventId": "E2",
+              "subjectId": "47f9484c-site-B",
+              "material": "inspection-log",
+              "custodianId": "47f9484c-site-B-records-desk",
+              "periodStart": "2026-06-23T22:00:00.000Z",
+              "periodEnd": "2026-06-24T04:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R4",
+              "eventId": "E2",
+              "subjectId": "47f9484c-party-B",
+              "material": "control-contract-amended-scope",
+              "custodianId": "47f9484c-party-B-records-desk",
+              "periodStart": "2026-06-23T13:00:00.000Z",
+              "periodEnd": "2026-06-24T04:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R5",
+              "eventId": "E2",
+              "subjectId": "47f9484c-asset-B",
+              "material": "custody-register",
+              "custodianId": "47f9484c-asset-B-records-desk",
+              "periodStart": "2026-06-23T22:00:00.000Z",
+              "periodEnd": "2026-06-24T02:00:00.000Z"
+            }
+          ],
+          "approvalClassifications": {
+            "retained": [],
+            "invalidated": [
+              "47f9484c-historical-approval-0",
+              "47f9484c-historical-approval-1",
+              "47f9484c-historical-approval-2"
+            ]
+          },
+          "sourceConsistency": true
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-holdout-1-3753da40",
+          "status": "completed",
+          "traceSha256": "4cdbe175c87e7a2f9f3efce99ead62a877f6d8bf257654d56eae5b5d6b9bb334",
+          "score": 100,
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "turns": 12,
+          "flags": {
+            "truncatedOutput": false,
+            "finishReasons": [
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed",
+              "completed"
+            ],
+            "terminalStatus": "completed",
+            "providerOrBudgetFailure": false,
+            "interfaceErrors": 0
+          },
+          "packets": [
+            {
+              "turn": 6,
+              "generation": 1,
+              "packetRevision": 1,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            },
+            {
+              "turn": 8,
+              "generation": 2,
+              "packetRevision": 2,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            },
+            {
+              "turn": 10,
+              "generation": 3,
+              "packetRevision": 3,
+              "wrongFactFields": [],
+              "unsupportedEvidenceFields": []
+            }
+          ],
+          "toolErrors": [],
+          "protocolProblems": [],
+          "failedCriteria": [],
+          "fullCurrentSourceFacts": {
+            "E1.R1": "applicable",
+            "E1.R2": "not-applicable",
+            "E1.R3": "applicable",
+            "E1.R4": "not-applicable",
+            "E1.R5": "not-applicable",
+            "E1.R6": "not-applicable",
+            "E2.R1": "applicable",
+            "E2.R2": "unresolved",
+            "E2.R3": "not-applicable",
+            "E2.R4": "applicable",
+            "E2.R5": "not-applicable",
+            "E2.R6": "applicable",
+            "resolvedAssetIds": [
+              "E1:3753da40-asset-A",
+              "E2:3753da40-asset-B"
+            ],
+            "resolvedActorIds": [
+              "E1:3753da40-party-A-substitute",
+              "E2:3753da40-party-B"
+            ],
+            "currentPolicyVersionIds": [
+              "E1:3753da40-operating-pack@1",
+              "E2:3753da40-operating-pack@2"
+            ],
+            "unresolvedSubjectIds": []
+          },
+          "fullCurrentSourceRequests": [
+            {
+              "obligationId": "E1.R1",
+              "eventId": "E1",
+              "subjectId": "3753da40-asset-A",
+              "material": "scoped-policy-record",
+              "custodianId": "3753da40-asset-A-records-desk",
+              "periodStart": "2026-06-23T06:00:00.000Z",
+              "periodEnd": "2026-06-23T09:00:00.000Z"
+            },
+            {
+              "obligationId": "E1.R3",
+              "eventId": "E1",
+              "subjectId": "3753da40-asset-A",
+              "material": "missing-underlying-material",
+              "custodianId": "3753da40-asset-A-records-desk",
+              "periodStart": "2026-06-23T04:00:00.000Z",
+              "periodEnd": "2026-06-23T09:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R1",
+              "eventId": "E2",
+              "subjectId": "3753da40-asset-B",
+              "material": "scoped-policy-record",
+              "custodianId": "3753da40-asset-B-records-desk",
+              "periodStart": "2026-06-23T23:00:00.000Z",
+              "periodEnd": "2026-06-24T02:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R4",
+              "eventId": "E2",
+              "subjectId": "3753da40-asset-B",
+              "material": "gate-review-pack-amended-scope",
+              "custodianId": "3753da40-asset-B-records-desk",
+              "periodStart": "2026-06-23T13:00:00.000Z",
+              "periodEnd": "2026-06-24T04:00:00.000Z"
+            },
+            {
+              "obligationId": "E2.R6",
+              "eventId": "E2",
+              "subjectId": "3753da40-party-B",
+              "material": "authority-instrument",
+              "custodianId": "3753da40-party-B-records-desk",
+              "periodStart": "2026-06-23T21:00:00.000Z",
+              "periodEnd": "2026-06-24T04:00:00.000Z"
+            }
+          ],
+          "approvalClassifications": {
+            "retained": [],
+            "invalidated": [
+              "3753da40-historical-approval-0",
+              "3753da40-historical-approval-1",
+              "3753da40-historical-approval-2"
+            ]
+          },
+          "sourceConsistency": true
+        }
+      ]
+    }
+  ],
+  "interimTerminalEpisodes": [],
+  "limitations": [
+    "Fictional closed source universe; no insurance professional/legal/clinical or population-validity claim.",
+    "Replay uses actual frozen public tool environment; gold checked separately against raw-row interpreter and literal hold-specific hand calculations.",
+    "Truncation and recoverable protocol/tool errors are retained; engineering source admission is distinct from a clean empirical comparison.",
+    "Only terminal registered released holdout receipts are admitted; partial files do not establish terminal coverage."
+  ],
+  "reproduction": {
+    "command": "node --import tsx .tmp/insurance-bench/v09-holdout-independent-audit.ts",
+    "scriptSha256": "5bb08cba1394afe4cfd34831a3ad876901a67ffffd257c38cd9af332839ae5d6",
+    "scriptCopy": "insurance-bench/results/meta/v09-holdout-independent-audit-repro.txt"
+  }
+}

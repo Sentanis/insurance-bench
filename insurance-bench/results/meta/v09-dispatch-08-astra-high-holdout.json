@@ -1,0 +1,90 @@
+{
+  "id": "08-astra-high-holdout",
+  "modelAlias": "gpt-6-astra-high",
+  "modelConfiguration": {
+    "provider": "openai",
+    "model": "gpt-6-astra",
+    "inputUsdPerMillion": 10,
+    "outputUsdPerMillion": 50,
+    "reasoningEffort": "high",
+    "pricingSource": "https://developers.openai.com/api/docs/pricing",
+    "pricingVerifiedAt": "2026-10-04"
+  },
+  "split": "holdout",
+  "variant": "baseline",
+  "forecastUsd": 11.5,
+  "taskIds": [
+    "ibi-fleet-assignment-holdout-1-74f18798",
+    "ibi-premises-chronology-holdout-1-47f9484c",
+    "ibi-multi-exposure-review-holdout-1-3753da40"
+  ],
+  "datasetHash": "4cf66d562bf334aaf1442969e5c65bb8426bf000c5e24eb7340f363471f0efe8",
+  "correspondenceIds": [
+    "ibi-fleet-assignment-holdout-1-74f18798",
+    "ibi-premises-chronology-holdout-1-47f9484c",
+    "ibi-multi-exposure-review-holdout-1-3753da40"
+  ],
+  "repeat": 1,
+  "limits": {
+    "maxTurns": 20,
+    "maxOutputTokens": 16384,
+    "transportDeadlineMs": 600000
+  },
+  "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+  "startedAt": "2026-10-05T00:49:28.349Z",
+  "freezeCommit": "74b404334129582a5b91445e02416d3d1acd4333",
+  "freezeManifest": "insurance-bench/freeze-v0.9-dev.json",
+  "sourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+  "promptHash": "86a249e08db56fc4519a1cc9ffeab158c61a25cea95c6ca9626d5ceac60017fd",
+  "headlineMetric": "macro-task-success",
+  "ledgerBefore": {
+    "reservedUsd": 52.29379408750007,
+    "capUsd": 75,
+    "updatedAt": "2026-10-05T00:49:28.268Z"
+  },
+  "remainingForecastUsd": 11.5,
+  "command": [
+    "npx",
+    "tsx",
+    "scripts/insurance-bench-investigation.ts",
+    "run",
+    "--model",
+    "gpt-6-astra-high",
+    "--split",
+    "holdout",
+    "--per-family",
+    "1",
+    "--case-offset",
+    "0",
+    "--repeat",
+    "1",
+    "--variant",
+    "baseline",
+    "--max-output-tokens",
+    "16384",
+    "--budget",
+    "75",
+    "--out",
+    ".tmp/insurance-bench/v09-runs"
+  ],
+  "logPath": ".tmp/insurance-bench/v09-08-astra-high-holdout.log",
+  "status": "terminal-native-run",
+  "endedAt": "2026-10-05T01:03:19.125Z",
+  "exitCode": 0,
+  "ledgerAfter": {
+    "reservedUsd": 62.75497408750001,
+    "capUsd": 75,
+    "updatedAt": "2026-10-05T01:03:19.086Z"
+  },
+  "processFailure": false,
+  "nativeRunPath": "insurance-bench/results/2026-10-05T00-49-28-690Z-gpt-6-astra-high-baseline-investigation.json",
+  "nativeRunSha256": "47a5318c657931cd95588235f52a3b154424c6b4059410b09d2f795195d5cf2e",
+  "actualEstimatedCostUsd": 10.46118,
+  "completeCoverage": true,
+  "benchmarkScore": 100,
+  "weightedDiagnosticScore": 100,
+  "observedTruncation": false,
+  "modelOrEffortMismatch": false,
+  "providerOrBudgetFailure": false,
+  "materialSpendOverrun": false
+}

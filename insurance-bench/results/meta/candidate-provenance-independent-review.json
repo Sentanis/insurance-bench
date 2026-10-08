@@ -1,0 +1,101 @@
+{
+  "schema": "insurance-bench-candidate-provenance-independent-review-v1",
+  "reviewedAt": "2026-10-05T00:12:34.287Z",
+  "preparedBy": "Independent non-author code-review agent",
+  "disposition": "needs-prepaid-control-gate",
+  "scope": "Bounded runtime/transport/provenance/CLI review of separate unpaid v0.10 interaction and v0.9j JSON candidates; native v0.9 development audit remains separate.",
+  "sourceFingerprint": {
+    "frozenV09": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+    "interaction": "a8898ed85479d9970ba50a717919b1f6a298501ebbd8109f1750942a8bb5031d",
+    "json": "035ab13411f79c08bc5b5d15f36fff98d6cc947202203baa079a0a8b52be45ec"
+  },
+  "sourceHashes": {
+    "insurance-bench/interaction-runner.ts": "04d1a48f0f9e2f9179fedd10053ceb7ff148d7b5f2387706354303fa781714cb",
+    "insurance-bench/json-investigation-runner.ts": "6cfd7dd4caac9554ea173a889360b47da58f031e2a2d563ee87586b5094ab39e",
+    "insurance-bench/json-object-provider.ts": "e3c569e92ecd0e1494009a19c1d327e2ad095d82cab7c87cc9ae501a39e9349a",
+    "scripts/insurance-bench-interaction.ts": "9703db94b9db3a309e90595632020e8349e5c50a14bdd400c8888cb0dbfe7031",
+    "scripts/insurance-bench-json-investigation.ts": "9e143914ec948876848db9135a904fb9e02431fb075b9322f9ffff9b6f5b291b",
+    "test/insurance-bench-candidate-provenance.test.ts": "41db9e7280c10b31df1ff047ff2c9ebd8992ffa1bb1f6e1ccf0740b79496ef8a",
+    "test/insurance-bench-json-object-provider.test.ts": "f6c38824e8f4649546c9b4e0bd5a05294a388e8040d59a8c6dbbc5c45d3808db"
+  },
+  "checks": [
+    {
+      "id": "distinct-native-provenance",
+      "result": "pass",
+      "evidence": "Separate native generation constants/source lists/harness fingerprints; v0.10 generates distinct task IDs, v0.9j retains v0.9 task IDs and declares responseFormat=json_object with changed source/harness. No code reads/relabels/regrades old Run artifacts."
+    },
+    {
+      "id": "json-only-transport-delta",
+      "result": "pass-mock",
+      "evidence": "Wrapper calls inherited exact Responses transport. Tests demonstrate only added text.format.type=json_object; prompt messages, model/effort/max output/store=false, headers/signal and native completion metadata identical. Strict JSON parsing, refusal/truncation and errors retained; no response repair/fallback."
+    },
+    {
+      "id": "deadline-and-error-paths",
+      "result": "pass-mock",
+      "evidence": "Mock timers prove one 600000ms abort with no retry. Unsupported provider/context/body/URL and effort/usage/HTTP errors preserve fail-closed redacted behavior. No real provider access claim."
+    },
+    {
+      "id": "terminal-coverage-and-budget-failure",
+      "result": "source-pass",
+      "evidence": "Copied runner records provider/budget stop as unscored, stops later episodes, retains failed reservation, macro-task headline null without complete scored coverage. Defaults20turns with128–16384 inclusive runner bound; CLI enforces16384OpenAI/8192other candidate ceilings."
+    },
+    {
+      "id": "cli-invalid-input-preflight",
+      "result": "pass-bounded",
+      "evidence": "Tests reject invalid total cap, replacement-ledger option, invalid case counts and unsupported JSON provider before real shared ledger changes. Duplicate/unknown options, selection limits, exact model alias, output limit and variants validated before Budget creation."
+    },
+    {
+      "id": "prospective-paid-admission",
+      "result": "missing-before-paid",
+      "evidence": "No CLI/controller gate for candidate committed registration/freeze/source admission or fresh holdout release exists in reviewed files. Current candidate documents correctly require these before paid calls."
+    }
+  ],
+  "issues": [
+    {
+      "priority": "important-before-paid",
+      "id": "candidate-preflight-admission-and-ledger-location",
+      "locations": [
+        "scripts/insurance-bench-interaction.ts:166",
+        "scripts/insurance-bench-json-investigation.ts:168",
+        "insurance-bench/runner.ts:61"
+      ],
+      "problem": "Both candidate CLIs reach Budget.reserve for an unregistered --split holdout run. Shared ledger path resolves against process.cwd(); inherited Budget initializes absent ledger to zero. Therefore direct candidate CLI invocation alone does not establish prospective admission or the authoritative existing shared spend ledger.",
+      "reproduction": {
+        "kind": "source-only sentinel",
+        "directory": ".tmp/insurance-bench/candidate-cli-preflight-review",
+        "arguments": [
+          "run",
+          "--model",
+          "fixture",
+          "--split",
+          "holdout",
+          "--per-family",
+          "1",
+          "--out",
+          "outputs"
+        ],
+        "method": "Budget.prototype.reserve replaced temporarily in memory with a throwing sentinel; two CLI calls reached it with cap75 and a nonexistent CWD-local ledger. Reserve restored afterward; no actual reservation/provider/defaultTransport/auth read, no held-out model response or inference.",
+        "reservationAdmissionAmounts": [
+          0.182705,
+          0.1823375
+        ]
+      },
+      "recommendation": "Before paid admission, add a separately registered candidate controller with committed source/prompt/model/task hashes, exact frozen byte verification, canonical existing ledger/cap/remaining-plan affordability and separately released holdout gates. Make it the sole approved dispatch entry, or require an explicit candidate admission object and canonical existing ledger in each CLI before reserve. Keep exported injected runners available for isolated source tests."
+    }
+  ],
+  "validation": {
+    "command": "node --import tsx --test test/insurance-bench-candidate-provenance.test.ts test/insurance-bench-json-object-provider.test.ts",
+    "tests": 7,
+    "passed": 7,
+    "realProviderCalls": 0,
+    "frozenFilesChanged": 0,
+    "realSharedLedgerTouched": false,
+    "heldOutModelOutputsRead": false
+  },
+  "limitations": [
+    "No new native API response or model ability validation; mock payload proof is not provider admission.",
+    "No independent v0.10 source/gold semantics admission in this bounded review; that is assigned separately.",
+    "Candidates are unregistered and unpaid; this artifact does not authorize their inference, holdouts or spending.",
+    "Frozen v0.9 source/corpus/model protocol and queued native panels remain unchanged."
+  ]
+}

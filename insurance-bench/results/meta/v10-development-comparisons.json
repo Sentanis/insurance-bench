@@ -1,0 +1,49 @@
+{
+  "analyzedAt": "2026-10-05T02:41:39.776Z",
+  "sourceFingerprint": "a6922f85d03bc6180610a8ac06ff8cdaf78c8a74c0e0ebb6cc410f429f0c69d8",
+  "fullCorpusHash": "80077360a987fb2812777bfcfa414f646138fe3ce16f8f73ac9860e22ffd5851",
+  "registrationSha256": "4d9bf5516d27952268f1a3e8d4caf95814e264be8cc4ed49f829e21598bf971d",
+  "independentAuditSha256": "9cc94c1c4bfc19a7a0ea79d78bd0e2922fae1b031282d8f536f4c6cc835fd23c",
+  "comparisons": [
+    {
+      "axis": "tier",
+      "baselineRunId": "2026-10-05T02-05-49-682Z-gpt-6-luna-high-baseline-investigation",
+      "treatmentRunId": "2026-10-05T01-38-18-326Z-gpt-6.1-sol-high-baseline-investigation",
+      "cases": 6,
+      "attemptsPerCase": 1,
+      "scoreDelta": 32.45,
+      "completionDelta": 100,
+      "componentDeltas": {
+        "facts": 6.25,
+        "evidence": 78.13,
+        "workflow": 41.67,
+        "boundaries": 0
+      },
+      "caseWins": 6,
+      "caseTies": 0,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        15.1,
+        43.33
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 15.1
+        },
+        {
+          "family": "evidence-brief",
+          "scoreDelta": 38.91
+        },
+        {
+          "family": "fraud-referral",
+          "scoreDelta": 43.33
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    }
+  ],
+  "nativeMacroDifference": 100,
+  "scope": "Six development cases, single attempt, three correlated templated families. Criteria all-pass and actual completed-task macro are distinct; here both contrasts happen to equal100. No causal cross-generation hardness or professional-validity claim.",
+  "rounding": "Paired diagnostics use native per-case values; subtracting rounded panel summaries may differ by0.01."
+}

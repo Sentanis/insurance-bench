@@ -1,0 +1,155 @@
+{
+  "schema": "insurance-bench-v11-development-comparison-independent-review-v1",
+  "auditedAt": "2026-10-05T03:10:11.134Z",
+  "disposition": "approve-engineering-only",
+  "analysisScript": ".tmp/insurance-bench/v11-development-comparison.ts",
+  "analysisScriptSha256": "9ffa514db084fa7f32d3bb2f19287523d187ebbd10f8ccfade9ab44840ff7582",
+  "reviewedAnalysisSource": "import fs from 'node:fs';\nimport crypto from 'node:crypto';\nimport {compareRuns} from '../../insurance-bench/compare.ts';\nimport {admitRegisteredReportPanels,type ReportBuilderIO} from '../../insurance-bench/report-admission.ts';\nimport type {Run} from '../../insurance-bench/runner.ts';\nconst base='insurance-bench/results/meta/';\nconst io:ReportBuilderIO={readJson:p=>JSON.parse(fs.readFileSync(p,'utf8')),sha:p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex'),exists:p=>fs.existsSync(p),listRuns:()=>[]};\nconst regPath=base+'v11-registration.json',auditPath=base+'v11-development-independent-audit.json';\nconst reg=io.readJson(regPath) as {sourceFingerprint:string;fullCorpusHash:string;panels:{id:string;dispatchReceiptPath:string}[]};\nconst rr=admitRegisteredReportPanels(regPath,[auditPath],io);\nif(rr.length!==4)throw new Error('Exact four-panel plan required');\nconst definitions=[{baseline:1,treatment:0,axis:'effort' as const,name:'Sol high minus low'},{baseline:2,treatment:3,axis:'effort' as const,name:'Luna high minus low'},{baseline:3,treatment:0,axis:'tier' as const,name:'Sol high minus Luna high'}];\nconst contrasts=definitions.map(d=>{\n const baseline=rr[d.baseline]!,treatment=rr[d.treatment]!;\n const receipts=[d.baseline,d.treatment].map(i=>io.readJson(reg.panels[i]!.dispatchReceiptPath) as {observedTruncation?:boolean;providerOrBudgetFailure?:boolean;processFailure?:boolean;modelOrEffortMismatch?:boolean;materialSpendOverrun?:boolean});\n const limited=receipts.some(r=>r.observedTruncation||r.providerOrBudgetFailure||r.processFailure||r.modelOrEffortMismatch||r.materialSpendOverrun)||[baseline,treatment].some(r=>r.episodes.some(e=>(e as typeof e&{truncatedOutput?:boolean}).truncatedOutput||e.trace.some(t=>/(?:max[_ -]?tokens|max[_ -]?output[_ -]?tokens|length|incomplete)/i.test(t.finishReason??''))));\n if([baseline,treatment].some(r=>(r as Run&{headlineMetric?:string}).headlineMetric!=='macro-task-success'))throw new Error('Native headline metric binding failed');\n const macro=(r:Run)=>(r as Run&{benchmarkScore:number|null}).benchmarkScore;\n const baselineMacro=macro(baseline),treatmentMacro=macro(treatment);\n if(limited||typeof baselineMacro!=='number'||typeof treatmentMacro!=='number'||!Number.isFinite(baselineMacro)||!Number.isFinite(treatmentMacro)||baselineMacro<0||baselineMacro>100||treatmentMacro<0||treatmentMacro>100)return {name:d.name,status:'unavailable',reason:'Cumulative limitation or unavailable native headline bars a clean contrast',baselineRunId:baseline.runId,treatmentRunId:treatment.runId};\n return {name:d.name,status:'available',nativeMacroDifference:treatmentMacro-baselineMacro,comparison:compareRuns(baseline,treatment,d.axis)};\n});\nconst result={analyzedAt:new Date().toISOString(),sourceFingerprint:reg.sourceFingerprint,fullCorpusHash:reg.fullCorpusHash,registrationSha256:io.sha(regPath),independentAuditSha256:io.sha(auditPath),contrasts,scope:'Six development cases per model/effort, one attempt, three correlated templated families. Actual completed-task macro and diagnostic partial credit are distinct. No pooled cross-generation ranking, causal hardness effect or professional-validity claim.',rounding:'Paired diagnostic deltas use native per-case values; subtracting rounded summaries may differ by0.01.'};\nfs.writeFileSync(base+'v11-development-comparisons.json',JSON.stringify(result,null,2)+'\\n');\nconsole.log(JSON.stringify(result));\n",
+  "committedRegistrationPath": "insurance-bench/results/meta/v11-registration.json",
+  "committedRegistrationSha256": "16fb33a1840c171ca1b7e9b6391e005ffe7427d2a48c839d754093c12c36c14c",
+  "committedRegistrationAt": "2e85a4778da4c8c135182b6573ed45b6740ec266",
+  "sourceFingerprint": "9c8a799a8a5d1e853e7c5e58437064e6c2be659ff4ba9060a808fb9a5ec60a45",
+  "fullCorpusHash": "4334b01859d0df0d1a4344ed6af86b59331b1e62c5f34e09331e30189796922c",
+  "contrastMappings": [
+    {
+      "baseline": 1,
+      "treatment": 0,
+      "axis": "effort",
+      "name": "Sol high minus low"
+    },
+    {
+      "baseline": 2,
+      "treatment": 3,
+      "axis": "effort",
+      "name": "Luna high minus low"
+    },
+    {
+      "baseline": 3,
+      "treatment": 0,
+      "axis": "tier",
+      "name": "Sol high minus Luna high"
+    }
+  ],
+  "controls": [
+    {
+      "kind": "exact-committed-order-and-three-directed-contrasts",
+      "macroDifferences": [
+        50,
+        50,
+        50
+      ],
+      "diagnosticDifferences": [
+        2,
+        30,
+        20
+      ]
+    },
+    {
+      "kind": "invalid-native-macro-unavailable",
+      "value": "null"
+    },
+    {
+      "kind": "invalid-native-macro-unavailable",
+      "value": "undefined"
+    },
+    {
+      "kind": "invalid-native-macro-unavailable",
+      "value": "NaN"
+    },
+    {
+      "kind": "invalid-native-macro-unavailable",
+      "value": "Infinity"
+    },
+    {
+      "kind": "invalid-native-macro-unavailable",
+      "value": "-1"
+    },
+    {
+      "kind": "invalid-native-macro-unavailable",
+      "value": "101"
+    },
+    {
+      "kind": "missing-or-wrong-macro-definition-rejected"
+    },
+    {
+      "kind": "audited-receipt-limitation-unavailable",
+      "flag": "observedTruncation"
+    },
+    {
+      "kind": "audited-receipt-limitation-unavailable",
+      "flag": "providerOrBudgetFailure"
+    },
+    {
+      "kind": "audited-receipt-limitation-unavailable",
+      "flag": "processFailure"
+    },
+    {
+      "kind": "audited-receipt-limitation-unavailable",
+      "flag": "modelOrEffortMismatch"
+    },
+    {
+      "kind": "audited-receipt-limitation-unavailable",
+      "flag": "materialSpendOverrun"
+    },
+    {
+      "kind": "raw-cumulative-finish-reason-unavailable",
+      "reason": "max_tokens"
+    },
+    {
+      "kind": "raw-cumulative-finish-reason-unavailable",
+      "reason": "max_output_tokens"
+    },
+    {
+      "kind": "raw-cumulative-finish-reason-unavailable",
+      "reason": "length"
+    },
+    {
+      "kind": "raw-cumulative-finish-reason-unavailable",
+      "reason": "incomplete"
+    },
+    {
+      "kind": "raw-cumulative-episode-flag-unavailable"
+    },
+    {
+      "kind": "native-completed-task-macro-versus-criterion-all-pass-diagnostic",
+      "nativeMacroDifference": -50,
+      "criterionAllPassDifference": 50
+    },
+    {
+      "kind": "diagnostic-derived-from-per-case-native-values-not-rounded-summary",
+      "nativeDelta": 0.01,
+      "roundedSummaryDelta": 2
+    },
+    {
+      "kind": "all-four-approved-terminal-admission-before-analysis-and-provenance"
+    }
+  ],
+  "issues": [],
+  "resolvedSuggestions": [
+    {
+      "kind": "finite-numeric-native-macro-and-definition-guard",
+      "status": "parent-fixed-before-approval"
+    },
+    {
+      "kind": "direct-native-cumulative-truncation-with-receipt-flags",
+      "status": "parent-fixed-before-approval"
+    }
+  ],
+  "validation": {
+    "pureMockControls": 21,
+    "directStrictAnalysisScriptCompileExitCode": 0,
+    "committedPlanOrderChecked": true,
+    "allFourExactApprovedTerminalAuditRequired": true
+  },
+  "limits": [
+    "The filesystem comparison driver was not executed. Only its comparison-expression fragment ran inside a mock compartment with supplied mock receipt reads and tracked compareRuns; no filesystem IO is available in the fragment.",
+    "No actual native/receipt/audit/provider/current-ledger/auth/partial/held data read, no model call, registration/controller dispatch, or historical regrade.",
+    "This approves future analysis engineering for exact committed v11 conditions; it establishes no empirical result, difficulty, affordability, clean availability, or professional validity before all four terminal native panels are independently audited.",
+    "Criterion all-pass diagnostic and native completed/no-critical macro are intentionally distinct; six cases once each and three correlated families limit power."
+  ],
+  "reproduction": {
+    "command": "node --import tsx .tmp/insurance-bench/v11-comparison-independent-review.ts",
+    "scriptSha256": "6fe56e3662ea1714290471984e4b2568c1073812e0754e7c9e55f27b980a8ad5",
+    "scriptCopy": "insurance-bench/results/meta/v11-comparison-independent-review-repro.txt"
+  }
+}

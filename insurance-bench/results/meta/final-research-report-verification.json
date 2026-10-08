@@ -1,0 +1,46 @@
+{
+  "recordedAt": "2026-10-05T05:00:12.111558+00:00",
+  "integratedCommit": "7c2b8e22a1850bfcad49033b2d359a6c3b253bfa",
+  "mergedMainCommit": "f236f90e3efec63dd7014cac34d263e75c63722c",
+  "paidV12FreezeCommit": "774a4c5be8f784f2fe936bc09a23b48b6112b885",
+  "inferenceSourceUnchanged": true,
+  "checks": {
+    "install": "npm ci --ignore-scripts PASS",
+    "typecheck": "npm run check PASS; report repair full and direct strict checks also PASS",
+    "lint": "npm run lint PASS; report repair narrow lint PASS",
+    "legacy": "1292 tests/216 suites PASS under updated standard concurrency2 before report-admission-only delta",
+    "reportRepair": "25 focused tests including release/source parent guards PASS; independent18mock controls PASS",
+    "concurrentArchitectureAttempt": "STOPPED exit143 after recorded timing failures and pre-merge-commit archive portability failure; not a passing test:ci run",
+    "controlledArchitecture": "3582 passed/45 skipped,253 files passed/6 skipped,451.46s; one worker on committed merged tree",
+    "web": "985 passed/87files,50.14s; two workers",
+    "deliveryPolicy": "PASS",
+    "realReportBuilder": "PASS:27 current rows,74 retained runs,15 diagnostic contrasts; full18 registeredpanels/72episodes admitted before body loading",
+    "browser": "PENDING separate commit-bound protected preview/Chrome"
+  },
+  "logSha256": {
+    "final-integrated-install.txt": "8f64d0f756382f455192f8e4eb66f159b1e623f2a37a9ba91ebf3e876ee09ea9",
+    "final-integrated-check.txt": "96e5f33881b9e0cb3f82768f162540635c05034f4a1b90bf275f2e5a5fd900c1",
+    "final-integrated-lint.txt": "72c321f3f971042d305bfe2708d57f909970036f142a1acc7f6fe9396e08de02",
+    "final-integrated-test-ci.txt": "5a461b59cd40e8f538965b90e089805b17c446bfa39edf4bfa30bd781c4f247c",
+    "final-integrated-architecture-one-worker.txt": "8d05d35ddf217e6da388ed86c9a4234897434e45dcee1cf2c1ad830808274d46",
+    "final-integrated-web-two-workers.txt": "f1bf8a9681d18e008b269bf3b0f5d4e78029afccee8af9acacc11a3a765ce381",
+    "final-integrated-delivery-policy.txt": "022933126b116807a073c18d57830500dfa5f854f6b1acbc926b55aa700a37a4"
+  },
+  "ledgerCheckpoint": {
+    "reservedUsd": 73.49224838750004,
+    "capUsd": 75,
+    "updatedAt": "2026-10-05T04:33:04.080Z"
+  },
+  "remainingUsd": 1.507751612499959,
+  "costMeaning": "Token-rate estimates and retained uncertain reservations, not invoice. No further2.5 paired forecast fits. Source-only subscription reviews are engineering evidence.",
+  "artifacts": {
+    "insurance-bench/report-admission.ts": "42463db576270ba4f6cb85cc61529810f6ab188f3f3da1a5eca1ecb2e6051930",
+    "test/insurance-bench-report.test.ts": "5a0f254a7b925b3b30392723b63adaeed8d32f270f8aaa38afede92c748f6071",
+    "insurance-bench/results/meta/current-report-final-integration-independent-review.json": "e6246427bb27fea85897383413f6ff6946a25f811587a5525ad79a161bbad2f4",
+    "insurance-bench/results/meta/response-phase-transport-independent-review.json": "eb1271877416da17cfa3cb8387a16573f03d70d7226d63f025e27cbd7932d584",
+    "insurance-bench/results/meta/report-context.json": "9dd0a99bd19beb0baa2995772e1f0279a846dac2342f6df39e9999206733bab0",
+    "insurance-bench/site/index.html": "9dfb0be1496cc9558239c5faf09841755e8715a730017b06a97c8b21dd89bcdf",
+    "insurance-bench/results/meta/v12-development-independent-audit.json": "fe2f597182a1f632d6e7dc2518028f2aaf7997e6670cb8cdceec9f08fb9a8e8a",
+    "insurance-bench/results/meta/v12-development-comparisons.json": "a52526b9cfd09ac7d413bb886a994b5e37c8d2a629e9a6e2e0f1dff483883905"
+  }
+}

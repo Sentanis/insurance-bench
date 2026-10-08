@@ -1,0 +1,43 @@
+{
+  "decisionAt": "2026-10-04T21:00:14.650879+00:00",
+  "endedAt": "2026-10-04T21:00:14.650879+00:00",
+  "split": "holdout",
+  "model": "qwen3-32b",
+  "taskIds": [
+    "ibc-coverage-review-holdout-1-ee0e896c",
+    "ibc-financial-reconciliation-holdout-1-5f419d60",
+    "ibc-deadline-triage-holdout-1-96851694"
+  ],
+  "repeat": 1,
+  "limits": {
+    "maxTurns": 20,
+    "maxOutputTokens": 16384,
+    "transportDeadlineMs": 300000
+  },
+  "sourceFingerprint": "d32acb6aef0f3b7e35a29b0fc41a650383fd172cb1cc0de457226efbef87280e",
+  "harnessHash": "d0b6963c2b33416372a975d497a554a52ed667f8f9213150b072ce3659502555",
+  "modelConfiguration": {
+    "provider": "bedrock",
+    "profile": "sentanis-phase0",
+    "region": "us-west-2",
+    "pricingVerifiedAt": "2026-10-03",
+    "model": "qwen.qwen3-32b-v1:0",
+    "inputUsdPerMillion": 0.15,
+    "outputUsdPerMillion": 0.6,
+    "pricingSource": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-west-2/index.json"
+  },
+  "planningAllowanceUsd": 0.5,
+  "ledgerAtDecision": {
+    "reservedUsd": 23.984733972500038,
+    "capUsd": 75,
+    "updatedAt": "2026-10-04T21:00:13.497Z"
+  },
+  "status": "deferred-before-inference",
+  "reason": "Official AWS exact-model card advertises8K maximum output; frozen request ceiling16384 exceeds documented limit. No new inference, substitution, selective retry or silent limit lowering.",
+  "providerDocumentation": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-qwen-qwen3-32b.html",
+  "actualEstimatedCostUsd": 0,
+  "coverage": 0,
+  "abilityScore": null,
+  "nativeRunPath": null,
+  "materialSpendOverrun": false
+}

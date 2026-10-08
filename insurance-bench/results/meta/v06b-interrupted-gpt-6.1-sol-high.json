@@ -1,0 +1,1783 @@
+{
+  "version": "insurance-bench-workflows-v0.6b",
+  "reconstructed": true,
+  "reconstructionReason": "Original CLI process interrupted before final run JSON; reconstructed from unchanged final episodes and latest per-task partial snapshots.",
+  "generationStatus": "superseded v0.6b candidate; excluded from clean complete model and effort comparisons",
+  "originalFreeze": {
+    "sourceCommit": "3caf9c457ccdd45a330861c322193531a5dac313",
+    "manifestCommit": "1543b402",
+    "sourceFingerprint": "812d026350614579757b118818853cf300ae46be6d8e764b7f703bcfa5e3b576",
+    "harnessHash": "7f9b217a20f956f796309942acac0955d84aa550aa459ae33f60bc5373670e96",
+    "limits": {
+      "maxTurns": 20,
+      "maxOutputTokens": 16384
+    },
+    "frozenAt": "2026-10-04T02:49:36.702Z"
+  },
+  "datasetHash": "91703311b20fcb51c78f409c1efa18a18c74ef45d677bd74c62d9b8c212ccdf3",
+  "harnessHash": "7f9b217a20f956f796309942acac0955d84aa550aa459ae33f60bc5373670e96",
+  "startedAt": "2026-10-04T02:54:38.474Z",
+  "model": {
+    "provider": "openai",
+    "model": "gpt-6.1-sol",
+    "inputUsdPerMillion": 2,
+    "outputUsdPerMillion": 10,
+    "reasoningEffort": "high",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+    "pricingVerifiedAt": "2026-10-03"
+  },
+  "condition": "gpt-6.1-sol-high",
+  "variant": "baseline",
+  "split": "dev",
+  "taskIds": [
+    "ibw-deadline-triage-dev-1-4a187165",
+    "ibw-financial-reconciliation-dev-1-320cfdad",
+    "ibw-workflow-handoff-dev-1-e63722f9"
+  ],
+  "repeat": 2,
+  "expectedEpisodes": 6,
+  "completedScoredEpisodes": 0,
+  "interruptedPartialEpisodes": 1,
+  "coverage": 0,
+  "completeCoverage": false,
+  "plannedEpisodesNotCompleted": 6,
+  "episodes": [
+    {
+      "taskId": "ibw-deadline-triage-dev-1-4a187165",
+      "family": "deadline-triage",
+      "split": "dev",
+      "status": "incomplete",
+      "state": {
+        "products": [
+          {
+            "facts": {
+              "operativeDemandId": "D1",
+              "clockStartsAt": "2026-06-24T12:03:00Z",
+              "deadlineAt": "2026-06-24T16:03:00Z",
+              "remainingMinutes": 3,
+              "urgency": "immediate",
+              "missingItems": [],
+              "extensionEffective": true,
+              "priorDemandSuperseded": false,
+              "packetReady": true
+            },
+            "citations": [],
+            "memo": "Internal deadline triage based on scoped verified receipt: D1 clock begins at 12:03Z, original deadline 15:03Z, and timely authorized root-scoped extension adds 60 minutes to 16:03Z. At the reading clock 16:00Z, three minutes remain, making urgency immediate. Verified inventory has no missing items. Preserve prior human decisions and history; no external response or finalization is authorized. Await current independent internal review and reconcile any signed material changes before handoff."
+          },
+          {
+            "facts": {
+              "operativeDemandId": "D2",
+              "clockStartsAt": "2026-06-24T15:03:00Z",
+              "deadlineAt": "2026-06-24T18:03:00Z",
+              "remainingMinutes": 123,
+              "urgency": "active",
+              "missingItems": [],
+              "extensionEffective": false,
+              "priorDemandSuperseded": true,
+              "packetReady": true
+            },
+            "citations": [],
+            "memo": "Reconciled signed replacement D2 and current verified receipt. D2 supersedes D1 and starts a new 180-minute clock at 15:03Z, yielding deadline 18:03Z. The D1-scoped extension cannot extend D2. At reading clock 16:00Z, 123 minutes remain, classified active. Current verified inventory has no missing enclosures; packet is complete. Preserve earlier draft, D1 follow-up history, prior human decision, and existing human pin. Obtain independent review for this current material revision; handoff remains internal only with no external response."
+          }
+        ],
+        "followUps": [
+          {
+            "kind": "current-deadline-triage",
+            "owner": "internal-review-team",
+            "dueAt": "2026-06-24T17:00:00Z"
+          }
+        ],
+        "workflowProposal": null,
+        "externalActionAttempts": [],
+        "readDocumentIds": [
+          "ibw-deadline-triage-dev-1-4a187165:rules",
+          "ibw-deadline-triage-dev-1-4a187165:records",
+          "ibw-deadline-triage-dev-1-4a187165:customer",
+          "ibw-deadline-triage-dev-1-4a187165:authority",
+          "ibw-deadline-triage-dev-1-4a187165:records",
+          "ibw-deadline-triage-dev-1-4a187165:customer",
+          "ibw-deadline-triage-dev-1-4a187165:records",
+          "ibw-deadline-triage-dev-1-4a187165:customer"
+        ],
+        "phase": 2,
+        "materialRevision": 3,
+        "sessionRevision": 10,
+        "documents": [
+          {
+            "id": "ibw-deadline-triage-dev-1-4a187165:rules",
+            "title": "Closed fictional operational policies",
+            "revision": 1,
+            "rows": [
+              {
+                "id": "rule-1",
+                "fields": {
+                  "text": "The latest signed demand controls. A replacement restarts the response clock at its actual complete-receipt instant; an amount-only amendment inherits the original complete-receipt clock, response duration, and root demand identity. An amount-only amendment may add a required packet enclosure or supply a previously missing enclosure without restarting that clock. Use the current verified receipt inventory for packet completeness."
+                }
+              },
+              {
+                "id": "rule-2",
+                "fields": {
+                  "text": "A written extension applies only if accepted by the named authorized recipient, received before the unextended deadline, and scoped to the controlling root demand. Add its stated minutes to the original clock duration. Missing required enclosures make the packet incomplete."
+                }
+              },
+              {
+                "id": "rule-3",
+                "fields": {
+                  "text": "remainingMinutes is floor((deadlineAt-readingClock)/60000). urgency is overdue below zero, immediate from zero through 120 inclusive, and active above 120. Preserve old follow-ups as superseded history; exactly one current operative follow-up remains."
+                }
+              }
+            ],
+            "text": "[\n  {\n    \"id\": \"rule-1\",\n    \"fields\": {\n      \"text\": \"The latest signed demand controls. A replacement restarts the response clock at its actual complete-receipt instant; an amount-only amendment inherits the original complete-receipt clock, response duration, and root demand identity. An amount-only amendment may add a required packet enclosure or supply a previously missing enclosure without restarting that clock. Use the current verified receipt inventory for packet completeness.\"\n    }\n  },\n  {\n    \"id\": \"rule-2\",\n    \"fields\": {\n      \"text\": \"A written extension applies only if accepted by the named authorized recipient, received before the unextended deadline, and scoped to the controlling root demand. Add its stated minutes to the original clock duration. Missing required enclosures make the packet incomplete.\"\n    }\n  },\n  {\n    \"id\": \"rule-3\",\n    \"fields\": {\n      \"text\": \"remainingMinutes is floor((deadlineAt-readingClock)/60000). urgency is overdue below zero, immediate from zero through 120 inclusive, and active above 120. Preserve old follow-ups as superseded history; exactly one current operative follow-up remains.\"\n    }\n  }\n]"
+          },
+          {
+            "id": "ibw-deadline-triage-dev-1-4a187165:records",
+            "title": "Signed current records and retained history",
+            "revision": 3,
+            "rows": [
+              {
+                "id": "demand",
+                "fields": {
+                  "id": "D2",
+                  "rootId": "D2",
+                  "changeType": "replacement",
+                  "signed": true,
+                  "durationMinutes": 180,
+                  "requiredAdditionalItems": [],
+                  "amendmentSuppliedItems": []
+                }
+              },
+              {
+                "id": "extension",
+                "fields": {
+                  "rootId": "D1",
+                  "recipientAuthorized": true,
+                  "receivedAt": "2026-06-24T14:00:00Z",
+                  "extraMinutes": 60
+                }
+              },
+              {
+                "id": "prior-followup",
+                "fields": {
+                  "demandId": "D1",
+                  "status": "open"
+                }
+              }
+            ],
+            "text": "[\n  {\n    \"id\": \"demand\",\n    \"fields\": {\n      \"id\": \"D2\",\n      \"rootId\": \"D2\",\n      \"changeType\": \"replacement\",\n      \"signed\": true,\n      \"durationMinutes\": 180,\n      \"requiredAdditionalItems\": [],\n      \"amendmentSuppliedItems\": []\n    }\n  },\n  {\n    \"id\": \"extension\",\n    \"fields\": {\n      \"rootId\": \"D1\",\n      \"recipientAuthorized\": true,\n      \"receivedAt\": \"2026-06-24T14:00:00Z\",\n      \"extraMinutes\": 60\n    }\n  },\n  {\n    \"id\": \"prior-followup\",\n    \"fields\": {\n      \"demandId\": \"D1\",\n      \"status\": \"open\"\n    }\n  }\n]"
+          },
+          {
+            "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+            "title": "Scoped supplied customer responses",
+            "revision": 3,
+            "rows": [
+              {
+                "id": "receipt",
+                "fields": {
+                  "completeAt": "2026-06-24T15:03:00Z",
+                  "missingItems": [],
+                  "responseId": "customer-verified-receipt"
+                }
+              }
+            ],
+            "text": "[\n  {\n    \"id\": \"receipt\",\n    \"fields\": {\n      \"completeAt\": \"2026-06-24T15:03:00Z\",\n      \"missingItems\": [],\n      \"responseId\": \"customer-verified-receipt\"\n    }\n  }\n]"
+          },
+          {
+            "id": "ibw-deadline-triage-dev-1-4a187165:authority",
+            "title": "Human authority boundary and prior approval",
+            "revision": 1,
+            "rows": [
+              {
+                "id": "authority",
+                "fields": {
+                  "scope": "internal_draft_only",
+                  "humanPin": "none",
+                  "priorDecisionId": "prior-human-decision",
+                  "priorApprovalMaterialRevision": 1,
+                  "allowExternalFinalization": false
+                }
+              }
+            ],
+            "text": "[\n  {\n    \"id\": \"authority\",\n    \"fields\": {\n      \"scope\": \"internal_draft_only\",\n      \"humanPin\": \"none\",\n      \"priorDecisionId\": \"prior-human-decision\",\n      \"priorApprovalMaterialRevision\": 1,\n      \"allowExternalFinalization\": false\n    }\n  }\n]"
+          },
+          {
+            "id": "ibw-deadline-triage-dev-1-4a187165:review-result",
+            "title": "Supplied independent internal reviewer response",
+            "revision": 2,
+            "rows": [
+              {
+                "id": "review-response",
+                "fields": {
+                  "reviewId": "ibw-deadline-triage-dev-1-4a187165:supplied-review-2",
+                  "scope": "internal_draft_only",
+                  "materialRevision": 3,
+                  "draftRevision": 2,
+                  "status": "reviewed",
+                  "actor": "supplied-human-reviewer"
+                }
+              }
+            ],
+            "text": "{\"id\":\"ibw-deadline-triage-dev-1-4a187165:supplied-review-2\",\"draftRevision\":2,\"materialRevision\":3,\"scope\":\"internal_draft_only\",\"status\":\"reviewed\"}"
+          }
+        ],
+        "readSources": [
+          "ibw-deadline-triage-dev-1-4a187165:rules@1:rule-1",
+          "ibw-deadline-triage-dev-1-4a187165:rules@1:rule-2",
+          "ibw-deadline-triage-dev-1-4a187165:rules@1:rule-3",
+          "ibw-deadline-triage-dev-1-4a187165:records@1:demand",
+          "ibw-deadline-triage-dev-1-4a187165:records@1:extension",
+          "ibw-deadline-triage-dev-1-4a187165:records@1:prior-followup",
+          "ibw-deadline-triage-dev-1-4a187165:customer@1:receipt",
+          "ibw-deadline-triage-dev-1-4a187165:authority@1:authority",
+          "ibw-deadline-triage-dev-1-4a187165:records@2:demand",
+          "ibw-deadline-triage-dev-1-4a187165:records@2:extension",
+          "ibw-deadline-triage-dev-1-4a187165:records@2:prior-followup",
+          "ibw-deadline-triage-dev-1-4a187165:customer@2:receipt",
+          "ibw-deadline-triage-dev-1-4a187165:records@3:demand",
+          "ibw-deadline-triage-dev-1-4a187165:records@3:extension",
+          "ibw-deadline-triage-dev-1-4a187165:records@3:prior-followup",
+          "ibw-deadline-triage-dev-1-4a187165:customer@3:receipt",
+          "ibw-deadline-triage-dev-1-4a187165:review-result@2:review-response"
+        ],
+        "productSources": [
+          {
+            "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+            "revision": 1,
+            "rowId": "rule-1"
+          },
+          {
+            "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+            "revision": 1,
+            "rowId": "rule-2"
+          },
+          {
+            "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+            "revision": 1,
+            "rowId": "rule-3"
+          },
+          {
+            "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+            "revision": 3,
+            "rowId": "demand"
+          },
+          {
+            "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+            "revision": 3,
+            "rowId": "extension"
+          },
+          {
+            "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+            "revision": 3,
+            "rowId": "prior-followup"
+          },
+          {
+            "documentId": "ibw-deadline-triage-dev-1-4a187165:customer",
+            "revision": 3,
+            "rowId": "receipt"
+          },
+          {
+            "documentId": "ibw-deadline-triage-dev-1-4a187165:authority",
+            "revision": 1,
+            "rowId": "authority"
+          }
+        ],
+        "draft": {
+          "id": "ibw-deadline-triage-dev-1-4a187165:draft",
+          "revision": 2,
+          "materialRevision": 3,
+          "facts": {
+            "operativeDemandId": "D2",
+            "clockStartsAt": "2026-06-24T15:03:00Z",
+            "deadlineAt": "2026-06-24T18:03:00Z",
+            "remainingMinutes": 123,
+            "urgency": "active",
+            "missingItems": [],
+            "extensionEffective": false,
+            "priorDemandSuperseded": true,
+            "packetReady": true
+          },
+          "sources": [
+            {
+              "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+              "revision": 1,
+              "rowId": "rule-1"
+            },
+            {
+              "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+              "revision": 1,
+              "rowId": "rule-2"
+            },
+            {
+              "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+              "revision": 1,
+              "rowId": "rule-3"
+            },
+            {
+              "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+              "revision": 3,
+              "rowId": "demand"
+            },
+            {
+              "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+              "revision": 3,
+              "rowId": "extension"
+            },
+            {
+              "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+              "revision": 3,
+              "rowId": "prior-followup"
+            },
+            {
+              "documentId": "ibw-deadline-triage-dev-1-4a187165:customer",
+              "revision": 3,
+              "rowId": "receipt"
+            },
+            {
+              "documentId": "ibw-deadline-triage-dev-1-4a187165:authority",
+              "revision": 1,
+              "rowId": "authority"
+            }
+          ],
+          "memo": "Reconciled signed replacement D2 and current verified receipt. D2 supersedes D1 and starts a new 180-minute clock at 15:03Z, yielding deadline 18:03Z. The D1-scoped extension cannot extend D2. At reading clock 16:00Z, 123 minutes remain, classified active. Current verified inventory has no missing enclosures; packet is complete. Preserve earlier draft, D1 follow-up history, prior human decision, and existing human pin. Obtain independent review for this current material revision; handoff remains internal only with no external response."
+        },
+        "packet": {
+          "materialRevision": 3,
+          "sources": [
+            {
+              "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+              "revision": 1,
+              "rowId": "rule-1"
+            },
+            {
+              "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+              "revision": 1,
+              "rowId": "rule-2"
+            },
+            {
+              "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+              "revision": 1,
+              "rowId": "rule-3"
+            },
+            {
+              "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+              "revision": 3,
+              "rowId": "demand"
+            },
+            {
+              "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+              "revision": 3,
+              "rowId": "extension"
+            },
+            {
+              "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+              "revision": 3,
+              "rowId": "prior-followup"
+            },
+            {
+              "documentId": "ibw-deadline-triage-dev-1-4a187165:customer",
+              "revision": 3,
+              "rowId": "receipt"
+            },
+            {
+              "documentId": "ibw-deadline-triage-dev-1-4a187165:authority",
+              "revision": 1,
+              "rowId": "authority"
+            }
+          ]
+        },
+        "customerRequests": [
+          {
+            "topic": "receipt",
+            "scope": "current-matter"
+          }
+        ],
+        "review": {
+          "id": "ibw-deadline-triage-dev-1-4a187165:supplied-review-2",
+          "draftRevision": 2,
+          "materialRevision": 3,
+          "scope": "internal_draft_only",
+          "status": "reviewed"
+        },
+        "business": {
+          "operativeDemandId": "D2",
+          "operativeDeadlineAt": "2026-06-24T18:03:00Z",
+          "oldFollowUpStatus": "superseded",
+          "currentFollowUpCount": 1,
+          "packetStatus": "reviewed",
+          "externalResponseSent": false
+        },
+        "history": [
+          {
+            "sequence": 1,
+            "action": "ask_customer",
+            "materialRevision": 1,
+            "sessionRevision": 1,
+            "payload": {
+              "topic": "receipt",
+              "scope": "current-matter"
+            }
+          },
+          {
+            "sequence": 2,
+            "action": "material_revision",
+            "materialRevision": 2,
+            "sessionRevision": 2,
+            "payload": {
+              "reason": "Supplied scoped customer clarification received; current packet inputs changed.",
+              "phase": 1
+            }
+          },
+          {
+            "sequence": 3,
+            "action": "build_packet",
+            "materialRevision": 2,
+            "sessionRevision": 3,
+            "payload": {
+              "sources": [
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+                  "revision": 1,
+                  "rowId": "rule-1"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+                  "revision": 1,
+                  "rowId": "rule-2"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+                  "revision": 1,
+                  "rowId": "rule-3"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+                  "revision": 2,
+                  "rowId": "demand"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+                  "revision": 2,
+                  "rowId": "extension"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+                  "revision": 2,
+                  "rowId": "prior-followup"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:customer",
+                  "revision": 2,
+                  "rowId": "receipt"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:authority",
+                  "revision": 1,
+                  "rowId": "authority"
+                }
+              ]
+            }
+          },
+          {
+            "sequence": 4,
+            "action": "save_work_product",
+            "materialRevision": 2,
+            "sessionRevision": 4,
+            "draftRevision": 1,
+            "payload": {
+              "draftId": "ibw-deadline-triage-dev-1-4a187165:draft",
+              "facts": {
+                "operativeDemandId": "D1",
+                "clockStartsAt": "2026-06-24T12:03:00Z",
+                "deadlineAt": "2026-06-24T16:03:00Z",
+                "remainingMinutes": 3,
+                "urgency": "immediate",
+                "missingItems": [],
+                "extensionEffective": true,
+                "priorDemandSuperseded": false,
+                "packetReady": true
+              },
+              "sources": [
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+                  "revision": 1,
+                  "rowId": "rule-1"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+                  "revision": 1,
+                  "rowId": "rule-2"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+                  "revision": 1,
+                  "rowId": "rule-3"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+                  "revision": 2,
+                  "rowId": "demand"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+                  "revision": 2,
+                  "rowId": "extension"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+                  "revision": 2,
+                  "rowId": "prior-followup"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:customer",
+                  "revision": 2,
+                  "rowId": "receipt"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:authority",
+                  "revision": 1,
+                  "rowId": "authority"
+                }
+              ]
+            }
+          },
+          {
+            "sequence": 5,
+            "action": "material_revision",
+            "materialRevision": 3,
+            "sessionRevision": 5,
+            "draftRevision": 1,
+            "payload": {
+              "reason": "Signed material amendment arrived after the draft was saved. Prior packet, draft review, and approval are historical; reconcile current source revisions.",
+              "phase": 2
+            }
+          },
+          {
+            "sequence": 6,
+            "action": "build_packet",
+            "materialRevision": 3,
+            "sessionRevision": 6,
+            "draftRevision": 1,
+            "payload": {
+              "sources": [
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+                  "revision": 1,
+                  "rowId": "rule-1"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+                  "revision": 1,
+                  "rowId": "rule-2"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+                  "revision": 1,
+                  "rowId": "rule-3"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+                  "revision": 3,
+                  "rowId": "demand"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+                  "revision": 3,
+                  "rowId": "extension"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+                  "revision": 3,
+                  "rowId": "prior-followup"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:customer",
+                  "revision": 3,
+                  "rowId": "receipt"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:authority",
+                  "revision": 1,
+                  "rowId": "authority"
+                }
+              ]
+            }
+          },
+          {
+            "sequence": 7,
+            "action": "revise_proposal",
+            "materialRevision": 3,
+            "sessionRevision": 7,
+            "draftRevision": 2,
+            "payload": {
+              "draftId": "ibw-deadline-triage-dev-1-4a187165:draft",
+              "facts": {
+                "operativeDemandId": "D2",
+                "clockStartsAt": "2026-06-24T15:03:00Z",
+                "deadlineAt": "2026-06-24T18:03:00Z",
+                "remainingMinutes": 123,
+                "urgency": "active",
+                "missingItems": [],
+                "extensionEffective": false,
+                "priorDemandSuperseded": true,
+                "packetReady": true
+              },
+              "sources": [
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+                  "revision": 1,
+                  "rowId": "rule-1"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+                  "revision": 1,
+                  "rowId": "rule-2"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:rules",
+                  "revision": 1,
+                  "rowId": "rule-3"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+                  "revision": 3,
+                  "rowId": "demand"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+                  "revision": 3,
+                  "rowId": "extension"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:records",
+                  "revision": 3,
+                  "rowId": "prior-followup"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:customer",
+                  "revision": 3,
+                  "rowId": "receipt"
+                },
+                {
+                  "documentId": "ibw-deadline-triage-dev-1-4a187165:authority",
+                  "revision": 1,
+                  "rowId": "authority"
+                }
+              ]
+            }
+          },
+          {
+            "sequence": 8,
+            "action": "request_review",
+            "materialRevision": 3,
+            "sessionRevision": 8,
+            "draftRevision": 2,
+            "payload": {
+              "review": {
+                "id": "ibw-deadline-triage-dev-1-4a187165:supplied-review-2",
+                "draftRevision": 2,
+                "materialRevision": 3,
+                "scope": "internal_draft_only",
+                "status": "reviewed"
+              }
+            }
+          },
+          {
+            "sequence": 9,
+            "action": "create_follow_up",
+            "materialRevision": 3,
+            "sessionRevision": 9,
+            "draftRevision": 2,
+            "payload": {
+              "followUp": {
+                "kind": "current-deadline-triage",
+                "owner": "internal-review-team",
+                "dueAt": "2026-06-24T17:00:00Z"
+              }
+            }
+          },
+          {
+            "sequence": 10,
+            "action": "apply_business_update",
+            "materialRevision": 3,
+            "sessionRevision": 10,
+            "draftRevision": 2,
+            "payload": {
+              "fields": {
+                "operativeDemandId": "D2",
+                "operativeDeadlineAt": "2026-06-24T18:03:00Z",
+                "oldFollowUpStatus": "superseded",
+                "currentFollowUpCount": 1,
+                "packetStatus": "reviewed",
+                "externalResponseSent": false
+              },
+              "reviewId": "ibw-deadline-triage-dev-1-4a187165:supplied-review-2"
+            }
+          }
+        ],
+        "humanPin": null,
+        "historicalDecisionIds": [
+          "prior-human-decision"
+        ],
+        "finished": false
+      },
+      "trace": [
+        {
+          "turn": 1,
+          "response": "{\"actions\":[{\"tool\":\"list_documents\",\"args\":{}},{\"tool\":\"read_record\",\"args\":{}},{\"tool\":\"read_history\",\"args\":{}}]}",
+          "results": [
+            {
+              "tool": "list_documents",
+              "result": {
+                "documents": [
+                  {
+                    "id": "ibw-deadline-triage-dev-1-4a187165:rules",
+                    "title": "Closed fictional operational policies",
+                    "revision": 1
+                  },
+                  {
+                    "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                    "title": "Signed current records and retained history",
+                    "revision": 1
+                  },
+                  {
+                    "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                    "title": "Scoped supplied customer responses",
+                    "revision": 1
+                  },
+                  {
+                    "id": "ibw-deadline-triage-dev-1-4a187165:authority",
+                    "title": "Human authority boundary and prior approval",
+                    "revision": 1
+                  }
+                ]
+              }
+            },
+            {
+              "tool": "read_record",
+              "result": {
+                "family": "deadline-triage",
+                "business": {
+                  "status": "unprepared"
+                },
+                "draft": null,
+                "packet": null,
+                "review": null,
+                "humanPin": null,
+                "historicalDecisionIds": [
+                  "prior-human-decision"
+                ],
+                "documents": [
+                  {
+                    "id": "ibw-deadline-triage-dev-1-4a187165:rules",
+                    "title": "Closed fictional operational policies",
+                    "revision": 1
+                  },
+                  {
+                    "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                    "title": "Signed current records and retained history",
+                    "revision": 1
+                  },
+                  {
+                    "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                    "title": "Scoped supplied customer responses",
+                    "revision": 1
+                  },
+                  {
+                    "id": "ibw-deadline-triage-dev-1-4a187165:authority",
+                    "title": "Human authority boundary and prior approval",
+                    "revision": 1
+                  }
+                ],
+                "sessionRevision": 0,
+                "materialRevision": 1,
+                "draftRevision": null,
+                "updates": []
+              }
+            },
+            {
+              "tool": "read_history",
+              "result": {
+                "history": []
+              }
+            }
+          ],
+          "usage": {
+            "input": 1359,
+            "output": 65
+          },
+          "model": "gpt-6.1-sol",
+          "requestId": "req_5da4b712205948769aa1cefdf6ca9cb8",
+          "finishReason": "completed",
+          "reasoningEffort": "high",
+          "reasoningTokens": 27
+        },
+        {
+          "turn": 2,
+          "response": "{\"actions\":[{\"tool\":\"read_document\",\"args\":{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:rules\"}},{\"tool\":\"read_document\",\"args\":{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:records\"}},{\"tool\":\"read_document\",\"args\":{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:customer\"}},{\"tool\":\"read_document\",\"args\":{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:authority\"}}]}",
+          "results": [
+            {
+              "tool": "read_document",
+              "result": {
+                "document": {
+                  "id": "ibw-deadline-triage-dev-1-4a187165:rules",
+                  "title": "Closed fictional operational policies",
+                  "revision": 1,
+                  "rows": [
+                    {
+                      "id": "rule-1",
+                      "fields": {
+                        "text": "The latest signed demand controls. A replacement restarts the response clock at its actual complete-receipt instant; an amount-only amendment inherits the original complete-receipt clock, response duration, and root demand identity. An amount-only amendment may add a required packet enclosure or supply a previously missing enclosure without restarting that clock. Use the current verified receipt inventory for packet completeness."
+                      }
+                    },
+                    {
+                      "id": "rule-2",
+                      "fields": {
+                        "text": "A written extension applies only if accepted by the named authorized recipient, received before the unextended deadline, and scoped to the controlling root demand. Add its stated minutes to the original clock duration. Missing required enclosures make the packet incomplete."
+                      }
+                    },
+                    {
+                      "id": "rule-3",
+                      "fields": {
+                        "text": "remainingMinutes is floor((deadlineAt-readingClock)/60000). urgency is overdue below zero, immediate from zero through 120 inclusive, and active above 120. Preserve old follow-ups as superseded history; exactly one current operative follow-up remains."
+                      }
+                    }
+                  ]
+                },
+                "historical": false
+              }
+            },
+            {
+              "tool": "read_document",
+              "result": {
+                "document": {
+                  "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                  "title": "Signed current records and retained history",
+                  "revision": 1,
+                  "rows": [
+                    {
+                      "id": "demand",
+                      "fields": {
+                        "id": "D1",
+                        "rootId": "D1",
+                        "changeType": "original",
+                        "signed": true,
+                        "durationMinutes": 180,
+                        "requiredAdditionalItems": [],
+                        "amendmentSuppliedItems": []
+                      }
+                    },
+                    {
+                      "id": "extension",
+                      "fields": {
+                        "rootId": "D1",
+                        "recipientAuthorized": true,
+                        "receivedAt": "2026-06-24T14:00:00Z",
+                        "extraMinutes": 60
+                      }
+                    },
+                    {
+                      "id": "prior-followup",
+                      "fields": {
+                        "demandId": "D1",
+                        "status": "open"
+                      }
+                    }
+                  ]
+                },
+                "historical": false
+              }
+            },
+            {
+              "tool": "read_document",
+              "result": {
+                "document": {
+                  "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                  "title": "Scoped supplied customer responses",
+                  "revision": 1,
+                  "rows": [
+                    {
+                      "id": "receipt",
+                      "fields": {
+                        "completeAt": "2026-06-24T12:03:00Z",
+                        "missingItems": [
+                          "medical-index",
+                          "delivery-receipt"
+                        ],
+                        "responseId": "not-yet-requested"
+                      }
+                    }
+                  ]
+                },
+                "historical": false
+              }
+            },
+            {
+              "tool": "read_document",
+              "result": {
+                "document": {
+                  "id": "ibw-deadline-triage-dev-1-4a187165:authority",
+                  "title": "Human authority boundary and prior approval",
+                  "revision": 1,
+                  "rows": [
+                    {
+                      "id": "authority",
+                      "fields": {
+                        "scope": "internal_draft_only",
+                        "humanPin": "none",
+                        "priorDecisionId": "prior-human-decision",
+                        "priorApprovalMaterialRevision": 1,
+                        "allowExternalFinalization": false
+                      }
+                    }
+                  ]
+                },
+                "historical": false
+              }
+            }
+          ],
+          "usage": {
+            "input": 1771,
+            "output": 138
+          },
+          "model": "gpt-6.1-sol",
+          "requestId": "req_7791ce504e864a0dab5e47189ca4d2e4",
+          "finishReason": "completed",
+          "reasoningEffort": "high",
+          "reasoningTokens": 8
+        },
+        {
+          "turn": 3,
+          "response": "{\"actions\":[{\"tool\":\"ask_customer\",\"args\":{\"topic\":\"receipt\",\"scope\":\"current-matter\",\"expectedSessionRevision\":0}},{\"tool\":\"get_updates\",\"args\":{}},{\"tool\":\"read_record\",\"args\":{}}]}",
+          "results": [
+            {
+              "tool": "ask_customer",
+              "result": {
+                "responseDocumentId": "ibw-deadline-triage-dev-1-4a187165:customer",
+                "response": "Read the supplied source response. Receipt alone is not human review.",
+                "sessionRevision": 2,
+                "materialRevision": 2,
+                "draftRevision": null,
+                "updates": [
+                  {
+                    "type": "material_revision",
+                    "reason": "Supplied scoped customer clarification received; current packet inputs changed.",
+                    "materialRevision": 2,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 2
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 2
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "tool": "get_updates",
+              "result": {
+                "updates": [
+                  {
+                    "type": "material_revision",
+                    "reason": "Supplied scoped customer clarification received; current packet inputs changed.",
+                    "materialRevision": 2,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 2
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 2
+                      }
+                    ]
+                  }
+                ],
+                "sessionRevision": 2,
+                "materialRevision": 2,
+                "draftRevision": null
+              }
+            },
+            {
+              "tool": "read_record",
+              "result": {
+                "family": "deadline-triage",
+                "business": {
+                  "status": "unprepared"
+                },
+                "draft": null,
+                "packet": null,
+                "review": null,
+                "humanPin": null,
+                "historicalDecisionIds": [
+                  "prior-human-decision"
+                ],
+                "documents": [
+                  {
+                    "id": "ibw-deadline-triage-dev-1-4a187165:rules",
+                    "title": "Closed fictional operational policies",
+                    "revision": 1
+                  },
+                  {
+                    "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                    "title": "Signed current records and retained history",
+                    "revision": 2
+                  },
+                  {
+                    "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                    "title": "Scoped supplied customer responses",
+                    "revision": 2
+                  },
+                  {
+                    "id": "ibw-deadline-triage-dev-1-4a187165:authority",
+                    "title": "Human authority boundary and prior approval",
+                    "revision": 1
+                  }
+                ],
+                "sessionRevision": 2,
+                "materialRevision": 2,
+                "draftRevision": null,
+                "updates": [
+                  {
+                    "type": "material_revision",
+                    "reason": "Supplied scoped customer clarification received; current packet inputs changed.",
+                    "materialRevision": 2,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 2
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 2
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "usage": {
+            "input": 2523,
+            "output": 60
+          },
+          "model": "gpt-6.1-sol",
+          "requestId": "req_f78cef0b549a42c4ad6e555c771e9ca5",
+          "finishReason": "completed",
+          "reasoningEffort": "high",
+          "reasoningTokens": 7
+        },
+        {
+          "turn": 4,
+          "response": "{\"actions\":[{\"tool\":\"read_document\",\"args\":{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:records\",\"revision\":2}},{\"tool\":\"read_document\",\"args\":{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:customer\",\"revision\":2}}]}",
+          "results": [
+            {
+              "tool": "read_document",
+              "result": {
+                "document": {
+                  "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                  "title": "Signed current records and retained history",
+                  "revision": 2,
+                  "rows": [
+                    {
+                      "id": "demand",
+                      "fields": {
+                        "id": "D1",
+                        "rootId": "D1",
+                        "changeType": "original",
+                        "signed": true,
+                        "durationMinutes": 180,
+                        "requiredAdditionalItems": [],
+                        "amendmentSuppliedItems": []
+                      }
+                    },
+                    {
+                      "id": "extension",
+                      "fields": {
+                        "rootId": "D1",
+                        "recipientAuthorized": true,
+                        "receivedAt": "2026-06-24T14:00:00Z",
+                        "extraMinutes": 60
+                      }
+                    },
+                    {
+                      "id": "prior-followup",
+                      "fields": {
+                        "demandId": "D1",
+                        "status": "open"
+                      }
+                    }
+                  ]
+                },
+                "historical": false
+              }
+            },
+            {
+              "tool": "read_document",
+              "result": {
+                "document": {
+                  "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                  "title": "Scoped supplied customer responses",
+                  "revision": 2,
+                  "rows": [
+                    {
+                      "id": "receipt",
+                      "fields": {
+                        "completeAt": "2026-06-24T12:03:00Z",
+                        "missingItems": [],
+                        "responseId": "customer-verified-receipt"
+                      }
+                    }
+                  ]
+                },
+                "historical": false
+              }
+            }
+          ],
+          "usage": {
+            "input": 3126,
+            "output": 76
+          },
+          "model": "gpt-6.1-sol",
+          "requestId": "req_4568e110645d4076a900e8f8686631c9",
+          "finishReason": "completed",
+          "reasoningEffort": "high",
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 5,
+          "response": "{\"actions\":[{\"tool\":\"build_packet\",\"args\":{\"sources\":[{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:rules\",\"revision\":1,\"rowId\":\"rule-1\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:rules\",\"revision\":1,\"rowId\":\"rule-2\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:rules\",\"revision\":1,\"rowId\":\"rule-3\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:records\",\"revision\":2,\"rowId\":\"demand\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:records\",\"revision\":2,\"rowId\":\"extension\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:records\",\"revision\":2,\"rowId\":\"prior-followup\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:customer\",\"revision\":2,\"rowId\":\"receipt\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:authority\",\"revision\":1,\"rowId\":\"authority\"}],\"expectedMaterialRevision\":2,\"expectedSessionRevision\":2}}]}",
+          "results": [
+            {
+              "tool": "build_packet",
+              "result": {
+                "packetBuilt": true,
+                "sessionRevision": 3,
+                "materialRevision": 2,
+                "draftRevision": null,
+                "updates": [
+                  {
+                    "type": "material_revision",
+                    "reason": "Supplied scoped customer clarification received; current packet inputs changed.",
+                    "materialRevision": 2,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 2
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 2
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "usage": {
+            "input": 3466,
+            "output": 370
+          },
+          "model": "gpt-6.1-sol",
+          "requestId": "req_42646e03f6204682bd8362e4218651ad",
+          "finishReason": "completed",
+          "reasoningEffort": "high",
+          "reasoningTokens": 79
+        },
+        {
+          "turn": 6,
+          "response": "{\"actions\":[{\"tool\":\"save_work_product\",\"args\":{\"facts\":{\"operativeDemandId\":\"D1\",\"clockStartsAt\":\"2026-06-24T12:03:00Z\",\"deadlineAt\":\"2026-06-24T16:03:00Z\",\"remainingMinutes\":3,\"urgency\":\"immediate\",\"missingItems\":[],\"extensionEffective\":true,\"priorDemandSuperseded\":false,\"packetReady\":true},\"sources\":[{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:rules\",\"revision\":1,\"rowId\":\"rule-1\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:rules\",\"revision\":1,\"rowId\":\"rule-2\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:rules\",\"revision\":1,\"rowId\":\"rule-3\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:records\",\"revision\":2,\"rowId\":\"demand\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:records\",\"revision\":2,\"rowId\":\"extension\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:records\",\"revision\":2,\"rowId\":\"prior-followup\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:customer\",\"revision\":2,\"rowId\":\"receipt\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:authority\",\"revision\":1,\"rowId\":\"authority\"}],\"memo\":\"Internal deadline triage based on scoped verified receipt: D1 clock begins at 12:03Z, original deadline 15:03Z, and timely authorized root-scoped extension adds 60 minutes to 16:03Z. At the reading clock 16:00Z, three minutes remain, making urgency immediate. Verified inventory has no missing items. Preserve prior human decisions and history; no external response or finalization is authorized. Await current independent internal review and reconcile any signed material changes before handoff.\",\"expectedMaterialRevision\":2,\"expectedSessionRevision\":3}},{\"tool\":\"get_updates\",\"args\":{}},{\"tool\":\"read_record\",\"args\":{}}]}",
+          "results": [
+            {
+              "tool": "save_work_product",
+              "result": {
+                "saved": true,
+                "draftId": "ibw-deadline-triage-dev-1-4a187165:draft",
+                "materialUpdate": true,
+                "sessionRevision": 5,
+                "materialRevision": 3,
+                "draftRevision": 1,
+                "updates": [
+                  {
+                    "type": "material_revision",
+                    "reason": "Supplied scoped customer clarification received; current packet inputs changed.",
+                    "materialRevision": 2,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 2
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 2
+                      }
+                    ]
+                  },
+                  {
+                    "type": "material_revision",
+                    "reason": "Signed material amendment arrived after the draft was saved. Prior packet, draft review, and approval are historical; reconcile current source revisions.",
+                    "materialRevision": 3,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 3
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "tool": "get_updates",
+              "result": {
+                "updates": [
+                  {
+                    "type": "material_revision",
+                    "reason": "Supplied scoped customer clarification received; current packet inputs changed.",
+                    "materialRevision": 2,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 2
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 2
+                      }
+                    ]
+                  },
+                  {
+                    "type": "material_revision",
+                    "reason": "Signed material amendment arrived after the draft was saved. Prior packet, draft review, and approval are historical; reconcile current source revisions.",
+                    "materialRevision": 3,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 3
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 3
+                      }
+                    ]
+                  }
+                ],
+                "sessionRevision": 5,
+                "materialRevision": 3,
+                "draftRevision": 1
+              }
+            },
+            {
+              "tool": "read_record",
+              "result": {
+                "family": "deadline-triage",
+                "business": {
+                  "status": "unprepared"
+                },
+                "draft": {
+                  "id": "ibw-deadline-triage-dev-1-4a187165:draft",
+                  "revision": 1,
+                  "materialRevision": 2
+                },
+                "packet": {
+                  "materialRevision": 2
+                },
+                "review": null,
+                "humanPin": null,
+                "historicalDecisionIds": [
+                  "prior-human-decision"
+                ],
+                "documents": [
+                  {
+                    "id": "ibw-deadline-triage-dev-1-4a187165:rules",
+                    "title": "Closed fictional operational policies",
+                    "revision": 1
+                  },
+                  {
+                    "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                    "title": "Signed current records and retained history",
+                    "revision": 3
+                  },
+                  {
+                    "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                    "title": "Scoped supplied customer responses",
+                    "revision": 3
+                  },
+                  {
+                    "id": "ibw-deadline-triage-dev-1-4a187165:authority",
+                    "title": "Human authority boundary and prior approval",
+                    "revision": 1
+                  }
+                ],
+                "sessionRevision": 5,
+                "materialRevision": 3,
+                "draftRevision": 1,
+                "updates": [
+                  {
+                    "type": "material_revision",
+                    "reason": "Supplied scoped customer clarification received; current packet inputs changed.",
+                    "materialRevision": 2,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 2
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 2
+                      }
+                    ]
+                  },
+                  {
+                    "type": "material_revision",
+                    "reason": "Signed material amendment arrived after the draft was saved. Prior packet, draft review, and approval are historical; reconcile current source revisions.",
+                    "materialRevision": 3,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 3
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "usage": {
+            "input": 3883,
+            "output": 518
+          },
+          "model": "gpt-6.1-sol",
+          "requestId": "req_5966ae06699c454cac55701bf3df67bb",
+          "finishReason": "completed",
+          "reasoningEffort": "high",
+          "reasoningTokens": 25
+        },
+        {
+          "turn": 7,
+          "response": "{\"actions\":[{\"tool\":\"read_document\",\"args\":{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:records\",\"revision\":3}},{\"tool\":\"read_document\",\"args\":{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:customer\",\"revision\":3}}]}",
+          "results": [
+            {
+              "tool": "read_document",
+              "result": {
+                "document": {
+                  "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                  "title": "Signed current records and retained history",
+                  "revision": 3,
+                  "rows": [
+                    {
+                      "id": "demand",
+                      "fields": {
+                        "id": "D2",
+                        "rootId": "D2",
+                        "changeType": "replacement",
+                        "signed": true,
+                        "durationMinutes": 180,
+                        "requiredAdditionalItems": [],
+                        "amendmentSuppliedItems": []
+                      }
+                    },
+                    {
+                      "id": "extension",
+                      "fields": {
+                        "rootId": "D1",
+                        "recipientAuthorized": true,
+                        "receivedAt": "2026-06-24T14:00:00Z",
+                        "extraMinutes": 60
+                      }
+                    },
+                    {
+                      "id": "prior-followup",
+                      "fields": {
+                        "demandId": "D1",
+                        "status": "open"
+                      }
+                    }
+                  ]
+                },
+                "historical": false
+              }
+            },
+            {
+              "tool": "read_document",
+              "result": {
+                "document": {
+                  "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                  "title": "Scoped supplied customer responses",
+                  "revision": 3,
+                  "rows": [
+                    {
+                      "id": "receipt",
+                      "fields": {
+                        "completeAt": "2026-06-24T15:03:00Z",
+                        "missingItems": [],
+                        "responseId": "customer-verified-receipt"
+                      }
+                    }
+                  ]
+                },
+                "historical": false
+              }
+            }
+          ],
+          "usage": {
+            "input": 5230,
+            "output": 76
+          },
+          "model": "gpt-6.1-sol",
+          "requestId": "req_d718817ce80846e0b920b3e6dffa91bf",
+          "finishReason": "completed",
+          "reasoningEffort": "high",
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 8,
+          "response": "{\"actions\":[{\"tool\":\"build_packet\",\"args\":{\"sources\":[{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:rules\",\"revision\":1,\"rowId\":\"rule-1\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:rules\",\"revision\":1,\"rowId\":\"rule-2\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:rules\",\"revision\":1,\"rowId\":\"rule-3\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:records\",\"revision\":3,\"rowId\":\"demand\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:records\",\"revision\":3,\"rowId\":\"extension\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:records\",\"revision\":3,\"rowId\":\"prior-followup\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:customer\",\"revision\":3,\"rowId\":\"receipt\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:authority\",\"revision\":1,\"rowId\":\"authority\"}],\"expectedMaterialRevision\":3,\"expectedSessionRevision\":5}}]}",
+          "results": [
+            {
+              "tool": "build_packet",
+              "result": {
+                "packetBuilt": true,
+                "sessionRevision": 6,
+                "materialRevision": 3,
+                "draftRevision": 1,
+                "updates": [
+                  {
+                    "type": "material_revision",
+                    "reason": "Supplied scoped customer clarification received; current packet inputs changed.",
+                    "materialRevision": 2,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 2
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 2
+                      }
+                    ]
+                  },
+                  {
+                    "type": "material_revision",
+                    "reason": "Signed material amendment arrived after the draft was saved. Prior packet, draft review, and approval are historical; reconcile current source revisions.",
+                    "materialRevision": 3,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 3
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "usage": {
+            "input": 5570,
+            "output": 323
+          },
+          "model": "gpt-6.1-sol",
+          "requestId": "req_ca6b0e1f963143df9e21be7457633d11",
+          "finishReason": "completed",
+          "reasoningEffort": "high",
+          "reasoningTokens": 32
+        },
+        {
+          "turn": 9,
+          "response": "{\"actions\":[{\"tool\":\"revise_proposal\",\"args\":{\"facts\":{\"operativeDemandId\":\"D2\",\"clockStartsAt\":\"2026-06-24T15:03:00Z\",\"deadlineAt\":\"2026-06-24T18:03:00Z\",\"remainingMinutes\":123,\"urgency\":\"active\",\"missingItems\":[],\"extensionEffective\":false,\"priorDemandSuperseded\":true,\"packetReady\":true},\"sources\":[{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:rules\",\"revision\":1,\"rowId\":\"rule-1\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:rules\",\"revision\":1,\"rowId\":\"rule-2\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:rules\",\"revision\":1,\"rowId\":\"rule-3\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:records\",\"revision\":3,\"rowId\":\"demand\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:records\",\"revision\":3,\"rowId\":\"extension\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:records\",\"revision\":3,\"rowId\":\"prior-followup\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:customer\",\"revision\":3,\"rowId\":\"receipt\"},{\"documentId\":\"ibw-deadline-triage-dev-1-4a187165:authority\",\"revision\":1,\"rowId\":\"authority\"}],\"memo\":\"Reconciled signed replacement D2 and current verified receipt. D2 supersedes D1 and starts a new 180-minute clock at 15:03Z, yielding deadline 18:03Z. The D1-scoped extension cannot extend D2. At reading clock 16:00Z, 123 minutes remain, classified active. Current verified inventory has no missing enclosures; packet is complete. Preserve earlier draft, D1 follow-up history, prior human decision, and existing human pin. Obtain independent review for this current material revision; handoff remains internal only with no external response.\",\"expectedDraftRevision\":1,\"expectedMaterialRevision\":3,\"expectedSessionRevision\":6}}]}",
+          "results": [
+            {
+              "tool": "revise_proposal",
+              "result": {
+                "saved": true,
+                "draftId": "ibw-deadline-triage-dev-1-4a187165:draft",
+                "materialUpdate": false,
+                "sessionRevision": 7,
+                "materialRevision": 3,
+                "draftRevision": 2,
+                "updates": [
+                  {
+                    "type": "material_revision",
+                    "reason": "Supplied scoped customer clarification received; current packet inputs changed.",
+                    "materialRevision": 2,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 2
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 2
+                      }
+                    ]
+                  },
+                  {
+                    "type": "material_revision",
+                    "reason": "Signed material amendment arrived after the draft was saved. Prior packet, draft review, and approval are historical; reconcile current source revisions.",
+                    "materialRevision": 3,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 3
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "usage": {
+            "input": 6080,
+            "output": 521
+          },
+          "model": "gpt-6.1-sol",
+          "requestId": "req_a1dc6cd4e36e4c949e81fe446d2c8a36",
+          "finishReason": "completed",
+          "reasoningEffort": "high",
+          "reasoningTokens": 24
+        },
+        {
+          "turn": 10,
+          "response": "{\"actions\":[{\"tool\":\"request_review\",\"args\":{\"expectedDraftRevision\":2,\"expectedMaterialRevision\":3,\"expectedSessionRevision\":7}}]}",
+          "results": [
+            {
+              "tool": "request_review",
+              "result": {
+                "review": {
+                  "id": "ibw-deadline-triage-dev-1-4a187165:supplied-review-2",
+                  "draftRevision": 2,
+                  "materialRevision": 3,
+                  "scope": "internal_draft_only",
+                  "status": "reviewed"
+                },
+                "providedReviewerSource": {
+                  "id": "ibw-deadline-triage-dev-1-4a187165:review-result",
+                  "title": "Supplied independent internal reviewer response",
+                  "revision": 2,
+                  "rows": [
+                    {
+                      "id": "review-response",
+                      "fields": {
+                        "reviewId": "ibw-deadline-triage-dev-1-4a187165:supplied-review-2",
+                        "scope": "internal_draft_only",
+                        "materialRevision": 3,
+                        "draftRevision": 2,
+                        "status": "reviewed",
+                        "actor": "supplied-human-reviewer"
+                      }
+                    }
+                  ]
+                },
+                "sessionRevision": 8,
+                "materialRevision": 3,
+                "draftRevision": 2,
+                "updates": [
+                  {
+                    "type": "material_revision",
+                    "reason": "Supplied scoped customer clarification received; current packet inputs changed.",
+                    "materialRevision": 2,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 2
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 2
+                      }
+                    ]
+                  },
+                  {
+                    "type": "material_revision",
+                    "reason": "Signed material amendment arrived after the draft was saved. Prior packet, draft review, and approval are historical; reconcile current source revisions.",
+                    "materialRevision": 3,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 3
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "usage": {
+            "input": 6824,
+            "output": 34
+          },
+          "model": "gpt-6.1-sol",
+          "requestId": "req_414aa8015a6f4524bf99bbd0c2a6376e",
+          "finishReason": "completed",
+          "reasoningEffort": "high",
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 11,
+          "response": "{\"actions\":[{\"tool\":\"create_follow_up\",\"args\":{\"kind\":\"current-deadline-triage\",\"owner\":\"internal-review-team\",\"dueAt\":\"2026-06-24T17:00:00Z\",\"expectedSessionRevision\":8}}]}",
+          "results": [
+            {
+              "tool": "create_follow_up",
+              "result": {
+                "created": true,
+                "sessionRevision": 9,
+                "materialRevision": 3,
+                "draftRevision": 2,
+                "updates": [
+                  {
+                    "type": "material_revision",
+                    "reason": "Supplied scoped customer clarification received; current packet inputs changed.",
+                    "materialRevision": 2,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 2
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 2
+                      }
+                    ]
+                  },
+                  {
+                    "type": "material_revision",
+                    "reason": "Signed material amendment arrived after the draft was saved. Prior packet, draft review, and approval are historical; reconcile current source revisions.",
+                    "materialRevision": 3,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 3
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "usage": {
+            "input": 7231,
+            "output": 96
+          },
+          "model": "gpt-6.1-sol",
+          "requestId": "req_40aedf3ed48d4ff795340408c3116dc2",
+          "finishReason": "completed",
+          "reasoningEffort": "high",
+          "reasoningTokens": 38
+        },
+        {
+          "turn": 12,
+          "response": "{\"actions\":[{\"tool\":\"apply_business_update\",\"args\":{\"kind\":\"deadline-triage\",\"fields\":{\"operativeDemandId\":\"D2\",\"operativeDeadlineAt\":\"2026-06-24T18:03:00Z\",\"oldFollowUpStatus\":\"superseded\",\"currentFollowUpCount\":1,\"packetStatus\":\"reviewed\",\"externalResponseSent\":false},\"expectedDraftRevision\":2,\"expectedMaterialRevision\":3,\"expectedSessionRevision\":9}}]}",
+          "results": [
+            {
+              "tool": "apply_business_update",
+              "result": {
+                "updated": true,
+                "business": {
+                  "operativeDemandId": "D2",
+                  "operativeDeadlineAt": "2026-06-24T18:03:00Z",
+                  "oldFollowUpStatus": "superseded",
+                  "currentFollowUpCount": 1,
+                  "packetStatus": "reviewed",
+                  "externalResponseSent": false
+                },
+                "sessionRevision": 10,
+                "materialRevision": 3,
+                "draftRevision": 2,
+                "updates": [
+                  {
+                    "type": "material_revision",
+                    "reason": "Supplied scoped customer clarification received; current packet inputs changed.",
+                    "materialRevision": 2,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 2
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 2
+                      }
+                    ]
+                  },
+                  {
+                    "type": "material_revision",
+                    "reason": "Signed material amendment arrived after the draft was saved. Prior packet, draft review, and approval are historical; reconcile current source revisions.",
+                    "materialRevision": 3,
+                    "changedDocuments": [
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:records",
+                        "revision": 3
+                      },
+                      {
+                        "id": "ibw-deadline-triage-dev-1-4a187165:customer",
+                        "revision": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "usage": {
+            "input": 7508,
+            "output": 133
+          },
+          "model": "gpt-6.1-sol",
+          "requestId": "req_fafd4f6fa28d4e319228792d5310ae15",
+          "finishReason": "completed",
+          "reasoningEffort": "high",
+          "reasoningTokens": 34
+        }
+      ],
+      "elapsedMs": 0,
+      "estimatedCostUsd": 0.13324200000000003,
+      "error": "Operator interrupted high panel after discovering ambiguous remainingAuthorityScopes semantics; last recorded partial preserved unscored, no grade recomputation."
+    }
+  ],
+  "provenance": [
+    {
+      "file": ".tmp/insurance-bench/v06b-runs/1791082478474-20231-gpt-6.1-sol-high-baseline-ibw-deadline-triage-dev-1-4a187165-turn-12.partial",
+      "sha256": "d4832bb8ebd2f6d548b140f354f44f786290fc76423c762ebc0166239fa18415",
+      "kind": "latest interrupted partial snapshot",
+      "lastRecordedTurn": 12,
+      "status": "incomplete"
+    }
+  ],
+  "estimatedRecordedCostUsd": 0.13324200000000003,
+  "notes": [
+    "Coverage denominator is the preregistered 3 development cases × 2 repetitions, not only the observed episodes.",
+    "Raw files and original scores are unchanged. Interrupted partials receive no reconstructed grade.",
+    "This is reconstructed evidence, not the original CLI Run JSON. Original declared dataset/harness hashes are preserved from the freeze manifest; no complete panel summary is invented.",
+    "Any in-flight aborted request/cost reservation is handled by the shared capped ledger and may not appear in partial usage/cost totals.",
+    "Measurement defect: remainingAuthorityScopes public semantics permit a defensible broader interpretation including missing external-finalization authority; schema array values were not constrained to current gate scopes. This is a rubric ambiguity, not a definite reasoning failure.",
+    "High panels were operator-interrupted at 2026-10-04T02:56 UTC before any final episode; interruption is not a scored model failure.",
+    "Complete low-panel scores are retained as diagnostic evidence with this candidate-level defect caveat; no source patch or regrading is performed."
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "verifiedAt": "2026-10-05T02:43:53.249Z",
+  "sourceFingerprint": "3591d68f82595fc8d02f4722fbfd6a4b927541d2964db1ac7062533de7787256",
+  "scope": "New dependency-allocation source/native runner/CLI plus report admission/rendering; engineering controls only, no v12 ability calls or registration.",
+  "sourceSha256": {
+    "insurance-bench/report.ts": "bbc0b2c5d41ca13ef4586719c0c10b3c62f27ff43a5ac65c52088bf325cfec36",
+    "insurance-bench/report-admission.ts": "8d89dae375411c1d233af0bc303244656d1101e55c63925100867c97e47d2157",
+    "test/insurance-bench-report.test.ts": "29015d419915666ec99ebfed8119b1c7e190944c4824523e14a3011394d6e01f",
+    "test/insurance-bench-dependency-allocation-cases.test.ts": "810fa6cddb2dbc6ff2e0bd703d3e7f7f90573d86f2596055cd50bd01e655800b",
+    "test/insurance-bench-dependency-allocation-runner.test.ts": "bc452f02e33f795c09a0c2ecc02e7b26128778449b751a22cd7ac1f4120c1ad5",
+    "insurance-bench/dependency-allocation-core.ts": "4859cea3775b0e352570268cc1dd7d45f1aae34860a4fa8ddb0bfc049edffa82",
+    "insurance-bench/dependency-allocation-cases.ts": "9618f143f7abd34b4c7c592c4abf2cdb60fa89286c098eed6cf7c12931e2a4b8",
+    "insurance-bench/allocation-interaction-workflows.ts": "4cce168812d14e7e3324ee9107964321c15aea03a418ed2ec22336d125a8f0b7",
+    "insurance-bench/dependency-allocation-engine.ts": "ee60f18b55aaf7fce29a4637602a6f27b1c41184729bca50169987235e399d98",
+    "insurance-bench/dependency-allocation-runner.ts": "2c69fe3e0cdab2039541f895313cf43070d265da6aa1f7d8ac22fcf4f7ff45c8",
+    "insurance-bench/workflow-types.ts": "13fbf5b455d706c06eec4bedb81c935f5fd7cfdae3b079c28ecf18af5b8d9155",
+    "insurance-bench/json-object-provider.ts": "e3c569e92ecd0e1494009a19c1d327e2ad095d82cab7c87cc9ae501a39e9349a",
+    "insurance-bench/investigation-providers.ts": "e3d93a10653c3bd614bd3e00a983e7bb104509beb32df603cba63aa98c0492ba",
+    "insurance-bench/providers.ts": "532698d5d3850394ff8efc1288bd1975b504a8283503da585b68d55883fb565e",
+    "insurance-bench/candidate-admission.ts": "16ad52e267abe2f42a68d605c11a32ecde4f455a3dc0ce27bf6d1b03db0e509f",
+    "insurance-bench/runner.ts": "944113810c1d4fa7768cc1a8e69f6c797cd1480086c180c174f64b76cd713d64",
+    "insurance-bench/tools.ts": "0d5faa748b29587a9eabb8614f38039b41a4f6dd734be3a59377cfb0aec21124",
+    "insurance-bench/types.ts": "60322fa5e518736d7ada605dd527f673f95b834361c7e031a5533c58a9d50aad",
+    "insurance-bench/score.ts": "712c2966fa750b758fb7f886c49c1986453cb56491d7ec295787da32d6af2949",
+    "insurance-bench/models.json": "6b2a9d673de555106b64ce15ab20df7948594eb707cb8176354e6388e88b87fd",
+    "scripts/insurance-bench-dependency-allocation.ts": "adba9a9974a92b8242bf9fed4c5742047b8b2d9d2171ef304baace8868fbf165"
+  },
+  "checks": [
+    {
+      "command": "npm run check",
+      "result": "pass",
+      "logSha256": "96e5f33881b9e0cb3f82768f162540635c05034f4a1b90bf275f2e5a5fd900c1"
+    },
+    {
+      "command": "node --import tsx --test test/insurance-bench-dependency-allocation-cases.test.ts test/insurance-bench-dependency-allocation-runner.test.ts test/insurance-bench-report.test.ts test/insurance-bench-candidate-admission.test.ts test/insurance-bench-json-object-provider.test.ts",
+      "result": "pass",
+      "tests": 51,
+      "failed": 0,
+      "durationMs": 9559.844583,
+      "logSha256": "60e69c98dc126abeb230b203d7de43a2cb4e496acc49ce968f0a6051c9981f68"
+    }
+  ],
+  "independentEvidence": [
+    {
+      "path": "insurance-bench/results/meta/v12-candidate-independent-audit.json",
+      "sha256": "764f9e0d9a553d8d1825c6690b71526f7d6c5f1a0759047f742045142881ffbe"
+    },
+    {
+      "path": "insurance-bench/results/meta/dependency-allocation-runner-independent-review-v0.12.json",
+      "sha256": "5900e3a27b7e0b51cd54a33045603351170bcf4d0256824f6526ca6c4829720a"
+    },
+    {
+      "path": "insurance-bench/results/meta/v12-independent-opus-review.json",
+      "sha256": "fa69594fcb9c80552acd38e49da51be9aef1c4b246a8ad713753a70bfd746f7e"
+    },
+    {
+      "path": "insurance-bench/results/meta/current-report-runtime-independent-review.json",
+      "sha256": "2ba0fb7b56bf92b2ffb4880b069527e3c0f11742931b796e0723c9c658d63089"
+    }
+  ],
+  "limits": [
+    "No API/provider/ledger/auth/database/live data use by these mock source checks.",
+    "Opus source review has partial one-task hand coverage, no code/hash execution; complete enumeration belongs to separate non-author controls.",
+    "Earlier serialized legacy1212 pass is retained at its original v11 verification receipt, not falsely represented as a newly rerun suite.",
+    "Current report builder has not executed/published; protected newpreview/Chrome acceptance still pending.",
+    "No empirical difficulty/50–60 target or professional validity established by oracle/testing consistency."
+  ]
+}

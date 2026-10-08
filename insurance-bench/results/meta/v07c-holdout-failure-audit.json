@@ -1,0 +1,1776 @@
+{
+  "version": "insurance-bench-coupled-v0.7c",
+  "auditAt": "2026-10-04T04:26:03.379Z",
+  "status": "complete final primary holdout audit; unavailable optional gaps separately recorded",
+  "finalPrimaryComparison": {
+    "conditions": [
+      "gpt-6.1-sol-high",
+      "gpt-6-luna-high"
+    ],
+    "completeScoredCoverage": true,
+    "cleanComparisonAvailable": false,
+    "comparisonConfounds": [
+      {
+        "condition": "gpt-6-luna-high",
+        "taskId": "ibc-deadline-triage-holdout-1-96851694",
+        "reason": "Observed output ceiling includes reasoning; max_output_tokens/length confounds a clean tier comparison.",
+        "turns": [
+          {
+            "turn": 17,
+            "finishReason": "max_output_tokens",
+            "inputTokens": 41273,
+            "totalOutputTokens": 16384,
+            "reasoningTokens": 1742,
+            "visibleOutputEstimate": 14642,
+            "responseChars": 31350
+          }
+        ]
+      }
+    ],
+    "comparisonPolicy": "Complete raw scores and actual outcomes remain descriptive. The final freeze requires untruncated complete panels for clean comparisons; observed truncation means no bootstrap, clean rank, selective rerun or post-hoc regrading.",
+    "expectedEpisodes": 6,
+    "scoredEpisodes": 6,
+    "interpretation": "Two high-effort model tiers on three correlated fresh held-out cases once; no low-effort holdout comparison was dispatched."
+  },
+  "hydrationVerification": {
+    "scope": "Two durable native final-c full holdout Runs independently hydrated into a separate scratch directory; every serialized terminal episode content hash, independent metric, summary and clean-comparison rejection matches original terminal files. No grades changed.",
+    "exclusionControls": {
+      "passed": true,
+      "hydratedEpisodes": 0,
+      "skipped": [
+        {
+          "input": ".tmp/insurance-bench/v07c-holdout-hydration-exclusion-other-generation.json",
+          "reason": "Other benchmark generation"
+        },
+        {
+          "input": ".tmp/insurance-bench/v07c-holdout-hydration-exclusion-development.json",
+          "reason": "Not the exact registered holdout task set; development and mixed runs excluded"
+        },
+        {
+          "input": ".tmp/insurance-bench/v07c-holdout-hydration-exclusion-mixed.json",
+          "reason": "Not the exact registered holdout task set; development and mixed runs excluded"
+        },
+        {
+          "input": ".tmp/insurance-bench/v07c-holdout-hydration-exclusion.partial",
+          "reason": "Not a full Run JSON; partial and episode inputs excluded"
+        }
+      ]
+    },
+    "durableRunVerificationPending": false,
+    "verificationAt": "2026-10-04T04:26:03.072916+00:00",
+    "durableRunHashes": {
+      "insurance-bench/results/2026-10-04T04-05-33-650Z-gpt-6.1-sol-baseline.json": "2df613ff0e121eb1606a11a3fc5cf0135d00f822b3beee2f24bd30dda4c8a4ac",
+      "insurance-bench/results/2026-10-04T04-05-33-650Z-gpt-6-luna-baseline.json": "c888377a7a7e0f295d41320ad0577e818863f7207ee35d49835d7af10afe9731"
+    },
+    "hydratedTerminalEpisodes": 6,
+    "checks": [
+      {
+        "condition": "gpt-6-luna-high",
+        "taskId": "ibc-coverage-review-holdout-1-ee0e896c",
+        "originalEpisodeContentSha256": "7ff5041790785a8bc8da47ea69ee830242b186bcaa4f5bd738f782fdd0621a74",
+        "hydratedEpisodeContentSha256": "7ff5041790785a8bc8da47ea69ee830242b186bcaa4f5bd738f782fdd0621a74",
+        "allIndependentMetricsMatch": true
+      },
+      {
+        "condition": "gpt-6.1-sol-high",
+        "taskId": "ibc-coverage-review-holdout-1-ee0e896c",
+        "originalEpisodeContentSha256": "df1e51672289c05af9d20f037e12c1d252c28183e26927373b601a426817cb54",
+        "hydratedEpisodeContentSha256": "df1e51672289c05af9d20f037e12c1d252c28183e26927373b601a426817cb54",
+        "allIndependentMetricsMatch": true
+      },
+      {
+        "condition": "gpt-6-luna-high",
+        "taskId": "ibc-financial-reconciliation-holdout-1-5f419d60",
+        "originalEpisodeContentSha256": "0acfa4820db2c48d3cc43c15d2771e019315a5291c69d3f8cf8c99e478b25b59",
+        "hydratedEpisodeContentSha256": "0acfa4820db2c48d3cc43c15d2771e019315a5291c69d3f8cf8c99e478b25b59",
+        "allIndependentMetricsMatch": true
+      },
+      {
+        "condition": "gpt-6.1-sol-high",
+        "taskId": "ibc-financial-reconciliation-holdout-1-5f419d60",
+        "originalEpisodeContentSha256": "ba12872b173943bd62e39430e64027b52182b2a54f347264f4bad0d572dab8e2",
+        "hydratedEpisodeContentSha256": "ba12872b173943bd62e39430e64027b52182b2a54f347264f4bad0d572dab8e2",
+        "allIndependentMetricsMatch": true
+      },
+      {
+        "condition": "gpt-6-luna-high",
+        "taskId": "ibc-deadline-triage-holdout-1-96851694",
+        "originalEpisodeContentSha256": "079fca8795238b4f28ac2c47db3cdef5394fdeb496f8790f03076f078c348a69",
+        "hydratedEpisodeContentSha256": "079fca8795238b4f28ac2c47db3cdef5394fdeb496f8790f03076f078c348a69",
+        "allIndependentMetricsMatch": true
+      },
+      {
+        "condition": "gpt-6.1-sol-high",
+        "taskId": "ibc-deadline-triage-holdout-1-96851694",
+        "originalEpisodeContentSha256": "f125e806c7c0faf9d73dafe5ba74688c297f4ef3bab2c519c59a9637b095ed39",
+        "hydratedEpisodeContentSha256": "f125e806c7c0faf9d73dafe5ba74688c297f4ef3bab2c519c59a9637b095ed39",
+        "allIndependentMetricsMatch": true
+      }
+    ],
+    "finalSummaryAndConfoundMatch": true,
+    "developmentAuditSha256Unchanged": "ad4410400f25c97d0d555ff8a425496c4535801e585286e5c4948564c019c7df"
+  },
+  "providerUnavailableGaps": [],
+  "freeze": {
+    "sourceCommit": "1940a34dd270f49bcd29925b065e1d8c4a2323d7",
+    "sourceFingerprint": "d32acb6aef0f3b7e35a29b0fc41a650383fd172cb1cc0de457226efbef87280e",
+    "harnessHash": "d0b6963c2b33416372a975d497a554a52ed667f8f9213150b072ce3659502555",
+    "holdoutHash": "38421edb1f1cd4ee59aac56635a7b16a18e2ef6c1c8f60f637d55866ff15a6c2",
+    "frozenAt": "2026-10-04T04:05:29.370Z",
+    "auditedSourceHashes": {
+      "coupled-cases.ts": "1a0e23591617aa70be7a3c19bb15b576f81c485e9c16b74a451ed49852442d1a",
+      "coupled-engine.ts": "5b64e69626de501cd2b59a8ed28c4342d140811dc2f458d537880f78ea2bb611",
+      "coupled-runner.ts": "76f1bc97885e2726535afa535dd68df79dffc64c62cb5d12f8bd66f903f812b1",
+      "workflows.ts": "15cc2a635d6901cbdae1070f268da67dc566f64054228f93d51d479ba5fc7f3f"
+    }
+  },
+  "declaredTaskIds": [
+    "ibc-coverage-review-holdout-1-ee0e896c",
+    "ibc-financial-reconciliation-holdout-1-5f419d60",
+    "ibc-deadline-triage-holdout-1-96851694"
+  ],
+  "registeredAdditionalDispatches": [],
+  "scope": "Terminal registered final holdout .episode files only, authorized after final freeze2026-10-04T04:05:29.370Z. No partial content, other generations, provider calls, frozen-source changes or gold generator/production solver/grader calls. All numerical/environment and runner source bytes checked against c frozen commit.",
+  "independence": "Current domain/ledger/reserve/demand/eligibility and exhaustive maximum independently recomputed from episode observable raw records. Actual current write and cost/priority/capacity properties independently checked from saved business state/history.",
+  "freezeDisposition": "Final primary source/corpus/prompt/weights frozen before every audited held-out episode. No source change, tuning or post-hoc regrading; finalized development audit remains unchanged.",
+  "reproducibility": {
+    "script": "results/meta/v07c-holdout-failure-audit-script.txt",
+    "scriptSha256": "d0dc5d9fe8936c96240dca954823342cf6165d98fbe280daf9cfb46e15738f9b",
+    "command": "From repository root copy script text unchanged to .tmp/insurance-bench/v07c-holdout-failure-audit.ts then run npx tsx .tmp/insurance-bench/v07c-holdout-failure-audit.ts [episode-directory] [report-output-path]",
+    "hydrationHelper": "results/meta/v07c-hydrate-holdout-script.txt",
+    "durableInputManifest": "This audit hydrationVerification field records durable full native held-out Run paths and hashes once root copies completed Runs; independent scratch hydration checks original serialized episode hashes and metrics.",
+    "durableInputInstructions": "After temporary cleanup copy hydration helper to .tmp/insurance-bench/v07c-hydrate-holdout.ts; run npx tsx helper.ts scratch-directory committed-holdout-run.json ...; then run the audit with that scratch-directory. The helper validates native Run metadata/generation/frozen harness/exact registered holdout IDs before parsing payloads and reconstructs CLI serialization without regrading. Input paths must explicitly name committed full c holdout Run JSONs; partials, other generations and development/mixed task sets are excluded.",
+    "inputs": "freeze-v0.7c-final.json plus terminal registered holdout .episode files in .tmp/insurance-bench/v07c-runs; source bytes checked against frozen git commit"
+  },
+  "providerAccessContext": {
+    "source": "Coordinator message reporting independent read-only AWS STS diagnosis",
+    "bedrockDiagnosis": "Existing AWS SSO token expired; the attempted existing-profile refresh was not completed while awaiting operator browser sign-in. No raw auth log or URL was read by this audit. Provider-error attempts have no model output and no ability score.",
+    "independentlyVerifiedByThisAudit": false
+  },
+  "gradePolicy": "All-pass counts exactly reflect raw episode.score.allPass; finished flags and terminal statuses are separate observations. All recorded grades remain unchanged. Suspected semantic or representation false failures are flagged without regrading. Weighted score and actual optimal current business outcome are separate measurements.",
+  "interpretationLimits": [
+    "Three correlated held-out cases, one attempt per high-effort profile; descriptive diagnostic data, not an independently sampled production distribution or expert-validated insurance benchmark.",
+    "Facts, evidence correctness gates and the all-facts-correct current-draft predicate are correlated; weighted losses are not independent domain, provenance and coordination failures. Source IDs attest provenance rather than natural-language proof quality.",
+    "Source certificate gaps identify missing relevant operands and are not treated as wrong mathematics; suspected stricter-than-operand grading is flagged without regrading.",
+    "No clean tier comparison when any final panel has observed reasoning-inclusive output truncation, provider/budget failure or identity mismatch; no selective rerun or bootstrap. These held-out results do not authorize repairs to this frozen generation.",
+    "Do not force a50–60difficulty target or tune after frozen paid results."
+  ],
+  "contractFindings": [],
+  "summary": [
+    {
+      "condition": "gpt-6.1-sol-high",
+      "expectedEpisodes": 3,
+      "terminalEpisodes": 3,
+      "scoredEpisodes": 3,
+      "completeScoredCoverage": true,
+      "reportedFactualOutputs": 57,
+      "independentlyCorrectFields": 57,
+      "declaredFactualOutputDenominator": 57,
+      "recordedComponentMeans": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "recordedMean": 100,
+      "all19FactsCorrect": 3,
+      "currentOptimalActualBusinessOutcomes": 3,
+      "feasibleSelections": 3,
+      "optimalSelections": 3,
+      "recordedActualWrites": 3,
+      "allPassRecorded": 3,
+      "finishedEpisodes": 3,
+      "terminalStatusCounts": {
+        "completed": 3
+      },
+      "providerFailures": 0,
+      "budgetStopped": 0,
+      "turnLimitIncomplete": 0,
+      "episodesWithProtocolError": 0,
+      "truncatedEpisodes": 0,
+      "episodesWithExternalIntent": 0,
+      "candidateFalseFailureEpisodes": 0
+    },
+    {
+      "condition": "gpt-6-luna-high",
+      "expectedEpisodes": 3,
+      "terminalEpisodes": 3,
+      "scoredEpisodes": 3,
+      "completeScoredCoverage": true,
+      "reportedFactualOutputs": 57,
+      "independentlyCorrectFields": 54,
+      "declaredFactualOutputDenominator": 57,
+      "recordedComponentMeans": {
+        "facts": 94.74,
+        "evidence": 94.74,
+        "workflow": 85.71,
+        "boundaries": 100
+      },
+      "recordedMean": 93.01,
+      "all19FactsCorrect": 0,
+      "currentOptimalActualBusinessOutcomes": 3,
+      "feasibleSelections": 3,
+      "optimalSelections": 3,
+      "recordedActualWrites": 3,
+      "allPassRecorded": 0,
+      "finishedEpisodes": 3,
+      "terminalStatusCounts": {
+        "completed": 3
+      },
+      "providerFailures": 0,
+      "budgetStopped": 0,
+      "turnLimitIncomplete": 0,
+      "episodesWithProtocolError": 3,
+      "truncatedEpisodes": 1,
+      "episodesWithExternalIntent": 0,
+      "candidateFalseFailureEpisodes": 0
+    }
+  ],
+  "episodes": [
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791086864904-gpt-6.1-sol-high-baseline-ibc-coverage-review-holdout-1-ee0e896c.episode",
+      "episodeSha256": "df1e51672289c05af9d20f037e12c1d252c28183e26927373b601a426817cb54",
+      "condition": "gpt-6.1-sol-high",
+      "configuredModel": "gpt-6.1-sol",
+      "traceModels": [
+        "gpt-6.1-sol"
+      ],
+      "configuredEffort": "high",
+      "traceEfforts": [
+        "high"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-coverage-review-holdout-1-ee0e896c",
+      "family": "coverage-review",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 100,
+      "recordedAllPass": true,
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 9,
+      "elapsedMs": 131252,
+      "estimatedCostUsd": 0.32934599999999997,
+      "productSaved": true,
+      "wrongFields": [],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 19,
+      "substantiveWrongFieldCount": 0,
+      "eligibilityReportingContext": {
+        "publicRule": "Rule7 enumerates coverage/packet/deadline/allocation gates before applying available capacity to selected subsets.",
+        "omittedExpectedEligiblePackages": [],
+        "interpretation": "Candidate eligibility and feasible selection are distinct under the declared rule sequence. An eligibility-list mismatch does not establish an optimizer failure if the actual recorded plan is independently optimal."
+      },
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 6200,
+        "personAvailableBCents": 12200,
+        "personAvailableCCents": 14000,
+        "occurrenceAvailableCents": 15400,
+        "pdAvailableCents": 5900,
+        "netPaidACents": 5000,
+        "netPaidBCents": 6100,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [
+          "ibc-coverage-review-holdout-1-ee0e896c-Q1",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q2",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q3",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q4",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q5",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q6",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q10",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q11"
+        ],
+        "optimalPriorityValue": 33,
+        "deadlineA": "2026-06-24T18:00:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T15:59:00Z",
+        "lateDemandClaimantIds": [
+          "C"
+        ]
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 14400,
+        "actualPriorityValue": 33,
+        "assertedOptimalPriorityValue": 33,
+        "verifiedMaximumFromCurrentRaw": 33,
+        "personAllocatedCents": {
+          "A": 4400,
+          "B": 10000,
+          "C": 0
+        },
+        "personAvailableCents": {
+          "A": 6200,
+          "B": 12200,
+          "C": 14000
+        },
+        "sharedAvailableCents": 15400,
+        "violations": [],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-coverage-review-holdout-1-ee0e896c-Q1",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q4",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q5"
+        ],
+        "optimalTiedAlternatives": 2
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 71,
+      "originalProductSourceReferences": 1,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 71,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": true,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [],
+      "failedCriteria": [],
+      "criterionDependencyAnalysis": {
+        "factFailures": [],
+        "evidenceGatedByIncorrectFacts": [],
+        "evidenceForCorrectFacts": [],
+        "currentDraft": {
+          "recordedCriterionPassed": true,
+          "structuralChecks": {
+            "present": true,
+            "currentMaterial": true,
+            "versionAtLeastTwo": true,
+            "productPresent": true,
+            "memoAtLeast40": true
+          },
+          "factualDifferences": [],
+          "failedOnlyOnFactualAccuracyGate": false,
+          "interpretation": "Structural and factual draft predicates separately recorded."
+        },
+        "approximateWeightedComponentLossesFromRecordedComponents": {
+          "facts": 0,
+          "evidence": 0,
+          "workflow": 0,
+          "boundaries": 0
+        },
+        "recordedTotalScoreLoss": 0,
+        "physicalCurrentReviewMatchesHistory": true,
+        "gradePreserved": true
+      },
+      "protocolErrorTurns": [],
+      "toolErrors": [],
+      "coordinationErrors": [],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 9
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Complete current facts and objective-optimal actual reviewed business state",
+      "notes": []
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791086963576-gpt-6-luna-high-baseline-ibc-coverage-review-holdout-1-ee0e896c.episode",
+      "episodeSha256": "7ff5041790785a8bc8da47ea69ee830242b186bcaa4f5bd738f782fdd0621a74",
+      "condition": "gpt-6-luna-high",
+      "configuredModel": "gpt-6-luna",
+      "traceModels": [
+        "gpt-6-luna"
+      ],
+      "configuredEffort": "high",
+      "traceEfforts": [
+        "high"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-coverage-review-holdout-1-ee0e896c",
+      "family": "coverage-review",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 93.01,
+      "recordedAllPass": false,
+      "components": {
+        "facts": 94.74,
+        "evidence": 94.74,
+        "workflow": 85.71,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 15,
+      "elapsedMs": 229924,
+      "estimatedCostUsd": 0.043993199999999996,
+      "productSaved": true,
+      "wrongFields": [
+        {
+          "key": "eligiblePackageIds",
+          "actual": [
+            "ibc-coverage-review-holdout-1-ee0e896c-Q1",
+            "ibc-coverage-review-holdout-1-ee0e896c-Q3",
+            "ibc-coverage-review-holdout-1-ee0e896c-Q4",
+            "ibc-coverage-review-holdout-1-ee0e896c-Q5",
+            "ibc-coverage-review-holdout-1-ee0e896c-Q6",
+            "ibc-coverage-review-holdout-1-ee0e896c-Q10",
+            "ibc-coverage-review-holdout-1-ee0e896c-Q11"
+          ],
+          "expectedFromCurrentRaw": [
+            "ibc-coverage-review-holdout-1-ee0e896c-Q1",
+            "ibc-coverage-review-holdout-1-ee0e896c-Q2",
+            "ibc-coverage-review-holdout-1-ee0e896c-Q3",
+            "ibc-coverage-review-holdout-1-ee0e896c-Q4",
+            "ibc-coverage-review-holdout-1-ee0e896c-Q5",
+            "ibc-coverage-review-holdout-1-ee0e896c-Q6",
+            "ibc-coverage-review-holdout-1-ee0e896c-Q10",
+            "ibc-coverage-review-holdout-1-ee0e896c-Q11"
+          ],
+          "diagnosis": "Candidate eligibility-list reporting differs from the rule7 pre-capacity gate list; actual feasible/optimal outcome is assessed separately."
+        }
+      ],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 18,
+      "substantiveWrongFieldCount": 1,
+      "eligibilityReportingContext": {
+        "publicRule": "Rule7 enumerates coverage/packet/deadline/allocation gates before applying available capacity to selected subsets.",
+        "omittedExpectedEligiblePackages": [
+          {
+            "packageId": "ibc-coverage-review-holdout-1-ee0e896c-Q2",
+            "costCents": 6700,
+            "allocations": {
+              "A": 6700,
+              "B": 0,
+              "C": 0
+            },
+            "individuallyFitsCapacity": false
+          }
+        ],
+        "interpretation": "Candidate eligibility and feasible selection are distinct under the declared rule sequence. An eligibility-list mismatch does not establish an optimizer failure if the actual recorded plan is independently optimal."
+      },
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 6200,
+        "personAvailableBCents": 12200,
+        "personAvailableCCents": 14000,
+        "occurrenceAvailableCents": 15400,
+        "pdAvailableCents": 5900,
+        "netPaidACents": 5000,
+        "netPaidBCents": 6100,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [
+          "ibc-coverage-review-holdout-1-ee0e896c-Q1",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q2",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q3",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q4",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q5",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q6",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q10",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q11"
+        ],
+        "optimalPriorityValue": 33,
+        "deadlineA": "2026-06-24T18:00:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T15:59:00Z",
+        "lateDemandClaimantIds": [
+          "C"
+        ]
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 14400,
+        "actualPriorityValue": 33,
+        "assertedOptimalPriorityValue": 33,
+        "verifiedMaximumFromCurrentRaw": 33,
+        "personAllocatedCents": {
+          "A": 4400,
+          "B": 10000,
+          "C": 0
+        },
+        "personAvailableCents": {
+          "A": 6200,
+          "B": 12200,
+          "C": 14000
+        },
+        "sharedAvailableCents": 15400,
+        "violations": [],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-coverage-review-holdout-1-ee0e896c-Q1",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q4",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q5"
+        ],
+        "optimalTiedAlternatives": 2
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 71,
+      "originalProductSourceReferences": 71,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 71,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": false,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [
+        {
+          "criterion": "evidence:eligiblePackageIds",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        }
+      ],
+      "failedCriteria": [
+        {
+          "id": "fact:eligiblePackageIds",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:eligiblePackageIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "workflow:current-draft",
+          "component": "workflow",
+          "detail": "Materially amended packet reconciled into a current versioned draft"
+        }
+      ],
+      "criterionDependencyAnalysis": {
+        "factFailures": [
+          "fact:eligiblePackageIds"
+        ],
+        "evidenceGatedByIncorrectFacts": [
+          "evidence:eligiblePackageIds"
+        ],
+        "evidenceForCorrectFacts": [],
+        "currentDraft": {
+          "recordedCriterionPassed": false,
+          "structuralChecks": {
+            "present": true,
+            "currentMaterial": true,
+            "versionAtLeastTwo": true,
+            "productPresent": true,
+            "memoAtLeast40": true
+          },
+          "factualDifferences": [
+            {
+              "key": "eligiblePackageIds",
+              "actual": [
+                "ibc-coverage-review-holdout-1-ee0e896c-Q1",
+                "ibc-coverage-review-holdout-1-ee0e896c-Q3",
+                "ibc-coverage-review-holdout-1-ee0e896c-Q4",
+                "ibc-coverage-review-holdout-1-ee0e896c-Q5",
+                "ibc-coverage-review-holdout-1-ee0e896c-Q6",
+                "ibc-coverage-review-holdout-1-ee0e896c-Q10",
+                "ibc-coverage-review-holdout-1-ee0e896c-Q11"
+              ],
+              "expectedFromCurrentRaw": [
+                "ibc-coverage-review-holdout-1-ee0e896c-Q1",
+                "ibc-coverage-review-holdout-1-ee0e896c-Q2",
+                "ibc-coverage-review-holdout-1-ee0e896c-Q3",
+                "ibc-coverage-review-holdout-1-ee0e896c-Q4",
+                "ibc-coverage-review-holdout-1-ee0e896c-Q5",
+                "ibc-coverage-review-holdout-1-ee0e896c-Q6",
+                "ibc-coverage-review-holdout-1-ee0e896c-Q10",
+                "ibc-coverage-review-holdout-1-ee0e896c-Q11"
+              ]
+            }
+          ],
+          "failedOnlyOnFactualAccuracyGate": true,
+          "interpretation": "The current-draft criterion fails because final draft facts are inaccurate despite successful current version/material and memo structure; this is a dependent factual-accuracy loss, not an independent stale-draft or coordination failure."
+        },
+        "approximateWeightedComponentLossesFromRecordedComponents": {
+          "facts": 2.1,
+          "evidence": 1.32,
+          "workflow": 3.57,
+          "boundaries": 0
+        },
+        "recordedTotalScoreLoss": 6.99,
+        "physicalCurrentReviewMatchesHistory": true,
+        "gradePreserved": true
+      },
+      "protocolErrorTurns": [
+        8
+      ],
+      "toolErrors": [],
+      "coordinationErrors": [],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 15
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Candidate eligibility-list reporting loss; assess the independently recorded actual plan separately",
+      "notes": [
+        "Malformed JSON action batches are real protocol failures; recovery and final actual state are reported separately."
+      ]
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791087035126-gpt-6.1-sol-high-baseline-ibc-financial-reconciliation-holdout-1-5f419d60.episode",
+      "episodeSha256": "ba12872b173943bd62e39430e64027b52182b2a54f347264f4bad0d572dab8e2",
+      "condition": "gpt-6.1-sol-high",
+      "configuredModel": "gpt-6.1-sol",
+      "traceModels": [
+        "gpt-6.1-sol"
+      ],
+      "configuredEffort": "high",
+      "traceEfforts": [
+        "high"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-financial-reconciliation-holdout-1-5f419d60",
+      "family": "financial-reconciliation",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 100,
+      "recordedAllPass": true,
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 12,
+      "elapsedMs": 170219,
+      "estimatedCostUsd": 0.48138200000000003,
+      "productSaved": true,
+      "wrongFields": [],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 19,
+      "substantiveWrongFieldCount": 0,
+      "eligibilityReportingContext": {
+        "publicRule": "Rule7 enumerates coverage/packet/deadline/allocation gates before applying available capacity to selected subsets.",
+        "omittedExpectedEligiblePackages": [],
+        "interpretation": "Candidate eligibility and feasible selection are distinct under the declared rule sequence. An eligibility-list mismatch does not establish an optimizer failure if the actual recorded plan is independently optimal."
+      },
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 6200,
+        "personAvailableBCents": 12100,
+        "personAvailableCCents": 13900,
+        "occurrenceAvailableCents": 15400,
+        "pdAvailableCents": 5900,
+        "netPaidACents": 4900,
+        "netPaidBCents": 6100,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q1",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q2",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q3",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q4",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q5",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q6",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q10",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q11"
+        ],
+        "optimalPriorityValue": 30,
+        "deadlineA": "2026-06-24T18:00:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T15:59:00Z",
+        "lateDemandClaimantIds": [
+          "C"
+        ]
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 15100,
+        "actualPriorityValue": 30,
+        "assertedOptimalPriorityValue": 30,
+        "verifiedMaximumFromCurrentRaw": 30,
+        "personAllocatedCents": {
+          "A": 4000,
+          "B": 11100,
+          "C": 0
+        },
+        "personAvailableCents": {
+          "A": 6200,
+          "B": 12100,
+          "C": 13900
+        },
+        "sharedAvailableCents": 15400,
+        "violations": [],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q5",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q6",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q10",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q11"
+        ],
+        "optimalTiedAlternatives": 1
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 71,
+      "originalProductSourceReferences": 1,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 71,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": true,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [],
+      "failedCriteria": [],
+      "criterionDependencyAnalysis": {
+        "factFailures": [],
+        "evidenceGatedByIncorrectFacts": [],
+        "evidenceForCorrectFacts": [],
+        "currentDraft": {
+          "recordedCriterionPassed": true,
+          "structuralChecks": {
+            "present": true,
+            "currentMaterial": true,
+            "versionAtLeastTwo": true,
+            "productPresent": true,
+            "memoAtLeast40": true
+          },
+          "factualDifferences": [],
+          "failedOnlyOnFactualAccuracyGate": false,
+          "interpretation": "Structural and factual draft predicates separately recorded."
+        },
+        "approximateWeightedComponentLossesFromRecordedComponents": {
+          "facts": 0,
+          "evidence": 0,
+          "workflow": 0,
+          "boundaries": 0
+        },
+        "recordedTotalScoreLoss": 0,
+        "physicalCurrentReviewMatchesHistory": true,
+        "gradePreserved": true
+      },
+      "protocolErrorTurns": [],
+      "toolErrors": [],
+      "coordinationErrors": [],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 12
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Complete current facts and objective-optimal actual reviewed business state",
+      "notes": []
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791087188781-gpt-6.1-sol-high-baseline-ibc-deadline-triage-holdout-1-96851694.episode",
+      "episodeSha256": "f125e806c7c0faf9d73dafe5ba74688c297f4ef3bab2c519c59a9637b095ed39",
+      "condition": "gpt-6.1-sol-high",
+      "configuredModel": "gpt-6.1-sol",
+      "traceModels": [
+        "gpt-6.1-sol"
+      ],
+      "configuredEffort": "high",
+      "traceEfforts": [
+        "high"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-deadline-triage-holdout-1-96851694",
+      "family": "deadline-triage",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 100,
+      "recordedAllPass": true,
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 10,
+      "elapsedMs": 153654,
+      "estimatedCostUsd": 0.377938,
+      "productSaved": true,
+      "wrongFields": [],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 19,
+      "substantiveWrongFieldCount": 0,
+      "eligibilityReportingContext": {
+        "publicRule": "Rule7 enumerates coverage/packet/deadline/allocation gates before applying available capacity to selected subsets.",
+        "omittedExpectedEligiblePackages": [],
+        "interpretation": "Candidate eligibility and feasible selection are distinct under the declared rule sequence. An eligibility-list mismatch does not establish an optimizer failure if the actual recorded plan is independently optimal."
+      },
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 6200,
+        "personAvailableBCents": 11800,
+        "personAvailableCCents": 13600,
+        "occurrenceAvailableCents": 15400,
+        "pdAvailableCents": 5900,
+        "netPaidACents": 4600,
+        "netPaidBCents": 6100,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [
+          "ibc-deadline-triage-holdout-1-96851694-Q1",
+          "ibc-deadline-triage-holdout-1-96851694-Q2",
+          "ibc-deadline-triage-holdout-1-96851694-Q3",
+          "ibc-deadline-triage-holdout-1-96851694-Q4",
+          "ibc-deadline-triage-holdout-1-96851694-Q5",
+          "ibc-deadline-triage-holdout-1-96851694-Q6",
+          "ibc-deadline-triage-holdout-1-96851694-Q10",
+          "ibc-deadline-triage-holdout-1-96851694-Q11"
+        ],
+        "optimalPriorityValue": 33,
+        "deadlineA": "2026-06-24T18:00:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T15:59:00Z",
+        "lateDemandClaimantIds": [
+          "C"
+        ]
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 13800,
+        "actualPriorityValue": 33,
+        "assertedOptimalPriorityValue": 33,
+        "verifiedMaximumFromCurrentRaw": 33,
+        "personAllocatedCents": {
+          "A": 5100,
+          "B": 8700,
+          "C": 0
+        },
+        "personAvailableCents": {
+          "A": 6200,
+          "B": 11800,
+          "C": 13600
+        },
+        "sharedAvailableCents": 15400,
+        "violations": [],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-deadline-triage-holdout-1-96851694-Q3",
+          "ibc-deadline-triage-holdout-1-96851694-Q4",
+          "ibc-deadline-triage-holdout-1-96851694-Q6",
+          "ibc-deadline-triage-holdout-1-96851694-Q11"
+        ],
+        "optimalTiedAlternatives": 2
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 71,
+      "originalProductSourceReferences": 1,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 71,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": true,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [],
+      "failedCriteria": [],
+      "criterionDependencyAnalysis": {
+        "factFailures": [],
+        "evidenceGatedByIncorrectFacts": [],
+        "evidenceForCorrectFacts": [],
+        "currentDraft": {
+          "recordedCriterionPassed": true,
+          "structuralChecks": {
+            "present": true,
+            "currentMaterial": true,
+            "versionAtLeastTwo": true,
+            "productPresent": true,
+            "memoAtLeast40": true
+          },
+          "factualDifferences": [],
+          "failedOnlyOnFactualAccuracyGate": false,
+          "interpretation": "Structural and factual draft predicates separately recorded."
+        },
+        "approximateWeightedComponentLossesFromRecordedComponents": {
+          "facts": 0,
+          "evidence": 0,
+          "workflow": 0,
+          "boundaries": 0
+        },
+        "recordedTotalScoreLoss": 0,
+        "physicalCurrentReviewMatchesHistory": true,
+        "gradePreserved": true
+      },
+      "protocolErrorTurns": [],
+      "toolErrors": [],
+      "coordinationErrors": [],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 10
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Complete current facts and objective-optimal actual reviewed business state",
+      "notes": []
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791087346646-gpt-6-luna-high-baseline-ibc-financial-reconciliation-holdout-1-5f419d60.episode",
+      "episodeSha256": "0acfa4820db2c48d3cc43c15d2771e019315a5291c69d3f8cf8c99e478b25b59",
+      "condition": "gpt-6-luna-high",
+      "configuredModel": "gpt-6-luna",
+      "traceModels": [
+        "gpt-6-luna"
+      ],
+      "configuredEffort": "high",
+      "traceEfforts": [
+        "high"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-financial-reconciliation-holdout-1-5f419d60",
+      "family": "financial-reconciliation",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 93.01,
+      "recordedAllPass": false,
+      "components": {
+        "facts": 94.74,
+        "evidence": 94.74,
+        "workflow": 85.71,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 17,
+      "elapsedMs": 383067,
+      "estimatedCostUsd": 0.06769130000000001,
+      "productSaved": true,
+      "wrongFields": [
+        {
+          "key": "eligiblePackageIds",
+          "actual": [
+            "ibc-financial-reconciliation-holdout-1-5f419d60-Q1",
+            "ibc-financial-reconciliation-holdout-1-5f419d60-Q3",
+            "ibc-financial-reconciliation-holdout-1-5f419d60-Q4",
+            "ibc-financial-reconciliation-holdout-1-5f419d60-Q5",
+            "ibc-financial-reconciliation-holdout-1-5f419d60-Q6",
+            "ibc-financial-reconciliation-holdout-1-5f419d60-Q10",
+            "ibc-financial-reconciliation-holdout-1-5f419d60-Q11"
+          ],
+          "expectedFromCurrentRaw": [
+            "ibc-financial-reconciliation-holdout-1-5f419d60-Q1",
+            "ibc-financial-reconciliation-holdout-1-5f419d60-Q2",
+            "ibc-financial-reconciliation-holdout-1-5f419d60-Q3",
+            "ibc-financial-reconciliation-holdout-1-5f419d60-Q4",
+            "ibc-financial-reconciliation-holdout-1-5f419d60-Q5",
+            "ibc-financial-reconciliation-holdout-1-5f419d60-Q6",
+            "ibc-financial-reconciliation-holdout-1-5f419d60-Q10",
+            "ibc-financial-reconciliation-holdout-1-5f419d60-Q11"
+          ],
+          "diagnosis": "Candidate eligibility-list reporting differs from the rule7 pre-capacity gate list; actual feasible/optimal outcome is assessed separately."
+        }
+      ],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 18,
+      "substantiveWrongFieldCount": 1,
+      "eligibilityReportingContext": {
+        "publicRule": "Rule7 enumerates coverage/packet/deadline/allocation gates before applying available capacity to selected subsets.",
+        "omittedExpectedEligiblePackages": [
+          {
+            "packageId": "ibc-financial-reconciliation-holdout-1-5f419d60-Q2",
+            "costCents": 6700,
+            "allocations": {
+              "A": 6700,
+              "B": 0,
+              "C": 0
+            },
+            "individuallyFitsCapacity": false
+          }
+        ],
+        "interpretation": "Candidate eligibility and feasible selection are distinct under the declared rule sequence. An eligibility-list mismatch does not establish an optimizer failure if the actual recorded plan is independently optimal."
+      },
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 6200,
+        "personAvailableBCents": 12100,
+        "personAvailableCCents": 13900,
+        "occurrenceAvailableCents": 15400,
+        "pdAvailableCents": 5900,
+        "netPaidACents": 4900,
+        "netPaidBCents": 6100,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q1",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q2",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q3",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q4",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q5",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q6",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q10",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q11"
+        ],
+        "optimalPriorityValue": 30,
+        "deadlineA": "2026-06-24T18:00:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T15:59:00Z",
+        "lateDemandClaimantIds": [
+          "C"
+        ]
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 15100,
+        "actualPriorityValue": 30,
+        "assertedOptimalPriorityValue": 30,
+        "verifiedMaximumFromCurrentRaw": 30,
+        "personAllocatedCents": {
+          "A": 4000,
+          "B": 11100,
+          "C": 0
+        },
+        "personAvailableCents": {
+          "A": 6200,
+          "B": 12100,
+          "C": 13900
+        },
+        "sharedAvailableCents": 15400,
+        "violations": [],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q11",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q5",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q6",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q10"
+        ],
+        "optimalTiedAlternatives": 1
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 71,
+      "originalProductSourceReferences": 49,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 71,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": false,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [
+        {
+          "criterion": "evidence:eligiblePackageIds",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        }
+      ],
+      "failedCriteria": [
+        {
+          "id": "fact:eligiblePackageIds",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:eligiblePackageIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "workflow:current-draft",
+          "component": "workflow",
+          "detail": "Materially amended packet reconciled into a current versioned draft"
+        }
+      ],
+      "criterionDependencyAnalysis": {
+        "factFailures": [
+          "fact:eligiblePackageIds"
+        ],
+        "evidenceGatedByIncorrectFacts": [
+          "evidence:eligiblePackageIds"
+        ],
+        "evidenceForCorrectFacts": [],
+        "currentDraft": {
+          "recordedCriterionPassed": false,
+          "structuralChecks": {
+            "present": true,
+            "currentMaterial": true,
+            "versionAtLeastTwo": true,
+            "productPresent": true,
+            "memoAtLeast40": true
+          },
+          "factualDifferences": [
+            {
+              "key": "eligiblePackageIds",
+              "actual": [
+                "ibc-financial-reconciliation-holdout-1-5f419d60-Q1",
+                "ibc-financial-reconciliation-holdout-1-5f419d60-Q3",
+                "ibc-financial-reconciliation-holdout-1-5f419d60-Q4",
+                "ibc-financial-reconciliation-holdout-1-5f419d60-Q5",
+                "ibc-financial-reconciliation-holdout-1-5f419d60-Q6",
+                "ibc-financial-reconciliation-holdout-1-5f419d60-Q10",
+                "ibc-financial-reconciliation-holdout-1-5f419d60-Q11"
+              ],
+              "expectedFromCurrentRaw": [
+                "ibc-financial-reconciliation-holdout-1-5f419d60-Q1",
+                "ibc-financial-reconciliation-holdout-1-5f419d60-Q2",
+                "ibc-financial-reconciliation-holdout-1-5f419d60-Q3",
+                "ibc-financial-reconciliation-holdout-1-5f419d60-Q4",
+                "ibc-financial-reconciliation-holdout-1-5f419d60-Q5",
+                "ibc-financial-reconciliation-holdout-1-5f419d60-Q6",
+                "ibc-financial-reconciliation-holdout-1-5f419d60-Q10",
+                "ibc-financial-reconciliation-holdout-1-5f419d60-Q11"
+              ]
+            }
+          ],
+          "failedOnlyOnFactualAccuracyGate": true,
+          "interpretation": "The current-draft criterion fails because final draft facts are inaccurate despite successful current version/material and memo structure; this is a dependent factual-accuracy loss, not an independent stale-draft or coordination failure."
+        },
+        "approximateWeightedComponentLossesFromRecordedComponents": {
+          "facts": 2.1,
+          "evidence": 1.32,
+          "workflow": 3.57,
+          "boundaries": 0
+        },
+        "recordedTotalScoreLoss": 6.99,
+        "physicalCurrentReviewMatchesHistory": true,
+        "gradePreserved": true
+      },
+      "protocolErrorTurns": [
+        7,
+        9,
+        10,
+        13
+      ],
+      "toolErrors": [],
+      "coordinationErrors": [],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 17
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Candidate eligibility-list reporting loss; assess the independently recorded actual plan separately",
+      "notes": [
+        "Malformed JSON action batches are real protocol failures; recovery and final actual state are reported separately."
+      ]
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791087871831-gpt-6-luna-high-baseline-ibc-deadline-triage-holdout-1-96851694.episode",
+      "episodeSha256": "079fca8795238b4f28ac2c47db3cdef5394fdeb496f8790f03076f078c348a69",
+      "condition": "gpt-6-luna-high",
+      "configuredModel": "gpt-6-luna",
+      "traceModels": [
+        "gpt-6-luna"
+      ],
+      "configuredEffort": "high",
+      "traceEfforts": [
+        "high"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-deadline-triage-holdout-1-96851694",
+      "family": "deadline-triage",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 93.01,
+      "recordedAllPass": false,
+      "components": {
+        "facts": 94.74,
+        "evidence": 94.74,
+        "workflow": 85.71,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 20,
+      "elapsedMs": 525182,
+      "estimatedCostUsd": 0.09040200000000001,
+      "productSaved": true,
+      "wrongFields": [
+        {
+          "key": "eligiblePackageIds",
+          "actual": [
+            "ibc-deadline-triage-holdout-1-96851694-Q1",
+            "ibc-deadline-triage-holdout-1-96851694-Q3",
+            "ibc-deadline-triage-holdout-1-96851694-Q4",
+            "ibc-deadline-triage-holdout-1-96851694-Q5",
+            "ibc-deadline-triage-holdout-1-96851694-Q6",
+            "ibc-deadline-triage-holdout-1-96851694-Q10",
+            "ibc-deadline-triage-holdout-1-96851694-Q11"
+          ],
+          "expectedFromCurrentRaw": [
+            "ibc-deadline-triage-holdout-1-96851694-Q1",
+            "ibc-deadline-triage-holdout-1-96851694-Q2",
+            "ibc-deadline-triage-holdout-1-96851694-Q3",
+            "ibc-deadline-triage-holdout-1-96851694-Q4",
+            "ibc-deadline-triage-holdout-1-96851694-Q5",
+            "ibc-deadline-triage-holdout-1-96851694-Q6",
+            "ibc-deadline-triage-holdout-1-96851694-Q10",
+            "ibc-deadline-triage-holdout-1-96851694-Q11"
+          ],
+          "diagnosis": "Candidate eligibility-list reporting differs from the rule7 pre-capacity gate list; actual feasible/optimal outcome is assessed separately."
+        }
+      ],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 18,
+      "substantiveWrongFieldCount": 1,
+      "eligibilityReportingContext": {
+        "publicRule": "Rule7 enumerates coverage/packet/deadline/allocation gates before applying available capacity to selected subsets.",
+        "omittedExpectedEligiblePackages": [
+          {
+            "packageId": "ibc-deadline-triage-holdout-1-96851694-Q2",
+            "costCents": 6700,
+            "allocations": {
+              "A": 6700,
+              "B": 0,
+              "C": 0
+            },
+            "individuallyFitsCapacity": false
+          }
+        ],
+        "interpretation": "Candidate eligibility and feasible selection are distinct under the declared rule sequence. An eligibility-list mismatch does not establish an optimizer failure if the actual recorded plan is independently optimal."
+      },
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 6200,
+        "personAvailableBCents": 11800,
+        "personAvailableCCents": 13600,
+        "occurrenceAvailableCents": 15400,
+        "pdAvailableCents": 5900,
+        "netPaidACents": 4600,
+        "netPaidBCents": 6100,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [
+          "ibc-deadline-triage-holdout-1-96851694-Q1",
+          "ibc-deadline-triage-holdout-1-96851694-Q2",
+          "ibc-deadline-triage-holdout-1-96851694-Q3",
+          "ibc-deadline-triage-holdout-1-96851694-Q4",
+          "ibc-deadline-triage-holdout-1-96851694-Q5",
+          "ibc-deadline-triage-holdout-1-96851694-Q6",
+          "ibc-deadline-triage-holdout-1-96851694-Q10",
+          "ibc-deadline-triage-holdout-1-96851694-Q11"
+        ],
+        "optimalPriorityValue": 33,
+        "deadlineA": "2026-06-24T18:00:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T15:59:00Z",
+        "lateDemandClaimantIds": [
+          "C"
+        ]
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 13800,
+        "actualPriorityValue": 33,
+        "assertedOptimalPriorityValue": 33,
+        "verifiedMaximumFromCurrentRaw": 33,
+        "personAllocatedCents": {
+          "A": 5100,
+          "B": 8700,
+          "C": 0
+        },
+        "personAvailableCents": {
+          "A": 6200,
+          "B": 11800,
+          "C": 13600
+        },
+        "sharedAvailableCents": 15400,
+        "violations": [],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-deadline-triage-holdout-1-96851694-Q3",
+          "ibc-deadline-triage-holdout-1-96851694-Q4",
+          "ibc-deadline-triage-holdout-1-96851694-Q6",
+          "ibc-deadline-triage-holdout-1-96851694-Q11"
+        ],
+        "optimalTiedAlternatives": 2
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 71,
+      "originalProductSourceReferences": 70,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 69,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": false,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [
+        {
+          "criterion": "evidence:eligiblePackageIds",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        }
+      ],
+      "failedCriteria": [
+        {
+          "id": "fact:eligiblePackageIds",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:eligiblePackageIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "workflow:current-draft",
+          "component": "workflow",
+          "detail": "Materially amended packet reconciled into a current versioned draft"
+        }
+      ],
+      "criterionDependencyAnalysis": {
+        "factFailures": [
+          "fact:eligiblePackageIds"
+        ],
+        "evidenceGatedByIncorrectFacts": [
+          "evidence:eligiblePackageIds"
+        ],
+        "evidenceForCorrectFacts": [],
+        "currentDraft": {
+          "recordedCriterionPassed": false,
+          "structuralChecks": {
+            "present": true,
+            "currentMaterial": true,
+            "versionAtLeastTwo": true,
+            "productPresent": true,
+            "memoAtLeast40": true
+          },
+          "factualDifferences": [
+            {
+              "key": "eligiblePackageIds",
+              "actual": [
+                "ibc-deadline-triage-holdout-1-96851694-Q1",
+                "ibc-deadline-triage-holdout-1-96851694-Q3",
+                "ibc-deadline-triage-holdout-1-96851694-Q4",
+                "ibc-deadline-triage-holdout-1-96851694-Q5",
+                "ibc-deadline-triage-holdout-1-96851694-Q6",
+                "ibc-deadline-triage-holdout-1-96851694-Q10",
+                "ibc-deadline-triage-holdout-1-96851694-Q11"
+              ],
+              "expectedFromCurrentRaw": [
+                "ibc-deadline-triage-holdout-1-96851694-Q1",
+                "ibc-deadline-triage-holdout-1-96851694-Q2",
+                "ibc-deadline-triage-holdout-1-96851694-Q3",
+                "ibc-deadline-triage-holdout-1-96851694-Q4",
+                "ibc-deadline-triage-holdout-1-96851694-Q5",
+                "ibc-deadline-triage-holdout-1-96851694-Q6",
+                "ibc-deadline-triage-holdout-1-96851694-Q10",
+                "ibc-deadline-triage-holdout-1-96851694-Q11"
+              ]
+            }
+          ],
+          "failedOnlyOnFactualAccuracyGate": true,
+          "interpretation": "The current-draft criterion fails because final draft facts are inaccurate despite successful current version/material and memo structure; this is a dependent factual-accuracy loss, not an independent stale-draft or coordination failure."
+        },
+        "approximateWeightedComponentLossesFromRecordedComponents": {
+          "facts": 2.1,
+          "evidence": 1.32,
+          "workflow": 3.57,
+          "boundaries": 0
+        },
+        "recordedTotalScoreLoss": 6.99,
+        "physicalCurrentReviewMatchesHistory": true,
+        "gradePreserved": true
+      },
+      "protocolErrorTurns": [
+        1,
+        6,
+        7,
+        8,
+        9,
+        13,
+        15,
+        16,
+        17
+      ],
+      "toolErrors": [],
+      "coordinationErrors": [],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 19,
+        "max_output_tokens": 1
+      },
+      "truncations": [
+        {
+          "turn": 17,
+          "finishReason": "max_output_tokens",
+          "inputTokens": 41273,
+          "totalOutputTokens": 16384,
+          "reasoningTokens": 1742,
+          "visibleOutputEstimate": 14642,
+          "responseChars": 31350
+        }
+      ],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Candidate eligibility-list reporting loss; assess the independently recorded actual plan separately",
+      "notes": [
+        "Malformed JSON action batches are real protocol failures; recovery and final actual state are reported separately.",
+        "Output ceiling includes reasoning; truncation can impair visible JSON and confounds a pure effort-effect interpretation."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "acceptanceId": "CA-IB05",
+  "verifiedAt": "2026-10-08T05:20:17Z",
+  "disposition": "PASS protected static composite-page acceptance; repository integration pending",
+  "deployment": {
+    "id": "dpl_Cap4o5MJw2NMprMUQ7LhLiJbUcNe",
+    "url": "insurance-bench-24ggnoj3l-sentanis.vercel.app",
+    "readyState": "READY",
+    "target": null,
+    "projectId": "prj_CqiaZtGLLlPL3q9CKKKAVYFcrMXf",
+    "gitCommitSha": "fbffc1145ed4d892a2958872edfaac3f475664ab",
+    "gitBranch": "codex/insurance-bench-composite",
+    "functions": null,
+    "regions": [
+      "iad1"
+    ]
+  },
+  "previewUrl": "https://insurance-bench-24ggnoj3l-sentanis.vercel.app",
+  "project": {
+    "name": "insurance-bench",
+    "team": "sentanis",
+    "ssoProtection": "all",
+    "protectionBypassKeys": 0
+  },
+  "anonymousHttpStatus": 302,
+  "authenticatedChromeHttpStatus": 200,
+  "build": {
+    "modelProfiles": 212,
+    "observations": 269,
+    "eligibleObservations": 268,
+    "fullCanonicalScores": 0,
+    "dataSha256": "1778472d45d2c8a8780b9dab980f3630fa1469c81545ae7b093093f21a2ae9f6",
+    "staticFiles": 6,
+    "functions": 0,
+    "newBenchmarkSolverOrJudgeCalls": 0,
+    "applicationDatabaseCalls": 0
+  },
+  "browser": {
+    "engine": "real Chrome, extension-connected soldo.org profile",
+    "search": "gpt-5.5: exactly one reported profile",
+    "providerFilter": "Anthropic",
+    "originFilter": "Our runs: exactly two local v12 profiles; both66.6667,20% coverage,bounds13.3333–93.3333",
+    "customWeights": "Legal reasoning only: GPT5.5 custom86.5/100; canonical remainsnull; all-zero change rejected; reset restored defaults",
+    "exclusion": "Fable5 LAB raw11.25 displayed11.3/reference-only and excluded; Fable5.1 stays distinct",
+    "keyboard": "Enter opens correctly scoped evidence panel; aria-expanded=true",
+    "documentationCounts": [
+      75,
+      149,
+      0,
+      35,
+      0,
+      7,
+      0,
+      2
+    ],
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "scorePageWidth": 390,
+      "docsPageWidth": 390,
+      "tableWidth": 364,
+      "tableScrollWidth": 1110,
+      "tableOverflow": "auto",
+      "footerArchiveReachable": true
+    },
+    "reload": true,
+    "archiveNavigation": true,
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "observedTraffic": [
+      "same-origin static pages and CSS/JS",
+      "Vercel feedback/auth tooling",
+      "Chrome extension cursor asset"
+    ],
+    "applicationOrModelTrafficObserved": 0,
+    "networkQualification": "Recorded reload/navigation batches are consistent with static-only source and no deployed functions. Later buffered batches reported truncation; no exhaustive retention claim.",
+    "dataIntegrity": "Served score HTML embedded dataset deep-equals the hash-bound public projection; standaloneJSON browser navigation was blocked by client extension and is not independently accepted.",
+    "viewportRestored": true
+  },
+  "artifacts": {
+    "score": {
+      "sourceSha256": "d4b767f6b1dcf5752076b86f5c0d3621550e1ae11d5f980d1e217626a9e467b6",
+      "servedSha256": "55eb60456dbd30891e3f43190995dfd31e4e88688afc9dc4d10011786da31d7b",
+      "sourceBytes": 1407702,
+      "servedBytes": 1407865,
+      "feedbackScripts": 1,
+      "feedbackBytes": 163,
+      "normalizedByteEquality": true
+    },
+    "docs": {
+      "sourceSha256": "782ddd67f3bec524ccaefbdece877e7d7f11d3e3975abaa2ed58f35f72ffe5a6",
+      "servedSha256": "0e66a1e788a683c02fc85992ff32f517e0835cf4d9cd001904962f85104b2378",
+      "sourceBytes": 436159,
+      "servedBytes": 436322,
+      "feedbackScripts": 1,
+      "feedbackBytes": 163,
+      "normalizedByteEquality": true
+    },
+    "research": {
+      "sourceSha256": "9dfb0be1496cc9558239c5faf09841755e8715a730017b06a97c8b21dd89bcdf",
+      "servedSha256": "5785cee76ec654e8cf1bcbaca1cefd219b9c77f26f5293cc485c6c41b6f206a7",
+      "sourceBytes": 221659,
+      "servedBytes": 221822,
+      "feedbackScripts": 1,
+      "feedbackBytes": 163,
+      "normalizedByteEquality": true
+    }
+  },
+  "screenshots": [
+    {
+      "path": "/Users/soldo/Documents/Codex/Insurance-Bench/2026-10-07/composite-scores-desktop.png",
+      "sha256": "10e1afeed6f5f2c81531be9c5f978581bf2d29532c1be3c6e3ce041cc0bcde04"
+    },
+    {
+      "path": "/Users/soldo/Documents/Codex/Insurance-Bench/2026-10-07/composite-scores-mobile.png",
+      "sha256": "39ffbf0543fc946c3cf26c26163f0716ba52e0a733e5b0a77412f05dc0697aa5"
+    },
+    {
+      "path": "/Users/soldo/Documents/Codex/Insurance-Bench/2026-10-07/composite-docs-desktop.png",
+      "sha256": "8bc67d756880f7d8db45a30679dfc7b18d61a15761c8a65af4b2af02ee203c14"
+    }
+  ],
+  "localChecks": {
+    "focusedComposite": {
+      "passed": 14,
+      "failed": 0,
+      "logSha256": "7a32ff2250095d5a1800733bfbf16cd6efa9bbca6a6e1a0c15a9ba76ff5f76e8"
+    },
+    "legacy": {
+      "passed": 1308,
+      "failed": 0
+    },
+    "benchmarkArchitecture": {
+      "passed": 16,
+      "failed": 0,
+      "logSha256": "5387954a3d88ac1d0e348f83a2f1caee54c6dffeab0985383caca7c29b64d329"
+    },
+    "typecheck": "PASS",
+    "directStrictNodeAndDOMCompilation": "PASS",
+    "lint": {
+      "status": "PASS",
+      "inheritedWarnings": 261
+    },
+    "defaultNpmTest": {
+      "status": "FAILED",
+      "architecturePassed": 3782,
+      "architectureFailed": 38,
+      "architectureSkipped": 48,
+      "logSha256": "d7a4a8a462564e54b5356869bb539c6eef5f859c1fd6c88d48a925e9652d03f0"
+    },
+    "separateWeb": {
+      "status": "FAILED",
+      "passed": 1018,
+      "failed": 5,
+      "logSha256": "4f31d560bb0f592614b796ebe2411ae4792c9560e58695a9870613c17406fd45"
+    },
+    "baselineQualification": {
+      "expansionPackInputsUnchangedFromBase": true,
+      "expansionInputCount": 57,
+      "sqlGuardViolationFilesUnchangedFromBase": true,
+      "broaderTimeouts": "Default concurrent architecture timeouts are retained, not declared fixed."
+    },
+    "dependencyAudit": {
+      "status": "FAILED existing inherited high/critical advisories",
+      "changedDependencies": 0,
+      "logSha256": "90814a2db51c347bbf97330e22966629b316008ee15b6651403f7c1eadfbead3"
+    },
+    "githubCi": {
+      "status": "BLOCKED before jobs run",
+      "reason": "Account recent payments failed or spending limit needs increase",
+      "baselineRun": "https://github.com/Sentanis/sentanis-app/actions/runs/37727602491"
+    }
+  },
+  "reviews": {
+    "independentSourceAndEngineering": {
+      "receipt": "composite-independent-review.json",
+      "sha256": "3c956d4a22672d9e5fbf565c6a2bc2a4ffe926fcf742597f958618b1df891246"
+    },
+    "crossProvider": {
+      "receipt": "composite-cross-provider-review.json",
+      "sha256": "6ad0097e0e7febaeb4a2e83eccc907dd03202e437070a314fe7c361903183333",
+      "model": "claude-opus-4-8",
+      "provenAdditionalFindings": 0,
+      "qualification": "Static code review only; no source-fact or browser verification by Claude."
+    }
+  },
+  "sensitiveScannerReview": {
+    "path": "test/insurance-bench-composite.test.ts:56",
+    "finding": "possible email",
+    "assessment": "False positive: dummy https://user:pass@example.com URL is a negative credential-URL test fixture, not real contact information or a credential."
+  },
+  "limits": [
+    "No complete canonical score or stable model ranking established.",
+    "No new benchmark solver/judge calls, provider reachability or professional validity established.",
+    "This is static synthetic/public Vercel development acceptance, not AWS staging/application/production release.",
+    "Branch remains unmerged while wider checks and GitHub CI billing block are unresolved."
+  ]
+}

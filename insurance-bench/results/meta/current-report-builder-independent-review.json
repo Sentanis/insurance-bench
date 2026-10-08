@@ -1,0 +1,111 @@
+{
+  "schema": "insurance-bench-final-report-builder-finding-resolution-v1",
+  "recordedAt": "2026-10-05T02:38:08.419496+00:00",
+  "disposition": "findings-addressed-with-author-regressions",
+  "method": "Prior read-only report review followed by bounded implementation and synthetic regression fixtures. This is the finding-resolution record; a separate non-author runtime review is pending.",
+  "sourceSha256": {
+    ".tmp/insurance-bench/current-report-context.ts": "e691b09e88f1f93c05c7f3c15e91e56a8a9465804e0ea017778e6ed3f9307c64",
+    "insurance-bench/report-admission.ts": "8d89dae375411c1d233af0bc303244656d1101e55c63925100867c97e47d2157",
+    "insurance-bench/report.ts": "bbc0b2c5d41ca13ef4586719c0c10b3c62f27ff43a5ac65c52088bf325cfec36",
+    "test/insurance-bench-report.test.ts": "29015d419915666ec99ebfed8119b1c7e190944c4824523e14a3011394d6e01f"
+  },
+  "findings": [
+    {
+      "id": "RB-01",
+      "status": "addressed",
+      "change": "Pure tracked report-admission helper binds approved no-pending/no-issue audits to registration SHA/source, all registered panel IDs, exact receipt/native hashes, frozen commit and native model/effort/variant/repeat/task order/split/limits/format. New candidates require explicit fullCorpusHash; original v9 audits bind corpus through exact registration SHA."
+    },
+    {
+      "id": "RB-02",
+      "status": "addressed",
+      "change": "Historical raw discovery now occurs after registered panel admission. Helper validates all receipt/audit bindings within each registration before loading its terminal native bodies. Importing helper has no filesystem effects; tracked CI tests never import ignored .tmp files."
+    },
+    {
+      "id": "RB-03",
+      "status": "addressed",
+      "change": "Report suppresses missing/ambiguous/superseded/incomplete/cumulatively truncated/unmatched paired inputs, mismatched scored family/split/attempt coverage, and invalid case counts. Original accepted stored numeric differences/intervals are preserved without regrading or recomputing historical effects."
+    },
+    {
+      "id": "RB-04",
+      "status": "addressed",
+      "change": "JSON-object wording describes a requested representation with incomplete/truncation validation; first metric-method sentence includes allocation v0.11."
+    },
+    {
+      "id": "RB-05",
+      "status": "addressed",
+      "change": "All planned PANELS must be terminal and independently audited; actual partial/zero native task coverage remains admissible as unavailable ability rows. No missing attempts are invented. CompleteCoverage true still requires every planned scored attempt."
+    },
+    {
+      "id": "RB-06",
+      "status": "addressed",
+      "reportedBy": "Independent investigation_review agent",
+      "priorBuilderSha256": "3f86d06a54e918cee5647661ed809e4ef1b5ce0a1723e411c959ccb9b04235e7",
+      "change": "Ignored builder historical load referenced private resultPath after helper extraction. Added a local source-only path validator and directly compiled the ignored builder to prevent root tsconfig exclusion from hiding undefined functions. Builder remains unexecuted."
+    },
+    {
+      "id": "RB-07",
+      "status": "addressed",
+      "change": "Stats now label the sum Recorded run cost estimates, with an adjacent explicit caveat for failed-call reservations/archive overlaps and non-authoritative ledger/invoice status. No native amounts or budget ledger changed."
+    },
+    {
+      "id": "RB-08",
+      "status": "addressed",
+      "change": "Comparison intro distinguishes existing criterion all-pass differences from the completed-task headline requiring completed/no-critical episodes. A mock allPass=true/status=incomplete/benchmarkScore=0 fixture retains macro zero, criteria rate and historical difference values."
+    },
+    {
+      "id": "RB-09",
+      "status": "addressed-prospectively",
+      "change": "Dependency-allocation-v0.12 recognized as separate macro-task-success generation with weighted diagnostic and workflow:current-state actual optimum display. Synthetic mixed-version fixture validates metrics/separation. Conditional v12 registration requires its terminal development independent audit through the unchanged full-corpus admission guard; source-only candidate audit cannot substitute, and no automatic v12 comparison order is inferred. Public dependencies/exclusions/cycles do not imply empirical difficulty."
+    }
+  ],
+  "verification": {
+    "focusedReportAdmissionTests": 23,
+    "focusedCommand": "node --experimental-strip-types --test test/insurance-bench-report.test.ts",
+    "npmRunCheck": "exit 0 after combined wording/v12 regression updates",
+    "ownedEslint": "exit 0, zero warnings after combined wording/v12 regression updates",
+    "ignoredBuilderTypecheck": {
+      "status": "exit 0 after conditional v12 slug update",
+      "command": "npx tsc --ignoreConfig --noEmit --module nodenext --target es2022 --types node --allowImportingTsExtensions --strict --noUncheckedIndexedAccess --skipLibCheck .tmp/insurance-bench/current-report-context.ts",
+      "note": "Source-only strict check with explicit Node ambient types; no JavaScript execution or emitted output."
+    }
+  },
+  "limits": [
+    "Final builder not executed; no report context or HTML was generated/published.",
+    "No active v10/v11 model outputs, real ledger, auth files or current registrations read during implementation.",
+    "No evaluated source, frozen native grades, registrations, independent native audits or controllers modified.",
+    "This record does not approve model difficulty, scientific validity or future native panels."
+  ],
+  "reproduction": {
+    "builderSourcePath": ".tmp/insurance-bench/current-report-context.ts",
+    "builderSnapshotPath": "insurance-bench/results/meta/current-report-builder-independent-review-repro.txt",
+    "trackedPureAdmissionPath": "insurance-bench/report-admission.ts"
+  },
+  "wordingAmendments": [
+    {
+      "priorSourceSha256": {
+        "insurance-bench/report.ts": "29bcec8b670b2059b079268de28e947eab5feda1d44e3f69342220fb16003ac9",
+        "test/insurance-bench-report.test.ts": "b35f666fee07f874247050230fe7e85bc5092040b1d4a77390741d33d5567901"
+      },
+      "newSourceSha256": {
+        "insurance-bench/report.ts": "f99ba05c50fdde5da277110dfe452ec5916f3526c8aa8cd28034e60e0c22f080",
+        "test/insurance-bench-report.test.ts": "a7434c944af975b5ce8f9b2d54b938f7add7c2f0e5e045076143088a1910243a"
+      },
+      "method": "Bounded author wording/test update; non-author delta review requested. Admission guard and builder source unchanged."
+    }
+  ],
+  "rendererAmendments": [
+    {
+      "priorSourceSha256": {
+        ".tmp/insurance-bench/current-report-context.ts": "5e7db7cc4412f3f6eee768b917e6c3d4009e5d973678b718c260c5d4a35ab8a8",
+        "insurance-bench/report.ts": "f99ba05c50fdde5da277110dfe452ec5916f3526c8aa8cd28034e60e0c22f080",
+        "test/insurance-bench-report.test.ts": "a7434c944af975b5ce8f9b2d54b938f7add7c2f0e5e045076143088a1910243a"
+      },
+      "newSourceSha256": {
+        ".tmp/insurance-bench/current-report-context.ts": "e691b09e88f1f93c05c7f3c15e91e56a8a9465804e0ea017778e6ed3f9307c64",
+        "insurance-bench/report.ts": "bbc0b2c5d41ca13ef4586719c0c10b3c62f27ff43a5ac65c52088bf325cfec36",
+        "test/insurance-bench-report.test.ts": "29015d419915666ec99ebfed8119b1c7e190944c4824523e14a3011394d6e01f"
+      },
+      "method": "Prospective source-only v12 report integration. No native v12 result read, inferred or published. Combined wording/version delta sent for separate independent review."
+    }
+  ]
+}

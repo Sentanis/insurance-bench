@@ -1,0 +1,51 @@
+/** Isolated in-memory fixtures only; never invoke builder filesystem defaults. */
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import {buildCurrentReportContext} from './current-report-context.ts';
+const base='insurance-bench/results/',meta=base+'meta/';
+const hash=(v:unknown)=>crypto.createHash('sha256').update(JSON.stringify(v)).digest('hex');
+const controls:string[]=[];
+function fixture(edit?:(panels:any[],runs:any[])=>void){
+ const data:any={[meta+'report-context-v0.7c-extended-preserved.json']:{comparisons:[],findings:[],conditionWarnings:{},accessGaps:[],invalidRunIds:['historical-invalid']},[meta+'v09-development-comparisons.json']:{comparisons:[]},'.tmp/insurance-bench/session-budget.json':{capUsd:75,reservedUsd:1,updatedAt:'mock-only'}};
+ const runs:any[]=[];
+ function add(slug:string,legacy:boolean,ids:string[],mutate?:typeof edit){
+  const rp=meta+slug+'-registration.json';const reg:any={generation:legacy?'insurance-bench-investigation-v0.9':'insurance-bench-dependency-allocation-v0.12',sourceFingerprint:'a'.repeat(64),fullCorpusHash:'b'.repeat(64),...(!legacy?{responseFormat:'json_object'}:{}),panels:[]};
+  const natives:any[]=[];
+  for(let i=0;i<ids.length;i++){
+   const model={provider:'openai',model:i?'gpt-6-luna':'gpt-6.1-sol',reasoningEffort:'high',inputUsdPerMillion:2,outputUsdPerMillion:10};const taskIds=['t1','t2','t3'];
+   const episodes=taskIds.map((taskId,j)=>({taskId,family:['coverage-review','financial-reconciliation','deadline-triage'][j],split:'dev',status:'completed',trace:[],score:{taskId,family:['coverage-review','financial-reconciliation','deadline-triage'][j],split:'dev',score:i?50:80,allPass:!i,criticalFailure:false,components:{facts:80,evidence:80,workflow:80,boundaries:80},criteria:[{id:'workflow:current-state',component:'workflow',passed:!i}]},state:{},elapsedMs:1,estimatedCostUsd:0}));
+   const run:any={version:reg.generation,runId:slug+'-'+i,model,variant:'baseline',datasetHash:'selected',harnessHash:'same-harness',taskIds,repeat:1,limits:{maxTurns:20,maxOutputTokens:16384},episodes,summary:{score:i?50:80,taskCount:3,completionRate:i?0:100,criticalFailureRate:0,familyScores:{},components:{facts:80,evidence:80,workflow:80,boundaries:80}},coverage:1,completeCoverage:true,estimatedCostUsd:0,...(!legacy?{responseFormat:'json_object'}:{}),benchmarkScore:i?0:100};
+   const panel:any={id:ids[i],modelConfiguration:model,split:'dev',variant:'baseline',taskIds,datasetHash:run.datasetHash,repeat:1,limits:{...run.limits,...(legacy?{transportDeadlineMs:600000}:{})},harnessHash:run.harnessHash,...(!legacy?{dispatchReceiptPath:meta+slug+'-dispatch-'+ids[i]+'.json',promptHash:'prompt'}:{})};reg.panels.push(panel);natives.push(run);
+  }
+  mutate?.(reg.panels,natives);data[rp]=reg;
+  const auditPanels:any[]=[];
+  for(let i=0;i<reg.panels.length;i++){
+   const panel=reg.panels[i],run=natives[i],dp=panel.dispatchReceiptPath??meta+'v09-dispatch-'+panel.id+'.json',np=base+slug+'-mock-'+i+'.json';
+   const receipt={...panel,status:'terminal-native-run',sourceFingerprint:reg.sourceFingerprint,freezeCommit:'c'.repeat(40),nativeRunPath:np,nativeRunSha256:hash(run)};
+   data[dp]=receipt;data[np]=run;runs.push(run);
+   auditPanels.push({panelId:panel.id,receiptPath:dp,receiptSha256:hash(receipt),nativeRunPath:np,nativeRunSha256:hash(run),completeCoverage:run.completeCoverage,episodes:run.episodes});
+  }
+  const audit={disposition:'approve-engineering-only',registrationPath:rp,registrationSha256:hash(reg),sourceFingerprint:reg.sourceFingerprint,freezeCommit:'c'.repeat(40),...(!legacy?{fullCorpusHash:reg.fullCorpusHash}:{}),issues:[],pending:[],counts:{pendingPanels:0,terminalPanelsAudited:auditPanels.length,terminalEpisodesAudited:auditPanels.reduce((n,p)=>n+p.episodes.length,0)},panels:auditPanels};
+  if(legacy){data[meta+'investigation-development-independent-audit-v0.9.json']={...audit,panels:auditPanels.slice(0,1),counts:{pendingPanels:0,terminalPanelsAudited:1,terminalEpisodesAudited:3}};data[meta+'investigation-holdout-independent-audit-v0.9.json']={...audit,panels:auditPanels.slice(1),counts:{pendingPanels:0,terminalPanelsAudited:1,terminalEpisodesAudited:3}};}else data[meta+slug+'-development-independent-audit.json']=audit;
+ }
+ add('v09',true,['v9dev','v9hold']);add('v12',false,['01-sol-high-dev','02-luna-high-dev'],edit);
+ return {data,runs,io:{readJson:(p:string)=>{assert(Object.hasOwn(data,p),'mock path only: '+p);return data[p];},sha:(p:string)=>hash(data[p]),exists:(p:string)=>Object.hasOwn(data,p),listRuns:()=>Object.keys(data).filter(p=>/mock-\d\.json$/.test(p))}};
+}
+const f=fixture(),context=buildCurrentReportContext(f.io);assert.equal(context.comparisons.length,1);assert.equal(context.comparisons[0].axis,'tier');assert.equal(context.comparisons[0].baselineRunId,'v12-1');assert.equal(context.comparisons[0].treatmentRunId,'v12-0');assert.equal(context.comparisons[0].scoreDelta,30);assert.equal(context.comparisons[0].completionDelta,100);assert.deepEqual(context.invalidRunIds,['historical-invalid']);assert(context.findings.some((s:string)=>s.includes('33.33-point')));assert(context.findings.some((s:string)=>s.includes('cannot identify a causal hardness effect')));controls.push('fixed role baseline Luna high -> treatment Sol high, v12 tier-only and limitations retained');
+for(const [name,change] of [
+ ['wrong panel count',(p:any[],r:any[])=>{p.pop();r.pop();}],
+ ['wrong panel IDs',(p:any[])=>p[0].id='other'],
+ ['reversed panel roles',(p:any[],r:any[])=>{p.reverse();r.reverse();}],
+] as [string,(p:any[],r:any[])=>void][]){assert.throws(()=>buildCurrentReportContext(fixture(change).io),/V12 fixed panel-role binding/);controls.push(name+' rejects');}
+for(const [name,change] of [
+ ['cumulative episode output flag',(p:any[],r:any[])=>r[1].episodes[0].truncatedOutput=true],
+ ['recovered incomplete native finish',(p:any[],r:any[])=>r[1].episodes[0].trace=[{finishReason:'incomplete'}]],
+ ['tier effort mismatch',(p:any[],r:any[])=>{r[1].model={...r[1].model,reasoningEffort:'low'};p[1].modelConfiguration=r[1].model;}],
+ ['unmatched harness',(p:any[],r:any[])=>{r[1].harnessHash='other';p[1].harnessHash='other';}],
+ ['partial native coverage',(p:any[],r:any[])=>{r[1].episodes.pop();r[1].summary.taskCount=2;r[1].completeCoverage=false;r[1].benchmarkScore=null;}],
+] as [string,(p:any[],r:any[])=>void][]){const c=buildCurrentReportContext(fixture(change).io);assert.equal(c.comparisons.length,0);assert(c.findings.some((s:string)=>s.startsWith('Unavailable clean contrast:')));controls.push(name+' preserves observations but rejects clean comparison');}
+const pending=fixture();pending.data[meta+'v12-development-independent-audit.json'].pending=['unfinished'];assert.throws(()=>buildCurrentReportContext(pending.io),/Report admission binding failed/);controls.push('pending v12 native audit prevents context construction');
+const sourcePaths=['.tmp/insurance-bench/current-report-context.ts','insurance-bench/report-admission.ts','insurance-bench/report.ts','specs/features/insurance-bench/v12-development-plan.md'];const sha=(p:string)=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const artifact={schema:'insurance-bench-current-report-v12-builder-independent-review-v1',reviewedAt:new Date().toISOString(),disposition:'approve-engineering-only',sourceSha256:Object.fromEntries(sourcePaths.map(p=>[p,sha(p)])),controls,issues:[],scope:'Source-only v12 builder delta with isolated injected IO fixtures; preserve previous builder/runtime evidence unchanged.',method:'Import builder without executing its direct-entrypoint branch; call exported function only with fully synthetic in-memory registration/audit/receipt/native/ledger fixtures. No actual control/output/ledger/auth/provider reads.',limits:['Exact current builder bytes only; future mutations require renewed review.','Native admission helper remains strict and separately reviewed. V12 context cannot publish until all registered native panels terminal and independently audited.','Three correlated single-attempt anchors have coarse33.33 macro resolution; no general ranking, accepted calibration, causal cross-generation hardness or insurance expert validity.'],verification:{controlsPassed:controls.length,realBuilderExecution:false,realRegistrationReads:0,realNativeReads:0,realLedgerReads:0,providerCalls:0,strictIgnoredBuilderCompile:'PASS'},reproduction:{copy:'insurance-bench/results/meta/current-report-v12-builder-independent-review-repro.txt',command:'Copy this durable script to .tmp/insurance-bench/current-report-v12-builder-independent-review.ts, then npx tsx that scratch path from repository root.'}};
+fs.writeFileSync(meta+'current-report-v12-builder-independent-review.json',JSON.stringify(artifact,null,2)+'\n');fs.copyFileSync('.tmp/insurance-bench/current-report-v12-builder-independent-review.ts',artifact.reproduction.copy);console.log(JSON.stringify({disposition:artifact.disposition,controls:controls.length,sourceSha256:artifact.sourceSha256}));

@@ -1,0 +1,84 @@
+/** Prospective candidate dispatch controller. No inference during prepare/validate. */
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {spawn,execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+import {hash} from '../../insurance-bench/runner.ts';
+import {generateAllocationInteractionCases} from '../../insurance-bench/allocation-interaction-cases.ts';
+import * as allocation from '../../insurance-bench/allocation-interaction-runner.ts';
+const root=fs.realpathSync(path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..'));
+if(process.cwd()!==root)throw new Error('Canonical candidate repository root required');
+const options=new Map<string,string>();
+for(let i=2;i<process.argv.length;i+=2){const k=process.argv[i],v=process.argv[i+1];if(!k?.startsWith('--')||!v||v.startsWith('--')||options.has(k))throw new Error('Unique option pairs required');options.set(k,v);}
+if([...options.keys()].some(k=>!['--candidate','--mode','--stage','--freeze-commit','--release'].includes(k)))throw new Error('Unknown candidate option');
+const candidate=options.get('--candidate');if(candidate!=='allocation')throw new Error('Candidate required');
+const mode=options.get('--mode')??'validate';if(!['prepare','validate','run'].includes(mode))throw new Error('Invalid mode');
+const slug='v11';
+const generation=allocation.ALLOCATION_INTERACTION_VERSION;
+const sourceFingerprint=allocation.allocationInteractionSourceFingerprint();
+// Immutable runner-owned path lists, never supplied by caller or registration.
+const sourceFiles=allocation.ALLOCATION_INTERACTION_SOURCE_FILES;
+const systemPrompt=allocation.allocationInteractionSystemPrompt;
+const tasks=generateAllocationInteractionCases(1100419);
+const registrationPath=`insurance-bench/results/meta/${slug}-registration.json`;
+const auditPath=`insurance-bench/results/meta/${slug}-candidate-independent-audit.json`;
+const planPath='specs/features/insurance-bench/v11-design-candidate.md';
+const controllerCopy='insurance-bench/results/meta/v11-controller-repro.txt';
+const controllerReviewPath='insurance-bench/results/meta/v11-controller-independent-review.json';
+const ledgerPath='.tmp/insurance-bench/session-budget.json';
+const sha=(b:string|Buffer)=>crypto.createHash('sha256').update(b).digest('hex');
+const json=(p:string)=>JSON.parse(fs.readFileSync(p,'utf8'));
+const ledger=()=>{const l=json(ledgerPath);if(l.capUsd!==75||!Number.isFinite(l.reservedUsd)||l.reservedUsd<0||l.reservedUsd>75)throw new Error('Existing authoritative ledger required');return l;};
+const definitions=[['01-sol-high-dev','gpt-6.1-sol-high','dev',2.75],['02-sol-low-dev','gpt-6.1-sol-low','dev',2.25],['03-luna-low-dev','gpt-6-luna-low','dev',.5],['04-luna-high-dev','gpt-6-luna-high','dev',.75]];
+const chosen=(split:string)=>tasks.filter(t=>t.split===split);
+const supplementaryReviews=['insurance-bench/results/meta/allocation-runner-independent-review-v0.11.json','insurance-bench/results/meta/v11-independent-opus-review.json'];
+const validateReviews=()=>Object.fromEntries(supplementaryReviews.map(p=>{const a=json(p);if(a.disposition!=='approve-engineering-only'||a.sourceFingerprint!==sourceFingerprint)throw new Error('Current independent runtime and cross-provider admission required');return[p,sha(fs.readFileSync(p))];}));
+if(mode==='prepare'){
+ if(fs.existsSync(registrationPath))throw new Error('Registration exists; never overwrite');
+ const audit=json(auditPath),l=ledger(),models=json('insurance-bench/models.json'),supplementaryReviewSha256=validateReviews();
+ if(audit.disposition!=='approve-engineering-only'||audit.sourceFingerprint!==sourceFingerprint||audit.fullCorpusHash!==hash(tasks))throw new Error('Current independent engineering admission required');
+ const panels=definitions.map(([id,modelAlias,split,forecastUsd])=>{const selected=chosen(String(split)),model=models[String(modelAlias)];if(model?.provider!=='openai')throw new Error('Exact OpenAI model required');return{id,modelAlias,modelConfiguration:model,split,forecastUsd,taskIds:selected.map(t=>t.id),datasetHash:hash(selected),variant:'baseline',repeat:1,limits:{maxTurns:20,maxOutputTokens:16384},promptHash:hash(systemPrompt('baseline')),harnessHash:hash([sourceFingerprint,systemPrompt('baseline'),20,16384]),dispatchReceiptPath:`insurance-bench/results/meta/${slug}-dispatch-${id}.json`};});
+ const prospectiveCost=panels.reduce((n,p)=>n+Number(p.forecastUsd),0);
+ if(prospectiveCost>75-l.reservedUsd)throw new Error('Full candidate plan unaffordable; no registration or inference');
+ const scriptBytes=fs.readFileSync(fileURLToPath(import.meta.url));
+ const controllerReview=json(controllerReviewPath);if(controllerReview.disposition!=='approve-engineering-only'||controllerReview.controllerSha256!==sha(scriptBytes))throw new Error('Current independent controller amendment review required');
+ if(fs.existsSync(controllerCopy)&&!fs.readFileSync(controllerCopy).equals(scriptBytes))throw new Error('Reproducible controller copy differs');
+ fs.writeFileSync(controllerCopy,scriptBytes);
+ const reg={registeredAt:new Date().toISOString(),supplementaryReviewSha256,status:'prospective-no-inference-before-committed-freeze',generation,sourceFingerprint,sourceFiles,fullCorpusHash:hash(tasks),promptHash:hash(systemPrompt('baseline')),capUsd:75,minimumReservedUsd:l.reservedUsd,ledgerAtRegistration:l,auditPath,auditSha256:sha(fs.readFileSync(auditPath)),planPath,planSha256:sha(fs.readFileSync(planPath)),controllerCopy,controllerSha256:sha(scriptBytes),controllerReviewPath,controllerReviewSha256:sha(fs.readFileSync(controllerReviewPath)),forecastTotalUsd:prospectiveCost,responseFormat:'json_object',panels,guards:['Serial fixed order; no retries, fallback or outcome-selected substitution','Existing canonical shared ledger with totalcap75 and registered floor; never reset','Every remaining panel forecast must fit before dispatch','Source, plan, audit, controller, registration and task/config exact bytes are committed before inference','Native generation and responseFormat plus metadata audited after every terminal run','Material cost overrun/provider/budget/model/process flags pause future calls','Fresh holdouts require separately committed independent development audit and release; no held output access before release','New corpus,18-package limit,repaired runtime and native JSON do not support cross-generation causal hardness claims; effort and tier contrasts within exact v11conditions only']};
+ fs.writeFileSync(registrationPath,JSON.stringify(reg,null,2)+'\n');console.log(JSON.stringify({prepared:slug,forecastUsd:prospectiveCost,remainingUsd:75-l.reservedUsd,sourceFingerprint}));process.exit(0);
+}
+const registration=json(registrationPath);
+function validate(){
+ if(hash(validateReviews())!==hash(registration.supplementaryReviewSha256))throw new Error("Supplementary independent review drift");
+ if(registration.generation!==generation||registration.sourceFingerprint!==sourceFingerprint||registration.fullCorpusHash!==hash(tasks)||registration.promptHash!==hash(systemPrompt('baseline'))||sha(fs.readFileSync(fileURLToPath(import.meta.url)))!==registration.controllerSha256||sha(fs.readFileSync(controllerCopy))!==registration.controllerSha256||sha(fs.readFileSync(planPath))!==registration.planSha256||sha(fs.readFileSync(auditPath))!==registration.auditSha256||sha(fs.readFileSync(controllerReviewPath))!==registration.controllerReviewSha256)throw new Error('Frozen candidate control drift');
+ const models=json('insurance-bench/models.json');for(const p of registration.panels)if(hash(p.modelConfiguration)!==hash(models[p.modelAlias])||p.datasetHash!==hash(chosen(p.split)))throw new Error('Registered candidate conditions changed');
+ const l=ledger();if(l.reservedUsd<registration.minimumReservedUsd)throw new Error('Shared ledger reset detected');
+}
+validate();if(mode==='validate'){console.log(JSON.stringify({validated:slug,sourceFingerprint,paidInferencePerformed:false}));process.exit(0);}
+const stage=options.get('--stage'),freezeCommit=options.get('--freeze-commit');if(!['dev','holdout'].includes(stage??'')||!freezeCommit||!/^[a-f0-9]{40}$/.test(freezeCommit))throw new Error('Exact committed freeze and stage required');
+const committed=(p:string)=>{if(path.isAbsolute(p)||p.includes('..'))throw new Error('Relative committed path required');const b=execFileSync('git',['show',`${freezeCommit}:${p}`],{cwd:root});if(!b.equals(fs.readFileSync(p)))throw new Error('Committed candidate control bytes differ');return JSON.parse(b.toString());};
+committed(registrationPath);committed(auditPath);committed(controllerReviewPath);for(const p of supplementaryReviews)committed(p);
+for(const p of [planPath,controllerCopy,...sourceFiles]){const bytes=execFileSync('git',['show',`${freezeCommit}:${p}`],{cwd:root});if(!bytes.equals(fs.readFileSync(p)))throw new Error('Committed candidate source/control differs');}
+let releasePath=options.get('--release');
+if(stage==='holdout'){
+ if(!registration.panels.some((p:any)=>p.split==='holdout')||!releasePath)throw new Error('Registered separately released holdout required');const release=committed(releasePath),p=registration.panels.find((x:any)=>x.split==='holdout');
+ if(release.sourceFingerprint!==sourceFingerprint||release.harnessHash!==p.harnessHash||hash(release.taskIds)!==hash(p.taskIds)||release.repeat!==1)throw new Error('Release conditions changed');
+ const audited=committed(release.developmentAuditPath);if(audited.disposition!=='approve-engineering-only'||audited.sourceFingerprint!==sourceFingerprint||sha(fs.readFileSync(release.developmentAuditPath))!==release.developmentAuditSha256)throw new Error('Committed independent development audit required');
+ for(const d of registration.panels.filter((x:any)=>x.split==='dev'))if(sha(fs.readFileSync(d.dispatchReceiptPath))!==release.developmentDispatchSha256[d.id]||committed(d.dispatchReceiptPath).status!=='terminal-native-run')throw new Error('Audited development receipt drift');
+}
+const lockPath='.tmp/insurance-bench/candidate-controller.lock',lock=fs.openSync(lockPath,'wx');fs.writeFileSync(lock,JSON.stringify({pid:process.pid,candidate,stage}));process.on('exit',()=>{fs.closeSync(lock);fs.rmSync(lockPath,{force:true});});
+const directory=`.tmp/insurance-bench/${slug}-runs`;fs.mkdirSync(directory,{recursive:true});
+for(let index=0;index<registration.panels.length;index++){
+ const p=registration.panels[index];if(p.split!==stage)continue;validate();if(fs.existsSync(p.dispatchReceiptPath))throw new Error('No duplicate candidate panel or retry');
+ for(const prev of registration.panels.slice(0,index)){const r=json(prev.dispatchReceiptPath);if(r.status!=='terminal-native-run'||!r.completeCoverage||r.processFailure||r.providerOrBudgetFailure||r.modelOrEffortMismatch||r.materialSpendOverrun||sha(fs.readFileSync(r.nativeRunPath))!==r.nativeRunSha256)throw new Error('Serial predecessor invalid; pause');}
+ const l=ledger(),remainingForecast=registration.panels.slice(index).reduce((n:number,x:any)=>n+x.forecastUsd,0);if(75-l.reservedUsd<remainingForecast)throw new Error('Remaining prospective plan unaffordable');
+ const args=['tsx','scripts/insurance-bench-allocation-interaction.ts','run','--model',p.modelAlias,'--split',p.split,'--per-family','2','--case-offset','0','--repeat','1','--variant','baseline','--max-output-tokens','16384','--budget','75','--out',directory,'--admission',registrationPath,'--freeze-commit',freezeCommit,'--panel',p.id,...(releasePath?['--release',releasePath]:[])];
+ const before=new Set(fs.readdirSync(directory)),logPath=`.tmp/insurance-bench/${slug}-${p.id}.log`;
+ const receipt:any={...p,panelId:p.id,startedAt:new Date().toISOString(),freezeCommit,sourceFingerprint,responseFormat:'json_object',ledgerBefore:l,remainingForecastUsd:remainingForecast,command:['npx',...args],status:'dispatched',logPath};fs.writeFileSync(p.dispatchReceiptPath,JSON.stringify(receipt,null,2)+'\n');
+ const log=fs.createWriteStream(logPath),child=spawn('npx',args,{cwd:root,shell:false,stdio:['ignore','pipe','pipe']});child.stdout.on('data',b=>{log.write(b);process.stdout.write(b);});child.stderr.on('data',b=>{log.write(b);process.stderr.write(b);});let spawnFailure=false;const code=await new Promise<number|null>(done=>{child.once('error',()=>{spawnFailure=true;done(null);});child.once('exit',done);});log.end();Object.assign(receipt,{endedAt:new Date().toISOString(),exitCode:code,processFailure:spawnFailure||code!==0,status:'process-ended-awaiting-native-validation',ledgerAfter:ledger()});fs.writeFileSync(p.dispatchReceiptPath,JSON.stringify(receipt,null,2)+'\n');
+ const matches=fs.readdirSync(directory).filter(n=>n.endsWith('.json')&&!before.has(n)).map(name=>({name,bytes:fs.readFileSync(path.join(directory,name))})).map(x=>({...x,run:JSON.parse(x.bytes.toString())})).filter(x=>x.run.datasetHash===p.datasetHash&&hash(x.run.model)===hash(p.modelConfiguration)&&hash(x.run.taskIds)===hash(p.taskIds));if(matches.length!==1)throw new Error('Exactly one native candidate run required');
+ const {name,bytes,run}=matches[0];if(run.version!==generation||run.responseFormat!=='json_object'||run.harnessHash!==p.harnessHash||run.repeat!==p.repeat||hash(run.limits)!==hash(p.limits))throw new Error('Native candidate configuration mismatch');const nativeRunPath='insurance-bench/results/'+name;if(fs.existsSync(nativeRunPath))throw new Error('Never overwrite native candidate');fs.writeFileSync(nativeRunPath,bytes);
+ Object.assign(receipt,{status:'terminal-native-run',nativeRunPath,nativeRunSha256:sha(bytes),actualEstimatedCostUsd:run.estimatedCostUsd,completeCoverage:run.completeCoverage,benchmarkScore:run.benchmarkScore,weightedDiagnosticScore:run.summary.score,observedTruncation:run.episodes.some((e:any)=>e.truncatedOutput||e.trace.some((t:any)=>/(?:max[_ -]?tokens|max[_ -]?output[_ -]?tokens|length|incomplete)/i.test(t.finishReason??''))),modelOrEffortMismatch:run.episodes.some((e:any)=>e.trace.some((t:any)=>t.model!==p.modelConfiguration.model||(t.reasoningEffort??null)!==(p.modelConfiguration.reasoningEffort??null))),providerOrBudgetFailure:run.episodes.some((e:any)=>['provider-error','budget-stopped'].includes(e.status)),materialSpendOverrun:run.estimatedCostUsd>Math.max(p.forecastUsd*1.5,p.forecastUsd+.5)});fs.writeFileSync(p.dispatchReceiptPath,JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify({panel:p.id,macro:run.benchmarkScore,diagnostic:run.summary.score,costUsd:run.estimatedCostUsd,remainingUsd:75-receipt.ledgerAfter.reservedUsd}));if(receipt.processFailure||receipt.providerOrBudgetFailure||receipt.modelOrEffortMismatch||receipt.materialSpendOverrun)throw new Error('Native limitation requires review before next call');
+}
+console.log(JSON.stringify({stageComplete:stage,candidate:slug}));

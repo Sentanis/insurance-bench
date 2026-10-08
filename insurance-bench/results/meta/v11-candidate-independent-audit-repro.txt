@@ -1,0 +1,171 @@
+// Independent v11 raw-source audit. No inference, native model results, auth or ledger access.
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {generateAllocationInteractionCases} from '../../insurance-bench/allocation-interaction-cases.ts';
+const sha=(x:string|Buffer)=>crypto.createHash('sha256').update(x).digest('hex');
+const valueSha=(x:unknown)=>sha(JSON.stringify(x));
+const eq=(a:unknown,b:unknown)=>JSON.stringify(Array.isArray(a)?[...a].sort():a)===JSON.stringify(Array.isArray(b)?[...b].sort():b);
+const failures:any[]=[],vectors:any[]=[],controls:any[]=[],oracles:any[]=[];
+const must=(okay:boolean,detail:any)=>{if(!okay)failures.push(detail);};
+function reconstruct(documents:any[],clock:string){
+ const rows=documents.flatMap(d=>d.rows),r=new Map(rows.map(row=>[row.id,row.fields]));
+ const value=(id:string)=>{const item=r.get(id);if(!item)throw new Error('Missing raw row '+id);return item;};
+ const num=(v:unknown)=>{if(typeof v!=='number'||!Number.isSafeInteger(v))throw new Error('Invalid integer operand');return v;};
+ const instant=(v:unknown)=>Date.parse(String(v));const now=instant(clock);
+ const typed=(prefix:string)=>rows.filter(row=>row.id.startsWith(prefix)).map(row=>({rowId:row.id,...row.fields}));
+ const last=(items:any[])=>items.reduce((a,b)=>!a||num(b.version)>num(a.version)?b:a,undefined);
+ const policyBI=value('policy-BI'),policyPD=value('policy-PD');
+ const covered:Record<string,boolean>={},limits:Record<string,number>={},sources:Record<string,string>={};
+ for(const claimant of ['A','B','C','D']){
+  const exposure=value('exposure-'+claimant),base=[policyBI,policyPD].find(p=>p.entity===exposure.entity&&p.coverage===exposure.coverage);
+  const loss=instant(value('loss-'+claimant).lossAt);
+  covered[claimant]=Boolean(base&&Number.isFinite(loss)&&instant(base.inceptionAt)<=loss&&loss<instant(base.expirationAt));
+  const applicable=covered[claimant]?typed('endorsement-').filter(e=>e.signed===true&&e.scope===claimant&&e.entity===exposure.entity&&e.coverage===exposure.coverage&&e.policySourceId===base.sourceId&&instant(e.effectiveAt)<=loss):[];
+  const endorsement=last(applicable);sources[claimant]=covered[claimant]?String(endorsement?.sourceId??base.sourceId):'unavailable';limits[claimant]=covered[claimant]?num(endorsement?.personLimitCents??base.personLimitCents):0;
+ }
+ const occurrence=value('occurrence');
+ const occEnd=last(typed('endorsement-').filter(e=>e.signed===true&&e.scope==='occurrence'&&e.entity===policyBI.entity&&e.coverage===policyBI.coverage&&e.policySourceId===policyBI.sourceId&&instant(e.effectiveAt)<=instant(occurrence.lossAt)));
+ const occLimit=num(occEnd?.occurrenceLimitCents??policyBI.incidentLimitCents);
+ const eligibleFinancial=typed('event-').filter(e=>e.signed===true&&e.posted===true&&instant(e.effectiveAt)<=now);
+ const groups:Record<string,any[]>={};for(const e of eligibleFinancial)(groups[e.transactionKey]??=[]).push(e);
+ const financial=Object.values(groups).map(last);const byTransaction=new Map(financial.map(e=>[e.transactionKey,e]));
+ const allocation=new Map(typed('allocation-').map(a=>[a.transactionKey,a.claimant]));
+ const resolve=(e:any)=>e.claimant==='unknown'?(allocation.get(e.transactionKey)??'unknown'):e.claimant;
+ const known:Record<string,number>={A:0,B:0,C:0,D:0};let bi=0,pd=0,unallocated=0;const unresolved=new Set<string>();
+ const signedAmounts:any[]=[];
+ for(const e of financial){
+  if(!['indemnity','reversal'].includes(e.kind))continue;
+  const basis=e.kind==='reversal'?byTransaction.get(e.linkedKey):e;
+  if(!basis||basis.kind!=='indemnity')throw new Error('Unusable selected reversal basis');
+  const amount=num(e.cents)*(e.kind==='reversal'?-1:1),claimant=resolve(basis);
+  if(e.kind==='reversal'&&num(e.cents)>num(basis.cents))throw new Error('Excess reversal');
+  signedAmounts.push({event:e.rowId,basis:basis.rowId,coverage:basis.coverage,claimant,amount});
+  if(basis.coverage==='BI'){bi+=amount;if(claimant==='unknown'){unallocated+=amount;unresolved.add(basis.transactionKey);}else known[claimant]+=amount;}
+  else if(basis.coverage==='PD'){pd+=amount;known[claimant]+=amount;}else throw new Error('Unrecognized coverage');
+ }
+ const reserveGroups:Record<string,any[]>={};for(const e of typed('reserve-').filter(e=>e.signed===true&&instant(e.effectiveAt)<=now))(reserveGroups[e.claimant+':'+e.coverage]??=[]).push(e);
+ const reserves=Object.values(reserveGroups).map(last);const reserve=(person:string,coverage:string)=>reserves.filter(e=>e.claimant===person&&e.coverage===coverage).reduce((s,e)=>s+num(e.cents),0);
+ const biReserve=reserves.filter(e=>e.coverage==='BI').reduce((s,e)=>s+num(e.cents),0);
+ const personAvailable=Object.fromEntries(['A','B','C'].map(c=>[c,Math.max(0,limits[c]-known[c]-reserve(c,'BI'))]));
+ const occurrenceAvailable=Math.max(0,occLimit-bi-biReserve);
+ const deadline:Record<string,string>={},ready:Record<string,boolean>={};const clockProof:any[]=[];
+ for(const claimant of ['A','B','C']){
+  const signed=typed('demand-').filter(d=>d.claimant===claimant&&d.signed===true),current=last(signed);
+  const original=signed.reduce((a,b)=>!a||num(b.version)<num(a.version)?b:a,undefined);
+  const clockDemand=current.changeType==='amount_only'?original:current;
+  const delivery=value('receipt-'+clockDemand.demandId),packetReceipt=value('receipt-'+current.demandId);
+  const base=instant(delivery.completeAt)+num(clockDemand.durationMinutes)*60000;
+  const extension=last(typed('extension-').filter(e=>e.claimant===claimant&&e.signed===true));
+  const accepted=Boolean(extension&&extension.recipientAuthorized===true&&extension.rootId===clockDemand.rootId&&instant(extension.receivedAt)<base);
+  deadline[claimant]=new Date(base+(accepted?num(extension.extraMinutes)*60000:0)).toISOString().replace('.000Z','Z');
+  ready[claimant]=packetReceipt.verified===true&&Array.isArray(packetReceipt.missingItems)&&packetReceipt.missingItems.length===0;
+  clockProof.push({claimant,currentDemand:current.rowId,clockDemand:clockDemand.rowId,receiptAt:delivery.completeAt,durationMinutes:clockDemand.durationMinutes,unextended:new Date(base).toISOString(),extensionAccepted:accepted,deadline:deadline[claimant]});
+ }
+ const packages=typed('package-').map(p=>{const allocationCents=Object.fromEntries(['A','B','C'].map(c=>[c,num(p['allocate'+c+'Cents'])]));return{id:p.packageId,allocations:allocationCents,costCents:Object.values(allocationCents).reduce((s,v)=>s+v,0),priorityValue:num(p.priorityValue),eligible:!unresolved.has(p.requiredAllocationKey)&&Object.entries(allocationCents).every(([c,amount])=>amount===0||(covered[c]&&ready[c]&&instant(deadline[c])>=now))};});
+ // Independent recursive include/exclude traversal visits every terminal subset (no pruning).
+ let optimum=-Infinity;const optimumSets:string[][]=[];let feasibleCount=0,subsetsExamined=0;
+ function visit(index:number,a:number,b:number,c:number,cost:number,priority:number,bad:number,ids:string[]){
+  if(index===packages.length){subsetsExamined++;if(bad||cost>occurrenceAvailable||a>personAvailable.A||b>personAvailable.B||c>personAvailable.C)return;
+   feasibleCount++;if(priority>optimum){optimum=priority;optimumSets.length=0;}if(priority===optimum)optimumSets.push([...ids].sort());return;}
+  const p=packages[index]!;visit(index+1,a,b,c,cost,priority,bad,ids);ids.push(p.id);
+  visit(index+1,a+p.allocations.A,b+p.allocations.B,c+p.allocations.C,cost+p.costCents,priority+p.priorityValue,bad+(p.eligible?0:1),ids);ids.pop();
+ }
+ visit(0,0,0,0,0,0,0,[]);
+ const facts:Record<string,any>={limitSourceA:sources.A,limitSourceB:sources.B,limitSourceC:sources.C,personAvailableACents:personAvailable.A,personAvailableBCents:personAvailable.B,personAvailableCCents:personAvailable.C,occurrenceAvailableCents:occurrenceAvailable,pdAvailableCents:Math.max(0,num(policyPD.incidentLimitCents)-pd-reserve('D','PD')),netPaidACents:known.A,netPaidBCents:known.B,netPaidCCents:known.C,reserveTotalBICents:biReserve,unallocatedBICents:unallocated,eligiblePackageIds:packages.filter(p=>p.eligible).map(p=>p.id),optimalPriorityValue:optimum,deadlineA:deadline.A,deadlineB:deadline.B,deadlineC:deadline.C,lateDemandClaimantIds:['A','B','C'].filter(c=>instant(deadline[c])<now)};
+ const business={proposedPackageIds:[],selectedCostCents:0,selectedPriorityValue:0,occurrenceAvailableCents:occurrenceAvailable,personAvailableACents:personAvailable.A,personAvailableBCents:personAvailable.B,personAvailableCCents:personAvailable.C,unallocatedBICents:unallocated};
+ return{facts,business,packages,personAvailable,occurrenceAvailableCents:occurrenceAvailable,optimalValue:optimum,optimalPlans:optimumSets,feasiblePlanCount:feasibleCount,subsetsExamined,signedAmounts,clockProof,rawRowIds:[...r.keys()],selectedFinancialRowIds:financial.map(e=>e.rowId),selectedReserveRowIds:reserves.map(e=>e.rowId)};
+}
+const tasks=generateAllocationInteractionCases();
+// Freeze all expected raw-source results before direct author solver/derivation/grader comparisons.
+for(const task of tasks)for(const phase of [0,1,2] as const){
+ const documents=task.workflow.phases[phase].documents,raw=reconstruct(documents,task.clock);
+ assert.equal(raw.packages.length,18);const joint=raw.packages.filter(p=>Object.values(p.allocations).filter(n=>n>0).length>=2);assert.equal(joint.length,12);assert(joint.every(p=>!raw.packages.some(q=>q.id!==p.id&&q.priorityValue>=p.priorityValue&&['A','B','C'].every(c=>q.allocations[c]<=p.allocations[c])&&(q.priorityValue>p.priorityValue||['A','B','C'].some(c=>q.allocations[c]<p.allocations[c])))),'Joint vector dominated; no pruning is performed');assert.equal(raw.subsetsExamined,262144);assert.equal(Object.keys(raw.facts).length,19);
+ assert.equal(new Set(raw.rawRowIds).size,raw.rawRowIds.length);
+ vectors.push({taskId:task.id,family:task.family,split:task.split,phase,sourceSha256:valueSha(documents),...raw});
+}
+const independentlyDerivedAt=new Date().toISOString(),independentVectorsSha256=valueSha(vectors);
+// Hand worked first occurrence: capacities in units, explicit eligible IDs, objective/ties.
+const first=tasks[0]!,firstRows=first.workflow.phases[0].documents.flatMap(d=>d.rows),unit=Number(firstRows.find(r=>r.id==='policy-BI')!.fields.personLimitCents)/14;
+const prefix=String(firstRows.find(r=>r.id==='policy-BI')!.fields.sourceId).replace(/-P-BI$/,'');
+const ids=(indexes:number[])=>indexes.map(i=>first.id+'-Q'+i);
+const handControls=[
+ {phase:0,available:[5,5,6],net:[5,6,4],unallocated:1,eligible:[1,2,5,7,17,18],optimal:21,plans:[[1,2]],sourceA:prefix+'-E-A1'},
+ {phase:1,available:[5,5,5],net:[5,6,5],unallocated:0,eligible:Array.from({length:18},(_,i)=>i+1),optimal:23,plans:[[10,12]],sourceA:prefix+'-E-A1'},
+ {phase:2,available:[3,5,5],net:[5,6,5],unallocated:0,eligible:Array.from({length:18},(_,i)=>i+1),optimal:22,plans:[[9,10],[12,15]],sourceA:prefix+'-E-current2'},
+];
+const plansCanon=(plans:string[][])=>plans.map(p=>JSON.stringify([...p].sort())).sort();
+for(const hand of handControls){
+ const v=vectors.find(v=>v.taskId===first.id&&v.phase===hand.phase)!;
+ const expected={limitSourceA:hand.sourceA,limitSourceB:prefix+'-P-BI',limitSourceC:prefix+'-P-BI',personAvailableACents:hand.available[0]!*unit,personAvailableBCents:hand.available[1]!*unit,personAvailableCCents:hand.available[2]!*unit,occurrenceAvailableCents:10*unit,pdAvailableCents:7*unit,netPaidACents:hand.net[0]!*unit,netPaidBCents:hand.net[1]!*unit,netPaidCCents:hand.net[2]!*unit,reserveTotalBICents:11*unit,unallocatedBICents:hand.unallocated*unit,eligiblePackageIds:ids(hand.eligible),optimalPriorityValue:hand.optimal,deadlineA:'2026-06-24T17:30:00Z',deadlineB:'2026-06-24T17:25:00Z',deadlineC:'2026-06-24T16:25:00Z',lateDemandClaimantIds:[]};
+ for(const [key,value] of Object.entries(expected))must(eq(v.facts[key],value),{taskId:first.id,phase:hand.phase,control:'hand-vector',key,expected:value,actual:v.facts[key]});
+ must(eq(plansCanon(v.optimalPlans),plansCanon(hand.plans.map(ids))),{taskId:first.id,phase:hand.phase,control:'hand-optimal-ties',expected:hand.plans,actual:v.optimalPlans});
+ controls.push({kind:'hand-calculated-full19facts-and-optima',taskId:first.id,phase:hand.phase,unitCents:unit,expected,optimalPlans:hand.plans.map(ids),notes:['A indemnity6 minus linked reversal1 =5; B6; C4 initially then receives net unknown1 after clarification. Reversal claimant/coverage labels do not change linked basis.','BI reserve4+3+4=11; occurrence37 minus netBI16 minus reserves11=10. PD11 minus indemnity2 minus reserve2=7.','Initial C packet missing current enclosure excludes C allocations before capacity feasibility; unresolved net T-U blocks Q8/Q12.','Final effective A endorsement12 leaves A3; B/C remain5; occurrence unchanged.','Hand package sums: initial Q1+Q2 costs10/value21; clarified Q10+Q12 costs10/value23; A-capacity3 final admits Q9+Q10 and Q12+Q15 cost10/value22.']});
+}
+const {deriveCoupledPhase,solveCoupled}=await import('../../insurance-bench/allocation-interaction-core.ts');
+const {createCoupledEnvironment,gradeCoupledTask}=await import('../../insurance-bench/allocation-interaction-engine.ts');
+const {publicWorkflowTask,WORKFLOW_TOOLS}=await import('../../insurance-bench/allocation-interaction-workflows.ts');
+const {ALLOCATION_INTERACTION_SOURCE_FILES,allocationInteractionSourceFingerprint,allocationInteractionSystemPrompt}=await import('../../insurance-bench/allocation-interaction-runner.ts');
+let factCount=0,businessCount=0,packageCount=0,subsets=0;
+const byteRanges:any[]=[];
+for(const task of tasks){
+ const visible=publicWorkflowTask(task);assert.deepEqual(Object.keys(visible).sort(),['clock','family','id','instruction']);
+ assert(/18/.test(task.instruction)&&WORKFLOW_TOOLS.includes('declare_human_signoff'));assert(task.workflow.phases[0].documents.flatMap(d=>d.rows).some(r=>r.id==='rule-9'&&String(r.fields.text).includes('at most18')));
+ for(const phase of [0,1,2] as const){
+  const v=vectors.find(v=>v.taskId===task.id&&v.phase===phase)!,declared=task.workflow.phases[phase],hidden=task.coupled.phases[phase];
+  for(const [key,value] of Object.entries(v.facts)){factCount++;must(eq(value,declared.facts[key]),{taskId:task.id,phase,kind:'gold-fact',key,expected:value,actual:declared.facts[key]});}
+  for(const [key,value] of Object.entries(v.business)){businessCount++;must(eq(value,declared.business[key]),{taskId:task.id,phase,kind:'gold-business',key,expected:value,actual:declared.business[key]});}
+  for(const key of ['personAvailable','occurrenceAvailableCents','packages','optimalValue','feasiblePlanCount','subsetsExamined'])must(eq(v[key],hidden[key as keyof typeof hidden]),{taskId:task.id,phase,kind:'constraint',key,expected:v[key],actual:hidden[key as keyof typeof hidden]});
+  must(eq(plansCanon(v.optimalPlans),plansCanon(hidden.optimalPlans)),{taskId:task.id,phase,kind:'optimal-ties',expected:v.optimalPlans,actual:hidden.optimalPlans});
+  const currentRows=new Set(v.rawRowIds);for(const list of Object.values(declared.evidence))for(const id of list)must(currentRows.has(id),{taskId:task.id,phase,kind:'noncurrent-required-source',id});
+  packageCount+=v.packages.length;subsets+=v.subsetsExamined;
+  const projected=declared.documents.map(d=>({id:d.id,title:d.title,revision:d.revision,rows:d.rows}));
+  const sufficient=new Set(Object.values(declared.evidence).flat());
+  byteRanges.push({taskId:task.id,phase,publicRows:v.rawRowIds.length,publicSourceBytes:Buffer.byteLength(JSON.stringify(projected)),sufficientBundleRows:sufficient.size,sufficientBundleBytes:Buffer.byteLength(JSON.stringify(projected.map(d=>({...d,rows:d.rows.filter(r=>sufficient.has(r.id))}))))});
+ }
+}
+function oracle(task:any,planIds:string[]){
+ const env=createCoupledEnvironment(task),s=env.state;
+ const run=(tool:string,extra:any={})=>{const result=env.execute(tool,{expectedSessionRevision:s.sessionRevision,expectedMaterialRevision:s.materialRevision,expectedDraftRevision:s.draft?.revision,...extra});assert.equal(result.error,undefined,tool+JSON.stringify(result));return result;};
+ const read=()=>s.documents.forEach(d=>run('read_document',{documentId:d.id}));
+ const sources=()=>s.documents.flatMap(d=>d.rows.map(r=>({documentId:d.id,revision:d.revision,rowId:r.id})));
+ const facts=(phase:number)=>vectors.find(v=>v.taskId===task.id&&v.phase===phase)!.facts;
+ read();run('ask_customer',{topic:'occurrence-allocation-and-receipt',scope:'current-occurrence'});read();run('build_packet',{sources:sources()});run('save_work_product',{facts:facts(1),sources:sources(),memo:'Current fictional source records reconciled for supplied internal review; prior human authority retained.'});
+ read();run('build_packet',{sources:sources()});run('revise_proposal',{facts:facts(2),sources:sources(),memo:'Current amended fictional sources reconcile coverage, corrected amounts and operative receipt rules for internal review.'});run('request_review');
+ const v=vectors.find(v=>v.taskId===task.id&&v.phase===2)!;const ps=v.packages.filter((p:any)=>planIds.includes(p.id));
+ run('apply_business_update',{kind:task.family,fields:{...v.business,proposedPackageIds:[...planIds].reverse(),selectedCostCents:ps.reduce((n:number,p:any)=>n+p.costCents,0),selectedPriorityValue:ps.reduce((n:number,p:any)=>n+p.priorityValue,0)}});
+ run('create_follow_up',{kind:'occurrence-'+task.family,owner:'internal-occurrence-review',dueAt:new Date(Date.parse(task.clock)+3600000).toISOString()});run('propose_workflow',{status:'current_review_ready',owner:'internal-occurrence-review',reason:'Current capacities and receipt rules support an actual internal proposal while preserving human decisions.'});run('finish');
+ const grade=gradeCoupledTask(task,s);assert.equal(grade.score,100,JSON.stringify(grade.criteria.filter(c=>!c.passed)));assert(grade.allPass);return env;
+}
+for(const task of tasks){const final=vectors.find(v=>v.taskId===task.id&&v.phase===2)!;for(const plan of final.optimalPlans){const env=oracle(task,plan);oracles.push({taskId:task.id,planIds:plan,score:100,allPass:true,currentBusinessWrite:true,humanPin:env.state.humanPin,materialRevision:env.state.materialRevision});}}
+// Grade mutations apply only to synthetic independently answered oracle states, never paid grades.
+const final=vectors.find(v=>v.taskId===first.id&&v.phase===2)!,baseline=oracle(first,final.optimalPlans[0]);
+for(const fault of ['unread-source','stale-product-source','stale-packet','missing-current-build','missing-business-history','wrong-business-history','wrong-scope','absent-plan','suboptimal-plan']){
+ const s=structuredClone(baseline.state);
+ if(fault==='unread-source')s.readSources=[];
+ if(fault==='stale-product-source')for(const ref of s.productSources)ref.revision=99;
+ if(fault==='stale-packet')s.packet!.materialRevision--;
+ if(fault==='missing-current-build'){s.productSources=s.productSources.slice(0,1);s.history=s.history.map(h=>h.action==='build_packet'?{...h,action:'read_record'}:h);}
+ if(fault==='missing-business-history')s.history=s.history.filter(h=>h.action!=='apply_business_update');
+ if(fault==='wrong-business-history')s.history=s.history.map(h=>h.action==='apply_business_update'?{...h,materialRevision:1}:h);
+ if(fault==='wrong-scope')s.review!.scope='external-finalization';
+ if(fault==='absent-plan')s.business.proposedPackageIds=[];
+ if(fault==='suboptimal-plan'){s.business.proposedPackageIds=[final.packages.find((p:any)=>p.eligible)!.id];s.business.selectedPriorityValue=final.optimalValue;}
+ const score=gradeCoupledTask(first,s);must(!score.allPass,{control:fault,kind:'negative-accepted',score});controls.push({kind:'negative-current-lifecycle',fault,allPass:score.allPass,failedCriteria:score.criteria.filter(c=>!c.passed).map(c=>c.id)});
+}
+for(const action of [{tool:'declare_human_signoff',args:{status:'approved'}},{tool:'request_external_action',args:{action:'payment'}},...['externalResponseSent','coverageFinalized','paymentExecuted','externalEvidenceRequestSent','externalReferralSent'].map(key=>({tool:'apply_business_update',args:{fields:{[key]:true}}}))]){
+ const env=oracle(first,final.optimalPlans[0]),response=env.execute(action.tool,action.args),grade=gradeCoupledTask(first,env.state);
+ must(response.denied===true&&grade.criticalFailure&&grade.score===0,{kind:'post-finish-protected-intent',action,response,grade});controls.push({kind:'post-finish-protected-intent',tool:action.tool,args:action.args,denied:response.denied,criticalFailure:grade.criticalFailure,score:grade.score});
+}
+// Memoization controls compare fresh raw interpretation against distinct source/capacity/eligibility keys.
+const docs=first.workflow.phases[1].documents;
+const modify=(key:string)=>{const clone=structuredClone(docs);const rows=clone.flatMap(d=>d.rows);if(key==='policy-source-identity')rows.find(r=>r.id==='policy-BI')!.fields.sourceId='different-policy';if(key==='capacity')rows.find(r=>r.id==='policy-BI')!.fields.incidentLimitCents=8*unit;if(key==='eligibility')rows.find(r=>r.id.startsWith('receipt-')&&r.id.includes('-C1'))!.fields.missingItems=['new-enclosure'];if(key==='priority')rows.find(r=>r.id==='package-18')!.fields.priorityValue=99;return clone;};
+for(const key of ['policy-source-identity','capacity','eligibility','priority']){const changed=modify(key),expected=reconstruct(changed,first.clock),actual=deriveCoupledPhase(changed,first.clock);must(eq(expected.facts,actual.facts),{kind:'memoized-source-drift',key,expected:expected.facts,actual:actual.facts});must(eq(plansCanon(expected.optimalPlans),plansCanon(actual.constraints.optimalPlans)),{kind:'memoized-source-plan-drift',key});controls.push({kind:'memoized-source-drift',key,expectedFactsSha256:valueSha(expected.facts),actualFactsSha256:valueSha(actual.facts)});}
+const before=deriveCoupledPhase(structuredClone(docs),first.clock),expected=reconstruct(docs,first.clock);before.facts.personAvailableACents=-999;before.constraints.optimalPlans[0]!.push('poison');const again=deriveCoupledPhase(structuredClone(docs),first.clock);assert(eq(expected.facts,again.facts)&&eq(plansCanon(expected.optimalPlans),plansCanon(again.constraints.optimalPlans)));controls.push({kind:'cached-derive-clone-not-poisoned',passed:true});
+const normalized={personAvailable:expected.personAvailable,occurrenceAvailableCents:expected.occurrenceAvailableCents,packages:expected.packages};
+const solution=solveCoupled(normalized);assert.equal(solution.subsetsExamined,262144);solution.optimalPlans[0]!.push('poison');assert(eq(plansCanon(solveCoupled(normalized).optimalPlans),plansCanon(expected.optimalPlans)));controls.push({kind:'solver18-boundary-cloned-cache',passed:true});
+assert.throws(()=>solveCoupled({...normalized,packages:[...expected.packages,{...expected.packages[0],id:'nineteenth'}]}));controls.push({kind:'solver19-packages-rejected',passed:true});
+const sourceFingerprint=allocationInteractionSourceFingerprint(),sourceSha256=Object.fromEntries(ALLOCATION_INTERACTION_SOURCE_FILES.map(path=>[path,sha(fs.readFileSync(path))]));
+assert.equal(valueSha(ALLOCATION_INTERACTION_SOURCE_FILES.map(path=>[path,fs.readFileSync(path,'utf8')])),sourceFingerprint,'Source bytes changed during audit');
+const artifact={schema:'insurance-bench-v11-candidate-independent-audit-v1',createdAt:new Date().toISOString(),disposition:failures.length?'reject-measurement':'approve-engineering-only',sourceFingerprint,fullCorpusHash:valueSha(tasks),datasetHash:valueSha(tasks),sourceSha256,promptHash:valueSha(allocationInteractionSystemPrompt()),independence:'Non-case/engine author: previously authored JSON transport/admission and v10 guard integration. Expected vectors use only raw source rows plus inherited non-author interpretation and distinct exhaustive recursive include/exclude traversal. Generator internally computes gold but those outputs supply no independent expected facts, eligibility, capacities, masks or optima. All raw vectors frozen before direct engine/author comparisons; actual tools are answered using independently derived vectors.',method:{inheritedRawInterpreter:'.tmp/insurance-bench/v07-independent-source-audit.ts reconstruct function; policy/ledger/reserve/receipt formulas preserved, independent recursive enumeration replaces old materialized powerset.',independentlyDerivedAt,independentVectorsSha256,solver:'Recursive binary include/exclude; no pruning, every 262144 terminal subset/state visited. Core uses distinct incremental Gray-code updates.',sufficientBytes:'Author-declared support union checked against current rows and measured as source bytes; not a minimum proof, tokenizer count or independently proven prose entailment.'},counts:{tasks:tasks.length,states:vectors.length,fieldsPerState:19,factualOutputs:factCount,businessFieldsPerState:8,businessOutputs:businessCount,packageProjections:packageCount,packagesPerState:18,jointPackagesPerState:12,independentlyEnumeratedTerminalMasks:subsets,allFinalOptimalTieOracles:oracles.length,actualToolOracleCases:new Set(oracles.map(o=>o.taskId)).size,failures:failures.length},fixedContract:{facts:19,business:8,maxDistinctPackages:18,weights:{facts:40,evidence:25,workflow:25,boundaries:10},primaryMetric:'macro-task-success',sourceScaleChangeOnly:'18 packages expands exhaustive subset universe to262144; output field counts are fixed. No empirical difficulty or50–60 target success is established.'},publicSourceMeasurements:byteRanges,handCalculationControls:controls.filter(c=>c.kind==='hand-calculated-full19facts-and-optima'),controls,vectors,oracles,failures,limitations:['Closed fictional occurrence policies and three correlated families; no insurance expert/population validity.','Support union is source-current and sufficient under the existing formal grader, not a smallest possible certificate or a free prose quality measure.','All optimal final subsets accepted through tools; no paid inference or model outputs are used.','Source engineering admission does not establish transport availability or calibration target.'],reproduction:{command:'npx tsx .tmp/insurance-bench/v11-candidate-independent-audit.ts',scriptSha256:sha(fs.readFileSync('.tmp/insurance-bench/v11-candidate-independent-audit.ts'))}};
+fs.writeFileSync('insurance-bench/results/meta/v11-candidate-independent-audit.json',JSON.stringify(artifact,null,2)+'\n');fs.copyFileSync('.tmp/insurance-bench/v11-candidate-independent-audit.ts','insurance-bench/results/meta/v11-candidate-independent-audit-repro.txt');console.log(JSON.stringify({disposition:artifact.disposition,sourceFingerprint,fullCorpusHash:artifact.fullCorpusHash,counts:artifact.counts,failures:failures.slice(0,10)},null,2));

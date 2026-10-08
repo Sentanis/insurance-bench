@@ -1,0 +1,179 @@
+{
+  "frozenAt": "2026-10-04T01:57:46.758Z",
+  "version": "insurance-bench-frontier-v0.5",
+  "candidate": 3,
+  "sourceCommit": "5632ae7b2e894c7028c2211d455495655285121a",
+  "corpusHash": "961c9ba0e654d4599cc6be95efe8168b2896b5b4df545d741cc4cf4561392a0c",
+  "developmentHash": "ba21fdda454f2ae4b16b188ea16be7ee3873bf8e7903078798de8fbbae52947d",
+  "holdoutHash": "4ae6ddefe33d247396f0d4386083513948e5d0623440a6f95cf94c72efec3bca",
+  "sourceFingerprint": "da12d65b3d91597ed07ce11b4f103db30a6ba4fda0914352ea38964498b4a243",
+  "harnessHash": "c0abd5b9bbef513660d080eda62af2d8c0b05265702481fcd97bbfa15f92d6b0",
+  "devTaskIds": [
+    "ibf-deadline-triage-dev-1-e7f9312c",
+    "ibf-coverage-review-dev-1-b448e120",
+    "ibf-financial-reconciliation-dev-1-1384b654",
+    "ibf-evidence-brief-dev-1-9b5e64c8",
+    "ibf-fraud-referral-dev-1-82e8e07c",
+    "ibf-workflow-handoff-dev-1-6a0c5d70"
+  ],
+  "holdoutTaskIds": [
+    "ibf-deadline-triage-holdout-1-ae1d6f3e",
+    "ibf-deadline-triage-holdout-2-ab4e4d85",
+    "ibf-coverage-review-holdout-1-9b544752",
+    "ibf-coverage-review-holdout-2-ab233e89",
+    "ibf-financial-reconciliation-holdout-1-49d2b6a6",
+    "ibf-financial-reconciliation-holdout-2-c71e5dcd",
+    "ibf-evidence-brief-holdout-1-c898913a",
+    "ibf-evidence-brief-holdout-2-64b56f51",
+    "ibf-fraud-referral-holdout-1-a2d8eb0e",
+    "ibf-fraud-referral-holdout-2-e3787715",
+    "ibf-workflow-handoff-holdout-1-3b8e1822",
+    "ibf-workflow-handoff-holdout-2-3b95b919"
+  ],
+  "limits": {
+    "maxTurns": 20,
+    "maxOutputTokens": 16384,
+    "transportDeadlineMs": 300000
+  },
+  "repeat": 2,
+  "cycle1": [
+    "gpt-6.1-sol-low",
+    "gpt-6-luna-low"
+  ],
+  "cycle2": [
+    "gpt-6.1-sol-high",
+    "gpt-6-luna-high"
+  ],
+  "optionalTierPanel": [
+    "qwen3-32b",
+    "qwen3-235b"
+  ],
+  "optionalProviderReference": [
+    "claude-haiku-4.5",
+    "claude-sonnet-4.6",
+    "gpt-oss-20b",
+    "gpt-oss-120b",
+    "deepseek-v3.2"
+  ],
+  "modelConfigurations": {
+    "gpt-6.1-sol-low": {
+      "provider": "openai",
+      "model": "gpt-6.1-sol",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 10,
+      "reasoningEffort": "low",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "gpt-6-luna-low": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "inputUsdPerMillion": 0.1,
+      "outputUsdPerMillion": 0.5,
+      "reasoningEffort": "low",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "gpt-6.1-sol-high": {
+      "provider": "openai",
+      "model": "gpt-6.1-sol",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 10,
+      "reasoningEffort": "high",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "gpt-6-luna-high": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "inputUsdPerMillion": 0.1,
+      "outputUsdPerMillion": 0.5,
+      "reasoningEffort": "high",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "qwen3-32b": {
+      "provider": "bedrock",
+      "profile": "sentanis-phase0",
+      "region": "us-west-2",
+      "pricingVerifiedAt": "2026-10-03",
+      "model": "qwen.qwen3-32b-v1:0",
+      "inputUsdPerMillion": 0.15,
+      "outputUsdPerMillion": 0.6,
+      "pricingSource": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-west-2/index.json"
+    },
+    "qwen3-235b": {
+      "provider": "bedrock",
+      "model": "qwen.qwen3-235b-a22b-2507-v1:0",
+      "inputUsdPerMillion": 0.22,
+      "outputUsdPerMillion": 0.88,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "claude-haiku-4.5": {
+      "provider": "bedrock",
+      "profile": "sentanis-phase0",
+      "region": "us-west-2",
+      "pricingVerifiedAt": "2026-10-03",
+      "model": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "inputUsdPerMillion": 1,
+      "outputUsdPerMillion": 5,
+      "pricingSource": "https://platform.claude.com/docs/en/about-claude/pricing"
+    },
+    "claude-sonnet-4.6": {
+      "provider": "bedrock",
+      "model": "us.anthropic.claude-sonnet-4-6",
+      "inputUsdPerMillion": 3.3,
+      "outputUsdPerMillion": 16.5,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "gpt-oss-20b": {
+      "provider": "bedrock",
+      "profile": "sentanis-phase0",
+      "region": "us-west-2",
+      "pricingVerifiedAt": "2026-10-03",
+      "model": "openai.gpt-oss-20b-1:0",
+      "inputUsdPerMillion": 0.07,
+      "outputUsdPerMillion": 0.3,
+      "pricingSource": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-west-2/index.json"
+    },
+    "gpt-oss-120b": {
+      "provider": "bedrock",
+      "model": "openai.gpt-oss-120b-1:0",
+      "inputUsdPerMillion": 0.15,
+      "outputUsdPerMillion": 0.6,
+      "profile": "sentanis-phase0",
+      "region": "us-east-1"
+    },
+    "deepseek-v3.2": {
+      "provider": "bedrock",
+      "model": "deepseek.v3.2",
+      "inputUsdPerMillion": 0.62,
+      "outputUsdPerMillion": 1.85,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    }
+  },
+  "pairedUncertainty": {
+    "seed": 1729,
+    "samples": 10000,
+    "unit": "family cluster; attempts averaged within case"
+  },
+  "budget": {
+    "ledgerPath": ".tmp/insurance-bench/session-budget.json",
+    "capUsd": 25,
+    "atFreeze": {
+      "reservedUsd": 5.797714862500009,
+      "capUsd": 25,
+      "updatedAt": "2026-10-04T01:49:25.467Z"
+    }
+  },
+  "rules": [
+    "No score caps or weight changes; public mandatory reviews are critical obligations.",
+    "All equally optimal feasible schedules accepted; hidden solver is never exposed.",
+    "Candidate3 final of maximum3 documented development generations.",
+    "No holdout tuning; raw nulls/regressions retained.",
+    "Output truncation invalidates clean matched discrimination."
+  ]
+}

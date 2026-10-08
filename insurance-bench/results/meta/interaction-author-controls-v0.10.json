@@ -1,0 +1,365 @@
+{
+  "schema": "insurance-bench-interaction-author-controls-v0.10-v1",
+  "status": "author-controls-pass-independent-source-audit-and-review-required-before-inference",
+  "scope": "Source-only author controls using unchanged investigation engine and separate case-side resolver. No professional insurance validity, ability calibration, paid model observation or v0.10 registration.",
+  "seed": 100419,
+  "corpusSha": "80077360a987fb2812777bfcfa414f646138fe3ce16f8f73ac9860e22ffd5851",
+  "sourceHashes": {
+    "insurance-bench/interaction-cases.ts": "5f5bad98e8710ba969fe57f885521b214f3d3d4254ec06d2e93e81824afe1c81",
+    "test/insurance-bench-interaction-cases.test.ts": "96a8d079f69232a9b2d455eb9e6bfbf9a0cf1e8bb73cfeb8f825fa8e23565f25",
+    "insurance-bench/investigation-cases.ts": "9384c6dd93130526265050e985f08d74e2510584fde2e8bbccfce7b7dab099fe",
+    "insurance-bench/investigation-engine.ts": "86b02a16542099f107493012df42cb54e1c70bcce6b31046405a1246a98e8c52",
+    "insurance-bench/investigation-types.ts": "97c379fc221d3096395a88fc281deb78638d3684b2c1dd4900d5a9554d171f57"
+  },
+  "counts": {
+    "tasks": 12,
+    "dev": 6,
+    "freshHoldout": 6,
+    "families": 3,
+    "eventsPerTask": 2,
+    "activitiesPerTask": 2,
+    "clausesPerEvent": 6,
+    "fieldsPerTask": 16,
+    "fullEngineeringSnapshots": 72,
+    "operationalSnapshots": 48,
+    "handLiteralApplicabilityVectors": 48,
+    "actualToolOracles": 12,
+    "actualToolOracleAllPass": 12,
+    "focusedTests": 11
+  },
+  "checks": {
+    "initialApprovalDependenciesInitiallyPublic": true,
+    "singlePackLineagePerActivity": true,
+    "allRelationProofsCurrentNonempty": true,
+    "fullClosureAfterResponse": true,
+    "firstCorrectionChangesE1Only": true,
+    "laterQualifiedCorrectionPreservesEarlierEvent": true,
+    "disconnectedSiteNegative": true,
+    "narrowedIntervalCredentialNegative": true,
+    "issuerEligibilityNegative": true,
+    "alternateWitnessApprovalRetained": true,
+    "exactLaterRequestWindowScope": true,
+    "actualProtectedIntentAfterFinishCritical": true,
+    "noProvidersInvoked": true,
+    "noHeldOutModelOutputsRead": true,
+    "noLegacySourceEdited": true
+  },
+  "provenanceMeasure": {
+    "definition": "UTF8 serialized model-visible documents id/title/version/narrative/rows; no duplicate archived Document.text. Packet uses individually smallest sufficient proof alternatives, facts and a fixed short memo; this is a byte measure, not tokenizer or observed inference cost.",
+    "v9": {
+      "publicSourceMin": 35388,
+      "publicSourceMax": 43653,
+      "packetMin": 14399,
+      "packetMax": 17625,
+      "witnessMax": 24
+    },
+    "v10": {
+      "publicSourceMin": 36625,
+      "publicSourceMax": 44867,
+      "packetMin": 11433,
+      "packetMax": 15150,
+      "witnessMax": 20
+    },
+    "v10Rows": [
+      {
+        "taskId": "ibx-fleet-assignment-dev-1-275890c6",
+        "generation": 1,
+        "publicSourceBytes": 37785,
+        "shortestPerFieldPacketBytes": 14127,
+        "witnessPaths": 19,
+        "applicableRequests": 8
+      },
+      {
+        "taskId": "ibx-fleet-assignment-dev-1-275890c6",
+        "generation": 2,
+        "publicSourceBytes": 38361,
+        "shortestPerFieldPacketBytes": 14451,
+        "witnessPaths": 18,
+        "applicableRequests": 6
+      },
+      {
+        "taskId": "ibx-fleet-assignment-dev-1-275890c6",
+        "generation": 3,
+        "publicSourceBytes": 44025,
+        "shortestPerFieldPacketBytes": 14763,
+        "witnessPaths": 19,
+        "applicableRequests": 7
+      },
+      {
+        "taskId": "ibx-fleet-assignment-dev-2-a8f3316d",
+        "generation": 1,
+        "publicSourceBytes": 37404,
+        "shortestPerFieldPacketBytes": 14141,
+        "witnessPaths": 16,
+        "applicableRequests": 6
+      },
+      {
+        "taskId": "ibx-fleet-assignment-dev-2-a8f3316d",
+        "generation": 2,
+        "publicSourceBytes": 37980,
+        "shortestPerFieldPacketBytes": 14672,
+        "witnessPaths": 16,
+        "applicableRequests": 5
+      },
+      {
+        "taskId": "ibx-fleet-assignment-dev-2-a8f3316d",
+        "generation": 3,
+        "publicSourceBytes": 43644,
+        "shortestPerFieldPacketBytes": 15150,
+        "witnessPaths": 19,
+        "applicableRequests": 7
+      },
+      {
+        "taskId": "ibx-fleet-assignment-holdout-1-8a1ee3e8",
+        "generation": 1,
+        "publicSourceBytes": 37787,
+        "shortestPerFieldPacketBytes": 13045,
+        "witnessPaths": 20,
+        "applicableRequests": 7
+      },
+      {
+        "taskId": "ibx-fleet-assignment-holdout-1-8a1ee3e8",
+        "generation": 2,
+        "publicSourceBytes": 38363,
+        "shortestPerFieldPacketBytes": 12316,
+        "witnessPaths": 18,
+        "applicableRequests": 4
+      },
+      {
+        "taskId": "ibx-fleet-assignment-holdout-1-8a1ee3e8",
+        "generation": 3,
+        "publicSourceBytes": 44027,
+        "shortestPerFieldPacketBytes": 11433,
+        "witnessPaths": 17,
+        "applicableRequests": 2
+      },
+      {
+        "taskId": "ibx-fleet-assignment-holdout-2-d076f627",
+        "generation": 1,
+        "publicSourceBytes": 36748,
+        "shortestPerFieldPacketBytes": 14408,
+        "witnessPaths": 19,
+        "applicableRequests": 6
+      },
+      {
+        "taskId": "ibx-fleet-assignment-holdout-2-d076f627",
+        "generation": 2,
+        "publicSourceBytes": 37324,
+        "shortestPerFieldPacketBytes": 14836,
+        "witnessPaths": 18,
+        "applicableRequests": 4
+      },
+      {
+        "taskId": "ibx-fleet-assignment-holdout-2-d076f627",
+        "generation": 3,
+        "publicSourceBytes": 42988,
+        "shortestPerFieldPacketBytes": 14686,
+        "witnessPaths": 18,
+        "applicableRequests": 4
+      },
+      {
+        "taskId": "ibx-premises-chronology-dev-1-425bfd5a",
+        "generation": 1,
+        "publicSourceBytes": 37662,
+        "shortestPerFieldPacketBytes": 14127,
+        "witnessPaths": 19,
+        "applicableRequests": 8
+      },
+      {
+        "taskId": "ibx-premises-chronology-dev-1-425bfd5a",
+        "generation": 2,
+        "publicSourceBytes": 38238,
+        "shortestPerFieldPacketBytes": 14359,
+        "witnessPaths": 18,
+        "applicableRequests": 6
+      },
+      {
+        "taskId": "ibx-premises-chronology-dev-1-425bfd5a",
+        "generation": 3,
+        "publicSourceBytes": 43890,
+        "shortestPerFieldPacketBytes": 14671,
+        "witnessPaths": 19,
+        "applicableRequests": 7
+      },
+      {
+        "taskId": "ibx-premises-chronology-dev-2-ffd6acf1",
+        "generation": 1,
+        "publicSourceBytes": 37281,
+        "shortestPerFieldPacketBytes": 14141,
+        "witnessPaths": 16,
+        "applicableRequests": 6
+      },
+      {
+        "taskId": "ibx-premises-chronology-dev-2-ffd6acf1",
+        "generation": 2,
+        "publicSourceBytes": 37857,
+        "shortestPerFieldPacketBytes": 14580,
+        "witnessPaths": 16,
+        "applicableRequests": 5
+      },
+      {
+        "taskId": "ibx-premises-chronology-dev-2-ffd6acf1",
+        "generation": 3,
+        "publicSourceBytes": 43509,
+        "shortestPerFieldPacketBytes": 15058,
+        "witnessPaths": 19,
+        "applicableRequests": 7
+      },
+      {
+        "taskId": "ibx-premises-chronology-holdout-1-a6c6c19c",
+        "generation": 1,
+        "publicSourceBytes": 37664,
+        "shortestPerFieldPacketBytes": 13045,
+        "witnessPaths": 20,
+        "applicableRequests": 7
+      },
+      {
+        "taskId": "ibx-premises-chronology-holdout-1-a6c6c19c",
+        "generation": 2,
+        "publicSourceBytes": 38240,
+        "shortestPerFieldPacketBytes": 12316,
+        "witnessPaths": 18,
+        "applicableRequests": 4
+      },
+      {
+        "taskId": "ibx-premises-chronology-holdout-1-a6c6c19c",
+        "generation": 3,
+        "publicSourceBytes": 43892,
+        "shortestPerFieldPacketBytes": 11433,
+        "witnessPaths": 17,
+        "applicableRequests": 2
+      },
+      {
+        "taskId": "ibx-premises-chronology-holdout-2-cde6f04b",
+        "generation": 1,
+        "publicSourceBytes": 36625,
+        "shortestPerFieldPacketBytes": 14408,
+        "witnessPaths": 19,
+        "applicableRequests": 6
+      },
+      {
+        "taskId": "ibx-premises-chronology-holdout-2-cde6f04b",
+        "generation": 2,
+        "publicSourceBytes": 37201,
+        "shortestPerFieldPacketBytes": 14836,
+        "witnessPaths": 18,
+        "applicableRequests": 4
+      },
+      {
+        "taskId": "ibx-premises-chronology-holdout-2-cde6f04b",
+        "generation": 3,
+        "publicSourceBytes": 42853,
+        "shortestPerFieldPacketBytes": 14686,
+        "witnessPaths": 18,
+        "applicableRequests": 4
+      },
+      {
+        "taskId": "ibx-multi-exposure-review-dev-1-2c3a092e",
+        "generation": 1,
+        "publicSourceBytes": 38510,
+        "shortestPerFieldPacketBytes": 13764,
+        "witnessPaths": 19,
+        "applicableRequests": 7
+      },
+      {
+        "taskId": "ibx-multi-exposure-review-dev-1-2c3a092e",
+        "generation": 2,
+        "publicSourceBytes": 39086,
+        "shortestPerFieldPacketBytes": 14451,
+        "witnessPaths": 17,
+        "applicableRequests": 6
+      },
+      {
+        "taskId": "ibx-multi-exposure-review-dev-1-2c3a092e",
+        "generation": 3,
+        "publicSourceBytes": 44865,
+        "shortestPerFieldPacketBytes": 14763,
+        "witnessPaths": 18,
+        "applicableRequests": 7
+      },
+      {
+        "taskId": "ibx-multi-exposure-review-dev-2-8087beb5",
+        "generation": 1,
+        "publicSourceBytes": 38129,
+        "shortestPerFieldPacketBytes": 13871,
+        "witnessPaths": 16,
+        "applicableRequests": 5
+      },
+      {
+        "taskId": "ibx-multi-exposure-review-dev-2-8087beb5",
+        "generation": 2,
+        "publicSourceBytes": 38705,
+        "shortestPerFieldPacketBytes": 14393,
+        "witnessPaths": 16,
+        "applicableRequests": 4
+      },
+      {
+        "taskId": "ibx-multi-exposure-review-dev-2-8087beb5",
+        "generation": 3,
+        "publicSourceBytes": 44484,
+        "shortestPerFieldPacketBytes": 14871,
+        "witnessPaths": 19,
+        "applicableRequests": 6
+      },
+      {
+        "taskId": "ibx-multi-exposure-review-holdout-1-78fcc090",
+        "generation": 1,
+        "publicSourceBytes": 38512,
+        "shortestPerFieldPacketBytes": 12682,
+        "witnessPaths": 20,
+        "applicableRequests": 6
+      },
+      {
+        "taskId": "ibx-multi-exposure-review-holdout-1-78fcc090",
+        "generation": 2,
+        "publicSourceBytes": 39088,
+        "shortestPerFieldPacketBytes": 12316,
+        "witnessPaths": 18,
+        "applicableRequests": 4
+      },
+      {
+        "taskId": "ibx-multi-exposure-review-holdout-1-78fcc090",
+        "generation": 3,
+        "publicSourceBytes": 44867,
+        "shortestPerFieldPacketBytes": 11433,
+        "witnessPaths": 17,
+        "applicableRequests": 2
+      },
+      {
+        "taskId": "ibx-multi-exposure-review-holdout-2-e40e1aaf",
+        "generation": 1,
+        "publicSourceBytes": 37473,
+        "shortestPerFieldPacketBytes": 14138,
+        "witnessPaths": 19,
+        "applicableRequests": 5
+      },
+      {
+        "taskId": "ibx-multi-exposure-review-holdout-2-e40e1aaf",
+        "generation": 2,
+        "publicSourceBytes": 38049,
+        "shortestPerFieldPacketBytes": 15021,
+        "witnessPaths": 18,
+        "applicableRequests": 4
+      },
+      {
+        "taskId": "ibx-multi-exposure-review-holdout-2-e40e1aaf",
+        "generation": 3,
+        "publicSourceBytes": 43828,
+        "shortestPerFieldPacketBytes": 14871,
+        "witnessPaths": 18,
+        "applicableRequests": 4
+      }
+    ]
+  },
+  "limitations": [
+    "Three correlated fictional families; coverage-review and evidence-brief share some applicability vectors despite different relation witnesses; fraud-referral adds source-contradiction conditions. Not twelve independent mechanisms.",
+    "No cross-obligation derived-status references or adaptive inquiry APIs; shared relationships are primitive scoped site inputs under two public activity packs.",
+    "Logical integration difficulty is a prospective hypothesis; another perfect frontier result is valid. No forced distributions, score caps or output-selected retries.",
+    "Tests and this control artifact were authored with the generator; independent full-source audit and adversarial review still required."
+  ],
+  "reproduction": {
+    "controls": "node --import tsx --test test/insurance-bench-interaction-cases.test.ts",
+    "lint": "npx eslint insurance-bench/interaction-cases.ts test/insurance-bench-interaction-cases.test.ts",
+    "engineReuse": "Imports exact existing investigation-engine.ts; no engine/type/provider/legacy-generator edits."
+  }
+}

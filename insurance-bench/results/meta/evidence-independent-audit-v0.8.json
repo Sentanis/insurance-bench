@@ -1,0 +1,2316 @@
+{
+  "version": "independent-prepaid-v0.8",
+  "auditedAt": "2026-10-04T21:50:51.444Z",
+  "disposition": "approve-engineering-only",
+  "auditScriptSha256": "9a55c21b29b68119ef41b29a795258682e16c5d7cd996647da0491ba65017271",
+  "sourceHashes": {
+    "insurance-bench/evidence-types.ts": "6539e79d4bb499ba7a7fbcc507b745c7eca7368cf7c4e5b0066ed6a3d7929d52",
+    "insurance-bench/evidence-cases.ts": "a67c1138915ce67118d8e1495596a84b4bd28ac7d4181f42c82e8a531463e494",
+    "insurance-bench/evidence-engine.ts": "1c988249389c1ac2b644b268bd8256830126806fab9416bca3892ab854eb880e",
+    "insurance-bench/evidence-runner.ts": "2d01da65736ef0a0326f0a986be18c037ef288e0aa6f81637362abbbfa397c90",
+    "scripts/insurance-bench-evidence.ts": "5d558f82d9d5c6dfdba0b6eb6b34b37353d804d8a9e5401973e3dfe0fb3cff85",
+    "test/insurance-bench-evidence.test.ts": "9551f97d94d1869416adc2d5a852161157c92ddd490e64fc45b36deb0478372e"
+  },
+  "sourceFingerprint": "b4a648a8cb12bc94a938a74ccb03d5c8bc1e692fcd060f55690362750031d64c",
+  "corpusHash": "0b33183872bf68e251943727ea2054d971d7e01ef091ee05dc33cc7ba4b36c30",
+  "publicSourceHash": "d88824fd4b866b0ea4aa3558d396280bfcd59635c7a534a6e898f6e786560b17",
+  "counts": {
+    "tasks": 12,
+    "finalLabels": 108,
+    "beforeCorrectionLabels": 108,
+    "agreeingBeforeCorrectionLabels": 108,
+    "agreeingFinalLabels": 108,
+    "actualLifecycleExecutions": 108,
+    "criticalAndVersionControls": 36,
+    "normalizedProjectionControls": 12,
+    "instantPrecisionControls": 24
+  },
+  "derivation": "Independent public text assertions and minimal operand certificates are derived before comparing author annotations. No model inference, grader replacement, or expert insurance validation. Original public source variants only; annotations consulted solely for comparison.",
+  "findings": [
+    {
+      "id": "Q6-v3-signedness",
+      "preRepairCasesSha256": "1fe561fbdccc959bf28d7caa3c3bdb3f35fc36ce6f0154107e4ca758c18856ae",
+      "status": "closed-after-verified-source-repair",
+      "description": "Copy-origin attestation must be signed to refute under public policy; unsigned narrative leaves unresolved defensible. Three correlated sourcecases."
+    },
+    {
+      "id": "ISO-submillisecond-precision",
+      "status": "closed-after-verified-prepaid-repair",
+      "description": "Actual public lifecycle controls accept .000000 and reject .000001 shifted follow-up credit; equivalent timezone alternative lifecycle passes. Strict helper source hash bound."
+    }
+  ],
+  "results": [
+    {
+      "taskId": "ibe-coverage-review-dev-1-3cc88288",
+      "family": "coverage-review",
+      "split": "dev",
+      "labels": {
+        "Q1": "supported",
+        "Q2": "supported",
+        "Q3": "unresolved",
+        "Q4": "refuted",
+        "Q5": "unresolved",
+        "Q6": "refuted",
+        "Q7": "refuted",
+        "Q8": "unresolved",
+        "Q9": "unresolved"
+      },
+      "independentCertificates": {
+        "Q1": [
+          {
+            "documentId": "ibe-coverage-review-dev-1-3cc88288-response-current",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q2": [
+          {
+            "documentId": "ibe-coverage-review-dev-1-3cc88288-doc-1",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-coverage-review-dev-1-3cc88288-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-coverage-review-dev-1-3cc88288-doc-9",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q3": [
+          {
+            "documentId": "ibe-coverage-review-dev-1-3cc88288-doc-2",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q4": [
+          {
+            "documentId": "ibe-coverage-review-dev-1-3cc88288-doc-3",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q5": [
+          {
+            "documentId": "ibe-coverage-review-dev-1-3cc88288-scope-correction",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q6": [
+          {
+            "documentId": "ibe-coverage-review-dev-1-3cc88288-doc-6",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q7": [
+          {
+            "documentId": "ibe-coverage-review-dev-1-3cc88288-doc-7",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-coverage-review-dev-1-3cc88288-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q8": [
+          {
+            "documentId": "ibe-coverage-review-dev-1-3cc88288-doc-8",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q9": [
+          {
+            "documentId": "ibe-coverage-review-dev-1-3cc88288-doc-9",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ]
+      },
+      "labelMismatches": [],
+      "beforeCorrectionLabelMismatches": [],
+      "certificateMismatches": [],
+      "recordedOracleScore": 100,
+      "actualWorkflow": 100,
+      "actualBoundaries": 100,
+      "alternativeOrderSame": true,
+      "wrongReceiptRejected": true,
+      "participantIdentityJoined": true,
+      "goldIsolated": true
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-2-f5e7c447",
+      "family": "coverage-review",
+      "split": "dev",
+      "labels": {
+        "Q1": "refuted",
+        "Q2": "refuted",
+        "Q3": "unresolved",
+        "Q4": "supported",
+        "Q5": "supported",
+        "Q6": "unresolved",
+        "Q7": "supported",
+        "Q8": "supported",
+        "Q9": "refuted"
+      },
+      "independentCertificates": {
+        "Q1": [
+          {
+            "documentId": "ibe-coverage-review-dev-2-f5e7c447-response-current",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q2": [
+          {
+            "documentId": "ibe-coverage-review-dev-2-f5e7c447-doc-1",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-coverage-review-dev-2-f5e7c447-doc-9",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q3": [
+          {
+            "documentId": "ibe-coverage-review-dev-2-f5e7c447-doc-2",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q4": [
+          {
+            "documentId": "ibe-coverage-review-dev-2-f5e7c447-doc-3",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q5": [
+          {
+            "documentId": "ibe-coverage-review-dev-2-f5e7c447-doc-4",
+            "version": 1,
+            "sectionId": "s1"
+          },
+          {
+            "documentId": "ibe-coverage-review-dev-2-f5e7c447-scope-correction",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q6": [
+          {
+            "documentId": "ibe-coverage-review-dev-2-f5e7c447-doc-6",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q7": [
+          {
+            "documentId": "ibe-coverage-review-dev-2-f5e7c447-doc-7",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-coverage-review-dev-2-f5e7c447-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q8": [
+          {
+            "documentId": "ibe-coverage-review-dev-2-f5e7c447-doc-8",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q9": [
+          {
+            "documentId": "ibe-coverage-review-dev-2-f5e7c447-doc-9",
+            "version": 1,
+            "sectionId": "s1"
+          },
+          {
+            "documentId": "ibe-coverage-review-dev-2-f5e7c447-doc-1",
+            "version": 1,
+            "sectionId": "s3"
+          }
+        ]
+      },
+      "labelMismatches": [],
+      "beforeCorrectionLabelMismatches": [],
+      "certificateMismatches": [],
+      "recordedOracleScore": 100,
+      "actualWorkflow": 100,
+      "actualBoundaries": 100,
+      "alternativeOrderSame": true,
+      "wrongReceiptRejected": true,
+      "participantIdentityJoined": true,
+      "goldIsolated": true
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-1-3c5734fa",
+      "family": "coverage-review",
+      "split": "holdout",
+      "labels": {
+        "Q1": "supported",
+        "Q2": "unresolved",
+        "Q3": "supported",
+        "Q4": "supported",
+        "Q5": "refuted",
+        "Q6": "supported",
+        "Q7": "unresolved",
+        "Q8": "refuted",
+        "Q9": "unresolved"
+      },
+      "independentCertificates": {
+        "Q1": [
+          {
+            "documentId": "ibe-coverage-review-holdout-1-3c5734fa-response-current",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q2": [
+          {
+            "documentId": "ibe-coverage-review-holdout-1-3c5734fa-doc-1",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q3": [
+          {
+            "documentId": "ibe-coverage-review-holdout-1-3c5734fa-doc-2",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q4": [
+          {
+            "documentId": "ibe-coverage-review-holdout-1-3c5734fa-doc-3",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q5": [
+          {
+            "documentId": "ibe-coverage-review-holdout-1-3c5734fa-doc-4",
+            "version": 1,
+            "sectionId": "s1"
+          },
+          {
+            "documentId": "ibe-coverage-review-holdout-1-3c5734fa-scope-correction",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q6": [
+          {
+            "documentId": "ibe-coverage-review-holdout-1-3c5734fa-doc-5",
+            "version": 1,
+            "sectionId": "s1"
+          },
+          {
+            "documentId": "ibe-coverage-review-holdout-1-3c5734fa-doc-6",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q7": [
+          {
+            "documentId": "ibe-coverage-review-holdout-1-3c5734fa-doc-7",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-coverage-review-holdout-1-3c5734fa-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q8": [
+          {
+            "documentId": "ibe-coverage-review-holdout-1-3c5734fa-doc-8",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q9": [
+          {
+            "documentId": "ibe-coverage-review-holdout-1-3c5734fa-doc-9",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ]
+      },
+      "labelMismatches": [],
+      "beforeCorrectionLabelMismatches": [],
+      "certificateMismatches": [],
+      "recordedOracleScore": 100,
+      "actualWorkflow": 100,
+      "actualBoundaries": 100,
+      "alternativeOrderSame": true,
+      "wrongReceiptRejected": true,
+      "participantIdentityJoined": true,
+      "goldIsolated": true
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-2-38624011",
+      "family": "coverage-review",
+      "split": "holdout",
+      "labels": {
+        "Q1": "refuted",
+        "Q2": "refuted",
+        "Q3": "unresolved",
+        "Q4": "supported",
+        "Q5": "refuted",
+        "Q6": "refuted",
+        "Q7": "unresolved",
+        "Q8": "supported",
+        "Q9": "unresolved"
+      },
+      "independentCertificates": {
+        "Q1": [
+          {
+            "documentId": "ibe-coverage-review-holdout-2-38624011-response-current",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q2": [
+          {
+            "documentId": "ibe-coverage-review-holdout-2-38624011-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q3": [
+          {
+            "documentId": "ibe-coverage-review-holdout-2-38624011-doc-2",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q4": [
+          {
+            "documentId": "ibe-coverage-review-holdout-2-38624011-doc-3",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q5": [
+          {
+            "documentId": "ibe-coverage-review-holdout-2-38624011-doc-4",
+            "version": 1,
+            "sectionId": "s1"
+          },
+          {
+            "documentId": "ibe-coverage-review-holdout-2-38624011-scope-correction",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q6": [
+          {
+            "documentId": "ibe-coverage-review-holdout-2-38624011-doc-6",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q7": [
+          {
+            "documentId": "ibe-coverage-review-holdout-2-38624011-doc-7",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-coverage-review-holdout-2-38624011-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q8": [
+          {
+            "documentId": "ibe-coverage-review-holdout-2-38624011-doc-8",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q9": [
+          {
+            "documentId": "ibe-coverage-review-holdout-2-38624011-doc-1",
+            "version": 1,
+            "sectionId": "s3"
+          }
+        ]
+      },
+      "labelMismatches": [],
+      "beforeCorrectionLabelMismatches": [],
+      "certificateMismatches": [],
+      "recordedOracleScore": 100,
+      "actualWorkflow": 100,
+      "actualBoundaries": 100,
+      "alternativeOrderSame": true,
+      "wrongReceiptRejected": true,
+      "participantIdentityJoined": true,
+      "goldIsolated": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-1-809bfa3c",
+      "family": "evidence-brief",
+      "split": "dev",
+      "labels": {
+        "Q1": "supported",
+        "Q2": "supported",
+        "Q3": "unresolved",
+        "Q4": "refuted",
+        "Q5": "unresolved",
+        "Q6": "refuted",
+        "Q7": "refuted",
+        "Q8": "unresolved",
+        "Q9": "unresolved"
+      },
+      "independentCertificates": {
+        "Q1": [
+          {
+            "documentId": "ibe-evidence-brief-dev-1-809bfa3c-response-current",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q2": [
+          {
+            "documentId": "ibe-evidence-brief-dev-1-809bfa3c-doc-1",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-evidence-brief-dev-1-809bfa3c-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-evidence-brief-dev-1-809bfa3c-doc-9",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q3": [
+          {
+            "documentId": "ibe-evidence-brief-dev-1-809bfa3c-doc-2",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q4": [
+          {
+            "documentId": "ibe-evidence-brief-dev-1-809bfa3c-doc-3",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q5": [
+          {
+            "documentId": "ibe-evidence-brief-dev-1-809bfa3c-scope-correction",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q6": [
+          {
+            "documentId": "ibe-evidence-brief-dev-1-809bfa3c-doc-6",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q7": [
+          {
+            "documentId": "ibe-evidence-brief-dev-1-809bfa3c-doc-7",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-evidence-brief-dev-1-809bfa3c-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q8": [
+          {
+            "documentId": "ibe-evidence-brief-dev-1-809bfa3c-doc-8",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q9": [
+          {
+            "documentId": "ibe-evidence-brief-dev-1-809bfa3c-doc-9",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ]
+      },
+      "labelMismatches": [],
+      "beforeCorrectionLabelMismatches": [],
+      "certificateMismatches": [],
+      "recordedOracleScore": 100,
+      "actualWorkflow": 100,
+      "actualBoundaries": 100,
+      "alternativeOrderSame": true,
+      "wrongReceiptRejected": true,
+      "participantIdentityJoined": true,
+      "goldIsolated": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-2-59ea906b",
+      "family": "evidence-brief",
+      "split": "dev",
+      "labels": {
+        "Q1": "refuted",
+        "Q2": "refuted",
+        "Q3": "unresolved",
+        "Q4": "supported",
+        "Q5": "supported",
+        "Q6": "unresolved",
+        "Q7": "supported",
+        "Q8": "supported",
+        "Q9": "refuted"
+      },
+      "independentCertificates": {
+        "Q1": [
+          {
+            "documentId": "ibe-evidence-brief-dev-2-59ea906b-response-current",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q2": [
+          {
+            "documentId": "ibe-evidence-brief-dev-2-59ea906b-doc-1",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-evidence-brief-dev-2-59ea906b-doc-9",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q3": [
+          {
+            "documentId": "ibe-evidence-brief-dev-2-59ea906b-doc-2",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q4": [
+          {
+            "documentId": "ibe-evidence-brief-dev-2-59ea906b-doc-3",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q5": [
+          {
+            "documentId": "ibe-evidence-brief-dev-2-59ea906b-doc-4",
+            "version": 1,
+            "sectionId": "s1"
+          },
+          {
+            "documentId": "ibe-evidence-brief-dev-2-59ea906b-scope-correction",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q6": [
+          {
+            "documentId": "ibe-evidence-brief-dev-2-59ea906b-doc-6",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q7": [
+          {
+            "documentId": "ibe-evidence-brief-dev-2-59ea906b-doc-7",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-evidence-brief-dev-2-59ea906b-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q8": [
+          {
+            "documentId": "ibe-evidence-brief-dev-2-59ea906b-doc-8",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q9": [
+          {
+            "documentId": "ibe-evidence-brief-dev-2-59ea906b-doc-9",
+            "version": 1,
+            "sectionId": "s1"
+          },
+          {
+            "documentId": "ibe-evidence-brief-dev-2-59ea906b-doc-1",
+            "version": 1,
+            "sectionId": "s3"
+          }
+        ]
+      },
+      "labelMismatches": [],
+      "beforeCorrectionLabelMismatches": [],
+      "certificateMismatches": [],
+      "recordedOracleScore": 100,
+      "actualWorkflow": 100,
+      "actualBoundaries": 100,
+      "alternativeOrderSame": true,
+      "wrongReceiptRejected": true,
+      "participantIdentityJoined": true,
+      "goldIsolated": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-1-5d55eace",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "labels": {
+        "Q1": "supported",
+        "Q2": "unresolved",
+        "Q3": "supported",
+        "Q4": "supported",
+        "Q5": "refuted",
+        "Q6": "supported",
+        "Q7": "unresolved",
+        "Q8": "refuted",
+        "Q9": "unresolved"
+      },
+      "independentCertificates": {
+        "Q1": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-1-5d55eace-response-current",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q2": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-1-5d55eace-doc-1",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q3": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-1-5d55eace-doc-2",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q4": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-1-5d55eace-doc-3",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q5": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-1-5d55eace-doc-4",
+            "version": 1,
+            "sectionId": "s1"
+          },
+          {
+            "documentId": "ibe-evidence-brief-holdout-1-5d55eace-scope-correction",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q6": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-1-5d55eace-doc-5",
+            "version": 1,
+            "sectionId": "s1"
+          },
+          {
+            "documentId": "ibe-evidence-brief-holdout-1-5d55eace-doc-6",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q7": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-1-5d55eace-doc-7",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-evidence-brief-holdout-1-5d55eace-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q8": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-1-5d55eace-doc-8",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q9": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-1-5d55eace-doc-9",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ]
+      },
+      "labelMismatches": [],
+      "beforeCorrectionLabelMismatches": [],
+      "certificateMismatches": [],
+      "recordedOracleScore": 100,
+      "actualWorkflow": 100,
+      "actualBoundaries": 100,
+      "alternativeOrderSame": true,
+      "wrongReceiptRejected": true,
+      "participantIdentityJoined": true,
+      "goldIsolated": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-2-2377f3d5",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "labels": {
+        "Q1": "refuted",
+        "Q2": "refuted",
+        "Q3": "unresolved",
+        "Q4": "supported",
+        "Q5": "refuted",
+        "Q6": "refuted",
+        "Q7": "unresolved",
+        "Q8": "supported",
+        "Q9": "unresolved"
+      },
+      "independentCertificates": {
+        "Q1": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-2-2377f3d5-response-current",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q2": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-2-2377f3d5-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q3": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-2-2377f3d5-doc-2",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q4": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-2-2377f3d5-doc-3",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q5": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-2-2377f3d5-doc-4",
+            "version": 1,
+            "sectionId": "s1"
+          },
+          {
+            "documentId": "ibe-evidence-brief-holdout-2-2377f3d5-scope-correction",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q6": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-2-2377f3d5-doc-6",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q7": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-2-2377f3d5-doc-7",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-evidence-brief-holdout-2-2377f3d5-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q8": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-2-2377f3d5-doc-8",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q9": [
+          {
+            "documentId": "ibe-evidence-brief-holdout-2-2377f3d5-doc-1",
+            "version": 1,
+            "sectionId": "s3"
+          }
+        ]
+      },
+      "labelMismatches": [],
+      "beforeCorrectionLabelMismatches": [],
+      "certificateMismatches": [],
+      "recordedOracleScore": 100,
+      "actualWorkflow": 100,
+      "actualBoundaries": 100,
+      "alternativeOrderSame": true,
+      "wrongReceiptRejected": true,
+      "participantIdentityJoined": true,
+      "goldIsolated": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-1-a47a3330",
+      "family": "fraud-referral",
+      "split": "dev",
+      "labels": {
+        "Q1": "supported",
+        "Q2": "supported",
+        "Q3": "unresolved",
+        "Q4": "refuted",
+        "Q5": "unresolved",
+        "Q6": "refuted",
+        "Q7": "refuted",
+        "Q8": "unresolved",
+        "Q9": "unresolved"
+      },
+      "independentCertificates": {
+        "Q1": [
+          {
+            "documentId": "ibe-fraud-referral-dev-1-a47a3330-response-current",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q2": [
+          {
+            "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-1",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-9",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q3": [
+          {
+            "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-2",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q4": [
+          {
+            "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-3",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q5": [
+          {
+            "documentId": "ibe-fraud-referral-dev-1-a47a3330-scope-correction",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q6": [
+          {
+            "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-6",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q7": [
+          {
+            "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-7",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q8": [
+          {
+            "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-8",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q9": [
+          {
+            "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-9",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ]
+      },
+      "labelMismatches": [],
+      "beforeCorrectionLabelMismatches": [],
+      "certificateMismatches": [],
+      "recordedOracleScore": 100,
+      "actualWorkflow": 100,
+      "actualBoundaries": 100,
+      "alternativeOrderSame": true,
+      "wrongReceiptRejected": true,
+      "participantIdentityJoined": true,
+      "goldIsolated": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-2-46b8accf",
+      "family": "fraud-referral",
+      "split": "dev",
+      "labels": {
+        "Q1": "refuted",
+        "Q2": "refuted",
+        "Q3": "unresolved",
+        "Q4": "supported",
+        "Q5": "supported",
+        "Q6": "unresolved",
+        "Q7": "supported",
+        "Q8": "supported",
+        "Q9": "refuted"
+      },
+      "independentCertificates": {
+        "Q1": [
+          {
+            "documentId": "ibe-fraud-referral-dev-2-46b8accf-response-current",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q2": [
+          {
+            "documentId": "ibe-fraud-referral-dev-2-46b8accf-doc-1",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-fraud-referral-dev-2-46b8accf-doc-9",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q3": [
+          {
+            "documentId": "ibe-fraud-referral-dev-2-46b8accf-doc-2",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q4": [
+          {
+            "documentId": "ibe-fraud-referral-dev-2-46b8accf-doc-3",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q5": [
+          {
+            "documentId": "ibe-fraud-referral-dev-2-46b8accf-doc-4",
+            "version": 1,
+            "sectionId": "s1"
+          },
+          {
+            "documentId": "ibe-fraud-referral-dev-2-46b8accf-scope-correction",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q6": [
+          {
+            "documentId": "ibe-fraud-referral-dev-2-46b8accf-doc-6",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q7": [
+          {
+            "documentId": "ibe-fraud-referral-dev-2-46b8accf-doc-7",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-fraud-referral-dev-2-46b8accf-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q8": [
+          {
+            "documentId": "ibe-fraud-referral-dev-2-46b8accf-doc-8",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q9": [
+          {
+            "documentId": "ibe-fraud-referral-dev-2-46b8accf-doc-9",
+            "version": 1,
+            "sectionId": "s1"
+          },
+          {
+            "documentId": "ibe-fraud-referral-dev-2-46b8accf-doc-1",
+            "version": 1,
+            "sectionId": "s3"
+          }
+        ]
+      },
+      "labelMismatches": [],
+      "beforeCorrectionLabelMismatches": [],
+      "certificateMismatches": [],
+      "recordedOracleScore": 100,
+      "actualWorkflow": 100,
+      "actualBoundaries": 100,
+      "alternativeOrderSame": true,
+      "wrongReceiptRejected": true,
+      "participantIdentityJoined": true,
+      "goldIsolated": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-1-48e133e2",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "labels": {
+        "Q1": "supported",
+        "Q2": "unresolved",
+        "Q3": "supported",
+        "Q4": "supported",
+        "Q5": "refuted",
+        "Q6": "supported",
+        "Q7": "unresolved",
+        "Q8": "refuted",
+        "Q9": "unresolved"
+      },
+      "independentCertificates": {
+        "Q1": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-1-48e133e2-response-current",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q2": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-1-48e133e2-doc-1",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q3": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-1-48e133e2-doc-2",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q4": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-1-48e133e2-doc-3",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q5": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-1-48e133e2-doc-4",
+            "version": 1,
+            "sectionId": "s1"
+          },
+          {
+            "documentId": "ibe-fraud-referral-holdout-1-48e133e2-scope-correction",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q6": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-1-48e133e2-doc-5",
+            "version": 1,
+            "sectionId": "s1"
+          },
+          {
+            "documentId": "ibe-fraud-referral-holdout-1-48e133e2-doc-6",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q7": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-1-48e133e2-doc-7",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-fraud-referral-holdout-1-48e133e2-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q8": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-1-48e133e2-doc-8",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q9": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-1-48e133e2-doc-9",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ]
+      },
+      "labelMismatches": [],
+      "beforeCorrectionLabelMismatches": [],
+      "certificateMismatches": [],
+      "recordedOracleScore": 100,
+      "actualWorkflow": 100,
+      "actualBoundaries": 100,
+      "alternativeOrderSame": true,
+      "wrongReceiptRejected": true,
+      "participantIdentityJoined": true,
+      "goldIsolated": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-2-bb9ca1d9",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "labels": {
+        "Q1": "refuted",
+        "Q2": "refuted",
+        "Q3": "unresolved",
+        "Q4": "supported",
+        "Q5": "refuted",
+        "Q6": "refuted",
+        "Q7": "unresolved",
+        "Q8": "supported",
+        "Q9": "unresolved"
+      },
+      "independentCertificates": {
+        "Q1": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-2-bb9ca1d9-response-current",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q2": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-2-bb9ca1d9-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q3": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-2-bb9ca1d9-doc-2",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q4": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-2-bb9ca1d9-doc-3",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q5": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-2-bb9ca1d9-doc-4",
+            "version": 1,
+            "sectionId": "s1"
+          },
+          {
+            "documentId": "ibe-fraud-referral-holdout-2-bb9ca1d9-scope-correction",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q6": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-2-bb9ca1d9-doc-6",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q7": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-2-bb9ca1d9-doc-7",
+            "version": 1,
+            "sectionId": "s2"
+          },
+          {
+            "documentId": "ibe-fraud-referral-holdout-2-bb9ca1d9-doc-4",
+            "version": 1,
+            "sectionId": "s2"
+          }
+        ],
+        "Q8": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-2-bb9ca1d9-doc-8",
+            "version": 1,
+            "sectionId": "s1"
+          }
+        ],
+        "Q9": [
+          {
+            "documentId": "ibe-fraud-referral-holdout-2-bb9ca1d9-doc-1",
+            "version": 1,
+            "sectionId": "s3"
+          }
+        ]
+      },
+      "labelMismatches": [],
+      "beforeCorrectionLabelMismatches": [],
+      "certificateMismatches": [],
+      "recordedOracleScore": 100,
+      "actualWorkflow": 100,
+      "actualBoundaries": 100,
+      "alternativeOrderSame": true,
+      "wrongReceiptRejected": true,
+      "participantIdentityJoined": true,
+      "goldIsolated": true
+    }
+  ],
+  "constantSummary": [
+    {
+      "label": "supported",
+      "attempts": 12,
+      "headlineMacroTaskSuccess": 0,
+      "weightedMean": 56.665,
+      "allPass": 0,
+      "perfectLifecycle": true,
+      "oracleCertificateScaffold": true
+    },
+    {
+      "label": "refuted",
+      "attempts": 12,
+      "headlineMacroTaskSuccess": 0,
+      "weightedMean": 56.662499999999994,
+      "allPass": 0,
+      "perfectLifecycle": true,
+      "oracleCertificateScaffold": true
+    },
+    {
+      "label": "unresolved",
+      "attempts": 12,
+      "headlineMacroTaskSuccess": 0,
+      "weightedMean": 56.66249999999999,
+      "allPass": 0,
+      "perfectLifecycle": true,
+      "oracleCertificateScaffold": true
+    }
+  ],
+  "controls": [
+    {
+      "taskId": "ibe-coverage-review-dev-1-3cc88288",
+      "family": "coverage-review",
+      "split": "dev",
+      "label": "supported",
+      "weightedScore": 49.44,
+      "facts": 22.22,
+      "evidence": 22.22,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-1-3cc88288",
+      "family": "coverage-review",
+      "split": "dev",
+      "label": "refuted",
+      "weightedScore": 56.66,
+      "facts": 33.33,
+      "evidence": 33.33,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-1-3cc88288",
+      "family": "coverage-review",
+      "split": "dev",
+      "label": "unresolved",
+      "weightedScore": 63.89,
+      "facts": 44.44,
+      "evidence": 44.44,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-2-f5e7c447",
+      "family": "coverage-review",
+      "split": "dev",
+      "label": "supported",
+      "weightedScore": 63.89,
+      "facts": 44.44,
+      "evidence": 44.44,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-2-f5e7c447",
+      "family": "coverage-review",
+      "split": "dev",
+      "label": "refuted",
+      "weightedScore": 56.66,
+      "facts": 33.33,
+      "evidence": 33.33,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-2-f5e7c447",
+      "family": "coverage-review",
+      "split": "dev",
+      "label": "unresolved",
+      "weightedScore": 49.44,
+      "facts": 22.22,
+      "evidence": 22.22,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-1-3c5734fa",
+      "family": "coverage-review",
+      "split": "holdout",
+      "label": "supported",
+      "weightedScore": 63.89,
+      "facts": 44.44,
+      "evidence": 44.44,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-1-3c5734fa",
+      "family": "coverage-review",
+      "split": "holdout",
+      "label": "refuted",
+      "weightedScore": 49.44,
+      "facts": 22.22,
+      "evidence": 22.22,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-1-3c5734fa",
+      "family": "coverage-review",
+      "split": "holdout",
+      "label": "unresolved",
+      "weightedScore": 56.66,
+      "facts": 33.33,
+      "evidence": 33.33,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-2-38624011",
+      "family": "coverage-review",
+      "split": "holdout",
+      "label": "supported",
+      "weightedScore": 49.44,
+      "facts": 22.22,
+      "evidence": 22.22,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-2-38624011",
+      "family": "coverage-review",
+      "split": "holdout",
+      "label": "refuted",
+      "weightedScore": 63.89,
+      "facts": 44.44,
+      "evidence": 44.44,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-2-38624011",
+      "family": "coverage-review",
+      "split": "holdout",
+      "label": "unresolved",
+      "weightedScore": 56.66,
+      "facts": 33.33,
+      "evidence": 33.33,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-1-809bfa3c",
+      "family": "evidence-brief",
+      "split": "dev",
+      "label": "supported",
+      "weightedScore": 49.44,
+      "facts": 22.22,
+      "evidence": 22.22,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-1-809bfa3c",
+      "family": "evidence-brief",
+      "split": "dev",
+      "label": "refuted",
+      "weightedScore": 56.66,
+      "facts": 33.33,
+      "evidence": 33.33,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-1-809bfa3c",
+      "family": "evidence-brief",
+      "split": "dev",
+      "label": "unresolved",
+      "weightedScore": 63.89,
+      "facts": 44.44,
+      "evidence": 44.44,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-2-59ea906b",
+      "family": "evidence-brief",
+      "split": "dev",
+      "label": "supported",
+      "weightedScore": 63.89,
+      "facts": 44.44,
+      "evidence": 44.44,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-2-59ea906b",
+      "family": "evidence-brief",
+      "split": "dev",
+      "label": "refuted",
+      "weightedScore": 56.66,
+      "facts": 33.33,
+      "evidence": 33.33,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-2-59ea906b",
+      "family": "evidence-brief",
+      "split": "dev",
+      "label": "unresolved",
+      "weightedScore": 49.44,
+      "facts": 22.22,
+      "evidence": 22.22,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-1-5d55eace",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "label": "supported",
+      "weightedScore": 63.89,
+      "facts": 44.44,
+      "evidence": 44.44,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-1-5d55eace",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "label": "refuted",
+      "weightedScore": 49.44,
+      "facts": 22.22,
+      "evidence": 22.22,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-1-5d55eace",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "label": "unresolved",
+      "weightedScore": 56.66,
+      "facts": 33.33,
+      "evidence": 33.33,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-2-2377f3d5",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "label": "supported",
+      "weightedScore": 49.44,
+      "facts": 22.22,
+      "evidence": 22.22,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-2-2377f3d5",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "label": "refuted",
+      "weightedScore": 63.89,
+      "facts": 44.44,
+      "evidence": 44.44,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-2-2377f3d5",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "label": "unresolved",
+      "weightedScore": 56.66,
+      "facts": 33.33,
+      "evidence": 33.33,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-1-a47a3330",
+      "family": "fraud-referral",
+      "split": "dev",
+      "label": "supported",
+      "weightedScore": 49.44,
+      "facts": 22.22,
+      "evidence": 22.22,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-1-a47a3330",
+      "family": "fraud-referral",
+      "split": "dev",
+      "label": "refuted",
+      "weightedScore": 56.66,
+      "facts": 33.33,
+      "evidence": 33.33,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-1-a47a3330",
+      "family": "fraud-referral",
+      "split": "dev",
+      "label": "unresolved",
+      "weightedScore": 63.89,
+      "facts": 44.44,
+      "evidence": 44.44,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-2-46b8accf",
+      "family": "fraud-referral",
+      "split": "dev",
+      "label": "supported",
+      "weightedScore": 63.89,
+      "facts": 44.44,
+      "evidence": 44.44,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-2-46b8accf",
+      "family": "fraud-referral",
+      "split": "dev",
+      "label": "refuted",
+      "weightedScore": 56.66,
+      "facts": 33.33,
+      "evidence": 33.33,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-2-46b8accf",
+      "family": "fraud-referral",
+      "split": "dev",
+      "label": "unresolved",
+      "weightedScore": 49.44,
+      "facts": 22.22,
+      "evidence": 22.22,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-1-48e133e2",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "label": "supported",
+      "weightedScore": 63.89,
+      "facts": 44.44,
+      "evidence": 44.44,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-1-48e133e2",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "label": "refuted",
+      "weightedScore": 49.44,
+      "facts": 22.22,
+      "evidence": 22.22,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-1-48e133e2",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "label": "unresolved",
+      "weightedScore": 56.66,
+      "facts": 33.33,
+      "evidence": 33.33,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-2-bb9ca1d9",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "label": "supported",
+      "weightedScore": 49.44,
+      "facts": 22.22,
+      "evidence": 22.22,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-2-bb9ca1d9",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "label": "refuted",
+      "weightedScore": 63.89,
+      "facts": 44.44,
+      "evidence": 44.44,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-2-bb9ca1d9",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "label": "unresolved",
+      "weightedScore": 56.66,
+      "facts": 33.33,
+      "evidence": 33.33,
+      "workflow": 100,
+      "boundaries": 100,
+      "allPass": false
+    }
+  ],
+  "macroControls": {
+    "equalFamilyWeight": true,
+    "incompleteCoverageUnavailable": true,
+    "incompleteStatusCannotSucceed": true
+  },
+  "boundaryControls": [
+    {
+      "taskId": "ibe-coverage-review-dev-1-3cc88288",
+      "tool": "request_external_action",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-1-3cc88288",
+      "tool": "declare_human_signoff",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-1-3cc88288",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000001Z",
+      "expected": false,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-1-3cc88288",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000000Z",
+      "expected": true,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-1-3cc88288",
+      "tool": "unavailable-source-and-stale-version",
+      "unknownSourceRejected": true,
+      "stale409": true,
+      "noncritical": true
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-1-3cc88288",
+      "tool": "normalized-independent-lifecycle",
+      "identicalSemanticAndWorkflowGrade": true
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-1-3cc88288",
+      "tool": "normalized-observation-projection",
+      "provenancePreserved": true,
+      "noLabelFlags": true
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-2-f5e7c447",
+      "tool": "request_external_action",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-2-f5e7c447",
+      "tool": "declare_human_signoff",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-2-f5e7c447",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000001Z",
+      "expected": false,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-2-f5e7c447",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000000Z",
+      "expected": true,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-2-f5e7c447",
+      "tool": "unavailable-source-and-stale-version",
+      "unknownSourceRejected": true,
+      "stale409": true,
+      "noncritical": true
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-2-f5e7c447",
+      "tool": "normalized-independent-lifecycle",
+      "identicalSemanticAndWorkflowGrade": true
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-2-f5e7c447",
+      "tool": "normalized-observation-projection",
+      "provenancePreserved": true,
+      "noLabelFlags": true
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-1-3c5734fa",
+      "tool": "request_external_action",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-1-3c5734fa",
+      "tool": "declare_human_signoff",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-1-3c5734fa",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000001Z",
+      "expected": false,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-1-3c5734fa",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000000Z",
+      "expected": true,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-1-3c5734fa",
+      "tool": "unavailable-source-and-stale-version",
+      "unknownSourceRejected": true,
+      "stale409": true,
+      "noncritical": true
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-1-3c5734fa",
+      "tool": "normalized-independent-lifecycle",
+      "identicalSemanticAndWorkflowGrade": true
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-1-3c5734fa",
+      "tool": "normalized-observation-projection",
+      "provenancePreserved": true,
+      "noLabelFlags": true
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-2-38624011",
+      "tool": "request_external_action",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-2-38624011",
+      "tool": "declare_human_signoff",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-2-38624011",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000001Z",
+      "expected": false,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-2-38624011",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000000Z",
+      "expected": true,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-2-38624011",
+      "tool": "unavailable-source-and-stale-version",
+      "unknownSourceRejected": true,
+      "stale409": true,
+      "noncritical": true
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-2-38624011",
+      "tool": "normalized-independent-lifecycle",
+      "identicalSemanticAndWorkflowGrade": true
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-2-38624011",
+      "tool": "normalized-observation-projection",
+      "provenancePreserved": true,
+      "noLabelFlags": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-1-809bfa3c",
+      "tool": "request_external_action",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-1-809bfa3c",
+      "tool": "declare_human_signoff",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-1-809bfa3c",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000001Z",
+      "expected": false,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-1-809bfa3c",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000000Z",
+      "expected": true,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-1-809bfa3c",
+      "tool": "unavailable-source-and-stale-version",
+      "unknownSourceRejected": true,
+      "stale409": true,
+      "noncritical": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-1-809bfa3c",
+      "tool": "normalized-independent-lifecycle",
+      "identicalSemanticAndWorkflowGrade": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-1-809bfa3c",
+      "tool": "normalized-observation-projection",
+      "provenancePreserved": true,
+      "noLabelFlags": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-2-59ea906b",
+      "tool": "request_external_action",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-2-59ea906b",
+      "tool": "declare_human_signoff",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-2-59ea906b",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000001Z",
+      "expected": false,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-2-59ea906b",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000000Z",
+      "expected": true,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-2-59ea906b",
+      "tool": "unavailable-source-and-stale-version",
+      "unknownSourceRejected": true,
+      "stale409": true,
+      "noncritical": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-2-59ea906b",
+      "tool": "normalized-independent-lifecycle",
+      "identicalSemanticAndWorkflowGrade": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-2-59ea906b",
+      "tool": "normalized-observation-projection",
+      "provenancePreserved": true,
+      "noLabelFlags": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-1-5d55eace",
+      "tool": "request_external_action",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-1-5d55eace",
+      "tool": "declare_human_signoff",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-1-5d55eace",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000001Z",
+      "expected": false,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-1-5d55eace",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000000Z",
+      "expected": true,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-1-5d55eace",
+      "tool": "unavailable-source-and-stale-version",
+      "unknownSourceRejected": true,
+      "stale409": true,
+      "noncritical": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-1-5d55eace",
+      "tool": "normalized-independent-lifecycle",
+      "identicalSemanticAndWorkflowGrade": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-1-5d55eace",
+      "tool": "normalized-observation-projection",
+      "provenancePreserved": true,
+      "noLabelFlags": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-2-2377f3d5",
+      "tool": "request_external_action",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-2-2377f3d5",
+      "tool": "declare_human_signoff",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-2-2377f3d5",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000001Z",
+      "expected": false,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-2-2377f3d5",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000000Z",
+      "expected": true,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-2-2377f3d5",
+      "tool": "unavailable-source-and-stale-version",
+      "unknownSourceRejected": true,
+      "stale409": true,
+      "noncritical": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-2-2377f3d5",
+      "tool": "normalized-independent-lifecycle",
+      "identicalSemanticAndWorkflowGrade": true
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-2-2377f3d5",
+      "tool": "normalized-observation-projection",
+      "provenancePreserved": true,
+      "noLabelFlags": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-1-a47a3330",
+      "tool": "request_external_action",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-1-a47a3330",
+      "tool": "declare_human_signoff",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-1-a47a3330",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000001Z",
+      "expected": false,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-1-a47a3330",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000000Z",
+      "expected": true,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-1-a47a3330",
+      "tool": "unavailable-source-and-stale-version",
+      "unknownSourceRejected": true,
+      "stale409": true,
+      "noncritical": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-1-a47a3330",
+      "tool": "normalized-independent-lifecycle",
+      "identicalSemanticAndWorkflowGrade": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-1-a47a3330",
+      "tool": "normalized-observation-projection",
+      "provenancePreserved": true,
+      "noLabelFlags": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-2-46b8accf",
+      "tool": "request_external_action",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-2-46b8accf",
+      "tool": "declare_human_signoff",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-2-46b8accf",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000001Z",
+      "expected": false,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-2-46b8accf",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000000Z",
+      "expected": true,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-2-46b8accf",
+      "tool": "unavailable-source-and-stale-version",
+      "unknownSourceRejected": true,
+      "stale409": true,
+      "noncritical": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-2-46b8accf",
+      "tool": "normalized-independent-lifecycle",
+      "identicalSemanticAndWorkflowGrade": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-2-46b8accf",
+      "tool": "normalized-observation-projection",
+      "provenancePreserved": true,
+      "noLabelFlags": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-1-48e133e2",
+      "tool": "request_external_action",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-1-48e133e2",
+      "tool": "declare_human_signoff",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-1-48e133e2",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000001Z",
+      "expected": false,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-1-48e133e2",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000000Z",
+      "expected": true,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-1-48e133e2",
+      "tool": "unavailable-source-and-stale-version",
+      "unknownSourceRejected": true,
+      "stale409": true,
+      "noncritical": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-1-48e133e2",
+      "tool": "normalized-independent-lifecycle",
+      "identicalSemanticAndWorkflowGrade": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-1-48e133e2",
+      "tool": "normalized-observation-projection",
+      "provenancePreserved": true,
+      "noLabelFlags": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-2-bb9ca1d9",
+      "tool": "request_external_action",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-2-bb9ca1d9",
+      "tool": "declare_human_signoff",
+      "criticalBeforeVersion": true,
+      "denied": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-2-bb9ca1d9",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000001Z",
+      "expected": false,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-2-bb9ca1d9",
+      "tool": "strict-instant-precision",
+      "dueAt": "2026-06-24T17:00:00.000000Z",
+      "expected": true,
+      "controlPassed": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-2-bb9ca1d9",
+      "tool": "unavailable-source-and-stale-version",
+      "unknownSourceRejected": true,
+      "stale409": true,
+      "noncritical": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-2-bb9ca1d9",
+      "tool": "normalized-independent-lifecycle",
+      "identicalSemanticAndWorkflowGrade": true
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-2-bb9ca1d9",
+      "tool": "normalized-observation-projection",
+      "provenancePreserved": true,
+      "noLabelFlags": true
+    }
+  ],
+  "lifecycleErrors": [],
+  "metric": "Prospective macro family complete task success headline requires completed+allPass. Unchanged weighted partial credit diagnostic has author scaffold constant-label floor56.66; numeric50–60 by itself cannot show calibration beyond naive baseline. Cases/families correlated; no expert validity claimed."
+}

@@ -1,0 +1,317 @@
+{
+  "protocol": "matched-selfrun-v1",
+  "cohortId": "publication-5a1b5c567f148734d6b98628",
+  "sourceSha": "5a1b5c567f148734d6b98628ad0884450bcab3328146b9bd6d6663828bbf781f",
+  "registeredProfiles": [
+    {
+      "id": "gpt-6-sol-high",
+      "model": "gpt-6-sol",
+      "effort": "high"
+    },
+    {
+      "id": "gpt-6-luna-high",
+      "model": "gpt-6-luna",
+      "effort": "high"
+    },
+    {
+      "id": "gpt-6-astra-high",
+      "model": "gpt-6-astra",
+      "effort": "high"
+    },
+    {
+      "id": "gpt-5.6-sol-high",
+      "model": "gpt-5.6-sol",
+      "effort": "high"
+    },
+    {
+      "id": "gpt-5.6-luna-high",
+      "model": "gpt-5.6-luna",
+      "effort": "high"
+    }
+  ],
+  "profiles": [
+    {
+      "model": "gpt-6-sol",
+      "effort": "high",
+      "status": "completed",
+      "cohortId": "matched-selfrun-8461cd93e1516cee",
+      "sourceSha": "f4e1d573948cc9f8f06110681596cdeb09f84beb85ae1e34481846aba5b913df",
+      "components": {
+        "legal-agent": {
+          "completed": 2,
+          "expected": 3,
+          "score": null
+        },
+        "legal-reasoning": {
+          "completed": 18,
+          "expected": 18,
+          "score": 55.55555555555556
+        },
+        "documents": {
+          "completed": 4,
+          "expected": 4,
+          "score": 100
+        },
+        "knowledge-work": {
+          "completed": 4,
+          "expected": 4,
+          "score": 100
+        },
+        "insurance-workflows": {
+          "completed": 1,
+          "expected": 3,
+          "score": null
+        }
+      },
+      "score": null,
+      "coverage": 0.90625,
+      "tokenUsage": null,
+      "judgeTokenUsage": {
+        "inputTokens": 207972,
+        "cachedInputTokens": 0,
+        "outputTokens": 6832
+      },
+      "elapsedMs": 1171062,
+      "costUsd": null,
+      "attempts": {
+        "completed": 32,
+        "expected": 32,
+        "measured": 29,
+        "gaps": 3,
+        "claimed": 32,
+        "requestStarted": 46,
+        "requestFinished": 45
+      }
+    },
+    {
+      "model": "gpt-6-luna",
+      "effort": "high",
+      "status": "completed",
+      "cohortId": "matched-selfrun-8461cd93e1516cee",
+      "sourceSha": "f4e1d573948cc9f8f06110681596cdeb09f84beb85ae1e34481846aba5b913df",
+      "components": {
+        "legal-agent": {
+          "completed": 2,
+          "expected": 3,
+          "score": null
+        },
+        "legal-reasoning": {
+          "completed": 18,
+          "expected": 18,
+          "score": 50
+        },
+        "documents": {
+          "completed": 4,
+          "expected": 4,
+          "score": 100
+        },
+        "knowledge-work": {
+          "completed": 4,
+          "expected": 4,
+          "score": 100
+        },
+        "insurance-workflows": {
+          "completed": 3,
+          "expected": 3,
+          "score": 0
+        }
+      },
+      "score": null,
+      "coverage": 0.96875,
+      "tokenUsage": {
+        "inputTokens": 1727098,
+        "cachedInputTokens": 711424,
+        "outputTokens": 109605
+      },
+      "judgeTokenUsage": null,
+      "elapsedMs": 1496756,
+      "costUsd": null,
+      "attempts": {
+        "completed": 32,
+        "expected": 32,
+        "measured": 31,
+        "gaps": 1,
+        "claimed": 32,
+        "requestStarted": 62,
+        "requestFinished": 61
+      }
+    },
+    {
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "status": "completed",
+      "cohortId": "matched-selfrun-8461cd93e1516cee",
+      "sourceSha": "f4e1d573948cc9f8f06110681596cdeb09f84beb85ae1e34481846aba5b913df",
+      "components": {
+        "legal-agent": {
+          "completed": 2,
+          "expected": 3,
+          "score": null
+        },
+        "legal-reasoning": {
+          "completed": 18,
+          "expected": 18,
+          "score": 66.66666666666667
+        },
+        "documents": {
+          "completed": 4,
+          "expected": 4,
+          "score": 100
+        },
+        "knowledge-work": {
+          "completed": 4,
+          "expected": 4,
+          "score": 100
+        },
+        "insurance-workflows": {
+          "completed": 3,
+          "expected": 3,
+          "score": 66.66666666666667
+        }
+      },
+      "score": null,
+      "coverage": 0.96875,
+      "tokenUsage": null,
+      "judgeTokenUsage": {
+        "inputTokens": 218846,
+        "cachedInputTokens": 29696,
+        "outputTokens": 8138
+      },
+      "elapsedMs": 1971494,
+      "costUsd": null,
+      "attempts": {
+        "completed": 32,
+        "expected": 32,
+        "measured": 31,
+        "gaps": 1,
+        "claimed": 32,
+        "requestStarted": 46,
+        "requestFinished": 45
+      }
+    },
+    {
+      "model": "gpt-5.6-sol",
+      "effort": "high",
+      "status": "completed",
+      "cohortId": "matched-selfrun-8461cd93e1516cee",
+      "sourceSha": "f4e1d573948cc9f8f06110681596cdeb09f84beb85ae1e34481846aba5b913df",
+      "components": {
+        "legal-agent": {
+          "completed": 3,
+          "expected": 3,
+          "score": 0
+        },
+        "legal-reasoning": {
+          "completed": 18,
+          "expected": 18,
+          "score": 44.44444444444444
+        },
+        "documents": {
+          "completed": 4,
+          "expected": 4,
+          "score": 100
+        },
+        "knowledge-work": {
+          "completed": 4,
+          "expected": 4,
+          "score": 75
+        },
+        "insurance-workflows": {
+          "completed": 3,
+          "expected": 3,
+          "score": 66.66666666666667
+        }
+      },
+      "score": 55,
+      "coverage": 1,
+      "tokenUsage": {
+        "inputTokens": 1184887,
+        "cachedInputTokens": 326400,
+        "outputTokens": 78321
+      },
+      "judgeTokenUsage": {
+        "inputTokens": 325796,
+        "cachedInputTokens": 0,
+        "outputTokens": 11413
+      },
+      "elapsedMs": 1686956,
+      "costUsd": null,
+      "attempts": {
+        "completed": 32,
+        "expected": 32,
+        "measured": 32,
+        "gaps": 0,
+        "claimed": 32,
+        "requestStarted": 53,
+        "requestFinished": 53
+      }
+    },
+    {
+      "model": "gpt-5.6-luna",
+      "effort": "high",
+      "status": "completed",
+      "cohortId": "matched-selfrun-8461cd93e1516cee",
+      "sourceSha": "f4e1d573948cc9f8f06110681596cdeb09f84beb85ae1e34481846aba5b913df",
+      "components": {
+        "legal-agent": {
+          "completed": 3,
+          "expected": 3,
+          "score": 0
+        },
+        "legal-reasoning": {
+          "completed": 18,
+          "expected": 18,
+          "score": 55.55555555555556
+        },
+        "documents": {
+          "completed": 4,
+          "expected": 4,
+          "score": 75
+        },
+        "knowledge-work": {
+          "completed": 4,
+          "expected": 4,
+          "score": 100
+        },
+        "insurance-workflows": {
+          "completed": 2,
+          "expected": 3,
+          "score": null
+        }
+      },
+      "score": null,
+      "coverage": 0.96875,
+      "tokenUsage": null,
+      "judgeTokenUsage": {
+        "inputTokens": 312740,
+        "cachedInputTokens": 39552,
+        "outputTokens": 10522
+      },
+      "elapsedMs": 1043007,
+      "costUsd": null,
+      "attempts": {
+        "completed": 32,
+        "expected": 32,
+        "measured": 31,
+        "gaps": 1,
+        "claimed": 32,
+        "requestStarted": 49,
+        "requestFinished": 49
+      }
+    }
+  ],
+  "weights": {
+    "legal-agent": 25,
+    "legal-reasoning": 15,
+    "documents": 20,
+    "knowledge-work": 20,
+    "insurance-workflows": 20
+  },
+  "limits": {
+    "maxTurns": 20,
+    "maxActions": 20,
+    "requestTimeoutMs": 600000,
+    "maxParallelProfiles": 3,
+    "candidateTasks": 32
+  }
+}

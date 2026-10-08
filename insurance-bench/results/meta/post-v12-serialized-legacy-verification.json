@@ -1,0 +1,19 @@
+{
+  "status": "pass",
+  "checkedCommit": "2e85a4778da4c8c135182b6573ed45b6740ec266",
+  "scope": "Full serialized legacy test files after conditional v12 engineering; no paid experiment or provider call",
+  "command": "NODE_ENV=test INGEST_DATABASE_URL=postgres://<synthetic-test-user>:<redacted-test-password>@127.0.0.1:1/<synthetic-test-database> INGEST_DATA_DIR=.tmp/tests/legacy INGEST_DB_ENCRYPTION_KEY=<all-zero synthetic test key> node --import tsx --test --test-concurrency=1 test/*.test.ts",
+  "logPath": ".tmp/insurance-bench/post-v12-serialized-legacy.txt",
+  "logSha256": "a2dbd71e674fbd3ab96e98e18448ede79f0bfa7bb55f118cfd31bacddcb48dbd",
+  "tests": 1241,
+  "suites": 208,
+  "passed": 1241,
+  "failed": 0,
+  "skipped": 0,
+  "durationMs": 30814.627208,
+  "limitations": [
+    "Serialized run; no default concurrent npm test pass claim",
+    "No app runtime, database, live claims, provider calls or browser acceptance",
+    "Earlier architecture/web checks remain separate historical evidence"
+  ]
+}

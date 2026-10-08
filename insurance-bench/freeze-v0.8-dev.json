@@ -1,0 +1,122 @@
+{
+  "version": "insurance-bench-evidence-v0.8",
+  "createdAt": "2026-10-04T22:01:12.619Z",
+  "seed": 82573,
+  "sourceFingerprint": "b4a648a8cb12bc94a938a74ccb03d5c8bc1e692fcd060f55690362750031d64c",
+  "datasetHash": "0b33183872bf68e251943727ea2054d971d7e01ef091ee05dc33cc7ba4b36c30",
+  "scoring": {
+    "headlineMetric": "macro-task-success",
+    "success": "completed episode with every existing semantic, evidence, workflow and boundary criterion passing",
+    "diagnostic": "unchanged family-weighted partial credit; facts40/evidence25/workflow25/boundaries10",
+    "historicalRegrading": false
+  },
+  "reviewControlHashes": {
+    "scripts/insurance-bench-evidence.ts": "156b81435420db28eb6eeddd895596ad20d86ecf89ee6592a9a9b77ae02e3d5f",
+    "test/insurance-bench-evidence.test.ts": "d2e3f35695224c2225b11f75e462e3cbbdfee947c16022d8ada69adfdabff21e",
+    "specs/features/insurance-bench/difficulty-calibration-v0.8.md": "6d72484e1154bdf5caa857d5148d5fb72ca9a76ed0923af9750a7f888df1eed6"
+  },
+  "taskIds": [
+    {
+      "id": "ibe-coverage-review-dev-1-3cc88288",
+      "family": "coverage-review",
+      "split": "dev",
+      "propositionCount": 9
+    },
+    {
+      "id": "ibe-coverage-review-dev-2-f5e7c447",
+      "family": "coverage-review",
+      "split": "dev",
+      "propositionCount": 9
+    },
+    {
+      "id": "ibe-coverage-review-holdout-1-3c5734fa",
+      "family": "coverage-review",
+      "split": "holdout",
+      "propositionCount": 9
+    },
+    {
+      "id": "ibe-coverage-review-holdout-2-38624011",
+      "family": "coverage-review",
+      "split": "holdout",
+      "propositionCount": 9
+    },
+    {
+      "id": "ibe-evidence-brief-dev-1-809bfa3c",
+      "family": "evidence-brief",
+      "split": "dev",
+      "propositionCount": 9
+    },
+    {
+      "id": "ibe-evidence-brief-dev-2-59ea906b",
+      "family": "evidence-brief",
+      "split": "dev",
+      "propositionCount": 9
+    },
+    {
+      "id": "ibe-evidence-brief-holdout-1-5d55eace",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "propositionCount": 9
+    },
+    {
+      "id": "ibe-evidence-brief-holdout-2-2377f3d5",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "propositionCount": 9
+    },
+    {
+      "id": "ibe-fraud-referral-dev-1-a47a3330",
+      "family": "fraud-referral",
+      "split": "dev",
+      "propositionCount": 9
+    },
+    {
+      "id": "ibe-fraud-referral-dev-2-46b8accf",
+      "family": "fraud-referral",
+      "split": "dev",
+      "propositionCount": 9
+    },
+    {
+      "id": "ibe-fraud-referral-holdout-1-48e133e2",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "propositionCount": 9
+    },
+    {
+      "id": "ibe-fraud-referral-holdout-2-bb9ca1d9",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "propositionCount": 9
+    }
+  ],
+  "limits": {
+    "maxTurns": 20,
+    "inclusiveOutputTokens": {
+      "openai": 16384,
+      "bedrock": 8192
+    },
+    "providerDeadlineSeconds": 300
+  },
+  "reviewerControls": [
+    "independent synthetic-author gold/source audit required before paid calls",
+    "equivalent paraphrase/page/source-ID positives",
+    "omit resolving source yields unresolved",
+    "alwaysready/alwaysabstain negatives",
+    "oracle same public tools100",
+    "source revision/authority/current-review negatives",
+    "raw output-limited scores retained but no clean comparisons"
+  ],
+  "validation": "Insurance expert, coverage counsel, clinical and representative-data validity remain OPEN; author labels only",
+  "budget": {
+    "maximumTotalUsd": 75,
+    "sharedLedger": ".tmp/insurance-bench/session-budget.json",
+    "reset": false
+  },
+  "frozenAt": "2026-10-04T22:01:35.319218+00:00",
+  "sourceCommit": "396337dea0aaac4b6f8971157a497efc89bee37e",
+  "registrationPath": "insurance-bench/results/meta/v08-registration.json",
+  "registrationSha256": "48db8559d50a147554754e8ab3425065f8415b5f38183549391cf573e908bcbe",
+  "independentReviewPath": "insurance-bench/results/meta/evidence-independent-opus-review-v0.8.json",
+  "stage": "development only; holdout output gated by separate fresh release",
+  "paidInferenceBeforeFreeze": false
+}

@@ -1,0 +1,34 @@
+{
+  "recordedAt": "2026-10-04T21:22:40.439420+00:00",
+  "status": "pre-paid candidate control; no model inference",
+  "sourceHashesAtSnapshot": {
+    "evidence-cases.ts": "742604770da41ffef3b1d6043fdb516127b988b382560c51f2b4170bd831ee40",
+    "evidence-engine.ts": "fd15fc242f7658d226db3a1bac7a83446fbc99652f1f84ce8c7564b033df5659",
+    "evidence-types.ts": "6539e79d4bb499ba7a7fbcc507b745c7eca7368cf7c4e5b0066ed6a3d7929d52",
+    "evidence-runner.ts": "fa9d8f039b627515a62eec5e074ea7e32c89933cebdfeb592814f96ae0b0e835"
+  },
+  "constantLabelsWithCorrectLifecycle": {
+    "supported": {
+      "facts": 39,
+      "of": 108,
+      "weightedScore": 58.47
+    },
+    "refuted": {
+      "facts": 57,
+      "of": 108,
+      "weightedScore": 69.31
+    },
+    "unresolved": {
+      "facts": 12,
+      "of": 108,
+      "weightedScore": 42.22
+    }
+  },
+  "allPass": 0,
+  "limitations": [
+    "Scores use an oracle structural lifecycle and author sufficient certificates; they are controls, not real model runs.",
+    "Refuted dominance yields a material shortcut above the desired frontier range.",
+    "Snapshot may precede independent semantic validation; do not claim expert truth."
+  ],
+  "disposition": "Source author is revising construct coverage before any paid v08 condition; weights unchanged; preserve this control record."
+}

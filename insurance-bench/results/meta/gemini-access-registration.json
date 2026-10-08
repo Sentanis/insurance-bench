@@ -1,0 +1,39 @@
+{
+  "registeredAt": "2026-10-04T21:46:35.403259+00:00",
+  "status": "prospective access-only reviewed; dispatch after commit",
+  "totalCapUsd": 75,
+  "ledgerPath": ".tmp/insurance-bench/session-budget.json",
+  "ledgerAtRegistration": {
+    "reservedUsd": 33.577552187500046,
+    "capUsd": 75,
+    "updatedAt": "2026-10-04T21:39:51.828Z"
+  },
+  "modelOrder": [
+    "gemini-3.8-flash",
+    "gemini-3.1-pro-preview"
+  ],
+  "oneAttemptEach": true,
+  "maxOutputTokens": 2048,
+  "timeoutMs": 300000,
+  "retries": 0,
+  "fallback": false,
+  "abilityScore": null,
+  "prompt": "This is a synthetic access check, not a benchmark task. Reply with exactly ACCESS_OK. Do not call any tools.",
+  "reservationUsdEach": 0.032768,
+  "sourceHashes": {
+    "insurance-bench/gemini-code-assist.ts": "49883025ee83e5053e5fb3aec0a74bf82edf4c5c2da166411c65bcb2e7e91d59",
+    "scripts/insurance-bench-gemini-probe.ts": "e259235fa32df93fdb4a7fdaa0ff5360aa4c4953d9e1a093e9e8d62560532e2e",
+    "test/insurance-bench-gemini-code-assist.test.ts": "9d95f887b426a124133810d89174121fd690fa71a2fc106d46ea82708b0cf743"
+  },
+  "receiptPaths": [
+    "insurance-bench/results/meta/gemini-flash-access-probe.json",
+    "insurance-bench/results/meta/gemini-pro-access-probe.json"
+  ],
+  "rules": [
+    "Existing OAuth cache only, pinned isolated native SDK; no onboarding or helper agent/tools",
+    "Exact native requested model metadata, STOP and ACCESS_OK required for admission",
+    "All failed admissions retain full reservation and no ability score",
+    "No automatic ability runs; any added condition prospectively registered",
+    "Reference rates are conservative estimates; OAuth invoice/quota billing not established"
+  ]
+}

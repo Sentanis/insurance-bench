@@ -1,0 +1,72 @@
+{
+  "reviewer": "independent adversarial source review",
+  "recommendation": "engineering_approved_for_harmless_chatgpt_transport_probe",
+  "scope": ["insurance-bench/selfrun-transport.ts", "test/insurance-bench-selfrun-transport.test.ts"],
+  "restrictions": "Offline source and synthetic injected streams only. No live codex, model, auth, network, database, or cached native outputs read.",
+  "baseline": {"command": "node --experimental-strip-types --test test/insurance-bench-selfrun-transport.test.ts", "passed": 13, "failed": 0},
+  "independentRecheck": {
+    "passed": 18,
+    "failed": 0,
+    "originalControls": {"modelMismatch": "failed/MODEL_MISMATCH", "secretMetadataPersisted": false, "jwtFinalPersisted": false, "postSpawnThrowKillCalls": 1, "postSpawnThrowTerminationConfirmed": true, "failedKillTerminationConfirmed": false},
+    "remainingFinding": {
+      "id": "SR-REVIEW-5",
+      "priority": "high",
+      "lines": "selfrun-transport.ts:169-177",
+      "problem": "Explicit commentary, analysis, and unknown message phases are treated as final answers.",
+      "repro": "Emit one item.completed agent_message with phase commentary and text containing a partial answer, followed by turn.completed and close(0). Result is completed. The same occurs for phase analysis and unknown-phase. Commentary followed by final safely fails, but commentary is already misclassified as final.",
+      "fix": "Never admit explicit non-final or unknown phases. Accept only the native-source-verified final phase, or one unphased message when the native wire omits phase. Reject ambiguous multiple unphased messages. Do not combine commentary with final text."
+    }
+  },
+  "finalRecheck": {
+    "passed": 21,
+    "failed": 0,
+    "strictTypeScript": {"status": "passed", "command": "./node_modules/.bin/tsc --ignoreConfig --noEmit --strict --target ES2022 --module NodeNext --moduleResolution NodeNext --allowImportingTsExtensions --skipLibCheck --types node insurance-bench/selfrun-transport.ts test/insurance-bench-selfrun-transport.test.ts"},
+    "phaseControls": {"commentary": "failed/NONFINAL_MESSAGE_PHASE", "analysis": "failed/NONFINAL_MESSAGE_PHASE", "unknownPhase": "failed/NONFINAL_MESSAGE_PHASE", "final_answer": "completed", "commentaryThenFinal": "failed/NONFINAL_MESSAGE_PHASE", "multipleUnphased": "failed/INVALID_OR_SENSITIVE_FINAL"},
+    "originalControls": "All independently rerun original controls still pass after phase fix.",
+    "approvalScope": "Engineering approval for one harmless ChatGPT-only transport probe. Not benchmark validity, actual native auth/runtime verification, or provider identity verification. No live calls occurred during review."
+  },
+  "bootstrapAndNativeErrorRecheck": {
+    "passed": 23,
+    "failed": 0,
+    "strictTypeScript": "passed using the recorded focused command",
+    "startupFlags": "Scoped warning suppression and code_mode_host enabled; code_mode and all other reviewed prohibited features remain disabled.",
+    "independentControls": "Injected item.started code_mode_host, code_mode, mcp_tool_call and command_execution each reject as tool-violation without persisted payload. Native item.error on started, updated and completed each fails CLI_ERROR despite later final/terminal output; warning body is never persisted.",
+    "approvalScope": "Engineering approval for the next one harmless ChatGPT-only transport probe and root-owned native enforcement evidence. No 18-cell benchmark dispatch approval; no live calls made by reviewer."
+  },
+  "findings": [
+    {
+      "id": "SR-REVIEW-1",
+      "priority": "high",
+      "lines": "selfrun-transport.ts:100-106,173-175; test:40-45",
+      "problem": "Explicit observed model mismatch is admitted as completed.",
+      "repro": "Request gpt-6.1-sol/high, emit thread.started with model gpt-6-luna, final agent_message, turn.completed, close(0). Result is completed with observedModel gpt-6-luna.",
+      "fix": "Reject an explicit observed identity inconsistent with the requested cell. Keep absent identity unknown. Do not label configured flags provider verification. Replace the test that requires mismatch admission."
+    },
+    {
+      "id": "SR-REVIEW-2",
+      "priority": "high",
+      "lines": "selfrun-transport.ts:58,100-106,114,120-127,140",
+      "problem": "Persisted metadata bypasses the secret filter, and final secret detection misses ordinary JWT/access_token credentials.",
+      "repro": "A synthetic sk-shaped model string passes identifier() and appears in events.jsonl and result.json. A final JSON access_token containing a synthetic JWT is completed and persisted.",
+      "fix": "Apply centralized sensitive-output validation to every persisted string; constrain actual identity to known model values; reject credential-bearing structured keys/JWT forms before final persistence. Retain only content-free rejection codes for rejected fields. Add tests checking both persisted files."
+    },
+    {
+      "id": "SR-REVIEW-3",
+      "priority": "high",
+      "lines": "selfrun-transport.ts:167,178",
+      "problem": "Errors after successful spawn can persist failed receipts without terminating the running child.",
+      "repro": "Injected child.stdin.end() throws; transport returns failed/SPAWN_FAILED while child.kill() is never called.",
+      "fix": "Route all post-spawn setup, stdin, and child error paths through cleanup. Ensure the child/process group is terminated before releasing the attempt. Test setup errors after successful spawn and non-ENOENT child error events."
+    },
+    {
+      "id": "SR-REVIEW-4",
+      "priority": "medium",
+      "lines": "selfrun-transport.ts:88-99; test:105-111",
+      "problem": "Timeout/failure completion treats attempted kill as confirmed termination.",
+      "repro": "Injected child.kill() returns false and never emits close; transport still returns timeout and writes terminal receipt immediately.",
+      "fix": "Wait for child close after kill, with bounded cleanup handling and an explicit unconfirmed-termination result if cleanup fails. Tests should prove close/reaping, not just that kill() was called. Guard kill failures rather than allowing a second throwing kill to escape."
+    }
+  ],
+  "strengths": ["Provider credentials and transport overrides are removed from the child environment, with explicit OpenAI/ChatGPT configuration and no fallback.", "Unknown tool events fail closed; reasoning, stderr, and error bodies are not retained.", "Request persistence is exclusive, malformed usage remains unknown, and final output requires successful exit and a terminal event."],
+  "qualifications": ["No paid API route was demonstrated from these two files. CLI flag enforcement and authentication source verification remain parent-owned.", "An outside-repository cwd alone proves neither an answer-free directory nor operating-system filesystem isolation. This review did not inspect native CLI source or auth state."]
+}

@@ -1,0 +1,44 @@
+import fs from 'node:fs';
+import {generateCoupledCases} from '../../insurance-bench/coupled-cases.ts';
+import {createCoupledEnvironment,gradeCoupledTask} from '../../insurance-bench/coupled-engine.ts';
+const controls:any[]=[];const sourceAudit=JSON.parse(fs.readFileSync('.tmp/insurance-bench/v07-independent-source-audit.json','utf8'));const outcomes:any[]=[];
+for(const task of generateCoupledCases()){
+ const phases=sourceAudit.observations.filter((p:any)=>p.taskId===task.id);const final=phases.find((p:any)=>p.phase===2);
+ for(const [tie,ids] of final.optimalPlans.entries()){
+  const env=createCoupledEnvironment(task),st=env.state;
+  const run=(tool:string,args:Record<string,unknown>={})=>{const result=env.execute(tool,{expectedSessionRevision:st.sessionRevision,expectedMaterialRevision:st.materialRevision,expectedDraftRevision:st.draft?.revision,...args});if('error' in result)throw new Error(task.id+' '+tool+' '+JSON.stringify(result));return result;};
+  const read=()=>st.documents.forEach(d=>run('read_document',{documentId:d.id}));
+  const sources=()=>st.documents.flatMap(d=>d.rows.map(r=>({documentId:d.id,revision:d.revision,rowId:r.id})));
+  read();run('ask_customer',{topic:'occurrence-allocation-and-receipt',scope:'current-occurrence'});read();
+  run('build_packet',{sources:sources()});run('save_work_product',{facts:phases.find((p:any)=>p.phase===1).facts,sources:sources(),memo:'Current invented occurrence records are reconciled for internal review with sourced capacities and proposals.'});
+  read();run('build_packet',{sources:sources()});run('revise_proposal',{facts:final.facts,sources:sources().filter(source=>source.rowId==='policy-BI'),memo:'Reuse the complete current actually recorded shared packet. Amended invented occurrence records are reconciled for internal review with current sourced capacities and proposals.'});run('request_review');
+  // Locate allocations only in current raw rows; independent optimal IDs were produced by the raw-source powerset audit.
+  const packages=st.documents.flatMap(d=>d.rows).filter(r=>r.id.startsWith('package-')&&ids.includes(r.fields.packageId));
+  const cost=packages.reduce((s,p)=>s+Number(p.fields.allocateACents)+Number(p.fields.allocateBCents)+Number(p.fields.allocateCCents),0),priority=packages.reduce((s,p)=>s+Number(p.fields.priorityValue),0);
+  const f=final.facts;
+  run('apply_business_update',{kind:task.family,fields:{proposedPackageIds:[...ids].reverse(),selectedCostCents:cost,selectedPriorityValue:priority,occurrenceAvailableCents:f.occurrenceAvailableCents,personAvailableACents:f.personAvailableACents,personAvailableBCents:f.personAvailableBCents,personAvailableCCents:f.personAvailableCCents,unallocatedBICents:f.unallocatedBICents}});
+  run('create_follow_up',{kind:'occurrence-'+task.family,owner:'internal-occurrence-review',dueAt:new Date(Date.parse(task.clock)+60*60000).toISOString().replace('.000Z','Z')});run('propose_workflow',{status:'current_review_ready',owner:'internal-occurrence-review',reason:'Current source-derived capacities and objective-optimal allocations support this internally reviewed packet.'});run('finish');
+  const grade=gradeCoupledTask(task,st);if(grade.score!==100||!grade.allPass)throw new Error('Independent execution failed '+task.id+' '+JSON.stringify(grade.criteria.filter(c=>!c.passed)));
+  if(outcomes.length===0){
+    for(const fault of ['positive-current-packet','stale-packet','stale-draft','no-build-history','history-wrong-material','forged-packet','forged-history','unread-sources','retired-source-revision','packet-row-wrong-revision','missing-product','missing-draft']){
+      const copy=structuredClone(st);
+      if(fault==='stale-packet')copy.packet!.materialRevision--;
+      if(fault==='stale-draft')copy.draft!.materialRevision--;
+      if(fault==='no-build-history')copy.history=copy.history.filter(h=>h.action!=='build_packet');
+      if(fault==='history-wrong-material')copy.history=copy.history.map(h=>h.action==='build_packet'?{...h,materialRevision:1}:h);
+      if(fault==='forged-packet')copy.packet!.sources=copy.packet!.sources.slice(1);
+      if(fault==='forged-history')copy.history=copy.history.map(h=>h.action==='build_packet'?{...h,payload:{sources:copy.productSources}}:h);
+      if(fault==='unread-sources')copy.readSources=[];
+      if(fault==='retired-source-revision')copy.documents.find(d=>d.id.endsWith(':records'))!.revision++;
+      if(fault==='packet-row-wrong-revision'){copy.packet!.sources=copy.packet!.sources.map(source=>({...source,revision:source.revision+1}));copy.history=copy.history.map(h=>h.action==='build_packet'&&h.materialRevision===copy.materialRevision?{...h,payload:{sources:copy.packet!.sources}}:h);}
+      if(fault==='missing-product')copy.products=[];
+      if(fault==='missing-draft')copy.draft=null;
+      const before=JSON.stringify(copy),grade=gradeCoupledTask(task,copy),expectedComplete=fault==='positive-current-packet';
+      controls.push({fault,expectedEvidenceComplete:expectedComplete,actualEvidenceScore:grade.components.evidence,allPass:grade.allPass,rawStateUnchanged:before===JSON.stringify(copy)});
+      if((grade.components.evidence===100)!==expectedComplete||before!==JSON.stringify(copy))throw new Error('Packet control failed '+fault);
+    }
+  }
+  outcomes.push({taskId:task.id,alternative:tie+1,selectedPackageIds:ids,costCents:cost,priorityValue:priority,score:grade.score,allPass:grade.allPass,historyEntries:st.history.length,phase:st.phase});
+ }
+}
+fs.writeFileSync('.tmp/insurance-bench/v07c-packet-controls.json',JSON.stringify({source:'Independent raw-source facts and optimal IDs from v07-independent-source-audit.json; production grader only verifies observed tool-state behavior, never supplies expected business values.',outcomes,controls},null,2)+'\n');console.log(JSON.stringify({executedOptimalAlternatives:outcomes.length,allPass:outcomes.every(o=>o.allPass),controls}));

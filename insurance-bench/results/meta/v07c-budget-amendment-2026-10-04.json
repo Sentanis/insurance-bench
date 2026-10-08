@@ -1,0 +1,17 @@
+{
+  "approvedAt": "2026-10-04T20:43:12.567317+00:00",
+  "authorization": "User said Increase the budget in response to the pending proposed $75 total cap",
+  "previousCapUsd": 25,
+  "newTotalCapUsd": 75,
+  "reservedUsdPreserved": 20.20268017000003,
+  "remainingUsd": 54.79731982999997,
+  "previousLedgerSha256": "2b41be9da9b40c8638aa0ae884c5b3bc8fcee2d59fb668acf0daab0c2d55c7c9",
+  "scope": "Resume existing registered synthetic model panels and subsequent prospectively registered calibration experiments within the shared $75 total cap",
+  "rules": [
+    "No reservation reset",
+    "No original freeze mutation",
+    "No holdout-driven grading or case tuning",
+    "Every command uses --budget75 and the same ledger"
+  ],
+  "awsAccess": "Read-only STS now confirms intended production-designated account044909225507 under existing profile; only fictional Bedrock inference is authorized, no infrastructure or claim access"
+}

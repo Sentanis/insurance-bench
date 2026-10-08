@@ -1,0 +1,90 @@
+{
+  "id": "01-sol-high-dev",
+  "modelAlias": "gpt-6.1-sol-high",
+  "modelConfiguration": {
+    "provider": "openai",
+    "model": "gpt-6.1-sol",
+    "inputUsdPerMillion": 2,
+    "outputUsdPerMillion": 10,
+    "reasoningEffort": "high",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+    "pricingVerifiedAt": "2026-10-03"
+  },
+  "split": "dev",
+  "variant": "baseline",
+  "forecastUsd": 2.5,
+  "taskIds": [
+    "ibi-fleet-assignment-dev-1-473634f6",
+    "ibi-premises-chronology-dev-1-98bd4c8a",
+    "ibi-multi-exposure-review-dev-1-57c335e"
+  ],
+  "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+  "correspondenceIds": [
+    "ibi-fleet-assignment-dev-1-473634f6",
+    "ibi-premises-chronology-dev-1-98bd4c8a",
+    "ibi-multi-exposure-review-dev-1-57c335e"
+  ],
+  "repeat": 1,
+  "limits": {
+    "maxTurns": 20,
+    "maxOutputTokens": 16384,
+    "transportDeadlineMs": 600000
+  },
+  "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+  "startedAt": "2026-10-04T23:19:12.873Z",
+  "freezeCommit": "cf4075d6fbeea1a9d882bbdea471824101b5f07d",
+  "freezeManifest": "insurance-bench/freeze-v0.9-dev.json",
+  "sourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+  "promptHash": "86a249e08db56fc4519a1cc9ffeab158c61a25cea95c6ca9626d5ceac60017fd",
+  "headlineMetric": "macro-task-success",
+  "ledgerBefore": {
+    "reservedUsd": 34.65158218750003,
+    "capUsd": 75,
+    "updatedAt": "2026-10-04T22:07:30.928Z"
+  },
+  "remainingForecastUsd": 34.25,
+  "command": [
+    "npx",
+    "tsx",
+    "scripts/insurance-bench-investigation.ts",
+    "run",
+    "--model",
+    "gpt-6.1-sol-high",
+    "--split",
+    "dev",
+    "--per-family",
+    "1",
+    "--case-offset",
+    "0",
+    "--repeat",
+    "1",
+    "--variant",
+    "baseline",
+    "--max-output-tokens",
+    "16384",
+    "--budget",
+    "75",
+    "--out",
+    ".tmp/insurance-bench/v09-runs"
+  ],
+  "logPath": ".tmp/insurance-bench/v09-01-sol-high-dev.log",
+  "status": "terminal-native-run",
+  "endedAt": "2026-10-04T23:40:12.203Z",
+  "exitCode": 0,
+  "ledgerAfter": {
+    "reservedUsd": 36.719758187500055,
+    "capUsd": 75,
+    "updatedAt": "2026-10-04T23:38:36.494Z"
+  },
+  "processFailure": false,
+  "nativeRunPath": "insurance-bench/results/2026-10-04T23-19-13-453Z-gpt-6.1-sol-high-baseline-investigation.json",
+  "nativeRunSha256": "3c9b022dab01bf9512095ea48f96658301ed0a9331e3c106a1e3ef117b83108d",
+  "actualEstimatedCostUsd": 2.0681760000000002,
+  "completeCoverage": true,
+  "benchmarkScore": 100,
+  "weightedDiagnosticScore": 100,
+  "observedTruncation": false,
+  "modelOrEffortMismatch": false,
+  "providerOrBudgetFailure": false,
+  "materialSpendOverrun": false
+}

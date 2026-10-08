@@ -1,0 +1,78 @@
+{
+  "verifiedAt": "2026-10-04T04:33:50.867125+00:00",
+  "generation": "insurance-bench-coupled-v0.7c",
+  "codeCommit": "b23fb66fff0cc00912dffaaef6dbd9cd7fcfe75f",
+  "url": "https://insurance-bench-i58xaxzg1-sentanis.vercel.app",
+  "deploymentId": "dpl_H1hZNc5S8YrrG6TKp3J1YtkyJZiV",
+  "projectId": "prj_CqiaZtGLLlPL3q9CKKKAVYFcrMXf",
+  "target": "preview",
+  "ready": true,
+  "ssoProtection": "all",
+  "anonymousHttpStatus": 302,
+  "htmlSha256": "c47f82256834d8064c77d1d217752512a2ed767f4989726a9102042cef617df4",
+  "hostedHtmlSha256": "e195f84c8604426856511bdccafc06f32a2e0c1f3409a4880f17b27b2d992dd3",
+  "hostedCanonicalMatchesCommitted": true,
+  "hostedDifference": "One163-byte Vercel toolbar script insertion; remaining bytes exactly match committed report",
+  "verificationAutomationBypass": "CLI generated one token for its fetch; exact self-created token revoked without regeneration; original bypass set restored; all-deployment SSO and anonymous302 reverified; Chrome still renders",
+  "chrome": {
+    "browser": "Real Chrome extension, existing report browser2",
+    "title": "Insurance Bench \u2014 Research Pilot",
+    "primaryRows": 2,
+    "scores": [
+      100,
+      93.01
+    ],
+    "coverage": [
+      3,
+      3
+    ],
+    "actualOptimalCurrentOutcomes": [
+      3,
+      3
+    ],
+    "allPassCounts": [
+      3,
+      0
+    ],
+    "lunaOutputTruncationLabel": true,
+    "cleanDevelopmentComparisons": 4,
+    "cleanHoldoutComparison": "Unavailable due Luna truncation; absent from paired table",
+    "historicalRows": 46,
+    "expandedCurrentLunaDetails": true,
+    "failedCriteriaVisible": [
+      "fact:eligiblePackageIds",
+      "evidence:eligiblePackageIds",
+      "workflow:current-draft"
+    ],
+    "keyboardCollapse": true,
+    "reload": true,
+    "narrowViewportWidth": 390,
+    "narrowDocumentWidth": 390,
+    "tableContainerWidth": 358,
+    "primaryTableContentWidth": 703,
+    "comparisonTableContentWidth": 639,
+    "viewportOverrideReset": true,
+    "pageConsoleWarnings": 0,
+    "pageConsoleErrors": 0,
+    "network": {
+      "scope": "Fresh complete reload capture",
+      "requests": 5,
+      "hasMore": false,
+      "truncated": false,
+      "origins": [
+        "https://insurance-bench-i58xaxzg1-sentanis.vercel.app",
+        "https://vercel.live",
+        "null"
+      ],
+      "noModelProviderOrClaimsAppRequests": true
+    },
+    "screenshotSha256": "d4ccab37ac7c8b290b9e53c4f908922bb0367d110bd5e183935cfffe90b5dc67",
+    "screenshotLocalPath": ".tmp/insurance-bench-v07c-preview.png",
+    "mobileScreenshotSha256": "b5287ad1b2f5e6125a290025d06b471910c2e0101721e883b006f018bd243e93"
+  },
+  "buildOutput": [
+    "config.json",
+    "static/index.html"
+  ],
+  "scope": "Synthetic static development report only; no AWS staging, production workflow or scientifically accepted benchmark validity"
+}

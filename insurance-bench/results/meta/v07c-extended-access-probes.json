@@ -1,0 +1,31 @@
+{
+  "recordedAt": "2026-10-04T20:54:11.753742+00:00",
+  "registration": "results/meta/v07c-extended-registration.json",
+  "totalCapUsd": 75,
+  "sharedLedgerPath": ".tmp/insurance-bench/session-budget.json",
+  "probePurpose": "One bounded refreshed-access attempt per exact latest profile; no insurance ability score. Existing SSO refreshed before calls; no infrastructure/security/model substitution.",
+  "maxOutputTokens": 2048,
+  "results": [
+    {
+      "name": "claude-sonnet-5.5",
+      "accessible": false,
+      "error": "Insurance Bench bedrock: AWS request failed (AccessDeniedException); response details withheld"
+    },
+    {
+      "name": "claude-opus-5.5",
+      "accessible": false,
+      "error": "Insurance Bench bedrock: AWS request failed (AccessDeniedException); response details withheld"
+    },
+    {
+      "name": "claude-sonnet-5",
+      "accessible": false,
+      "error": "Insurance Bench bedrock: AWS request failed (AccessDeniedException); response details withheld"
+    },
+    {
+      "name": "grok-4.7",
+      "accessible": false,
+      "error": "Insurance Bench bedrock: AWS request failed (AccessDeniedException); response details withheld"
+    }
+  ],
+  "retainedFailedReservationUsd": 0.118198
+}

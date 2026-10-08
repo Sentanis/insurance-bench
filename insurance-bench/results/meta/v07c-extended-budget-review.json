@@ -1,0 +1,28 @@
+{
+  "reviewedAt": "2026-10-04T21:06:09.228099+00:00",
+  "scope": "Prospective affordability amendment only; same shared ledger and total75 cap, no current run/source/config/grade change.",
+  "sonnetForecastOverrunContinuationApproved": true,
+  "futureCalibrationForecastUsd": 28.75,
+  "calibrationForecastIsNotLedgerReservation": true,
+  "nextPanelRule": "Latestledgerremaining must cover frozenwhole nextpanel allowance+28.75futurecalibrationforecast. If cAstra11cannotfit, defer/consult to prioritize frontierdevelopment. Further materialforecastsurprise requiresreview.",
+  "ledgerAtReview": {
+    "reservedUsd": 26.308360717500033,
+    "capUsd": 75,
+    "updatedAt": "2026-10-04T21:05:59.783Z"
+  },
+  "astraAllowanceUsd": 11,
+  "allowedRelativeOrder": [
+    "gpt-oss-120b",
+    "gpt-oss-20b",
+    "claude-haiku-4.5",
+    "gpt-6-astra-high"
+  ],
+  "prospectiveAmendments": [
+    {
+      "at": "2026-10-04T21:07:38.918320+00:00",
+      "priorFutureCalibrationForecastUsd": 20,
+      "newFutureCalibrationForecastUsd": 28.75,
+      "reason": "Coordinator preregistration draft adds Astra-high6dev before freshholds; eight-panel futureforecast28.75. Planningonly, no actualledgerreserve/capchange."
+    }
+  ]
+}

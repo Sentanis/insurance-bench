@@ -1,0 +1,123 @@
+/** Development-only receipt analysis. No provider imports/calls, corpus generation or holdout reads. */
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import { compareRuns } from '../../insurance-bench/compare.ts';
+import type { Run, Episode } from '../../insurance-bench/runner.ts';
+
+type NativeEpisode = Episode & { interfaceErrors?: number; truncatedOutput?: boolean; actualGoals?: Record<string, boolean> };
+type NativeRun = Omit<Run, 'episodes'> & { headlineMetric: string; benchmarkScore: number | null; episodes: NativeEpisode[] };
+type Panel = { id: string; split: string; modelAlias: string; modelConfiguration: Run['model']; taskIds: string[]; datasetHash: string; harnessHash: string; repeat: number; variant: Run['variant']; limits: { maxTurns: number; maxOutputTokens: number; transportDeadlineMs: number } };
+type Registration = { generation: string; sourceFingerprint: string; headlineMetric: string; panels: Panel[] };
+const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
+const registrationPath = 'insurance-bench/results/meta/v09-registration.json';
+const outputPath = 'insurance-bench/results/meta/v09-development-comparisons.json';
+const json = (p: string) => JSON.parse(fs.readFileSync(path.join(root, p), 'utf8'));
+const sha = (s: string | Buffer) => crypto.createHash('sha256').update(s).digest('hex');
+const equal = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
+const rounded = (v: number) => Math.round(v * 10000) / 10000;
+const broadTruncation = (run: NativeRun) => run.episodes.some(e => e.truncatedOutput || e.trace.some(t => /(?:max[_ -]?tokens|max[_ -]?output[_ -]?tokens|length|incomplete)/i.test(t.finishReason ?? '')));
+const scored = (run: NativeRun) => run.episodes.filter((e): e is NativeEpisode & { score: NonNullable<Episode['score']> } => Boolean(e.score));
+const passed = (e: NativeEpisode, key: string): boolean | null => e.score?.criteria.find(c => c.id === key)?.passed ?? null;
+const tally = (values: (boolean | null)[]) => ({ passed: values.filter(v => v === true).length, failed: values.filter(v => v === false).length, unscoredOrMissing: values.filter(v => v === null).length, total: values.length });
+const casePairs = (a: NativeRun, b: NativeRun) => a.taskIds.map(taskId => {
+  const ea = a.episodes.find(e => e.taskId === taskId), eb = b.episodes.find(e => e.taskId === taskId);
+  const metric = (e: NativeEpisode | undefined) => e?.score ? { weightedDiagnostic: e.score.score, allPass: e.score.allPass, completedTask: e.status === 'completed' && e.score.allPass && !e.score.criticalFailure, currentRequests: passed(e, 'workflow:currentRequests'), structuralHandoff: passed(e, 'workflow:handoff'), criticalFailure: e.score.criticalFailure } : null;
+  return { taskId, baseline: metric(ea), treatment: metric(eb) };
+});
+function cleanCompare(a: NativeRun, b: NativeRun, axis: 'effort' | 'tier') {
+  // The frozen generic comparator has a narrower finish-reason list: guard cumulative native v0.9 flags first.
+  if (broadTruncation(a) || broadTruncation(b)) return { status: 'unavailable', reason: 'Cumulative output truncation confounds the clean comparison', familyClusterBootstrap95: null };
+  try {
+    return { status: 'available-descriptive', ...compareRuns(a, b, axis), macroTaskSuccessDelta: a.benchmarkScore === null || b.benchmarkScore === null ? null : rounded(b.benchmarkScore - a.benchmarkScore), casePairs: casePairs(a, b), intervalMetric: 'weighted diagnostic delta; no separate headline interval', additionalCaveat: 'Three correlated single-attempt anchors; descriptive bootstrap has weak power and cannot establish population ranking or localize frontier50–60.' };
+  } catch (error) { return { status: 'unavailable', reason: error instanceof Error ? error.message : 'Comparison validation failed', familyClusterBootstrap95: null }; }
+}
+function panelMetrics(panel: Panel, run: NativeRun, receipt: any, receiptSha256: string) {
+  const rows = scored(run);
+  const fieldIds = [...new Set(rows.flatMap(e => e.score.criteria.filter(c => c.id.startsWith('fact:')).map(c => c.id.slice(5))))].sort();
+  if (fieldIds.length && fieldIds.length !== 16) throw new Error('Expected native public16 fact fields');
+  const goals = ['responseReviewed', 'currentPacket', 'currentRequests', 'suppliedReview', 'handoff'] as const;
+  const allFields = rows.flatMap(e => e.score.criteria.filter(c => c.component === 'facts'));
+  const evidence = rows.flatMap(e => e.score.criteria.filter(c => c.component === 'evidence'));
+  const statuses = Object.fromEntries(['completed','incomplete','provider-error','budget-stopped'].map(s => [s, run.episodes.filter(e => e.status === s).length]));
+  return {
+    panelId: panel.id, runId: run.runId, modelAlias: panel.modelAlias, exactModel: run.model.model, provider: run.model.provider, declaredEffort: run.model.reasoningEffort ?? null,
+    variant: run.variant, sourceFingerprint: receipt.sourceFingerprint, datasetHash: run.datasetHash, harnessHash: run.harnessHash,
+    receiptSha256, nativePath: receipt.nativeRunPath, nativeSha256: receipt.nativeRunSha256,
+    headlineMetric: run.headlineMetric, macroTaskSuccess: run.completeCoverage ? run.benchmarkScore : null, weightedDiagnostic: run.completeCoverage ? run.summary.score : null, observedScoredSubsetDiagnostic: {score:run.summary.score,denominatorScoredAttempts:rows.length,fullPanelHeadline:run.completeCoverage},
+    coverage: { expectedAttempts: panel.taskIds.length * panel.repeat, observedAttempts: run.episodes.length, scoredAttempts: rows.length, completeCoverage: run.completeCoverage, nativeFraction: run.coverage, statuses },
+    components: run.completeCoverage ? run.summary.components : null,
+    current16Fields: { distinctFields: fieldIds.length, expectedAcrossPanel: 16 * panel.taskIds.length * panel.repeat, observedCriteria: allFields.length, correct: allFields.filter(c => c.passed).length },
+    evidence: { observedCriteria: evidence.length, passed: evidence.filter(c => c.passed).length },
+    perField: fieldIds.map(key => ({ key, facts: tally(run.episodes.map(e => passed(e, 'fact:' + key))), evidence: tally(run.episodes.map(e => passed(e, 'evidence:' + key))) })),
+    actualGoals: Object.fromEntries(goals.map(key => [key, tally(run.episodes.map(e => passed(e, 'workflow:' + key)))])),
+    allPass: tally(run.episodes.map(e => e.score?.allPass ?? null)), criticalFailures: rows.filter(e => e.score.criticalFailure).length,
+    resource: { configuredLimits: run.limits, transportDeadlineMs: panel.limits.transportDeadlineMs, estimatedCostUsd: run.estimatedCostUsd, elapsedMs: run.episodes.reduce((s,e)=>s+e.elapsedMs,0), turns: run.episodes.reduce((s,e)=>s+e.trace.length,0), inputTokens: run.episodes.reduce((s,e)=>s+e.trace.reduce((n,t)=>n+t.usage.input,0),0), outputTokens: run.episodes.reduce((s,e)=>s+e.trace.reduce((n,t)=>n+t.usage.output,0),0), reasoningTokens: run.episodes.reduce((s,e)=>s+e.trace.reduce((n,t)=>n+(t.reasoningTokens??0),0),0), nativeReasoningUsageReportedTurns: run.episodes.flatMap(e=>e.trace).filter(t=>t.reasoningTokens!==undefined).length, cumulativeOutputLimited: broadTruncation(run), interfaceErrors: run.episodes.reduce((n,e)=>n+(e.interfaceErrors??0),0) },
+    limitations: { processFailure: Boolean(receipt.processFailure), providerOrBudgetFailure: Boolean(receipt.providerOrBudgetFailure), modelOrEffortMismatch: Boolean(receipt.modelOrEffortMismatch), materialSpendOverrun: Boolean(receipt.materialSpendOverrun) },
+    cases: run.episodes.map(e => ({ taskId:e.taskId, family:e.family, status:e.status, weightedDiagnostic:e.score?.score??null, components:e.score?.components??null, allPass:e.score?.allPass??null, criticalFailure:e.score?.criticalFailure??null, actualGoals:Object.fromEntries(goals.map(key=>[key,passed(e,'workflow:'+key)])), incorrectFields:e.score?.criteria.filter(c=>c.id.startsWith('fact:')&&!c.passed).map(c=>c.id.slice(5))??null, failedEvidenceFields:e.score?.criteria.filter(c=>c.id.startsWith('evidence:')&&!c.passed).map(c=>c.id.slice(9))??null, failedCriteria:e.score?.criteria.filter(c=>!c.passed).map(c=>c.id)??null, interfaceErrors:e.interfaceErrors??null, truncatedOutput:Boolean(e.truncatedOutput), finishReasons:e.trace.map(t=>t.finishReason??null), elapsedMs:e.elapsedMs, estimatedCostUsd:e.estimatedCostUsd })),
+  };
+}
+function collect() {
+  const registration = json(registrationPath) as Registration;
+  if (registration.generation !== 'insurance-bench-investigation-v0.9' || registration.headlineMetric !== 'macro-task-success') throw new Error('Unexpected registration contract');
+  const dev = registration.panels.filter(p => p.split === 'dev');
+  if (dev.length !== 6 || dev.some(p => p.taskIds.length !== 3 || p.repeat !== 1 || p.limits.transportDeadlineMs !== 600000)) throw new Error('Expected exact six registered3-anchor dev panels');
+  const loaded = new Map<string, NativeRun>();
+  const admission = new Map<string, boolean>();
+  const panels: ReturnType<typeof panelMetrics>[] = [], pending: { panelId:string; status:string }[] = [];
+  for (const p of dev) {
+    const receiptPath = 'insurance-bench/results/meta/v09-dispatch-' + p.id + '.json';
+    if (!fs.existsSync(path.join(root, receiptPath))) { pending.push({panelId:p.id,status:'not-dispatched'}); continue; }
+    const bytes = fs.readFileSync(path.join(root,receiptPath)), r = JSON.parse(bytes.toString());
+    if (r.status !== 'terminal-native-run') { pending.push({panelId:p.id,status:r.status??'unknown'}); continue; }
+    if (r.split !== 'dev' || r.sourceFingerprint !== registration.sourceFingerprint || !equal(r.taskIds,p.taskIds) || r.datasetHash!==p.datasetHash || r.harnessHash!==p.harnessHash || !equal(r.modelConfiguration,p.modelConfiguration)) throw new Error('Receipt registration mismatch:' + p.id);
+    if (typeof r.nativeRunPath !== 'string' || !/^insurance-bench\/results\/[^/]+\.json$/.test(r.nativeRunPath)) throw new Error('Only retained development native Run files admitted');
+    const nativeBytes = fs.readFileSync(path.join(root,r.nativeRunPath));
+    if (sha(nativeBytes)!==r.nativeRunSha256) throw new Error('Native byte hash mismatch:' + p.id);
+    const run = JSON.parse(nativeBytes.toString()) as NativeRun;
+    if (run.version!==registration.generation || !equal(run.model,p.modelConfiguration) || run.datasetHash!==p.datasetHash || run.harnessHash!==p.harnessHash || run.repeat!==p.repeat || run.variant!==p.variant || !equal(run.taskIds,p.taskIds) || !equal(run.limits,{maxTurns:p.limits.maxTurns,maxOutputTokens:p.limits.maxOutputTokens}) || run.episodes.some(e=>e.split!=='dev'||!p.taskIds.includes(e.taskId))) throw new Error('Native registered conditions mismatch:' + p.id);
+    if (run.episodes.some(e=>e.trace.some(t=>t.model!==p.modelConfiguration.model||(t.reasoningEffort??null)!==(p.modelConfiguration.reasoningEffort??null)))) throw new Error('Native exact model/effort mismatch:' + p.id);
+    admission.set(p.id, !r.processFailure && !r.modelOrEffortMismatch && !r.providerOrBudgetFailure);
+    loaded.set(p.id,run); panels.push(panelMetrics(p,run,r,sha(bytes)));
+  }
+  const comparisons = [
+    ['sol-effort','02-sol-low-dev','01-sol-high-dev','effort'],
+    ['luna-effort','03-luna-low-dev','04-luna-high-dev','effort'],
+    ['openai-low-tier','03-luna-low-dev','02-sol-low-dev','tier'],
+    ['openai-high-tier','04-luna-high-dev','01-sol-high-dev','tier'],
+    ['frontier-high-configured-tier','01-sol-high-dev','05-astra-high-dev','tier'],
+  ].map(([id,a,b,axis])=>({id, baselinePanel:a,treatmentPanel:b,...(loaded.has(a!)&&loaded.has(b!) ? (!admission.get(a!) || !admission.get(b!) ? {status:'unavailable',reason:'Native receipt process/provider/model limitation',familyClusterBootstrap95:null} : cleanCompare(loaded.get(a!)!,loaded.get(b!)!,axis as 'tier'|'effort')) : {status:'pending',reason:'Both terminal native panels required'})}));
+  const a=loaded.get('01-sol-high-dev'),b=loaded.get('06-sol-high-verify-dev');
+  const promptComparison = a&&b ? {
+    status:'descriptive-prompt-comparison', baselineRunId:a.runId,treatmentRunId:b.runId, baselineHarness:a.harnessHash,treatmentHarness:b.harnessHash,
+    sameNativeHarness:a.harnessHash===b.harnessHash, cleanMatchedHarnessComparison:false, cleanTruncationFreeObservations:!broadTruncation(a)&&!broadTruncation(b)&&Boolean(admission.get('01-sol-high-dev'))&&Boolean(admission.get('06-sol-high-verify-dev')),
+    macroTaskSuccessDelta:a.benchmarkScore===null||b.benchmarkScore===null?null:rounded(b.benchmarkScore-a.benchmarkScore), weightedDiagnosticDelta:a.completeCoverage&&b.completeCoverage?rounded(b.summary.score-a.summary.score):null,
+    estimatedCostDeltaUsd:rounded(b.estimatedCostUsd-a.estimatedCostUsd), casePairs:casePairs(a,b), familyClusterBootstrap95:null,
+    caveat:'Reminder intentionally changes variant/prompt/harness. No hashes normalized or forged and compareRuns is not bypassed. Single sequential attempt per3correlated anchors; no causal or normalized-audit-compute claim.',
+  } : {status:'pending',reason:'Both baseline and reminder terminal panels required'};
+  return {createdAt:new Date().toISOString(),status:pending.length?'interim-terminal-development-only':'six-terminal-development-panels',registrationPath,registrationSha256:sha(fs.readFileSync(path.join(root,registrationPath))),sourceFingerprint:registration.sourceFingerprint,headlineMetric:registration.headlineMetric,panels,pending,comparisons,promptComparison,estimatedTerminalPanelCostUsd:panels.reduce((n,p)=>n+p.resource.estimatedCostUsd,0),limitations:['Development-only native artifacts; no held-out outputs read.','Three equally weighted single-attempt correlated families yield33.33point headline steps; no localized50–60 target or population confidence claim.','Fact and evidence criteria share correctness dependencies; structural handoff does not certify semantic facts/request correctness.','Raw criterion failures are not yet an independently accepted paid failure audit; semantic versus measurement/protocol causes require trace review.','Token-rate cost estimates are not invoices or shared-ledger reservation balances.','Weighted case wins/ties and clustered intervals differ from macro whole-task success; retain both.'],paidInferencePerformedByAnalysis:false};
+}
+function selfTest() {
+  const taskIds=['a','b','c'];
+  const fixture=(effort:'low'|'high',scores:number[],truncated=false):NativeRun=>({version:'insurance-bench-investigation-v0.9',runId:effort,startedAt:'test',model:{provider:'openai',model:'exact',reasoningEffort:effort,inputUsdPerMillion:1,outputUsdPerMillion:1},variant:'baseline',datasetHash:'same',harnessHash:'same',taskIds,repeat:1,episodes:taskIds.map((taskId,i)=>({taskId,family:['coverage-review','evidence-brief','fraud-referral'][i]!,split:'dev',status:'completed',state:{} as Episode['state'],elapsedMs:1,estimatedCostUsd:0,truncatedOutput:truncated,trace:[],score:{taskId,split:'dev',family:['coverage-review','evidence-brief','fraud-referral'][i]! as any,score:scores[i]!,components:{facts:scores[i]!,evidence:100,workflow:100,boundaries:100},allPass:scores[i]===100,criticalFailure:false,criteria:[]}})),summary:{score:0} as Run['summary'],coverage:1,completeCoverage:true,estimatedCostUsd:0,notes:[],headlineMetric:'macro-task-success',benchmarkScore:0});
+  const low=fixture('low',[0,50,100]),high=fixture('high',[0,50,100]);
+  const same=cleanCompare(low,high,'effort');assert.equal(same.status,'available-descriptive');assert.equal((same as any).scoreDelta,0);assert.equal((same as any).caseTies,3);
+  assert.equal(cleanCompare(low,fixture('high',[0,50,100],true),'effort').status,'unavailable');
+  const broad=fixture('high',[0,50,100]);broad.episodes[0]!.trace=[{turn:1,response:'',results:[],model:'exact',usage:{input:0,output:0},finishReason:'INCOMPLETE'}];assert.equal(cleanCompare(low,broad,'effort').status,'unavailable');
+  const different={...high,harnessHash:'other'};assert.equal(cleanCompare(low,different,'effort').status,'unavailable');
+  assert.equal(cleanCompare(low,{...high,completeCoverage:false},'effort').status,'unavailable');
+  console.log(JSON.stringify({selfTest:'passed',controls:5,paidInference:false}));
+}
+const args=process.argv.slice(2);
+if(args.includes('--self-test')) { if(args.length!==1)throw new Error('self-test is exclusive');selfTest(); }
+else {
+  if(args.some(a=>a!=='--write')||args.length>1)throw new Error('Expected no argument or --write');
+  const analysis=collect();
+  if(args.includes('--write')) {
+    if(analysis.pending.length)throw new Error('Refuse durable comparison until all six terminal receipts');
+    const destination=path.join(root,outputPath);if(fs.existsSync(destination))throw new Error('Refuse overwrite of durable comparison artifact');
+    fs.writeFileSync(destination,JSON.stringify(analysis,null,2)+'\n');
+  }
+  console.log(JSON.stringify(analysis,null,2));
+}

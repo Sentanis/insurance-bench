@@ -1,0 +1,16 @@
+{
+  "status": "root-bounded-prepaid-repairs-verified",
+  "sourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+  "previousAuthorControl": "investigation-v09-source-author-controls-final.json",
+  "previousControlsPreserved": true,
+  "fileSha256": {
+    "insurance-bench/investigation-cases.ts": "9384c6dd93130526265050e985f08d74e2510584fde2e8bbccfce7b7dab099fe",
+    "insurance-bench/investigation-types.ts": "97c379fc221d3096395a88fc281deb78638d3684b2c1dd4900d5a9554d171f57",
+    "test/insurance-bench-investigation-cases.test.ts": "bb7c5a0ad2a7a6b74a8e571e63b37f2608691f511dd7a149e063dbda5a1df212"
+  },
+  "caseTestsPassed": 12,
+  "sourceAudit": "investigation-independent-audit-v0.9.json",
+  "actualRepair": "Historical approvals are derived before withheld response; no raw source-response provenance enters initial dependencies. Public absence/origin wording aligned to resolver.",
+  "noPaidCalls": true,
+  "notExpertValidation": true
+}

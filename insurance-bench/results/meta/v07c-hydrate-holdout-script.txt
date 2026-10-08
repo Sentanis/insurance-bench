@@ -1,0 +1,42 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+const sha=(s:string)=>crypto.createHash('sha256').update(s).digest('hex');
+const [outputDirectory,...inputs]=process.argv.slice(2);
+if(!outputDirectory||!inputs.length)throw new Error('Usage: npx tsx hydrate.ts output-directory durable-holdout-run.json ...');
+const freeze=JSON.parse(fs.readFileSync('insurance-bench/freeze-v0.7c-final.json','utf8'));
+const registeredProfiles=new Set([...freeze.primary,...freeze.optional]);
+const sameTasks=(ids:unknown)=>Array.isArray(ids)&&ids.length===freeze.taskIds.length&&new Set(ids).size===ids.length&&ids.every(id=>freeze.taskIds.includes(id));
+const results:any[]=[],skipped:any[]=[];
+for(const input of inputs){
+ if(!input.endsWith('.json')){skipped.push({input,reason:'Not a full Run JSON; partial and episode inputs excluded'});continue;}
+ const raw=fs.readFileSync(input,'utf8');
+ // Native CLI Run JSON is pretty-printed and records metadata before its episodes.
+ // Validate that metadata first; do not parse any excluded episode payload.
+ const marker=/\n  "episodes":\s*\[/.exec(raw);
+ if(!marker){skipped.push({input,reason:'No native full Run episode field'});continue;}
+ const header=JSON.parse(raw.slice(0,marker.index)+'\n  "episodes":[]}');
+ if(header.version!==freeze.generation){skipped.push({input,reason:'Other benchmark generation'});continue;}
+ if(!sameTasks(header.taskIds)){skipped.push({input,reason:'Not the exact registered holdout task set; development and mixed runs excluded'});continue;}
+ if(header.harnessHash!==freeze.harnessHash||header.repeat!==freeze.repeat)throw new Error('Frozen harness/repeat mismatch: '+input);
+ const matches=Object.entries(freeze.modelConfigurations).filter(([,configuration]:any)=>configuration.provider===header.model.provider&&configuration.model===header.model.model&&(configuration.reasoningEffort??null)===(header.model.reasoningEffort??null)&&(configuration.region??null)===(header.model.region??null)&&(configuration.profile??null)===(header.model.profile??null)).map(([name])=>name);
+ const preferred=matches.filter(name=>registeredProfiles.has(name));
+ const candidates=preferred.length?preferred:matches;
+ if(candidates.length!==1)throw new Error('Ambiguous or unregistered exact model/effort identity: '+input);
+ const condition=candidates[0]!,run=JSON.parse(raw);
+ if(!Array.isArray(run.episodes))throw new Error('Invalid Run episodes: '+input);
+ fs.mkdirSync(outputDirectory,{recursive:true});
+ for(const [index,episode] of run.episodes.entries()){
+  if(episode.split!=='holdout'||!freeze.taskIds.includes(episode.taskId)||!['completed','incomplete','provider-error','budget-stopped'].includes(episode.status)||!Array.isArray(episode.trace))throw new Error('Nonterminal/unregistered holdout episode: '+input);
+  const epoch=Date.parse(header.startedAt)+index;
+  if(!Number.isSafeInteger(epoch))throw new Error('Invalid native Run start time: '+input);
+  const name=`${epoch}-${condition}-${run.variant}-${episode.taskId}.episode`;
+  const destination=path.join(outputDirectory,name),bytes=JSON.stringify(episode,null,2);
+  if(fs.existsSync(destination)&&fs.readFileSync(destination,'utf8')!==bytes)throw new Error('Refuse conflicting hydration: '+destination);
+  fs.writeFileSync(destination,bytes);
+  results.push({input,runSha256:sha(raw),condition,taskId:episode.taskId,status:episode.status,destination,episodeSha256:sha(bytes)});
+ }
+}
+const manifest={generation:freeze.generation,sourceCommit:freeze.sourceCommit,harnessHash:freeze.harnessHash,scope:'Full native Run metadata validated before parsing terminal registered holdout episode payloads. No providers, inference, grade calls or development/other-generation response parsing. Filename timestamps are reconstructed labels; serialized episode content is unchanged.',results,skipped};
+fs.mkdirSync(outputDirectory,{recursive:true});fs.writeFileSync(path.join(outputDirectory,'hydration-manifest.json'),JSON.stringify(manifest,null,2)+'\n');
+console.log(JSON.stringify({hydratedEpisodes:results.length,profiles:[...new Set(results.map(result=>result.condition))],skipped}));

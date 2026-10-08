@@ -1,0 +1,193 @@
+{
+  "schema": "insurance-bench-response-phase-transport-independent-review-v1",
+  "reviewedAt": "2026-10-05T04:40:41.678Z",
+  "disposition": "engineering-transport-limitation-confirmed-causal-attribution-unresolved",
+  "sourceSha256": {
+    "insurance-bench/providers.ts": "532698d5d3850394ff8efc1288bd1975b504a8283503da585b68d55883fb565e",
+    "insurance-bench/investigation-providers.ts": "e3d93a10653c3bd614bd3e00a983e7bb104509beb32df603cba63aa98c0492ba",
+    "insurance-bench/json-object-provider.ts": "e3c569e92ecd0e1494009a19c1d327e2ad095d82cab7c87cc9ae501a39e9349a",
+    "insurance-bench/dependency-allocation-runner.ts": "2c69fe3e0cdab2039541f895313cf43070d265da6aa1f7d8ac22fcf4f7ff45c8",
+    "insurance-bench/allocation-interaction-workflows.ts": "4cce168812d14e7e3324ee9107964321c15aea03a418ed2ec22336d125a8f0b7",
+    "node_modules/openai/src/lib/ResponsesParser.ts": "05984978879382d32f555e57ae5a5ab8b9cd31bad4e4d6811f2341a981b8702e",
+    "node_modules/openai/src/resources/responses/responses.ts": "e0db1decde7601162fccbac292138aa4fe3bd9beaea9b88ad173b802ebc19a27"
+  },
+  "nativeRunPath": "insurance-bench/results/2026-10-05T04-19-42-463Z-gpt-6-luna-high-baseline-dependency-allocation.json",
+  "nativeRunSha256": "4a6e16fd03bc3d4fb8974274256548965405929f3fc35550d8ff148a35090306",
+  "nativeConditions": {
+    "version": "insurance-bench-dependency-allocation-v0.12",
+    "responseFormat": "json_object",
+    "model": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "inputUsdPerMillion": 0.1,
+      "outputUsdPerMillion": 0.5,
+      "reasoningEffort": "high",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "harnessHash": "4004345cd0bea50e0afe76b4acbda198759e7041b83ac9f8ce2796df668c0456",
+    "datasetHash": "3569a95573c576d64469d470999ce0f387254a5c430db7f125eadd857f7aa5d8",
+    "repeat": 1,
+    "limits": {
+      "maxTurns": 20,
+      "maxOutputTokens": 16384
+    }
+  },
+  "traceCoverage": {
+    "episodes": 3,
+    "turns": 41,
+    "malformedFlatResponses": 2,
+    "observed": [
+      {
+        "taskId": "ibda-coverage-review-dev-1-761c0426",
+        "turn": 2,
+        "shape": "prose-prefix-before-json",
+        "responseSha256": "1e48b0e5b25bd617bfeb18d91b60df8e8a05f4713e1d857ae62c5c6461ff8ff9",
+        "responseCharacters": 473,
+        "finishReason": "completed",
+        "episodeTruncatedOutput": false,
+        "episodeCompleted": true,
+        "usage": {
+          "input": 1926,
+          "output": 154
+        },
+        "retainedTurnFields": [
+          "turn",
+          "response",
+          "results",
+          "usage",
+          "model",
+          "requestId",
+          "finishReason",
+          "reasoningEffort",
+          "reasoningTokens"
+        ],
+        "requestIdRetained": true,
+        "phaseAndRawOutputRetained": false
+      },
+      {
+        "taskId": "ibda-deadline-triage-dev-1-d1cbe88e",
+        "turn": 1,
+        "shape": "concatenated-json-roots",
+        "responseSha256": "a4e83e759e91fcefdd3c9d44e4373319bc389db5b8a40e7e9d19bb4a883ae712",
+        "responseCharacters": 298,
+        "finishReason": "completed",
+        "episodeTruncatedOutput": false,
+        "episodeCompleted": true,
+        "usage": {
+          "input": 1535,
+          "output": 177
+        },
+        "retainedTurnFields": [
+          "turn",
+          "response",
+          "results",
+          "usage",
+          "model",
+          "requestId",
+          "finishReason",
+          "reasoningEffort",
+          "reasoningTokens"
+        ],
+        "requestIdRetained": true,
+        "phaseAndRawOutputRetained": false
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "RPT-PHASE01",
+      "severity": "measurement-limitation",
+      "confirmed": "Both frozen OpenAI provider extractors select every message/output_text and join text without separators. Phase, message IDs, message/content boundaries and individual item status are discarded; Completion has no raw items or phase field.",
+      "implication": "Valid separate commentary and final JSON can become invalid concatenated text. The saved flat string is insufficient to distinguish this from invalid text within one final message."
+    },
+    {
+      "id": "RPT-PHASE02",
+      "severity": "measurement-limitation",
+      "confirmed": "Dependency runner appends response.text as one assistant {role,content} and tool results as user JSON. It neither preserves original phases/output items nor uses previous_response_id.",
+      "implication": "Recommended phase-preserving manual replay is absent. This is a plausible follow-up confound; the saved trace cannot prove which actual emitted phases, if any, were dropped."
+    },
+    {
+      "id": "RPT-PHASE03",
+      "severity": "attribution-limit",
+      "confirmed": "Two notified terminal Luna responses fail strict flat JSON parsing despite completed response-level status and no cumulative output ceiling flags. Both episodes recover and complete.",
+      "implication": "These are observed configured transport/parser incidents. Neither an API JSON-mode violation, malformed final_answer, pure model domain failure, nor provider bug is established."
+    }
+  ],
+  "mockControls": [
+    {
+      "id": "single-final-json-preserved",
+      "passed": true
+    },
+    {
+      "id": "valid-separate-commentary-final-and-invalid-single-final-collapse-identically",
+      "passed": true,
+      "causalLocalizationPossible": false
+    },
+    {
+      "id": "separate-valid-json-messages-and-invalid-single-double-root-collapse-identically",
+      "passed": true,
+      "causalLocalizationPossible": false
+    },
+    {
+      "id": "content-fragments-within-one-final-can-need-concatenation",
+      "passed": true
+    },
+    {
+      "id": "legacy-phase-absent-single-json-valid",
+      "passed": true
+    },
+    {
+      "id": "runner-shaped-manual-replay-has-one-flat-phaseless-assistant",
+      "passed": true
+    },
+    {
+      "id": "inherited-extractor-confound-exists-without-json-wrapper",
+      "passed": true
+    }
+  ],
+  "checks": {
+    "mockOnlyTransportRequests": 9,
+    "realProviderCalls": 0,
+    "credentialEnvironmentReads": 0,
+    "ledgerReads": 0,
+    "heldOutputReads": 0,
+    "sourceOrNativeChanges": 0,
+    "reportBuilderExecution": false
+  },
+  "primaryReferences": [
+    {
+      "url": "https://developers.openai.com/api/reference/resources/responses/methods/create",
+      "supports": "Assistant phase commentary/final_answer and preserve/resend original phases on followups."
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/reasoning",
+      "supports": "Optional assistant phase recommended for tool-heavy flows; manual replay should preserve phases; dropping phases can misinterpret preambles. Guide prose names GPT5.4/5.5 and examples use Astra, so avoid proving a specific Luna cause."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/openai-python/main/src/openai/lib/_parsing/_responses.py",
+      "supports": "Current Python parse_text skips explicit non-final phases and retains phase-absent legacy behavior; not a blanket all-SDK claim."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/openai-node/master/src/lib/ResponsesParser.ts",
+      "supports": "Current Node parser inspected does not gate structured parsing by phase; generic output_text helper concatenates output text. Installed Node7.2.0 likewise lacks a final-only gate."
+    }
+  ],
+  "recommendationsProspectiveOnly": [
+    "New version should retain raw ordered response items and original assistant phase/message/content metadata plus response-level status, usage and request IDs in synthetic-safe traces.",
+    "Define phase-aware action extraction prospectively: preserve commentary as context, parse appropriate terminal action message(s), reject ambiguous multiple final roots, keep refusal/incomplete/missing-phase legacy policies explicit. Do not blindly keep only the last block or label unknown text final_answer.",
+    "Round-trip original assistant item phases/roles/order and relevant reasoning state using a documented stateless item replay or approved stateful response linkage; preserve existing no-external-action boundary.",
+    "Freeze and review common transport for both compared models; rerun complete matched conditions only if a future budget-authorized experiment is registered. Keep prior source/native scores unchanged and label protocol/domain attribution limits."
+  ],
+  "limitations": [
+    "No raw API output bodies were persisted by this frozen transport. Their block/phase layout cannot be recovered from saved strings or request IDs without a new authorized data source.",
+    "Synthetic mocked response shapes prove information loss and possible failure mechanisms, not actual Luna raw response layout or causal magnitude.",
+    "These two recovered protocol incidents need not directly lower the final completed-task score; this diagnostic does not independently attribute the substantive final task failure.",
+    "Existing paid observations remain configured-system outcomes. Domain-ability conclusions require separating substantive state errors from parser/transport confounds.",
+    "This is a read-only engineering diagnosis, not an ability audit, source repair, regrade, new candidate approval or paid dispatch."
+  ],
+  "reproduction": {
+    "copy": "insurance-bench/results/meta/response-phase-transport-independent-review-repro.txt",
+    "command": "Copy durable script to .tmp/insurance-bench/response-phase-transport-independent-review.ts then npx tsx that scratch path from repository root; every provider path is an injected mock."
+  }
+}

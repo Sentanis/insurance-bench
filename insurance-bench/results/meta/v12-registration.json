@@ -1,0 +1,129 @@
+{
+  "registeredAt": "2026-10-05T03:54:15.460Z",
+  "parentControlSha256": {
+    "insurance-bench/results/meta/v11-development-independent-audit.json": "2f6ed5b0219fe49b02e50b0b78fe16ee51b8e8527170f61fdfc5d436d150b21d",
+    "insurance-bench/results/meta/v11-registration.json": "16fb33a1840c171ca1b7e9b6391e005ffe7427d2a48c839d754093c12c36c14c",
+    "insurance-bench/results/meta/v11-dispatch-01-sol-high-dev.json": "4f8e2be5979eed69b8b2f82d82ccbe6acc4007e320af1456aafb56c86d6551cf",
+    "insurance-bench/results/meta/v11-dispatch-02-sol-low-dev.json": "44c89ac3ffb836d1d6f4febc00e5dfa9bc97e49209a8a3f83c2f58d1460c596a",
+    "insurance-bench/results/meta/v11-dispatch-03-luna-low-dev.json": "c507fea6d4f4b67f13f2a127906547b776fd3328c9bd8d60701cb0b9ba95006d",
+    "insurance-bench/results/meta/v11-dispatch-04-luna-high-dev.json": "ea0d42c696be32c1e240c011811d916c660bb85b9e37ae9bf44bee87b092462a"
+  },
+  "perFamily": 1,
+  "caseOffset": 0,
+  "supplementaryReviewSha256": {
+    "insurance-bench/results/meta/dependency-allocation-runner-independent-review-v0.12.json": "5900e3a27b7e0b51cd54a33045603351170bcf4d0256824f6526ca6c4829720a",
+    "insurance-bench/results/meta/v12-independent-opus-review.json": "fa69594fcb9c80552acd38e49da51be9aef1c4b246a8ad713753a70bfd746f7e"
+  },
+  "status": "prospective-no-inference-before-committed-freeze",
+  "generation": "insurance-bench-dependency-allocation-v0.12",
+  "sourceFingerprint": "3591d68f82595fc8d02f4722fbfd6a4b927541d2964db1ac7062533de7787256",
+  "sourceFiles": [
+    "insurance-bench/dependency-allocation-core.ts",
+    "insurance-bench/dependency-allocation-cases.ts",
+    "insurance-bench/allocation-interaction-workflows.ts",
+    "insurance-bench/dependency-allocation-engine.ts",
+    "insurance-bench/dependency-allocation-runner.ts",
+    "insurance-bench/workflow-types.ts",
+    "insurance-bench/json-object-provider.ts",
+    "insurance-bench/investigation-providers.ts",
+    "insurance-bench/providers.ts",
+    "insurance-bench/candidate-admission.ts",
+    "insurance-bench/runner.ts",
+    "insurance-bench/tools.ts",
+    "insurance-bench/types.ts",
+    "insurance-bench/score.ts",
+    "insurance-bench/models.json",
+    "scripts/insurance-bench-dependency-allocation.ts"
+  ],
+  "fullCorpusHash": "f8e0df627c9334131c2beba32dae5bf0e85d32883ef3108ddd6d42b4d4889eeb",
+  "promptHash": "42bedeffb8638877eb60cd23cb2a9bf8ed82e67c10791b0ee2f7b9f6cb1de1f6",
+  "capUsd": 75,
+  "minimumReservedUsd": 72.26526888750007,
+  "ledgerAtRegistration": {
+    "reservedUsd": 72.26526888750007,
+    "capUsd": 75,
+    "updatedAt": "2026-10-05T03:43:29.482Z"
+  },
+  "auditPath": "insurance-bench/results/meta/v12-candidate-independent-audit.json",
+  "auditSha256": "764f9e0d9a553d8d1825c6690b71526f7d6c5f1a0759047f742045142881ffbe",
+  "planPath": "specs/features/insurance-bench/v12-development-plan.md",
+  "planSha256": "753c3d3182c7926993203526f1782e2c593957f779a5a59ffa5ae067f1ccb10b",
+  "controllerCopy": "insurance-bench/results/meta/v12-controller-repro.txt",
+  "controllerSha256": "a97106aef00d478cc846ac796f57fb516efe30fcf89af195f896cd1bcf4d2344",
+  "controllerReviewPath": "insurance-bench/results/meta/v12-controller-independent-review.json",
+  "controllerReviewSha256": "c2abdd7ea7bf4d89e6f7a2b9ca75f0c363909d6f5dd155928ea488f2db70c205",
+  "forecastTotalUsd": 2.5,
+  "responseFormat": "json_object",
+  "panels": [
+    {
+      "id": "01-sol-high-dev",
+      "modelAlias": "gpt-6.1-sol-high",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6.1-sol",
+        "inputUsdPerMillion": 2,
+        "outputUsdPerMillion": 10,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "split": "dev",
+      "forecastUsd": 2,
+      "taskIds": [
+        "ibda-coverage-review-dev-1-761c0426",
+        "ibda-financial-reconciliation-dev-1-248bf6ba",
+        "ibda-deadline-triage-dev-1-d1cbe88e"
+      ],
+      "datasetHash": "3569a95573c576d64469d470999ce0f387254a5c430db7f125eadd857f7aa5d8",
+      "variant": "baseline",
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384
+      },
+      "promptHash": "42bedeffb8638877eb60cd23cb2a9bf8ed82e67c10791b0ee2f7b9f6cb1de1f6",
+      "harnessHash": "4004345cd0bea50e0afe76b4acbda198759e7041b83ac9f8ce2796df668c0456",
+      "dispatchReceiptPath": "insurance-bench/results/meta/v12-dispatch-01-sol-high-dev.json"
+    },
+    {
+      "id": "02-luna-high-dev",
+      "modelAlias": "gpt-6-luna-high",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6-luna",
+        "inputUsdPerMillion": 0.1,
+        "outputUsdPerMillion": 0.5,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "split": "dev",
+      "forecastUsd": 0.5,
+      "taskIds": [
+        "ibda-coverage-review-dev-1-761c0426",
+        "ibda-financial-reconciliation-dev-1-248bf6ba",
+        "ibda-deadline-triage-dev-1-d1cbe88e"
+      ],
+      "datasetHash": "3569a95573c576d64469d470999ce0f387254a5c430db7f125eadd857f7aa5d8",
+      "variant": "baseline",
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384
+      },
+      "promptHash": "42bedeffb8638877eb60cd23cb2a9bf8ed82e67c10791b0ee2f7b9f6cb1de1f6",
+      "harnessHash": "4004345cd0bea50e0afe76b4acbda198759e7041b83ac9f8ce2796df668c0456",
+      "dispatchReceiptPath": "insurance-bench/results/meta/v12-dispatch-02-luna-high-dev.json"
+    }
+  ],
+  "guards": [
+    "Serial fixed order; no retries, fallback or outcome-selected substitution",
+    "Existing canonical shared ledger with totalcap75 and registered floor; never reset",
+    "Every remaining panel forecast must fit before dispatch",
+    "Source, plan, audit, controller, registration and task/config exact bytes are committed before inference",
+    "Native generation and responseFormat plus metadata audited after every terminal run",
+    "Material cost overrun/provider/budget/model/process flags pause future calls",
+    "Fresh holdouts require separately committed independent development audit and release; no held output access before release",
+    "New corpus,18-package limit,repaired runtime and native JSON do not support cross-generation causal hardness claims; One preregistered high-effort tier contrast within exact v12conditions only; three-case screen cannot localize frontier50–60 macro success"
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "schema": "insurance-bench-v09j-candidate-independent-audit-v1",
+  "auditedAt": "2026-10-05T00:34:22.949Z",
+  "preparedBy": "Independent non-author code-review agent",
+  "disposition": "approve-engineering-only",
+  "generation": "insurance-bench-investigation-v0.9j-json-object",
+  "sourceFingerprint": "107e4af647e3ee1e64a771b8702eebece95e88223a220d8c3560104f994d5385",
+  "sourceFiles": [
+    "insurance-bench/investigation-types.ts",
+    "insurance-bench/investigation-cases.ts",
+    "insurance-bench/investigation-engine.ts",
+    "insurance-bench/json-investigation-runner.ts",
+    "insurance-bench/json-object-provider.ts",
+    "insurance-bench/investigation-providers.ts",
+    "insurance-bench/providers.ts",
+    "insurance-bench/candidate-admission.ts",
+    "insurance-bench/runner.ts",
+    "insurance-bench/tools.ts",
+    "insurance-bench/types.ts",
+    "insurance-bench/score.ts",
+    "insurance-bench/models.json",
+    "scripts/insurance-bench-json-investigation.ts"
+  ],
+  "sourceHashes": {
+    "insurance-bench/investigation-types.ts": "97c379fc221d3096395a88fc281deb78638d3684b2c1dd4900d5a9554d171f57",
+    "insurance-bench/investigation-cases.ts": "9384c6dd93130526265050e985f08d74e2510584fde2e8bbccfce7b7dab099fe",
+    "insurance-bench/investigation-engine.ts": "86b02a16542099f107493012df42cb54e1c70bcce6b31046405a1246a98e8c52",
+    "insurance-bench/json-investigation-runner.ts": "cb6791b62b6d87ec79837b023b1ef8851c43e29dd339b16064b555e1c8363a37",
+    "insurance-bench/json-object-provider.ts": "e3c569e92ecd0e1494009a19c1d327e2ad095d82cab7c87cc9ae501a39e9349a",
+    "insurance-bench/investigation-providers.ts": "e3d93a10653c3bd614bd3e00a983e7bb104509beb32df603cba63aa98c0492ba",
+    "insurance-bench/providers.ts": "532698d5d3850394ff8efc1288bd1975b504a8283503da585b68d55883fb565e",
+    "insurance-bench/candidate-admission.ts": "16ad52e267abe2f42a68d605c11a32ecde4f455a3dc0ce27bf6d1b03db0e509f",
+    "insurance-bench/runner.ts": "944113810c1d4fa7768cc1a8e69f6c797cd1480086c180c174f64b76cd713d64",
+    "insurance-bench/tools.ts": "0d5faa748b29587a9eabb8614f38039b41a4f6dd734be3a59377cfb0aec21124",
+    "insurance-bench/types.ts": "60322fa5e518736d7ada605dd527f673f95b834361c7e031a5533c58a9d50aad",
+    "insurance-bench/score.ts": "712c2966fa750b758fb7f886c49c1986453cb56491d7ec295787da32d6af2949",
+    "insurance-bench/models.json": "6b2a9d673de555106b64ce15ab20df7948594eb707cb8176354e6388e88b87fd",
+    "scripts/insurance-bench-json-investigation.ts": "ae8ab29c0cb78c9bf37269c754367425baea0017307489fa4913a3014c6288b5"
+  },
+  "fullCorpusHash": "b8735f0158297b64a250cdecdcb0fffda42fb85f1fd30e3c07ff5ec45f81d2f5",
+  "promptHash": "86a249e08db56fc4519a1cc9ffeab158c61a25cea95c6ca9626d5ceac60017fd",
+  "semanticSource": {
+    "freezeCommit": "cf4075d6fbeea1a9d882bbdea471824101b5f07d",
+    "frozenV09SourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+    "exactUnchangedFiles": [
+      "insurance-bench/investigation-types.ts",
+      "insurance-bench/investigation-cases.ts",
+      "insurance-bench/investigation-engine.ts",
+      "insurance-bench/investigation-providers.ts",
+      "insurance-bench/providers.ts",
+      "insurance-bench/runner.ts",
+      "insurance-bench/tools.ts",
+      "insurance-bench/types.ts",
+      "insurance-bench/score.ts",
+      "insurance-bench/models.json"
+    ],
+    "engineeringAuditProvenance": [
+      {
+        "path": "insurance-bench/results/meta/investigation-independent-audit-v0.9.json",
+        "sha256": "8e4e633370485a074bbc1ebec6c19cd3fc3b8476bd391e0c27d9699a49c398f0"
+      },
+      {
+        "path": "insurance-bench/results/meta/investigation-independent-opus-review-v0.9.json",
+        "sha256": "b7edccf0cfb2a53480815ad7c5f54470243aaa83ae85aa5b8ffe2aad26c8181e"
+      },
+      {
+        "path": "insurance-bench/results/meta/investigation-independent-opus-repair-review-v0.9.json",
+        "sha256": "a28e949525b5a85f62c9a07150c5540fc103a827afbda0df5b78448a8690fa55"
+      },
+      {
+        "path": "insurance-bench/results/meta/investigation-runner-independent-review-v0.9.json",
+        "sha256": "c6218f0765a59a450c34033d4740dfa6a9a717907b26fea040e1066cc87b1f31"
+      },
+      {
+        "path": "insurance-bench/results/meta/investigation-development-independent-audit-v0.9.json",
+        "sha256": "66cb0fcc17e32bad90f61c149e62f8c372d3109b56ccade6015adade92962eeb"
+      }
+    ],
+    "independentDevelopmentReconstruction": "All6 registered terminal dev panels/18 native episodes admitted by separate raw-row interpreter plus exact tool-state replay; facts, proof alternatives, scope/windows, approval supporting dependencies and physical handoff distinguished. Original composite Opus evidence preserved."
+  },
+  "newNativeConditions": {
+    "responseFormat": "json_object",
+    "provider": "openai",
+    "maxTurns": 20,
+    "maxOutputTokens": 16384,
+    "providerTimeoutMs": 600000,
+    "prompt": "identical to frozen v0.9 for same variant",
+    "delta": "Default invocation uses exact JSON-object transport wrapper; new generation/source/harness metadata; canonical committed admission and persistent one-time claim before Budget.",
+    "unchanged": "Same corpus, public task assignment, tool simulator, grading engine, budget reservation, native model/effort, roles, native errors/refusals/truncation/usage and headline/diagnostic definitions."
+  },
+  "prepaidGate": {
+    "path": "insurance-bench/results/meta/candidate-prepaid-gate-independent-review.json",
+    "sha256": "85660a9cff71d2e8cf51661290eeecbd74416f32344cd0f533f4b6474d70e759",
+    "disposition": "approve-engineering-only"
+  },
+  "validation": {
+    "command": "node --import tsx --test test/insurance-bench-candidate-admission.test.ts test/insurance-bench-candidate-provenance.test.ts test/insurance-bench-json-object-provider.test.ts",
+    "tests": 9,
+    "passed": 9,
+    "realProviderCalls": 0,
+    "realSharedLedgerTouched": false,
+    "heldOutModelOutputsRead": false
+  },
+  "checks": {
+    "unchangedSemanticSource": true,
+    "unchangedFullCorpus": true,
+    "privateGoldOmittedFromPublicTasks": true,
+    "strictNativeParserAndProtectedIntentPreserved": true,
+    "distinctProspectiveGeneration": true,
+    "noHistoricalRelabelOrRegrade": true,
+    "canonicalCommittedAdmissionAndOneTimeClaim": true,
+    "allCommittedDevelopmentReceiptBindingsBeforeHoldout": true,
+    "noProviderCallsByAuditor": true,
+    "noHeldModelOutputsRead": true
+  },
+  "issues": [],
+  "limitations": [
+    "This is protocol/engineering admission for a prospective JSON-object diagnostic, not new domain or professional validation.",
+    "Valid native JSON does not promise schema or task conformance; no provider response or ability result exists yet.",
+    "The old development traces are provenance evidence and are not relabeled or regraded into v0.9j results.",
+    "Any empirical conclusion requires newly generated, separately admitted terminal native v0.9j receipts and audit.",
+    "Additional concurrent Opus review is separate; this artifact does not claim a future review outcome."
+  ],
+  "reproduction": {
+    "command": "node --import tsx .tmp/insurance-bench/candidate-gate-independent-artifacts.ts",
+    "scriptSha256": "e0bd37eb879075ef22e644c5da8c466666473580a9b19585abda8d42a6f09dd3",
+    "scriptCopy": "insurance-bench/results/meta/candidate-gate-independent-repro.txt"
+  }
+}

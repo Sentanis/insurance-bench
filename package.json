@@ -1,0 +1,26 @@
+{
+  "name": "insurance-bench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Source-qualified insurance AI benchmark composite, synthetic harness, and static research archive",
+  "scripts": {
+    "build": "node scripts/build-site.mjs",
+    "test": "node --import tsx --test test/insurance-bench-*.test.ts",
+    "test:composite": "node --import tsx --test test/insurance-bench-composite.test.ts test/insurance-bench-selfrun-site.test.ts",
+    "insurance:bench": "tsx scripts/insurance-bench.ts",
+    "insurance:bench:composite": "tsx scripts/build-insurance-bench-composite.ts",
+    "insurance:bench:selfrun": "tsx scripts/insurance-bench-selfrun.ts",
+    "insurance:bench:selfrun:site": "tsx scripts/build-insurance-bench-selfrun.ts"
+  },
+  "devDependencies": {
+    "tsx": "4.22.4",
+    "esbuild": "0.28.2",
+    "typescript": "6.0.3",
+    "@types/node": "26.0.0",
+    "vitest": "4.1.11"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

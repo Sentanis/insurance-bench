@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-03",
+  "probeOnly": true,
+  "results": [
+    {
+      "name": "claude-opus-5.5",
+      "accessible": false,
+      "error": "Insurance Bench bedrock: AWS request failed (AccessDeniedException); response details withheld"
+    },
+    {
+      "name": "claude-sonnet-5.5",
+      "accessible": false,
+      "error": "Insurance Bench bedrock: AWS request failed (AccessDeniedException); response details withheld"
+    },
+    {
+      "name": "claude-sonnet-5",
+      "accessible": false,
+      "error": "Insurance Bench bedrock: AWS request failed (AccessDeniedException); response details withheld"
+    },
+    {
+      "name": "grok-4.7",
+      "accessible": false,
+      "error": "Insurance Bench bedrock: AWS request failed (AccessDeniedException); response details withheld"
+    }
+  ],
+  "gemini": "No GEMINI_API_KEY available; no inference test"
+}

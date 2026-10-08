@@ -1,0 +1,6016 @@
+{
+  "version": "insurance-bench-coupled-v0.7b",
+  "auditedAt": "2026-10-04T03:06:17.487Z",
+  "status": "approve: narrowly clarified public source-ID/output and complete shared-operand contracts; numerical gold/scoring unchanged",
+  "scope": "Pre-inference source engineering review of all stored36phase definitions; no evaluated holdout output or model inference read/called.",
+  "sourceHashes": {
+    "insurance-bench/coupled-cases.ts": "1a0e23591617aa70be7a3c19bb15b576f81c485e9c16b74a451ed49852442d1a",
+    "insurance-bench/coupled-engine.ts": "6ff25bf5334887ada130ba9721349e74c88b77f4910cf4c48df6564848b769f8",
+    "insurance-bench/coupled-runner.ts": "139969191ab4e6d3b0fceb6103cfc2b9c96723cc283415c079ec111e7b377db7",
+    "insurance-bench/workflows.ts": "15cc2a635d6901cbdae1070f268da67dc566f64054228f93d51d479ba5fc7f3f",
+    "insurance-bench/workflow-types.ts": "13fbf5b455d706c06eec4bedb81c935f5fd7cfdae3b079c28ecf18af5b8d9155",
+    "test/architecture/insurance-bench-coupled.test.ts": "591557b862c1537bf8261f0d06a430b861aa2488abaa1bfff17a3afb40bc1768",
+    "test/insurance-bench-coupled-engine.test.ts": "2da69c5b9ccbc6cf0036ad4b19ffdd408f2ad701a0170b3a0bf5452016e4d750",
+    "test/insurance-bench-coupled-runner.test.ts": "9fe4b570110a1015c67a57420cebf370bcaebd8d422ea572a49b84ee22cc4e6e"
+  },
+  "auditScriptSha256": "54325240c4add5aeff337d74094a12954d09007930071397837f099fc350a077",
+  "independence": "Only generator and public projection/tool manual imported. Independent policy/ledger/reserve/demand/eligibility derivation operates on raw rows and an independent powerset checker operates on those raw-derived constraints. Production deriveCoupledPhase, solveCoupled, evaluateCoupledPlan, grader and normalized constraints never supply independent expected values.",
+  "counts": {
+    "tasks": 12,
+    "phases": 36,
+    "factualOutputs": 684,
+    "businessFields": 288,
+    "packageProjections": 432,
+    "enumeratedSubsets": 147456,
+    "requiredSourceReferences": 5154,
+    "failures": 0
+  },
+  "handCalculationControl": {
+    "taskId": "ibc-coverage-review-dev-1-693918aa",
+    "phase": 2,
+    "jitterCents": 200,
+    "expected": {
+      "limitSourceA": "E-A2",
+      "limitSourceB": "E-B2",
+      "limitSourceC": "P-BI",
+      "netPaidACents": 5200,
+      "netPaidBCents": 5700,
+      "netPaidCCents": 5400,
+      "personAvailableACents": 11700,
+      "personAvailableBCents": 7100,
+      "personAvailableCCents": 11700,
+      "reserveTotalBICents": 9100,
+      "occurrenceAvailableCents": 15300,
+      "pdAvailableCents": 6100,
+      "unallocatedBICents": 0,
+      "deadlineA": "2026-06-24T17:30:00Z",
+      "deadlineB": "2026-06-24T17:15:00Z",
+      "deadlineC": "2026-06-24T18:25:00Z",
+      "lateDemandClaimantIds": []
+    },
+    "calculationNotes": [
+      "A corrected positive6200+jitter minus linked reversal1200=5000+jitter; reversal PD/B/C labels are ignored.",
+      "Known C3400 plus resolved U2600 minus linked U reversal600=5400. Expense/recovery excluded. Unknown net remaining0.",
+      "BI reserves replace predecessors:3800+2200+3100=9100. Occurrence40500+jitter minus16100+jitter net BI minus9100=15300. PD11000\u22122800\u22122100=6100.",
+      "A deadline13:00+240minutes+30extension=17:30; B replacement15:45+90=17:15 with old-root extension rejected; C13:40+240+45=18:25."
+    ]
+  },
+  "failures": [],
+  "observations": [
+    {
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "split": "dev",
+      "phase": 0,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7200,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 15000,
+        "occurrenceAvailableCents": 17600,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 6900,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": 0,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5700
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2800
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:00:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:30:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 0,
+      "optimalValue": 0,
+      "optimalPlans": [
+        []
+      ],
+      "feasiblePlanCount": 1,
+      "evidenceRequirements": 138,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "split": "dev",
+      "phase": 1,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7200,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 13000,
+        "occurrenceAvailableCents": 17600,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 6900,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-coverage-review-dev-1-693918aa-Q1",
+          "ibc-coverage-review-dev-1-693918aa-Q2",
+          "ibc-coverage-review-dev-1-693918aa-Q3",
+          "ibc-coverage-review-dev-1-693918aa-Q4",
+          "ibc-coverage-review-dev-1-693918aa-Q5",
+          "ibc-coverage-review-dev-1-693918aa-Q6",
+          "ibc-coverage-review-dev-1-693918aa-Q7",
+          "ibc-coverage-review-dev-1-693918aa-Q8",
+          "ibc-coverage-review-dev-1-693918aa-Q9",
+          "ibc-coverage-review-dev-1-693918aa-Q10",
+          "ibc-coverage-review-dev-1-693918aa-Q11",
+          "ibc-coverage-review-dev-1-693918aa-Q12"
+        ],
+        "optimalPriorityValue": 44,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5700
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2800
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:00:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:30:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 12,
+      "optimalValue": 44,
+      "optimalPlans": [
+        [
+          "ibc-coverage-review-dev-1-693918aa-Q1",
+          "ibc-coverage-review-dev-1-693918aa-Q10",
+          "ibc-coverage-review-dev-1-693918aa-Q12",
+          "ibc-coverage-review-dev-1-693918aa-Q4",
+          "ibc-coverage-review-dev-1-693918aa-Q7"
+        ]
+      ],
+      "feasiblePlanCount": 464,
+      "evidenceRequirements": 148,
+      "uniqueRequiredSources": 44
+    },
+    {
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "split": "dev",
+      "phase": 2,
+      "rawRows": 71,
+      "facts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 11700,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5200,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-coverage-review-dev-1-693918aa-Q1",
+          "ibc-coverage-review-dev-1-693918aa-Q2",
+          "ibc-coverage-review-dev-1-693918aa-Q3",
+          "ibc-coverage-review-dev-1-693918aa-Q4",
+          "ibc-coverage-review-dev-1-693918aa-Q5",
+          "ibc-coverage-review-dev-1-693918aa-Q6",
+          "ibc-coverage-review-dev-1-693918aa-Q7",
+          "ibc-coverage-review-dev-1-693918aa-Q8",
+          "ibc-coverage-review-dev-1-693918aa-Q9",
+          "ibc-coverage-review-dev-1-693918aa-Q10",
+          "ibc-coverage-review-dev-1-693918aa-Q11",
+          "ibc-coverage-review-dev-1-693918aa-Q12"
+        ],
+        "optimalPriorityValue": 38,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-correction",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v2",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v2",
+        "reserve-B-v1",
+        "reserve-C-v2",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-correction",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 6400
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5700
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2800
+        },
+        {
+          "event": "event-A-reversal-v2",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -1200
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:00:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:30:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v2",
+          "clockDemand": "demand-B-v2",
+          "receiptAt": "2026-06-24T15:45:00Z",
+          "durationMinutes": 90,
+          "unextended": "2026-06-24T17:15:00.000Z",
+          "extensionAccepted": false,
+          "deadline": "2026-06-24T17:15:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 12,
+      "optimalValue": 38,
+      "optimalPlans": [
+        [
+          "ibc-coverage-review-dev-1-693918aa-Q10",
+          "ibc-coverage-review-dev-1-693918aa-Q12",
+          "ibc-coverage-review-dev-1-693918aa-Q4",
+          "ibc-coverage-review-dev-1-693918aa-Q7",
+          "ibc-coverage-review-dev-1-693918aa-Q9"
+        ]
+      ],
+      "feasiblePlanCount": 435,
+      "evidenceRequirements": 150,
+      "uniqueRequiredSources": 45
+    },
+    {
+      "taskId": "ibc-coverage-review-dev-2-bcc2f001",
+      "split": "dev",
+      "phase": 0,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7400,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 15200,
+        "occurrenceAvailableCents": 17600,
+        "pdAvailableCents": 6000,
+        "netPaidACents": 6900,
+        "netPaidBCents": 5900,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": 0,
+        "deadlineA": "2026-06-24T17:45:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T17:40:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5900
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2900
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 255,
+          "unextended": "2026-06-24T17:15:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:45:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": false,
+          "deadline": "2026-06-24T17:40:00Z"
+        }
+      ],
+      "eligiblePackageCount": 0,
+      "optimalValue": 0,
+      "optimalPlans": [
+        []
+      ],
+      "feasiblePlanCount": 1,
+      "evidenceRequirements": 138,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-coverage-review-dev-2-bcc2f001",
+      "split": "dev",
+      "phase": 1,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7400,
+        "personAvailableBCents": 12300,
+        "personAvailableCCents": 13200,
+        "occurrenceAvailableCents": 17600,
+        "pdAvailableCents": 6000,
+        "netPaidACents": 6900,
+        "netPaidBCents": 5900,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-coverage-review-dev-2-bcc2f001-Q1",
+          "ibc-coverage-review-dev-2-bcc2f001-Q2",
+          "ibc-coverage-review-dev-2-bcc2f001-Q3",
+          "ibc-coverage-review-dev-2-bcc2f001-Q4",
+          "ibc-coverage-review-dev-2-bcc2f001-Q5",
+          "ibc-coverage-review-dev-2-bcc2f001-Q6",
+          "ibc-coverage-review-dev-2-bcc2f001-Q7",
+          "ibc-coverage-review-dev-2-bcc2f001-Q8",
+          "ibc-coverage-review-dev-2-bcc2f001-Q9",
+          "ibc-coverage-review-dev-2-bcc2f001-Q10",
+          "ibc-coverage-review-dev-2-bcc2f001-Q11",
+          "ibc-coverage-review-dev-2-bcc2f001-Q12"
+        ],
+        "optimalPriorityValue": 44,
+        "deadlineA": "2026-06-24T17:45:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T17:40:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5900
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2900
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 255,
+          "unextended": "2026-06-24T17:15:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:45:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": false,
+          "deadline": "2026-06-24T17:40:00Z"
+        }
+      ],
+      "eligiblePackageCount": 12,
+      "optimalValue": 44,
+      "optimalPlans": [
+        [
+          "ibc-coverage-review-dev-2-bcc2f001-Q1",
+          "ibc-coverage-review-dev-2-bcc2f001-Q10",
+          "ibc-coverage-review-dev-2-bcc2f001-Q12",
+          "ibc-coverage-review-dev-2-bcc2f001-Q4",
+          "ibc-coverage-review-dev-2-bcc2f001-Q7"
+        ]
+      ],
+      "feasiblePlanCount": 655,
+      "evidenceRequirements": 144,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-coverage-review-dev-2-bcc2f001",
+      "split": "dev",
+      "phase": 2,
+      "rawRows": 71,
+      "facts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 9700,
+        "personAvailableBCents": 12300,
+        "personAvailableCCents": 13900,
+        "occurrenceAvailableCents": 12100,
+        "pdAvailableCents": 6000,
+        "netPaidACents": 7400,
+        "netPaidBCents": 5900,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-coverage-review-dev-2-bcc2f001-Q1",
+          "ibc-coverage-review-dev-2-bcc2f001-Q2",
+          "ibc-coverage-review-dev-2-bcc2f001-Q3",
+          "ibc-coverage-review-dev-2-bcc2f001-Q4",
+          "ibc-coverage-review-dev-2-bcc2f001-Q5",
+          "ibc-coverage-review-dev-2-bcc2f001-Q6",
+          "ibc-coverage-review-dev-2-bcc2f001-Q7",
+          "ibc-coverage-review-dev-2-bcc2f001-Q8",
+          "ibc-coverage-review-dev-2-bcc2f001-Q9",
+          "ibc-coverage-review-dev-2-bcc2f001-Q10",
+          "ibc-coverage-review-dev-2-bcc2f001-Q11",
+          "ibc-coverage-review-dev-2-bcc2f001-Q12"
+        ],
+        "optimalPriorityValue": 30,
+        "deadlineA": "2026-06-24T17:45:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T17:40:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-correction",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v2",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v2",
+        "reserve-B-v1",
+        "reserve-C-v2",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-correction",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 6600
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5900
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2900
+        },
+        {
+          "event": "event-A-reversal-v2",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -1200
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v2",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 255,
+          "unextended": "2026-06-24T17:15:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:45:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": false,
+          "deadline": "2026-06-24T17:40:00Z"
+        }
+      ],
+      "eligiblePackageCount": 12,
+      "optimalValue": 30,
+      "optimalPlans": [
+        [
+          "ibc-coverage-review-dev-2-bcc2f001-Q10",
+          "ibc-coverage-review-dev-2-bcc2f001-Q3",
+          "ibc-coverage-review-dev-2-bcc2f001-Q4",
+          "ibc-coverage-review-dev-2-bcc2f001-Q7"
+        ]
+      ],
+      "feasiblePlanCount": 227,
+      "evidenceRequirements": 152,
+      "uniqueRequiredSources": 46
+    },
+    {
+      "taskId": "ibc-coverage-review-holdout-1-ee0e896c",
+      "split": "holdout",
+      "phase": 0,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7500,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 15300,
+        "occurrenceAvailableCents": 17500,
+        "pdAvailableCents": 5900,
+        "netPaidACents": 6900,
+        "netPaidBCents": 6100,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": 0,
+        "deadlineA": "2026-06-24T18:00:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6100
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3000
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 270,
+          "unextended": "2026-06-24T17:30:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:00:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 0,
+      "optimalValue": 0,
+      "optimalPlans": [
+        []
+      ],
+      "feasiblePlanCount": 1,
+      "evidenceRequirements": 138,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-coverage-review-holdout-1-ee0e896c",
+      "split": "holdout",
+      "phase": 1,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7500,
+        "personAvailableBCents": 12200,
+        "personAvailableCCents": 15300,
+        "occurrenceAvailableCents": 17500,
+        "pdAvailableCents": 5900,
+        "netPaidACents": 6900,
+        "netPaidBCents": 6100,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [
+          "ibc-coverage-review-holdout-1-ee0e896c-Q1",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q2",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q3",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q4",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q5",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q6",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q7",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q9",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q10",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q11"
+        ],
+        "optimalPriorityValue": 42,
+        "deadlineA": "2026-06-24T18:00:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6100
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3000
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 270,
+          "unextended": "2026-06-24T17:30:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:00:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 10,
+      "optimalValue": 42,
+      "optimalPlans": [
+        [
+          "ibc-coverage-review-holdout-1-ee0e896c-Q10",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q4",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q5",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q7",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q9"
+        ]
+      ],
+      "feasiblePlanCount": 285,
+      "evidenceRequirements": 140,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-coverage-review-holdout-1-ee0e896c",
+      "split": "holdout",
+      "phase": 2,
+      "rawRows": 71,
+      "facts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 6200,
+        "personAvailableBCents": 12200,
+        "personAvailableCCents": 14000,
+        "occurrenceAvailableCents": 15400,
+        "pdAvailableCents": 5900,
+        "netPaidACents": 5000,
+        "netPaidBCents": 6100,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [
+          "ibc-coverage-review-holdout-1-ee0e896c-Q1",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q2",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q3",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q4",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q5",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q6",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q10",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q11"
+        ],
+        "optimalPriorityValue": 33,
+        "deadlineA": "2026-06-24T18:00:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T15:59:00Z",
+        "lateDemandClaimantIds": [
+          "C"
+        ]
+      },
+      "selectedFinancialRowIds": [
+        "event-A-correction",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v2",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v2",
+        "reserve-B-v1",
+        "reserve-C-v2",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-correction",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 6700
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6100
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3000
+        },
+        {
+          "event": "event-A-reversal-v2",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -1700
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 270,
+          "unextended": "2026-06-24T17:30:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:00:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v2",
+          "clockDemand": "demand-C-v2",
+          "receiptAt": "2026-06-24T15:24:00Z",
+          "durationMinutes": 35,
+          "unextended": "2026-06-24T15:59:00.000Z",
+          "extensionAccepted": false,
+          "deadline": "2026-06-24T15:59:00Z"
+        }
+      ],
+      "eligiblePackageCount": 8,
+      "optimalValue": 33,
+      "optimalPlans": [
+        [
+          "ibc-coverage-review-holdout-1-ee0e896c-Q1",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q4",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q5"
+        ],
+        [
+          "ibc-coverage-review-holdout-1-ee0e896c-Q10",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q3",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q4",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q5"
+        ]
+      ],
+      "feasiblePlanCount": 52,
+      "evidenceRequirements": 142,
+      "uniqueRequiredSources": 44
+    },
+    {
+      "taskId": "ibc-coverage-review-holdout-2-8978f5db",
+      "split": "holdout",
+      "phase": 0,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7100,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 14900,
+        "occurrenceAvailableCents": 16900,
+        "pdAvailableCents": 5800,
+        "netPaidACents": 6900,
+        "netPaidBCents": 6300,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": 0,
+        "deadlineA": "2026-06-24T18:15:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6300
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3100
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 285,
+          "unextended": "2026-06-24T17:45:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:15:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 0,
+      "optimalValue": 0,
+      "optimalPlans": [
+        []
+      ],
+      "feasiblePlanCount": 1,
+      "evidenceRequirements": 138,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-coverage-review-holdout-2-8978f5db",
+      "split": "holdout",
+      "phase": 1,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7100,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 12900,
+        "occurrenceAvailableCents": 16900,
+        "pdAvailableCents": 5800,
+        "netPaidACents": 6900,
+        "netPaidBCents": 6300,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-coverage-review-holdout-2-8978f5db-Q1",
+          "ibc-coverage-review-holdout-2-8978f5db-Q2",
+          "ibc-coverage-review-holdout-2-8978f5db-Q3",
+          "ibc-coverage-review-holdout-2-8978f5db-Q7",
+          "ibc-coverage-review-holdout-2-8978f5db-Q8",
+          "ibc-coverage-review-holdout-2-8978f5db-Q9",
+          "ibc-coverage-review-holdout-2-8978f5db-Q10"
+        ],
+        "optimalPriorityValue": 35,
+        "deadlineA": "2026-06-24T18:15:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6300
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3100
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 285,
+          "unextended": "2026-06-24T17:45:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:15:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 7,
+      "optimalValue": 35,
+      "optimalPlans": [
+        [
+          "ibc-coverage-review-holdout-2-8978f5db-Q1",
+          "ibc-coverage-review-holdout-2-8978f5db-Q10",
+          "ibc-coverage-review-holdout-2-8978f5db-Q7",
+          "ibc-coverage-review-holdout-2-8978f5db-Q8"
+        ]
+      ],
+      "feasiblePlanCount": 54,
+      "evidenceRequirements": 142,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-coverage-review-holdout-2-8978f5db",
+      "split": "holdout",
+      "phase": 2,
+      "rawRows": 71,
+      "facts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 12900,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 11600,
+        "occurrenceAvailableCents": 17400,
+        "pdAvailableCents": 5800,
+        "netPaidACents": 5100,
+        "netPaidBCents": 6300,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 7900,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-coverage-review-holdout-2-8978f5db-Q1",
+          "ibc-coverage-review-holdout-2-8978f5db-Q2",
+          "ibc-coverage-review-holdout-2-8978f5db-Q3",
+          "ibc-coverage-review-holdout-2-8978f5db-Q7",
+          "ibc-coverage-review-holdout-2-8978f5db-Q8",
+          "ibc-coverage-review-holdout-2-8978f5db-Q9",
+          "ibc-coverage-review-holdout-2-8978f5db-Q10"
+        ],
+        "optimalPriorityValue": 39,
+        "deadlineA": "2026-06-24T18:15:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-correction",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v2",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v2",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-correction",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 6300
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6300
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3100
+        },
+        {
+          "event": "event-A-reversal-v2",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -1200
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v2",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 285,
+          "unextended": "2026-06-24T17:45:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:15:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 7,
+      "optimalValue": 39,
+      "optimalPlans": [
+        [
+          "ibc-coverage-review-holdout-2-8978f5db-Q1",
+          "ibc-coverage-review-holdout-2-8978f5db-Q10",
+          "ibc-coverage-review-holdout-2-8978f5db-Q7",
+          "ibc-coverage-review-holdout-2-8978f5db-Q8",
+          "ibc-coverage-review-holdout-2-8978f5db-Q9"
+        ]
+      ],
+      "feasiblePlanCount": 91,
+      "evidenceRequirements": 148,
+      "uniqueRequiredSources": 45
+    },
+    {
+      "taskId": "ibc-financial-reconciliation-dev-1-6bebb17e",
+      "split": "dev",
+      "phase": 0,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7400,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 15200,
+        "occurrenceAvailableCents": 17800,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 6900,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": 0,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5700
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2800
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:00:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:30:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 0,
+      "optimalValue": 0,
+      "optimalPlans": [
+        []
+      ],
+      "feasiblePlanCount": 1,
+      "evidenceRequirements": 138,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-financial-reconciliation-dev-1-6bebb17e",
+      "split": "dev",
+      "phase": 1,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7400,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 13200,
+        "occurrenceAvailableCents": 17800,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 6900,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q1",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q2",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q3",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q4",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q5",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q6",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q7",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q8",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q9",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q10",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q11",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q12"
+        ],
+        "optimalPriorityValue": 40,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5700
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2800
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:00:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:30:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 12,
+      "optimalValue": 40,
+      "optimalPlans": [
+        [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q11",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q12",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q7",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q8"
+        ]
+      ],
+      "feasiblePlanCount": 508,
+      "evidenceRequirements": 148,
+      "uniqueRequiredSources": 44
+    },
+    {
+      "taskId": "ibc-financial-reconciliation-dev-1-6bebb17e",
+      "split": "dev",
+      "phase": 2,
+      "rawRows": 71,
+      "facts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 11900,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5400,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q1",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q2",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q3",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q4",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q5",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q6",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q7",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q8",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q9",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q10",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q11",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q12"
+        ],
+        "optimalPriorityValue": 35,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-correction",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v2",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v2",
+        "reserve-B-v1",
+        "reserve-C-v2",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-correction",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 6600
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5700
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2800
+        },
+        {
+          "event": "event-A-reversal-v2",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -1200
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:00:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:30:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v2",
+          "clockDemand": "demand-B-v2",
+          "receiptAt": "2026-06-24T15:45:00Z",
+          "durationMinutes": 90,
+          "unextended": "2026-06-24T17:15:00.000Z",
+          "extensionAccepted": false,
+          "deadline": "2026-06-24T17:15:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 12,
+      "optimalValue": 35,
+      "optimalPlans": [
+        [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q10",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q12",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q4",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q8"
+        ]
+      ],
+      "feasiblePlanCount": 435,
+      "evidenceRequirements": 150,
+      "uniqueRequiredSources": 45
+    },
+    {
+      "taskId": "ibc-financial-reconciliation-dev-2-f56d2ac5",
+      "split": "dev",
+      "phase": 0,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7200,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 15000,
+        "occurrenceAvailableCents": 17400,
+        "pdAvailableCents": 6000,
+        "netPaidACents": 6900,
+        "netPaidBCents": 5900,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": 0,
+        "deadlineA": "2026-06-24T17:45:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T17:40:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5900
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2900
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 255,
+          "unextended": "2026-06-24T17:15:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:45:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": false,
+          "deadline": "2026-06-24T17:40:00Z"
+        }
+      ],
+      "eligiblePackageCount": 0,
+      "optimalValue": 0,
+      "optimalPlans": [
+        []
+      ],
+      "feasiblePlanCount": 1,
+      "evidenceRequirements": 138,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-financial-reconciliation-dev-2-f56d2ac5",
+      "split": "dev",
+      "phase": 1,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7200,
+        "personAvailableBCents": 12100,
+        "personAvailableCCents": 13000,
+        "occurrenceAvailableCents": 17400,
+        "pdAvailableCents": 6000,
+        "netPaidACents": 6900,
+        "netPaidBCents": 5900,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q1",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q2",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q3",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q4",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q5",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q6",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q7",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q8",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q9",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q10",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q11",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q12"
+        ],
+        "optimalPriorityValue": 39,
+        "deadlineA": "2026-06-24T17:45:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T17:40:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5900
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2900
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 255,
+          "unextended": "2026-06-24T17:15:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:45:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": false,
+          "deadline": "2026-06-24T17:40:00Z"
+        }
+      ],
+      "eligiblePackageCount": 12,
+      "optimalValue": 39,
+      "optimalPlans": [
+        [
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q10",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q12",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q4",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q8",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q9"
+        ]
+      ],
+      "feasiblePlanCount": 593,
+      "evidenceRequirements": 144,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-financial-reconciliation-dev-2-f56d2ac5",
+      "split": "dev",
+      "phase": 2,
+      "rawRows": 71,
+      "facts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 9700,
+        "personAvailableBCents": 12100,
+        "personAvailableCCents": 13700,
+        "occurrenceAvailableCents": 12100,
+        "pdAvailableCents": 6000,
+        "netPaidACents": 7200,
+        "netPaidBCents": 5900,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q1",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q2",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q3",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q4",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q5",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q6",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q7",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q8",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q9",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q10",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q11",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q12"
+        ],
+        "optimalPriorityValue": 27,
+        "deadlineA": "2026-06-24T17:45:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T17:40:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-correction",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v2",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v2",
+        "reserve-B-v1",
+        "reserve-C-v2",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-correction",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 6400
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5900
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2900
+        },
+        {
+          "event": "event-A-reversal-v2",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -1200
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v2",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 255,
+          "unextended": "2026-06-24T17:15:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:45:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": false,
+          "deadline": "2026-06-24T17:40:00Z"
+        }
+      ],
+      "eligiblePackageCount": 12,
+      "optimalValue": 27,
+      "optimalPlans": [
+        [
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q12",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q6",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q8"
+        ],
+        [
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q12",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q8",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q9"
+        ],
+        [
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q10",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q12",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q8"
+        ],
+        [
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q10",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q12",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q4",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q9"
+        ]
+      ],
+      "feasiblePlanCount": 227,
+      "evidenceRequirements": 152,
+      "uniqueRequiredSources": 46
+    },
+    {
+      "taskId": "ibc-financial-reconciliation-holdout-1-5f419d60",
+      "split": "holdout",
+      "phase": 0,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7400,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 15200,
+        "occurrenceAvailableCents": 17400,
+        "pdAvailableCents": 5900,
+        "netPaidACents": 6900,
+        "netPaidBCents": 6100,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": 0,
+        "deadlineA": "2026-06-24T18:00:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6100
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3000
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 270,
+          "unextended": "2026-06-24T17:30:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:00:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 0,
+      "optimalValue": 0,
+      "optimalPlans": [
+        []
+      ],
+      "feasiblePlanCount": 1,
+      "evidenceRequirements": 138,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-financial-reconciliation-holdout-1-5f419d60",
+      "split": "holdout",
+      "phase": 1,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7400,
+        "personAvailableBCents": 12100,
+        "personAvailableCCents": 15200,
+        "occurrenceAvailableCents": 17400,
+        "pdAvailableCents": 5900,
+        "netPaidACents": 6900,
+        "netPaidBCents": 6100,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q1",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q2",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q3",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q4",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q5",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q6",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q7",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q9",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q10",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q11"
+        ],
+        "optimalPriorityValue": 36,
+        "deadlineA": "2026-06-24T18:00:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6100
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3000
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 270,
+          "unextended": "2026-06-24T17:30:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:00:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 10,
+      "optimalValue": 36,
+      "optimalPlans": [
+        [
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q10",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q4",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q5",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q7",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q9"
+        ],
+        [
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q1",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q11",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q5",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q9"
+        ],
+        [
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q1",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q11",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q4",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q6",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q9"
+        ]
+      ],
+      "feasiblePlanCount": 285,
+      "evidenceRequirements": 140,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-financial-reconciliation-holdout-1-5f419d60",
+      "split": "holdout",
+      "phase": 2,
+      "rawRows": 71,
+      "facts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 6200,
+        "personAvailableBCents": 12100,
+        "personAvailableCCents": 13900,
+        "occurrenceAvailableCents": 15400,
+        "pdAvailableCents": 5900,
+        "netPaidACents": 4900,
+        "netPaidBCents": 6100,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q1",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q2",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q3",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q4",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q5",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q6",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q10",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q11"
+        ],
+        "optimalPriorityValue": 30,
+        "deadlineA": "2026-06-24T18:00:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T15:59:00Z",
+        "lateDemandClaimantIds": [
+          "C"
+        ]
+      },
+      "selectedFinancialRowIds": [
+        "event-A-correction",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v2",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v2",
+        "reserve-B-v1",
+        "reserve-C-v2",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-correction",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 6600
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6100
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3000
+        },
+        {
+          "event": "event-A-reversal-v2",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -1700
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 270,
+          "unextended": "2026-06-24T17:30:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:00:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v2",
+          "clockDemand": "demand-C-v2",
+          "receiptAt": "2026-06-24T15:24:00Z",
+          "durationMinutes": 35,
+          "unextended": "2026-06-24T15:59:00.000Z",
+          "extensionAccepted": false,
+          "deadline": "2026-06-24T15:59:00Z"
+        }
+      ],
+      "eligiblePackageCount": 8,
+      "optimalValue": 30,
+      "optimalPlans": [
+        [
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q10",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q11",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q5",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q6"
+        ]
+      ],
+      "feasiblePlanCount": 52,
+      "evidenceRequirements": 142,
+      "uniqueRequiredSources": 44
+    },
+    {
+      "taskId": "ibc-financial-reconciliation-holdout-2-95d8313f",
+      "split": "holdout",
+      "phase": 0,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7000,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 14800,
+        "occurrenceAvailableCents": 16800,
+        "pdAvailableCents": 5800,
+        "netPaidACents": 6900,
+        "netPaidBCents": 6300,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": 0,
+        "deadlineA": "2026-06-24T18:15:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6300
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3100
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 285,
+          "unextended": "2026-06-24T17:45:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:15:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 0,
+      "optimalValue": 0,
+      "optimalPlans": [
+        []
+      ],
+      "feasiblePlanCount": 1,
+      "evidenceRequirements": 138,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-financial-reconciliation-holdout-2-95d8313f",
+      "split": "holdout",
+      "phase": 1,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7000,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 12800,
+        "occurrenceAvailableCents": 16800,
+        "pdAvailableCents": 5800,
+        "netPaidACents": 6900,
+        "netPaidBCents": 6300,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q1",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q2",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q3",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q7",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q8",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q9",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q10"
+        ],
+        "optimalPriorityValue": 32,
+        "deadlineA": "2026-06-24T18:15:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6300
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3100
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 285,
+          "unextended": "2026-06-24T17:45:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:15:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 7,
+      "optimalValue": 32,
+      "optimalPlans": [
+        [
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q10",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q3",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q7",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q8",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q9"
+        ]
+      ],
+      "feasiblePlanCount": 54,
+      "evidenceRequirements": 142,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-financial-reconciliation-holdout-2-95d8313f",
+      "split": "holdout",
+      "phase": 2,
+      "rawRows": 71,
+      "facts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 12900,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 11500,
+        "occurrenceAvailableCents": 17400,
+        "pdAvailableCents": 5800,
+        "netPaidACents": 5000,
+        "netPaidBCents": 6300,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 7900,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q1",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q2",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q3",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q7",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q8",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q9",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q10"
+        ],
+        "optimalPriorityValue": 35,
+        "deadlineA": "2026-06-24T18:15:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-correction",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v2",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v2",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-correction",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 6200
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6300
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3100
+        },
+        {
+          "event": "event-A-reversal-v2",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -1200
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v2",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 285,
+          "unextended": "2026-06-24T17:45:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:15:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 7,
+      "optimalValue": 35,
+      "optimalPlans": [
+        [
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q10",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q2",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q7",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q8"
+        ],
+        [
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q1",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q10",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q7",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q8",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q9"
+        ]
+      ],
+      "feasiblePlanCount": 91,
+      "evidenceRequirements": 148,
+      "uniqueRequiredSources": 45
+    },
+    {
+      "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+      "split": "dev",
+      "phase": 0,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7600,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 15400,
+        "occurrenceAvailableCents": 18000,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 6900,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": 0,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5700
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2800
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:00:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:30:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 0,
+      "optimalValue": 0,
+      "optimalPlans": [
+        []
+      ],
+      "feasiblePlanCount": 1,
+      "evidenceRequirements": 138,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+      "split": "dev",
+      "phase": 1,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7600,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 13400,
+        "occurrenceAvailableCents": 18000,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 6900,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q1",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q2",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q3",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q5",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q6",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q7",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q8",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q9",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q10",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q12"
+        ],
+        "optimalPriorityValue": 42,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5700
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2800
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:00:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:30:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 12,
+      "optimalValue": 42,
+      "optimalPlans": [
+        [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q10",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q8",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q9"
+        ]
+      ],
+      "feasiblePlanCount": 521,
+      "evidenceRequirements": 148,
+      "uniqueRequiredSources": 44
+    },
+    {
+      "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+      "split": "dev",
+      "phase": 2,
+      "rawRows": 71,
+      "facts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 12100,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5600,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q1",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q2",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q3",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q5",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q6",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q7",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q8",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q9",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q10",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q12"
+        ],
+        "optimalPriorityValue": 36,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-correction",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v2",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v2",
+        "reserve-B-v1",
+        "reserve-C-v2",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-correction",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 6800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5700
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2800
+        },
+        {
+          "event": "event-A-reversal-v2",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -1200
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:00:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:30:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v2",
+          "clockDemand": "demand-B-v2",
+          "receiptAt": "2026-06-24T15:45:00Z",
+          "durationMinutes": 90,
+          "unextended": "2026-06-24T17:15:00.000Z",
+          "extensionAccepted": false,
+          "deadline": "2026-06-24T17:15:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 12,
+      "optimalValue": 36,
+      "optimalPlans": [
+        [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q2",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4"
+        ],
+        [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q3",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q7"
+        ],
+        [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q1",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q9"
+        ],
+        [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q1",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q10",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4"
+        ]
+      ],
+      "feasiblePlanCount": 435,
+      "evidenceRequirements": 150,
+      "uniqueRequiredSources": 45
+    },
+    {
+      "taskId": "ibc-deadline-triage-dev-2-53834fc9",
+      "split": "dev",
+      "phase": 0,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7100,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 14900,
+        "occurrenceAvailableCents": 17300,
+        "pdAvailableCents": 6000,
+        "netPaidACents": 6900,
+        "netPaidBCents": 5900,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": 0,
+        "deadlineA": "2026-06-24T17:45:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T17:40:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5900
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2900
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 255,
+          "unextended": "2026-06-24T17:15:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:45:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": false,
+          "deadline": "2026-06-24T17:40:00Z"
+        }
+      ],
+      "eligiblePackageCount": 0,
+      "optimalValue": 0,
+      "optimalPlans": [
+        []
+      ],
+      "feasiblePlanCount": 1,
+      "evidenceRequirements": 138,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-deadline-triage-dev-2-53834fc9",
+      "split": "dev",
+      "phase": 1,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7100,
+        "personAvailableBCents": 12000,
+        "personAvailableCCents": 12900,
+        "occurrenceAvailableCents": 17300,
+        "pdAvailableCents": 6000,
+        "netPaidACents": 6900,
+        "netPaidBCents": 5900,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-deadline-triage-dev-2-53834fc9-Q1",
+          "ibc-deadline-triage-dev-2-53834fc9-Q2",
+          "ibc-deadline-triage-dev-2-53834fc9-Q3",
+          "ibc-deadline-triage-dev-2-53834fc9-Q4",
+          "ibc-deadline-triage-dev-2-53834fc9-Q5",
+          "ibc-deadline-triage-dev-2-53834fc9-Q6",
+          "ibc-deadline-triage-dev-2-53834fc9-Q7",
+          "ibc-deadline-triage-dev-2-53834fc9-Q8",
+          "ibc-deadline-triage-dev-2-53834fc9-Q9",
+          "ibc-deadline-triage-dev-2-53834fc9-Q10",
+          "ibc-deadline-triage-dev-2-53834fc9-Q11",
+          "ibc-deadline-triage-dev-2-53834fc9-Q12"
+        ],
+        "optimalPriorityValue": 41,
+        "deadlineA": "2026-06-24T17:45:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T17:40:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5900
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2900
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 255,
+          "unextended": "2026-06-24T17:15:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:45:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": false,
+          "deadline": "2026-06-24T17:40:00Z"
+        }
+      ],
+      "eligiblePackageCount": 12,
+      "optimalValue": 41,
+      "optimalPlans": [
+        [
+          "ibc-deadline-triage-dev-2-53834fc9-Q11",
+          "ibc-deadline-triage-dev-2-53834fc9-Q4",
+          "ibc-deadline-triage-dev-2-53834fc9-Q7",
+          "ibc-deadline-triage-dev-2-53834fc9-Q8"
+        ],
+        [
+          "ibc-deadline-triage-dev-2-53834fc9-Q1",
+          "ibc-deadline-triage-dev-2-53834fc9-Q11",
+          "ibc-deadline-triage-dev-2-53834fc9-Q12",
+          "ibc-deadline-triage-dev-2-53834fc9-Q4"
+        ],
+        [
+          "ibc-deadline-triage-dev-2-53834fc9-Q11",
+          "ibc-deadline-triage-dev-2-53834fc9-Q12",
+          "ibc-deadline-triage-dev-2-53834fc9-Q4",
+          "ibc-deadline-triage-dev-2-53834fc9-Q6",
+          "ibc-deadline-triage-dev-2-53834fc9-Q9"
+        ],
+        [
+          "ibc-deadline-triage-dev-2-53834fc9-Q10",
+          "ibc-deadline-triage-dev-2-53834fc9-Q11",
+          "ibc-deadline-triage-dev-2-53834fc9-Q12",
+          "ibc-deadline-triage-dev-2-53834fc9-Q4",
+          "ibc-deadline-triage-dev-2-53834fc9-Q6"
+        ],
+        [
+          "ibc-deadline-triage-dev-2-53834fc9-Q10",
+          "ibc-deadline-triage-dev-2-53834fc9-Q11",
+          "ibc-deadline-triage-dev-2-53834fc9-Q12",
+          "ibc-deadline-triage-dev-2-53834fc9-Q4",
+          "ibc-deadline-triage-dev-2-53834fc9-Q9"
+        ]
+      ],
+      "feasiblePlanCount": 588,
+      "evidenceRequirements": 144,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-deadline-triage-dev-2-53834fc9",
+      "split": "dev",
+      "phase": 2,
+      "rawRows": 71,
+      "facts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 9700,
+        "personAvailableBCents": 12000,
+        "personAvailableCCents": 13600,
+        "occurrenceAvailableCents": 12100,
+        "pdAvailableCents": 6000,
+        "netPaidACents": 7100,
+        "netPaidBCents": 5900,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-deadline-triage-dev-2-53834fc9-Q1",
+          "ibc-deadline-triage-dev-2-53834fc9-Q2",
+          "ibc-deadline-triage-dev-2-53834fc9-Q3",
+          "ibc-deadline-triage-dev-2-53834fc9-Q4",
+          "ibc-deadline-triage-dev-2-53834fc9-Q5",
+          "ibc-deadline-triage-dev-2-53834fc9-Q6",
+          "ibc-deadline-triage-dev-2-53834fc9-Q7",
+          "ibc-deadline-triage-dev-2-53834fc9-Q8",
+          "ibc-deadline-triage-dev-2-53834fc9-Q9",
+          "ibc-deadline-triage-dev-2-53834fc9-Q10",
+          "ibc-deadline-triage-dev-2-53834fc9-Q11",
+          "ibc-deadline-triage-dev-2-53834fc9-Q12"
+        ],
+        "optimalPriorityValue": 31,
+        "deadlineA": "2026-06-24T17:45:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T17:40:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-correction",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v2",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v2",
+        "reserve-B-v1",
+        "reserve-C-v2",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-correction",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 6300
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 5900
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 2900
+        },
+        {
+          "event": "event-A-reversal-v2",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -1200
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v2",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 255,
+          "unextended": "2026-06-24T17:15:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:45:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": false,
+          "deadline": "2026-06-24T17:40:00Z"
+        }
+      ],
+      "eligiblePackageCount": 12,
+      "optimalValue": 31,
+      "optimalPlans": [
+        [
+          "ibc-deadline-triage-dev-2-53834fc9-Q11",
+          "ibc-deadline-triage-dev-2-53834fc9-Q4",
+          "ibc-deadline-triage-dev-2-53834fc9-Q7"
+        ]
+      ],
+      "feasiblePlanCount": 227,
+      "evidenceRequirements": 152,
+      "uniqueRequiredSources": 46
+    },
+    {
+      "taskId": "ibc-deadline-triage-holdout-1-96851694",
+      "split": "holdout",
+      "phase": 0,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7100,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 14900,
+        "occurrenceAvailableCents": 17100,
+        "pdAvailableCents": 5900,
+        "netPaidACents": 6900,
+        "netPaidBCents": 6100,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": 0,
+        "deadlineA": "2026-06-24T18:00:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6100
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3000
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 270,
+          "unextended": "2026-06-24T17:30:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:00:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 0,
+      "optimalValue": 0,
+      "optimalPlans": [
+        []
+      ],
+      "feasiblePlanCount": 1,
+      "evidenceRequirements": 138,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-deadline-triage-holdout-1-96851694",
+      "split": "holdout",
+      "phase": 1,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7100,
+        "personAvailableBCents": 11800,
+        "personAvailableCCents": 14900,
+        "occurrenceAvailableCents": 17100,
+        "pdAvailableCents": 5900,
+        "netPaidACents": 6900,
+        "netPaidBCents": 6100,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [
+          "ibc-deadline-triage-holdout-1-96851694-Q1",
+          "ibc-deadline-triage-holdout-1-96851694-Q2",
+          "ibc-deadline-triage-holdout-1-96851694-Q3",
+          "ibc-deadline-triage-holdout-1-96851694-Q4",
+          "ibc-deadline-triage-holdout-1-96851694-Q5",
+          "ibc-deadline-triage-holdout-1-96851694-Q6",
+          "ibc-deadline-triage-holdout-1-96851694-Q7",
+          "ibc-deadline-triage-holdout-1-96851694-Q9",
+          "ibc-deadline-triage-holdout-1-96851694-Q10",
+          "ibc-deadline-triage-holdout-1-96851694-Q11"
+        ],
+        "optimalPriorityValue": 41,
+        "deadlineA": "2026-06-24T18:00:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6100
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3000
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 270,
+          "unextended": "2026-06-24T17:30:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:00:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 10,
+      "optimalValue": 41,
+      "optimalPlans": [
+        [
+          "ibc-deadline-triage-holdout-1-96851694-Q11",
+          "ibc-deadline-triage-holdout-1-96851694-Q3",
+          "ibc-deadline-triage-holdout-1-96851694-Q4",
+          "ibc-deadline-triage-holdout-1-96851694-Q7",
+          "ibc-deadline-triage-holdout-1-96851694-Q9"
+        ]
+      ],
+      "feasiblePlanCount": 258,
+      "evidenceRequirements": 140,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-deadline-triage-holdout-1-96851694",
+      "split": "holdout",
+      "phase": 2,
+      "rawRows": 71,
+      "facts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "P-BI",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 6200,
+        "personAvailableBCents": 11800,
+        "personAvailableCCents": 13600,
+        "occurrenceAvailableCents": 15400,
+        "pdAvailableCents": 5900,
+        "netPaidACents": 4600,
+        "netPaidBCents": 6100,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [
+          "ibc-deadline-triage-holdout-1-96851694-Q1",
+          "ibc-deadline-triage-holdout-1-96851694-Q2",
+          "ibc-deadline-triage-holdout-1-96851694-Q3",
+          "ibc-deadline-triage-holdout-1-96851694-Q4",
+          "ibc-deadline-triage-holdout-1-96851694-Q5",
+          "ibc-deadline-triage-holdout-1-96851694-Q6",
+          "ibc-deadline-triage-holdout-1-96851694-Q10",
+          "ibc-deadline-triage-holdout-1-96851694-Q11"
+        ],
+        "optimalPriorityValue": 33,
+        "deadlineA": "2026-06-24T18:00:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T15:59:00Z",
+        "lateDemandClaimantIds": [
+          "C"
+        ]
+      },
+      "selectedFinancialRowIds": [
+        "event-A-correction",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v2",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v2",
+        "reserve-B-v1",
+        "reserve-C-v2",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-correction",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 6300
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6100
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3000
+        },
+        {
+          "event": "event-A-reversal-v2",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -1700
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 270,
+          "unextended": "2026-06-24T17:30:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:00:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v2",
+          "clockDemand": "demand-C-v2",
+          "receiptAt": "2026-06-24T15:24:00Z",
+          "durationMinutes": 35,
+          "unextended": "2026-06-24T15:59:00.000Z",
+          "extensionAccepted": false,
+          "deadline": "2026-06-24T15:59:00Z"
+        }
+      ],
+      "eligiblePackageCount": 8,
+      "optimalValue": 33,
+      "optimalPlans": [
+        [
+          "ibc-deadline-triage-holdout-1-96851694-Q11",
+          "ibc-deadline-triage-holdout-1-96851694-Q3",
+          "ibc-deadline-triage-holdout-1-96851694-Q4",
+          "ibc-deadline-triage-holdout-1-96851694-Q6"
+        ],
+        [
+          "ibc-deadline-triage-holdout-1-96851694-Q10",
+          "ibc-deadline-triage-holdout-1-96851694-Q11",
+          "ibc-deadline-triage-holdout-1-96851694-Q5",
+          "ibc-deadline-triage-holdout-1-96851694-Q6"
+        ]
+      ],
+      "feasiblePlanCount": 52,
+      "evidenceRequirements": 142,
+      "uniqueRequiredSources": 44
+    },
+    {
+      "taskId": "ibc-deadline-triage-holdout-2-1ca410e3",
+      "split": "holdout",
+      "phase": 0,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7300,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 15100,
+        "occurrenceAvailableCents": 17100,
+        "pdAvailableCents": 5800,
+        "netPaidACents": 6900,
+        "netPaidBCents": 6300,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": 0,
+        "deadlineA": "2026-06-24T18:15:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6300
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3100
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "unknown",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 285,
+          "unextended": "2026-06-24T17:45:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:15:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 0,
+      "optimalValue": 0,
+      "optimalPlans": [
+        []
+      ],
+      "feasiblePlanCount": 1,
+      "evidenceRequirements": 138,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-deadline-triage-holdout-2-1ca410e3",
+      "split": "holdout",
+      "phase": 1,
+      "rawRows": 69,
+      "facts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7300,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 13100,
+        "occurrenceAvailableCents": 17100,
+        "pdAvailableCents": 5800,
+        "netPaidACents": 6900,
+        "netPaidBCents": 6300,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q1",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q2",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q3",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q7",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q8",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q9",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q10"
+        ],
+        "optimalPriorityValue": 33,
+        "deadlineA": "2026-06-24T18:15:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-original",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v1",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v1",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-original",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 7800
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6300
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3100
+        },
+        {
+          "event": "event-A-reversal-v1",
+          "basis": "event-A-original",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -900
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v1",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 285,
+          "unextended": "2026-06-24T17:45:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:15:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 7,
+      "optimalValue": 33,
+      "optimalPlans": [
+        [
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q1",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q10",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q7",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q8",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q9"
+        ]
+      ],
+      "feasiblePlanCount": 55,
+      "evidenceRequirements": 142,
+      "uniqueRequiredSources": 43
+    },
+    {
+      "taskId": "ibc-deadline-triage-holdout-2-1ca410e3",
+      "split": "holdout",
+      "phase": 2,
+      "rawRows": 71,
+      "facts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 12900,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 11800,
+        "occurrenceAvailableCents": 17400,
+        "pdAvailableCents": 5800,
+        "netPaidACents": 5300,
+        "netPaidBCents": 6300,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 7900,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q1",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q2",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q3",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q7",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q8",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q9",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q10"
+        ],
+        "optimalPriorityValue": 33,
+        "deadlineA": "2026-06-24T18:15:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "selectedFinancialRowIds": [
+        "event-A-correction",
+        "event-B-original",
+        "event-C-original",
+        "event-unallocated",
+        "event-expense",
+        "event-recovery",
+        "event-PD",
+        "event-A-reversal-v2",
+        "event-U-reversal",
+        "event-PD-expense"
+      ],
+      "selectedReserveRowIds": [
+        "reserve-A-v1",
+        "reserve-B-v1",
+        "reserve-C-v2",
+        "reserve-D-v1"
+      ],
+      "signedAmounts": [
+        {
+          "event": "event-A-correction",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": 6500
+        },
+        {
+          "event": "event-B-original",
+          "basis": "event-B-original",
+          "coverage": "BI",
+          "claimant": "B",
+          "amount": 6300
+        },
+        {
+          "event": "event-C-original",
+          "basis": "event-C-original",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 3400
+        },
+        {
+          "event": "event-unallocated",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": 2600
+        },
+        {
+          "event": "event-PD",
+          "basis": "event-PD",
+          "coverage": "PD",
+          "claimant": "D",
+          "amount": 3100
+        },
+        {
+          "event": "event-A-reversal-v2",
+          "basis": "event-A-correction",
+          "coverage": "BI",
+          "claimant": "A",
+          "amount": -1200
+        },
+        {
+          "event": "event-U-reversal",
+          "basis": "event-unallocated",
+          "coverage": "BI",
+          "claimant": "C",
+          "amount": -600
+        }
+      ],
+      "deadlineProof": [
+        {
+          "claimant": "A",
+          "currentDemand": "demand-A-v2",
+          "clockDemand": "demand-A-v1",
+          "receiptAt": "2026-06-24T13:00:00Z",
+          "durationMinutes": 285,
+          "unextended": "2026-06-24T17:45:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:15:00Z"
+        },
+        {
+          "claimant": "B",
+          "currentDemand": "demand-B-v1",
+          "clockDemand": "demand-B-v1",
+          "receiptAt": "2026-06-24T13:10:00Z",
+          "durationMinutes": 210,
+          "unextended": "2026-06-24T16:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T17:25:00Z"
+        },
+        {
+          "claimant": "C",
+          "currentDemand": "demand-C-v1",
+          "clockDemand": "demand-C-v1",
+          "receiptAt": "2026-06-24T13:40:00Z",
+          "durationMinutes": 240,
+          "unextended": "2026-06-24T17:40:00.000Z",
+          "extensionAccepted": true,
+          "deadline": "2026-06-24T18:25:00Z"
+        }
+      ],
+      "eligiblePackageCount": 7,
+      "optimalValue": 33,
+      "optimalPlans": [
+        [
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q10",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q2",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q7",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q8"
+        ],
+        [
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q1",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q10",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q7",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q8",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q9"
+        ]
+      ],
+      "feasiblePlanCount": 91,
+      "evidenceRequirements": 148,
+      "uniqueRequiredSources": 45
+    }
+  ],
+  "semanticReview": {
+    "findings": [],
+    "checkedRules": [
+      "Highest signed person endorsement joins base policy/entity/coverage/claimant and loss eligibility; upload order does not control.",
+      "Shared occurrence endorsement uses occurrence instant and occurrence scope; person changes cannot alter it.",
+      "Signed posted current transaction revisions deduplicated; expense/recovery/future/unposted records excluded.",
+      "Reversals inherit selected linked positive coverage and current claimant allocation; unresolved linked negative amounts remain occurrence erosion.",
+      "Latest eligible signed reserves replace earlier estimates, with BI and PD maintained separately.",
+      "Demand replacement resets complete receipt/root/duration; amount_only retains original clock lineage while current receipt controls internal enclosure readiness.",
+      "Latest signed extension must be authorized, match operative root and arrive strictly before original unextended deadline.",
+      "Unknown BI allocation consumes shared capacity and blocks only specifically dependent packages; out-of-period/unknown claimant loss supplies no person capacity.",
+      "Only positive allocations require covered/on-time/complete claimant packet; occurrence and per-person sums bind every selected subset.",
+      "All19 fact names and8 business names are explicitly disclosed with types; public kind equals family, and scoped clarification/follow-up values are given.",
+      "Shared current row references support relevant source operands; no literal quote or per-fact duplication is required.",
+      "Current actual business selection requires feasible optimum, corresponding cost/priority, and matching recorded material/draft mutation history; empty or narrated plans cannot satisfy the task.",
+      "Public projection and initial environment do not expose hidden constraints, optimum or future source revisions."
+    ],
+    "scopeLimit": "Review establishes closed synthetic policy consistency for these source fixtures, not external legal accuracy, real insurance expert validation or production representativeness."
+  },
+  "executionVerification": {
+    "source": "Independent raw-source facts and optimal IDs from v07-independent-source-audit.json; production grader only verifies observed tool-state behavior, never supplies expected business values.",
+    "outcomes": [
+      {
+        "taskId": "ibc-coverage-review-dev-1-693918aa",
+        "alternative": 1,
+        "selectedPackageIds": [
+          "ibc-coverage-review-dev-1-693918aa-Q10",
+          "ibc-coverage-review-dev-1-693918aa-Q12",
+          "ibc-coverage-review-dev-1-693918aa-Q4",
+          "ibc-coverage-review-dev-1-693918aa-Q7",
+          "ibc-coverage-review-dev-1-693918aa-Q9"
+        ],
+        "costCents": 15300,
+        "priorityValue": 38,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-coverage-review-dev-2-bcc2f001",
+        "alternative": 1,
+        "selectedPackageIds": [
+          "ibc-coverage-review-dev-2-bcc2f001-Q10",
+          "ibc-coverage-review-dev-2-bcc2f001-Q3",
+          "ibc-coverage-review-dev-2-bcc2f001-Q4",
+          "ibc-coverage-review-dev-2-bcc2f001-Q7"
+        ],
+        "costCents": 12000,
+        "priorityValue": 30,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-coverage-review-holdout-1-ee0e896c",
+        "alternative": 1,
+        "selectedPackageIds": [
+          "ibc-coverage-review-holdout-1-ee0e896c-Q1",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q4",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q5"
+        ],
+        "costCents": 14400,
+        "priorityValue": 33,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-coverage-review-holdout-1-ee0e896c",
+        "alternative": 2,
+        "selectedPackageIds": [
+          "ibc-coverage-review-holdout-1-ee0e896c-Q10",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q3",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q4",
+          "ibc-coverage-review-holdout-1-ee0e896c-Q5"
+        ],
+        "costCents": 14900,
+        "priorityValue": 33,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-coverage-review-holdout-2-8978f5db",
+        "alternative": 1,
+        "selectedPackageIds": [
+          "ibc-coverage-review-holdout-2-8978f5db-Q1",
+          "ibc-coverage-review-holdout-2-8978f5db-Q10",
+          "ibc-coverage-review-holdout-2-8978f5db-Q7",
+          "ibc-coverage-review-holdout-2-8978f5db-Q8",
+          "ibc-coverage-review-holdout-2-8978f5db-Q9"
+        ],
+        "costCents": 17100,
+        "priorityValue": 39,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-financial-reconciliation-dev-1-6bebb17e",
+        "alternative": 1,
+        "selectedPackageIds": [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q10",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q12",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q4",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q8"
+        ],
+        "costCents": 15300,
+        "priorityValue": 35,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-financial-reconciliation-dev-2-f56d2ac5",
+        "alternative": 1,
+        "selectedPackageIds": [
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q12",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q6",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q8"
+        ],
+        "costCents": 11900,
+        "priorityValue": 27,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-financial-reconciliation-dev-2-f56d2ac5",
+        "alternative": 2,
+        "selectedPackageIds": [
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q12",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q8",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q9"
+        ],
+        "costCents": 11700,
+        "priorityValue": 27,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-financial-reconciliation-dev-2-f56d2ac5",
+        "alternative": 3,
+        "selectedPackageIds": [
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q10",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q12",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q8"
+        ],
+        "costCents": 11500,
+        "priorityValue": 27,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-financial-reconciliation-dev-2-f56d2ac5",
+        "alternative": 4,
+        "selectedPackageIds": [
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q10",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q12",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q4",
+          "ibc-financial-reconciliation-dev-2-f56d2ac5-Q9"
+        ],
+        "costCents": 12000,
+        "priorityValue": 27,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-financial-reconciliation-holdout-1-5f419d60",
+        "alternative": 1,
+        "selectedPackageIds": [
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q10",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q11",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q5",
+          "ibc-financial-reconciliation-holdout-1-5f419d60-Q6"
+        ],
+        "costCents": 15100,
+        "priorityValue": 30,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-financial-reconciliation-holdout-2-95d8313f",
+        "alternative": 1,
+        "selectedPackageIds": [
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q10",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q2",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q7",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q8"
+        ],
+        "costCents": 17300,
+        "priorityValue": 35,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-financial-reconciliation-holdout-2-95d8313f",
+        "alternative": 2,
+        "selectedPackageIds": [
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q1",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q10",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q7",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q8",
+          "ibc-financial-reconciliation-holdout-2-95d8313f-Q9"
+        ],
+        "costCents": 17100,
+        "priorityValue": 35,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+        "alternative": 1,
+        "selectedPackageIds": [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q2",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4"
+        ],
+        "costCents": 15200,
+        "priorityValue": 36,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+        "alternative": 2,
+        "selectedPackageIds": [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q3",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q7"
+        ],
+        "costCents": 14800,
+        "priorityValue": 36,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+        "alternative": 3,
+        "selectedPackageIds": [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q1",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q9"
+        ],
+        "costCents": 15000,
+        "priorityValue": 36,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+        "alternative": 4,
+        "selectedPackageIds": [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q1",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q10",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4"
+        ],
+        "costCents": 14800,
+        "priorityValue": 36,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-deadline-triage-dev-2-53834fc9",
+        "alternative": 1,
+        "selectedPackageIds": [
+          "ibc-deadline-triage-dev-2-53834fc9-Q11",
+          "ibc-deadline-triage-dev-2-53834fc9-Q4",
+          "ibc-deadline-triage-dev-2-53834fc9-Q7"
+        ],
+        "costCents": 11800,
+        "priorityValue": 31,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-deadline-triage-holdout-1-96851694",
+        "alternative": 1,
+        "selectedPackageIds": [
+          "ibc-deadline-triage-holdout-1-96851694-Q11",
+          "ibc-deadline-triage-holdout-1-96851694-Q3",
+          "ibc-deadline-triage-holdout-1-96851694-Q4",
+          "ibc-deadline-triage-holdout-1-96851694-Q6"
+        ],
+        "costCents": 13800,
+        "priorityValue": 33,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-deadline-triage-holdout-1-96851694",
+        "alternative": 2,
+        "selectedPackageIds": [
+          "ibc-deadline-triage-holdout-1-96851694-Q10",
+          "ibc-deadline-triage-holdout-1-96851694-Q11",
+          "ibc-deadline-triage-holdout-1-96851694-Q5",
+          "ibc-deadline-triage-holdout-1-96851694-Q6"
+        ],
+        "costCents": 15100,
+        "priorityValue": 33,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-deadline-triage-holdout-2-1ca410e3",
+        "alternative": 1,
+        "selectedPackageIds": [
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q10",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q2",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q7",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q8"
+        ],
+        "costCents": 17300,
+        "priorityValue": 33,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      },
+      {
+        "taskId": "ibc-deadline-triage-holdout-2-1ca410e3",
+        "alternative": 2,
+        "selectedPackageIds": [
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q1",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q10",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q7",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q8",
+          "ibc-deadline-triage-holdout-2-1ca410e3-Q9"
+        ],
+        "costCents": 17100,
+        "priorityValue": 33,
+        "score": 100,
+        "allPass": true,
+        "historyEntries": 12,
+        "phase": 2
+      }
+    ]
+  },
+  "focusedChecks": [
+    {
+      "command": "npx vitest run test/architecture/insurance-bench-coupled.test.ts",
+      "tests": 11,
+      "passed": true
+    },
+    {
+      "command": "npx tsx --test test/insurance-bench-coupled-engine.test.ts test/insurance-bench-coupled-runner.test.ts",
+      "tests": 6,
+      "passed": true
+    }
+  ],
+  "verificationHarnessNote": "An initial mixed Vitest invocation correctly ran11architecture checks but rejected node:test files as no Vitest suite. The node files were rerun successfully with tsx --test, and the architecture file rerun separately; this was a runner selection error, not a source test failure.",
+  "limitations": [
+    "Stored source phases including holdout definitions reviewed as engineering before any holdout evaluation; no benchmark holdout response/output read.",
+    "Three families share related occurrence mechanics; this is not36independent insurance scenarios.",
+    "Source-bundle identity checking supports provenance but does not certify a natural-language reasoning process.",
+    "No model calls, frozen-source edits, existing grades or capped-ledger mutations performed."
+  ],
+  "reproducibility": {
+    "sourceScript": "insurance-bench/results/meta/v07-independent-source-audit-script.txt",
+    "executionScript": "insurance-bench/results/meta/v07-independent-execution-audit-script.txt",
+    "instructions": [
+      "From repository root copy the script texts unchanged to .tmp/insurance-bench/v07-independent-source-audit.ts and .../v07-independent-execution-audit.ts.",
+      "Run npx tsx .tmp/insurance-bench/v07-independent-source-audit.ts, then npx tsx .tmp/insurance-bench/v07-independent-execution-audit.ts.",
+      "The scripts make only local reads/writes, execute synthetic in-memory tools and import no provider calls. Bind the reported source hashes to the intended frozen revision before reusing results.",
+      "For equivalent/shifted/invalid timestamp controls copy v07-timestamp-controls-script.txt to .tmp/insurance-bench/v07-timestamp-controls.ts and run it after the independent source script."
+    ],
+    "timestampScript": "insurance-bench/results/meta/v07-timestamp-controls-script.txt"
+  },
+  "representationReview": {
+    "changes": "Clone-only equivalent deadline/follow-up normalization; public memo/reason floors and timestamp equivalence instructions. Gold/scoring weights and case data unchanged.",
+    "finding": "Valid equivalent .000000Z strings are rejected by the1\u20133fractional-digit regex although the public prompt accepts equivalent ISO8601 representations.",
+    "sourceHashesAtReview": {
+      "insurance-bench/coupled-engine.ts": "9272e29393d44e38a90192b7f5d6bf2e668889d1db6e826d9e19aab230a9ade3",
+      "insurance-bench/coupled-runner.ts": "17000c14119a0970336b3aa9cf2e4ae18bcd605fcf2dd3fb0b36d6ad57fa07ed",
+      "test/architecture/insurance-bench-coupled.test.ts": "591557b862c1537bf8261f0d06a430b861aa2488abaa1bfff17a3afb40bc1768",
+      "test/insurance-bench-coupled-engine.test.ts": "cb32eb18315278dcfd370326498af27f83bed96e57e7ae3a57bf56be458945ba"
+    },
+    "scope": "Numeric/case audit remains valid and preserved. This is a pre-inference representation check; no model calls or grade changes.",
+    "status": "closed: approved after strict precision repair",
+    "beforeRepairControls": [
+      {
+        "name": "millisecond zeros",
+        "value": "2026-06-24T17:30:00.000Z",
+        "passes": true,
+        "actualPass": true,
+        "rawStateUnchanged": true
+      },
+      {
+        "name": "microsecond zeros",
+        "value": "2026-06-24T17:30:00.000000Z",
+        "passes": true,
+        "actualPass": false,
+        "rawStateUnchanged": true
+      },
+      {
+        "name": "equivalent nonzero timezone offset",
+        "value": "2026-06-24T12:30:00-05:00",
+        "passes": true,
+        "actualPass": true,
+        "rawStateUnchanged": true
+      },
+      {
+        "name": "equivalent date crossover",
+        "value": "2026-06-25T01:30:00+08:00",
+        "passes": true,
+        "actualPass": true,
+        "rawStateUnchanged": true
+      },
+      {
+        "name": "shift by one second",
+        "value": "2026-06-24T17:30:01Z",
+        "passes": false,
+        "actualPass": false,
+        "rawStateUnchanged": true
+      },
+      {
+        "name": "nonzero submillisecond shift",
+        "value": "2026-06-24T17:30:00.000001Z",
+        "passes": false,
+        "actualPass": false,
+        "rawStateUnchanged": true
+      },
+      {
+        "name": "invalid hour",
+        "value": "2026-06-24T99:30:00Z",
+        "passes": false,
+        "actualPass": false,
+        "rawStateUnchanged": true
+      },
+      {
+        "name": "invalid rollover date",
+        "value": "2026-06-31T17:30:00Z",
+        "passes": false,
+        "actualPass": false,
+        "rawStateUnchanged": true
+      }
+    ],
+    "afterRepairControls": [
+      {
+        "name": "millisecond zeros",
+        "value": "2026-06-24T17:30:00.000Z",
+        "passes": true,
+        "actualPass": true,
+        "rawStateUnchanged": true
+      },
+      {
+        "name": "microsecond zeros",
+        "value": "2026-06-24T17:30:00.000000Z",
+        "passes": true,
+        "actualPass": true,
+        "rawStateUnchanged": true
+      },
+      {
+        "name": "equivalent nonzero timezone offset",
+        "value": "2026-06-24T12:30:00-05:00",
+        "passes": true,
+        "actualPass": true,
+        "rawStateUnchanged": true
+      },
+      {
+        "name": "equivalent date crossover",
+        "value": "2026-06-25T01:30:00+08:00",
+        "passes": true,
+        "actualPass": true,
+        "rawStateUnchanged": true
+      },
+      {
+        "name": "shift by one second",
+        "value": "2026-06-24T17:30:01Z",
+        "passes": false,
+        "actualPass": false,
+        "rawStateUnchanged": true
+      },
+      {
+        "name": "nonzero submillisecond shift",
+        "value": "2026-06-24T17:30:00.000001Z",
+        "passes": false,
+        "actualPass": false,
+        "rawStateUnchanged": true
+      },
+      {
+        "name": "invalid hour",
+        "value": "2026-06-24T99:30:00Z",
+        "passes": false,
+        "actualPass": false,
+        "rawStateUnchanged": true
+      },
+      {
+        "name": "invalid rollover date",
+        "value": "2026-06-31T17:30:00Z",
+        "passes": false,
+        "actualPass": false,
+        "rawStateUnchanged": true
+      }
+    ],
+    "resolution": "Arbitrary decimal fractional width allowed; any nonzero digit beyond milliseconds rejected before Date.parse, preventing truncation from crediting shifted instants. Calendar validity, timezone/date equivalence and clone-only normalization retained.",
+    "normalizationScope": "Only deadlineA/B/C fact representations and follow-up dueAt on a structured clone; numerical gold, package feasibility/optimality, actual mutation history, capacity/business fields and scoring weights unchanged.",
+    "engineAndRunnerReview": "Actual-state subset/duplicate/cost/priority/material/draft/history guards untouched. Memo40/reason20structural floors explicitly disclosed in the coupled system prompt before calls.",
+    "rawCountsUnchanged": "Cases1a0e2359and common engine15cc2a63unchanged;684facts/288fields/432packages/147456subsets numerical audit remains valid without rederivation."
+  },
+  "restampedAt": "2026-10-04T03:22:11.353967+00:00",
+  "rawAuditSourceHashesBeforeRepresentationRepair": {
+    "insurance-bench/coupled-cases.ts": "1a0e23591617aa70be7a3c19bb15b576f81c485e9c16b74a451ed49852442d1a",
+    "insurance-bench/coupled-engine.ts": "94fbc6fec0e0e86f0a0c0bb4a777fffca5e179f8b1d0d72e467a2ec40634087d",
+    "insurance-bench/coupled-runner.ts": "0b5868a1259d73ddf2c930722c7460e7e895bd63fc7acbb314e10855c4461587",
+    "insurance-bench/workflows.ts": "15cc2a635d6901cbdae1070f268da67dc566f64054228f93d51d479ba5fc7f3f",
+    "insurance-bench/workflow-types.ts": "13fbf5b455d706c06eec4bedb81c935f5fd7cfdae3b079c28ecf18af5b8d9155",
+    "test/architecture/insurance-bench-coupled.test.ts": "da69b0e499b0c5c6575cc2c8667cce1e4ad4e26e20bf938df0925ecf63c55367"
+  },
+  "parentAudit": "results/meta/coupled-source-audit-v0.7.json",
+  "contractRepairReview": {
+    "generation": "v0.7b",
+    "timing": "After original low developmental diagnostic outputs; before any b inference or original high/holdout dispatch. All affected matched low conditions must rerun under new freeze.",
+    "approvedChanges": [
+      "Version changed to v0.7b.",
+      "Bare limitSourceA/B/C output contract explicitly operative policy/endorsement sourceId, explanation belongs in memo.",
+      "unavailable exactly limited to unknown loss instant, out-of-period loss or unmatched base policy; unrelated zero/late package capacity does not change source identity.",
+      "Shared evidence bundle explicitly requires current baseline plus amendment operands supporting every reported conclusion, cited once globally without quotation or per-fact duplication."
+    ],
+    "unchanged": [
+      "All case data, scenario rules, facts/business gold, numerical constraints, optimum/tied-plan answers, actual-history adapter, timestamp normalization and scoring weights.",
+      "Original paid raw scores/artifacts are preserved without regrading; incomplete original Luna is not a complete-panel mean."
+    ],
+    "noLeakFinding": "Prompt names only already declared output fields and existing sourceId property, and generic source completeness requirements. It discloses no scenario answer, canonical ID values, numeric capacities, selected packages, optimum or hidden certificates.",
+    "numericAuditReuse": "Unchanged cases1a0e2359and engine6ff25bf5 retain36phase/684fact/288businessfield/432package/147456subset independent numerical proof; no new scenario derivation required."
+  }
+}

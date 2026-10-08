@@ -1,0 +1,93 @@
+{
+  "version": "0.6",
+  "status": "independent read-only audit passed against final source-stable modules after semantic and schema-boundary repairs",
+  "auditedAt": "2026-10-04T02:43:41.529Z",
+  "sourceHashes": {
+    "insurance-bench/workflow-types.ts": "13fbf5b455d706c06eec4bedb81c935f5fd7cfdae3b079c28ecf18af5b8d9155",
+    "insurance-bench/workflow-cases.ts": "020aeaac3b769b30e5b2b90dd4c7eb4123c0d403a06d1746ead152196b2b66e7",
+    "insurance-bench/workflows.ts": "73268d8963c149868b8a1dcdd1d7b59ded3fba87b77e4b8469c0444709c51d0c",
+    "test/architecture/insurance-bench-workflows.test.ts": "027d10aae792d21868892d6c181eca1f6b0d372bb3b08a79ddcaa8e7ff2509b1"
+  },
+  "method": "Independent row-by-row closed-policy recomputation without importing production derivation or grader; all three phases; array sets canonicalized. Per-indicator current assertion fields and separate identity response are interpreted under explicit final source policy.",
+  "cases": 24,
+  "phases": 72,
+  "factsChecked": 660,
+  "businessFieldsChecked": 420,
+  "failureCount": 0,
+  "passedChecks": [
+    "All current source facts and business-state fields agree independently across24cases×3phases",
+    "Every required evidence row exists in the phase source documents",
+    "Public task/tools disclose current records, source revisions and schema while hiding future phases and factual gold",
+    "Session conflicts and material staleness are distinct recoverable errors",
+    "Packet, draft and supplied reviewer response bind current material/draft revisions",
+    "Tool writes preserve immutable history, historical decisions and human workflow pin",
+    "Shared document/revision/row citations are accepted without repeated literal factKey quotations",
+    "Protected finalization flags are denied and recorded as critical; supplied carrier closure remains internal projection",
+    "Own declared-field membership excludes inherited prototype names in business writes and artifact schema"
+  ],
+  "reviewFindingsResolved": [
+    "Strict-before extension policy comparator plus exact-deadline rejection control",
+    "Protected external-finalization business flags previously accepted as typed fields; explicit deny/critical guard added",
+    "Fraud policy now explicitly distinguishes reconciled per-indicator assertions from overall identity response",
+    "Coverage selector explicitly highest eligible signed revision, with literal two-eligible-endorsement controls",
+    "Limit source names identify the selected endorsement/base limit document rather than insured policy ID",
+    "Literal handoff checks establish closure over open gates and no-gate unresolved/resolved orientations",
+    "Amount-only amendments flip current enclosure readiness while preserving inherited response clock/duration",
+    "Critical rule explicitly covers tool intent; arbitrary memo prose quality disclosed ungraded",
+    "Protected true finalization intent logged before session validation; ordinary stale writes remain noncritical",
+    "Own-field checks reject inherited Object.prototype keys; real-tool extra-constructor reproduction no longer all-passes"
+  ],
+  "verification": {
+    "focusedWorkflowTests": 21,
+    "independentlyRun": true,
+    "paidInferenceCalls": 0
+  },
+  "limitations": [
+    "Business calculations independently recomputed from structured fixture rows; oracle operational walkthrough tests still use provided hidden fixture targets",
+    "Independent audit applies the benchmark closed fictional policies and does not establish real legal/coverage correctness",
+    "No live infrastructure, application deployment, external communications or real claim data accessed",
+    "Prior arithmetic audit assumed highest eligible endorsement revision; final explicit policy and independent literal controls resolve the prior semantic ambiguity. Historical pre-repair proof is preserved."
+  ],
+  "preInferenceInstructionRevision": {
+    "previousCasesSha256": "d45d4b957f0d3e1743b27fece4436bd176363188f8a677ae871fe995c7094a10",
+    "finalCasesSha256": "a52d9c5bf872b93238525a7fa681c65842f1b4f0a721679fe5dbed297aabacd6",
+    "instructionOnlyByteProof": true,
+    "method": "Replacing exactly the new assignment paragraph with its recorded prior paragraph reconstructs the previously audited source SHA256, proving all other source bytes unchanged.",
+    "change": "Business goal replaces reference action sequence; public schema, policies, fixture data, factual gold and tool manual prerequisites remain byte-identical.",
+    "timing": "Restamped before v0.6 paid inference"
+  },
+  "corpusPhaseSha256": "17a4905e47bdcc1d6db64b787145bff08fca79cc8b6b123de199defa4fa2cdc6",
+  "preInferenceRepresentationRevision": {
+    "change": "Public read_document and supplied reviewer source expose id/title/revision/rows once; duplicate text omitted. Internal archival text and source rows remain unchanged.",
+    "timing": "Restamped before v0.6 paid inference",
+    "independentlyVerified": true
+  },
+  "semanticReviewFindings": {
+    "source": "Independent Claude reviewer via parent",
+    "findings": [
+      "M1 latest signed endorsement wording did not uniquely specify revision versus effective-date recency; arithmetic audit assumed eligible highest revision",
+      "M2 literal independently calculated handoff precedence control missing",
+      "L3 amount-only amendment changes packet identity but needs substantive current enclosure predicate",
+      "L4 critical prose-signoff wording exceeded deterministic tool-operation grading"
+    ],
+    "paidInferenceStarted": false,
+    "previousAuditSnapshot": "workflow-source-audit-v0.6-before-semantic-review-repair.json",
+    "status": "resolved before v0.6 paid inference",
+    "independentRecomputation": {
+      "cases": 24,
+      "phases": 72,
+      "facts": 660,
+      "businessFields": 420,
+      "failures": 0
+    },
+    "repairs": [
+      "Coverage selector explicitly highest eligible signed revision, with literal two-eligible-endorsement controls",
+      "Limit source names identify the selected endorsement/base limit document rather than insured policy ID",
+      "Literal handoff checks establish closure over open gates and no-gate unresolved/resolved orientations",
+      "Amount-only amendments flip current enclosure readiness while preserving inherited response clock/duration",
+      "Critical rule explicitly covers tool intent; arbitrary memo prose quality disclosed ungraded",
+      "Protected true finalization intent logged before session validation; ordinary stale writes remain noncritical",
+      "Own-field checks reject inherited Object.prototype keys; real-tool extra-constructor reproduction no longer all-passes"
+    ]
+  }
+}

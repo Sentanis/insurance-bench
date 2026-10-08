@@ -1,0 +1,207 @@
+{
+  "schema": "insurance-bench-current-report-runtime-independent-review-v1",
+  "auditedAt": "2026-10-05T02:41:26.650Z",
+  "disposition": "approve-engineering-only",
+  "scope": [
+    "insurance-bench/report-admission.ts",
+    "insurance-bench/report.ts",
+    "test/insurance-bench-report.test.ts",
+    ".tmp/insurance-bench/current-report-context.ts"
+  ],
+  "sourceSha256": {
+    "insurance-bench/report-admission.ts": "8d89dae375411c1d233af0bc303244656d1101e55c63925100867c97e47d2157",
+    "insurance-bench/report.ts": "bbc0b2c5d41ca13ef4586719c0c10b3c62f27ff43a5ac65c52088bf325cfec36",
+    "test/insurance-bench-report.test.ts": "29015d419915666ec99ebfed8119b1c7e190944c4824523e14a3011394d6e01f",
+    ".tmp/insurance-bench/current-report-context.ts": "e691b09e88f1f93c05c7f3c15e91e56a8a9465804e0ea017778e6ed3f9307c64"
+  },
+  "controls": [
+    {
+      "kind": "current-and-legacy-corpus-bindings",
+      "legacy": false
+    },
+    {
+      "kind": "current-and-legacy-corpus-bindings",
+      "legacy": true
+    },
+    {
+      "kind": "pre-native-rejection",
+      "fault": "registration-sha"
+    },
+    {
+      "kind": "pre-native-rejection",
+      "fault": "source-fingerprint"
+    },
+    {
+      "kind": "pre-native-rejection",
+      "fault": "corpus"
+    },
+    {
+      "kind": "pre-native-rejection",
+      "fault": "pending"
+    },
+    {
+      "kind": "pre-native-rejection",
+      "fault": "issues"
+    },
+    {
+      "kind": "pre-native-rejection",
+      "fault": "panel-count"
+    },
+    {
+      "kind": "pre-native-rejection",
+      "fault": "receipt-byte-change"
+    },
+    {
+      "kind": "pre-native-rejection",
+      "fault": "native-byte-change"
+    },
+    {
+      "kind": "pre-native-rejection",
+      "fault": "freeze"
+    },
+    {
+      "kind": "audited-body-condition-rejection",
+      "fault": "model"
+    },
+    {
+      "kind": "audited-body-condition-rejection",
+      "fault": "effort"
+    },
+    {
+      "kind": "audited-body-condition-rejection",
+      "fault": "format"
+    },
+    {
+      "kind": "audited-body-condition-rejection",
+      "fault": "ordered-tasks"
+    },
+    {
+      "kind": "audited-body-condition-rejection",
+      "fault": "limits"
+    },
+    {
+      "kind": "audited-body-condition-rejection",
+      "fault": "split"
+    },
+    {
+      "kind": "audited-body-condition-rejection",
+      "fault": "false-complete-count"
+    },
+    {
+      "kind": "audited-partial-coverage-unavailable",
+      "scored": 0,
+      "terminal": 0
+    },
+    {
+      "kind": "audited-partial-coverage-unavailable",
+      "scored": 0,
+      "terminal": 1
+    },
+    {
+      "kind": "audited-partial-coverage-unavailable",
+      "scored": 1,
+      "terminal": 2
+    },
+    {
+      "kind": "clean-comparison-rejection",
+      "fault": "flag"
+    },
+    {
+      "kind": "clean-comparison-rejection",
+      "fault": "trace"
+    },
+    {
+      "kind": "clean-comparison-rejection",
+      "fault": "harness"
+    },
+    {
+      "kind": "clean-comparison-rejection",
+      "fault": "format"
+    },
+    {
+      "kind": "clean-comparison-rejection",
+      "fault": "superseded"
+    },
+    {
+      "kind": "escaped-model-findings-and-condition-warning"
+    },
+    {
+      "kind": "recorded-estimates-and-prospective-v12-separate-native-metrics"
+    },
+    {
+      "kind": "criterion-all-pass-versus-completed-no-critical-headline"
+    },
+    {
+      "kind": "source-only-builder-fixed-scope-order-and-preservation",
+      "v12RequiresFutureTerminalDevelopmentAudit": true,
+      "noImplicitV12Contrast": true
+    }
+  ],
+  "issues": [],
+  "resolvedFindings": [
+    {
+      "severity": "important",
+      "file": ".tmp/insurance-bench/current-report-context.ts",
+      "line": 25,
+      "kind": "undefined-result-path-helper",
+      "originalBuilderSha256": "3f86d06a54e918cee5647661ed809e4ef1b5ce0a1723e411c959ccb9b04235e7",
+      "status": "resolved-by-author-local-helper-and-direct-strict-compile",
+      "currentBuilderSha256": "5e7db7cc4412f3f6eee768b917e6c3d4009e5d973678b718c260c5d4a35ab8a8"
+    }
+  ],
+  "priorApprovals": [
+    {
+      "artifactSha256": "9d3508cc754b300df88d6280618d1e61d69de6d3faf2926418f1e1bf09f016e5",
+      "reproSha256": "7703762b1aae2ca2ab148a45d2cc6cf667f3e5daddfa4b2199ee7bd0a1e868b9",
+      "auditedAt": "2026-10-05T02:27:12.212Z",
+      "disposition": "approve-engineering-only",
+      "sourceSha256": {
+        "insurance-bench/report-admission.ts": "8d89dae375411c1d233af0bc303244656d1101e55c63925100867c97e47d2157",
+        "insurance-bench/report.ts": "29bcec8b670b2059b079268de28e947eab5feda1d44e3f69342220fb16003ac9",
+        "test/insurance-bench-report.test.ts": "b35f666fee07f874247050230fe7e85bc5092040b1d4a77390741d33d5567901",
+        ".tmp/insurance-bench/current-report-context.ts": "5e7db7cc4412f3f6eee768b917e6c3d4009e5d973678b718c260c5d4a35ab8a8"
+      },
+      "pureIndependentControls": 28,
+      "focusedReportTests": 21
+    }
+  ],
+  "boundedDelta": {
+    "recordedEstimateCaveat": true,
+    "criterionAllPassLabel": true,
+    "prospectiveV12RendererAndStrictDevelopmentAuditOnly": true,
+    "noCurrentV12ResultsReadOrInferred": true
+  },
+  "validation": {
+    "pureIndependentControls": 30,
+    "focusedReportTests": 23,
+    "focusedReportTestsExitCode": 0,
+    "repositoryCheckCommand": "npm run check",
+    "repositoryCheckExitCode": 0,
+    "directIgnoredBuilderStrictCompileExitCode": 0
+  },
+  "checks": {
+    "allPlannedTerminalPanelsAndExactApprovedAuditRequired": true,
+    "sourceCorpusFreezeReceiptNativeHashesAndNativeConditionsBound": true,
+    "legacyV9CorpusBoundByExactRegistrationSHA": true,
+    "genuineAuditedPartialCoverageDisplaysUnavailable": true,
+    "cumulativeTruncationBarsCleanContrasts": true,
+    "pairedWinsTiesLossesCountsAndConditionsBound": true,
+    "validStoredHistoricalContrastsPreserved": true,
+    "invalidV8AbilityHeadlinesSuppressed": true,
+    "currentMacroDiagnosticAndActualProposalMetricsSeparated": true,
+    "untrustedDisplayStringsEscaped": true,
+    "portableTrackedTestImports": true,
+    "noBuilderExecutionOrPublication": true,
+    "noActualRegistrationNativeLedgerAuthOrHeldReads": true
+  },
+  "limits": [
+    "Pure mock/source engineering review only; report context builder and actual admitted data were not executed or read.",
+    "Engineering approval is not preview/real Chrome acceptance, professional validity, inference admission or affordability.",
+    "Original finding and author repair hashes retained; old raw scores and stored comparisons were not regraded."
+  ],
+  "reproduction": {
+    "command": "node --import tsx .tmp/insurance-bench/current-report-runtime-independent-review.ts",
+    "scriptSha256": "5966f2b3c2e01a4bfcf8c88a3d43f242da6c4256ca62b190f281beac6d8c00c4",
+    "scriptCopy": "insurance-bench/results/meta/current-report-runtime-independent-review-repro.txt"
+  }
+}

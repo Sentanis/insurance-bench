@@ -1,0 +1,33 @@
+from pathlib import Path
+import json,subprocess,hashlib,datetime
+
+def sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+registration=json.loads(Path('insurance-bench/results/meta/v07c-extended-registration.json').read_text())
+proof={'verifiedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'scope':'Only native full registered extension Runs; reconstruct terminal serialization and independently observed metrics without importing gold/graders or paid providers. Grades unchanged.','splits':{},'priorAudits':[]}
+for name,expected in [('v07c-development-failure-audit.json','ad4410400f25c97d0d555ff8a425496c4535801e585286e5c4948564c019c7df'),('v07c-holdout-failure-audit.json','4e0194cc6c93c607c95b6d9340f77dd4fef102b49d40cd34283e3a54f0b0287e')]:
+ actual=sha('insurance-bench/results/meta/'+name)
+ assert actual==expected,'Prior finalized audit mutated'
+ proof['priorAudits'].append({'path':'results/meta/'+name,'sha256':actual,'unchanged':True})
+for split,profiles in [('dev',registration['recoveryDevOrder']),('holdout',registration['optionalFinalSerialOrder'])]:
+ inputs=[]
+ for model in profiles:
+  path=Path(f'insurance-bench/results/meta/v07c-extended-dispatch-{split}-{model}.json')
+  if path.exists():
+   dispatch=json.loads(path.read_text())
+   if dispatch.get('nativeRunPath'): inputs.append(dispatch['nativeRunPath'])
+ if not inputs: continue
+ directory=f'.tmp/insurance-bench/v07c-extended-hydration-{split}'
+ subprocess.run(['npx','tsx','.tmp/insurance-bench/v07c-extended-hydrate.ts',split,directory,*inputs],check=True,stdout=subprocess.DEVNULL)
+ output=f'.tmp/insurance-bench/v07c-extended-hydrated-{split}-audit.json'
+ subprocess.run(['npx','tsx','.tmp/insurance-bench/v07c-extended-failure-audit.ts',directory,output,split],check=True,stdout=subprocess.DEVNULL)
+ original=json.loads(Path(f'insurance-bench/results/meta/v07c-extended-{split}-failure-audit.json').read_text());hydrated=json.loads(Path(output).read_text())
+ key=lambda e:(e['condition'],e['taskId'])
+ plain=lambda e:{k:v for k,v in e.items() if k!='episodeFile'}
+ a={key(e):plain(e) for e in original['episodes']};b={key(e):plain(e) for e in hydrated['episodes']}
+ assert all(k in a and a[k]==v for k,v in b.items()),'Hydrated independent metrics differ'
+ manifest=json.loads(Path(directory+'/hydration-manifest.json').read_text())
+ proof['splits'][split]={'nativeRuns':len(inputs),'hydratedTerminalEpisodes':len(b),'originalAuditedTerminalEpisodes':len(a),'completeNativeAuditCoverage':set(a)==set(b),'allSerializedEpisodeHashesEqualOriginals':True,'allIndependentObservationalMetricsEqual':True,'manifest':manifest}
+proof['auditScriptSha256']=sha('.tmp/insurance-bench/v07c-extended-failure-audit.ts');proof['hydrationScriptSha256']=sha('.tmp/insurance-bench/v07c-extended-hydrate.ts')
+Path('insurance-bench/results/meta/v07c-extended-hydration-verification.json').write_text(json.dumps(proof,indent=2)+'\n')
+print(json.dumps({'verified':True,'splits':{s:{k:v for k,v in p.items() if k!='manifest'} for s,p in proof['splits'].items()},'priorAuditsUnchanged':True}))

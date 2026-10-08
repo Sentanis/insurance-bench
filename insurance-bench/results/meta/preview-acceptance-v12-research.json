@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "acceptanceId": "CA-IB04",
+  "status": "passed-static-synthetic-report-only",
+  "verifiedAt": "2026-10-05T05:14:35.708340+00:00",
+  "url": "https://insurance-bench-qz63cdok1-sentanis.vercel.app",
+  "deploymentId": "dpl_G2zeBoSRnYRcSp4JHBUC6cC2xSFU",
+  "projectId": "prj_CqiaZtGLLlPL3q9CKKKAVYFcrMXf",
+  "deployedCommit": "1a543f260ce50ebc5d7e850c49642f1b4c6b7e81",
+  "readyState": "READY",
+  "deploymentTarget": null,
+  "sourceHtmlSha256": "9dfb0be1496cc9558239c5faf09841755e8715a730017b06a97c8b21dd89bcdf",
+  "servedHtmlSha256": "e4487f32a05e6c62cd93ac3c7ce8cba053ebaf49660c5caf901259cb8947c2b4",
+  "sourceBytes": 221659,
+  "servedBytes": 221822,
+  "servedDifference": "Exactly one 163-byte Vercel feedback script appended; all source HTML bytes are identical.",
+  "protection": {
+    "ssoProtection": {
+      "deploymentType": "all"
+    },
+    "protectionBypassKeyCount": 0,
+    "anonymousHttpStatus": 302,
+    "authenticatedChromeHttpStatus": 200
+  },
+  "browser": {
+    "name": "Chrome",
+    "browserId": "2",
+    "primaryRows": 27,
+    "recordedRuns": 74,
+    "historicalRows": 47,
+    "diagnosticComparisons": 15,
+    "v11TaskSuccess": [
+      100,
+      83.3,
+      0,
+      83.3
+    ],
+    "v12TaskSuccess": [
+      66.7,
+      66.7
+    ],
+    "v12DiagnosticPartialCredit": [
+      95.3,
+      95.3
+    ],
+    "v12CurrentOptimalWrites": [
+      "2/3",
+      "2/3"
+    ],
+    "checks": [
+      "Version/dataset/harness/split/resource conditions remain separate; historical weighted headlines visible.",
+      "V12 native details match both completed 3/3 panels and the six shared deadline failure criteria.",
+      "V12 tier tie, unmet calibration, correlated failure, absent response phases and expert-validity gap visible.",
+      "History opens by mouse, closes by Enter; all disclosures collapse after reload.",
+      "Superseded V8 row displays Superseded for all ability metrics; raw 4/6 coverage retained.",
+      "Unavailable provider results remain unscored and access/resource caveats visible.",
+      "390x844 viewport: document client/scroll widths both390; no overflow outside horizontally scrollable tables; override reset."
+    ],
+    "consoleErrorCount": 0,
+    "consoleWarningCount": 0,
+    "observedNetwork": "Report document and Vercel feedback/auth support requests plus one Chrome extension cursor image; no application database or model-provider traffic.",
+    "screenshot": "/Users/soldo/Documents/Codex/Insurance-Bench/2026-10-04/insurance-bench-v12-report.png",
+    "screenshotSha256": "b5636e5f9764acb7ebb9c0d9078a60e23f956080c4f8b3aa1d42ca0ec54f1bcd"
+  },
+  "limits": [
+    "Synthetic static development report acceptance only, not AWS production-classified staging or application release.",
+    "Engineering audits do not establish professional insurance validity, representative coverage, stable ranking, causal model-only differences or frontier50-60 calibration.",
+    "Authoritative API budget cap75; reserved/estimated73.49224838750004, remaining1.507751612499959; not invoice spend."
+  ]
+}

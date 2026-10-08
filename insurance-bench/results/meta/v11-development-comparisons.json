@@ -1,0 +1,140 @@
+{
+  "analyzedAt": "2026-10-05T03:49:02.486Z",
+  "sourceFingerprint": "9c8a799a8a5d1e853e7c5e58437064e6c2be659ff4ba9060a808fb9a5ec60a45",
+  "fullCorpusHash": "4334b01859d0df0d1a4344ed6af86b59331b1e62c5f34e09331e30189796922c",
+  "registrationSha256": "16fb33a1840c171ca1b7e9b6391e005ffe7427d2a48c839d754093c12c36c14c",
+  "independentAuditSha256": "2f6ed5b0219fe49b02e50b0b78fe16ee51b8e8527170f61fdfc5d436d150b21d",
+  "contrasts": [
+    {
+      "name": "Sol high minus low",
+      "status": "available",
+      "nativeMacroDifference": 16.66666666666667,
+      "comparison": {
+        "axis": "effort",
+        "baselineRunId": "2026-10-05T03-00-44-801Z-gpt-6.1-sol-low-baseline-allocation-interaction",
+        "treatmentRunId": "2026-10-05T02-47-38-010Z-gpt-6.1-sol-high-baseline-allocation-interaction",
+        "cases": 6,
+        "attemptsPerCase": 1,
+        "scoreDelta": 2.33,
+        "completionDelta": 16.67,
+        "componentDeltas": {
+          "facts": 1.76,
+          "evidence": 1.76,
+          "workflow": 4.76,
+          "boundaries": 0
+        },
+        "currentStateDelta": 16.67,
+        "caseWins": 1,
+        "caseTies": 5,
+        "caseLosses": 0,
+        "familyClusterBootstrap95": [
+          0,
+          6.99
+        ],
+        "families": [
+          {
+            "family": "coverage-review",
+            "scoreDelta": 0
+          },
+          {
+            "family": "financial-reconciliation",
+            "scoreDelta": 0
+          },
+          {
+            "family": "deadline-triage",
+            "scoreDelta": 6.99
+          }
+        ],
+        "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+      }
+    },
+    {
+      "name": "Luna high minus low",
+      "status": "available",
+      "nativeMacroDifference": 83.33333333333333,
+      "comparison": {
+        "axis": "effort",
+        "baselineRunId": "2026-10-05T03-12-36-117Z-gpt-6-luna-low-baseline-allocation-interaction",
+        "treatmentRunId": "2026-10-05T03-21-31-856Z-gpt-6-luna-high-baseline-allocation-interaction",
+        "cases": 6,
+        "attemptsPerCase": 1,
+        "scoreDelta": 12.77,
+        "completionDelta": 83.33,
+        "componentDeltas": {
+          "facts": 11.4,
+          "evidence": 11.4,
+          "workflow": 21.43,
+          "boundaries": 0
+        },
+        "currentStateDelta": 66.67,
+        "caseWins": 6,
+        "caseTies": 0,
+        "caseLosses": 0,
+        "familyClusterBootstrap95": [
+          10.34,
+          15.7
+        ],
+        "families": [
+          {
+            "family": "coverage-review",
+            "scoreDelta": 15.7
+          },
+          {
+            "family": "financial-reconciliation",
+            "scoreDelta": 12.27
+          },
+          {
+            "family": "deadline-triage",
+            "scoreDelta": 10.34
+          }
+        ],
+        "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+      }
+    },
+    {
+      "name": "Sol high minus Luna high",
+      "status": "available",
+      "nativeMacroDifference": 16.66666666666667,
+      "comparison": {
+        "axis": "tier",
+        "baselineRunId": "2026-10-05T03-21-31-856Z-gpt-6-luna-high-baseline-allocation-interaction",
+        "treatmentRunId": "2026-10-05T02-47-38-010Z-gpt-6.1-sol-high-baseline-allocation-interaction",
+        "cases": 6,
+        "attemptsPerCase": 1,
+        "scoreDelta": 2.33,
+        "completionDelta": 16.67,
+        "componentDeltas": {
+          "facts": 1.76,
+          "evidence": 1.76,
+          "workflow": 4.76,
+          "boundaries": 0
+        },
+        "currentStateDelta": 16.67,
+        "caseWins": 1,
+        "caseTies": 5,
+        "caseLosses": 0,
+        "familyClusterBootstrap95": [
+          0,
+          6.99
+        ],
+        "families": [
+          {
+            "family": "coverage-review",
+            "scoreDelta": 0
+          },
+          {
+            "family": "financial-reconciliation",
+            "scoreDelta": 0
+          },
+          {
+            "family": "deadline-triage",
+            "scoreDelta": 6.99
+          }
+        ],
+        "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+      }
+    }
+  ],
+  "scope": "Six development cases per model/effort, one attempt, three correlated templated families. Actual completed-task macro and diagnostic partial credit are distinct. No pooled cross-generation ranking, causal hardness effect or professional-validity claim.",
+  "rounding": "Paired diagnostic deltas use native per-case values; subtracting rounded summaries may differ by0.01."
+}

@@ -1,0 +1,3691 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-10-07",
+  "retrievedAtUtc": "2026-10-08T04:33:34+00:00",
+  "scope": "Published Vals LegalBench and Harvey LAB numeric overall scores only; no API model or judge calls, authentication reads, or live claim reads.",
+  "models": 168,
+  "observations": 225,
+  "eligibleObservations": 224,
+  "sourceReceipts": [
+    {
+      "url": "https://www.vals.ai/benchmarks/legal_bench",
+      "sha256": "7d5ca89c5a9dbbdb889d0fad54b295d715ee5befd51d49f421647c1603d9db72",
+      "rawPath": ".tmp/insurance-bench/composite-sources/vals-legalbench.html",
+      "rows": 149,
+      "metric": "Overall accuracy (%)",
+      "conditions": "Vals public LegalBench v1 overall accuracy; operator one-shot/platform cohort, updated 2026-10-01. Public task selection and harness need not equal another LegalBench implementation.",
+      "caveats": [
+        "Published operator results; no model or judge inference was run for this import.",
+        "Runtime model access, API availability, and equivalence to a local rerun are unconfirmed.",
+        "The source label and reported configuration are retained; similarly named model generations and effort variants are not aliased.",
+        "LegalBench tests legal reasoning, not legal research retrieval or insurance-specific claim judgment.",
+        "Grok 3 Mini Reasoning has two identical display labels; high and low reasoning are distinguished by source model URLs and embedded model keys."
+      ],
+      "retrievedAtUtc": "2026-10-08T04:33:34+00:00",
+      "pageUpdated": "2026-10-01",
+      "benchmarkVersion": "1",
+      "extraction": "Static HTML benchmark-accessibility-table, numeric score column; independently reconciled to embedded benchmarkView.tasks.overall accuracy values.",
+      "extractedFields": [
+        "rank",
+        "rawModelLabel",
+        "modelLabel",
+        "modelId",
+        "sourceModelId",
+        "sourceModelUrl",
+        "reportedScore",
+        "embeddedScore",
+        "scoreUnit",
+        "modelSettings",
+        "eligible"
+      ],
+      "projection": [
+        {
+          "rank": 1,
+          "rawModelLabel": "Claude Fable 5",
+          "modelLabel": "Claude Fable 5",
+          "modelId": "claude-fable-5",
+          "sourceModelId": "anthropic/claude-fable-5",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-fable-5",
+          "reportedScore": 88.56,
+          "embeddedScore": 88.561,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 128000,
+            "compute_effort": "max",
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 2,
+          "rawModelLabel": "Claude Fable 5.1",
+          "modelLabel": "Claude Fable 5.1",
+          "modelId": "claude-fable-5-1",
+          "sourceModelId": "anthropic/claude-fable-5-1",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-fable-5-1",
+          "reportedScore": 88.51,
+          "embeddedScore": 88.511,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 128000,
+            "compute_effort": "max",
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 3,
+          "rawModelLabel": "Gemini 4 Argon",
+          "modelLabel": "Gemini 4 Argon",
+          "modelId": "gemini-4-argon",
+          "sourceModelId": "google/gemini-4-argon",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-4-argon",
+          "reportedScore": 88.3,
+          "embeddedScore": 88.299,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 262144,
+            "reasoning_effort": "high",
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 4,
+          "rawModelLabel": "Gemini 3.1 Pro Preview (02/26)",
+          "modelLabel": "Gemini 3.1 Pro Preview (02/26)",
+          "modelId": "gemini-3-1-pro-preview-02-26",
+          "sourceModelId": "google/gemini-3.1-pro-preview",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3.1-pro-preview",
+          "reportedScore": 87.4,
+          "embeddedScore": 87.398,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 65536,
+            "reasoning_effort": "high",
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 5,
+          "rawModelLabel": "Gemini 3.7 Flash",
+          "modelLabel": "Gemini 3.7 Flash",
+          "modelId": "gemini-3-7-flash",
+          "sourceModelId": "google/gemini-3.7-flash",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3.7-flash",
+          "reportedScore": 87.26,
+          "embeddedScore": 87.256,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 65536,
+            "reasoning_effort": "high",
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 6,
+          "rawModelLabel": "Gemini 3 Pro (11/25)",
+          "modelLabel": "Gemini 3 Pro (11/25)",
+          "modelId": "gemini-3-pro-11-25",
+          "sourceModelId": "google/gemini-3-pro-preview",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3-pro-preview",
+          "reportedScore": 87.03,
+          "embeddedScore": 87.025,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 65536,
+            "reasoning_effort": "high",
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 7,
+          "rawModelLabel": "Gemini 3.8 Flash",
+          "modelLabel": "Gemini 3.8 Flash",
+          "modelId": "gemini-3-8-flash",
+          "sourceModelId": "google/gemini-3.8-flash",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3.8-flash",
+          "reportedScore": 86.99,
+          "embeddedScore": 86.993,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 65536,
+            "reasoning_effort": "high",
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 8,
+          "rawModelLabel": "Claude Opus 5",
+          "modelLabel": "Claude Opus 5",
+          "modelId": "claude-opus-5",
+          "sourceModelId": "anthropic/claude-opus-5",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-opus-5",
+          "reportedScore": 86.97,
+          "embeddedScore": 86.974,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 128000,
+            "compute_effort": "max",
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 9,
+          "rawModelLabel": "GPT-5.6 Sol",
+          "modelLabel": "GPT-5.6 Sol",
+          "modelId": "gpt-5-6-sol",
+          "sourceModelId": "openai/gpt-5.6-sol",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5.6-sol",
+          "reportedScore": 86.97,
+          "embeddedScore": 86.965,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 128000,
+            "reasoning_effort": "max",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 10,
+          "rawModelLabel": "Gemini 3 Flash (12/25)",
+          "modelLabel": "Gemini 3 Flash (12/25)",
+          "modelId": "gemini-3-flash-12-25",
+          "sourceModelId": "google/gemini-3-flash-preview",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3-flash-preview",
+          "reportedScore": 86.86,
+          "embeddedScore": 86.858,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 65536,
+            "reasoning_effort": "high",
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 11,
+          "rawModelLabel": "Gemini 3.6 Flash",
+          "modelLabel": "Gemini 3.6 Flash",
+          "modelId": "gemini-3-6-flash",
+          "sourceModelId": "google/gemini-3.6-flash",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3.6-flash",
+          "reportedScore": 86.7,
+          "embeddedScore": 86.705,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 65536,
+            "reasoning_effort": "high",
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 12,
+          "rawModelLabel": "GPT 5.5",
+          "modelLabel": "GPT 5.5",
+          "modelId": "gpt-5-5",
+          "sourceModelId": "openai/gpt-5.5",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5.5",
+          "reportedScore": 86.52,
+          "embeddedScore": 86.515,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 128000,
+            "reasoning_effort": "xhigh",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 13,
+          "rawModelLabel": "Grok 4.6",
+          "modelLabel": "Grok 4.6",
+          "modelId": "grok-4-6",
+          "sourceModelId": "grok/grok-4.6",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-4.6",
+          "reportedScore": 86.31,
+          "embeddedScore": 86.307,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "reasoning_effort": "high",
+            "provider": "SpaceXAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 14,
+          "rawModelLabel": "Kimi K3",
+          "modelLabel": "Kimi K3",
+          "modelId": "kimi-k3",
+          "sourceModelId": "kimi/kimi-k3",
+          "sourceModelUrl": "https://www.vals.ai/models/kimi_kimi-k3",
+          "reportedScore": 86.21,
+          "embeddedScore": 86.212,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "top_p": 0.95,
+            "max_output_tokens": 262144,
+            "reasoning_effort": "max",
+            "provider": "Moonshot AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 15,
+          "rawModelLabel": "GPT 5.4 (xhigh)",
+          "modelLabel": "GPT 5.4 (xhigh)",
+          "modelId": "gpt-5-4-xhigh",
+          "sourceModelId": "openai/gpt-5.4-2026-03-05",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5.4-2026-03-05",
+          "reportedScore": 86.04,
+          "embeddedScore": 86.044,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 128000,
+            "reasoning_effort": "xhigh",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 16,
+          "rawModelLabel": "GPT 5",
+          "modelLabel": "GPT 5",
+          "modelId": "gpt-5",
+          "sourceModelId": "openai/gpt-5-2025-08-07",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5-2025-08-07",
+          "reportedScore": 86.02,
+          "embeddedScore": 86.023,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 128000,
+            "reasoning_effort": "high",
+            "verbosity": "medium",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 17,
+          "rawModelLabel": "Grok 4.5",
+          "modelLabel": "Grok 4.5",
+          "modelId": "grok-4-5",
+          "sourceModelId": "grok/grok-4.5",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-4.5",
+          "reportedScore": 85.97,
+          "embeddedScore": 85.965,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "reasoning_effort": "high",
+            "provider": "SpaceXAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 18,
+          "rawModelLabel": "GPT 5.1",
+          "modelLabel": "GPT 5.1",
+          "modelId": "gpt-5-1",
+          "sourceModelId": "openai/gpt-5.1-2025-11-13",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5.1-2025-11-13",
+          "reportedScore": 85.68,
+          "embeddedScore": 85.683,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 128000,
+            "reasoning_effort": "high",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 19,
+          "rawModelLabel": "MiniMax-M3",
+          "modelLabel": "MiniMax-M3",
+          "modelId": "minimax-m3",
+          "sourceModelId": "minimax/MiniMax-M3",
+          "sourceModelUrl": "https://www.vals.ai/models/minimax_MiniMax-M3",
+          "reportedScore": 85.42,
+          "embeddedScore": 85.415,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "top_p": 0.95,
+            "max_output_tokens": 512000,
+            "provider": "MiniMax"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 20,
+          "rawModelLabel": "Claude Opus 4.6 (Thinking)",
+          "modelLabel": "Claude Opus 4.6 (Thinking)",
+          "modelId": "claude-opus-4-6-thinking",
+          "sourceModelId": "anthropic/claude-opus-4-6-thinking",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-opus-4-6-thinking",
+          "reportedScore": 85.3,
+          "embeddedScore": 85.301,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 128000,
+            "compute_effort": "max",
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 21,
+          "rawModelLabel": "Muse Spark 1.2",
+          "modelLabel": "Muse Spark 1.2",
+          "modelId": "muse-spark-1-2",
+          "sourceModelId": "meta/muse_spark_1_2",
+          "sourceModelUrl": "https://www.vals.ai/models/meta_muse_spark_1_2",
+          "reportedScore": 85.26,
+          "embeddedScore": 85.262,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 131072,
+            "reasoning_effort": "xhigh",
+            "provider": "Meta"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 22,
+          "rawModelLabel": "Claude Opus 4.7",
+          "modelLabel": "Claude Opus 4.7",
+          "modelId": "claude-opus-4-7",
+          "sourceModelId": "anthropic/claude-opus-4-7",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-opus-4-7",
+          "reportedScore": 85.25,
+          "embeddedScore": 85.251,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 128000,
+            "compute_effort": "max",
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 23,
+          "rawModelLabel": "GPT-5.6 Terra",
+          "modelLabel": "GPT-5.6 Terra",
+          "modelId": "gpt-5-6-terra",
+          "sourceModelId": "openai/gpt-5.6-terra",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5.6-terra",
+          "reportedScore": 85.11,
+          "embeddedScore": 85.105,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 128000,
+            "reasoning_effort": "max",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 24,
+          "rawModelLabel": "Qwen 3.5 Plus",
+          "modelLabel": "Qwen 3.5 Plus",
+          "modelId": "qwen-3-5-plus",
+          "sourceModelId": "alibaba/qwen3.5-plus-thinking",
+          "sourceModelUrl": "https://www.vals.ai/models/alibaba_qwen3.5-plus-thinking",
+          "reportedScore": 85.1,
+          "embeddedScore": 85.104,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.6,
+            "max_output_tokens": 65536,
+            "provider": "Alibaba"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 25,
+          "rawModelLabel": "Muse Spark 1.1",
+          "modelLabel": "Muse Spark 1.1",
+          "modelId": "muse-spark-1-1",
+          "sourceModelId": "meta/muse_spark_1_1",
+          "sourceModelUrl": "https://www.vals.ai/models/meta_muse-spark-1.1",
+          "reportedScore": 84.98,
+          "embeddedScore": 84.981,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 256000,
+            "reasoning_effort": "xhigh",
+            "provider": "Meta"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 26,
+          "rawModelLabel": "Qwen 3.7 Max",
+          "modelLabel": "Qwen 3.7 Max",
+          "modelId": "qwen-3-7-max",
+          "sourceModelId": "alibaba/qwen3.7-max",
+          "sourceModelUrl": "https://www.vals.ai/models/alibaba_qwen3.7-max",
+          "reportedScore": 84.91,
+          "embeddedScore": 84.913,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "max_output_tokens": 65536,
+            "provider": "Alibaba"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 27,
+          "rawModelLabel": "GLM 5.3",
+          "modelLabel": "GLM 5.3",
+          "modelId": "glm-5-3",
+          "sourceModelId": "zai/glm-5.3",
+          "sourceModelUrl": "https://www.vals.ai/models/zai_glm-5.3",
+          "reportedScore": 84.84,
+          "embeddedScore": 84.837,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "top_p": 0.95,
+            "max_output_tokens": 128000,
+            "reasoning_effort": "max",
+            "provider": "Zhipu AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 28,
+          "rawModelLabel": "Kimi K2.6",
+          "modelLabel": "Kimi K2.6",
+          "modelId": "kimi-k2-6",
+          "sourceModelId": "kimi/kimi-k2.6",
+          "sourceModelUrl": "https://www.vals.ai/models/kimi_kimi-k2.6",
+          "reportedScore": 84.74,
+          "embeddedScore": 84.738,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "top_p": 0.95,
+            "max_output_tokens": 128000,
+            "provider": "Moonshot AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 29,
+          "rawModelLabel": "Claude Opus 4.5 (Thinking)",
+          "modelLabel": "Claude Opus 4.5 (Thinking)",
+          "modelId": "claude-opus-4-5-thinking",
+          "sourceModelId": "anthropic/claude-opus-4-5-20251101-thinking",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-opus-4-5-20251101-thinking",
+          "reportedScore": 84.6,
+          "embeddedScore": 84.604,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 64000,
+            "compute_effort": "high",
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 30,
+          "rawModelLabel": "Grok 4.3",
+          "modelLabel": "Grok 4.3",
+          "modelId": "grok-4-3",
+          "sourceModelId": "grok/grok-4.3",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-4.3",
+          "reportedScore": 84.46,
+          "embeddedScore": 84.458,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "provider": "SpaceXAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 31,
+          "rawModelLabel": "GLM 5.1",
+          "modelLabel": "GLM 5.1",
+          "modelId": "glm-5-1",
+          "sourceModelId": "zai/glm-5.1",
+          "sourceModelUrl": "https://www.vals.ai/models/zai_glm-5.1",
+          "reportedScore": 84.39,
+          "embeddedScore": 84.394,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "provider": "Zhipu AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 32,
+          "rawModelLabel": "Grok 4.7",
+          "modelLabel": "Grok 4.7",
+          "modelId": "grok-4-7",
+          "sourceModelId": "grok/grok-4.7",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-4.7",
+          "reportedScore": 84.39,
+          "embeddedScore": 84.389,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "reasoning_effort": "xhigh",
+            "provider": "SpaceXAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 33,
+          "rawModelLabel": "Gemini 2.5 Pro Exp",
+          "modelLabel": "Gemini 2.5 Pro Exp",
+          "modelId": "gemini-2-5-pro-exp",
+          "sourceModelId": "google/gemini-2.5-pro-exp-03-25",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-2.5-pro-exp-03-25",
+          "reportedScore": 84.32,
+          "embeddedScore": 84.322,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "max_output_tokens": 64000,
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 34,
+          "rawModelLabel": "Qwen 3.5 Flash",
+          "modelLabel": "Qwen 3.5 Flash",
+          "modelId": "qwen-3-5-flash",
+          "sourceModelId": "alibaba/qwen3.5-flash",
+          "sourceModelUrl": "https://www.vals.ai/models/alibaba_qwen3.5-flash",
+          "reportedScore": 84.28,
+          "embeddedScore": 84.276,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 65536,
+            "provider": "Alibaba"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 35,
+          "rawModelLabel": "Qwen 3.6 Plus",
+          "modelLabel": "Qwen 3.6 Plus",
+          "modelId": "qwen-3-6-plus",
+          "sourceModelId": "alibaba/qwen3.6-plus",
+          "sourceModelUrl": "https://www.vals.ai/models/alibaba_qwen3.6-plus",
+          "reportedScore": 84.23,
+          "embeddedScore": 84.233,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "max_output_tokens": 65536,
+            "provider": "Alibaba"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 36,
+          "rawModelLabel": "Muse Spark",
+          "modelLabel": "Muse Spark",
+          "modelId": "muse-spark",
+          "sourceModelId": "meta/muse_spark",
+          "sourceModelUrl": "https://www.vals.ai/models/meta_muse_spark",
+          "reportedScore": 84.22,
+          "embeddedScore": 84.217,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 131072,
+            "provider": "Meta"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 37,
+          "rawModelLabel": "Claude Sonnet 4.5 (Thinking)",
+          "modelLabel": "Claude Sonnet 4.5 (Thinking)",
+          "modelId": "claude-sonnet-4-5-thinking",
+          "sourceModelId": "anthropic/claude-sonnet-4-5-20250929-thinking",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-sonnet-4-5-20250929-thinking",
+          "reportedScore": 84.08,
+          "embeddedScore": 84.084,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 64000,
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 38,
+          "rawModelLabel": "Gemini 3.5 Flash Lite",
+          "modelLabel": "Gemini 3.5 Flash Lite",
+          "modelId": "gemini-3-5-flash-lite",
+          "sourceModelId": "google/gemini-3.5-flash-lite",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3.5-flash-lite",
+          "reportedScore": 84.07,
+          "embeddedScore": 84.073,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 65536,
+            "reasoning_effort": "high",
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 39,
+          "rawModelLabel": "GLM 5.2",
+          "modelLabel": "GLM 5.2",
+          "modelId": "glm-5-2",
+          "sourceModelId": "zai/glm-5.2",
+          "sourceModelUrl": "https://www.vals.ai/models/zai_glm-5.2",
+          "reportedScore": 84.07,
+          "embeddedScore": 84.073,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "provider": "Zhipu AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 40,
+          "rawModelLabel": "GLM 5",
+          "modelLabel": "GLM 5",
+          "modelId": "glm-5",
+          "sourceModelId": "zai/glm-5-thinking",
+          "sourceModelUrl": "https://www.vals.ai/models/zai_glm-5-thinking",
+          "reportedScore": 84.06,
+          "embeddedScore": 84.059,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "top_p": 0.95,
+            "max_output_tokens": 131072,
+            "provider": "Zhipu AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 41,
+          "rawModelLabel": "GPT-5.6 Luna",
+          "modelLabel": "GPT-5.6 Luna",
+          "modelId": "gpt-5-6-luna",
+          "sourceModelId": "openai/gpt-5.6-luna",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5.6-luna",
+          "reportedScore": 84.03,
+          "embeddedScore": 84.034,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 128000,
+            "reasoning_effort": "max",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 42,
+          "rawModelLabel": "MiniMax-M2.7",
+          "modelLabel": "MiniMax-M2.7",
+          "modelId": "minimax-m2-7",
+          "sourceModelId": "minimax/MiniMax-M2.7",
+          "sourceModelUrl": "https://www.vals.ai/models/minimax_MiniMax-M2.7",
+          "reportedScore": 83.98,
+          "embeddedScore": 83.98,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "top_p": 0.95,
+            "max_output_tokens": 196608,
+            "provider": "MiniMax"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 43,
+          "rawModelLabel": "GLM 5.3 Flash",
+          "modelLabel": "GLM 5.3 Flash",
+          "modelId": "glm-5-3-flash",
+          "sourceModelId": "zai/glm-5.3-flash",
+          "sourceModelUrl": "https://www.vals.ai/models/zai_glm-5.3-flash",
+          "reportedScore": 83.93,
+          "embeddedScore": 83.928,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "top_p": 0.95,
+            "max_output_tokens": 128000,
+            "reasoning_effort": "max",
+            "provider": "Zhipu AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 44,
+          "rawModelLabel": "Claude Sonnet 5",
+          "modelLabel": "Claude Sonnet 5",
+          "modelId": "claude-sonnet-5",
+          "sourceModelId": "anthropic/claude-sonnet-5",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-sonnet-5",
+          "reportedScore": 83.92,
+          "embeddedScore": 83.922,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 128000,
+            "compute_effort": "max",
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 45,
+          "rawModelLabel": "Gemini 2.5 Flash Preview 4/17 (Nonthinking)",
+          "modelLabel": "Gemini 2.5 Flash Preview 4/17 (Nonthinking)",
+          "modelId": "gemini-2-5-flash-preview-4-17-nonthinking",
+          "sourceModelId": "google/gemini-2.5-flash-preview-04-17",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-2.5-flash-preview-04-17",
+          "reportedScore": 83.8,
+          "embeddedScore": 83.796,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 65536,
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 46,
+          "rawModelLabel": "Gemini 3.1 Flash Lite Preview",
+          "modelLabel": "Gemini 3.1 Flash Lite Preview",
+          "modelId": "gemini-3-1-flash-lite-preview",
+          "sourceModelId": "google/gemini-3.1-flash-lite-preview",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3.1-flash-lite-preview",
+          "reportedScore": 83.76,
+          "embeddedScore": 83.764,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 65536,
+            "reasoning_effort": "high",
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 47,
+          "rawModelLabel": "o3",
+          "modelLabel": "o3",
+          "modelId": "o3",
+          "sourceModelId": "openai/o3-2025-04-16",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_o3-2025-04-16",
+          "reportedScore": 83.76,
+          "embeddedScore": 83.761,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 100000,
+            "reasoning_effort": "high",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 48,
+          "rawModelLabel": "Hy4 Preview",
+          "modelLabel": "Hy4 Preview",
+          "modelId": "hy4-preview",
+          "sourceModelId": "tencent/hy4-preview",
+          "sourceModelUrl": "https://www.vals.ai/models/tencent_hy4-preview",
+          "reportedScore": 83.76,
+          "embeddedScore": 83.757,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.9,
+            "top_p": 1,
+            "max_output_tokens": 64000,
+            "provider": "Tencent"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 49,
+          "rawModelLabel": "Qwen 3.8 Max",
+          "modelLabel": "Qwen 3.8 Max",
+          "modelId": "qwen-3-8-max",
+          "sourceModelId": "alibaba/qwen3.8-max",
+          "sourceModelUrl": "https://www.vals.ai/models/alibaba_qwen3.8-max",
+          "reportedScore": 83.61,
+          "embeddedScore": 83.609,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "max_output_tokens": 128000,
+            "provider": "Alibaba"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 50,
+          "rawModelLabel": "Gemini 3.5 Flash",
+          "modelLabel": "Gemini 3.5 Flash",
+          "modelId": "gemini-3-5-flash",
+          "sourceModelId": "google/gemini-3.5-flash",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3.5-flash",
+          "reportedScore": 83.6,
+          "embeddedScore": 83.602,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 65536,
+            "reasoning_effort": "high",
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 51,
+          "rawModelLabel": "Claude Opus 4.8",
+          "modelLabel": "Claude Opus 4.8",
+          "modelId": "claude-opus-4-8",
+          "sourceModelId": "anthropic/claude-opus-4-8",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-opus-4-8",
+          "reportedScore": 83.57,
+          "embeddedScore": 83.568,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 128000,
+            "compute_effort": "max",
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 52,
+          "rawModelLabel": "Claude Opus 4.1 (Nonthinking)",
+          "modelLabel": "Claude Opus 4.1 (Nonthinking)",
+          "modelId": "claude-opus-4-1-nonthinking",
+          "sourceModelId": "anthropic/claude-opus-4-1-20250805",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-opus-4-1-20250805",
+          "reportedScore": 83.46,
+          "embeddedScore": 83.458,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 32000,
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 53,
+          "rawModelLabel": "GLM 4.7",
+          "modelLabel": "GLM 4.7",
+          "modelId": "glm-4-7",
+          "sourceModelId": "zai/glm-4.7",
+          "sourceModelUrl": "https://www.vals.ai/models/zai_glm-4.7",
+          "reportedScore": 83.36,
+          "embeddedScore": 83.358,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "top_p": 1,
+            "max_output_tokens": 128000,
+            "provider": "Zhipu AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 54,
+          "rawModelLabel": "DeepSeek V4.1 Flash",
+          "modelLabel": "DeepSeek V4.1 Flash",
+          "modelId": "deepseek-v4-1-flash",
+          "sourceModelId": "deepseek/deepseek-v4.1-flash",
+          "sourceModelUrl": "https://www.vals.ai/models/deepseek_deepseek-v4.1-flash",
+          "reportedScore": 83.28,
+          "embeddedScore": 83.277,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 384000,
+            "reasoning_effort": "high",
+            "provider": "DeepSeek"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 55,
+          "rawModelLabel": "Grok 4",
+          "modelLabel": "Grok 4",
+          "modelId": "grok-4",
+          "sourceModelId": "grok/grok-4-0709",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-4-0709",
+          "reportedScore": 83.19,
+          "embeddedScore": 83.192,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "max_output_tokens": 128000,
+            "provider": "SpaceXAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 56,
+          "rawModelLabel": "Grok 3 Mini Reasoning",
+          "modelLabel": "Grok 3 Mini Reasoning (High reasoning)",
+          "modelId": "grok-3-mini-reasoning-high-reasoning",
+          "sourceModelId": "grok/grok-3-mini-fast-high-reasoning",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-3-mini-fast-high-reasoning",
+          "reportedScore": 83.14,
+          "embeddedScore": 83.143,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "max_output_tokens": 131000,
+            "reasoning_effort": "high",
+            "provider": "SpaceXAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 57,
+          "rawModelLabel": "GPT 4.1",
+          "modelLabel": "GPT 4.1",
+          "modelId": "gpt-4-1",
+          "sourceModelId": "openai/gpt-4.1-2025-04-14",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-4.1-2025-04-14",
+          "reportedScore": 83.1,
+          "embeddedScore": 83.1,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 32768,
+            "reasoning_effort": "high",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 58,
+          "rawModelLabel": "Claude Opus 4 (Nonthinking)",
+          "modelLabel": "Claude Opus 4 (Nonthinking)",
+          "modelId": "claude-opus-4-nonthinking",
+          "sourceModelId": "anthropic/claude-opus-4-20250514",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-opus-4-20250514",
+          "reportedScore": 83.07,
+          "embeddedScore": 83.071,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 32000,
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 59,
+          "rawModelLabel": "Mercury 2.5",
+          "modelLabel": "Mercury 2.5",
+          "modelId": "mercury-2-5",
+          "sourceModelId": "inception/mercury-2.5",
+          "sourceModelUrl": "https://www.vals.ai/models/inception_mercury-2.5",
+          "reportedScore": 83.06,
+          "embeddedScore": 83.06,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 65536,
+            "reasoning_effort": "high",
+            "provider": "Inception"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 60,
+          "rawModelLabel": "Inkling Small",
+          "modelLabel": "Inkling Small",
+          "modelId": "inkling-small",
+          "sourceModelId": "thinkingmachines/inkling-small",
+          "sourceModelUrl": "https://www.vals.ai/models/thinkingmachines_inkling-small",
+          "reportedScore": 82.99,
+          "embeddedScore": 82.986,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "top_p": 1,
+            "max_output_tokens": 262000,
+            "reasoning_effort": "0.99",
+            "provider": "Thinkingmachines"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 61,
+          "rawModelLabel": "Claude Sonnet 4 (Nonthinking)",
+          "modelLabel": "Claude Sonnet 4 (Nonthinking)",
+          "modelId": "claude-sonnet-4-nonthinking",
+          "sourceModelId": "anthropic/claude-sonnet-4-20250514",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-sonnet-4-20250514",
+          "reportedScore": 82.95,
+          "embeddedScore": 82.954,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 64000,
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 62,
+          "rawModelLabel": "Inkling",
+          "modelLabel": "Inkling",
+          "modelId": "inkling",
+          "sourceModelId": "thinkingmachines/inkling",
+          "sourceModelUrl": "https://www.vals.ai/models/thinkingmachines_inkling",
+          "reportedScore": 82.95,
+          "embeddedScore": 82.949,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "top_p": 1,
+            "max_output_tokens": 256000,
+            "reasoning_effort": "0.99",
+            "provider": "Thinkingmachines"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 63,
+          "rawModelLabel": "Claude Opus 4.5 (Nonthinking)",
+          "modelLabel": "Claude Opus 4.5 (Nonthinking)",
+          "modelId": "claude-opus-4-5-nonthinking",
+          "sourceModelId": "anthropic/claude-opus-4-5-20251101",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-opus-4-5-20251101",
+          "reportedScore": 82.84,
+          "embeddedScore": 82.837,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 64000,
+            "compute_effort": "high",
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 64,
+          "rawModelLabel": "GPT 5.2",
+          "modelLabel": "GPT 5.2",
+          "modelId": "gpt-5-2",
+          "sourceModelId": "openai/gpt-5.2-2025-12-11",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5.2-2025-12-11",
+          "reportedScore": 82.76,
+          "embeddedScore": 82.764,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 128000,
+            "reasoning_effort": "xhigh",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 65,
+          "rawModelLabel": "Gemini 2.5 Flash Preview (9/25) (Thinking)",
+          "modelLabel": "Gemini 2.5 Flash Preview (9/25) (Thinking)",
+          "modelId": "gemini-2-5-flash-preview-9-25-thinking",
+          "sourceModelId": "google/gemini-2.5-flash-preview-09-2025-thinking",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-2.5-flash-preview-09-2025-thinking",
+          "reportedScore": 82.63,
+          "embeddedScore": 82.625,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 65535,
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 66,
+          "rawModelLabel": "Grok 3",
+          "modelLabel": "Grok 3",
+          "modelId": "grok-3",
+          "sourceModelId": "grok/grok-3",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-3",
+          "reportedScore": 82.59,
+          "embeddedScore": 82.595,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "max_output_tokens": 131000,
+            "provider": "SpaceXAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 67,
+          "rawModelLabel": "Claude 3.7 Sonnet (Thinking)",
+          "modelLabel": "Claude 3.7 Sonnet (Thinking)",
+          "modelId": "claude-3-7-sonnet-thinking",
+          "sourceModelId": "anthropic/claude-3-7-sonnet-20250219-thinking",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-3-7-sonnet-20250219-thinking",
+          "reportedScore": 82.52,
+          "embeddedScore": 82.519,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 5096,
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 68,
+          "rawModelLabel": "Gemini 2.5 Flash Preview (9/25) (Nonthinking)",
+          "modelLabel": "Gemini 2.5 Flash Preview (9/25) (Nonthinking)",
+          "modelId": "gemini-2-5-flash-preview-9-25-nonthinking",
+          "sourceModelId": "google/gemini-2.5-flash-preview-09-2025",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-2.5-flash-preview-09-2025",
+          "reportedScore": 82.49,
+          "embeddedScore": 82.486,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 65535,
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 69,
+          "rawModelLabel": "Grok 4.1 Fast (Reasoning)",
+          "modelLabel": "Grok 4.1 Fast (Reasoning)",
+          "modelId": "grok-4-1-fast-reasoning",
+          "sourceModelId": "grok/grok-4-1-fast-reasoning",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-4-1-fast-reasoning",
+          "reportedScore": 82.45,
+          "embeddedScore": 82.451,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "max_output_tokens": 128000,
+            "provider": "SpaceXAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 70,
+          "rawModelLabel": "Qwen 3.8 27B",
+          "modelLabel": "Qwen 3.8 27B",
+          "modelId": "qwen-3-8-27b",
+          "sourceModelId": "alibaba/qwen3.8-27b",
+          "sourceModelUrl": "https://www.vals.ai/models/alibaba_qwen3.8-27b",
+          "reportedScore": 82.43,
+          "embeddedScore": 82.428,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "top_p": 0.95,
+            "max_output_tokens": 65536,
+            "reasoning_effort": "xhigh",
+            "provider": "Alibaba"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 71,
+          "rawModelLabel": "DeepSeek V4 Pro 0813",
+          "modelLabel": "DeepSeek V4 Pro 0813",
+          "modelId": "deepseek-v4-pro-0813",
+          "sourceModelId": "deepseek/deepseek-v4-pro-0813",
+          "sourceModelUrl": "https://www.vals.ai/models/deepseek_deepseek-v4-pro-0813",
+          "reportedScore": 82.36,
+          "embeddedScore": 82.361,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 384000,
+            "reasoning_effort": "max",
+            "provider": "DeepSeek"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 72,
+          "rawModelLabel": "GPT 4o (2024-11-20)",
+          "modelLabel": "GPT 4o (2024-11-20)",
+          "modelId": "gpt-4o-2024-11-20",
+          "sourceModelId": "openai/gpt-4o-2024-11-20",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-4o-2024-11-20",
+          "reportedScore": 82.21,
+          "embeddedScore": 82.214,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 16384,
+            "reasoning_effort": "high",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 73,
+          "rawModelLabel": "Claude Sonnet 4.6",
+          "modelLabel": "Claude Sonnet 4.6",
+          "modelId": "claude-sonnet-4-6",
+          "sourceModelId": "anthropic/claude-sonnet-4-6",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-sonnet-4-6",
+          "reportedScore": 82.12,
+          "embeddedScore": 82.12,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 128000,
+            "reasoning": true,
+            "compute_effort": "max",
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 74,
+          "rawModelLabel": "Nemotron 3 Ultra",
+          "modelLabel": "Nemotron 3 Ultra",
+          "modelId": "nemotron-3-ultra",
+          "sourceModelId": "nvidia/nemotron-3-ultra-550b-a55b",
+          "sourceModelUrl": "https://www.vals.ai/models/nvidia_nemotron-3-ultra-550b-a55b",
+          "reportedScore": 82.07,
+          "embeddedScore": 82.066,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "top_p": 0.95,
+            "max_output_tokens": 128000,
+            "provider": "Nvidia"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 75,
+          "rawModelLabel": "Claude Sonnet 4 (Thinking)",
+          "modelLabel": "Claude Sonnet 4 (Thinking)",
+          "modelId": "claude-sonnet-4-thinking",
+          "sourceModelId": "anthropic/claude-sonnet-4-20250514-thinking",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-sonnet-4-20250514-thinking",
+          "reportedScore": 82.06,
+          "embeddedScore": 82.065,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 64000,
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 76,
+          "rawModelLabel": "Gemini 2.5 Flash Lite (9/25) (Thinking)",
+          "modelLabel": "Gemini 2.5 Flash Lite (9/25) (Thinking)",
+          "modelId": "gemini-2-5-flash-lite-9-25-thinking",
+          "sourceModelId": "google/gemini-2.5-flash-lite-preview-09-2025-thinking",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-2.5-flash-lite-preview-09-2025-thinking",
+          "reportedScore": 82.04,
+          "embeddedScore": 82.044,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 65535,
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 77,
+          "rawModelLabel": "Grok 3 Mini Reasoning",
+          "modelLabel": "Grok 3 Mini Reasoning (Low reasoning)",
+          "modelId": "grok-3-mini-reasoning-low-reasoning",
+          "sourceModelId": "grok/grok-3-mini-fast-low-reasoning",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-3-mini-fast-low-reasoning",
+          "reportedScore": 81.92,
+          "embeddedScore": 81.925,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "max_output_tokens": 131000,
+            "reasoning_effort": "low",
+            "provider": "SpaceXAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 78,
+          "rawModelLabel": "Qwen 3 Max",
+          "modelLabel": "Qwen 3 Max",
+          "modelId": "qwen-3-max",
+          "sourceModelId": "alibaba/qwen3-max",
+          "sourceModelUrl": "https://www.vals.ai/models/alibaba_qwen3-max",
+          "reportedScore": 81.86,
+          "embeddedScore": 81.861,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "max_output_tokens": 64000,
+            "provider": "Alibaba"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 79,
+          "rawModelLabel": "GPT 5 Mini",
+          "modelLabel": "GPT 5 Mini",
+          "modelId": "gpt-5-mini",
+          "sourceModelId": "openai/gpt-5-mini-2025-08-07",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5-mini-2025-08-07",
+          "reportedScore": 81.77,
+          "embeddedScore": 81.77,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 128000,
+            "reasoning_effort": "high",
+            "verbosity": "medium",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 80,
+          "rawModelLabel": "Kimi K2 Instruct",
+          "modelLabel": "Kimi K2 Instruct",
+          "modelId": "kimi-k2-instruct",
+          "sourceModelId": "together/moonshotai/Kimi-K2-Instruct",
+          "sourceModelUrl": "https://www.vals.ai/models/together_moonshotai_Kimi-K2-Instruct",
+          "reportedScore": 81.45,
+          "embeddedScore": 81.454,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.6,
+            "max_output_tokens": 32768,
+            "provider": "Together AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 81,
+          "rawModelLabel": "Claude Haiku 4.5 (Thinking)",
+          "modelLabel": "Claude Haiku 4.5 (Thinking)",
+          "modelId": "claude-haiku-4-5-thinking",
+          "sourceModelId": "anthropic/claude-haiku-4-5-20251001-thinking",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-haiku-4-5-20251001-thinking",
+          "reportedScore": 81.24,
+          "embeddedScore": 81.238,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 64000,
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 82,
+          "rawModelLabel": "DeepSeek V3",
+          "modelLabel": "DeepSeek V3",
+          "modelId": "deepseek-v3",
+          "sourceModelId": "fireworks/deepseek-v3",
+          "sourceModelUrl": "https://www.vals.ai/models/fireworks_deepseek-v3",
+          "reportedScore": 80.76,
+          "embeddedScore": 80.762,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 131072,
+            "provider": "Fireworks AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 83,
+          "rawModelLabel": "Grok 4 Fast (Reasoning)",
+          "modelLabel": "Grok 4 Fast (Reasoning)",
+          "modelId": "grok-4-fast-reasoning",
+          "sourceModelId": "grok/grok-4-fast-reasoning",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-4-fast-reasoning",
+          "reportedScore": 80.6,
+          "embeddedScore": 80.601,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "max_output_tokens": 2000000,
+            "provider": "SpaceXAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 84,
+          "rawModelLabel": "GPT 4 Turbo",
+          "modelLabel": "GPT 4 Turbo",
+          "modelId": "gpt-4-turbo",
+          "sourceModelId": "openai/gpt-4-turbo",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-4-turbo",
+          "reportedScore": 80.46,
+          "embeddedScore": 80.462,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 4096,
+            "reasoning_effort": "high",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 85,
+          "rawModelLabel": "o1",
+          "modelLabel": "o1",
+          "modelId": "o1",
+          "sourceModelId": "openai/o1-2024-12-17",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_o1-2024-12-17",
+          "reportedScore": 80.39,
+          "embeddedScore": 80.393,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 2048,
+            "reasoning_effort": "high",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 86,
+          "rawModelLabel": "Qwen 3 Max Preview",
+          "modelLabel": "Qwen 3 Max Preview",
+          "modelId": "qwen-3-max-preview",
+          "sourceModelId": "alibaba/qwen3-max-preview",
+          "sourceModelUrl": "https://www.vals.ai/models/alibaba_qwen3-max-preview",
+          "reportedScore": 80.33,
+          "embeddedScore": 80.333,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "max_output_tokens": 65536,
+            "provider": "Alibaba"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 87,
+          "rawModelLabel": "DeepSeek V4",
+          "modelLabel": "DeepSeek V4",
+          "modelId": "deepseek-v4",
+          "sourceModelId": "deepseek/deepseek-v4-pro",
+          "sourceModelUrl": "https://www.vals.ai/models/deepseek_deepseek-v4-pro",
+          "reportedScore": 80.32,
+          "embeddedScore": 80.323,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 256000,
+            "reasoning_effort": "max",
+            "provider": "DeepSeek"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 88,
+          "rawModelLabel": "Kimi K2 Thinking",
+          "modelLabel": "Kimi K2 Thinking",
+          "modelId": "kimi-k2-thinking",
+          "sourceModelId": "kimi/kimi-k2-thinking",
+          "sourceModelUrl": "https://www.vals.ai/models/kimi_kimi-k2-thinking",
+          "reportedScore": 80.2,
+          "embeddedScore": 80.201,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 32768,
+            "provider": "Moonshot AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 89,
+          "rawModelLabel": "Qwen 3 (235B)",
+          "modelLabel": "Qwen 3 (235B)",
+          "modelId": "qwen-3-235b",
+          "sourceModelId": "fireworks/qwen3-235b-a22b",
+          "sourceModelUrl": "https://www.vals.ai/models/fireworks_qwen3-235b-a22b",
+          "reportedScore": 80.18,
+          "embeddedScore": 80.179,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.6,
+            "max_output_tokens": 16384,
+            "provider": "Fireworks AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 90,
+          "rawModelLabel": "GPT 4o (2024-08-06)",
+          "modelLabel": "GPT 4o (2024-08-06)",
+          "modelId": "gpt-4o-2024-08-06",
+          "sourceModelId": "openai/gpt-4o-2024-08-06",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-4o-2024-08-06",
+          "reportedScore": 80.12,
+          "embeddedScore": 80.12,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 16384,
+            "reasoning_effort": "high",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 91,
+          "rawModelLabel": "Claude 3.7 Sonnet (Nonthinking)",
+          "modelLabel": "Claude 3.7 Sonnet (Nonthinking)",
+          "modelId": "claude-3-7-sonnet-nonthinking",
+          "sourceModelId": "anthropic/claude-3-7-sonnet-20250219",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-3-7-sonnet-20250219",
+          "reportedScore": 80.0,
+          "embeddedScore": 80.001,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 8192,
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 92,
+          "rawModelLabel": "MiniMax-M2.5",
+          "modelLabel": "MiniMax-M2.5",
+          "modelId": "minimax-m2-5",
+          "sourceModelId": "minimax/MiniMax-M2.5",
+          "sourceModelUrl": "https://www.vals.ai/models/minimax_MiniMax-M2.5",
+          "reportedScore": 79.96,
+          "embeddedScore": 79.963,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "top_p": 0.95,
+            "max_output_tokens": 196608,
+            "provider": "MiniMax"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 93,
+          "rawModelLabel": "Command A",
+          "modelLabel": "Command A",
+          "modelId": "command-a",
+          "sourceModelId": "cohere/command-a-03-2025",
+          "sourceModelUrl": "https://www.vals.ai/models/cohere_command-a-03-2025",
+          "reportedScore": 79.7,
+          "embeddedScore": 79.697,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.3,
+            "max_output_tokens": 8000,
+            "provider": "Cohere"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 94,
+          "rawModelLabel": "Ling 3.0 Flash",
+          "modelLabel": "Ling 3.0 Flash",
+          "modelId": "ling-3-0-flash",
+          "sourceModelId": "ant/ling-3.0-flash-2607",
+          "sourceModelUrl": "https://www.vals.ai/models/ant_ling-3.0-flash-2607",
+          "reportedScore": 79.69,
+          "embeddedScore": 79.69,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.6,
+            "top_p": 0.95,
+            "max_output_tokens": 131072,
+            "provider": "Ant"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 95,
+          "rawModelLabel": "GLM 4.6",
+          "modelLabel": "GLM 4.6",
+          "modelId": "glm-4-6",
+          "sourceModelId": "zai/glm-4.6",
+          "sourceModelUrl": "https://www.vals.ai/models/zai_glm-4.6",
+          "reportedScore": 79.61,
+          "embeddedScore": 79.608,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "top_p": 1,
+            "max_output_tokens": 122880,
+            "provider": "Zhipu AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 96,
+          "rawModelLabel": "Qwen 2.5 Instruct Turbo (72B)",
+          "modelLabel": "Qwen 2.5 Instruct Turbo (72B)",
+          "modelId": "qwen-2-5-instruct-turbo-72b",
+          "sourceModelId": "together/Qwen/Qwen2.5-72B-Instruct-Turbo",
+          "sourceModelUrl": "https://www.vals.ai/models/together_Qwen_Qwen2.5-72B-Instruct-Turbo",
+          "reportedScore": 79.4,
+          "embeddedScore": 79.403,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "max_output_tokens": 4096,
+            "provider": "Together AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 97,
+          "rawModelLabel": "o4 Mini",
+          "modelLabel": "o4 Mini",
+          "modelId": "o4-mini",
+          "sourceModelId": "openai/o4-mini-2025-04-16",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_o4-mini-2025-04-16",
+          "reportedScore": 79.19,
+          "embeddedScore": 79.185,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 100000,
+            "reasoning_effort": "high",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 98,
+          "rawModelLabel": "Mistral Large 3",
+          "modelLabel": "Mistral Large 3",
+          "modelId": "mistral-large-3",
+          "sourceModelId": "mistralai/mistral-large-2512",
+          "sourceModelUrl": "https://www.vals.ai/models/mistralai_mistral-large-2512",
+          "reportedScore": 79.14,
+          "embeddedScore": 79.138,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.065,
+            "max_output_tokens": 256000,
+            "provider": "Mistral AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 99,
+          "rawModelLabel": "Grok 4.1 Fast Non-Reasoning",
+          "modelLabel": "Grok 4.1 Fast Non-Reasoning",
+          "modelId": "grok-4-1-fast-non-reasoning",
+          "sourceModelId": "grok/grok-4-1-fast-non-reasoning",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-4-1-fast-non-reasoning",
+          "reportedScore": 79.11,
+          "embeddedScore": 79.113,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "max_output_tokens": 128000,
+            "provider": "SpaceXAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 100,
+          "rawModelLabel": "Gemini 2.5 Flash Lite (9/25) (Nonthinking)",
+          "modelLabel": "Gemini 2.5 Flash Lite (9/25) (Nonthinking)",
+          "modelId": "gemini-2-5-flash-lite-9-25-nonthinking",
+          "sourceModelId": "google/gemini-2.5-flash-lite-preview-09-2025",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-2.5-flash-lite-preview-09-2025",
+          "reportedScore": 79.01,
+          "embeddedScore": 79.008,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 65535,
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 101,
+          "rawModelLabel": "MiMo V2.5",
+          "modelLabel": "MiMo V2.5",
+          "modelId": "mimo-v2-5",
+          "sourceModelId": "xiaomi/mimo-v2.5",
+          "sourceModelUrl": "https://www.vals.ai/models/xiaomi_mimo-v2.5",
+          "reportedScore": 78.89,
+          "embeddedScore": 78.886,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "top_p": 0.95,
+            "max_output_tokens": 128000,
+            "provider": "Xiaomi"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 102,
+          "rawModelLabel": "Grok 4 Fast (Non-Reasoning)",
+          "modelLabel": "Grok 4 Fast (Non-Reasoning)",
+          "modelId": "grok-4-fast-non-reasoning",
+          "sourceModelId": "grok/grok-4-fast-non-reasoning",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-4-fast-non-reasoning",
+          "reportedScore": 78.4,
+          "embeddedScore": 78.396,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "max_output_tokens": 2000000,
+            "provider": "SpaceXAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 103,
+          "rawModelLabel": "Gemini 2.0 Flash (001)",
+          "modelLabel": "Gemini 2.0 Flash (001)",
+          "modelId": "gemini-2-0-flash-001",
+          "sourceModelId": "google/gemini-2.0-flash-001",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-2.0-flash-001",
+          "reportedScore": 78.36,
+          "embeddedScore": 78.364,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 8192,
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 104,
+          "rawModelLabel": "GPT 4.1 Mini",
+          "modelLabel": "GPT 4.1 Mini",
+          "modelId": "gpt-4-1-mini",
+          "sourceModelId": "openai/gpt-4.1-mini-2025-04-14",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-4.1-mini-2025-04-14",
+          "reportedScore": 78.04,
+          "embeddedScore": 78.044,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 32768,
+            "reasoning_effort": "high",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 105,
+          "rawModelLabel": "GPT 5.4 Nano",
+          "modelLabel": "GPT 5.4 Nano",
+          "modelId": "gpt-5-4-nano",
+          "sourceModelId": "openai/gpt-5.4-nano-2026-03-17",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5.4-nano-2026-03-17",
+          "reportedScore": 77.92,
+          "embeddedScore": 77.92,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 128000,
+            "reasoning_effort": "high",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 106,
+          "rawModelLabel": "Llama 4 Maverick",
+          "modelLabel": "Llama 4 Maverick",
+          "modelId": "llama-4-maverick",
+          "sourceModelId": "fireworks/llama4-maverick-instruct-basic",
+          "sourceModelUrl": "https://www.vals.ai/models/fireworks_llama4-maverick-instruct-basic",
+          "reportedScore": 77.81,
+          "embeddedScore": 77.812,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "provider": "Fireworks AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 107,
+          "rawModelLabel": "Grok 4.20 (Reasoning)",
+          "modelLabel": "Grok 4.20 (Reasoning)",
+          "modelId": "grok-4-20-reasoning",
+          "sourceModelId": "grok/grok-4.20-0309-reasoning",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-4.20-0309-reasoning",
+          "reportedScore": 77.74,
+          "embeddedScore": 77.738,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "max_output_tokens": 2000000,
+            "provider": "SpaceXAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 108,
+          "rawModelLabel": "DeepSeek V3 (03/24/2025)",
+          "modelLabel": "DeepSeek V3 (03/24/2025)",
+          "modelId": "deepseek-v3-03-24-2025",
+          "sourceModelId": "fireworks/deepseek-v3-0324",
+          "sourceModelUrl": "https://www.vals.ai/models/fireworks_deepseek-v3-0324",
+          "reportedScore": 77.73,
+          "embeddedScore": 77.727,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 131072,
+            "provider": "Fireworks AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 109,
+          "rawModelLabel": "DeepSeek V4 Flash 0731",
+          "modelLabel": "DeepSeek V4 Flash 0731",
+          "modelId": "deepseek-v4-flash-0731",
+          "sourceModelId": "deepseek/deepseek-v4-flash-0731",
+          "sourceModelUrl": "https://www.vals.ai/models/deepseek_deepseek-v4-flash-0731",
+          "reportedScore": 77.71,
+          "embeddedScore": 77.714,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 256000,
+            "reasoning_effort": "high",
+            "provider": "DeepSeek"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 110,
+          "rawModelLabel": "Llama 3.3 Instruct Turbo (70B)",
+          "modelLabel": "Llama 3.3 Instruct Turbo (70B)",
+          "modelId": "llama-3-3-instruct-turbo-70b",
+          "sourceModelId": "together/meta-llama/Llama-3.3-70B-Instruct-Turbo",
+          "sourceModelUrl": "https://www.vals.ai/models/together_meta-llama_Llama-3.3-70B-Instruct-Turbo",
+          "reportedScore": 77.18,
+          "embeddedScore": 77.18,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 4096,
+            "provider": "Together AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 111,
+          "rawModelLabel": "MiMo V2.5 Pro",
+          "modelLabel": "MiMo V2.5 Pro",
+          "modelId": "mimo-v2-5-pro",
+          "sourceModelId": "xiaomi/mimo-v2.5-pro",
+          "sourceModelUrl": "https://www.vals.ai/models/xiaomi_mimo-v2.5-pro",
+          "reportedScore": 77.13,
+          "embeddedScore": 77.129,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "top_p": 0.95,
+            "max_output_tokens": 128000,
+            "provider": "Xiaomi"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 112,
+          "rawModelLabel": "DeepSeek V3.2 (Thinking)",
+          "modelLabel": "DeepSeek V3.2 (Thinking)",
+          "modelId": "deepseek-v3-2-thinking",
+          "sourceModelId": "fireworks/deepseek-v3p2-thinking",
+          "sourceModelUrl": "https://www.vals.ai/models/fireworks_deepseek-v3p2-thinking",
+          "reportedScore": 76.08,
+          "embeddedScore": 76.076,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "provider": "Fireworks AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 113,
+          "rawModelLabel": "GPT OSS 120B",
+          "modelLabel": "GPT OSS 120B",
+          "modelId": "gpt-oss-120b",
+          "sourceModelId": "fireworks/gpt-oss-120b",
+          "sourceModelUrl": "https://www.vals.ai/models/fireworks_gpt-oss-120b",
+          "reportedScore": 75.94,
+          "embeddedScore": 75.938,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 128000,
+            "provider": "Fireworks AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 114,
+          "rawModelLabel": "GLM 4.5",
+          "modelLabel": "GLM 4.5",
+          "modelId": "glm-4-5",
+          "sourceModelId": "zai/glm-4.5",
+          "sourceModelUrl": "https://www.vals.ai/models/zai_glm-4.5",
+          "reportedScore": 75.63,
+          "embeddedScore": 75.627,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.6,
+            "top_p": 1,
+            "max_output_tokens": 81920,
+            "provider": "Zhipu AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 115,
+          "rawModelLabel": "MiniMax-M2.1",
+          "modelLabel": "MiniMax-M2.1",
+          "modelId": "minimax-m2-1",
+          "sourceModelId": "minimax/MiniMax-M2.1",
+          "sourceModelUrl": "https://www.vals.ai/models/minimax_MiniMax-M2.1",
+          "reportedScore": 75.45,
+          "embeddedScore": 75.448,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "top_p": 0.95,
+            "max_output_tokens": 131000,
+            "provider": "MiniMax"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 116,
+          "rawModelLabel": "Laguna M.1",
+          "modelLabel": "Laguna M.1",
+          "modelId": "laguna-m-1",
+          "sourceModelId": "poolside/laguna-m.1",
+          "sourceModelUrl": "https://www.vals.ai/models/poolside_laguna-m.1",
+          "reportedScore": 75.14,
+          "embeddedScore": 75.144,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 32768,
+            "provider": "Poolside"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 117,
+          "rawModelLabel": "Jamba 1.5 Large",
+          "modelLabel": "Jamba 1.5 Large",
+          "modelId": "jamba-1-5-large",
+          "sourceModelId": "ai21labs/jamba-1.5-large",
+          "sourceModelUrl": "https://www.vals.ai/models/ai21labs_jamba-1.5-large",
+          "reportedScore": 74.16,
+          "embeddedScore": 74.16,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.4,
+            "max_output_tokens": 4096,
+            "provider": "AI21 Labs"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 118,
+          "rawModelLabel": "Llama 4 Scout",
+          "modelLabel": "Llama 4 Scout",
+          "modelId": "llama-4-scout",
+          "sourceModelId": "together/meta-llama/Llama-4-Scout-17B-16E-Instruct",
+          "sourceModelUrl": "https://www.vals.ai/models/together_meta-llama_Llama-4-Scout-17B-16E-Instruct",
+          "reportedScore": 72.04,
+          "embeddedScore": 72.036,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 16384,
+            "provider": "Together AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 119,
+          "rawModelLabel": "Jamba 1.6 Large",
+          "modelLabel": "Jamba 1.6 Large",
+          "modelId": "jamba-1-6-large",
+          "sourceModelId": "ai21labs/jamba-large-1.6",
+          "sourceModelUrl": "https://www.vals.ai/models/ai21labs_jamba-large-1.6",
+          "reportedScore": 71.96,
+          "embeddedScore": 71.962,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.4,
+            "max_output_tokens": 4096,
+            "provider": "AI21 Labs"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 120,
+          "rawModelLabel": "o3 Mini",
+          "modelLabel": "o3 Mini",
+          "modelId": "o3-mini",
+          "sourceModelId": "openai/o3-mini-2025-01-31",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_o3-mini-2025-01-31",
+          "reportedScore": 71.54,
+          "embeddedScore": 71.539,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 4096,
+            "reasoning_effort": "high",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 121,
+          "rawModelLabel": "Laguna XS.2",
+          "modelLabel": "Laguna XS.2",
+          "modelId": "laguna-xs-2",
+          "sourceModelId": "poolside/laguna-xs.2",
+          "sourceModelUrl": "https://www.vals.ai/models/poolside_laguna-xs.2",
+          "reportedScore": 71.03,
+          "embeddedScore": 71.026,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 32768,
+            "provider": "Poolside"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 122,
+          "rawModelLabel": "GPT OSS 20B",
+          "modelLabel": "GPT OSS 20B",
+          "modelId": "gpt-oss-20b",
+          "sourceModelId": "fireworks/gpt-oss-20b",
+          "sourceModelUrl": "https://www.vals.ai/models/fireworks_gpt-oss-20b",
+          "reportedScore": 70.85,
+          "embeddedScore": 70.849,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 128000,
+            "provider": "Fireworks AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 123,
+          "rawModelLabel": "Claude 3.5 Haiku Latest",
+          "modelLabel": "Claude 3.5 Haiku Latest",
+          "modelId": "claude-3-5-haiku-latest",
+          "sourceModelId": "anthropic/claude-3-5-haiku-20241022",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-3-5-haiku-20241022",
+          "reportedScore": 70.33,
+          "embeddedScore": 70.331,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 8192,
+            "provider": "Anthropic"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 124,
+          "rawModelLabel": "Gemini 1.0 Pro 002",
+          "modelLabel": "Gemini 1.0 Pro 002",
+          "modelId": "gemini-1-0-pro-002",
+          "sourceModelId": "google/gemini-1.0-pro-002",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-1.0-pro-002",
+          "reportedScore": 70.25,
+          "embeddedScore": 70.247,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 8192,
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 125,
+          "rawModelLabel": "Jamba 1.6 Mini",
+          "modelLabel": "Jamba 1.6 Mini",
+          "modelId": "jamba-1-6-mini",
+          "sourceModelId": "ai21labs/jamba-mini-1.6",
+          "sourceModelUrl": "https://www.vals.ai/models/ai21labs_jamba-mini-1.6",
+          "reportedScore": 69.73,
+          "embeddedScore": 69.726,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.4,
+            "max_output_tokens": 4096,
+            "provider": "AI21 Labs"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 126,
+          "rawModelLabel": "Qwen 2.5 Instruct Turbo (7B)",
+          "modelLabel": "Qwen 2.5 Instruct Turbo (7B)",
+          "modelId": "qwen-2-5-instruct-turbo-7b",
+          "sourceModelId": "together/Qwen/Qwen2.5-7B-Instruct-Turbo",
+          "sourceModelUrl": "https://www.vals.ai/models/together_Qwen_Qwen2.5-7B-Instruct-Turbo",
+          "reportedScore": 69.56,
+          "embeddedScore": 69.559,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "max_output_tokens": 4096,
+            "provider": "Together AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 127,
+          "rawModelLabel": "Mistral Small 3.1 (03/2025)",
+          "modelLabel": "Mistral Small 3.1 (03/2025)",
+          "modelId": "mistral-small-3-1-03-2025",
+          "sourceModelId": "mistralai/mistral-small-2503",
+          "sourceModelUrl": "https://www.vals.ai/models/mistralai_mistral-small-2503",
+          "reportedScore": 69.16,
+          "embeddedScore": 69.157,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "max_output_tokens": 8192,
+            "provider": "Mistral AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 128,
+          "rawModelLabel": "Gemini 1.5 Pro (002)",
+          "modelLabel": "Gemini 1.5 Pro (002)",
+          "modelId": "gemini-1-5-pro-002",
+          "sourceModelId": "google/gemini-1.5-pro-002",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-1.5-pro-002",
+          "reportedScore": 69.08,
+          "embeddedScore": 69.08,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 8192,
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 129,
+          "rawModelLabel": "Ling 3.0 Flash Fin",
+          "modelLabel": "Ling 3.0 Flash Fin",
+          "modelId": "ling-3-0-flash-fin",
+          "sourceModelId": "ant/ling-3.0-flash-af-rc3",
+          "sourceModelUrl": "https://www.vals.ai/models/ant_ling-3.0-flash-fin",
+          "reportedScore": 68.74,
+          "embeddedScore": 68.743,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "top_p": 0.95,
+            "max_output_tokens": 131072,
+            "provider": "Ant"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 130,
+          "rawModelLabel": "Command R+",
+          "modelLabel": "Command R+",
+          "modelId": "command-r-plus",
+          "sourceModelId": "cohere/command-r-plus",
+          "sourceModelUrl": "https://www.vals.ai/models/cohere_command-r-plus",
+          "reportedScore": 68.29,
+          "embeddedScore": 68.287,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.3,
+            "max_output_tokens": 4000,
+            "provider": "Cohere"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 131,
+          "rawModelLabel": "Gemma 2 (9B)",
+          "modelLabel": "Gemma 2 (9B)",
+          "modelId": "gemma-2-9b",
+          "sourceModelId": "together/google/gemma-2-9b-it",
+          "sourceModelUrl": "https://www.vals.ai/models/together_google_gemma-2-9b-it",
+          "reportedScore": 68.14,
+          "embeddedScore": 68.138,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 4096,
+            "provider": "Together AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 132,
+          "rawModelLabel": "Gemma 2 (27B)",
+          "modelLabel": "Gemma 2 (27B)",
+          "modelId": "gemma-2-27b",
+          "sourceModelId": "together/google/gemma-2-27b-it",
+          "sourceModelUrl": "https://www.vals.ai/models/together_google_gemma-2-27b-it",
+          "reportedScore": 67.98,
+          "embeddedScore": 67.978,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 4096,
+            "provider": "Together AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 133,
+          "rawModelLabel": "DeepSeek R1",
+          "modelLabel": "DeepSeek R1",
+          "modelId": "deepseek-r1",
+          "sourceModelId": "fireworks/deepseek-r1",
+          "sourceModelUrl": "https://www.vals.ai/models/fireworks_deepseek-r1",
+          "reportedScore": 67.32,
+          "embeddedScore": 67.323,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 2048,
+            "provider": "Fireworks AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 134,
+          "rawModelLabel": "Jamba 1.5 Mini",
+          "modelLabel": "Jamba 1.5 Mini",
+          "modelId": "jamba-1-5-mini",
+          "sourceModelId": "ai21labs/jamba-1.5-mini",
+          "sourceModelUrl": "https://www.vals.ai/models/ai21labs_jamba-1.5-mini",
+          "reportedScore": 66.62,
+          "embeddedScore": 66.616,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.4,
+            "max_output_tokens": 4096,
+            "provider": "AI21 Labs"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 135,
+          "rawModelLabel": "DeepSeek V3.2 (Nonthinking)",
+          "modelLabel": "DeepSeek V3.2 (Nonthinking)",
+          "modelId": "deepseek-v3-2-nonthinking",
+          "sourceModelId": "fireworks/deepseek-v3p2",
+          "sourceModelUrl": "https://www.vals.ai/models/fireworks_deepseek-v3p2",
+          "reportedScore": 65.96,
+          "embeddedScore": 65.962,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "provider": "Fireworks AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 136,
+          "rawModelLabel": "GPT 3.5",
+          "modelLabel": "GPT 3.5",
+          "modelId": "gpt-3-5",
+          "sourceModelId": "openai/gpt-3.5-turbo",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-3.5-turbo",
+          "reportedScore": 64.37,
+          "embeddedScore": 64.372,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 4096,
+            "reasoning_effort": "high",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 137,
+          "rawModelLabel": "Gemini 1.5 Flash (002)",
+          "modelLabel": "Gemini 1.5 Flash (002)",
+          "modelId": "gemini-1-5-flash-002",
+          "sourceModelId": "google/gemini-1.5-flash-002",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-1.5-flash-002",
+          "reportedScore": 63.24,
+          "embeddedScore": 63.238,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 8192,
+            "provider": "Google"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 138,
+          "rawModelLabel": "Llama 2 (70B)",
+          "modelLabel": "Llama 2 (70B)",
+          "modelId": "llama-2-70b",
+          "sourceModelId": "together/meta-llama/Llama-2-70b-hf",
+          "sourceModelUrl": "https://www.vals.ai/models/together_meta-llama_Llama-2-70b-hf",
+          "reportedScore": 62.43,
+          "embeddedScore": 62.434,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 4096,
+            "provider": "Together AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 139,
+          "rawModelLabel": "Mistral Medium 3.1 (05/2025)",
+          "modelLabel": "Mistral Medium 3.1 (05/2025)",
+          "modelId": "mistral-medium-3-1-05-2025",
+          "sourceModelId": "mistralai/mistral-medium-2505",
+          "sourceModelUrl": "https://www.vals.ai/models/mistralai_mistral-medium-2505",
+          "reportedScore": 61.98,
+          "embeddedScore": 61.979,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "max_output_tokens": 32768,
+            "provider": "Mistral AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 140,
+          "rawModelLabel": "Command A+",
+          "modelLabel": "Command A+",
+          "modelId": "command-a-plus",
+          "sourceModelId": "cohere/command-a-plus-05-2026",
+          "sourceModelUrl": "https://www.vals.ai/models/cohere_command-a-plus-05-2026",
+          "reportedScore": 61.42,
+          "embeddedScore": 61.422,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.9,
+            "top_p": 0.95,
+            "max_output_tokens": 64000,
+            "provider": "Cohere"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 141,
+          "rawModelLabel": "GPT 4.1 Nano",
+          "modelLabel": "GPT 4.1 Nano",
+          "modelId": "gpt-4-1-nano",
+          "sourceModelId": "openai/gpt-4.1-nano-2025-04-14",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-4.1-nano-2025-04-14",
+          "reportedScore": 61.06,
+          "embeddedScore": 61.056,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 1,
+            "max_output_tokens": 32768,
+            "reasoning_effort": "high",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 142,
+          "rawModelLabel": "Mixtral (8x7B)",
+          "modelLabel": "Mixtral (8x7B)",
+          "modelId": "mixtral-8x7b",
+          "sourceModelId": "together/mistralai/Mixtral-8x7B-v0.1",
+          "sourceModelUrl": "https://www.vals.ai/models/together_mistralai_Mixtral-8x7B-v0.1",
+          "reportedScore": 55.84,
+          "embeddedScore": 55.836,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 4096,
+            "provider": "Together AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 143,
+          "rawModelLabel": "Magistral Medium 1.2 (09/2025)",
+          "modelLabel": "Magistral Medium 1.2 (09/2025)",
+          "modelId": "magistral-medium-1-2-09-2025",
+          "sourceModelId": "mistralai/magistral-medium-2509",
+          "sourceModelUrl": "https://www.vals.ai/models/mistralai_magistral-medium-2509",
+          "reportedScore": 54.77,
+          "embeddedScore": 54.767,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "max_output_tokens": 128000,
+            "provider": "Mistral AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 144,
+          "rawModelLabel": "Mistral (7B)",
+          "modelLabel": "Mistral (7B)",
+          "modelId": "mistral-7b",
+          "sourceModelId": "together/mistralai/Mistral-7B-v0.1",
+          "sourceModelUrl": "https://www.vals.ai/models/together_mistralai_Mistral-7B-v0.1",
+          "reportedScore": 53.77,
+          "embeddedScore": 53.77,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 4096,
+            "provider": "Together AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 145,
+          "rawModelLabel": "Llama 2 (13B)",
+          "modelLabel": "Llama 2 (13B)",
+          "modelId": "llama-2-13b",
+          "sourceModelId": "together/togethercomputer/llama-2-13b",
+          "sourceModelUrl": "https://www.vals.ai/models/together_togethercomputer_llama-2-13b",
+          "reportedScore": 53.7,
+          "embeddedScore": 53.696,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 4096,
+            "provider": "Together AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 146,
+          "rawModelLabel": "Llama 2 (7B)",
+          "modelLabel": "Llama 2 (7B)",
+          "modelId": "llama-2-7b",
+          "sourceModelId": "together/togethercomputer/llama-2-7b",
+          "sourceModelUrl": "https://www.vals.ai/models/together_togethercomputer_llama-2-7b",
+          "reportedScore": 51.87,
+          "embeddedScore": 51.869,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 4096,
+            "provider": "Together AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 147,
+          "rawModelLabel": "GPT 5 Nano",
+          "modelLabel": "GPT 5 Nano",
+          "modelId": "gpt-5-nano",
+          "sourceModelId": "openai/gpt-5-nano-2025-08-07",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5-nano-2025-08-07",
+          "reportedScore": 50.13,
+          "embeddedScore": 50.129,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "max_output_tokens": 128000,
+            "reasoning_effort": "high",
+            "verbosity": "medium",
+            "provider": "OpenAI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 148,
+          "rawModelLabel": "Magistral Small 1.2 (09/2025)",
+          "modelLabel": "Magistral Small 1.2 (09/2025)",
+          "modelId": "magistral-small-1-2-09-2025",
+          "sourceModelId": "mistralai/magistral-small-2509",
+          "sourceModelUrl": "https://www.vals.ai/models/mistralai_magistral-small-2509",
+          "reportedScore": 40.02,
+          "embeddedScore": 40.023,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.7,
+            "max_output_tokens": 128000,
+            "provider": "Mistral AI"
+          },
+          "eligible": true
+        },
+        {
+          "rank": 149,
+          "rawModelLabel": "Command R",
+          "modelLabel": "Command R",
+          "modelId": "command-r",
+          "sourceModelId": "cohere/command-r",
+          "sourceModelUrl": "https://www.vals.ai/models/cohere_command-r",
+          "reportedScore": 32.97,
+          "embeddedScore": 32.965,
+          "scoreUnit": "percent",
+          "modelSettings": {
+            "temperature": 0.3,
+            "max_output_tokens": 4000,
+            "provider": "Cohere"
+          },
+          "eligible": true
+        }
+      ]
+    },
+    {
+      "url": "https://www.vals.ai/benchmarks/hlab",
+      "sha256": "0353207e443b21da90b20dc38dff545f100adbb99bd924cd544893bb9e6840a7",
+      "rawPath": ".tmp/insurance-bench/composite-sources/vals-hlab.html",
+      "rows": 76,
+      "metric": "Task pass rate: all criteria pass; average of two judges (%)",
+      "conditions": "Vals Harvey LAB v1 held-out cohort, updated 2026-10-07. Harvey generation/grading protocol; internet disabled; Read File, Edit File, Write File, Glob, Bash, Grep and docx/pptx/xlsx skills. Two judge task pass rates are averaged; each task passes only when every rubric criterion passes. Judges: GPT 5.5 medium reasoning and Claude Sonnet 4.6. Vals model library/Valkyrie harness; tracked-change grading fix; prompt caching changes.",
+      "caveats": [
+        "Published operator results; no model or judge inference was run for this import.",
+        "Runtime model access, API availability, and equivalence to a local rerun are unconfirmed.",
+        "The source label and reported configuration are retained; similarly named model generations and effort variants are not aliased.",
+        "Held-out results cannot be reproduced from the open public LAB set alone.",
+        "The embedded metadata marks dataset_type public, while the visible benchmark text explicitly says these results use the held-out set; held-out prose governs this receipt.",
+        "Criterion pass rate is a different metric and is not imported.",
+        "Claude Fable 5 reported task pass rate includes Opus 4.8 fallback on four tasks and is ineligible for a single-model composite.",
+        "Kimi K3 is 12.92% in both the table and embedded numeric data; prose elsewhere says 10.83%, so the table is used."
+      ],
+      "retrievedAtUtc": "2026-10-08T04:33:34+00:00",
+      "pageUpdated": "2026-10-07",
+      "benchmarkVersion": "1",
+      "extraction": "Static HTML benchmark-accessibility-table, numeric score column; independently reconciled to embedded benchmarkView.tasks.overall accuracy values.",
+      "extractedFields": [
+        "rank",
+        "rawModelLabel",
+        "modelLabel",
+        "modelId",
+        "sourceModelId",
+        "sourceModelUrl",
+        "reportedScore",
+        "embeddedScore",
+        "scoreUnit",
+        "modelSettings",
+        "eligible"
+      ],
+      "projection": [
+        {
+          "rank": 1,
+          "rawModelLabel": "Muse Spark 1.2",
+          "modelLabel": "Muse Spark 1.2",
+          "modelId": "muse-spark-1-2",
+          "sourceModelId": "meta/muse_spark_1_2",
+          "sourceModelUrl": "https://www.vals.ai/models/meta_muse_spark_1_2",
+          "reportedScore": 25.42,
+          "embeddedScore": 25.417,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 2,
+          "rawModelLabel": "Muse Spark 1.3 Max",
+          "modelLabel": "Muse Spark 1.3 Max",
+          "modelId": "muse-spark-1-3-max",
+          "sourceModelId": "meta/muse_spark_1_3_max",
+          "sourceModelUrl": "https://www.vals.ai/models/meta_muse_spark_1_3_max",
+          "reportedScore": 23.75,
+          "embeddedScore": 23.75,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 3,
+          "rawModelLabel": "Muse Spark 1.3",
+          "modelLabel": "Muse Spark 1.3",
+          "modelId": "muse-spark-1-3",
+          "sourceModelId": "meta/muse_spark_1_3",
+          "sourceModelUrl": "https://www.vals.ai/models/meta_muse_spark_1_3",
+          "reportedScore": 22.92,
+          "embeddedScore": 22.917,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 4,
+          "rawModelLabel": "Muse Spark 1.1",
+          "modelLabel": "Muse Spark 1.1",
+          "modelId": "muse-spark-1-1",
+          "sourceModelId": "meta/muse_spark_1_1",
+          "sourceModelUrl": "https://www.vals.ai/models/meta_muse-spark-1.1",
+          "reportedScore": 20.0,
+          "embeddedScore": 20,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 5,
+          "rawModelLabel": "Gemini 4 Argon",
+          "modelLabel": "Gemini 4 Argon",
+          "modelId": "gemini-4-argon",
+          "sourceModelId": "google/gemini-4-argon",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-4-argon",
+          "reportedScore": 19.58,
+          "embeddedScore": 19.583,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 6,
+          "rawModelLabel": "Mistral Large 4",
+          "modelLabel": "Mistral Large 4",
+          "modelId": "mistral-large-4",
+          "sourceModelId": "mistralai/mistral-large-4",
+          "sourceModelUrl": "https://www.vals.ai/models/mistralai_mistral-large-4",
+          "reportedScore": 15.83,
+          "embeddedScore": 15.833,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 7,
+          "rawModelLabel": "Grok 4.6",
+          "modelLabel": "Grok 4.6",
+          "modelId": "grok-4-6",
+          "sourceModelId": "grok/grok-4.6",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-4.6",
+          "reportedScore": 15.83,
+          "embeddedScore": 15.833,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 8,
+          "rawModelLabel": "Grok 4.5",
+          "modelLabel": "Grok 4.5",
+          "modelId": "grok-4-5",
+          "sourceModelId": "grok/grok-4.5",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-4.5",
+          "reportedScore": 12.92,
+          "embeddedScore": 12.917,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 9,
+          "rawModelLabel": "Kimi K3",
+          "modelLabel": "Kimi K3",
+          "modelId": "kimi-k3",
+          "sourceModelId": "kimi/kimi-k3",
+          "sourceModelUrl": "https://www.vals.ai/models/kimi_kimi-k3",
+          "reportedScore": 12.92,
+          "embeddedScore": 12.917,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 10,
+          "rawModelLabel": "Grok 4.7",
+          "modelLabel": "Grok 4.7",
+          "modelId": "grok-4-7",
+          "sourceModelId": "grok/grok-4.7",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-4.7",
+          "reportedScore": 12.5,
+          "embeddedScore": 12.5,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 11,
+          "rawModelLabel": "MiMo V2.6 Flash",
+          "modelLabel": "MiMo V2.6 Flash",
+          "modelId": "mimo-v2-6-flash",
+          "sourceModelId": "xiaomi/mimo-v2.6-flash",
+          "sourceModelUrl": "https://www.vals.ai/models/xiaomi_mimo-v2.6-flash",
+          "reportedScore": 11.25,
+          "embeddedScore": 11.25,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 12,
+          "rawModelLabel": "Qwen 3.8 27B",
+          "modelLabel": "Qwen 3.8 27B",
+          "modelId": "qwen-3-8-27b",
+          "sourceModelId": "alibaba/qwen3.8-27b",
+          "sourceModelUrl": "https://www.vals.ai/models/alibaba_qwen3.8-27b",
+          "reportedScore": 11.25,
+          "embeddedScore": 11.25,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 13,
+          "rawModelLabel": "Claude Fable 5",
+          "modelLabel": "Claude Fable 5",
+          "modelId": "claude-fable-5",
+          "sourceModelId": "anthropic/claude-fable-5",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-fable-5",
+          "reportedScore": 11.25,
+          "embeddedScore": 11.25,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": false
+        },
+        {
+          "rank": 14,
+          "rawModelLabel": "MiMo V2.6 Pro",
+          "modelLabel": "MiMo V2.6 Pro",
+          "modelId": "mimo-v2-6-pro",
+          "sourceModelId": "xiaomi/mimo-v2.6-pro",
+          "sourceModelUrl": "https://www.vals.ai/models/xiaomi_mimo-v2.6-pro",
+          "reportedScore": 10.83,
+          "embeddedScore": 10.833,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 15,
+          "rawModelLabel": "Qwen 3.8 Max",
+          "modelLabel": "Qwen 3.8 Max",
+          "modelId": "qwen-3-8-max",
+          "sourceModelId": "alibaba/qwen3.8-max",
+          "sourceModelUrl": "https://www.vals.ai/models/alibaba_qwen3.8-max",
+          "reportedScore": 10.42,
+          "embeddedScore": 10.417,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 16,
+          "rawModelLabel": "Gemini 3.8 Flash",
+          "modelLabel": "Gemini 3.8 Flash",
+          "modelId": "gemini-3-8-flash",
+          "sourceModelId": "google/gemini-3.8-flash",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3.8-flash",
+          "reportedScore": 10.0,
+          "embeddedScore": 10,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 17,
+          "rawModelLabel": "Claude Opus 4.8",
+          "modelLabel": "Claude Opus 4.8",
+          "modelId": "claude-opus-4-8",
+          "sourceModelId": "anthropic/claude-opus-4-8",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-opus-4-8",
+          "reportedScore": 9.58,
+          "embeddedScore": 9.583,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 18,
+          "rawModelLabel": "Step 5 Preview",
+          "modelLabel": "Step 5 Preview",
+          "modelId": "step-5-preview",
+          "sourceModelId": "stepfun/step-5-preview",
+          "sourceModelUrl": "https://www.vals.ai/models/stepfun_step-5-preview",
+          "reportedScore": 9.17,
+          "embeddedScore": 9.167,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 19,
+          "rawModelLabel": "Hy4 Preview",
+          "modelLabel": "Hy4 Preview",
+          "modelId": "hy4-preview",
+          "sourceModelId": "tencent/hy4-preview",
+          "sourceModelUrl": "https://www.vals.ai/models/tencent_hy4-preview",
+          "reportedScore": 9.17,
+          "embeddedScore": 9.167,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 20,
+          "rawModelLabel": "Ember-1",
+          "modelLabel": "Ember-1",
+          "modelId": "ember-1",
+          "sourceModelId": "fireworks/ember-1",
+          "sourceModelUrl": "https://www.vals.ai/models/fireworks_ember-1",
+          "reportedScore": 9.17,
+          "embeddedScore": 9.167,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 21,
+          "rawModelLabel": "Gemini 3.7 Flash",
+          "modelLabel": "Gemini 3.7 Flash",
+          "modelId": "gemini-3-7-flash",
+          "sourceModelId": "google/gemini-3.7-flash",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3.7-flash",
+          "reportedScore": 8.75,
+          "embeddedScore": 8.75,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 22,
+          "rawModelLabel": "DeepSeek V4 Flash 0731",
+          "modelLabel": "DeepSeek V4 Flash 0731",
+          "modelId": "deepseek-v4-flash-0731",
+          "sourceModelId": "deepseek/deepseek-v4-flash-0731",
+          "sourceModelUrl": "https://www.vals.ai/models/deepseek_deepseek-v4-flash-0731",
+          "reportedScore": 8.33,
+          "embeddedScore": 8.333,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 23,
+          "rawModelLabel": "GLM 5.3",
+          "modelLabel": "GLM 5.3",
+          "modelId": "glm-5-3",
+          "sourceModelId": "zai/glm-5.3",
+          "sourceModelUrl": "https://www.vals.ai/models/zai_glm-5.3",
+          "reportedScore": 8.33,
+          "embeddedScore": 8.333,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 24,
+          "rawModelLabel": "DeepSeek V4 Pro 0813",
+          "modelLabel": "DeepSeek V4 Pro 0813",
+          "modelId": "deepseek-v4-pro-0813",
+          "sourceModelId": "deepseek/deepseek-v4-pro-0813",
+          "sourceModelUrl": "https://www.vals.ai/models/deepseek_deepseek-v4-pro-0813",
+          "reportedScore": 7.5,
+          "embeddedScore": 7.5,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 25,
+          "rawModelLabel": "GLM 5.2",
+          "modelLabel": "GLM 5.2",
+          "modelId": "glm-5-2",
+          "sourceModelId": "zai/glm-5.2",
+          "sourceModelUrl": "https://www.vals.ai/models/zai_glm-5.2",
+          "reportedScore": 7.08,
+          "embeddedScore": 7.083,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 26,
+          "rawModelLabel": "DeepSeek V4.1 Flash",
+          "modelLabel": "DeepSeek V4.1 Flash",
+          "modelId": "deepseek-v4-1-flash",
+          "sourceModelId": "deepseek/deepseek-v4.1-flash",
+          "sourceModelUrl": "https://www.vals.ai/models/deepseek_deepseek-v4.1-flash",
+          "reportedScore": 6.67,
+          "embeddedScore": 6.667,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 27,
+          "rawModelLabel": "Claude Opus 4.7",
+          "modelLabel": "Claude Opus 4.7",
+          "modelId": "claude-opus-4-7",
+          "sourceModelId": "anthropic/claude-opus-4-7",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-opus-4-7",
+          "reportedScore": 6.67,
+          "embeddedScore": 6.667,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 28,
+          "rawModelLabel": "GLM 5.3 Flash",
+          "modelLabel": "GLM 5.3 Flash",
+          "modelId": "glm-5-3-flash",
+          "sourceModelId": "zai/glm-5.3-flash",
+          "sourceModelUrl": "https://www.vals.ai/models/zai_glm-5.3-flash",
+          "reportedScore": 6.67,
+          "embeddedScore": 6.667,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 29,
+          "rawModelLabel": "Claude Opus 5",
+          "modelLabel": "Claude Opus 5",
+          "modelId": "claude-opus-5",
+          "sourceModelId": "anthropic/claude-opus-5",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-opus-5",
+          "reportedScore": 6.67,
+          "embeddedScore": 6.667,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 30,
+          "rawModelLabel": "Claude Fable 5.1",
+          "modelLabel": "Claude Fable 5.1",
+          "modelId": "claude-fable-5-1",
+          "sourceModelId": "anthropic/claude-fable-5-1",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-fable-5-1",
+          "reportedScore": 6.67,
+          "embeddedScore": 6.667,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 31,
+          "rawModelLabel": "GPT-6 Astra",
+          "modelLabel": "GPT-6 Astra",
+          "modelId": "gpt-6-astra",
+          "sourceModelId": "openai/gpt-6-astra",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-6-astra",
+          "reportedScore": 5.42,
+          "embeddedScore": 5.417,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 32,
+          "rawModelLabel": "GPT-6.1 Sol",
+          "modelLabel": "GPT-6.1 Sol",
+          "modelId": "gpt-6-1-sol",
+          "sourceModelId": "openai/gpt-6.1-sol",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-6.1-sol",
+          "reportedScore": 5.42,
+          "embeddedScore": 5.417,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 33,
+          "rawModelLabel": "Claude Sonnet 4.6",
+          "modelLabel": "Claude Sonnet 4.6",
+          "modelId": "claude-sonnet-4-6",
+          "sourceModelId": "anthropic/claude-sonnet-4-6",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-sonnet-4-6",
+          "reportedScore": 5.0,
+          "embeddedScore": 5,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 34,
+          "rawModelLabel": "Claude Sonnet 5",
+          "modelLabel": "Claude Sonnet 5",
+          "modelId": "claude-sonnet-5",
+          "sourceModelId": "anthropic/claude-sonnet-5",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-sonnet-5",
+          "reportedScore": 5.0,
+          "embeddedScore": 5,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 35,
+          "rawModelLabel": "MiniMax-M3",
+          "modelLabel": "MiniMax-M3",
+          "modelId": "minimax-m3",
+          "sourceModelId": "minimax/MiniMax-M3",
+          "sourceModelUrl": "https://www.vals.ai/models/minimax_MiniMax-M3",
+          "reportedScore": 4.17,
+          "embeddedScore": 4.167,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 36,
+          "rawModelLabel": "DeepSeek V4",
+          "modelLabel": "DeepSeek V4",
+          "modelId": "deepseek-v4",
+          "sourceModelId": "deepseek/deepseek-v4-pro",
+          "sourceModelUrl": "https://www.vals.ai/models/deepseek_deepseek-v4-pro",
+          "reportedScore": 3.75,
+          "embeddedScore": 3.75,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 37,
+          "rawModelLabel": "GPT 5.5",
+          "modelLabel": "GPT 5.5",
+          "modelId": "gpt-5-5",
+          "sourceModelId": "openai/gpt-5.5",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5.5",
+          "reportedScore": 3.75,
+          "embeddedScore": 3.75,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 38,
+          "rawModelLabel": "Claude Opus 5.5",
+          "modelLabel": "Claude Opus 5.5",
+          "modelId": "claude-opus-5-5",
+          "sourceModelId": "anthropic/claude-opus-5-5",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-opus-5-5",
+          "reportedScore": 3.75,
+          "embeddedScore": 3.75,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 39,
+          "rawModelLabel": "Gemini 3.6 Flash",
+          "modelLabel": "Gemini 3.6 Flash",
+          "modelId": "gemini-3-6-flash",
+          "sourceModelId": "google/gemini-3.6-flash",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3.6-flash",
+          "reportedScore": 3.33,
+          "embeddedScore": 3.333,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 40,
+          "rawModelLabel": "GPT-6 Luna",
+          "modelLabel": "GPT-6 Luna",
+          "modelId": "gpt-6-luna",
+          "sourceModelId": "openai/gpt-6-luna",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-6-luna",
+          "reportedScore": 2.92,
+          "embeddedScore": 2.917,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 41,
+          "rawModelLabel": "Claude Sonnet 5.5",
+          "modelLabel": "Claude Sonnet 5.5",
+          "modelId": "claude-sonnet-5-5",
+          "sourceModelId": "anthropic/claude-sonnet-5-5",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-sonnet-5-5",
+          "reportedScore": 2.92,
+          "embeddedScore": 2.917,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 42,
+          "rawModelLabel": "Gemini 3.5 Flash",
+          "modelLabel": "Gemini 3.5 Flash",
+          "modelId": "gemini-3-5-flash",
+          "sourceModelId": "google/gemini-3.5-flash",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3.5-flash",
+          "reportedScore": 2.5,
+          "embeddedScore": 2.5,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 43,
+          "rawModelLabel": "GPT-5.6 Sol",
+          "modelLabel": "GPT-5.6 Sol",
+          "modelId": "gpt-5-6-sol",
+          "sourceModelId": "openai/gpt-5.6-sol",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5.6-sol",
+          "reportedScore": 2.5,
+          "embeddedScore": 2.5,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 44,
+          "rawModelLabel": "MiMo V2.5 Pro",
+          "modelLabel": "MiMo V2.5 Pro",
+          "modelId": "mimo-v2-5-pro",
+          "sourceModelId": "xiaomi/mimo-v2.5-pro",
+          "sourceModelUrl": "https://www.vals.ai/models/xiaomi_mimo-v2.5-pro",
+          "reportedScore": 2.08,
+          "embeddedScore": 2.083,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 45,
+          "rawModelLabel": "Inkling",
+          "modelLabel": "Inkling",
+          "modelId": "inkling",
+          "sourceModelId": "thinkingmachines/inkling",
+          "sourceModelUrl": "https://www.vals.ai/models/thinkingmachines_inkling",
+          "reportedScore": 2.08,
+          "embeddedScore": 2.083,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 46,
+          "rawModelLabel": "MiMo V2.5",
+          "modelLabel": "MiMo V2.5",
+          "modelId": "mimo-v2-5",
+          "sourceModelId": "xiaomi/mimo-v2.5",
+          "sourceModelUrl": "https://www.vals.ai/models/xiaomi_mimo-v2.5",
+          "reportedScore": 1.67,
+          "embeddedScore": 1.667,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 47,
+          "rawModelLabel": "GPT-6 Sol",
+          "modelLabel": "GPT-6 Sol",
+          "modelId": "gpt-6-sol",
+          "sourceModelId": "openai/gpt-6-sol",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-6-sol",
+          "reportedScore": 1.67,
+          "embeddedScore": 1.667,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 48,
+          "rawModelLabel": "Kimi K2.6",
+          "modelLabel": "Kimi K2.6",
+          "modelId": "kimi-k2-6",
+          "sourceModelId": "kimi/kimi-k2.6",
+          "sourceModelUrl": "https://www.vals.ai/models/kimi_kimi-k2.6",
+          "reportedScore": 1.67,
+          "embeddedScore": 1.667,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 49,
+          "rawModelLabel": "Inkling Small",
+          "modelLabel": "Inkling Small",
+          "modelId": "inkling-small",
+          "sourceModelId": "thinkingmachines/inkling-small",
+          "sourceModelUrl": "https://www.vals.ai/models/thinkingmachines_inkling-small",
+          "reportedScore": 1.67,
+          "embeddedScore": 1.667,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 50,
+          "rawModelLabel": "Qwen 3.7 Max",
+          "modelLabel": "Qwen 3.7 Max",
+          "modelId": "qwen-3-7-max",
+          "sourceModelId": "alibaba/qwen3.7-max",
+          "sourceModelUrl": "https://www.vals.ai/models/alibaba_qwen3.7-max",
+          "reportedScore": 1.67,
+          "embeddedScore": 1.667,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 51,
+          "rawModelLabel": "Ling 3.0 Flash",
+          "modelLabel": "Ling 3.0 Flash",
+          "modelId": "ling-3-0-flash",
+          "sourceModelId": "ant/ling-3.0-flash-2607",
+          "sourceModelUrl": "https://www.vals.ai/models/ant_ling-3.0-flash-2607",
+          "reportedScore": 1.25,
+          "embeddedScore": 1.25,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 52,
+          "rawModelLabel": "GPT-5.6 Luna",
+          "modelLabel": "GPT-5.6 Luna",
+          "modelId": "gpt-5-6-luna",
+          "sourceModelId": "openai/gpt-5.6-luna",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5.6-luna",
+          "reportedScore": 1.25,
+          "embeddedScore": 1.25,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 53,
+          "rawModelLabel": "Qwen 3.6 Plus",
+          "modelLabel": "Qwen 3.6 Plus",
+          "modelId": "qwen-3-6-plus",
+          "sourceModelId": "alibaba/qwen3.6-plus",
+          "sourceModelUrl": "https://www.vals.ai/models/alibaba_qwen3.6-plus",
+          "reportedScore": 1.25,
+          "embeddedScore": 1.25,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 54,
+          "rawModelLabel": "Claude Haiku 5.5",
+          "modelLabel": "Claude Haiku 5.5",
+          "modelId": "claude-haiku-5-5",
+          "sourceModelId": "anthropic/claude-haiku-5-5",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-haiku-5-5",
+          "reportedScore": 1.25,
+          "embeddedScore": 1.25,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 55,
+          "rawModelLabel": "Claude Haiku 4.5 (Thinking)",
+          "modelLabel": "Claude Haiku 4.5 (Thinking)",
+          "modelId": "claude-haiku-4-5-thinking",
+          "sourceModelId": "anthropic/claude-haiku-4-5-20251001-thinking",
+          "sourceModelUrl": "https://www.vals.ai/models/anthropic_claude-haiku-4-5-20251001-thinking",
+          "reportedScore": 0.83,
+          "embeddedScore": 0.833,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 56,
+          "rawModelLabel": "GPT-5.6 Terra",
+          "modelLabel": "GPT-5.6 Terra",
+          "modelId": "gpt-5-6-terra",
+          "sourceModelId": "openai/gpt-5.6-terra",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5.6-terra",
+          "reportedScore": 0.83,
+          "embeddedScore": 0.833,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 57,
+          "rawModelLabel": "Grok 4.3",
+          "modelLabel": "Grok 4.3",
+          "modelId": "grok-4-3",
+          "sourceModelId": "grok/grok-4.3",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-4.3",
+          "reportedScore": 0.42,
+          "embeddedScore": 0.417,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 58,
+          "rawModelLabel": "Nemotron 3 Ultra",
+          "modelLabel": "Nemotron 3 Ultra",
+          "modelId": "nemotron-3-ultra",
+          "sourceModelId": "nvidia/nemotron-3-ultra-550b-a55b",
+          "sourceModelUrl": "https://www.vals.ai/models/nvidia_nemotron-3-ultra-550b-a55b",
+          "reportedScore": 0.42,
+          "embeddedScore": 0.417,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 59,
+          "rawModelLabel": "Mistral Medium 3.5",
+          "modelLabel": "Mistral Medium 3.5",
+          "modelId": "mistral-medium-3-5",
+          "sourceModelId": "mistralai/mistral-medium-3.5",
+          "sourceModelUrl": "https://www.vals.ai/models/mistralai_mistral-medium-3.5",
+          "reportedScore": 0.42,
+          "embeddedScore": 0.417,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 60,
+          "rawModelLabel": "Gemini 3.1 Flash Lite Preview",
+          "modelLabel": "Gemini 3.1 Flash Lite Preview",
+          "modelId": "gemini-3-1-flash-lite-preview",
+          "sourceModelId": "google/gemini-3.1-flash-lite-preview",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3.1-flash-lite-preview",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 61,
+          "rawModelLabel": "Mercury 2.5",
+          "modelLabel": "Mercury 2.5",
+          "modelId": "mercury-2-5",
+          "sourceModelId": "inception/mercury-2.5",
+          "sourceModelUrl": "https://www.vals.ai/models/inception_mercury-2.5",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 62,
+          "rawModelLabel": "Gemini 3 Flash (12/25)",
+          "modelLabel": "Gemini 3 Flash (12/25)",
+          "modelId": "gemini-3-flash-12-25",
+          "sourceModelId": "google/gemini-3-flash-preview",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3-flash-preview",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 63,
+          "rawModelLabel": "Gemini 3.5 Flash Lite",
+          "modelLabel": "Gemini 3.5 Flash Lite",
+          "modelId": "gemini-3-5-flash-lite",
+          "sourceModelId": "google/gemini-3.5-flash-lite",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3.5-flash-lite",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 64,
+          "rawModelLabel": "Ling 3.0 Flash Fin",
+          "modelLabel": "Ling 3.0 Flash Fin",
+          "modelId": "ling-3-0-flash-fin",
+          "sourceModelId": "ant/ling-3.0-flash-af-rc3",
+          "sourceModelUrl": "https://www.vals.ai/models/ant_ling-3.0-flash-fin",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 65,
+          "rawModelLabel": "GPT 5.4 Nano",
+          "modelLabel": "GPT 5.4 Nano",
+          "modelId": "gpt-5-4-nano",
+          "sourceModelId": "openai/gpt-5.4-nano-2026-03-17",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5.4-nano-2026-03-17",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 66,
+          "rawModelLabel": "MiniMax-M2.7",
+          "modelLabel": "MiniMax-M2.7",
+          "modelId": "minimax-m2-7",
+          "sourceModelId": "minimax/MiniMax-M2.7",
+          "sourceModelUrl": "https://www.vals.ai/models/minimax_MiniMax-M2.7",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 67,
+          "rawModelLabel": "Gemini 3.1 Pro Preview (02/26)",
+          "modelLabel": "Gemini 3.1 Pro Preview (02/26)",
+          "modelId": "gemini-3-1-pro-preview-02-26",
+          "sourceModelId": "google/gemini-3.1-pro-preview",
+          "sourceModelUrl": "https://www.vals.ai/models/google_gemini-3.1-pro-preview",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 68,
+          "rawModelLabel": "Laguna M.1",
+          "modelLabel": "Laguna M.1",
+          "modelId": "laguna-m-1",
+          "sourceModelId": "poolside/laguna-m.1",
+          "sourceModelUrl": "https://www.vals.ai/models/poolside_laguna-m.1",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 69,
+          "rawModelLabel": "GLM 5.1",
+          "modelLabel": "GLM 5.1",
+          "modelId": "glm-5-1",
+          "sourceModelId": "zai/glm-5.1",
+          "sourceModelUrl": "https://www.vals.ai/models/zai_glm-5.1",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 70,
+          "rawModelLabel": "Grok 4.20 (Reasoning)",
+          "modelLabel": "Grok 4.20 (Reasoning)",
+          "modelId": "grok-4-20-reasoning",
+          "sourceModelId": "grok/grok-4.20-0309-reasoning",
+          "sourceModelUrl": "https://www.vals.ai/models/grok_grok-4.20-0309-reasoning",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 71,
+          "rawModelLabel": "Qwen 3.7 Plus",
+          "modelLabel": "Qwen 3.7 Plus",
+          "modelId": "qwen-3-7-plus",
+          "sourceModelId": "alibaba/qwen3.7-plus",
+          "sourceModelUrl": "https://www.vals.ai/models/alibaba_qwen3.7-plus",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 72,
+          "rawModelLabel": "GPT 5.4 Mini",
+          "modelLabel": "GPT 5.4 Mini",
+          "modelId": "gpt-5-4-mini",
+          "sourceModelId": "openai/gpt-5.4-mini-2026-03-17",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5.4-mini-2026-03-17",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 73,
+          "rawModelLabel": "GPT 5.4 (xhigh)",
+          "modelLabel": "GPT 5.4 (xhigh)",
+          "modelId": "gpt-5-4-xhigh",
+          "sourceModelId": "openai/gpt-5.4-2026-03-05",
+          "sourceModelUrl": "https://www.vals.ai/models/openai_gpt-5.4-2026-03-05",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 74,
+          "rawModelLabel": "Laguna XS.2",
+          "modelLabel": "Laguna XS.2",
+          "modelId": "laguna-xs-2",
+          "sourceModelId": "poolside/laguna-xs.2",
+          "sourceModelUrl": "https://www.vals.ai/models/poolside_laguna-xs.2",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 75,
+          "rawModelLabel": "Kimi K2.5",
+          "modelLabel": "Kimi K2.5",
+          "modelId": "kimi-k2-5",
+          "sourceModelId": "kimi/kimi-k2.5-thinking",
+          "sourceModelUrl": "https://www.vals.ai/models/kimi_kimi-k2.5-thinking",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        },
+        {
+          "rank": 76,
+          "rawModelLabel": "Nemotron 3.5 Lightning",
+          "modelLabel": "Nemotron 3.5 Lightning",
+          "modelId": "nemotron-3-5-lightning",
+          "sourceModelId": "fireworks/nemotron-lightning-3p5-30b-a3b",
+          "sourceModelUrl": "https://www.vals.ai/models/fireworks_nemotron-lightning-3p5-30b-a3b",
+          "reportedScore": 0.0,
+          "embeddedScore": 0,
+          "scoreUnit": "percent",
+          "modelSettings": {},
+          "eligible": true
+        }
+      ]
+    }
+  ],
+  "identityPolicy": "Slug lowercase labels, encode literal plus signs as -plus-, replace every remaining non-ASCII-alphanumeric run with hyphen, trim hyphens. Exact displayed labels remain distinct; duplicate Grok display labels add URL-verified High reasoning/Low reasoning suffixes. No semantic model aliases.",
+  "providerGroupingCaveat": "Open models is a broad UI group for non-primary model families and hosted open-family models; it is not a verified statement of downloadable weights or licensing. Native provider/source identity is retained per row.",
+  "supplementaryIdentitySource": {
+    "url": "https://www.vals.ai/models/ant_ling-3.0-flash-fin",
+    "sha256": "9378b4ca77462130dae2b6e99ddf8f14458f858194b908c78bd2e2ae51462753",
+    "rawPath": ".tmp/insurance-bench/composite-sources/vals-ling-fin.html",
+    "finding": "Model page selectedModel and modelKey explicitly map display label Ling 3.0 Flash Fin to ant/ling-3.0-flash-af-rc3; LegalBench 68.74 and LAB 0.00 agree."
+  },
+  "officialHarveyInitialResults": {
+    "url": "https://www.harvey.ai/blog/legal-agent-benchmark-initial-results",
+    "sha256": "b50acd6dfc639f17f7dfccb43fde6ce22781d12e5358f0947a1d07020b4209dd",
+    "rawPath": ".tmp/insurance-bench/composite-sources/harvey-initial-results.html",
+    "publishedAt": "2026-05-26",
+    "metric": "all-pass percentage on Harvey hold-out",
+    "rows": [
+      {
+        "model": "Claude Opus 4.7",
+        "score": 7.1
+      },
+      {
+        "model": "Claude Sonnet 4.6",
+        "score": 5.4
+      },
+      {
+        "model": "Claude Opus 4.6",
+        "score": 4.2
+      },
+      {
+        "model": "GPT-5.5",
+        "score": 2.1
+      },
+      {
+        "model": "Gemini 3.5 Flash",
+        "score": 0.8
+      }
+    ],
+    "use": "Provenance and cohort comparison only; not a replacement for the pinned Vals cohort or composite observation.",
+    "caveats": [
+      "Harvey initial results and Vals live results are separate operator snapshots with distinct scores; do not average or overwrite them."
+    ]
+  }
+}

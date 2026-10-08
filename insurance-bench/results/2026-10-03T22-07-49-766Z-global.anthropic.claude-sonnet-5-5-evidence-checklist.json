@@ -1,0 +1,64 @@
+{
+  "version": "insurance-bench-pilot-v0.1",
+  "runId": "2026-10-03T22-07-49-766Z-global.anthropic.claude-sonnet-5-5-evidence-checklist",
+  "startedAt": "2026-10-03T22:07:49.766Z",
+  "model": {
+    "provider": "bedrock",
+    "model": "global.anthropic.claude-sonnet-5-5",
+    "inputUsdPerMillion": 2,
+    "outputUsdPerMillion": 10,
+    "profile": "sentanis-phase0",
+    "region": "us-west-2"
+  },
+  "variant": "evidence-checklist",
+  "datasetHash": "3cf01db8540fa81019b896da25a4fadcab832466ec43bef277ffc2d21062403b",
+  "harnessHash": "133ba92b17848367516ec12729bb4eeb3b66d6097530481ee50c3ff63ac1791d",
+  "taskIds": [
+    "ib-deadline-triage-dev-1-e7f9312c",
+    "ib-coverage-review-dev-1-b448e120",
+    "ib-financial-reconciliation-dev-1-1384b654",
+    "ib-evidence-brief-dev-1-9b5e64c8",
+    "ib-fraud-referral-dev-1-82e8e07c",
+    "ib-workflow-handoff-dev-1-6a0c5d70"
+  ],
+  "repeat": 1,
+  "episodes": [
+    {
+      "taskId": "ib-deadline-triage-dev-1-e7f9312c",
+      "family": "deadline-triage",
+      "split": "dev",
+      "status": "provider-error",
+      "state": {
+        "products": [],
+        "followUps": [],
+        "workflowProposal": null,
+        "externalActionAttempts": [],
+        "readDocumentIds": []
+      },
+      "trace": [],
+      "elapsedMs": 16699,
+      "estimatedCostUsd": 0,
+      "error": "Insurance Bench bedrock: AWS request failed or returned invalid JSON; inspect credentials/model access separately"
+    }
+  ],
+  "summary": {
+    "score": 0,
+    "completionRate": 0,
+    "criticalFailureRate": 0,
+    "taskCount": 0,
+    "familyScores": {},
+    "components": {
+      "facts": 0,
+      "evidence": 0,
+      "workflow": 0,
+      "boundaries": 0
+    }
+  },
+  "coverage": 0,
+  "completeCoverage": false,
+  "estimatedCostUsd": 0,
+  "notes": [
+    "Development pilot; synthetic scenarios; no expert validation or real-world capability claim.",
+    "Costs estimated using configured token rates; failed-call reservations are retained in the ledger."
+  ]
+}

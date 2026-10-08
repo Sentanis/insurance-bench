@@ -1,0 +1,216 @@
+{
+  "schema": "insurance-bench-v12-controller-independent-review-v1",
+  "reviewedAt": "2026-10-05T03:52:47.936157+00:00",
+  "disposition": "approve-engineering-only",
+  "controllerPath": ".tmp/insurance-bench/v12-panels.ts",
+  "controllerSha256": "a97106aef00d478cc846ac796f57fb516efe30fcf89af195f896cd1bcf4d2344",
+  "planPath": "specs/features/insurance-bench/v12-development-plan.md",
+  "planSha256": "753c3d3182c7926993203526f1782e2c593957f779a5a59ffa5ae067f1ccb10b",
+  "sourceFingerprint": "3591d68f82595fc8d02f4722fbfd6a4b927541d2964db1ac7062533de7787256",
+  "fullCorpusHash": "f8e0df627c9334131c2beba32dae5bf0e85d32883ef3108ddd6d42b4d4889eeb",
+  "parentControlSha256": {
+    "insurance-bench/results/meta/v11-development-independent-audit.json": "2f6ed5b0219fe49b02e50b0b78fe16ee51b8e8527170f61fdfc5d436d150b21d",
+    "insurance-bench/results/meta/v11-registration.json": "16fb33a1840c171ca1b7e9b6391e005ffe7427d2a48c839d754093c12c36c14c",
+    "insurance-bench/results/meta/v11-dispatch-01-sol-high-dev.json": "4f8e2be5979eed69b8b2f82d82ccbe6acc4007e320af1456aafb56c86d6551cf",
+    "insurance-bench/results/meta/v11-dispatch-02-sol-low-dev.json": "44c89ac3ffb836d1d6f4febc00e5dfa9bc97e49209a8a3f83c2f58d1460c596a",
+    "insurance-bench/results/meta/v11-dispatch-03-luna-low-dev.json": "c507fea6d4f4b67f13f2a127906547b776fd3328c9bd8d60701cb0b9ba95006d",
+    "insurance-bench/results/meta/v11-dispatch-04-luna-high-dev.json": "ea0d42c696be32c1e240c011811d916c660bb85b9e37ae9bf44bee87b092462a"
+  },
+  "supplementaryEngineeringSha256": {
+    "insurance-bench/results/meta/v12-candidate-independent-audit.json": "764f9e0d9a553d8d1825c6690b71526f7d6c5f1a0759047f742045142881ffbe",
+    "insurance-bench/results/meta/dependency-allocation-runner-independent-review-v0.12.json": "5900e3a27b7e0b51cd54a33045603351170bcf4d0256824f6526ca6c4829720a",
+    "insurance-bench/results/meta/v12-independent-opus-review.json": "fa69594fcb9c80552acd38e49da51be9aef1c4b246a8ad713753a70bfd746f7e"
+  },
+  "method": [
+    "Read complete controller and fixed development plan; inspected already-approved parent v11 control metadata and current source/runtime/partial-hand Opus approval metadata only.",
+    "Isolated temporary Git repository supplies synthetic ledger, registration, audits, models and three tasks. Public runner/generator imports replaced with explicit fixture stubs; child spawn replaced with throwing mock. Actual controller prepare/validate and failing run guards exercised only in that fixture.",
+    "Fixture original source SHA binds exact reviewed controller; strict standalone TypeScript compile includes ignored controller with noUncheckedIndexedAccess.",
+    "No real ledger, auth, provider, live claim, held/model outcome or new-registration access; no real controller or report builder execution."
+  ],
+  "verification": {
+    "strictTypeScript": "PASS",
+    "mockControls": [
+      {
+        "control": "valid zero-cost fixture prepare",
+        "passed": true,
+        "exitCode": 0
+      },
+      {
+        "control": "valid zero-cost fixture validation",
+        "passed": true,
+        "exitCode": 0
+      },
+      {
+        "control": "canonical root rejection",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "no holdout stage",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "no release option",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "ledger cap cannot reset",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "ledger floor cannot shrink",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "whole forecast checked before registration",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "missing existing ledger",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "selection drift",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "corpus drift",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "model configuration drift",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "wrong panel order",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "changed task identities",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "changed prompt hash",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "changed output limit",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "receipt path drift",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "unfinished parent audit",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "parent receipt identity drift",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "runtime review mismatch",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "whole remaining forecast checked before dispatch",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "no duplicate panel dispatch",
+        "passed": true,
+        "exitCode": 1
+      },
+      {
+        "control": "git committed exact-source rejection",
+        "passed": true,
+        "exitCode": 1
+      }
+    ],
+    "mockPassed": 23,
+    "providerCalls": 0,
+    "realLedgerReads": 0,
+    "realNativeReads": 0,
+    "sourceControlMetadataOnly": true
+  },
+  "resolvedFindings": [
+    {
+      "id": "V12-C01",
+      "finding": "Supplied holdout stage formerly rejected after control/ledger reads.",
+      "resolution": "Root now rejects any supplied stage other than dev before ledger/control/selection reads; fixture rejection also exercised with missing ledger."
+    },
+    {
+      "id": "V12-C02",
+      "finding": "matches[0] destructure remained possibly undefined under strict noUncheckedIndexedAccess.",
+      "resolution": "Root asserts the selected element after matches.length===1; direct strict compile passes."
+    }
+  ],
+  "findings": [],
+  "fixedConditions": {
+    "generation": "insurance-bench-dependency-allocation-v0.12",
+    "seed": 1200419,
+    "split": "dev-only",
+    "perFamily": 1,
+    "caseOffset": 0,
+    "taskIds": [
+      "ibda-coverage-review-dev-1-761c0426",
+      "ibda-financial-reconciliation-dev-1-248bf6ba",
+      "ibda-deadline-triage-dev-1-d1cbe88e"
+    ],
+    "panels": [
+      {
+        "id": "01-sol-high-dev",
+        "modelAlias": "gpt-6.1-sol-high",
+        "forecastUsd": 2
+      },
+      {
+        "id": "02-luna-high-dev",
+        "modelAlias": "gpt-6-luna-high",
+        "forecastUsd": 0.5
+      }
+    ],
+    "totalForecastUsd": 2.5,
+    "capUsd": 75,
+    "ledgerMinimumReservedUsd": 72.26526888750007,
+    "responseFormat": "json_object",
+    "variant": "baseline",
+    "repeat": 1,
+    "maxTurns": 20,
+    "maxOutputTokens": 16384,
+    "transportDeadlineSeconds": 600
+  },
+  "limitations": [
+    "Engineering admission only; review is not an inference dispatch, reservation, affordability invoice, native result, accepted calibration or insurance-expert validity.",
+    "Forecasts may understate actual usage. Existing authoritative ledger is checked at actual preparation and every remaining dispatch; this reviewer did not read it.",
+    "Three correlated anchors per condition give 33.33-point macro steps and cannot localize a 50\u201360 frontier target. Only high-effort tier comparison is prospective.",
+    "Opus review independently hands only phase1 of one task, with partial later-phase reasoning. Full non-author source/runtime audit is distinct; no full-hand coverage claim.",
+    "Cumulative truncation does not erase configured raw observations, but bars a clean paired tier comparison. Provider/model/process/material-cost failures pause dispatch; prior incomplete coverage prevents next serial dispatch.",
+    "Current review exact-byte binding becomes stale on any controller change; registration/freeze/native audits remain separate mandatory gates.",
+    "Fixture corpus and source modules are deliberately stubbed; semantic case/gold correctness is provided by separate non-author source audit, not these controller tests."
+  ],
+  "reproduction": {
+    "scriptPath": "insurance-bench/results/meta/v12-controller-independent-review-repro.txt",
+    "scriptSha256": "e3227068ebc24a115c5fa28301dba45f26b850ee1f032513d4e57b2a0f7dd21f",
+    "command": "Copy insurance-bench/results/meta/v12-controller-independent-review-repro.txt to .tmp/insurance-bench/v12-controller-independent-review.py, then run python3 .tmp/insurance-bench/v12-controller-independent-review.py from repository root.",
+    "strictCompile": "npx tsc --ignoreConfig --noEmit --module nodenext --target es2022 --types node --allowImportingTsExtensions --strict --noUncheckedIndexedAccess --skipLibCheck .tmp/insurance-bench/v12-panels.ts"
+  }
+}

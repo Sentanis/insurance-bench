@@ -1,0 +1,1408 @@
+{
+  "schema": "insurance-bench-dependency-allocation-author-controls-v0.12-v1",
+  "preparedAt": "2026-10-05T02:09:24.305Z",
+  "status": "engineering-author-controls-pass-conditional-unregistered",
+  "seed": 1200419,
+  "hypothesis": {
+    "id": "H10",
+    "statement": "Current signed internal proposal components introduce co-selection prerequisites and pairwise exclusions beyond additive capacity optimization. Correct current source reconciliation must produce an actually recorded feasible objective-optimal whole bundle.",
+    "conditionalAdmission": "Only consider a separately registered measured loop if parent finds frontier ceiling persists in frozenv11 and remaining existingcap affords it; no newcap, paidplan or calls authorized by this artifact.",
+    "notEstablished": [
+      "Empirical difficulty",
+      "Frontier ability discrimination",
+      "Insurance professional validity",
+      "Independent non-author correctness review"
+    ]
+  },
+  "corpusHash": "f8e0df627c9334131c2beba32dae5bf0e85d32883ef3108ddd6d42b4d4889eeb",
+  "sourceHashes": {
+    "insurance-bench/dependency-allocation-core.ts": "4859cea3775b0e352570268cc1dd7d45f1aae34860a4fa8ddb0bfc049edffa82",
+    "insurance-bench/dependency-allocation-cases.ts": "9618f143f7abd34b4c7c592c4abf2cdb60fa89286c098eed6cf7c12931e2a4b8",
+    "insurance-bench/dependency-allocation-engine.ts": "ee60f18b55aaf7fce29a4637602a6f27b1c41184729bca50169987235e399d98",
+    "test/insurance-bench-dependency-allocation-cases.test.ts": "810fa6cddb2dbc6ff2e0bd703d3e7f7f90573d86f2596055cd50bd01e655800b",
+    "insurance-bench/allocation-interaction-core.ts": "e4d02a659dc24f4dea3bb4234cd57b8185aac0b78b2bbdc78c575248c6dfcbae",
+    "insurance-bench/allocation-interaction-cases.ts": "f954ead8bc903df06a18f116478f6862ebb163058576446c577b33dc8c79d368",
+    "insurance-bench/allocation-interaction-engine.ts": "0ef6e2c879a4acfa52b3017113e4b8d814fb8f9c426ee6abdab171b5455a3358",
+    "insurance-bench/allocation-interaction-workflows.ts": "4cce168812d14e7e3324ee9107964321c15aea03a418ed2ec22336d125a8f0b7",
+    "insurance-bench/workflow-types.ts": "13fbf5b455d706c06eec4bedb81c935f5fd7cfdae3b079c28ecf18af5b8d9155"
+  },
+  "scope": "Only new v12core/cases/adapter/tests/author metadata; no old frozen source/nativegrade edits, model-output/live/auth/ledger reads, calls, registration or commits.",
+  "counts": {
+    "tasks": 12,
+    "development": 6,
+    "freshHeldSourceConstruction": 6,
+    "sourcePhases": 36,
+    "factualOutputs": 684,
+    "factsPerPhase": 19,
+    "businessFields": 8,
+    "packagesPerPhase": 18,
+    "subsetLeavesPerPhase": 262144,
+    "totalAuthorIndependentRecursiveSubsetLeaves": 9437184,
+    "actualFinalTieOracleExecutions": 35,
+    "protectedPostFinishOracleAttempts": 3,
+    "focusedControls": 14
+  },
+  "publicContract": {
+    "qualification": "Within this occurrence, highest signed positive integer package revision effective no later than readingclock; unsigned/future revisions ignored. Equal eligible revisions must agree on all operative contract terms; order-equivalent arrays/fieldkeys accepted. No external role/IAM used.",
+    "individualEligibility": "Offered current catalog components use the inherited coverage/receipt/deadline/unallocated-key rules. A dependent can be individually eligible when its prerequisite is unavailable/ineligible; eligiblePackageIds does not claim whole-plan feasibility.",
+    "wholePlan": "All chosen components individually eligible; costs/claimant allocations sum within shared/per-person capacities. Each requiredPackageId must be co-selected; cycles legal only as complete all-or-none bundles. A pair cannot coexist if either chosen component excludes the other; selfexclusion makes selection infeasible; a missing required ID makes selection infeasible. All feasible tied objective maxima and IDorders accepted.",
+    "defaultArrays": "OptionalrequiresPackageIds/excludesPackageIds defaultempty; malformed or duplicate reference arrays rejected as invalid sourcecontract, never silently coerced.",
+    "actualWrite": "Current business/history must contain real feasible optimal bundle and matching source-derived cost/priority at supplied current review, material and draft revisions; scalarassertion alone insufficient.",
+    "authority": "Frozen repairedv11workflow logs prohibitedintent beforefinished/sessionconflict; no payment, coverage decision, externalsend or human signoff."
+  },
+  "verification": {
+    "nodeCommand": "node --import tsx --test test/insurance-bench-dependency-allocation-cases.test.ts",
+    "focusedNodeTests": "14pass(~2.6s)",
+    "lint": "pass new4TypeScriptfiles",
+    "strictTypecheck": "pass: npx tsc --noEmit --pretty false exits0 after final source and test-only controls",
+    "sourceAlgorithmIndependence": "Author test interpreter reads raw rows, independently selects versions/netsmoney/derivesdates and uses unconditional binary recursion for all9,437,184leaves, checking reference-ID sets at feasiblecapacity leaves. Engine uses isolated cached Gray-code enumeration with compiled referencebitmasks. No normalized targets/proof annotations read by raw interpreter.",
+    "coverage": "All19facts,normalizedpackages/capacities,feasiblecounts and everyoptimal tied subset agree in all36states; every independently feasible selection passes evaluator.",
+    "actualOracle": "All12freshcases/everyfinaltied optimum achieve100/allPass through actual scopedrequest,bothmaterialchanges,read/rebuild/revise/suppliedreview/currentbusiness/followup/propose/finish. All3postfinishillegalprotectedintentsproducecritical0/falseallpass with historypreserved.",
+    "literalControls": "Hand8-maskprerequisite/exclusiontruthmatrix;completecyclicbundle;unknownprerequisite;ineligibleprerequisite;selfexclusion;allties/order;initial/response/final firstcase vectors18/22/22;dominatedadditivecomponentscannotbepruned;wrongledger/policy/scope/date;future/unsigned/equalcopycontractselection;currentwritewithmissingprerequisitefails;missinghistory/stalereview/duplicate/unknownIDfail.",
+    "allCasesBothOptimalSetsChange": true,
+    "safeForInference": false
+  },
+  "measurements": {
+    "method": "StaticUTF8JSON id/title/revision/rows excluding duplicate archive text; completefacts and actual8business JSON. These are bytes, not tokenizer estimates/shortest-proof bounds or evidenceofempiricalhardness.",
+    "frozenV11": {
+      "publicSourceBytes": {
+        "min": 16576,
+        "max": 17002
+      },
+      "publicRowCount": {
+        "min": 69,
+        "max": 71
+      },
+      "fixedAuthorCertificateRows": {
+        "min": 49,
+        "max": 51
+      },
+      "factsOutputBytes": {
+        "min": 785,
+        "max": 1505
+      },
+      "actualBusinessOutputBytes": {
+        "min": 300,
+        "max": 328
+      },
+      "finalSelectedCardinalities": [
+        2
+      ]
+    },
+    "prototypeV12": {
+      "publicSourceBytes": {
+        "min": 19669,
+        "max": 20381
+      },
+      "publicRowCount": {
+        "min": 71,
+        "max": 74
+      },
+      "fixedAuthorCertificateRows": {
+        "min": 50,
+        "max": 53
+      },
+      "factsOutputBytes": {
+        "min": 640,
+        "max": 863
+      },
+      "actualBusinessOutputBytes": {
+        "min": 286,
+        "max": 306
+      },
+      "finalSelectedCardinalities": [
+        4,
+        5
+      ]
+    }
+  },
+  "sourceCases": [
+    {
+      "id": "ibda-coverage-review-dev-1-761c0426",
+      "family": "coverage-review",
+      "split": "dev",
+      "phases": [
+        {
+          "packages": 18,
+          "eligible": 6,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 6000,
+            "B": 6000,
+            "C": 7200
+          },
+          "sharedAvailable": 12000,
+          "optimalValue": 18,
+          "optimalPlans": [
+            [
+              "dx-761c0426-Q1",
+              "dx-761c0426-Q2",
+              "dx-761c0426-Q7",
+              "dx-761c0426-Q8"
+            ],
+            [
+              "dx-761c0426-Q1",
+              "dx-761c0426-Q2",
+              "dx-761c0426-Q10",
+              "dx-761c0426-Q16"
+            ]
+          ],
+          "feasiblePlanCount": 14,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 6000,
+            "B": 6000,
+            "C": 6000
+          },
+          "sharedAvailable": 12000,
+          "optimalValue": 22,
+          "optimalPlans": [
+            [
+              "dx-761c0426-Q1",
+              "dx-761c0426-Q2",
+              "dx-761c0426-Q4",
+              "dx-761c0426-Q5"
+            ],
+            [
+              "dx-761c0426-Q2",
+              "dx-761c0426-Q3",
+              "dx-761c0426-Q5",
+              "dx-761c0426-Q6"
+            ],
+            [
+              "dx-761c0426-Q1",
+              "dx-761c0426-Q3",
+              "dx-761c0426-Q4",
+              "dx-761c0426-Q6"
+            ]
+          ],
+          "feasiblePlanCount": 215,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 7,
+          "personAvailable": {
+            "A": 3600,
+            "B": 6000,
+            "C": 6000
+          },
+          "sharedAvailable": 12000,
+          "optimalValue": 22,
+          "optimalPlans": [
+            [
+              "dx-761c0426-Q2",
+              "dx-761c0426-Q3",
+              "dx-761c0426-Q5",
+              "dx-761c0426-Q6"
+            ]
+          ],
+          "feasiblePlanCount": 153,
+          "subsetsExamined": 262144
+        }
+      ]
+    },
+    {
+      "id": "ibda-coverage-review-dev-2-cd384d4d",
+      "family": "coverage-review",
+      "split": "dev",
+      "phases": [
+        {
+          "packages": 18,
+          "eligible": 6,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 5500,
+            "B": 5500,
+            "C": 6600
+          },
+          "sharedAvailable": 11000,
+          "optimalValue": 18,
+          "optimalPlans": [
+            [
+              "dx-cd384d4d-Q1",
+              "dx-cd384d4d-Q2",
+              "dx-cd384d4d-Q7",
+              "dx-cd384d4d-Q8"
+            ],
+            [
+              "dx-cd384d4d-Q1",
+              "dx-cd384d4d-Q2",
+              "dx-cd384d4d-Q10",
+              "dx-cd384d4d-Q16"
+            ]
+          ],
+          "feasiblePlanCount": 14,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 5500,
+            "B": 5500,
+            "C": 5500
+          },
+          "sharedAvailable": 11000,
+          "optimalValue": 22,
+          "optimalPlans": [
+            [
+              "dx-cd384d4d-Q1",
+              "dx-cd384d4d-Q2",
+              "dx-cd384d4d-Q4",
+              "dx-cd384d4d-Q5"
+            ],
+            [
+              "dx-cd384d4d-Q2",
+              "dx-cd384d4d-Q3",
+              "dx-cd384d4d-Q5",
+              "dx-cd384d4d-Q6"
+            ],
+            [
+              "dx-cd384d4d-Q1",
+              "dx-cd384d4d-Q3",
+              "dx-cd384d4d-Q4",
+              "dx-cd384d4d-Q6"
+            ]
+          ],
+          "feasiblePlanCount": 215,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 7,
+          "personAvailable": {
+            "A": 5500,
+            "B": 1100,
+            "C": 5500
+          },
+          "sharedAvailable": 11000,
+          "optimalValue": 20,
+          "optimalPlans": [
+            [
+              "dx-cd384d4d-Q1",
+              "dx-cd384d4d-Q3",
+              "dx-cd384d4d-Q6",
+              "dx-cd384d4d-Q7"
+            ],
+            [
+              "dx-cd384d4d-Q1",
+              "dx-cd384d4d-Q3",
+              "dx-cd384d4d-Q4",
+              "dx-cd384d4d-Q9"
+            ],
+            [
+              "dx-cd384d4d-Q1",
+              "dx-cd384d4d-Q3",
+              "dx-cd384d4d-Q4",
+              "dx-cd384d4d-Q14"
+            ]
+          ],
+          "feasiblePlanCount": 66,
+          "subsetsExamined": 262144
+        }
+      ]
+    },
+    {
+      "id": "ibda-coverage-review-holdout-1-a39c8e48",
+      "family": "coverage-review",
+      "split": "holdout",
+      "phases": [
+        {
+          "packages": 18,
+          "eligible": 6,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 6000,
+            "B": 6000,
+            "C": 7200
+          },
+          "sharedAvailable": 12000,
+          "optimalValue": 18,
+          "optimalPlans": [
+            [
+              "dx-a39c8e48-Q1",
+              "dx-a39c8e48-Q2",
+              "dx-a39c8e48-Q7",
+              "dx-a39c8e48-Q8"
+            ],
+            [
+              "dx-a39c8e48-Q1",
+              "dx-a39c8e48-Q2",
+              "dx-a39c8e48-Q10",
+              "dx-a39c8e48-Q16"
+            ]
+          ],
+          "feasiblePlanCount": 14,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 6000,
+            "B": 6000,
+            "C": 6000
+          },
+          "sharedAvailable": 12000,
+          "optimalValue": 22,
+          "optimalPlans": [
+            [
+              "dx-a39c8e48-Q1",
+              "dx-a39c8e48-Q2",
+              "dx-a39c8e48-Q4",
+              "dx-a39c8e48-Q5"
+            ],
+            [
+              "dx-a39c8e48-Q2",
+              "dx-a39c8e48-Q3",
+              "dx-a39c8e48-Q5",
+              "dx-a39c8e48-Q6"
+            ],
+            [
+              "dx-a39c8e48-Q1",
+              "dx-a39c8e48-Q3",
+              "dx-a39c8e48-Q4",
+              "dx-a39c8e48-Q6"
+            ]
+          ],
+          "feasiblePlanCount": 215,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 7,
+          "personAvailable": {
+            "A": 6000,
+            "B": 6000,
+            "C": 3600
+          },
+          "sharedAvailable": 12000,
+          "optimalValue": 21,
+          "optimalPlans": [
+            [
+              "dx-a39c8e48-Q1",
+              "dx-a39c8e48-Q2",
+              "dx-a39c8e48-Q3",
+              "dx-a39c8e48-Q6",
+              "dx-a39c8e48-Q7"
+            ],
+            [
+              "dx-a39c8e48-Q1",
+              "dx-a39c8e48-Q2",
+              "dx-a39c8e48-Q3",
+              "dx-a39c8e48-Q5",
+              "dx-a39c8e48-Q7"
+            ],
+            [
+              "dx-a39c8e48-Q1",
+              "dx-a39c8e48-Q2",
+              "dx-a39c8e48-Q3",
+              "dx-a39c8e48-Q6",
+              "dx-a39c8e48-Q8"
+            ],
+            [
+              "dx-a39c8e48-Q1",
+              "dx-a39c8e48-Q2",
+              "dx-a39c8e48-Q3",
+              "dx-a39c8e48-Q4",
+              "dx-a39c8e48-Q8"
+            ],
+            [
+              "dx-a39c8e48-Q1",
+              "dx-a39c8e48-Q2",
+              "dx-a39c8e48-Q5",
+              "dx-a39c8e48-Q10"
+            ],
+            [
+              "dx-a39c8e48-Q1",
+              "dx-a39c8e48-Q2",
+              "dx-a39c8e48-Q4",
+              "dx-a39c8e48-Q10"
+            ],
+            [
+              "dx-a39c8e48-Q1",
+              "dx-a39c8e48-Q2",
+              "dx-a39c8e48-Q3",
+              "dx-a39c8e48-Q5",
+              "dx-a39c8e48-Q11"
+            ],
+            [
+              "dx-a39c8e48-Q1",
+              "dx-a39c8e48-Q2",
+              "dx-a39c8e48-Q3",
+              "dx-a39c8e48-Q4",
+              "dx-a39c8e48-Q11"
+            ]
+          ],
+          "feasiblePlanCount": 128,
+          "subsetsExamined": 262144
+        }
+      ]
+    },
+    {
+      "id": "ibda-coverage-review-holdout-2-d11add07",
+      "family": "coverage-review",
+      "split": "holdout",
+      "phases": [
+        {
+          "packages": 18,
+          "eligible": 6,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 5500,
+            "B": 5500,
+            "C": 6600
+          },
+          "sharedAvailable": 11000,
+          "optimalValue": 18,
+          "optimalPlans": [
+            [
+              "dx-d11add07-Q1",
+              "dx-d11add07-Q2",
+              "dx-d11add07-Q7",
+              "dx-d11add07-Q8"
+            ],
+            [
+              "dx-d11add07-Q1",
+              "dx-d11add07-Q2",
+              "dx-d11add07-Q10",
+              "dx-d11add07-Q16"
+            ]
+          ],
+          "feasiblePlanCount": 14,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 5500,
+            "B": 5500,
+            "C": 5500
+          },
+          "sharedAvailable": 11000,
+          "optimalValue": 22,
+          "optimalPlans": [
+            [
+              "dx-d11add07-Q1",
+              "dx-d11add07-Q2",
+              "dx-d11add07-Q4",
+              "dx-d11add07-Q5"
+            ],
+            [
+              "dx-d11add07-Q2",
+              "dx-d11add07-Q3",
+              "dx-d11add07-Q5",
+              "dx-d11add07-Q6"
+            ],
+            [
+              "dx-d11add07-Q1",
+              "dx-d11add07-Q3",
+              "dx-d11add07-Q4",
+              "dx-d11add07-Q6"
+            ]
+          ],
+          "feasiblePlanCount": 215,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 7,
+          "personAvailable": {
+            "A": 5500,
+            "B": 5500,
+            "C": 5500
+          },
+          "sharedAvailable": 12100,
+          "optimalValue": 26,
+          "optimalPlans": [
+            [
+              "dx-d11add07-Q1",
+              "dx-d11add07-Q3",
+              "dx-d11add07-Q7",
+              "dx-d11add07-Q9",
+              "dx-d11add07-Q11"
+            ],
+            [
+              "dx-d11add07-Q2",
+              "dx-d11add07-Q3",
+              "dx-d11add07-Q8",
+              "dx-d11add07-Q9",
+              "dx-d11add07-Q11"
+            ]
+          ],
+          "feasiblePlanCount": 242,
+          "subsetsExamined": 262144
+        }
+      ]
+    },
+    {
+      "id": "ibda-financial-reconciliation-dev-1-248bf6ba",
+      "family": "financial-reconciliation",
+      "split": "dev",
+      "phases": [
+        {
+          "packages": 18,
+          "eligible": 6,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 5500,
+            "B": 5500,
+            "C": 6600
+          },
+          "sharedAvailable": 11000,
+          "optimalValue": 18,
+          "optimalPlans": [
+            [
+              "dx-248bf6ba-Q1",
+              "dx-248bf6ba-Q2",
+              "dx-248bf6ba-Q7",
+              "dx-248bf6ba-Q8"
+            ],
+            [
+              "dx-248bf6ba-Q1",
+              "dx-248bf6ba-Q2",
+              "dx-248bf6ba-Q10",
+              "dx-248bf6ba-Q16"
+            ]
+          ],
+          "feasiblePlanCount": 14,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 5500,
+            "B": 5500,
+            "C": 5500
+          },
+          "sharedAvailable": 11000,
+          "optimalValue": 22,
+          "optimalPlans": [
+            [
+              "dx-248bf6ba-Q1",
+              "dx-248bf6ba-Q2",
+              "dx-248bf6ba-Q4",
+              "dx-248bf6ba-Q5"
+            ],
+            [
+              "dx-248bf6ba-Q2",
+              "dx-248bf6ba-Q3",
+              "dx-248bf6ba-Q5",
+              "dx-248bf6ba-Q6"
+            ],
+            [
+              "dx-248bf6ba-Q1",
+              "dx-248bf6ba-Q3",
+              "dx-248bf6ba-Q4",
+              "dx-248bf6ba-Q6"
+            ]
+          ],
+          "feasiblePlanCount": 215,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 7,
+          "personAvailable": {
+            "A": 4400,
+            "B": 5500,
+            "C": 5500
+          },
+          "sharedAvailable": 9900,
+          "optimalValue": 20,
+          "optimalPlans": [
+            [
+              "dx-248bf6ba-Q2",
+              "dx-248bf6ba-Q3",
+              "dx-248bf6ba-Q6",
+              "dx-248bf6ba-Q8"
+            ],
+            [
+              "dx-248bf6ba-Q1",
+              "dx-248bf6ba-Q2",
+              "dx-248bf6ba-Q4",
+              "dx-248bf6ba-Q8"
+            ],
+            [
+              "dx-248bf6ba-Q2",
+              "dx-248bf6ba-Q3",
+              "dx-248bf6ba-Q5",
+              "dx-248bf6ba-Q9"
+            ],
+            [
+              "dx-248bf6ba-Q1",
+              "dx-248bf6ba-Q3",
+              "dx-248bf6ba-Q4",
+              "dx-248bf6ba-Q9"
+            ],
+            [
+              "dx-248bf6ba-Q2",
+              "dx-248bf6ba-Q3",
+              "dx-248bf6ba-Q6",
+              "dx-248bf6ba-Q11"
+            ],
+            [
+              "dx-248bf6ba-Q1",
+              "dx-248bf6ba-Q3",
+              "dx-248bf6ba-Q6",
+              "dx-248bf6ba-Q11"
+            ],
+            [
+              "dx-248bf6ba-Q2",
+              "dx-248bf6ba-Q3",
+              "dx-248bf6ba-Q5",
+              "dx-248bf6ba-Q11"
+            ],
+            [
+              "dx-248bf6ba-Q1",
+              "dx-248bf6ba-Q3",
+              "dx-248bf6ba-Q4",
+              "dx-248bf6ba-Q11"
+            ]
+          ],
+          "feasiblePlanCount": 147,
+          "subsetsExamined": 262144
+        }
+      ]
+    },
+    {
+      "id": "ibda-financial-reconciliation-dev-2-f40296d1",
+      "family": "financial-reconciliation",
+      "split": "dev",
+      "phases": [
+        {
+          "packages": 18,
+          "eligible": 6,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 6000,
+            "B": 6000,
+            "C": 7200
+          },
+          "sharedAvailable": 12000,
+          "optimalValue": 18,
+          "optimalPlans": [
+            [
+              "dx-f40296d1-Q1",
+              "dx-f40296d1-Q2",
+              "dx-f40296d1-Q7",
+              "dx-f40296d1-Q8"
+            ],
+            [
+              "dx-f40296d1-Q1",
+              "dx-f40296d1-Q2",
+              "dx-f40296d1-Q10",
+              "dx-f40296d1-Q16"
+            ]
+          ],
+          "feasiblePlanCount": 14,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 6000,
+            "B": 6000,
+            "C": 6000
+          },
+          "sharedAvailable": 12000,
+          "optimalValue": 22,
+          "optimalPlans": [
+            [
+              "dx-f40296d1-Q1",
+              "dx-f40296d1-Q2",
+              "dx-f40296d1-Q4",
+              "dx-f40296d1-Q5"
+            ],
+            [
+              "dx-f40296d1-Q2",
+              "dx-f40296d1-Q3",
+              "dx-f40296d1-Q5",
+              "dx-f40296d1-Q6"
+            ],
+            [
+              "dx-f40296d1-Q1",
+              "dx-f40296d1-Q3",
+              "dx-f40296d1-Q4",
+              "dx-f40296d1-Q6"
+            ]
+          ],
+          "feasiblePlanCount": 215,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 7,
+          "personAvailable": {
+            "A": 7200,
+            "B": 6000,
+            "C": 6000
+          },
+          "sharedAvailable": 13200,
+          "optimalValue": 26,
+          "optimalPlans": [
+            [
+              "dx-f40296d1-Q1",
+              "dx-f40296d1-Q3",
+              "dx-f40296d1-Q7",
+              "dx-f40296d1-Q9",
+              "dx-f40296d1-Q11"
+            ],
+            [
+              "dx-f40296d1-Q2",
+              "dx-f40296d1-Q3",
+              "dx-f40296d1-Q8",
+              "dx-f40296d1-Q9",
+              "dx-f40296d1-Q11"
+            ]
+          ],
+          "feasiblePlanCount": 254,
+          "subsetsExamined": 262144
+        }
+      ]
+    },
+    {
+      "id": "ibda-financial-reconciliation-holdout-1-6310e1fc",
+      "family": "financial-reconciliation",
+      "split": "holdout",
+      "phases": [
+        {
+          "packages": 18,
+          "eligible": 6,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 5500,
+            "B": 5500,
+            "C": 6600
+          },
+          "sharedAvailable": 11000,
+          "optimalValue": 18,
+          "optimalPlans": [
+            [
+              "dx-6310e1fc-Q1",
+              "dx-6310e1fc-Q2",
+              "dx-6310e1fc-Q7",
+              "dx-6310e1fc-Q8"
+            ],
+            [
+              "dx-6310e1fc-Q1",
+              "dx-6310e1fc-Q2",
+              "dx-6310e1fc-Q10",
+              "dx-6310e1fc-Q16"
+            ]
+          ],
+          "feasiblePlanCount": 14,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 5500,
+            "B": 5500,
+            "C": 5500
+          },
+          "sharedAvailable": 11000,
+          "optimalValue": 22,
+          "optimalPlans": [
+            [
+              "dx-6310e1fc-Q1",
+              "dx-6310e1fc-Q2",
+              "dx-6310e1fc-Q4",
+              "dx-6310e1fc-Q5"
+            ],
+            [
+              "dx-6310e1fc-Q2",
+              "dx-6310e1fc-Q3",
+              "dx-6310e1fc-Q5",
+              "dx-6310e1fc-Q6"
+            ],
+            [
+              "dx-6310e1fc-Q1",
+              "dx-6310e1fc-Q3",
+              "dx-6310e1fc-Q4",
+              "dx-6310e1fc-Q6"
+            ]
+          ],
+          "feasiblePlanCount": 215,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 7,
+          "personAvailable": {
+            "A": 5500,
+            "B": 5500,
+            "C": 6600
+          },
+          "sharedAvailable": 12100,
+          "optimalValue": 26,
+          "optimalPlans": [
+            [
+              "dx-6310e1fc-Q1",
+              "dx-6310e1fc-Q3",
+              "dx-6310e1fc-Q7",
+              "dx-6310e1fc-Q9",
+              "dx-6310e1fc-Q11"
+            ],
+            [
+              "dx-6310e1fc-Q2",
+              "dx-6310e1fc-Q3",
+              "dx-6310e1fc-Q8",
+              "dx-6310e1fc-Q9",
+              "dx-6310e1fc-Q11"
+            ],
+            [
+              "dx-6310e1fc-Q3",
+              "dx-6310e1fc-Q6",
+              "dx-6310e1fc-Q11",
+              "dx-6310e1fc-Q17"
+            ],
+            [
+              "dx-6310e1fc-Q3",
+              "dx-6310e1fc-Q6",
+              "dx-6310e1fc-Q11",
+              "dx-6310e1fc-Q18"
+            ]
+          ],
+          "feasiblePlanCount": 271,
+          "subsetsExamined": 262144
+        }
+      ]
+    },
+    {
+      "id": "ibda-financial-reconciliation-holdout-2-ff0d52b",
+      "family": "financial-reconciliation",
+      "split": "holdout",
+      "phases": [
+        {
+          "packages": 18,
+          "eligible": 6,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 5500,
+            "B": 5500,
+            "C": 6600
+          },
+          "sharedAvailable": 11000,
+          "optimalValue": 18,
+          "optimalPlans": [
+            [
+              "dx-ff0d52b-Q1",
+              "dx-ff0d52b-Q2",
+              "dx-ff0d52b-Q7",
+              "dx-ff0d52b-Q8"
+            ],
+            [
+              "dx-ff0d52b-Q1",
+              "dx-ff0d52b-Q2",
+              "dx-ff0d52b-Q10",
+              "dx-ff0d52b-Q16"
+            ]
+          ],
+          "feasiblePlanCount": 14,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 5500,
+            "B": 5500,
+            "C": 5500
+          },
+          "sharedAvailable": 11000,
+          "optimalValue": 22,
+          "optimalPlans": [
+            [
+              "dx-ff0d52b-Q1",
+              "dx-ff0d52b-Q2",
+              "dx-ff0d52b-Q4",
+              "dx-ff0d52b-Q5"
+            ],
+            [
+              "dx-ff0d52b-Q2",
+              "dx-ff0d52b-Q3",
+              "dx-ff0d52b-Q5",
+              "dx-ff0d52b-Q6"
+            ],
+            [
+              "dx-ff0d52b-Q1",
+              "dx-ff0d52b-Q3",
+              "dx-ff0d52b-Q4",
+              "dx-ff0d52b-Q6"
+            ]
+          ],
+          "feasiblePlanCount": 215,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 7,
+          "personAvailable": {
+            "A": 5500,
+            "B": 4400,
+            "C": 6600
+          },
+          "sharedAvailable": 11000,
+          "optimalValue": 23,
+          "optimalPlans": [
+            [
+              "dx-ff0d52b-Q3",
+              "dx-ff0d52b-Q11",
+              "dx-ff0d52b-Q17",
+              "dx-ff0d52b-Q18"
+            ]
+          ],
+          "feasiblePlanCount": 215,
+          "subsetsExamined": 262144
+        }
+      ]
+    },
+    {
+      "id": "ibda-deadline-triage-dev-1-d1cbe88e",
+      "family": "deadline-triage",
+      "split": "dev",
+      "phases": [
+        {
+          "packages": 18,
+          "eligible": 6,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 5000,
+            "B": 5000,
+            "C": 6000
+          },
+          "sharedAvailable": 10000,
+          "optimalValue": 18,
+          "optimalPlans": [
+            [
+              "dx-d1cbe88e-Q1",
+              "dx-d1cbe88e-Q2",
+              "dx-d1cbe88e-Q7",
+              "dx-d1cbe88e-Q8"
+            ],
+            [
+              "dx-d1cbe88e-Q1",
+              "dx-d1cbe88e-Q2",
+              "dx-d1cbe88e-Q10",
+              "dx-d1cbe88e-Q16"
+            ]
+          ],
+          "feasiblePlanCount": 14,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 5000,
+            "B": 5000,
+            "C": 5000
+          },
+          "sharedAvailable": 10000,
+          "optimalValue": 22,
+          "optimalPlans": [
+            [
+              "dx-d1cbe88e-Q1",
+              "dx-d1cbe88e-Q2",
+              "dx-d1cbe88e-Q4",
+              "dx-d1cbe88e-Q5"
+            ],
+            [
+              "dx-d1cbe88e-Q2",
+              "dx-d1cbe88e-Q3",
+              "dx-d1cbe88e-Q5",
+              "dx-d1cbe88e-Q6"
+            ],
+            [
+              "dx-d1cbe88e-Q1",
+              "dx-d1cbe88e-Q3",
+              "dx-d1cbe88e-Q4",
+              "dx-d1cbe88e-Q6"
+            ]
+          ],
+          "feasiblePlanCount": 215,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 7,
+          "requiresEdges": 18,
+          "excludesEdges": 7,
+          "personAvailable": {
+            "A": 5000,
+            "B": 5000,
+            "C": 5000
+          },
+          "sharedAvailable": 10000,
+          "optimalValue": 18,
+          "optimalPlans": [
+            [
+              "dx-d1cbe88e-Q1",
+              "dx-d1cbe88e-Q3",
+              "dx-d1cbe88e-Q7",
+              "dx-d1cbe88e-Q9"
+            ]
+          ],
+          "feasiblePlanCount": 14,
+          "subsetsExamined": 262144
+        }
+      ]
+    },
+    {
+      "id": "ibda-deadline-triage-dev-2-d8505695",
+      "family": "deadline-triage",
+      "split": "dev",
+      "phases": [
+        {
+          "packages": 18,
+          "eligible": 6,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 5000,
+            "B": 5000,
+            "C": 6000
+          },
+          "sharedAvailable": 10000,
+          "optimalValue": 18,
+          "optimalPlans": [
+            [
+              "dx-d8505695-Q1",
+              "dx-d8505695-Q2",
+              "dx-d8505695-Q7",
+              "dx-d8505695-Q8"
+            ],
+            [
+              "dx-d8505695-Q1",
+              "dx-d8505695-Q2",
+              "dx-d8505695-Q10",
+              "dx-d8505695-Q16"
+            ]
+          ],
+          "feasiblePlanCount": 14,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 5000,
+            "B": 5000,
+            "C": 5000
+          },
+          "sharedAvailable": 10000,
+          "optimalValue": 22,
+          "optimalPlans": [
+            [
+              "dx-d8505695-Q1",
+              "dx-d8505695-Q2",
+              "dx-d8505695-Q4",
+              "dx-d8505695-Q5"
+            ],
+            [
+              "dx-d8505695-Q2",
+              "dx-d8505695-Q3",
+              "dx-d8505695-Q5",
+              "dx-d8505695-Q6"
+            ],
+            [
+              "dx-d8505695-Q1",
+              "dx-d8505695-Q3",
+              "dx-d8505695-Q4",
+              "dx-d8505695-Q6"
+            ]
+          ],
+          "feasiblePlanCount": 215,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 7,
+          "requiresEdges": 18,
+          "excludesEdges": 7,
+          "personAvailable": {
+            "A": 5000,
+            "B": 5000,
+            "C": 5000
+          },
+          "sharedAvailable": 10000,
+          "optimalValue": 18,
+          "optimalPlans": [
+            [
+              "dx-d8505695-Q2",
+              "dx-d8505695-Q3",
+              "dx-d8505695-Q8",
+              "dx-d8505695-Q9"
+            ]
+          ],
+          "feasiblePlanCount": 14,
+          "subsetsExamined": 262144
+        }
+      ]
+    },
+    {
+      "id": "ibda-deadline-triage-holdout-1-af8fb6f0",
+      "family": "deadline-triage",
+      "split": "holdout",
+      "phases": [
+        {
+          "packages": 18,
+          "eligible": 6,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 6000,
+            "B": 6000,
+            "C": 7200
+          },
+          "sharedAvailable": 12000,
+          "optimalValue": 18,
+          "optimalPlans": [
+            [
+              "dx-af8fb6f0-Q1",
+              "dx-af8fb6f0-Q2",
+              "dx-af8fb6f0-Q7",
+              "dx-af8fb6f0-Q8"
+            ],
+            [
+              "dx-af8fb6f0-Q1",
+              "dx-af8fb6f0-Q2",
+              "dx-af8fb6f0-Q10",
+              "dx-af8fb6f0-Q16"
+            ]
+          ],
+          "feasiblePlanCount": 14,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 6000,
+            "B": 6000,
+            "C": 6000
+          },
+          "sharedAvailable": 12000,
+          "optimalValue": 22,
+          "optimalPlans": [
+            [
+              "dx-af8fb6f0-Q1",
+              "dx-af8fb6f0-Q2",
+              "dx-af8fb6f0-Q4",
+              "dx-af8fb6f0-Q5"
+            ],
+            [
+              "dx-af8fb6f0-Q2",
+              "dx-af8fb6f0-Q3",
+              "dx-af8fb6f0-Q5",
+              "dx-af8fb6f0-Q6"
+            ],
+            [
+              "dx-af8fb6f0-Q1",
+              "dx-af8fb6f0-Q3",
+              "dx-af8fb6f0-Q4",
+              "dx-af8fb6f0-Q6"
+            ]
+          ],
+          "feasiblePlanCount": 215,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 6,
+          "requiresEdges": 18,
+          "excludesEdges": 7,
+          "personAvailable": {
+            "A": 6000,
+            "B": 6000,
+            "C": 6000
+          },
+          "sharedAvailable": 12000,
+          "optimalValue": 18,
+          "optimalPlans": [
+            [
+              "dx-af8fb6f0-Q1",
+              "dx-af8fb6f0-Q2",
+              "dx-af8fb6f0-Q7",
+              "dx-af8fb6f0-Q8"
+            ],
+            [
+              "dx-af8fb6f0-Q1",
+              "dx-af8fb6f0-Q2",
+              "dx-af8fb6f0-Q10",
+              "dx-af8fb6f0-Q16"
+            ]
+          ],
+          "feasiblePlanCount": 14,
+          "subsetsExamined": 262144
+        }
+      ]
+    },
+    {
+      "id": "ibda-deadline-triage-holdout-2-470edd8f",
+      "family": "deadline-triage",
+      "split": "holdout",
+      "phases": [
+        {
+          "packages": 18,
+          "eligible": 6,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 6000,
+            "B": 6000,
+            "C": 7200
+          },
+          "sharedAvailable": 12000,
+          "optimalValue": 18,
+          "optimalPlans": [
+            [
+              "dx-470edd8f-Q1",
+              "dx-470edd8f-Q2",
+              "dx-470edd8f-Q7",
+              "dx-470edd8f-Q8"
+            ],
+            [
+              "dx-470edd8f-Q1",
+              "dx-470edd8f-Q2",
+              "dx-470edd8f-Q10",
+              "dx-470edd8f-Q16"
+            ]
+          ],
+          "feasiblePlanCount": 14,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 18,
+          "requiresEdges": 18,
+          "excludesEdges": 6,
+          "personAvailable": {
+            "A": 6000,
+            "B": 6000,
+            "C": 6000
+          },
+          "sharedAvailable": 12000,
+          "optimalValue": 22,
+          "optimalPlans": [
+            [
+              "dx-470edd8f-Q1",
+              "dx-470edd8f-Q2",
+              "dx-470edd8f-Q4",
+              "dx-470edd8f-Q5"
+            ],
+            [
+              "dx-470edd8f-Q2",
+              "dx-470edd8f-Q3",
+              "dx-470edd8f-Q5",
+              "dx-470edd8f-Q6"
+            ],
+            [
+              "dx-470edd8f-Q1",
+              "dx-470edd8f-Q3",
+              "dx-470edd8f-Q4",
+              "dx-470edd8f-Q6"
+            ]
+          ],
+          "feasiblePlanCount": 215,
+          "subsetsExamined": 262144
+        },
+        {
+          "packages": 18,
+          "eligible": 6,
+          "requiresEdges": 18,
+          "excludesEdges": 7,
+          "personAvailable": {
+            "A": 6000,
+            "B": 6000,
+            "C": 6000
+          },
+          "sharedAvailable": 12000,
+          "optimalValue": 18,
+          "optimalPlans": [
+            [
+              "dx-470edd8f-Q1",
+              "dx-470edd8f-Q2",
+              "dx-470edd8f-Q7",
+              "dx-470edd8f-Q8"
+            ],
+            [
+              "dx-470edd8f-Q1",
+              "dx-470edd8f-Q2",
+              "dx-470edd8f-Q10",
+              "dx-470edd8f-Q16"
+            ]
+          ],
+          "feasiblePlanCount": 14,
+          "subsetsExamined": 262144
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Author-only control artifact; independent full raw-source/lifecycle/alternativeproof review, adversarial provider review, runner/admission/sourcefreeze and explicit prospective registration remain required.",
+    "All3familylabels share componentgraph and ledger/receipt scaffolding. Family/sourcecorrections differ, scale/ID variants correlated; initial/clarified optimization structures repeat acrosscases. This is not3independenttaskmechanisms or a representative taskpopulation.",
+    "Final optimum subsets select4or5components because sourcecontracts/priorities requireco-selection; this is an inputconstruction observation, not a modeltruthdistribution/scorecap/hardness result.",
+    "Primitive signed source rows are trusted within this closed fictional occurrence; no general issuerroleauthorizationmodel, real claimmaterial or actualinsurance rules are evaluated.",
+    "Fixed inherited per-field evidence row annotations remain, not a general alternative semanticcertificate engine; correlation of correctfacts/currentdraft and evidence remains.",
+    "No new output fields, quotedperfieldproof, scarceoutputlimits, paidattempt retries or hiddendependency constraints introduced. New contracts/publicrule text adds modestsourcebytes; measured explicitly, not used as thehardness mechanism.",
+    "V12 has no runner, providerdispatch, paidscore, affordabilityreview or budget authority. All frozen historical sources/grades and current paidconditions unchanged."
+  ]
+}

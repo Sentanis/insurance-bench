@@ -1,0 +1,30 @@
+import fs from 'node:fs';
+import {generateCoupledCases} from '../../insurance-bench/coupled-cases.ts';
+import {createCoupledEnvironment,gradeCoupledTask} from '../../insurance-bench/coupled-engine.ts';
+const controls:any[]=[];const sourceAudit=JSON.parse(fs.readFileSync('.tmp/insurance-bench/v07-independent-source-audit.json','utf8'));const outcomes:any[]=[];
+for(const task of generateCoupledCases()){
+ const phases=sourceAudit.observations.filter((p:any)=>p.taskId===task.id);const final=phases.find((p:any)=>p.phase===2);
+ for(const [tie,ids] of final.optimalPlans.entries()){
+  const env=createCoupledEnvironment(task),st=env.state;
+  const run=(tool:string,args:Record<string,unknown>={})=>{const result=env.execute(tool,{expectedSessionRevision:st.sessionRevision,expectedMaterialRevision:st.materialRevision,expectedDraftRevision:st.draft?.revision,...args});if('error' in result)throw new Error(task.id+' '+tool+' '+JSON.stringify(result));return result;};
+  const read=()=>st.documents.forEach(d=>run('read_document',{documentId:d.id}));
+  const sources=()=>st.documents.flatMap(d=>d.rows.map(r=>({documentId:d.id,revision:d.revision,rowId:r.id})));
+  read();run('ask_customer',{topic:'occurrence-allocation-and-receipt',scope:'current-occurrence'});read();
+  run('build_packet',{sources:sources()});run('save_work_product',{facts:phases.find((p:any)=>p.phase===1).facts,sources:sources(),memo:'Current invented occurrence records are reconciled for internal review with sourced capacities and proposals.'});
+  read();run('build_packet',{sources:sources()});run('revise_proposal',{facts:final.facts,sources:sources(),memo:'Amended invented occurrence records are reconciled for internal review with current sourced capacities and proposals.'});run('request_review');
+  // Locate allocations only in current raw rows; independent optimal IDs were produced by the raw-source powerset audit.
+  const packages=st.documents.flatMap(d=>d.rows).filter(r=>r.id.startsWith('package-')&&ids.includes(r.fields.packageId));
+  const cost=packages.reduce((s,p)=>s+Number(p.fields.allocateACents)+Number(p.fields.allocateBCents)+Number(p.fields.allocateCCents),0),priority=packages.reduce((s,p)=>s+Number(p.fields.priorityValue),0);
+  const f=final.facts;
+  run('apply_business_update',{kind:task.family,fields:{proposedPackageIds:[...ids].reverse(),selectedCostCents:cost,selectedPriorityValue:priority,occurrenceAvailableCents:f.occurrenceAvailableCents,personAvailableACents:f.personAvailableACents,personAvailableBCents:f.personAvailableBCents,personAvailableCCents:f.personAvailableCCents,unallocatedBICents:f.unallocatedBICents}});
+  run('create_follow_up',{kind:'occurrence-'+task.family,owner:'internal-occurrence-review',dueAt:new Date(Date.parse(task.clock)+60*60000).toISOString().replace('.000Z','Z')});run('propose_workflow',{status:'current_review_ready',owner:'internal-occurrence-review',reason:'Current source-derived capacities and objective-optimal allocations support this internally reviewed packet.'});run('finish');
+  const grade=gradeCoupledTask(task,st);if(grade.score!==100||!grade.allPass)throw new Error('Independent execution failed '+task.id+' '+JSON.stringify(grade.criteria.filter(c=>!c.passed)));
+  if(outcomes.length===0){
+    const expected=String(final.facts.deadlineA);
+    const examples=[{name:'millisecond zeros',value:expected.replace('Z','.000Z'),passes:true},{name:'microsecond zeros',value:expected.replace('Z','.000000Z'),passes:true},{name:'equivalent nonzero timezone offset',value:'2026-06-24T12:30:00-05:00',passes:true},{name:'equivalent date crossover',value:'2026-06-25T01:30:00+08:00',passes:true},{name:'shift by one second',value:'2026-06-24T17:30:01Z',passes:false},{name:'nonzero submillisecond shift',value:'2026-06-24T17:30:00.000001Z',passes:false},{name:'invalid hour',value:'2026-06-24T99:30:00Z',passes:false},{name:'invalid rollover date',value:'2026-06-31T17:30:00Z',passes:false}];
+    for(const example of examples){const c=structuredClone(st);c.products.at(-1)!.facts.deadlineA=example.value;c.draft!.facts.deadlineA=example.value;const before=JSON.stringify(c);const g=gradeCoupledTask(task,c);controls.push({...example,actualPass:g.criteria.find(row=>row.id==='fact:deadlineA')!.passed,rawStateUnchanged:before===JSON.stringify(c)});}
+  }
+  outcomes.push({taskId:task.id,alternative:tie+1,selectedPackageIds:ids,costCents:cost,priorityValue:priority,score:grade.score,allPass:grade.allPass,historyEntries:st.history.length,phase:st.phase});
+ }
+}
+fs.writeFileSync('.tmp/insurance-bench/v07-timestamp-controls.json',JSON.stringify({source:'Independent raw-source facts and optimal IDs from v07-independent-source-audit.json; production grader only verifies observed tool-state behavior, never supplies expected business values.',outcomes,controls},null,2)+'\n');console.log(JSON.stringify({controls,mismatches:controls.filter(c=>c.actualPass!==c.passes)}));

@@ -1,0 +1,801 @@
+{
+  "status": "source-author pre-inference consistency controls; independent engine/source audit separate",
+  "createdAt": "2026-10-04T22:46:59.672Z",
+  "seed": 90419,
+  "noPaidV09Calls": true,
+  "rejectedDesign": {
+    "status": "rejected before inference",
+    "summary": "Initial random raw boolean patterns allowed all-not-applicable scopes and material changes affecting identity/version metadata without enough scoped request work. Replaced before any v0.9 paid output with coherent invented fleet/premises/exposure inputs and explicit unavailable/contrary conditions. No classes or weights balanced to target model scores.",
+    "sourceBytesRetained": false,
+    "limitation": "Original untracked source bytes were not retained; this is a hashed rejected-design summary, not a claimed original source fingerprint."
+  },
+  "rejectedDesignSummarySha256": "febaf5050af8d3861bea59c14de02e440540a8b7a4d7d372f6f9288c649ec7ca",
+  "sourceSha256": {
+    "insurance-bench/investigation-types.ts": "97c379fc221d3096395a88fc281deb78638d3684b2c1dd4900d5a9554d171f57",
+    "insurance-bench/investigation-cases.ts": "fefdd8fb16e3311c5abed5ae92b1b27147be03806d9db96090b75e52828e39ad",
+    "test/insurance-bench-investigation-cases.test.ts": "97671e16a56ce4c64b9eab9a76bd9f2a1fd0eae1ab3795d706820cfd5f6c3100"
+  },
+  "checks": {
+    "caseTests": 10,
+    "literalHandExamples": 6,
+    "currentSourceSnapshots": 72,
+    "allActualRequestTransitionsChanged": true
+  },
+  "cases": [
+    {
+      "id": "ibi-fleet-assignment-dev-1-473634f6",
+      "family": "coverage-review",
+      "split": "dev",
+      "documents": 11,
+      "rawRows": 49,
+      "phaseCounts": [
+        {
+          "applicable": 3,
+          "notApplicable": 6,
+          "unresolved": 3,
+          "requests": 3,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        },
+        {
+          "applicable": 5,
+          "notApplicable": 7,
+          "unresolved": 0,
+          "requests": 5,
+          "retainedApprovals": 3,
+          "invalidatedApprovals": 0
+        },
+        {
+          "applicable": 4,
+          "notApplicable": 8,
+          "unresolved": 0,
+          "requests": 4,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        },
+        {
+          "applicable": 4,
+          "notApplicable": 8,
+          "unresolved": 0,
+          "requests": 4,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        }
+      ],
+      "requestChanges": [
+        true,
+        true,
+        true
+      ],
+      "changedFields": [
+        [
+          "E1.R1",
+          "E1.R5",
+          "E1.R6",
+          "resolvedAssetIds",
+          "unresolvedSubjectIds"
+        ],
+        [
+          "E1.R1",
+          "E1.R2",
+          "E1.R3",
+          "resolvedActorIds"
+        ],
+        [
+          "currentPolicyVersionIds"
+        ]
+      ]
+    },
+    {
+      "id": "ibi-fleet-assignment-dev-2-9f4fa7dd",
+      "family": "coverage-review",
+      "split": "dev",
+      "documents": 11,
+      "rawRows": 49,
+      "phaseCounts": [
+        {
+          "applicable": 1,
+          "notApplicable": 6,
+          "unresolved": 5,
+          "requests": 1,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        },
+        {
+          "applicable": 3,
+          "notApplicable": 7,
+          "unresolved": 2,
+          "requests": 3,
+          "retainedApprovals": 3,
+          "invalidatedApprovals": 0
+        },
+        {
+          "applicable": 4,
+          "notApplicable": 6,
+          "unresolved": 2,
+          "requests": 4,
+          "retainedApprovals": 2,
+          "invalidatedApprovals": 1
+        },
+        {
+          "applicable": 4,
+          "notApplicable": 6,
+          "unresolved": 2,
+          "requests": 4,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        }
+      ],
+      "requestChanges": [
+        true,
+        true,
+        true
+      ],
+      "changedFields": [
+        [
+          "E1.R2",
+          "E1.R5",
+          "E1.R6",
+          "resolvedAssetIds",
+          "unresolvedSubjectIds"
+        ],
+        [
+          "E1.R1",
+          "resolvedActorIds"
+        ],
+        [
+          "currentPolicyVersionIds"
+        ]
+      ]
+    },
+    {
+      "id": "ibi-fleet-assignment-holdout-1-74f18798",
+      "family": "coverage-review",
+      "split": "holdout",
+      "documents": 11,
+      "rawRows": 50,
+      "phaseCounts": [
+        {
+          "applicable": 4,
+          "notApplicable": 5,
+          "unresolved": 3,
+          "requests": 4,
+          "retainedApprovals": 2,
+          "invalidatedApprovals": 1
+        },
+        {
+          "applicable": 5,
+          "notApplicable": 5,
+          "unresolved": 2,
+          "requests": 5,
+          "retainedApprovals": 3,
+          "invalidatedApprovals": 0
+        },
+        {
+          "applicable": 5,
+          "notApplicable": 6,
+          "unresolved": 1,
+          "requests": 5,
+          "retainedApprovals": 2,
+          "invalidatedApprovals": 1
+        },
+        {
+          "applicable": 5,
+          "notApplicable": 6,
+          "unresolved": 1,
+          "requests": 5,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        }
+      ],
+      "requestChanges": [
+        true,
+        true,
+        true
+      ],
+      "changedFields": [
+        [
+          "E1.R5",
+          "resolvedAssetIds",
+          "unresolvedSubjectIds"
+        ],
+        [
+          "E1.R1",
+          "E1.R2",
+          "E1.R3",
+          "resolvedActorIds"
+        ],
+        [
+          "currentPolicyVersionIds"
+        ]
+      ]
+    },
+    {
+      "id": "ibi-fleet-assignment-holdout-2-a6916617",
+      "family": "coverage-review",
+      "split": "holdout",
+      "documents": 11,
+      "rawRows": 50,
+      "phaseCounts": [
+        {
+          "applicable": 3,
+          "notApplicable": 5,
+          "unresolved": 4,
+          "requests": 3,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        },
+        {
+          "applicable": 5,
+          "notApplicable": 6,
+          "unresolved": 1,
+          "requests": 5,
+          "retainedApprovals": 3,
+          "invalidatedApprovals": 0
+        },
+        {
+          "applicable": 4,
+          "notApplicable": 7,
+          "unresolved": 1,
+          "requests": 4,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        },
+        {
+          "applicable": 4,
+          "notApplicable": 8,
+          "unresolved": 0,
+          "requests": 4,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        }
+      ],
+      "requestChanges": [
+        true,
+        true,
+        true
+      ],
+      "changedFields": [
+        [
+          "E1.R1",
+          "E1.R5",
+          "E1.R6",
+          "resolvedAssetIds",
+          "unresolvedSubjectIds"
+        ],
+        [
+          "E1.R1",
+          "E1.R2",
+          "E1.R3",
+          "resolvedActorIds"
+        ],
+        [
+          "E2.R4",
+          "E2.R5",
+          "currentPolicyVersionIds",
+          "unresolvedSubjectIds"
+        ]
+      ]
+    },
+    {
+      "id": "ibi-premises-chronology-dev-1-98bd4c8a",
+      "family": "evidence-brief",
+      "split": "dev",
+      "documents": 11,
+      "rawRows": 46,
+      "phaseCounts": [
+        {
+          "applicable": 5,
+          "notApplicable": 5,
+          "unresolved": 2,
+          "requests": 5,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        },
+        {
+          "applicable": 7,
+          "notApplicable": 5,
+          "unresolved": 0,
+          "requests": 7,
+          "retainedApprovals": 3,
+          "invalidatedApprovals": 0
+        },
+        {
+          "applicable": 6,
+          "notApplicable": 6,
+          "unresolved": 0,
+          "requests": 6,
+          "retainedApprovals": 2,
+          "invalidatedApprovals": 1
+        },
+        {
+          "applicable": 6,
+          "notApplicable": 6,
+          "unresolved": 0,
+          "requests": 6,
+          "retainedApprovals": 2,
+          "invalidatedApprovals": 1
+        }
+      ],
+      "requestChanges": [
+        true,
+        true,
+        true
+      ],
+      "changedFields": [
+        [
+          "E1.R1",
+          "E1.R5",
+          "resolvedAssetIds",
+          "unresolvedSubjectIds"
+        ],
+        [
+          "E1.R1",
+          "E1.R4",
+          "E1.R6",
+          "resolvedActorIds"
+        ],
+        [
+          "currentPolicyVersionIds"
+        ]
+      ]
+    },
+    {
+      "id": "ibi-premises-chronology-dev-2-e404d261",
+      "family": "evidence-brief",
+      "split": "dev",
+      "documents": 11,
+      "rawRows": 46,
+      "phaseCounts": [
+        {
+          "applicable": 6,
+          "notApplicable": 4,
+          "unresolved": 2,
+          "requests": 6,
+          "retainedApprovals": 2,
+          "invalidatedApprovals": 1
+        },
+        {
+          "applicable": 7,
+          "notApplicable": 4,
+          "unresolved": 1,
+          "requests": 7,
+          "retainedApprovals": 3,
+          "invalidatedApprovals": 0
+        },
+        {
+          "applicable": 6,
+          "notApplicable": 6,
+          "unresolved": 0,
+          "requests": 6,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        },
+        {
+          "applicable": 5,
+          "notApplicable": 7,
+          "unresolved": 0,
+          "requests": 5,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        }
+      ],
+      "requestChanges": [
+        true,
+        true,
+        true
+      ],
+      "changedFields": [
+        [
+          "E1.R1",
+          "resolvedAssetIds",
+          "unresolvedSubjectIds"
+        ],
+        [
+          "E1.R1",
+          "E1.R3",
+          "E1.R4",
+          "E1.R6",
+          "resolvedActorIds"
+        ],
+        [
+          "E2.R4",
+          "currentPolicyVersionIds"
+        ]
+      ]
+    },
+    {
+      "id": "ibi-premises-chronology-holdout-1-47f9484c",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "documents": 11,
+      "rawRows": 47,
+      "phaseCounts": [
+        {
+          "applicable": 3,
+          "notApplicable": 4,
+          "unresolved": 5,
+          "requests": 3,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        },
+        {
+          "applicable": 5,
+          "notApplicable": 4,
+          "unresolved": 3,
+          "requests": 5,
+          "retainedApprovals": 3,
+          "invalidatedApprovals": 0
+        },
+        {
+          "applicable": 4,
+          "notApplicable": 5,
+          "unresolved": 3,
+          "requests": 4,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        },
+        {
+          "applicable": 5,
+          "notApplicable": 5,
+          "unresolved": 2,
+          "requests": 5,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        }
+      ],
+      "requestChanges": [
+        true,
+        true,
+        true
+      ],
+      "changedFields": [
+        [
+          "E1.R1",
+          "E1.R5",
+          "resolvedAssetIds",
+          "unresolvedSubjectIds"
+        ],
+        [
+          "E1.R1",
+          "E1.R3",
+          "E1.R4",
+          "resolvedActorIds"
+        ],
+        [
+          "E2.R4",
+          "currentPolicyVersionIds"
+        ]
+      ]
+    },
+    {
+      "id": "ibi-premises-chronology-holdout-2-4651e73b",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "documents": 11,
+      "rawRows": 47,
+      "phaseCounts": [
+        {
+          "applicable": 1,
+          "notApplicable": 5,
+          "unresolved": 6,
+          "requests": 1,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        },
+        {
+          "applicable": 3,
+          "notApplicable": 5,
+          "unresolved": 4,
+          "requests": 3,
+          "retainedApprovals": 3,
+          "invalidatedApprovals": 0
+        },
+        {
+          "applicable": 2,
+          "notApplicable": 5,
+          "unresolved": 5,
+          "requests": 2,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        },
+        {
+          "applicable": 5,
+          "notApplicable": 6,
+          "unresolved": 1,
+          "requests": 5,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        }
+      ],
+      "requestChanges": [
+        true,
+        true,
+        true
+      ],
+      "changedFields": [
+        [
+          "E1.R1",
+          "E1.R5",
+          "resolvedAssetIds",
+          "unresolvedSubjectIds"
+        ],
+        [
+          "E1.R1",
+          "E1.R4",
+          "E1.R6",
+          "resolvedActorIds"
+        ],
+        [
+          "E2.R2",
+          "E2.R4",
+          "E2.R5",
+          "E2.R6",
+          "currentPolicyVersionIds",
+          "unresolvedSubjectIds"
+        ]
+      ]
+    },
+    {
+      "id": "ibi-multi-exposure-review-dev-1-57c335e",
+      "family": "fraud-referral",
+      "split": "dev",
+      "documents": 11,
+      "rawRows": 46,
+      "phaseCounts": [
+        {
+          "applicable": 3,
+          "notApplicable": 4,
+          "unresolved": 5,
+          "requests": 3,
+          "retainedApprovals": 0,
+          "invalidatedApprovals": 3
+        },
+        {
+          "applicable": 6,
+          "notApplicable": 6,
+          "unresolved": 0,
+          "requests": 6,
+          "retainedApprovals": 3,
+          "invalidatedApprovals": 0
+        },
+        {
+          "applicable": 5,
+          "notApplicable": 7,
+          "unresolved": 0,
+          "requests": 5,
+          "retainedApprovals": 2,
+          "invalidatedApprovals": 1
+        },
+        {
+          "applicable": 5,
+          "notApplicable": 7,
+          "unresolved": 0,
+          "requests": 5,
+          "retainedApprovals": 2,
+          "invalidatedApprovals": 1
+        }
+      ],
+      "requestChanges": [
+        true,
+        true,
+        true
+      ],
+      "changedFields": [
+        [
+          "E1.R1",
+          "E1.R3",
+          "E1.R4",
+          "E1.R5",
+          "E1.R6",
+          "resolvedAssetIds",
+          "unresolvedSubjectIds"
+        ],
+        [
+          "E1.R6",
+          "resolvedActorIds"
+        ],
+        [
+          "currentPolicyVersionIds"
+        ]
+      ]
+    },
+    {
+      "id": "ibi-multi-exposure-review-dev-2-4630325",
+      "family": "fraud-referral",
+      "split": "dev",
+      "documents": 11,
+      "rawRows": 46,
+      "phaseCounts": [
+        {
+          "applicable": 3,
+          "notApplicable": 4,
+          "unresolved": 5,
+          "requests": 3,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        },
+        {
+          "applicable": 5,
+          "notApplicable": 5,
+          "unresolved": 2,
+          "requests": 5,
+          "retainedApprovals": 3,
+          "invalidatedApprovals": 0
+        },
+        {
+          "applicable": 6,
+          "notApplicable": 4,
+          "unresolved": 2,
+          "requests": 6,
+          "retainedApprovals": 2,
+          "invalidatedApprovals": 1
+        },
+        {
+          "applicable": 6,
+          "notApplicable": 4,
+          "unresolved": 2,
+          "requests": 6,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        }
+      ],
+      "requestChanges": [
+        true,
+        true,
+        true
+      ],
+      "changedFields": [
+        [
+          "E1.R1",
+          "E1.R5",
+          "E1.R6",
+          "resolvedAssetIds",
+          "unresolvedSubjectIds"
+        ],
+        [
+          "E1.R2",
+          "resolvedActorIds"
+        ],
+        [
+          "currentPolicyVersionIds"
+        ]
+      ]
+    },
+    {
+      "id": "ibi-multi-exposure-review-holdout-1-3753da40",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "documents": 11,
+      "rawRows": 46,
+      "phaseCounts": [
+        {
+          "applicable": 3,
+          "notApplicable": 3,
+          "unresolved": 6,
+          "requests": 3,
+          "retainedApprovals": 0,
+          "invalidatedApprovals": 3
+        },
+        {
+          "applicable": 6,
+          "notApplicable": 5,
+          "unresolved": 1,
+          "requests": 6,
+          "retainedApprovals": 3,
+          "invalidatedApprovals": 0
+        },
+        {
+          "applicable": 5,
+          "notApplicable": 6,
+          "unresolved": 1,
+          "requests": 5,
+          "retainedApprovals": 2,
+          "invalidatedApprovals": 1
+        },
+        {
+          "applicable": 5,
+          "notApplicable": 6,
+          "unresolved": 1,
+          "requests": 5,
+          "retainedApprovals": 2,
+          "invalidatedApprovals": 1
+        }
+      ],
+      "requestChanges": [
+        true,
+        true,
+        true
+      ],
+      "changedFields": [
+        [
+          "E1.R1",
+          "E1.R3",
+          "E1.R4",
+          "E1.R5",
+          "E1.R6",
+          "resolvedAssetIds",
+          "unresolvedSubjectIds"
+        ],
+        [
+          "E1.R6",
+          "resolvedActorIds"
+        ],
+        [
+          "currentPolicyVersionIds"
+        ]
+      ]
+    },
+    {
+      "id": "ibi-multi-exposure-review-holdout-2-c4e6889f",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "documents": 11,
+      "rawRows": 47,
+      "phaseCounts": [
+        {
+          "applicable": 1,
+          "notApplicable": 6,
+          "unresolved": 5,
+          "requests": 1,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        },
+        {
+          "applicable": 3,
+          "notApplicable": 9,
+          "unresolved": 0,
+          "requests": 3,
+          "retainedApprovals": 3,
+          "invalidatedApprovals": 0
+        },
+        {
+          "applicable": 2,
+          "notApplicable": 10,
+          "unresolved": 0,
+          "requests": 2,
+          "retainedApprovals": 2,
+          "invalidatedApprovals": 1
+        },
+        {
+          "applicable": 3,
+          "notApplicable": 9,
+          "unresolved": 0,
+          "requests": 3,
+          "retainedApprovals": 1,
+          "invalidatedApprovals": 2
+        }
+      ],
+      "requestChanges": [
+        true,
+        true,
+        true
+      ],
+      "changedFields": [
+        [
+          "E1.R1",
+          "E1.R3",
+          "E1.R4",
+          "E1.R5",
+          "E1.R6",
+          "resolvedAssetIds",
+          "unresolvedSubjectIds"
+        ],
+        [
+          "E1.R6",
+          "resolvedActorIds"
+        ],
+        [
+          "E2.R6",
+          "currentPolicyVersionIds",
+          "unresolvedSubjectIds"
+        ]
+      ]
+    }
+  ],
+  "limitations": [
+    "Synthetic author rules are not insurance/legal/clinical truth or expert validation",
+    "Difficulty unproven; conditional statuses must not be treated as professional conclusions",
+    "Independent engine recomputation and source-semantic review required before paid freeze"
+  ]
+}

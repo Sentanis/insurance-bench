@@ -1,0 +1,44 @@
+{
+  "schema": "insurance-bench-current-report-v12-builder-independent-review-v1",
+  "reviewedAt": "2026-10-05T03:56:35.832Z",
+  "disposition": "approve-engineering-only",
+  "sourceSha256": {
+    ".tmp/insurance-bench/current-report-context.ts": "8288efb95ad0159e7d3c486d924f54a24cc267c6a06a5e8dd20bce26f8c7eb69",
+    "insurance-bench/report-admission.ts": "8d89dae375411c1d233af0bc303244656d1101e55c63925100867c97e47d2157",
+    "insurance-bench/report.ts": "bbc0b2c5d41ca13ef4586719c0c10b3c62f27ff43a5ac65c52088bf325cfec36",
+    "specs/features/insurance-bench/v12-development-plan.md": "753c3d3182c7926993203526f1782e2c593957f779a5a59ffa5ae067f1ccb10b"
+  },
+  "controls": [
+    "fixed role baseline Luna high -> treatment Sol high, v12 tier-only and limitations retained",
+    "wrong panel count rejects",
+    "wrong panel IDs rejects",
+    "reversed panel roles rejects",
+    "cumulative episode output flag preserves observations but rejects clean comparison",
+    "recovered incomplete native finish preserves observations but rejects clean comparison",
+    "tier effort mismatch preserves observations but rejects clean comparison",
+    "unmatched harness preserves observations but rejects clean comparison",
+    "partial native coverage preserves observations but rejects clean comparison",
+    "pending v12 native audit prevents context construction"
+  ],
+  "issues": [],
+  "scope": "Source-only v12 builder delta with isolated injected IO fixtures; preserve previous builder/runtime evidence unchanged.",
+  "method": "Import builder without executing its direct-entrypoint branch; call exported function only with fully synthetic in-memory registration/audit/receipt/native/ledger fixtures. No actual control/output/ledger/auth/provider reads.",
+  "limits": [
+    "Exact current builder bytes only; future mutations require renewed review.",
+    "Native admission helper remains strict and separately reviewed. V12 context cannot publish until all registered native panels terminal and independently audited.",
+    "Three correlated single-attempt anchors have coarse33.33 macro resolution; no general ranking, accepted calibration, causal cross-generation hardness or insurance expert validity."
+  ],
+  "verification": {
+    "controlsPassed": 10,
+    "realBuilderExecution": false,
+    "realRegistrationReads": 0,
+    "realNativeReads": 0,
+    "realLedgerReads": 0,
+    "providerCalls": 0,
+    "strictIgnoredBuilderCompile": "PASS"
+  },
+  "reproduction": {
+    "copy": "insurance-bench/results/meta/current-report-v12-builder-independent-review-repro.txt",
+    "command": "Copy this durable script to .tmp/insurance-bench/current-report-v12-builder-independent-review.ts, then npx tsx that scratch path from repository root."
+  }
+}

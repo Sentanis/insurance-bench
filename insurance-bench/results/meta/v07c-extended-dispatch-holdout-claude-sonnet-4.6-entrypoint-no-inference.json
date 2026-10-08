@@ -1,0 +1,67 @@
+{
+  "startedAt": "2026-10-04T20:50:54.375Z",
+  "split": "holdout",
+  "model": "claude-sonnet-4.6",
+  "taskIds": [
+    "ibc-coverage-review-holdout-1-ee0e896c",
+    "ibc-financial-reconciliation-holdout-1-5f419d60",
+    "ibc-deadline-triage-holdout-1-96851694"
+  ],
+  "repeat": 1,
+  "limits": {
+    "maxTurns": 20,
+    "maxOutputTokens": 16384,
+    "transportDeadlineMs": 300000
+  },
+  "sourceFingerprint": "d32acb6aef0f3b7e35a29b0fc41a650383fd172cb1cc0de457226efbef87280e",
+  "harnessHash": "d0b6963c2b33416372a975d497a554a52ed667f8f9213150b072ce3659502555",
+  "promptHash": "42bedeffb8638877eb60cd23cb2a9bf8ed82e67c10791b0ee2f7b9f6cb1de1f6",
+  "modelConfiguration": {
+    "provider": "bedrock",
+    "model": "us.anthropic.claude-sonnet-4-6",
+    "inputUsdPerMillion": 3.3,
+    "outputUsdPerMillion": 16.5,
+    "profile": "sentanis-phase0",
+    "region": "us-west-2"
+  },
+  "planningAllowanceUsd": 3.5,
+  "ledgerBefore": {
+    "reservedUsd": 20.20268017000003,
+    "capUsd": 75,
+    "updatedAt": "2026-10-04T20:43:12.567317+00:00"
+  },
+  "command": [
+    "npx",
+    "tsx",
+    "insurance-bench/cli.ts",
+    "run",
+    "--suite",
+    "coupled",
+    "--split",
+    "holdout",
+    "--model",
+    "claude-sonnet-4.6",
+    "--variant",
+    "baseline",
+    "--per-family",
+    "1",
+    "--case-offset",
+    "0",
+    "--repeat",
+    "1",
+    "--budget",
+    "75",
+    "--ledger",
+    ".tmp/insurance-bench/session-budget.json",
+    "--out",
+    ".tmp/insurance-bench/v07c-extended-runs"
+  ],
+  "status": "process-ended-without-native-run",
+  "endedAt": "2026-10-04T20:50:54.911Z",
+  "exitCode": 0,
+  "ledgerAfter": {
+    "reservedUsd": 20.20268017000003,
+    "capUsd": 75,
+    "updatedAt": "2026-10-04T20:43:12.567317+00:00"
+  }
+}

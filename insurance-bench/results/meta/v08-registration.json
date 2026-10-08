@@ -1,0 +1,374 @@
+{
+  "registeredAt": "2026-10-04T21:54:15.568Z",
+  "status": "prospective-no-inference-before-freeze",
+  "generation": "insurance-bench-evidence-v0.8",
+  "sourceFingerprint": "b4a648a8cb12bc94a938a74ccb03d5c8bc1e692fcd060f55690362750031d64c",
+  "promptHash": "65efab1714616e06b18482d3ab32572b52774de419330ad842b1bf0b096fffb2",
+  "fullCorpusHash": "0b33183872bf68e251943727ea2054d971d7e01ef091ee05dc33cc7ba4b36c30",
+  "auditPath": "insurance-bench/results/meta/evidence-independent-audit-v0.8.json",
+  "auditSha256": "f7a9cdecf4daf8135c0a06c39ad9155f04ded4ca8350685f93767082f1996e14",
+  "planPath": "specs/features/insurance-bench/v08-experiment-plan-draft.md",
+  "planSha256": "99ba54d743880e9dd26c2dd04b8f396206735dff10b2452d363053d6219a4ac2",
+  "controllerPath": ".tmp/insurance-bench/v08-run-panels.ts",
+  "controllerSha256": "a46d11899b8ba6de0a16044aa752c04fd80e2c04e1356b06dbe71afc547a6845",
+  "capUsd": 75,
+  "ledgerPath": ".tmp/insurance-bench/session-budget.json",
+  "ledgerAtRegistration": {
+    "reservedUsd": 33.64308818750004,
+    "capUsd": 75,
+    "updatedAt": "2026-10-04T21:49:49.248Z"
+  },
+  "forecastTotalUsd": 28.75,
+  "headlineMetric": "macro-task-success",
+  "diagnosticWeights": {
+    "facts": 40,
+    "evidence": 25,
+    "workflow": 25,
+    "boundaries": 10
+  },
+  "panels": [
+    {
+      "id": "01-sol-high-dev",
+      "modelAlias": "gpt-6.1-sol-high",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6.1-sol",
+        "inputUsdPerMillion": 2,
+        "outputUsdPerMillion": 10,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "split": "dev",
+      "representation": "original",
+      "forecastUsd": 2.5,
+      "taskIds": [
+        "ibe-coverage-review-dev-1-3cc88288",
+        "ibe-coverage-review-dev-2-f5e7c447",
+        "ibe-evidence-brief-dev-1-809bfa3c",
+        "ibe-evidence-brief-dev-2-59ea906b",
+        "ibe-fraud-referral-dev-1-a47a3330",
+        "ibe-fraud-referral-dev-2-46b8accf"
+      ],
+      "datasetHash": "643ee7977b235b6a5f81393d5edbf4561d5d828357e7261ed733619225f0f1ea",
+      "correspondenceIds": [
+        "ibe-coverage-review-dev-1-3cc88288",
+        "ibe-coverage-review-dev-2-f5e7c447",
+        "ibe-evidence-brief-dev-1-809bfa3c",
+        "ibe-evidence-brief-dev-2-59ea906b",
+        "ibe-fraud-referral-dev-1-a47a3330",
+        "ibe-fraud-referral-dev-2-46b8accf"
+      ],
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384,
+        "transportDeadlineMs": 300000
+      },
+      "harnessHash": "038030fe8d7703e4dfba1258a59e2dc07d2223df38eb56c942be0ae687b1b11e",
+      "variant": "baseline"
+    },
+    {
+      "id": "02-sol-low-dev",
+      "modelAlias": "gpt-6.1-sol-low",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6.1-sol",
+        "inputUsdPerMillion": 2,
+        "outputUsdPerMillion": 10,
+        "reasoningEffort": "low",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "split": "dev",
+      "representation": "original",
+      "forecastUsd": 2.5,
+      "taskIds": [
+        "ibe-coverage-review-dev-1-3cc88288",
+        "ibe-coverage-review-dev-2-f5e7c447",
+        "ibe-evidence-brief-dev-1-809bfa3c",
+        "ibe-evidence-brief-dev-2-59ea906b",
+        "ibe-fraud-referral-dev-1-a47a3330",
+        "ibe-fraud-referral-dev-2-46b8accf"
+      ],
+      "datasetHash": "643ee7977b235b6a5f81393d5edbf4561d5d828357e7261ed733619225f0f1ea",
+      "correspondenceIds": [
+        "ibe-coverage-review-dev-1-3cc88288",
+        "ibe-coverage-review-dev-2-f5e7c447",
+        "ibe-evidence-brief-dev-1-809bfa3c",
+        "ibe-evidence-brief-dev-2-59ea906b",
+        "ibe-fraud-referral-dev-1-a47a3330",
+        "ibe-fraud-referral-dev-2-46b8accf"
+      ],
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384,
+        "transportDeadlineMs": 300000
+      },
+      "harnessHash": "038030fe8d7703e4dfba1258a59e2dc07d2223df38eb56c942be0ae687b1b11e",
+      "variant": "baseline"
+    },
+    {
+      "id": "03-luna-low-dev",
+      "modelAlias": "gpt-6-luna-low",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6-luna",
+        "inputUsdPerMillion": 0.1,
+        "outputUsdPerMillion": 0.5,
+        "reasoningEffort": "low",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "split": "dev",
+      "representation": "original",
+      "forecastUsd": 0.5,
+      "taskIds": [
+        "ibe-coverage-review-dev-1-3cc88288",
+        "ibe-coverage-review-dev-2-f5e7c447",
+        "ibe-evidence-brief-dev-1-809bfa3c",
+        "ibe-evidence-brief-dev-2-59ea906b",
+        "ibe-fraud-referral-dev-1-a47a3330",
+        "ibe-fraud-referral-dev-2-46b8accf"
+      ],
+      "datasetHash": "643ee7977b235b6a5f81393d5edbf4561d5d828357e7261ed733619225f0f1ea",
+      "correspondenceIds": [
+        "ibe-coverage-review-dev-1-3cc88288",
+        "ibe-coverage-review-dev-2-f5e7c447",
+        "ibe-evidence-brief-dev-1-809bfa3c",
+        "ibe-evidence-brief-dev-2-59ea906b",
+        "ibe-fraud-referral-dev-1-a47a3330",
+        "ibe-fraud-referral-dev-2-46b8accf"
+      ],
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384,
+        "transportDeadlineMs": 300000
+      },
+      "harnessHash": "038030fe8d7703e4dfba1258a59e2dc07d2223df38eb56c942be0ae687b1b11e",
+      "variant": "baseline"
+    },
+    {
+      "id": "04-luna-high-dev",
+      "modelAlias": "gpt-6-luna-high",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6-luna",
+        "inputUsdPerMillion": 0.1,
+        "outputUsdPerMillion": 0.5,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "split": "dev",
+      "representation": "original",
+      "forecastUsd": 0.75,
+      "taskIds": [
+        "ibe-coverage-review-dev-1-3cc88288",
+        "ibe-coverage-review-dev-2-f5e7c447",
+        "ibe-evidence-brief-dev-1-809bfa3c",
+        "ibe-evidence-brief-dev-2-59ea906b",
+        "ibe-fraud-referral-dev-1-a47a3330",
+        "ibe-fraud-referral-dev-2-46b8accf"
+      ],
+      "datasetHash": "643ee7977b235b6a5f81393d5edbf4561d5d828357e7261ed733619225f0f1ea",
+      "correspondenceIds": [
+        "ibe-coverage-review-dev-1-3cc88288",
+        "ibe-coverage-review-dev-2-f5e7c447",
+        "ibe-evidence-brief-dev-1-809bfa3c",
+        "ibe-evidence-brief-dev-2-59ea906b",
+        "ibe-fraud-referral-dev-1-a47a3330",
+        "ibe-fraud-referral-dev-2-46b8accf"
+      ],
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384,
+        "transportDeadlineMs": 300000
+      },
+      "harnessHash": "038030fe8d7703e4dfba1258a59e2dc07d2223df38eb56c942be0ae687b1b11e",
+      "variant": "baseline"
+    },
+    {
+      "id": "05-astra-high-dev",
+      "modelAlias": "gpt-6-astra-high",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputUsdPerMillion": 10,
+        "outputUsdPerMillion": 50,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/pricing",
+        "pricingVerifiedAt": "2026-10-04"
+      },
+      "split": "dev",
+      "representation": "original",
+      "forecastUsd": 8.75,
+      "taskIds": [
+        "ibe-coverage-review-dev-1-3cc88288",
+        "ibe-coverage-review-dev-2-f5e7c447",
+        "ibe-evidence-brief-dev-1-809bfa3c",
+        "ibe-evidence-brief-dev-2-59ea906b",
+        "ibe-fraud-referral-dev-1-a47a3330",
+        "ibe-fraud-referral-dev-2-46b8accf"
+      ],
+      "datasetHash": "643ee7977b235b6a5f81393d5edbf4561d5d828357e7261ed733619225f0f1ea",
+      "correspondenceIds": [
+        "ibe-coverage-review-dev-1-3cc88288",
+        "ibe-coverage-review-dev-2-f5e7c447",
+        "ibe-evidence-brief-dev-1-809bfa3c",
+        "ibe-evidence-brief-dev-2-59ea906b",
+        "ibe-fraud-referral-dev-1-a47a3330",
+        "ibe-fraud-referral-dev-2-46b8accf"
+      ],
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384,
+        "transportDeadlineMs": 300000
+      },
+      "harnessHash": "038030fe8d7703e4dfba1258a59e2dc07d2223df38eb56c942be0ae687b1b11e",
+      "variant": "baseline"
+    },
+    {
+      "id": "06-sol-high-normalized-dev",
+      "modelAlias": "gpt-6.1-sol-high",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6.1-sol",
+        "inputUsdPerMillion": 2,
+        "outputUsdPerMillion": 10,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "split": "dev",
+      "representation": "normalized-diagnostic",
+      "forecastUsd": 2.5,
+      "taskIds": [
+        "ibe-coverage-review-dev-1-3cc88288",
+        "ibe-coverage-review-dev-2-f5e7c447",
+        "ibe-evidence-brief-dev-1-809bfa3c",
+        "ibe-evidence-brief-dev-2-59ea906b",
+        "ibe-fraud-referral-dev-1-a47a3330",
+        "ibe-fraud-referral-dev-2-46b8accf"
+      ],
+      "datasetHash": "3115cb1f88e515c8b2d276281dfc16b3ca963349d26d4af30fe6a8a8d77ec6e0",
+      "correspondenceIds": [
+        "ibe-coverage-review-dev-1-3cc88288",
+        "ibe-coverage-review-dev-2-f5e7c447",
+        "ibe-evidence-brief-dev-1-809bfa3c",
+        "ibe-evidence-brief-dev-2-59ea906b",
+        "ibe-fraud-referral-dev-1-a47a3330",
+        "ibe-fraud-referral-dev-2-46b8accf"
+      ],
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384,
+        "transportDeadlineMs": 300000
+      },
+      "harnessHash": "038030fe8d7703e4dfba1258a59e2dc07d2223df38eb56c942be0ae687b1b11e",
+      "variant": "baseline"
+    },
+    {
+      "id": "07-sol-high-holdout",
+      "modelAlias": "gpt-6.1-sol-high",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6.1-sol",
+        "inputUsdPerMillion": 2,
+        "outputUsdPerMillion": 10,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "split": "holdout",
+      "representation": "original",
+      "forecastUsd": 2.5,
+      "taskIds": [
+        "ibe-coverage-review-holdout-1-3c5734fa",
+        "ibe-coverage-review-holdout-2-38624011",
+        "ibe-evidence-brief-holdout-1-5d55eace",
+        "ibe-evidence-brief-holdout-2-2377f3d5",
+        "ibe-fraud-referral-holdout-1-48e133e2",
+        "ibe-fraud-referral-holdout-2-bb9ca1d9"
+      ],
+      "datasetHash": "b545ea681c7f8735952b8d4f7c0d8c407cef7f30b50dc3cb280a7456b40b599f",
+      "correspondenceIds": [
+        "ibe-coverage-review-holdout-1-3c5734fa",
+        "ibe-coverage-review-holdout-2-38624011",
+        "ibe-evidence-brief-holdout-1-5d55eace",
+        "ibe-evidence-brief-holdout-2-2377f3d5",
+        "ibe-fraud-referral-holdout-1-48e133e2",
+        "ibe-fraud-referral-holdout-2-bb9ca1d9"
+      ],
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384,
+        "transportDeadlineMs": 300000
+      },
+      "harnessHash": "038030fe8d7703e4dfba1258a59e2dc07d2223df38eb56c942be0ae687b1b11e",
+      "variant": "baseline"
+    },
+    {
+      "id": "08-astra-high-holdout",
+      "modelAlias": "gpt-6-astra-high",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputUsdPerMillion": 10,
+        "outputUsdPerMillion": 50,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/pricing",
+        "pricingVerifiedAt": "2026-10-04"
+      },
+      "split": "holdout",
+      "representation": "original",
+      "forecastUsd": 8.75,
+      "taskIds": [
+        "ibe-coverage-review-holdout-1-3c5734fa",
+        "ibe-coverage-review-holdout-2-38624011",
+        "ibe-evidence-brief-holdout-1-5d55eace",
+        "ibe-evidence-brief-holdout-2-2377f3d5",
+        "ibe-fraud-referral-holdout-1-48e133e2",
+        "ibe-fraud-referral-holdout-2-bb9ca1d9"
+      ],
+      "datasetHash": "b545ea681c7f8735952b8d4f7c0d8c407cef7f30b50dc3cb280a7456b40b599f",
+      "correspondenceIds": [
+        "ibe-coverage-review-holdout-1-3c5734fa",
+        "ibe-coverage-review-holdout-2-38624011",
+        "ibe-evidence-brief-holdout-1-5d55eace",
+        "ibe-evidence-brief-holdout-2-2377f3d5",
+        "ibe-fraud-referral-holdout-1-48e133e2",
+        "ibe-fraud-referral-holdout-2-bb9ca1d9"
+      ],
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384,
+        "transportDeadlineMs": 300000
+      },
+      "harnessHash": "038030fe8d7703e4dfba1258a59e2dc07d2223df38eb56c942be0ae687b1b11e",
+      "variant": "baseline"
+    }
+  ],
+  "guards": [
+    "Serial fixed order, no outcome-selected reruns or task/model substitutions",
+    "Before each panel entire remaining forecast must fit current authoritative ledger",
+    "Forecast material overrun pauses before next panel; no automatic resume without a new reviewed prospective amendment",
+    "No held-out output before separately committed final holdout release of unchanged source/harness/tasksets",
+    "Observed cumulative truncatedOutput or broad finishReason rejects clean contrasts; scores preserved",
+    "Provider/budget failures retain unscored coverage and reservations; no selective case retry"
+  ],
+  "paidInferencePerformed": false,
+  "preFreezeControllerRevisions": [
+    {
+      "previousSha256": "f4f9d45f6521378b7136b3f2e4f0ff287f0ed7462533d8ba5f9bcf2c24824746",
+      "reason": "Exclusive controller lock; preserve process-ended receipt before native validation; explicit trace model/effort identity guard. No inference or selection change."
+    }
+  ]
+}

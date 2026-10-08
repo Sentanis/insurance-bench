@@ -1,0 +1,1009 @@
+{
+  "generation": "Investigation and allocation research — separate frozen conditions",
+  "primaryRunIds": [
+    "2026-10-04T23-19-13-453Z-gpt-6.1-sol-high-baseline-investigation",
+    "2026-10-04T23-40-47-023Z-gpt-6.1-sol-low-baseline-investigation",
+    "2026-10-04T23-48-44-384Z-gpt-6-luna-low-baseline-investigation",
+    "2026-10-04T23-52-59-436Z-gpt-6-luna-high-baseline-investigation",
+    "2026-10-05T00-05-31-280Z-gpt-6-astra-high-baseline-investigation",
+    "2026-10-05T00-17-48-626Z-gpt-6.1-sol-high-verify-before-finish-investigation",
+    "2026-10-05T00-34-57-306Z-gpt-6.1-sol-high-baseline-investigation",
+    "2026-10-05T00-49-28-690Z-gpt-6-astra-high-baseline-investigation",
+    "2026-10-05T01-18-38-204Z-gpt-6-luna-low-baseline-investigation",
+    "2026-10-05T01-24-44-945Z-gpt-6-luna-high-baseline-investigation",
+    "2026-10-05T01-38-18-326Z-gpt-6.1-sol-high-baseline-investigation",
+    "2026-10-05T02-05-49-682Z-gpt-6-luna-high-baseline-investigation",
+    "2026-10-05T02-47-38-010Z-gpt-6.1-sol-high-baseline-allocation-interaction",
+    "2026-10-05T03-00-44-801Z-gpt-6.1-sol-low-baseline-allocation-interaction",
+    "2026-10-05T03-12-36-117Z-gpt-6-luna-low-baseline-allocation-interaction",
+    "2026-10-05T03-21-31-856Z-gpt-6-luna-high-baseline-allocation-interaction",
+    "2026-10-05T04-11-33-454Z-gpt-6.1-sol-high-baseline-dependency-allocation",
+    "2026-10-05T04-19-42-463Z-gpt-6-luna-high-baseline-dependency-allocation",
+    "2026-10-04T04-05-33-650Z-gpt-6.1-sol-baseline",
+    "2026-10-04T04-05-33-650Z-gpt-6-luna-baseline",
+    "2026-10-04T20-51-36-162Z-us.anthropic.claude-sonnet-4-6-baseline",
+    "2026-10-04T21-07-51-258Z-openai.gpt-oss-120b-1-0-baseline",
+    "2026-10-04T21-21-21-009Z-openai.gpt-oss-20b-1-0-baseline",
+    "2026-10-04T21-26-42-462Z-global.anthropic.claude-haiku-4-5-20251001-v1-0-baseline",
+    "2026-10-04T21-32-54-094Z-gpt-6-astra-baseline",
+    "2026-10-04T20-51-36-164Z-qwen.qwen3-235b-a22b-2507-v1-0-baseline",
+    "2026-10-04T20-51-36-166Z-qwen.qwen3-32b-v1-0-baseline"
+  ],
+  "invalidRunIds": [
+    "2026-10-04T01-23-23-972Z-gpt-6.1-sol-baseline",
+    "2026-10-04T01-23-24-904Z-gpt-6-luna-baseline",
+    "v04-interrupted-gpt-6.1-sol-low",
+    "v04-interrupted-gpt-6-luna-low",
+    "2026-10-04T01-57-57-826Z-gpt-6-luna-baseline",
+    "2026-10-04T01-57-56-708Z-gpt-6.1-sol-baseline",
+    "2026-10-04T02-10-33-126Z-gpt-6-luna-baseline",
+    "2026-10-04T02-10-33-124Z-gpt-6.1-sol-baseline",
+    "2026-10-04T02-49-39-592Z-gpt-6-luna-baseline",
+    "2026-10-04T02-49-38-445Z-gpt-6.1-sol-baseline",
+    "2026-10-04T03-15-58-814Z-gpt-6.1-sol-baseline",
+    "2026-10-04T03-22-56-392Z-gpt-6.1-sol-baseline",
+    "2026-10-04T03-22-56-388Z-gpt-6-luna-baseline",
+    "2026-10-04T22-01-56-859Z-gpt-6.1-sol-high-baseline-evidence"
+  ],
+  "comparisons": [
+    {
+      "axis": "effort",
+      "baselineRunId": "2026-10-04T03-39-43-210Z-gpt-6.1-sol-baseline",
+      "treatmentRunId": "2026-10-04T03-46-16-198Z-gpt-6.1-sol-baseline",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 0,
+      "completionDelta": 0,
+      "componentDeltas": {
+        "facts": 0,
+        "evidence": 0,
+        "workflow": 0,
+        "boundaries": 0
+      },
+      "currentStateDelta": 0,
+      "caseWins": 0,
+      "caseTies": 3,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        0,
+        0
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 0
+        },
+        {
+          "family": "financial-reconciliation",
+          "scoreDelta": 0
+        },
+        {
+          "family": "deadline-triage",
+          "scoreDelta": 0
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    },
+    {
+      "axis": "effort",
+      "baselineRunId": "2026-10-04T03-39-43-210Z-gpt-6-luna-baseline",
+      "treatmentRunId": "2026-10-04T03-46-16-197Z-gpt-6-luna-baseline",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 41.19,
+      "completionDelta": 66.67,
+      "componentDeltas": {
+        "facts": 45.62,
+        "evidence": 40.35,
+        "workflow": 38.09,
+        "boundaries": 33.33
+      },
+      "currentStateDelta": 66.67,
+      "caseWins": 3,
+      "caseTies": 0,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        23.2,
+        72.71
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 72.71
+        },
+        {
+          "family": "financial-reconciliation",
+          "scoreDelta": 27.67
+        },
+        {
+          "family": "deadline-triage",
+          "scoreDelta": 23.2
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    },
+    {
+      "axis": "tier",
+      "baselineRunId": "2026-10-04T03-39-43-210Z-gpt-6-luna-baseline",
+      "treatmentRunId": "2026-10-04T03-39-43-210Z-gpt-6.1-sol-baseline",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 49.1,
+      "completionDelta": 100,
+      "componentDeltas": {
+        "facts": 47.37,
+        "evidence": 59.65,
+        "workflow": 47.62,
+        "boundaries": 33.33
+      },
+      "currentStateDelta": 100,
+      "caseWins": 3,
+      "caseTies": 0,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        23.2,
+        96.43
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 96.43
+        },
+        {
+          "family": "financial-reconciliation",
+          "scoreDelta": 27.67
+        },
+        {
+          "family": "deadline-triage",
+          "scoreDelta": 23.2
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    },
+    {
+      "axis": "tier",
+      "baselineRunId": "2026-10-04T03-46-16-197Z-gpt-6-luna-baseline",
+      "treatmentRunId": "2026-10-04T03-46-16-198Z-gpt-6.1-sol-baseline",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 7.91,
+      "completionDelta": 33.33,
+      "componentDeltas": {
+        "facts": 1.75,
+        "evidence": 19.3,
+        "workflow": 9.52,
+        "boundaries": 0
+      },
+      "currentStateDelta": 33.33,
+      "caseWins": 1,
+      "caseTies": 2,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        0,
+        23.72
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 23.72
+        },
+        {
+          "family": "financial-reconciliation",
+          "scoreDelta": 0
+        },
+        {
+          "family": "deadline-triage",
+          "scoreDelta": 0
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    },
+    {
+      "id": "sol-effort",
+      "baselinePanel": "02-sol-low-dev",
+      "treatmentPanel": "01-sol-high-dev",
+      "status": "available-descriptive",
+      "axis": "effort",
+      "baselineRunId": "2026-10-04T23-40-47-023Z-gpt-6.1-sol-low-baseline-investigation",
+      "treatmentRunId": "2026-10-04T23-19-13-453Z-gpt-6.1-sol-high-baseline-investigation",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 0,
+      "completionDelta": 0,
+      "componentDeltas": {
+        "facts": 0,
+        "evidence": 0,
+        "workflow": 0,
+        "boundaries": 0
+      },
+      "caseWins": 0,
+      "caseTies": 3,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        0,
+        0
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 0
+        },
+        {
+          "family": "evidence-brief",
+          "scoreDelta": 0
+        },
+        {
+          "family": "fraud-referral",
+          "scoreDelta": 0
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation.",
+      "macroTaskSuccessDelta": 0,
+      "casePairs": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "baseline": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "baseline": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "baseline": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        }
+      ],
+      "intervalMetric": "weighted diagnostic delta; no separate headline interval",
+      "additionalCaveat": "Three correlated single-attempt anchors; descriptive bootstrap has weak power and cannot establish population ranking or localize frontier50–60."
+    },
+    {
+      "id": "luna-effort",
+      "baselinePanel": "03-luna-low-dev",
+      "treatmentPanel": "04-luna-high-dev",
+      "status": "available-descriptive",
+      "axis": "effort",
+      "baselineRunId": "2026-10-04T23-48-44-384Z-gpt-6-luna-low-baseline-investigation",
+      "treatmentRunId": "2026-10-04T23-52-59-436Z-gpt-6-luna-high-baseline-investigation",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 24.9,
+      "completionDelta": 0,
+      "componentDeltas": {
+        "facts": 29.17,
+        "evidence": 22.92,
+        "workflow": 16.67,
+        "boundaries": 33.33
+      },
+      "caseWins": 2,
+      "caseTies": 0,
+      "caseLosses": 1,
+      "familyClusterBootstrap95": [
+        -6.15,
+        49.06
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 49.06
+        },
+        {
+          "family": "evidence-brief",
+          "scoreDelta": -6.15
+        },
+        {
+          "family": "fraud-referral",
+          "scoreDelta": 31.78
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation.",
+      "macroTaskSuccessDelta": 0,
+      "casePairs": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "baseline": {
+            "weightedDiagnostic": 4.17,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 53.23,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "baseline": {
+            "weightedDiagnostic": 51.67,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 45.52,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "baseline": {
+            "weightedDiagnostic": 45.83,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 77.61,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": true,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          }
+        }
+      ],
+      "intervalMetric": "weighted diagnostic delta; no separate headline interval",
+      "additionalCaveat": "Three correlated single-attempt anchors; descriptive bootstrap has weak power and cannot establish population ranking or localize frontier50–60."
+    },
+    {
+      "id": "openai-low-tier",
+      "baselinePanel": "03-luna-low-dev",
+      "treatmentPanel": "02-sol-low-dev",
+      "status": "available-descriptive",
+      "axis": "tier",
+      "baselineRunId": "2026-10-04T23-48-44-384Z-gpt-6-luna-low-baseline-investigation",
+      "treatmentRunId": "2026-10-04T23-40-47-023Z-gpt-6.1-sol-low-baseline-investigation",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 66.11,
+      "completionDelta": 100,
+      "componentDeltas": {
+        "facts": 39.58,
+        "evidence": 100,
+        "workflow": 83.33,
+        "boundaries": 44.44
+      },
+      "caseWins": 3,
+      "caseTies": 0,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        48.33,
+        95.83
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 95.83
+        },
+        {
+          "family": "evidence-brief",
+          "scoreDelta": 48.33
+        },
+        {
+          "family": "fraud-referral",
+          "scoreDelta": 54.17
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation.",
+      "macroTaskSuccessDelta": 100,
+      "casePairs": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "baseline": {
+            "weightedDiagnostic": 4.17,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "baseline": {
+            "weightedDiagnostic": 51.67,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "baseline": {
+            "weightedDiagnostic": 45.83,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        }
+      ],
+      "intervalMetric": "weighted diagnostic delta; no separate headline interval",
+      "additionalCaveat": "Three correlated single-attempt anchors; descriptive bootstrap has weak power and cannot establish population ranking or localize frontier50–60."
+    },
+    {
+      "id": "openai-high-tier",
+      "baselinePanel": "04-luna-high-dev",
+      "treatmentPanel": "01-sol-high-dev",
+      "status": "available-descriptive",
+      "axis": "tier",
+      "baselineRunId": "2026-10-04T23-52-59-436Z-gpt-6-luna-high-baseline-investigation",
+      "treatmentRunId": "2026-10-04T23-19-13-453Z-gpt-6.1-sol-high-baseline-investigation",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 41.21,
+      "completionDelta": 100,
+      "componentDeltas": {
+        "facts": 10.42,
+        "evidence": 77.08,
+        "workflow": 66.66,
+        "boundaries": 11.11
+      },
+      "caseWins": 3,
+      "caseTies": 0,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        22.39,
+        54.48
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 46.77
+        },
+        {
+          "family": "evidence-brief",
+          "scoreDelta": 54.48
+        },
+        {
+          "family": "fraud-referral",
+          "scoreDelta": 22.39
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation.",
+      "macroTaskSuccessDelta": 100,
+      "casePairs": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "baseline": {
+            "weightedDiagnostic": 53.23,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "baseline": {
+            "weightedDiagnostic": 45.52,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "baseline": {
+            "weightedDiagnostic": 77.61,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": true,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        }
+      ],
+      "intervalMetric": "weighted diagnostic delta; no separate headline interval",
+      "additionalCaveat": "Three correlated single-attempt anchors; descriptive bootstrap has weak power and cannot establish population ranking or localize frontier50–60."
+    },
+    {
+      "id": "frontier-high-configured-tier",
+      "baselinePanel": "01-sol-high-dev",
+      "treatmentPanel": "05-astra-high-dev",
+      "status": "available-descriptive",
+      "axis": "tier",
+      "baselineRunId": "2026-10-04T23-19-13-453Z-gpt-6.1-sol-high-baseline-investigation",
+      "treatmentRunId": "2026-10-05T00-05-31-280Z-gpt-6-astra-high-baseline-investigation",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 0,
+      "completionDelta": 0,
+      "componentDeltas": {
+        "facts": 0,
+        "evidence": 0,
+        "workflow": 0,
+        "boundaries": 0
+      },
+      "caseWins": 0,
+      "caseTies": 3,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        0,
+        0
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 0
+        },
+        {
+          "family": "evidence-brief",
+          "scoreDelta": 0
+        },
+        {
+          "family": "fraud-referral",
+          "scoreDelta": 0
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation.",
+      "macroTaskSuccessDelta": 0,
+      "casePairs": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "baseline": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "baseline": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "baseline": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        }
+      ],
+      "intervalMetric": "weighted diagnostic delta; no separate headline interval",
+      "additionalCaveat": "Three correlated single-attempt anchors; descriptive bootstrap has weak power and cannot establish population ranking or localize frontier50–60."
+    },
+    {
+      "axis": "effort",
+      "baselineRunId": "2026-10-05T01-18-38-204Z-gpt-6-luna-low-baseline-investigation",
+      "treatmentRunId": "2026-10-05T01-24-44-945Z-gpt-6-luna-high-baseline-investigation",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 21.04,
+      "completionDelta": 0,
+      "componentDeltas": {
+        "facts": 12.5,
+        "evidence": 37.5,
+        "workflow": 22.22,
+        "boundaries": 11.11
+      },
+      "caseWins": 2,
+      "caseTies": 0,
+      "caseLosses": 1,
+      "familyClusterBootstrap95": [
+        -9.37,
+        40.42
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 40.42
+        },
+        {
+          "family": "evidence-brief",
+          "scoreDelta": 32.08
+        },
+        {
+          "family": "fraud-referral",
+          "scoreDelta": -9.37
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    },
+    {
+      "axis": "tier",
+      "baselineRunId": "2026-10-05T02-05-49-682Z-gpt-6-luna-high-baseline-investigation",
+      "treatmentRunId": "2026-10-05T01-38-18-326Z-gpt-6.1-sol-high-baseline-investigation",
+      "cases": 6,
+      "attemptsPerCase": 1,
+      "scoreDelta": 32.45,
+      "completionDelta": 100,
+      "componentDeltas": {
+        "facts": 6.25,
+        "evidence": 78.13,
+        "workflow": 41.67,
+        "boundaries": 0
+      },
+      "caseWins": 6,
+      "caseTies": 0,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        15.1,
+        43.33
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 15.1
+        },
+        {
+          "family": "evidence-brief",
+          "scoreDelta": 38.91
+        },
+        {
+          "family": "fraud-referral",
+          "scoreDelta": 43.33
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    },
+    {
+      "axis": "effort",
+      "baselineRunId": "2026-10-05T03-00-44-801Z-gpt-6.1-sol-low-baseline-allocation-interaction",
+      "treatmentRunId": "2026-10-05T02-47-38-010Z-gpt-6.1-sol-high-baseline-allocation-interaction",
+      "cases": 6,
+      "attemptsPerCase": 1,
+      "scoreDelta": 2.33,
+      "completionDelta": 16.67,
+      "componentDeltas": {
+        "facts": 1.76,
+        "evidence": 1.76,
+        "workflow": 4.76,
+        "boundaries": 0
+      },
+      "currentStateDelta": 16.67,
+      "caseWins": 1,
+      "caseTies": 5,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        0,
+        6.99
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 0
+        },
+        {
+          "family": "financial-reconciliation",
+          "scoreDelta": 0
+        },
+        {
+          "family": "deadline-triage",
+          "scoreDelta": 6.99
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    },
+    {
+      "axis": "effort",
+      "baselineRunId": "2026-10-05T03-12-36-117Z-gpt-6-luna-low-baseline-allocation-interaction",
+      "treatmentRunId": "2026-10-05T03-21-31-856Z-gpt-6-luna-high-baseline-allocation-interaction",
+      "cases": 6,
+      "attemptsPerCase": 1,
+      "scoreDelta": 12.77,
+      "completionDelta": 83.33,
+      "componentDeltas": {
+        "facts": 11.4,
+        "evidence": 11.4,
+        "workflow": 21.43,
+        "boundaries": 0
+      },
+      "currentStateDelta": 66.67,
+      "caseWins": 6,
+      "caseTies": 0,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        10.34,
+        15.7
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 15.7
+        },
+        {
+          "family": "financial-reconciliation",
+          "scoreDelta": 12.27
+        },
+        {
+          "family": "deadline-triage",
+          "scoreDelta": 10.34
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    },
+    {
+      "axis": "tier",
+      "baselineRunId": "2026-10-05T03-21-31-856Z-gpt-6-luna-high-baseline-allocation-interaction",
+      "treatmentRunId": "2026-10-05T02-47-38-010Z-gpt-6.1-sol-high-baseline-allocation-interaction",
+      "cases": 6,
+      "attemptsPerCase": 1,
+      "scoreDelta": 2.33,
+      "completionDelta": 16.67,
+      "componentDeltas": {
+        "facts": 1.76,
+        "evidence": 1.76,
+        "workflow": 4.76,
+        "boundaries": 0
+      },
+      "currentStateDelta": 16.67,
+      "caseWins": 1,
+      "caseTies": 5,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        0,
+        6.99
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 0
+        },
+        {
+          "family": "financial-reconciliation",
+          "scoreDelta": 0
+        },
+        {
+          "family": "deadline-triage",
+          "scoreDelta": 6.99
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    },
+    {
+      "axis": "tier",
+      "baselineRunId": "2026-10-05T04-19-42-463Z-gpt-6-luna-high-baseline-dependency-allocation",
+      "treatmentRunId": "2026-10-05T04-11-33-454Z-gpt-6.1-sol-high-baseline-dependency-allocation",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 0,
+      "completionDelta": 0,
+      "componentDeltas": {
+        "facts": 0,
+        "evidence": 0,
+        "workflow": 0,
+        "boundaries": 0
+      },
+      "currentStateDelta": 0,
+      "caseWins": 0,
+      "caseTies": 3,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        0,
+        0
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 0
+        },
+        {
+          "family": "financial-reconciliation",
+          "scoreDelta": 0
+        },
+        {
+          "family": "deadline-triage",
+          "scoreDelta": 0
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    }
+  ],
+  "conditionWarnings": {
+    "2026-10-04T20-51-36-164Z-qwen.qwen3-235b-a22b-2507-v1-0-baseline": "Development diagnostic only. The provider advertises an 8K output maximum against the requested frozen 16384 cap. Accepted calls do not establish identical resource limits; this run is excluded from clean matched contrasts. Historical weighted headline;300-second request deadline versus600s for new investigation/interaction/allocation conditions. Reachable finish-state guard defect found; independent retained-trace audit finds zero postfinish actions in these paid native runs. No retroactive regrade.",
+    "2026-10-04T20-51-36-166Z-qwen.qwen3-32b-v1-0-baseline": "No scored terminal cases: provider ValidationException after eight successful nonempty responses. Exact rejection cause is unknown. Advertised8K maximum differs from the requested 16384 cap; no ability score or clean tier contrast. Historical weighted headline;300-second request deadline versus600s for new investigation/interaction/allocation conditions. Reachable finish-state guard defect found; independent retained-trace audit finds zero postfinish actions in these paid native runs. No retroactive regrade.",
+    "2026-10-04T22-01-56-859Z-gpt-6.1-sol-high-baseline-evidence": "Superseded v0.8 measurement. Required current custodian evidence resolves capture time but Q9 gold remained unresolved. The defensible supported answer lost dependent fact/evidence credit; raw grades are preserved, not capability evidence. Four of six tasks scored before a 300-second provider timeout; no headline or contrast.",
+    "2026-10-04T03-39-43-210Z-gpt-6-luna-baseline": "Historical weighted headline;300-second request deadline versus600s for new investigation/interaction/allocation conditions. Reachable finish-state guard defect found; independent retained-trace audit finds zero postfinish actions in these paid native runs. No retroactive regrade.",
+    "2026-10-04T03-39-43-210Z-gpt-6.1-sol-baseline": "Historical weighted headline;300-second request deadline versus600s for new investigation/interaction/allocation conditions. Reachable finish-state guard defect found; independent retained-trace audit finds zero postfinish actions in these paid native runs. No retroactive regrade.",
+    "2026-10-04T03-46-16-197Z-gpt-6-luna-baseline": "Historical weighted headline;300-second request deadline versus600s for new investigation/interaction/allocation conditions. Reachable finish-state guard defect found; independent retained-trace audit finds zero postfinish actions in these paid native runs. No retroactive regrade.",
+    "2026-10-04T03-46-16-198Z-gpt-6.1-sol-baseline": "Historical weighted headline;300-second request deadline versus600s for new investigation/interaction/allocation conditions. Reachable finish-state guard defect found; independent retained-trace audit finds zero postfinish actions in these paid native runs. No retroactive regrade.",
+    "2026-10-04T03-56-32-949Z-qwen.qwen3-235b-a22b-2507-v1-0-baseline": "Historical weighted headline;300-second request deadline versus600s for new investigation/interaction/allocation conditions. Reachable finish-state guard defect found; independent retained-trace audit finds zero postfinish actions in these paid native runs. No retroactive regrade.",
+    "2026-10-04T03-56-32-950Z-qwen.qwen3-32b-v1-0-baseline": "Historical weighted headline;300-second request deadline versus600s for new investigation/interaction/allocation conditions. Reachable finish-state guard defect found; independent retained-trace audit finds zero postfinish actions in these paid native runs. No retroactive regrade.",
+    "2026-10-04T04-05-33-650Z-gpt-6-luna-baseline": "Historical weighted headline;300-second request deadline versus600s for new investigation/interaction/allocation conditions. Reachable finish-state guard defect found; independent retained-trace audit finds zero postfinish actions in these paid native runs. No retroactive regrade.",
+    "2026-10-04T04-05-33-650Z-gpt-6.1-sol-baseline": "Historical weighted headline;300-second request deadline versus600s for new investigation/interaction/allocation conditions. Reachable finish-state guard defect found; independent retained-trace audit finds zero postfinish actions in these paid native runs. No retroactive regrade.",
+    "2026-10-04T20-51-36-162Z-us.anthropic.claude-sonnet-4-6-baseline": "Historical weighted headline;300-second request deadline versus600s for new investigation/interaction/allocation conditions. Reachable finish-state guard defect found; independent retained-trace audit finds zero postfinish actions in these paid native runs. No retroactive regrade.",
+    "2026-10-04T21-07-51-258Z-openai.gpt-oss-120b-1-0-baseline": "Historical weighted headline;300-second request deadline versus600s for new investigation/interaction/allocation conditions. Reachable finish-state guard defect found; independent retained-trace audit finds zero postfinish actions in these paid native runs. No retroactive regrade.",
+    "2026-10-04T21-21-21-009Z-openai.gpt-oss-20b-1-0-baseline": "Historical weighted headline;300-second request deadline versus600s for new investigation/interaction/allocation conditions. Reachable finish-state guard defect found; independent retained-trace audit finds zero postfinish actions in these paid native runs. No retroactive regrade.",
+    "2026-10-04T21-26-42-462Z-global.anthropic.claude-haiku-4-5-20251001-v1-0-baseline": "Historical weighted headline;300-second request deadline versus600s for new investigation/interaction/allocation conditions. Reachable finish-state guard defect found; independent retained-trace audit finds zero postfinish actions in these paid native runs. No retroactive regrade.",
+    "2026-10-04T21-32-54-094Z-gpt-6-astra-baseline": "Historical weighted headline;300-second request deadline versus600s for new investigation/interaction/allocation conditions. Reachable finish-state guard defect found; independent retained-trace audit finds zero postfinish actions in these paid native runs. No retroactive regrade.",
+    "2026-10-04T23-19-13-453Z-gpt-6.1-sol-high-baseline-investigation": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-04T23-40-47-023Z-gpt-6.1-sol-low-baseline-investigation": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-04T23-48-44-384Z-gpt-6-luna-low-baseline-investigation": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-04T23-52-59-436Z-gpt-6-luna-high-baseline-investigation": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-05T00-05-31-280Z-gpt-6-astra-high-baseline-investigation": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-05T00-17-48-626Z-gpt-6.1-sol-high-verify-before-finish-investigation": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-05T00-34-57-306Z-gpt-6.1-sol-high-baseline-investigation": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-05T00-49-28-690Z-gpt-6-astra-high-baseline-investigation": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-05T01-18-38-204Z-gpt-6-luna-low-baseline-investigation": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-05T01-24-44-945Z-gpt-6-luna-high-baseline-investigation": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-05T01-38-18-326Z-gpt-6.1-sol-high-baseline-investigation": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-05T02-05-49-682Z-gpt-6-luna-high-baseline-investigation": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-05T02-47-38-010Z-gpt-6.1-sol-high-baseline-allocation-interaction": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-05T03-00-44-801Z-gpt-6.1-sol-low-baseline-allocation-interaction": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-05T03-12-36-117Z-gpt-6-luna-low-baseline-allocation-interaction": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-05T03-21-31-856Z-gpt-6-luna-high-baseline-allocation-interaction": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-05T04-11-33-454Z-gpt-6.1-sol-high-baseline-dependency-allocation": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.",
+    "2026-10-05T04-19-42-463Z-gpt-6-luna-high-baseline-dependency-allocation": "Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic."
+  },
+  "findings": [
+    "Final V0.12 matched screen: Sol-high and Luna-high both score66.67 macro task success and95.34 diagnostic partial credit; each completes3/3 cases with2/3 current optimal writes. The independent full native audit agrees with all six episodes. Both mistake inherited B1 response-clock authority for current B2 packet completeness despite a missing medical enclosure, selecting ineligible B-positive components. Six failed criteria reflect that one shared error. This screen has no model-tier separation and does not meet accepted frontier50–60 calibration.",
+    "Transport limitation: the frozen OpenAI adapter joins all message output_text blocks and replays flat assistant text without response-phase metadata. The independent response-phase diagnostic proves that valid separate commentary/final messages and malformed single final text can yield identical saved shapes. V0.12 Luna recovers two extracted-response/action-interface errors without truncation; block/phase provenance is absent, so model final-answer failure, provider JSON-mode failure and causal score impact cannot be localized. OpenAI recommends preserving assistant phases. A new prospectively frozen phase-preserving transport with matched reruns is required before pure model capability claims; all existing grades remain configured-system observations.",
+    "The frontier50–60 difficulty target remains a research gate. Frozen v0.9 Sol-high/Sol-low/Astra-high all score100 macro task success in development; fresh Sol-high and Astra-high holdouts both100 across three cases each. Independent audits find no false grades or truncation. Sol effort and the verification reminder do not improve those ceiling scores.",
+    "V0.9 Luna-low/high score0 macro task success, with33.89/58.79 diagnostic weighted partial credit. Actual malformed JSON, insufficient current proof, invalid scope and stale/incomplete handoff confound an insurance-reasoning interpretation. All saved labels, lifecycle state and41 criterion booleans are independently checked; frontier versus lower-tier separation alone does not make a calibrated benchmark.",
+    "v09j: gpt-6-luna low 0.00 macro / 51.35 weighted diagnostic, 3/3 scored, $0.138059; gpt-6-luna high 0.00 macro / 72.40 weighted diagnostic, 3/3 scored, $0.235125. Native JSON object transport; exact cases, conditions and full terminal traces retained with independent native audit. No prior generation is regraded.",
+    "v10: gpt-6.1-sol high 100.00 macro / 100.00 weighted diagnostic, 6/6 scored, $3.825038; gpt-6-luna high 0.00 macro / 67.56 weighted diagnostic, 6/6 scored, $0.569159. Native JSON object transport; exact cases, conditions and full terminal traces retained with independent native audit. No prior generation is regraded.",
+    "v11: gpt-6.1-sol high 100.00 macro / 100.00 weighted diagnostic, 6/6 scored, $2.246036; gpt-6.1-sol low 83.33 macro / 97.67 weighted diagnostic, 6/6 scored, $2.177210; gpt-6-luna low 0.00 macro / 84.90 weighted diagnostic, 6/6 scored, $0.130665; gpt-6-luna high 83.33 macro / 97.67 weighted diagnostic, 6/6 scored, $0.189003. Native JSON object transport; exact cases, conditions and full terminal traces retained with independent native audit. No prior generation is regraded.",
+    "v12: gpt-6.1-sol high 66.67 macro / 95.34 weighted diagnostic, 3/3 scored, $1.104356; gpt-6-luna high 66.67 macro / 95.34 weighted diagnostic, 3/3 scored, $0.122623. Native JSON object transport; exact cases, conditions and full terminal traces retained with independent native audit. No prior generation is regraded.",
+    "JSON-object transport requests native JSON-object output; incomplete or truncated responses still require validation. Syntactic validity does not establish evidence, task schema, current approvals or workflow recovery. The JSON diagnostic preserves v0.9 semantic cases as a separately versioned condition. Interaction v0.10 changes sources and transport; v0.11 changes allocation sources, maximum search count, transport and repaired runtime. V0.12 changes source-qualified component prerequisites/exclusions and selects three matched development cases; its sole registered comparison is high-effort model tier. Cross-generation score changes are descriptive; they cannot identify a causal hardness effect.",
+    "New headline is equally family-weighted whole-task success;40/25/25/10 weighted partial credit remains diagnostic. Historical c rows retain their original weighted headline. Different native versions, corpus/harnesses, transport, task sets, split, variant and repeated attempts are separate panels. Never pool them into one leaderboard.",
+    "Three correlated families, single attempts, dependent fact/evidence/draft criteria and33.33-point three-case v0.9/v0.12 or16.67-point six-case resolution limit calibration power. Memo quality and professional insurance, legal or clinical validity are not established. Human domain validation and representative product coverage remain open.",
+    "Fresh frozen holdout: Sol-high 100.00, Luna-high 93.01. Each profile attempted the same first untouched case in each of three correlated families once. Raw scores, failed criteria and traces are retained; no holdout-driven grader changes or selective reruns occurred.",
+    "The Luna holdout deadline case reached the16384-token inclusive output ceiling. Later turns recovered, but this resource-limit exposure confounds a clean matched tier contrast. The comparison module refuses it; no holdout contrast or bootstrap interval is shown. These raw scores describe configured systems under the recorded limit. Development contrasts below are untruncated.",
+    "Development effort control: Sol-low100→Sol-high100,57/57 facts and3/3 actual optimal current writes at both efforts. Luna-low50.90→Luna-high92.09,30/57→56/57 facts and 0/3→2/3 actual optimal current writes. This establishes a narrow Luna effort difference while retaining the null Sol contrast and frontier ceiling.",
+    "Extended frozen c holdout references, three cases once each: Astra-high 100, Sonnet 4.6 67.02, GPT-OSS 120B 4.76, GPT-OSS 20B 3.57 and Haiku 4.5 18.18. Astra achieves 3/3 actual current feasible optimal reviewed writes; the other four achieve 0/3. These are configured-run observations. Low protocol/work-product scores do not establish general insurance incompetence. All-pass is3/3 for Astra and 0/3 for these other references; there are no critical or truncation flags in these five panels.",
+    "Qwen 235B development completes three cases at 43.38; Qwen 32B has zero scored terminal cases and is unavailable as an ability result. Their provider advertises 8K output against the frozen 16384 request. The accepted Qwen 235B run is a diagnostic only; clean Qwen tier contrasts are excluded. Qwen 32B/235B and DeepSeek fresh holdouts were deferred before inference on this resource mismatch, not omitted after seeing holdout results.",
+    "In all three Luna holdout cases, the same eligible-package omission loses about6.99 points through correlated fact, evidence and current-draft accuracy gates. All source operands, draft revisions, material versions and actual review histories pass; all three actual selected plans are feasible and optimal. Eligibility under public rule7 and selected-subset capacity feasibility are separate. Do not interpret these losses as three independent failures or worse actual plan quality.",
+    "The score weights are unchanged at40/25/25/10; a wrong actual selected plan alone costs only25/7≈3.57 points. Actual optimal current written outcomes are shown separately. The task labels share one occurrence engine, evidence partly tracks facts, and draft accuracy requires all facts correct. Memo prose and real-world legal correctness are not semantically validated.",
+    "Seeded family bootstrap intervals are descriptive resamples of three correlated single-attempt cases, not population confidence or a stable industry ranking. Engineering source/trace audits do not replace independent insurance-professional validation.",
+    "Historical v0.2 evaluated five complete reachable-model holdouts, all scoring86–98; those six-family basic workflows remain separate from this three-family coupled track. Superseded measurement candidates preserve raw grades and cannot establish capability conclusions.",
+    "The older coupled workflow has a reachable same-response finish-state guard defect: protected intent afterfinish is ignored. A separate independent audit checks15 native runs/39episodes/434turns/976accepted actions and473 supplementary snapshots: no postfinish action or protected intent occurs in saved c traces. No historical grade is changed or source retroactively repaired. New allocation runtime addresses this boundary before inference; old engineering approval is limited by this newly recorded defect.",
+    "The v0.8 evidence candidate is superseded: a source-propagation false grade affects Q9 after required current custodian evidence. Four of six tasks scored before a provider timeout, no ability headline or clean comparison. Raw source/gold/native/reviews remain unchanged; the invalid row is suppressed from ability metrics."
+  ],
+  "accessGaps": [
+    "AWS existing-profile access recovered. Five extended holdout reference panels completed; Qwen 235B development completed and Qwen 32B remains unscored. New Qwen/DeepSeek holdouts are deferred under the advertised 8K limit; earlier expired-SSO failures remain historical access evidence.",
+    "Fresh access-only probes returned AccessDenied for Claude Sonnet 5, Sonnet 5.5, Opus 5.5 and Grok 4.7 on the configured path. Reviewed pinned Gemini Flash3.8 and Pro3.1 access-only probes both ended access-unconfirmed / existing-login-required. Public pins/auth-file-existence checks passed but required existing login/tier/project admission failed; no onboarding, retry, fallback or ability inference occurred. Both$0.032768 reservations are retained; installed login artifacts do not prove reachability. Kimi retains only1/12 historical coverage and no headline score. These are admission gaps, not ability failures.",
+    "User-approved cap remains $75 TOTAL with no reset. Authoritative ledger snapshot2026-10-05T04:33:04.080Z: $73.492248 reserved/estimated; $1.507752 remains. Token-rate estimates and retained failed-call reservations are not invoices. Source-only different-provider subscription reviews are separately labeled engineering review, not benchmark ability calls or invoice spend.",
+    "Protected static synthetic development report only: no live claim material, database connection, application credentials or provider keys. Prior CA-IB03 accepts only its historical artifact; this updated report requires its own commit-bound preview and realChrome receipt. This does not prove AWS production-classified staging or application release acceptance."
+  ]
+}

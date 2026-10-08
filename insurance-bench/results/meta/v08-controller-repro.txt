@@ -1,0 +1,89 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import path from 'node:path';
+import {spawn,execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+import {generateEvidenceCases,evidenceDiagnostic} from '../../insurance-bench/evidence-cases.ts';
+import {evidenceSystemPrompt,EVIDENCE_VERSION} from '../../insurance-bench/evidence-runner.ts';
+import {hash} from '../../insurance-bench/runner.ts';
+const registrationPath='insurance-bench/results/meta/v08-registration.json';
+const ledgerPath='.tmp/insurance-bench/session-budget.json';
+const sourceNames=['evidence-types.ts','evidence-cases.ts','evidence-engine.ts','evidence-runner.ts','providers.ts','runner.ts','tools.ts','types.ts','score.ts','models.json','../scripts/insurance-bench-evidence.ts','gemini-code-assist.ts','../scripts/insurance-bench-gemini-probe.ts'];
+const fingerprint=()=>hash(sourceNames.map(name=>[name,fs.readFileSync(path.resolve('insurance-bench',name),'utf8')]));
+const bytesSha=(s:string|Buffer)=>crypto.createHash('sha256').update(s).digest('hex');
+const json=(p:string)=>JSON.parse(fs.readFileSync(p,'utf8'));
+const auditPath='insurance-bench/results/meta/evidence-independent-audit-v0.8.json';
+const planPath='specs/features/insurance-bench/v08-experiment-plan-draft.md';
+const sourceShaExpected='b4a648a8cb12bc94a938a74ccb03d5c8bc1e692fcd060f55690362750031d64c';
+const definitions=[
+ ['01-sol-high-dev','gpt-6.1-sol-high','dev','original',2.5],
+ ['02-sol-low-dev','gpt-6.1-sol-low','dev','original',2.5],
+ ['03-luna-low-dev','gpt-6-luna-low','dev','original',.5],
+ ['04-luna-high-dev','gpt-6-luna-high','dev','original',.75],
+ ['05-astra-high-dev','gpt-6-astra-high','dev','original',8.75],
+ ['06-sol-high-normalized-dev','gpt-6.1-sol-high','dev','normalized-diagnostic',2.5],
+ ['07-sol-high-holdout','gpt-6.1-sol-high','holdout','original',2.5],
+ ['08-astra-high-holdout','gpt-6-astra-high','holdout','original',8.75],
+] as const;
+const args=new Map<string,string>();
+for(let i=2;i<process.argv.length;i+=2){const k=process.argv[i],v=process.argv[i+1];if(!k?.startsWith('--')||v===undefined||v.startsWith('--')||args.has(k))throw new Error('Expected unique --key value pairs');args.set(k,v);}
+if([...args.keys()].some(k=>!['--mode','--stage','--freeze-commit','--freeze-manifest','--holdout-release'].includes(k)))throw new Error('Unknown controller option');
+const mode=args.get('--mode')??'validate';if(!['prepare','validate','run'].includes(mode))throw new Error('Unknown mode');
+const models=()=>json('insurance-bench/models.json');
+const ledger=()=>{const l=json(ledgerPath);if(l.capUsd!==75||!Number.isFinite(l.reservedUsd)||l.reservedUsd<0)throw new Error('Shared authoritative cap/ledger invalid');return l;};
+const tasks=generateEvidenceCases(82573);
+function selected(split:string,representation:string){const rows=tasks.filter(t=>t.split===split);return representation==='normalized-diagnostic'?rows.map(t=>evidenceDiagnostic(t,{normalized:true})):rows;}
+function command(p:any){return ['tsx','scripts/insurance-bench-evidence.ts','run','--model',p.modelAlias,'--split',p.split,'--per-family','2','--case-offset','0','--repeat','1','--representation',p.representation,'--variant','baseline','--max-output-tokens','16384','--budget','75','--out','.tmp/insurance-bench/v08-runs'];}
+if(mode==='prepare'){
+ if(fs.existsSync(registrationPath))throw new Error('Registration already exists; refuse overwrite');
+ const fp=fingerprint(),audit=json(auditPath),l=ledger(),config=models();
+ if(fp!==sourceShaExpected||audit.sourceFingerprint!==fp||audit.disposition!=='approve-engineering-only'||audit.corpusHash!==hash(tasks))throw new Error('Prepaid source/audit snapshot mismatch');
+ const panels=definitions.map(([id,modelAlias,split,representation,forecastUsd])=>{const model=config[modelAlias];if(model?.provider!=='openai')throw new Error('Exact registered OpenAI config absent');const chosen=selected(split,representation);return{id,modelAlias,modelConfiguration:model,split,representation,forecastUsd,taskIds:chosen.map(t=>t.id),datasetHash:hash(chosen),correspondenceIds:chosen.map(t=>t.evidence.correspondenceId),repeat:1,limits:{maxTurns:20,maxOutputTokens:16384,transportDeadlineMs:300000},harnessHash:hash([fp,evidenceSystemPrompt('baseline'),20,16384]),variant:'baseline'};});
+ const registration={registeredAt:new Date().toISOString(),status:'prospective-no-inference-before-freeze',generation:EVIDENCE_VERSION,sourceFingerprint:fp,promptHash:hash(evidenceSystemPrompt('baseline')),fullCorpusHash:hash(tasks),auditPath,auditSha256:bytesSha(fs.readFileSync(auditPath)),planPath,planSha256:bytesSha(fs.readFileSync(planPath)),controllerPath:'.tmp/insurance-bench/v08-run-panels.ts',controllerSha256:bytesSha(fs.readFileSync(fileURLToPath(import.meta.url))),capUsd:75,ledgerPath,ledgerAtRegistration:l,forecastTotalUsd:panels.reduce((n,p)=>n+p.forecastUsd,0),headlineMetric:'macro-task-success',diagnosticWeights:{facts:40,evidence:25,workflow:25,boundaries:10},panels,guards:['Serial fixed order, no outcome-selected reruns or task/model substitutions','Before each panel entire remaining forecast must fit current authoritative ledger','Forecast material overrun pauses before next panel; no automatic resume without a new reviewed prospective amendment','No held-out output before separately committed final holdout release of unchanged source/harness/tasksets','Observed cumulative truncatedOutput or broad finishReason rejects clean contrasts; scores preserved','Provider/budget failures retain unscored coverage and reservations; no selective case retry'],paidInferencePerformed:false};
+ fs.writeFileSync(registrationPath,JSON.stringify(registration,null,2)+'\n');console.log(JSON.stringify({prepared:true,sourceFingerprint:fp,panels:panels.length,forecastUsd:registration.forecastTotalUsd,remainingUsd:75-l.reservedUsd}));process.exit(0);
+}
+const registration=json(registrationPath);
+function validate(){
+ if(fingerprint()!==registration.sourceFingerprint||registration.sourceFingerprint!==sourceShaExpected||hash(tasks)!==registration.fullCorpusHash||hash(evidenceSystemPrompt('baseline'))!==registration.promptHash)throw new Error('Frozen source/prompt/corpus mismatch');
+ if(bytesSha(fs.readFileSync(fileURLToPath(import.meta.url)))!==registration.controllerSha256||bytesSha(fs.readFileSync(planPath))!==registration.planSha256||bytesSha(fs.readFileSync(auditPath))!==registration.auditSha256)throw new Error('Controller/plan/audit registration changed');
+ for(const p of registration.panels){if(hash(models()[p.modelAlias])!==hash(p.modelConfiguration)||hash(selected(p.split,p.representation))!==p.datasetHash)throw new Error('Exact model/task snapshot changed');}
+ ledger();
+}
+validate();
+if(mode==='validate'){console.log(JSON.stringify({validated:true,paidInferencePerformed:false,sourceFingerprint:registration.sourceFingerprint,panels:registration.panels.length}));process.exit(0);}
+const stage=args.get('--stage'),commit=args.get('--freeze-commit'),manifestPath=args.get('--freeze-manifest');
+if(!['dev','holdout'].includes(stage??'')||!commit||!/^[a-f0-9]{40}$/.test(commit)||!manifestPath)throw new Error('Paid dispatch requires exact full freeze commit, committed manifest and dev|holdout stage');
+function committed(file:string){const content=execFileSync('git',['show',`${commit}:${file}`],{encoding:'utf8'});if(content!==fs.readFileSync(file,'utf8'))throw new Error('Freeze commit does not contain current registration/manifest');return JSON.parse(content);}
+committed(registrationPath);const manifest=committed(manifestPath);
+if(manifest.sourceFingerprint!==registration.sourceFingerprint||(manifest.version??manifest.generation)!==registration.generation)throw new Error('Freeze manifest mismatches candidate');
+if(stage==='holdout'){
+ const releasePath=args.get('--holdout-release');if(!releasePath)throw new Error('Holdouts require a separately committed fresh holdout release');const release=committed(releasePath);
+ const hold=registration.panels.filter((p:any)=>p.split==='holdout');
+ if(release.sourceFingerprint!==registration.sourceFingerprint||release.harnessHash!==hold[0].harnessHash||hash(release.taskIds)!==hash(hold[0].taskIds)||release.repeat!==1)throw new Error('Fresh holdout release changed registered conditions');
+}
+const lockPath='.tmp/insurance-bench/v08-controller.lock',lock=fs.openSync(lockPath,'wx');fs.writeFileSync(lock,JSON.stringify({pid:process.pid,stage,startedAt:new Date().toISOString()}));process.on('exit',()=>{fs.closeSync(lock);fs.rmSync(lockPath,{force:true});});
+const directory='.tmp/insurance-bench/v08-runs';fs.mkdirSync(directory,{recursive:true});
+for(let index=0;index<registration.panels.length;index++){
+ const p=registration.panels[index];if(p.split!==stage)continue;validate();
+ const receiptPath=`insurance-bench/results/meta/v08-dispatch-${p.id}.json`;
+ if(fs.existsSync(receiptPath))throw new Error('Refuse duplicate registered panel; no retries');
+ for(const prior of registration.panels.slice(0,index)){const receipt=json(`insurance-bench/results/meta/v08-dispatch-${prior.id}.json`);if(!receipt.endedAt||receipt.materialSpendOverrun||receipt.providerOrBudgetFailure||receipt.processFailure||receipt.modelOrEffortMismatch)throw new Error('Serial predecessor incomplete or requires review; stop');}
+ const l=ledger(),remainingForecast=registration.panels.slice(index).reduce((n:number,x:any)=>n+x.forecastUsd,0);
+ if(75-l.reservedUsd<remainingForecast)throw new Error('Entire remaining prospective panels no longer affordable; no new inference');
+ const before=new Set(fs.readdirSync(directory)),logPath=`.tmp/insurance-bench/v08-${p.id}.log`,argv=command(p);
+ const receipt:any={...p,startedAt:new Date().toISOString(),freezeCommit:commit,freezeManifest:manifestPath,sourceFingerprint:registration.sourceFingerprint,promptHash:registration.promptHash,headlineMetric:registration.headlineMetric,ledgerBefore:l,remainingForecastUsd:remainingForecast,command:['npx',...argv],logPath,status:'dispatched'};
+ fs.writeFileSync(receiptPath,JSON.stringify(receipt,null,2)+'\n');
+ const log=fs.createWriteStream(logPath),child=spawn('npx',argv,{shell:false,stdio:['ignore','pipe','pipe']});
+ child.stdout.on('data',b=>{log.write(b);process.stdout.write(b);});child.stderr.on('data',b=>{log.write(b);process.stderr.write(b);});
+ let childSpawnFailure=false;const code=await new Promise<number|null>(resolve=>{child.once('error',()=>{childSpawnFailure=true;resolve(null);});child.once('exit',resolve);});log.end();Object.assign(receipt,{endedAt:new Date().toISOString(),exitCode:code,ledgerAfter:ledger(),processFailure:childSpawnFailure||code!==0,status:'process-ended-awaiting-native-validation'});fs.writeFileSync(receiptPath,JSON.stringify(receipt,null,2)+'\n');
+ const candidates=fs.readdirSync(directory).filter(name=>name.endsWith('.json')&&!before.has(name)).map(name=>{const bytes=fs.readFileSync(path.join(directory,name),'utf8');return{name,bytes,run:JSON.parse(bytes)};}).filter(x=>x.run.datasetHash===p.datasetHash&&hash(x.run.model)===hash(p.modelConfiguration)&&hash(x.run.taskIds)===hash(p.taskIds));
+ if(candidates.length!==1)throw new Error('Expected exactly one native registered Run; dispatch receipt preserved');
+ const {name,bytes,run}=candidates[0],destination='insurance-bench/results/'+name;if(fs.existsSync(destination)&&fs.readFileSync(destination,'utf8')!==bytes)throw new Error('Refuse native overwrite');
+ if(run.harnessHash!==p.harnessHash||run.repeat!==1||run.limits?.maxTurns!==20||run.limits?.maxOutputTokens!==16384||run.version!==registration.generation+(p.representation==='original'?'':'-normalized-diagnostic'))throw new Error('Native Run conditions mismatch');
+ fs.writeFileSync(destination,bytes);
+ Object.assign(receipt,{endedAt:new Date().toISOString(),exitCode:code,status:'terminal-native-run',nativeRunPath:destination,nativeRunSha256:bytesSha(bytes),ledgerAfter:ledger(),actualEstimatedCostUsd:run.estimatedCostUsd,completeCoverage:run.completeCoverage,benchmarkScore:run.benchmarkScore,weightedDiagnosticScore:run.summary.score,observedTruncation:run.episodes.some((e:any)=>e.truncatedOutput||e.trace.some((t:any)=>/(?:max[_ -]?tokens|max[_ -]?output[_ -]?tokens|length|incomplete)/i.test(t.finishReason??''))),modelOrEffortMismatch:run.episodes.some((e:any)=>e.trace.some((t:any)=>t.model!==p.modelConfiguration.model||(t.reasoningEffort??null)!==(p.modelConfiguration.reasoningEffort??null))),providerOrBudgetFailure:run.episodes.some((e:any)=>['provider-error','budget-stopped'].includes(e.status)),processFailure:code!==0,materialSpendOverrun:run.estimatedCostUsd>Math.max(p.forecastUsd*1.5,p.forecastUsd+.5)});
+ fs.writeFileSync(receiptPath,JSON.stringify(receipt,null,2)+'\n');
+ console.log(JSON.stringify({panel:p.id,benchmarkScore:receipt.benchmarkScore,weightedDiagnosticScore:receipt.weightedDiagnosticScore,estimatedCostUsd:receipt.actualEstimatedCostUsd,remainingLedgerUsd:75-receipt.ledgerAfter.reservedUsd,truncated:receipt.observedTruncation}));
+ if(receipt.materialSpendOverrun||receipt.providerOrBudgetFailure||receipt.processFailure||receipt.modelOrEffortMismatch)throw new Error('Panel retained; pause before more inference pending prospective review');
+}
+console.log(JSON.stringify({stageComplete:stage,paidPanels:stage==='dev'?6:2,nextGate:stage==='dev'?'Independent dev audit and separately committed fresh holdout release':'All registered panels terminal'}));

@@ -1,0 +1,7 @@
+import fs from 'node:fs';
+import {generateDependencyAllocationCases} from '../../insurance-bench/dependency-allocation-cases.ts';
+import {dependencyAllocationSourceFingerprint,DEPENDENCY_ALLOCATION_VERSION} from '../../insurance-bench/dependency-allocation-runner.ts';
+const task=generateDependencyAllocationCases().filter(t=>t.split==='dev')[0]!;
+const packet={generation:DEPENDENCY_ALLOCATION_VERSION,sourceFingerprint:dependencyAllocationSourceFingerprint(),taskId:task.id,family:task.family,instruction:task.instruction,phases:task.workflow.phases.map(p=>({clock:task.clock,documents:p.documents}))};
+fs.writeFileSync('insurance-bench/results/meta/v12-public-source-packet.txt',JSON.stringify(packet,null,2)+'\n');
+console.log(JSON.stringify({sourceFingerprint:packet.sourceFingerprint,taskId:packet.taskId,phases:packet.phases.length,privateGoldExposed:false}));

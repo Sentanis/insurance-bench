@@ -1,0 +1,44 @@
+{
+  "verifiedAt": "2026-10-03T22:40:38.839Z",
+  "codeCommit": "11778593d85f12f8836472c23954133130c73d77",
+  "url": "https://insurance-bench-kg7dli0a0-sentanis.vercel.app",
+  "deploymentId": "dpl_3hdJVgiQPoP5dt7EwfRZEYmjJ1bM",
+  "projectId": "prj_CqiaZtGLLlPL3q9CKKKAVYFcrMXf",
+  "target": "preview",
+  "ready": true,
+  "ssoProtection": "all",
+  "anonymousHttpStatus": 302,
+  "htmlSha256": "5e2d0b26cb215070875fd038e7a44eca79f416e6dd1d73aff8926f363df288bb",
+  "chrome": {
+    "browser": "Real Chrome extension",
+    "title": "Insurance Bench — Research Pilot",
+    "primaryRows": 6,
+    "completedModelPanels": 5,
+    "holdoutCoverage": [
+      24,
+      12,
+      12,
+      12,
+      12
+    ],
+    "incompleteKimiCoverage": "1/12; all headline metrics unavailable",
+    "expandedClaudeDetails": true,
+    "keyboardCollapse": true,
+    "reload": true,
+    "narrowViewportWidth": 390,
+    "narrowDocumentWidth": 390,
+    "tableContainerWidth": 358,
+    "tableContentWidth": 807,
+    "pageConsoleWarnings": 0,
+    "pageConsoleErrors": 0,
+    "network": "report origin plus injected Vercel feedback/JWE resources; no model provider or claims app requests",
+    "screenshotSha256": "6acf3ea1750186af1fd189057fbff63018c94eb73b302f7dbfc2e3cbb95d9cae",
+    "screenshotLocalPath": ".tmp/insurance-bench-preview.jpg"
+  },
+  "buildOutput": [
+    "config.json",
+    "static/index.html"
+  ],
+  "staleFunctionRemoved": true,
+  "scope": "Synthetic static report; no AWS staging or production workflow acceptance"
+}

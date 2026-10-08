@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-08T06:50:11.481430+00:00",
+  "sourceSha256": "2339c92548a4c75e6ee58d27ca5dfb3e92e43beea5662bf0f3707272c5c9927e",
+  "cliVersion": "codex-cli 0.161.0",
+  "authentication": "existing ChatGPT subscription; no API keys passed",
+  "probes": [
+    {
+      "status": "completed",
+      "requestedModel": "gpt-6-luna",
+      "requestedEffort": "low",
+      "observedModel": null,
+      "usage": {
+        "inputTokens": 9772,
+        "cachedInputTokens": 1792,
+        "outputTokens": 14
+      },
+      "elapsedMs": 4607,
+      "errorCode": null,
+      "terminationConfirmed": true,
+      "requestId": "luna-low-transport-4",
+      "privateResultSha256": "e32aa9cae87d6dce9f721d41d9d1180125d7942fe136c2713041249c74347d06",
+      "assertion": "exact harmless JSON returned"
+    },
+    {
+      "status": "completed",
+      "requestedModel": "gpt-6-luna",
+      "requestedEffort": "low",
+      "observedModel": null,
+      "usage": {
+        "inputTokens": 29851,
+        "cachedInputTokens": 19712,
+        "outputTokens": 74
+      },
+      "elapsedMs": 9409,
+      "errorCode": null,
+      "terminationConfirmed": true,
+      "requestId": "luna-low-tool-boundary-1",
+      "privateResultSha256": "8acdd558d066bbfed688d418cf7b815a8da07ec355d8e1b5f152664d31168a97",
+      "assertion": "functional canary reported no file tool; random canary content absent; no observed tool event"
+    }
+  ],
+  "scoredBenchmarkCalls": 0,
+  "limits": [
+    "Functional tool enforcement only, not OS filesystem isolation.",
+    "Configured identity is not provider-verified; observed identity absent.",
+    "Code Mode host needed for CLI bootstrap; Code Mode and all reviewed tool features disabled; any tool event rejects.",
+    "Explicit non-final messages, sensitive outputs and unconfirmed termination fail closed.",
+    "No cost invoice available; token counters do not establish API charges."
+  ]
+}

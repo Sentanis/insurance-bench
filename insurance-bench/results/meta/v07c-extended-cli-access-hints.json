@@ -1,0 +1,33 @@
+{
+  "observedAt": "2026-10-04T21:10:56.826357+00:00",
+  "scope": "Read-only CLI help/version and auth-file existence hints. No inference, secret/identity/email/authURL read, or provider/model config changes. Not an ability condition.",
+  "geminiCLI": {
+    "installed": true,
+    "version": "0.60.0",
+    "helpFeatures": [
+      "Explicitmodel",
+      "Noninteractiveprompt",
+      "JSONorstreamJSONoutput",
+      "Planmodeandpolicycontrols",
+      "Extensioncontrols"
+    ],
+    "authFilePresence": {
+      ".gemini/oauth_creds.json": true,
+      ".gemini/google_accounts.json": true,
+      ".config/gemini/oauth_creds.json": false
+    },
+    "taskCapableAccessVerified": false,
+    "exactModelVerified": false,
+    "tokenAccountingVerified": false,
+    "disposition": "InstalledCLI plus auth-file hints warrant separate future access verification; missing processGeminiAPIkey does not establish totalGeminiunavailability."
+  },
+  "APIKeyPresenceContext": {
+    "source": "Coordinator content-free processenvironment inventory",
+    "OPENAI_API_KEY": true,
+    "ANTHROPIC_API_KEY": false,
+    "GEMINI_API_KEY": false,
+    "GOOGLE_API_KEY": false,
+    "XAI_API_KEY": false,
+    "scope": "Presence booleans only, values not inspected/printed."
+  }
+}

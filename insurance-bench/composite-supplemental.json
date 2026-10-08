@@ -1,0 +1,1198 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-10-07",
+  "models": [
+    {
+      "id": "teleocr",
+      "label": "TeleOCR",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 1.2B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "ovisocr2",
+      "label": "OvisOCR2",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 0.8B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "paddleocr-vl-1-6",
+      "label": "PaddleOCR-VL-1.6",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 0.9B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "mineru2-5-pro",
+      "label": "MinerU2.5-Pro",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 1.2B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "glm-ocr",
+      "label": "GLM-OCR",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 0.9B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "paddleocr-vl-1-5",
+      "label": "PaddleOCR-VL-1.5",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 0.9B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "paddleocr-vl",
+      "label": "PaddleOCR-VL",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 0.9B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "unlimited-ocr",
+      "label": "Unlimited-OCR",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 3B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "youtu-parsing",
+      "label": "Youtu-Parsing",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 2.5B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "qianfan-ocr",
+      "label": "Qianfan-OCR",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 4B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "ovis2-6-30b-a3b",
+      "label": "Ovis2.6-30B-A3B",
+      "provider": "Open models",
+      "profile": "Official all-page end-to-end v1.6_full table. General VLMs; size 30B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "logics-parsing-v2",
+      "label": "Logics-Parsing-v2",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 4B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "abot-ocr",
+      "label": "ABot-OCR",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 2B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "firered-ocr",
+      "label": "FireRed-OCR",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 2B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "mineru-2-5",
+      "label": "MinerU-2.5",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 1.2B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "gemini-3-pro",
+      "label": "Gemini 3 Pro",
+      "provider": "Google",
+      "profile": "Official all-page end-to-end v1.6_full table. General VLMs; size -. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "gemini-3-flash",
+      "label": "Gemini 3 Flash",
+      "provider": "Google",
+      "profile": "Official all-page end-to-end v1.6_full table. General VLMs; size -. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "dots-ocr",
+      "label": "dots.ocr",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 3B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "opendoc-0-1b",
+      "label": "OpenDoc-0.1B",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 0.1B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "deepseek-ocr-2",
+      "label": "DeepSeek-OCR 2",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 3B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "hunyuanocr",
+      "label": "HunyuanOCR",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 1B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "qwen3-vl-235b",
+      "label": "Qwen3-VL-235B",
+      "provider": "Open models",
+      "profile": "Official all-page end-to-end v1.6_full table. General VLMs; size 235B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "dolphin-v2",
+      "label": "Dolphin-v2",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 3B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "ocrverse",
+      "label": "OCRVerse",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 4B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "monkeyocr-pro-3b",
+      "label": "MonkeyOCR-pro-3B",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 3B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "gpt-5-2",
+      "label": "GPT-5.2",
+      "provider": "OpenAI",
+      "profile": "Official all-page end-to-end v1.6_full table. General VLMs; size -. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "dolphin-1-5",
+      "label": "Dolphin-1.5",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 0.3B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "mineru-pipeline",
+      "label": "MinerU-Pipeline",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Pipeline Tools; size -. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "olmocr",
+      "label": "olmOCR",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 7B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "mistral-ocr",
+      "label": "Mistral OCR",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size -. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "kimi-k2-5",
+      "label": "Kimi K2.5",
+      "provider": "Open models",
+      "profile": "Official all-page end-to-end v1.6_full table. General VLMs; size 1T. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "internvl3-5-241b",
+      "label": "InternVL3.5-241B",
+      "provider": "Open models",
+      "profile": "Official all-page end-to-end v1.6_full table. General VLMs; size 241B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "nanonets-ocr-s",
+      "label": "Nanonets-OCR-s",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 3B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "points-reader",
+      "label": "POINTS-Reader",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 3B. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "marker",
+      "label": "Marker",
+      "provider": "Document systems",
+      "profile": "Official all-page end-to-end v1.6_full table. Pipeline Tools; size -. Operator inference/pipeline configuration; raw model label preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "gpt-4o",
+      "label": "GPT-4o",
+      "provider": "OpenAI",
+      "profile": "Original2025-09-25 expert blind pairwise comparisons; Figure5 wins+ties, raw effort labels preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "grok-4",
+      "label": "Grok 4",
+      "provider": "xAI",
+      "profile": "Original2025-09-25 expert blind pairwise comparisons; Figure5 wins+ties, raw effort labels preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "gemini-2-5-pro",
+      "label": "Gemini 2.5 Pro",
+      "provider": "Google",
+      "profile": "Original2025-09-25 expert blind pairwise comparisons; Figure5 wins+ties, raw effort labels preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "o4-mini-high",
+      "label": "o4-mini high",
+      "provider": "OpenAI",
+      "profile": "Original2025-09-25 expert blind pairwise comparisons; Figure5 wins+ties, raw effort labels preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "o3-high",
+      "label": "o3 high",
+      "provider": "OpenAI",
+      "profile": "Original2025-09-25 expert blind pairwise comparisons; Figure5 wins+ties, raw effort labels preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "gpt-5-high",
+      "label": "GPT-5 high",
+      "provider": "OpenAI",
+      "profile": "Original2025-09-25 expert blind pairwise comparisons; Figure5 wins+ties, raw effort labels preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "claude-opus-4-1",
+      "label": "Claude Opus 4.1",
+      "provider": "Anthropic",
+      "profile": "Original2025-09-25 expert blind pairwise comparisons; Figure5 wins+ties, raw effort labels preserved.",
+      "access": "Published reference; runtime access unconfirmed"
+    },
+    {
+      "id": "local-v12-gpt-6-1-sol-high",
+      "label": "gpt-6.1-sol \u00b7 high \u00b7 our v0.12 run",
+      "provider": "OpenAI",
+      "profile": "Frozen v0.12 baseline/high/json_object,20turns,16384inclusive output,600s deadline;3cases once each. Dataset 3569a95573c576d64469d470999ce0f387254a5c430db7f125eadd857f7aa5d8; harness 4004345cd0bea50e0afe76b4acbda198759e7041b83ac9f8ce2796df668c0456; native SHA256 b2408cb48b940ec99d44170d6d2ee60b48e74f2daf448ea7cd4972cf5dd9fe4d.",
+      "access": "Completed historical run; fresh admission not checked"
+    },
+    {
+      "id": "local-v12-gpt-6-luna-high",
+      "label": "gpt-6-luna \u00b7 high \u00b7 our v0.12 run",
+      "provider": "OpenAI",
+      "profile": "Frozen v0.12 baseline/high/json_object,20turns,16384inclusive output,600s deadline;3cases once each. Dataset 3569a95573c576d64469d470999ce0f387254a5c430db7f125eadd857f7aa5d8; harness 4004345cd0bea50e0afe76b4acbda198759e7041b83ac9f8ce2796df668c0456; native SHA256 4a6e16fd03bc3d4fb8974274256548965405929f3fc35550d8ff148a35090306.",
+      "access": "Completed historical run; fresh admission not checked"
+    }
+  ],
+  "observations": [
+    {
+      "id": "omnidocbench-teleocr",
+      "modelId": "teleocr",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 96.91,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 1.2B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-ovisocr2",
+      "modelId": "ovisocr2",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 96.47,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 0.8B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-paddleocr-vl-1-6",
+      "modelId": "paddleocr-vl-1-6",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 96.34,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 0.9B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-mineru2-5-pro",
+      "modelId": "mineru2-5-pro",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 95.75,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 1.2B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-glm-ocr",
+      "modelId": "glm-ocr",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 95.22,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 0.9B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-paddleocr-vl-1-5",
+      "modelId": "paddleocr-vl-1-5",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 94.93,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 0.9B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-paddleocr-vl",
+      "modelId": "paddleocr-vl",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 94.18,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 0.9B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-unlimited-ocr",
+      "modelId": "unlimited-ocr",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 94.0,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 3B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-youtu-parsing",
+      "modelId": "youtu-parsing",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 93.74,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 2.5B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-qianfan-ocr",
+      "modelId": "qianfan-ocr",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 93.9,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 4B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-ovis2-6-30b-a3b",
+      "modelId": "ovis2-6-30b-a3b",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 93.7,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. General VLMs; size 30B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-logics-parsing-v2",
+      "modelId": "logics-parsing-v2",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 93.33,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 4B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-abot-ocr",
+      "modelId": "abot-ocr",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 93.3,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 2B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-firered-ocr",
+      "modelId": "firered-ocr",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 93.26,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 2B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-mineru-2-5",
+      "modelId": "mineru-2-5",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 93.04,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 1.2B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-gemini-3-pro",
+      "modelId": "gemini-3-pro",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 92.91,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. General VLMs; size -. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-gemini-3-flash",
+      "modelId": "gemini-3-flash",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 92.62,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. General VLMs; size -. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-dots-ocr",
+      "modelId": "dots-ocr",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 90.77,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 3B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-opendoc-0-1b",
+      "modelId": "opendoc-0-1b",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 90.67,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 0.1B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-deepseek-ocr-2",
+      "modelId": "deepseek-ocr-2",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 90.25,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 3B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-hunyuanocr",
+      "modelId": "hunyuanocr",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 89.95,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 1B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-qwen3-vl-235b",
+      "modelId": "qwen3-vl-235b",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 89.78,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. General VLMs; size 235B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-dolphin-v2",
+      "modelId": "dolphin-v2",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 89.5,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 3B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-ocrverse",
+      "modelId": "ocrverse",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 88.6,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 4B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-monkeyocr-pro-3b",
+      "modelId": "monkeyocr-pro-3b",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 88.57,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 3B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-gpt-5-2",
+      "modelId": "gpt-5-2",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 86.59,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. General VLMs; size -. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-dolphin-1-5",
+      "modelId": "dolphin-1-5",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 86.52,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 0.3B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-mineru-pipeline",
+      "modelId": "mineru-pipeline",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 86.47,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Pipeline Tools; size -. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-olmocr",
+      "modelId": "olmocr",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 85.74,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 7B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-mistral-ocr",
+      "modelId": "mistral-ocr",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 85.66,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size -. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-kimi-k2-5",
+      "modelId": "kimi-k2-5",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 84.53,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. General VLMs; size 1T. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-internvl3-5-241b",
+      "modelId": "internvl3-5-241b",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 83.76,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. General VLMs; size 241B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-nanonets-ocr-s",
+      "modelId": "nanonets-ocr-s",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 83.61,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 3B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-points-reader",
+      "modelId": "points-reader",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 83.37,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Specialized VLMs; size 3B. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "omnidocbench-marker",
+      "modelId": "marker",
+      "componentId": "documents",
+      "benchmark": "OmniDocBench",
+      "benchmarkVersion": "v1.6_full; source f133a71e9e91c3621c7ce8994200a7b394a06eb3",
+      "metric": "Overall = ((1-text edit distance)*100 + table TEDS + formula CDM)/3",
+      "score": 78.44,
+      "origin": "published",
+      "sourceUrl": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md",
+      "sourceLabel": "OmniDocBench source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Official all-page end-to-end v1.6_full table. Pipeline Tools; size -. Operator inference/pipeline configuration; raw model label preserved.",
+      "caveats": [
+        "Document parsing quality is not whole-task success.",
+        "Different model/pipeline and matching configurations remain system observations.",
+        "Dataset states research-only and not commercial use; no PDF dataset material is imported into this page."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "gdpval-gpt-4o",
+      "modelId": "gpt-4o",
+      "componentId": "knowledge-work",
+      "benchmark": "GDPval",
+      "benchmarkVersion": "Public gold220; September2025 paper Figure5",
+      "metric": "Expert win-or-tie rate versus human deliverable",
+      "score": 12.4,
+      "origin": "published",
+      "sourceUrl": "https://cdn.openai.com/pdf/d5eb7428-c4e9-4a33-bd86-86dd4bcf12ce/GDPval.pdf",
+      "sourceLabel": "GDPval source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Original2025-09-25 expert blind pairwise comparisons; Figure5 wins+ties, raw effort labels preserved.",
+      "caveats": [
+        "Historical expert cohort, not a current October2026 rerun.",
+        "Expert preference differs from rubric all-pass; local automated grading is an adapted metric.",
+        "No Elo conversion or fresh inference is used."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "gdpval-grok-4",
+      "modelId": "grok-4",
+      "componentId": "knowledge-work",
+      "benchmark": "GDPval",
+      "benchmarkVersion": "Public gold220; September2025 paper Figure5",
+      "metric": "Expert win-or-tie rate versus human deliverable",
+      "score": 24.3,
+      "origin": "published",
+      "sourceUrl": "https://cdn.openai.com/pdf/d5eb7428-c4e9-4a33-bd86-86dd4bcf12ce/GDPval.pdf",
+      "sourceLabel": "GDPval source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Original2025-09-25 expert blind pairwise comparisons; Figure5 wins+ties, raw effort labels preserved.",
+      "caveats": [
+        "Historical expert cohort, not a current October2026 rerun.",
+        "Expert preference differs from rubric all-pass; local automated grading is an adapted metric.",
+        "No Elo conversion or fresh inference is used."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "gdpval-gemini-2-5-pro",
+      "modelId": "gemini-2-5-pro",
+      "componentId": "knowledge-work",
+      "benchmark": "GDPval",
+      "benchmarkVersion": "Public gold220; September2025 paper Figure5",
+      "metric": "Expert win-or-tie rate versus human deliverable",
+      "score": 25.5,
+      "origin": "published",
+      "sourceUrl": "https://cdn.openai.com/pdf/d5eb7428-c4e9-4a33-bd86-86dd4bcf12ce/GDPval.pdf",
+      "sourceLabel": "GDPval source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Original2025-09-25 expert blind pairwise comparisons; Figure5 wins+ties, raw effort labels preserved.",
+      "caveats": [
+        "Historical expert cohort, not a current October2026 rerun.",
+        "Expert preference differs from rubric all-pass; local automated grading is an adapted metric.",
+        "No Elo conversion or fresh inference is used."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "gdpval-o4-mini-high",
+      "modelId": "o4-mini-high",
+      "componentId": "knowledge-work",
+      "benchmark": "GDPval",
+      "benchmarkVersion": "Public gold220; September2025 paper Figure5",
+      "metric": "Expert win-or-tie rate versus human deliverable",
+      "score": 27.9,
+      "origin": "published",
+      "sourceUrl": "https://cdn.openai.com/pdf/d5eb7428-c4e9-4a33-bd86-86dd4bcf12ce/GDPval.pdf",
+      "sourceLabel": "GDPval source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Original2025-09-25 expert blind pairwise comparisons; Figure5 wins+ties, raw effort labels preserved.",
+      "caveats": [
+        "Historical expert cohort, not a current October2026 rerun.",
+        "Expert preference differs from rubric all-pass; local automated grading is an adapted metric.",
+        "No Elo conversion or fresh inference is used."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "gdpval-o3-high",
+      "modelId": "o3-high",
+      "componentId": "knowledge-work",
+      "benchmark": "GDPval",
+      "benchmarkVersion": "Public gold220; September2025 paper Figure5",
+      "metric": "Expert win-or-tie rate versus human deliverable",
+      "score": 34.1,
+      "origin": "published",
+      "sourceUrl": "https://cdn.openai.com/pdf/d5eb7428-c4e9-4a33-bd86-86dd4bcf12ce/GDPval.pdf",
+      "sourceLabel": "GDPval source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Original2025-09-25 expert blind pairwise comparisons; Figure5 wins+ties, raw effort labels preserved.",
+      "caveats": [
+        "Historical expert cohort, not a current October2026 rerun.",
+        "Expert preference differs from rubric all-pass; local automated grading is an adapted metric.",
+        "No Elo conversion or fresh inference is used."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "gdpval-gpt-5-high",
+      "modelId": "gpt-5-high",
+      "componentId": "knowledge-work",
+      "benchmark": "GDPval",
+      "benchmarkVersion": "Public gold220; September2025 paper Figure5",
+      "metric": "Expert win-or-tie rate versus human deliverable",
+      "score": 38.8,
+      "origin": "published",
+      "sourceUrl": "https://cdn.openai.com/pdf/d5eb7428-c4e9-4a33-bd86-86dd4bcf12ce/GDPval.pdf",
+      "sourceLabel": "GDPval source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Original2025-09-25 expert blind pairwise comparisons; Figure5 wins+ties, raw effort labels preserved.",
+      "caveats": [
+        "Historical expert cohort, not a current October2026 rerun.",
+        "Expert preference differs from rubric all-pass; local automated grading is an adapted metric.",
+        "No Elo conversion or fresh inference is used."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "gdpval-claude-opus-4-1",
+      "modelId": "claude-opus-4-1",
+      "componentId": "knowledge-work",
+      "benchmark": "GDPval",
+      "benchmarkVersion": "Public gold220; September2025 paper Figure5",
+      "metric": "Expert win-or-tie rate versus human deliverable",
+      "score": 47.6,
+      "origin": "published",
+      "sourceUrl": "https://cdn.openai.com/pdf/d5eb7428-c4e9-4a33-bd86-86dd4bcf12ce/GDPval.pdf",
+      "sourceLabel": "GDPval source evidence",
+      "asOf": "2026-10-07",
+      "conditions": "Original2025-09-25 expert blind pairwise comparisons; Figure5 wins+ties, raw effort labels preserved.",
+      "caveats": [
+        "Historical expert cohort, not a current October2026 rerun.",
+        "Expert preference differs from rubric all-pass; local automated grading is an adapted metric.",
+        "No Elo conversion or fresh inference is used."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "2026-10-05T04-11-33-454Z-gpt-6.1-sol-high-baseline-dependency-allocation",
+      "modelId": "local-v12-gpt-6-1-sol-high",
+      "componentId": "insurance-workflows",
+      "benchmark": "Insurance Bench",
+      "benchmarkVersion": "insurance-bench-dependency-allocation-v0.12",
+      "metric": "Equally family-weighted completed-task all-criteria success",
+      "score": 66.66666666666667,
+      "origin": "local",
+      "sourceUrl": "https://github.com/Sentanis/sentanis-app/blob/774a4c5be8f784f2fe936bc09a23b48b6112b885/insurance-bench/results/meta/v12-registration.json",
+      "sourceLabel": "Insurance Bench source evidence",
+      "asOf": "2026-10-05",
+      "conditions": "Frozen v0.12 baseline/high/json_object,20turns,16384inclusive output,600s deadline;3cases once each. Dataset 3569a95573c576d64469d470999ce0f387254a5c430db7f125eadd857f7aa5d8; harness 4004345cd0bea50e0afe76b4acbda198759e7041b83ac9f8ce2796df668c0456; native SHA256 b2408cb48b940ec99d44170d6d2ee60b48e74f2daf448ea7cd4972cf5dd9fe4d.",
+      "caveats": [
+        "Three correlated families, single attempt,33.33-point resolution. Both profiles share packet-eligibility error.",
+        "Adapter discards assistant phases; observations describe configured systems, with unlocalized protocol/model causality.",
+        "Independent trace audit verifies grading consistency, not professional validity or representative coverage.",
+        "Separate local profile; not merged with a published profile on family name."
+      ],
+      "eligible": true
+    },
+    {
+      "id": "2026-10-05T04-19-42-463Z-gpt-6-luna-high-baseline-dependency-allocation",
+      "modelId": "local-v12-gpt-6-luna-high",
+      "componentId": "insurance-workflows",
+      "benchmark": "Insurance Bench",
+      "benchmarkVersion": "insurance-bench-dependency-allocation-v0.12",
+      "metric": "Equally family-weighted completed-task all-criteria success",
+      "score": 66.66666666666667,
+      "origin": "local",
+      "sourceUrl": "https://github.com/Sentanis/sentanis-app/blob/774a4c5be8f784f2fe936bc09a23b48b6112b885/insurance-bench/results/meta/v12-registration.json",
+      "sourceLabel": "Insurance Bench source evidence",
+      "asOf": "2026-10-05",
+      "conditions": "Frozen v0.12 baseline/high/json_object,20turns,16384inclusive output,600s deadline;3cases once each. Dataset 3569a95573c576d64469d470999ce0f387254a5c430db7f125eadd857f7aa5d8; harness 4004345cd0bea50e0afe76b4acbda198759e7041b83ac9f8ce2796df668c0456; native SHA256 4a6e16fd03bc3d4fb8974274256548965405929f3fc35550d8ff148a35090306.",
+      "caveats": [
+        "Three correlated families, single attempt,33.33-point resolution. Both profiles share packet-eligibility error.",
+        "Adapter discards assistant phases; observations describe configured systems, with unlocalized protocol/model causality.",
+        "Independent trace audit verifies grading consistency, not professional validity or representative coverage.",
+        "Separate local profile; not merged with a published profile on family name."
+      ],
+      "eligible": true
+    }
+  ]
+}

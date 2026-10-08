@@ -1,0 +1,22 @@
+{
+  "recordedAt": "2026-10-04T21:48:47.543Z",
+  "model": "gemini-3.8-flash",
+  "accessOnly": true,
+  "abilityScore": null,
+  "maxOutputTokens": 2048,
+  "deadlineMs": 300000,
+  "fallback": false,
+  "retries": 0,
+  "reservedUsd": 0.032768,
+  "reservationPrices": {
+    "input": 2,
+    "output": 12
+  },
+  "pricingVerifiedAt": "2026-10-04",
+  "pricingSource": "https://ai.google.dev/gemini-api/docs/pricing",
+  "accounting": "Conservative Developer API reference rate; actual OAuth billing not established",
+  "status": "access-unconfirmed",
+  "errorCode": "existing-login-required",
+  "billingUncertain": true,
+  "reservationRetained": true
+}

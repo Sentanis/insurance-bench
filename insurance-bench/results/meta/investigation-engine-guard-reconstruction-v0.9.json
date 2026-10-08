@@ -1,0 +1,10 @@
+{
+  "schema": "insurance-bench-v09-prepaid-engine-guard-reconstruction-v1",
+  "originalSourceFingerprint": "d3aeb8f9ffb019fbaf262a8a57052dee6a9711f4d459eca27bf8d742ccf1664b",
+  "status": "deterministic-reconstruction-matches-recorded-exact-sha256",
+  "sourceCopy": "insurance-bench/results/meta/investigation-engine-pre-guard-review-d3aeb8f9.txt",
+  "sha256": "2e04a39101d01da3985c5e178fbc6c85aa6e86a379760236040a354f5e6d541d",
+  "method": "No original engine copy was made before editing. Reversed only finish-guard movement and accompanying manual clarification against the current file. Exact bytes match SHA256 recorded in immutable pre-guard audit snapshot. This is a verified reconstruction, not an original archival copy.",
+  "finding": "Protected actions following finish were ignored by the prior guard, allowing critical intent to escape grading in a fully correct response batch. Fixed before any v0.9 paid calls; both protected tools now tested after completed actual oracle with stale token.",
+  "paidCallsUnderPriorSnapshot": 0
+}

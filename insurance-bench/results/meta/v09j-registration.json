@@ -1,0 +1,113 @@
+{
+  "registeredAt": "2026-10-05T01:17:55.395Z",
+  "status": "prospective-no-inference-before-committed-freeze",
+  "generation": "insurance-bench-investigation-v0.9j-json-object",
+  "sourceFingerprint": "107e4af647e3ee1e64a771b8702eebece95e88223a220d8c3560104f994d5385",
+  "sourceFiles": [
+    "insurance-bench/investigation-types.ts",
+    "insurance-bench/investigation-cases.ts",
+    "insurance-bench/investigation-engine.ts",
+    "insurance-bench/json-investigation-runner.ts",
+    "insurance-bench/json-object-provider.ts",
+    "insurance-bench/investigation-providers.ts",
+    "insurance-bench/providers.ts",
+    "insurance-bench/candidate-admission.ts",
+    "insurance-bench/runner.ts",
+    "insurance-bench/tools.ts",
+    "insurance-bench/types.ts",
+    "insurance-bench/score.ts",
+    "insurance-bench/models.json",
+    "scripts/insurance-bench-json-investigation.ts"
+  ],
+  "fullCorpusHash": "b8735f0158297b64a250cdecdcb0fffda42fb85f1fd30e3c07ff5ec45f81d2f5",
+  "promptHash": "86a249e08db56fc4519a1cc9ffeab158c61a25cea95c6ca9626d5ceac60017fd",
+  "capUsd": 75,
+  "minimumReservedUsd": 62.75497408750001,
+  "ledgerAtRegistration": {
+    "reservedUsd": 62.75497408750001,
+    "capUsd": 75,
+    "updatedAt": "2026-10-05T01:03:19.086Z"
+  },
+  "auditPath": "insurance-bench/results/meta/v09j-candidate-independent-audit.json",
+  "auditSha256": "5e9b2f7e007c62bc1ccc35459ddc065af8d2d76a32b6bdcc70def2a557861332",
+  "planPath": "specs/features/insurance-bench/v09-json-diagnostic-plan.md",
+  "planSha256": "2bcbfda6594655040d64e88194347d0991dd4bbbf0cea151b1f53ccc2fd82ce0",
+  "controllerCopy": "insurance-bench/results/meta/candidate-controller-repro.txt",
+  "controllerSha256": "c929cbcc69cd6d052ae5096d01531e2cb8cca7421467cf7be55925ce908c91f7",
+  "controllerReviewPath": "insurance-bench/results/meta/candidate-development-only-controller-review.json",
+  "controllerReviewSha256": "91c00f34c2c04628e69ebf6d8591eea5fd61acbd51dda78f56f5e44f811f0ed9",
+  "forecastTotalUsd": 1.25,
+  "responseFormat": "json_object",
+  "panels": [
+    {
+      "id": "01-luna-low-dev",
+      "modelAlias": "gpt-6-luna-low",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6-luna",
+        "inputUsdPerMillion": 0.1,
+        "outputUsdPerMillion": 0.5,
+        "reasoningEffort": "low",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "split": "dev",
+      "forecastUsd": 0.5,
+      "taskIds": [
+        "ibi-fleet-assignment-dev-1-473634f6",
+        "ibi-premises-chronology-dev-1-98bd4c8a",
+        "ibi-multi-exposure-review-dev-1-57c335e"
+      ],
+      "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+      "variant": "baseline",
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384
+      },
+      "promptHash": "86a249e08db56fc4519a1cc9ffeab158c61a25cea95c6ca9626d5ceac60017fd",
+      "harnessHash": "ab8296b3627cba048ab27d9d98842b67ad142110e09ccd82c98d3520df4105c6",
+      "dispatchReceiptPath": "insurance-bench/results/meta/v09j-dispatch-01-luna-low-dev.json"
+    },
+    {
+      "id": "02-luna-high-dev",
+      "modelAlias": "gpt-6-luna-high",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6-luna",
+        "inputUsdPerMillion": 0.1,
+        "outputUsdPerMillion": 0.5,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "split": "dev",
+      "forecastUsd": 0.75,
+      "taskIds": [
+        "ibi-fleet-assignment-dev-1-473634f6",
+        "ibi-premises-chronology-dev-1-98bd4c8a",
+        "ibi-multi-exposure-review-dev-1-57c335e"
+      ],
+      "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+      "variant": "baseline",
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384
+      },
+      "promptHash": "86a249e08db56fc4519a1cc9ffeab158c61a25cea95c6ca9626d5ceac60017fd",
+      "harnessHash": "ab8296b3627cba048ab27d9d98842b67ad142110e09ccd82c98d3520df4105c6",
+      "dispatchReceiptPath": "insurance-bench/results/meta/v09j-dispatch-02-luna-high-dev.json"
+    }
+  ],
+  "guards": [
+    "Serial fixed order; no retries, fallback or outcome-selected substitution",
+    "Existing canonical shared ledger with totalcap75 and registered floor; never reset",
+    "Every remaining panel forecast must fit before dispatch",
+    "Source, plan, audit, controller, registration and task/config exact bytes are committed before inference",
+    "Native generation and responseFormat plus metadata audited after every terminal run",
+    "Material cost overrun/provider/budget/model/process flags pause future calls",
+    "Fresh holdouts require separately committed independent development audit and release; no held output access before release",
+    "Changed corpus and transport do not support cross-generation causal difficulty claims; within-generation comparisons only"
+  ]
+}

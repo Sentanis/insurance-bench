@@ -1,0 +1,59 @@
+{
+  "schema": "insurance-bench-dependency-allocation-runtime-independent-review-v1",
+  "auditedAt": "2026-10-05T02:18:48.622614+00:00",
+  "disposition": "approve-engineering-only",
+  "sourceFingerprint": "3591d68f82595fc8d02f4722fbfd6a4b927541d2964db1ac7062533de7787256",
+  "fullCorpusHash": "f8e0df627c9334131c2beba32dae5bf0e85d32883ef3108ddd6d42b4d4889eeb",
+  "ownedReviewScope": [
+    "insurance-bench/dependency-allocation-runner.ts",
+    "scripts/insurance-bench-dependency-allocation.ts",
+    "test/insurance-bench-dependency-allocation-runner.test.ts"
+  ],
+  "sourceSha256": {
+    "insurance-bench/dependency-allocation-runner.ts": "2c69fe3e0cdab2039541f895313cf43070d265da6aa1f7d8ac22fcf4f7ff45c8",
+    "scripts/insurance-bench-dependency-allocation.ts": "adba9a9974a92b8242bf9fed4c5742047b8b2d9d2171ef304baace8868fbf165",
+    "test/insurance-bench-dependency-allocation-runner.test.ts": "bc452f02e33f795c09a0c2ecc02e7b26128778449b751a22cd7ac1f4120c1ad5"
+  },
+  "semanticAuditPath": "insurance-bench/results/meta/v12-candidate-independent-audit.json",
+  "semanticAuditSha256": "764f9e0d9a553d8d1825c6690b71526f7d6c5f1a0759047f742045142881ffbe",
+  "checks": {
+    "distinctNativeVersionAndSourceFingerprint": true,
+    "nativeJSONFormatAnd600SecondTransportInherited": true,
+    "publicAssignmentHasOnlyIdFamilyClockInstruction": true,
+    "privateGoldAndOptimizerNotSentToModel": true,
+    "sixActualMockNativeToolLifecycles100": true,
+    "allSixTraceToolResultsAndFinalStatesReplayedExactly": true,
+    "postFinishProtectedBatchRecordedAndZeroed": true,
+    "assertedOptimalFactsCannotReplaceActualBusinessWrite": true,
+    "cumulativeTruncationAndProtocolFlagsRetainedAfterRecovery": true,
+    "providerFailureUnscoredRetainsReservationAndStopsPanel": true,
+    "coverageGapHasNullHeadline": true,
+    "limitsRejectBeforeInvocation": true,
+    "macroTaskSuccessEquallyWeightsFamilies": true,
+    "canonicalRootAdmissionAndPersistentClaimBeforeOutputMkdirBudget": true,
+    "unregisteredOrMalformedCLIRejectsBeforeLiveLedgerAccess": true,
+    "exactGenerationTaskModelEffortSourcePromptHarnessConfigBoundThroughAdmission": true,
+    "noProviderCallsLiveLedgerAuthRegistrationOrControllerCallsByReviewer": true
+  },
+  "validation": {
+    "ownedRunnerTestsPassed": 8,
+    "authorCaseTestsPassed": 14,
+    "typeCheck": {
+      "command": "npm run check",
+      "exitCode": 2,
+      "limitation": "Concurrent out-of-scope insurance-bench/report-admission.ts:71 string|undefined argument; earlier check exit0. Owned V12 focused controls pass."
+    },
+    "commands": [
+      "node --import tsx --test test/insurance-bench-dependency-allocation-runner.test.ts",
+      "node --import tsx --test test/insurance-bench-dependency-allocation-runner.test.ts test/insurance-bench-dependency-allocation-cases.test.ts"
+    ]
+  },
+  "issues": [],
+  "limits": [
+    "Mock runtime oracle uses authored fixture expectations only to isolate integration; expected semantic truth and all35 optimal tie oracles derive independently from raw rows in the linked source audit.",
+    "No actual provider output, inference affordability, professional validity, empirical difficulty or staging/product acceptance is established.",
+    "Conditional candidate requires actual v11 development outcomes, whole remaining forecast within approved75, separate cross-provider/controller review and prospective committed registration before paid calls."
+  ],
+  "sourceReproductionPath": "insurance-bench/results/meta/v12-candidate-independent-audit-repro.txt",
+  "sourceReproductionSha256": "7ab4cdc82494991ca5325c462141c72ba6c50cd2c997ce151a096d0eb939dc8e"
+}

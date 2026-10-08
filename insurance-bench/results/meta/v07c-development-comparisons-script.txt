@@ -1,0 +1,9 @@
+import {readFileSync,readdirSync,writeFileSync} from 'node:fs';
+import {compareRuns} from '../../insurance-bench/compare.ts';
+import type {Run} from '../../insurance-bench/runner.ts';
+const runs=readdirSync('insurance-bench/results').filter(p=>p.endsWith('.json')).map(p=>JSON.parse(readFileSync('insurance-bench/results/'+p,'utf8')) as Run).filter(r=>r.version==='insurance-bench-coupled-v0.7c'&&r.episodes[0]?.split==='dev');
+const pick=(model:string,effort:string)=>{const r=runs.find(r=>r.model.model===model&&r.model.reasoningEffort===effort&&r.completeCoverage);if(!r)throw new Error('Missing complete profile');return r;};
+const sLow=pick('gpt-6.1-sol','low'),sHigh=pick('gpt-6.1-sol','high'),lLow=pick('gpt-6-luna','low'),lHigh=pick('gpt-6-luna','high');
+const comparisons=[compareRuns(sLow,sHigh,'effort'),compareRuns(lLow,lHigh,'effort'),compareRuns(lLow,sLow,'tier'),compareRuns(lHigh,sHigh,'tier')];
+writeFileSync('insurance-bench/results/meta/v07c-development-comparisons.json',JSON.stringify({computedAt:new Date().toISOString(),generation:sLow.version,comparisons},null,2)+'\n');
+console.log(JSON.stringify(comparisons.map(c=>({axis:c.axis,delta:c.scoreDelta,bootstrap:c.familyClusterBootstrap95,facts:c.componentDeltas?.facts,currentState:c.currentStateDelta,allPass:c.completionDelta,wins:c.caseWins,ties:c.caseTies,losses:c.caseLosses}))));

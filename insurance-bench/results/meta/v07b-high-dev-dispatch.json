@@ -1,0 +1,25 @@
+{
+  "registeredAt": "2026-10-04T03:29:20.786Z",
+  "generation": "insurance-bench-coupled-v0.7b",
+  "stage": "high-dev",
+  "profiles": [
+    "gpt-6.1-sol-high",
+    "gpt-6-luna-high"
+  ],
+  "taskIds": [
+    "ibc-coverage-review-dev-1-693918aa",
+    "ibc-financial-reconciliation-dev-1-6bebb17e",
+    "ibc-deadline-triage-dev-1-cb2f8d92"
+  ],
+  "sourceFingerprint": "4bd8209170e14325a538b9e9355b41d390df58c4746b6de0eb03650ac0014eb7",
+  "harnessHash": "0b25d970a35709f4a37cb37495884ef06d7e113c5cee852b13b2eabec2fe8515",
+  "ledgerAtDispatch": {
+    "reservedUsd": 15.881934887500037,
+    "capUsd": 25,
+    "updatedAt": "2026-10-04T03:28:44.310Z"
+  },
+  "planningAllowanceUsd": 6,
+  "affordable": true,
+  "forecastPolicy": "Planning allowance is an estimate, not a guarantee or allocation that bypasses the atomic shared cap; preserve fixed case/order and incomplete coverage.",
+  "unchanged": true
+}

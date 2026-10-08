@@ -1,0 +1,90 @@
+{
+  "id": "03-luna-low-dev",
+  "modelAlias": "gpt-6-luna-low",
+  "modelConfiguration": {
+    "provider": "openai",
+    "model": "gpt-6-luna",
+    "inputUsdPerMillion": 0.1,
+    "outputUsdPerMillion": 0.5,
+    "reasoningEffort": "low",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+    "pricingVerifiedAt": "2026-10-03"
+  },
+  "split": "dev",
+  "variant": "baseline",
+  "forecastUsd": 0.5,
+  "taskIds": [
+    "ibi-fleet-assignment-dev-1-473634f6",
+    "ibi-premises-chronology-dev-1-98bd4c8a",
+    "ibi-multi-exposure-review-dev-1-57c335e"
+  ],
+  "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+  "correspondenceIds": [
+    "ibi-fleet-assignment-dev-1-473634f6",
+    "ibi-premises-chronology-dev-1-98bd4c8a",
+    "ibi-multi-exposure-review-dev-1-57c335e"
+  ],
+  "repeat": 1,
+  "limits": {
+    "maxTurns": 20,
+    "maxOutputTokens": 16384,
+    "transportDeadlineMs": 600000
+  },
+  "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+  "startedAt": "2026-10-04T23:48:43.234Z",
+  "freezeCommit": "cf4075d6fbeea1a9d882bbdea471824101b5f07d",
+  "freezeManifest": "insurance-bench/freeze-v0.9-dev.json",
+  "sourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+  "promptHash": "86a249e08db56fc4519a1cc9ffeab158c61a25cea95c6ca9626d5ceac60017fd",
+  "headlineMetric": "macro-task-success",
+  "ledgerBefore": {
+    "reservedUsd": 38.146768187500065,
+    "capUsd": 75,
+    "updatedAt": "2026-10-04T23:48:43.079Z"
+  },
+  "remainingForecastUsd": 29.25,
+  "command": [
+    "npx",
+    "tsx",
+    "scripts/insurance-bench-investigation.ts",
+    "run",
+    "--model",
+    "gpt-6-luna-low",
+    "--split",
+    "dev",
+    "--per-family",
+    "1",
+    "--case-offset",
+    "0",
+    "--repeat",
+    "1",
+    "--variant",
+    "baseline",
+    "--max-output-tokens",
+    "16384",
+    "--budget",
+    "75",
+    "--out",
+    ".tmp/insurance-bench/v09-runs"
+  ],
+  "logPath": ".tmp/insurance-bench/v09-03-luna-low-dev.log",
+  "status": "terminal-native-run",
+  "endedAt": "2026-10-04T23:52:58.846Z",
+  "exitCode": 0,
+  "ledgerAfter": {
+    "reservedUsd": 38.25119668750008,
+    "capUsd": 75,
+    "updatedAt": "2026-10-04T23:52:58.811Z"
+  },
+  "processFailure": false,
+  "nativeRunPath": "insurance-bench/results/2026-10-04T23-48-44-384Z-gpt-6-luna-low-baseline-investigation.json",
+  "nativeRunSha256": "5f9af0c59ce238b5a2f80669bf0bb478805a1e6b96db649cfc6ab3ed55dd7bfc",
+  "actualEstimatedCostUsd": 0.10442850000000001,
+  "completeCoverage": true,
+  "benchmarkScore": 0,
+  "weightedDiagnosticScore": 33.89,
+  "observedTruncation": false,
+  "modelOrEffortMismatch": false,
+  "providerOrBudgetFailure": false,
+  "materialSpendOverrun": false
+}

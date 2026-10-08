@@ -1,0 +1,174 @@
+// Non-author v10 audit. No provider invocation, auth/ledger or native model output reads.
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import {generateInteractionCases} from '../../insurance-bench/interaction-cases.ts';
+import {INTERACTION_SOURCE_FILES,interactionSourceFingerprint} from '../../insurance-bench/interaction-runner.ts';
+const bytesSha=(bytes:string|Buffer)=>crypto.createHash('sha256').update(bytes).digest('hex');
+const valueSha=(value:unknown)=>bytesSha(JSON.stringify(value));
+const same=(a:any,b:any)=>JSON.stringify(a)===JSON.stringify(b);
+const canon=(v:any):any=>Array.isArray(v)?v.map(canon):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,canon(v[k])])):v;
+const setCanon=(items:any[])=>items.map(x=>JSON.stringify(canon(x))).sort();
+const equalRequests=(a:any[],b:any[])=>same(setCanon(a),setCanon(b));
+const compact=(facts:any)=>['E1','E2'].flatMap(e=>Array.from({length:6},(_,i)=>({applicable:'A','not-applicable':'N',unresolved:'U'} as any)[facts[e+'.R'+(i+1)]]));
+const issues:any[]=[],vectors:any[]=[],oracles:any[]=[],controls:any[]=[];
+const tasks=generateInteractionCases(100419);
+const snapshots=(task:any,generation:number,response:boolean)=>[...task.investigation.initialDocuments,...(response?[task.investigation.requestedResponse]:[]),...task.investigation.updates.slice(0,generation-1)];
+function independent(documents:any[]){
+ const rows=documents.flatMap(d=>d.rows),ref=new Map(rows.map(r=>[r.id,documents.find(d=>d.rows.includes(r))]));
+ const within=(r:any,t:string,a='from',b='to')=>Date.parse(r[a])<=Date.parse(t)&&Date.parse(t)<Date.parse(r[b]);
+ const scope=(r:any)=>JSON.stringify(r.kind==='authority'?[r.kind,r.personId,r.role,r.subjectId]:r.kind==='alias'?[r.kind,r.subject,r.label]:r.kind==='observation'?[r.kind,r.subjectId,r.predicate]:[r.kind,r.packId,r.activity]);
+ const live=(eligible:any[])=>eligible.filter(x=>!eligible.some(y=>scope(x)===scope(y)&&y.supersedes.includes(x.id)));
+ const product=(groups:string[][][])=>groups.reduce<string[][]>((a,b)=>a.flatMap(x=>b.map(y=>[...new Set([...x,...y])])),[[]]);
+ const credential=(person:string,role:string,subject:string,t:string)=>live(rows.filter(r=>r.kind==='authority'&&r.signed&&r.personId===person&&r.role===role&&(r.subjectId===subject||r.subjectId==='*')&&within(r,t))).map(r=>[r.id]);
+ const inv=(covers:string)=>rows.filter(r=>r.kind==='inventory'&&r.signed&&r.complete&&r.covers===covers).map(r=>[r.id]);
+ const resolve=(candidates:any[],eligible:any[],value:(r:any)=>any,role:string,subject:(r:any)=>string,t:string,covers:string)=>{
+  const active=live(eligible),witness=(r:any)=>credential(r.signerId,role,subject(r),t).map(p=>[r.id,...p]);
+  if(!active.length)return{v:null,p:product([inv(covers),inv('authority'),[candidates.map(r=>r.id)]])};
+  const distinct=new Set(active.map(r=>JSON.stringify(value(r))));
+  if(distinct.size===1)return{v:value(active[0]),p:active.flatMap(witness)};
+  return{v:null,p:active.flatMap((a,i)=>active.slice(i+1).filter(b=>value(a)!==value(b)).flatMap(b=>product([witness(a),witness(b)])))};
+ };
+ const facts:any={},proofs:any={},requests:any[]=[],identities:any[]=[];
+ const asset:string[]=[],actor:string[]=[],policy:string[]=[],unknown:string[]=[];
+ const aggregate:any={resolvedAssetIds:[],resolvedActorIds:[],currentPolicyVersionIds:[]};
+ for(const e of rows.filter(r=>r.kind==='event'&&r.signed).sort((a,b)=>a.eventId.localeCompare(b.eventId))){
+  const ids:any={};
+  for(const s of ['asset','actor','site']){
+   const candidates=rows.filter(r=>r.kind==='alias'&&r.subject===s&&r.label===e[s+'Label']);
+   const eligible=candidates.filter(r=>r.signed&&within(r,e.at)&&credential(r.signerId,'alias-registrar',r.entityId??r.label,e.at).length);
+   ids[s]=resolve(candidates,eligible,r=>r.entityId,'alias-registrar',r=>r.entityId??r.label,e.at,'aliases');
+   const p=ids[s].p.map((v:string[])=>[e.id,...v]);identities.push(p);
+   if(ids[s].v===null)unknown.push(e.eventId+':'+s);
+   else if(s==='asset')asset.push(e.eventId+':'+ids[s].v);else if(s==='actor')actor.push(e.eventId+':'+ids[s].v);
+   if(s==='asset')aggregate.resolvedAssetIds.push(p);if(s==='actor')aggregate.resolvedActorIds.push(p);
+  }
+  const candidates=rows.filter(r=>r.kind==='policy'&&r.activity===e.activity),eligible=live(candidates.filter(r=>r.signed&&within(r,e.at,'effectiveFrom','effectiveTo')&&credential(r.signerId,'policy-issuer',r.packId,e.at).length));
+  const revision=Math.max(...eligible.map(r=>r.revision)),selected=eligible.filter(r=>r.revision===revision);
+  const packs=new Set(selected.map(r=>r.packId));if(packs.size>1)throw Error('Interpreter current one-pack scope exceeded');
+  const chosen=selected.length&&new Set(selected.map(r=>JSON.stringify(r.clauses))).size===1?selected[0]:null;
+  const policyWitness=(r:any)=>credential(r.signerId,'policy-issuer',r.packId,e.at).map(p=>[e.id,r.id,...p]);
+  const pp=chosen?selected.flatMap(policyWitness):selected.length?product(selected.map(policyWitness)):product([[[e.id]],inv('policies'),inv('authority'),[candidates.map(r=>r.id)]]);
+  aggregate.currentPolicyVersionIds.push(pp);identities.push(pp);
+  if(chosen)policy.push(e.eventId+':'+chosen.packId+'@'+chosen.revision);else unknown.push(e.eventId+':policy');
+  const lookup=(subject:any,predicate:string,role:string)=>{
+   if(subject===null)return{v:null,p:[[]]};
+   const candidates=rows.filter(r=>r.kind==='observation'&&r.subjectId===subject&&r.predicate===predicate);
+   return resolve(candidates,candidates.filter(r=>r.signed&&r.firstHand&&within(r,e.at)&&credential(r.signerId,role,subject,e.at).length),r=>r.value,role,()=>subject,e.at,'observations');
+  };
+  const condition=(c:any):{v:number,p:string[][]}=>{
+   if(c.kind==='test'){const id=ids[c.subject],input=lookup(id.v,c.predicate,c.requiredRole);return{v:input.v===null?-1:input.v===c.equals?1:0,p:product([id.p,input.p])};}
+   if(c.kind==='not'){const child=condition(c.condition);return{v:child.v===-1?-1:1-child.v,p:child.p};}
+   const children=c.conditions.map(condition),decisive=c.kind==='all'?0:1,w=children.filter(x=>x.v===decisive);
+   return w.length?{v:decisive,p:w.flatMap(x=>x.p)}:{v:children.some(x=>x.v===-1)?-1:1-decisive,p:product(children.map(x=>x.p))};
+  };
+  for(let i=1;i<=6;i++){
+   const obligation=e.eventId+'.R'+i,c=chosen?.clauses.find(c=>c.code==='R'+i);let status='unresolved',p=pp;
+   if(c){const result=condition(c.condition);p=product([pp,result.p]);if(result.v===0)status='not-applicable';else if(result.v===1){const id=ids[c.requestSubject],keeper=lookup(id.v,c.custodianPredicate,c.custodianRole);p=product([p,id.p,keeper.p]);if(typeof id.v==='string'&&typeof keeper.v==='string'&&keeper.v.length){status='applicable';requests.push({obligationId:obligation,eventId:e.eventId,subjectId:id.v,material:c.material,custodianId:keeper.v,periodStart:new Date(Date.parse(e.at)-c.lookbackHours*3600000).toISOString(),periodEnd:new Date(Date.parse(e.at)+c.forwardHours*3600000).toISOString()});}}}
+   facts[obligation]=status;proofs[obligation]=p;
+  }
+ }
+ Object.assign(facts,{resolvedAssetIds:asset.sort(),resolvedActorIds:actor.sort(),currentPolicyVersionIds:policy.sort(),unresolvedSubjectIds:unknown.sort()});
+ for(const key of Object.keys(aggregate))proofs[key]=product(aggregate[key]);proofs.unresolvedSubjectIds=product(identities);
+ const retained:string[]=[],invalidated:string[]=[];
+ for(const a of rows.filter(r=>r.kind==='approval'))(a.signed&&facts[a.obligationId]==='applicable'&&proofs[a.obligationId].some(p=>a.dependencyRowIds.every(id=>p.includes(id)))?retained:invalidated).push(a.approvalId);
+ return{facts,requests,retainedApprovalIds:retained.sort(),invalidatedApprovalIds:invalidated.sort(),proofs,ref};
+}
+
+// Hand calculation uses literal input patterns and written clause formulas, not either AST resolver.
+const patterns=[
+ {e:1,ack:1,preserve:1,alternate:1,bp:1,bw:0,br:0,bd:1,cd:-1,cw:1,cr:0,ct:-1,cc:true},
+ {e:1,ack:-1,preserve:0,alternate:0,bp:0,bw:1,br:0,bd:1,cd:1,cw:1,cr:0,ct:1,cc:true},
+ {e:0,ack:1,preserve:1,alternate:1,bp:1,bw:0,br:1,bd:-1,cd:0,cw:1,cr:0,ct:0,cc:true},
+ {e:1,ack:1,preserve:0,alternate:1,bp:1,bw:1,br:0,bd:0,cd:1,cw:0,cr:0,ct:0,cc:false},
+];
+const AND=(...xs:number[])=>xs.includes(0)?0:xs.every(x=>x===1)?1:-1;
+const OR=(...xs:number[])=>xs.includes(1)?1:xs.every(x=>x===0)?0:-1;
+const NOT=(x:number)=>x===-1?-1:1-x;
+function hand(task:any,index:number,generation:number,response:boolean){
+ const v=patterns[index%4]!,eligible=response?v.e:-1,hold=response?1:-1;
+ const p=generation===1?1:0,d=generation===1?1:v.cd,w=generation===1?0:v.cw,r=generation===1?0:v.cr,t=generation===1?0:v.ct;
+ const assigned=OR(p,AND(d,v.ack)),blocked=AND(hold,NOT(w));
+ const first=[AND(eligible,task.family==='evidence-brief'?AND(d,v.ack):assigned,NOT(blocked)),assigned,task.family==='fraud-referral'?AND(blocked,OR(t,NOT(p))):blocked,AND(eligible,OR(NOT(hold),w)),AND(d,NOT(r)),OR(v.preserve,task.family==='fraud-referral'?AND(eligible,NOT(r),NOT(t)):AND(eligible,NOT(r)))];
+ const secondHold=response?(generation===3?0:1):-1;
+ const second=[AND(OR(v.preserve,v.bd),NOT(OR(v.br,AND(secondHold,v.alternate)))),AND(v.alternate,secondHold),OR(v.preserve,AND(v.bd,NOT(v.alternate))),generation===3?AND(OR(NOT(secondHold),v.bw),NOT(v.br)):AND(NOT(secondHold),OR(v.bp,v.bw)),AND(v.bp,NOT(v.br)),generation===3?AND(OR(v.preserve,v.bd),NOT(v.br)):OR(AND(secondHold,NOT(v.bw)),AND(v.preserve,NOT(v.br)))];
+ const result=(truth:number,subject:number,event:number)=>truth===0?'N':truth===-1?'U':event===1&&((subject===0&&!response)||(subject===1&&generation>1&&!v.cc))?'U':'A';
+ return [...first.map((x,i)=>result(x,[0,1,2,0,1,2][i]!,1)),...second.map((x,i)=>result(x,[0,1,2,generation===3?1:0,1,2][i]!,2))];
+}
+// Derive and freeze every vector before direct comparison calls to engine/author resolvers.
+for(const [index,task] of tasks.entries())for(const response of [false,true])for(const generation of [1,2,3]){
+ const documents=snapshots(task,generation,response),gold=independent(documents);
+ const literal=hand(task,index,generation,response);
+ assert.deepEqual(compact(gold.facts),literal,task.id+' hand calculation '+generation+'/'+response);
+ assert.equal(Object.keys(gold.facts).length,16);
+ const allIds=documents.flatMap((d:any)=>d.rows.map((r:any)=>r.id));assert.equal(new Set(allIds).size,allIds.length);
+ for(const alternatives of Object.values(gold.proofs) as string[][][])assert(alternatives.length&&alternatives.every(p=>p.length&&p.every(id=>allIds.includes(id))));
+ vectors.push({taskId:task.id,family:task.family,split:task.split,generation,responseAvailable:response,operational:response||generation===1,sourceSha256:valueSha(documents),facts:gold.facts,requests:gold.requests,retainedApprovalIds:gold.retainedApprovalIds,invalidatedApprovalIds:gold.invalidatedApprovalIds,proofs:gold.proofs,literalVector:literal,independentVectorSha256:valueSha({facts:gold.facts,requests:gold.requests,retainedApprovalIds:gold.retainedApprovalIds,invalidatedApprovalIds:gold.invalidatedApprovalIds,proofs:gold.proofs})});
+}
+const independentlyDerivedAt=new Date().toISOString(),independentVectorsSha256=valueSha(vectors);
+// Independent mutation controls exercise event-specific qualification and activity partition before comparison.
+for(const task of tasks){
+ const initial=task.investigation.initialDocuments, full=snapshots(task,3,true),i=independent(initial),f=independent(full);
+ const rows=full.flatMap((d:any)=>d.rows),events=rows.filter((r:any)=>r.kind==='event');
+ assert.notEqual(events[0].activity,events[1].activity);
+ const aliases=rows.filter((r:any)=>r.kind==='alias'&&r.subject==='site');assert.equal(new Set(aliases.map((r:any)=>r.entityId)).size,1);
+ const policies=rows.filter((r:any)=>r.kind==='policy');assert.equal(new Set(policies.map((r:any)=>r.packId)).size,2);
+ assert(i.facts.unresolvedSubjectIds.includes('E1:asset'));assert(!f.facts.unresolvedSubjectIds.includes('E1:asset'));
+ assert(f.facts.currentPolicyVersionIds.some((s:string)=>s.startsWith('E1:')&&s.endsWith('@1')));assert(f.facts.currentPolicyVersionIds.some((s:string)=>s.startsWith('E2:')&&s.endsWith('@2')));
+ const initialIds=new Set(initial.flatMap((d:any)=>d.rows.map((r:any)=>r.id)));
+ for(const a of initial.flatMap((d:any)=>d.rows).filter((r:any)=>r.kind==='approval'))assert(a.dependencyRowIds.every((id:string)=>initialIds.has(id)));
+ const reduced=structuredClone(full);for(const doc of reduced)doc.rows=doc.rows.filter((r:any)=>r.kind!=='observation'||!r.id.endsWith('site-hold-later'));
+ const before=independent(reduced);for(let c=1;c<=6;c++)assert.equal(before.facts['E1.R'+c],f.facts['E1.R'+c],task.id+' late correction must not alter10am event');
+ controls.push({taskId:task.id,twoDistinctActivities:true,twoPacksPartitionedByActivity:true,sharedSite:true,laterCredentialDoesNotRetireEarlierEvent:true,firstAssetResolvedOnlyWithResponse:true,initialApprovalDependenciesVisible:true});
+}
+const {deriveInvestigationDecisions,createInvestigationEnvironment,gradeInvestigationTask,investigationGoals,publicInvestigationTask}=await import('../../insurance-bench/investigation-engine.ts');
+const {deriveInvestigationPhase}=await import('../../insurance-bench/investigation-cases.ts');
+const minimal=(plans:string[][])=>{const sets=[...new Set(plans.map(p=>JSON.stringify([...new Set(p)].sort())))].map(p=>JSON.parse(p) as string[]);return sets.filter(p=>!sets.some(q=>q.length<p.length&&q.every(id=>p.includes(id)))).map(p=>JSON.stringify(p)).sort();};
+let proofPaths=0,engineAlternatives=0,authorAlternatives=0,gradedIndependentAlternatives=0,emptyCertificateNegatives=0;
+for(const v of vectors){
+ const task=tasks.find(t=>t.id===v.taskId)!,documents=snapshots(task,v.generation,v.responseAvailable),engine=deriveInvestigationDecisions({documents}),author=deriveInvestigationPhase({documents});
+ for(const [name,result] of [['engine',engine],['author',author]] as const){
+  if(!same(result.facts,v.facts)||!equalRequests(result.requests,v.requests)||!same(result.retainedApprovalIds,v.retainedApprovalIds)||!same(result.invalidatedApprovalIds,v.invalidatedApprovalIds))issues.push({taskId:task.id,generation:v.generation,response:v.responseAvailable,kind:name+'-semantic-disagreement'});
+  for(const [key,expected] of Object.entries(v.proofs) as [string,string[][]][]){
+   const supplied=result.certificates[key]??[];if(name==='engine')engineAlternatives+=supplied.length;else authorAlternatives+=supplied.length;
+   if(!supplied.every(plan=>plan.every(ref=>documents.some((doc:any)=>doc.id===ref.documentId&&doc.version===ref.version&&doc.rows.some((row:any)=>row.id===ref.rowId)))))issues.push({taskId:task.id,generation:v.generation,response:v.responseAvailable,key,kind:name+'-noncurrent-document-version-reference'});
+   const rows=supplied.map(plan=>plan.map(ref=>ref.rowId));
+   if(!same(minimal(rows),minimal(expected)))issues.push({taskId:task.id,generation:v.generation,response:v.responseAvailable,key,kind:name+'-proof-alternative-disagreement',independent:minimal(expected),actual:minimal(rows)});
+   if(name==='engine')proofPaths+=expected.length;
+  }
+ }
+ // Cloned validator states isolate evidence acceptance, including nonoperational response-absent snapshots.
+ // These are grade controls, distinct from the twelve actual lifecycle tool oracles below.
+ const state=structuredClone(createInvestigationEnvironment(task).state);state.documents=structuredClone(documents);state.generation=v.generation;
+ const refMap=new Map(documents.flatMap((doc:any)=>doc.rows.map((row:any)=>[row.id,{documentId:doc.id,version:doc.version,rowId:row.id}])));
+ state.readRefs=[...refMap.values()].map((ref:any)=>`${ref.documentId}@${ref.version}:${ref.rowId}`);
+ const fieldEvidence=Object.fromEntries(Object.entries(v.proofs).map(([key,plans])=>[key,(plans as string[][])[0]!.map(id=>refMap.get(id))]));
+ state.packet={id:task.id+'-independent-validator',revision:1,generation:v.generation,facts:structuredClone(v.facts),evidence:structuredClone(fieldEvidence),memo:'Independent validator source-only certificate control, no story admission.'} as any;
+ for(const [key,plans] of Object.entries(v.proofs) as [string,string[][]][]){
+  for(const plan of plans){state.packet!.evidence[key]=plan.map(id=>refMap.get(id)) as any;const grade=gradeInvestigationTask(task,state);assert.equal(grade.criteria.find(c=>c.id==='evidence:'+key)!.passed,true,task.id+' independent alternate '+key);gradedIndependentAlternatives++;}
+  state.packet!.evidence[key]=[];assert.equal(gradeInvestigationTask(task,state).criteria.find(c=>c.id==='evidence:'+key)!.passed,false);emptyCertificateNegatives++;
+  state.packet!.evidence[key]=fieldEvidence[key] as any;
+ }
+}
+function oracle(task:any){
+ const env=createInvestigationEnvironment(task),call=(tool:string,args:any={})=>{const out=env.execute(tool,{expectedVersion:env.state.version,generation:env.state.generation,...args});assert(!Object.hasOwn(out,'error'),tool+JSON.stringify(out));return out;};
+ const read=()=>{for(const doc of env.state.documents)call('read_document',{documentId:doc.id});};
+ read();call('draft_source_request',{scope:task.investigation.sourceRequest});const requestId=env.state.sourceRequest!.id;call('request_source_approval',{requestId});call('dispatch_source_request',{requestId});read();call('review_source_receipt',{requestId,documentId:task.investigation.requestedResponse.id});
+ const phases:any[]=[];
+ for(let generation=1;generation<=3;generation++){
+  read();const gold=independent(env.state.documents);const refs=(ids:string[])=>ids.map(id=>{const doc=gold.ref.get(id)!;return{documentId:doc.id,version:doc.version,rowId:id};});
+  call('save_packet',{facts:gold.facts,evidence:Object.fromEntries(Object.entries(gold.proofs).map(([k,p])=>[k,refs((p as string[][])[0]!)])),memo:'Independent source-only oracle has reviewed the full current raw operands.'});
+  call('record_requests',{requests:gold.requests,retainedApprovalIds:gold.retainedApprovalIds,invalidatedApprovalIds:gold.invalidatedApprovalIds});
+  phases.push({generation,factsSha256:valueSha(gold.facts),requestCount:gold.requests.length,requestSha256:valueSha(gold.requests),retainedApprovalIds:gold.retainedApprovalIds,invalidatedApprovalIds:gold.invalidatedApprovalIds});call('request_packet_review',{packetRevision:env.state.packet!.revision});
+ }
+ call('record_handoff',{packetRevision:env.state.packet!.revision,owner:task.investigation.reviewOwner});call('create_follow_up',{kind:'current-investigation-followup',owner:task.investigation.reviewOwner,dueAt:new Date(Date.parse(task.clock)+5400000).toISOString()});call('finish');
+ const score=gradeInvestigationTask(task,env.state);if(score.score!==100||!score.allPass)issues.push({taskId:task.id,kind:'independent-oracle-false-grade',score:score.score,failedCriteria:score.criteria.filter(c=>!c.passed).map(c=>c.id)});
+ assert.equal(env.state.history.filter(h=>h.action==='announced_material_update').length,2);assert.equal(env.state.humanPinId,task.investigation.humanPinId);
+ return{taskId:task.id,score:score.score,allPass:score.allPass,actualGoals:investigationGoals(task,env.state),phases,historySha256:valueSha(env.state.history)};
+}
+for(const task of tasks)oracles.push(oracle(task));
+const sourceSha256=Object.fromEntries([...INTERACTION_SOURCE_FILES,'test/insurance-bench-interaction-cases.test.ts'].map(p=>[p,bytesSha(fs.readFileSync(p))]));
+const output={schema:'insurance-bench-v10-candidate-independent-audit-v1',createdAt:new Date().toISOString(),disposition:issues.length?'reject-measurement':'approve-engineering-only',preparedBy:'Non-case/engine-author research agent; previously authored JSON transport/admission helpers and their integration. Independence is source interpretation, not total implementation independence.',sourceFingerprint:interactionSourceFingerprint(),fullCorpusHash:valueSha(tasks),datasetHash:valueSha(tasks),sourceSha256,method:{inheritedInterpreterPath:'.tmp/insurance-bench/v09-development-independent-audit.ts',inheritedInterpreterScope:'Extracted function independent(documents) only; no native trace/receipt/model-output driver executed.',adaptation:'Validated exact activity partition, per-event shared-site authority/eligibility-before-supersession, globally unique row IDs and doc/version conversion. All72 independent raw vectors and separate hand-coded clause/input vectors frozen before direct comparison calls to either resolver; generator-internal approval construction is disclosed separately.',independentlyDerivedAt,independentVectorsSha256,proofComparison:'Canonical minimal row-ID sets, accepting redundant/superset alternatives; every independent sufficient proof and alternate compared against engine and case resolver.',oracle:'Independent facts/requests/approvals/certificates drive actual public simulator tools; no case/engine derivation used as oracle answer.'},counts:{tasks:tasks.length,states:vectors.length,operationalStates:48,nonoperationalResponseAbsentLaterStates:24,fieldsPerState:16,factualOutputs:16*vectors.length,independentProofPaths:proofPaths,engineAlternativePaths:engineAlternatives,authorAlternativePaths:authorAlternatives,gradedIndependentAlternatives,emptyCertificateNegatives,actualToolOracles:oracles.length},checks:{allIndependentAndHandVectorsAgree:true,sourceResolversAgree:!issues.some(i=>i.kind.includes('semantic')),proofAlternativesAgree:!issues.some(i=>i.kind.includes('proof')),allResolverCertificateRefsCurrent:!issues.some(i=>i.kind.includes('noncurrent')),allIndependentAlternateGradeControlsPass:true,emptyProofControlsFail:true,allIndependentActualToolOracles100:oracles.every(o=>o.score===100&&o.allPass),initialVisibilityVerified:true,noProviderCalls:true,noLedgerOrAuthAccess:true,noHeldModelOutputsRead:true},limitations:['Closed fictional collection policy; no insurance/legal/clinical expert or population validity.','One policy pack per activity is the verified generation scope; distinct activities share entity observations and have separate packs.','Generator internally constructs historical approvals from author resolver; this audit treats them as raw supplied rows and independently validates visibility and current sufficient-operand retention.','24 response-absent later-generation states are counterfactual engineering controls;48 operational states are distinguishable.','Facts/evidence are correlated; actual structural lifecycle is separately verified.','Pre-paid interpretation agreement is engineering admission, not difficulty or provider access evidence.'],issues,controls,vectors,oracles,reproduction:{command:'npx tsx .tmp/insurance-bench/v10-candidate-independent-audit.ts',scriptSha256:bytesSha(fs.readFileSync('.tmp/insurance-bench/v10-candidate-independent-audit.ts'))}};
+fs.writeFileSync('insurance-bench/results/meta/v10-candidate-independent-audit.json',JSON.stringify(output,null,2)+'\n');
+fs.writeFileSync('insurance-bench/results/meta/v10-candidate-independent-audit-repro.txt',fs.readFileSync('.tmp/insurance-bench/v10-candidate-independent-audit.ts'));
+console.log(JSON.stringify({disposition:output.disposition,sourceFingerprint:output.sourceFingerprint,fullCorpusHash:output.fullCorpusHash,counts:output.counts,issues:issues.slice(0,10)}));

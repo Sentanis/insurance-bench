@@ -1,0 +1,17 @@
+{
+  "registeredAt": "2026-10-04T04:05:29.082849+00:00",
+  "generation": "insurance-bench-coupled-v0.7c",
+  "stage": "oss-dev",
+  "profiles": [
+    "gpt-oss-20b",
+    "gpt-oss-120b"
+  ],
+  "dispatched": false,
+  "reason": "Existing AWS SSO token expired and user sign-in/extension dismissal is pending. No model output; no ability comparison.",
+  "taskIds": [
+    "ibc-coverage-review-dev-1-693918aa",
+    "ibc-financial-reconciliation-dev-1-6bebb17e",
+    "ibc-deadline-triage-dev-1-cb2f8d92"
+  ],
+  "retryPolicy": "Only the same complete registered pair after identity/session recovery; no case or outcome selection."
+}

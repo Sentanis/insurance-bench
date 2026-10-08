@@ -1,0 +1,35 @@
+import {readFileSync,readdirSync,writeFileSync} from 'node:fs';
+import {compareRuns} from '../../insurance-bench/compare.ts';
+import type {Run} from '../../insurance-bench/runner.ts';
+const base='insurance-bench/results/';
+const runs=readdirSync(base).filter(p=>p.endsWith('.json')).map(p=>JSON.parse(readFileSync(base+p,'utf8')) as Run);
+const current=runs.filter(r=>r.version==='insurance-bench-coupled-v0.7c'&&r.episodes[0]?.split==='holdout');
+const pick=(model:string)=>{const r=current.find(r=>r.model.model===model&&r.model.reasoningEffort==='high'&&r.completeCoverage);if(!r||r.episodes.length!==3)throw new Error('Missing complete final panel '+model);return r;};
+const sol=pick('gpt-6.1-sol'),luna=pick('gpt-6-luna');
+let comparison:ReturnType<typeof compareRuns>|undefined;
+let comparisonError:string|undefined;
+try { comparison=compareRuns(luna,sol,'tier'); } catch(error) {comparisonError=error instanceof Error?error.message:String(error);}
+if(comparisonError&&!comparisonError.startsWith('Output truncation confounds'))throw new Error(comparisonError);
+writeFileSync(base+'meta/v07c-holdout-comparison.json',JSON.stringify({computedAt:new Date().toISOString(),generation:sol.version,status:comparison?'valid':'unavailable',reason:comparisonError,comparisons:comparison?[comparison]:[]},null,2)+'\n');
+const prior=JSON.parse(readFileSync(base+'meta/report-context-v0.2.json','utf8'));
+const dev=JSON.parse(readFileSync(base+'meta/v07c-development-comparisons.json','utf8'));
+const ledger=JSON.parse(readFileSync('.tmp/insurance-bench/session-budget.json','utf8'));
+const context={generation:'insurance-bench-coupled-v0.7c',primaryRunIds:[sol.runId,luna.runId],invalidRunIds:prior.invalidRunIds,comparisons:[...dev.comparisons,...(comparison?[comparison]:[])],findings:[
+ 'The requested frontier difficulty target of roughly 50–60 is UNMET. The tested Sol workhorse scores100 at both development efforts and on the fresh high-effort holdout. Astra is the available flagship but has an access probe only; there is no Astra ability score.',
+ `Fresh frozen holdout: Sol-high ${sol.summary.score.toFixed(2)}, Luna-high ${luna.summary.score.toFixed(2)}. Each profile attempted the same first untouched case in each of three correlated families once. Raw scores, failed criteria and traces are retained; no holdout-driven grader changes or selective reruns occurred.`,
+ ...(comparisonError?['The Luna holdout deadline case reached the16384-token inclusive output ceiling. Later turns recovered, but this resource-limit exposure confounds a clean matched tier contrast. The comparison module refuses it; no holdout contrast or bootstrap interval is shown. These raw scores describe configured systems under the recorded limit. Development contrasts below are untruncated.']:[]),
+ 'Development effort control: Sol-low100→Sol-high100,57/57 facts and3/3 actual optimal current writes at both efforts. Luna-low50.90→Luna-high92.09,30/57→56/57 facts and0/3→2/3 actual optimal current writes. This establishes a narrow Luna effort difference while retaining the null Sol contrast and frontier ceiling.',
+ 'In all three Luna holdout cases, the same eligible-package omission loses about6.99 points through correlated fact, evidence and current-draft accuracy gates. All source operands, draft revisions, material versions and actual review histories pass; all three actual selected plans are feasible and optimal. Eligibility under public rule7 and selected-subset capacity feasibility are separate. Do not interpret these losses as three independent failures or worse actual plan quality.',
+ 'The score weights are unchanged at40/25/25/10; a wrong actual selected plan alone costs only25/7≈3.57 points. Actual optimal current written outcomes are shown separately. The task labels share one occurrence engine, evidence partly tracks facts, and draft accuracy requires all facts correct. Memo prose and real-world legal correctness are not semantically validated.',
+ 'Seeded family bootstrap intervals are descriptive resamples of three correlated single-attempt cases, not population confidence or a stable industry ranking. Engineering source/trace audits do not replace independent insurance-professional validation.',
+ 'Historical v0.2 evaluated five complete reachable-model holdouts, all scoring86–98; those six-family basic workflows remain separate from this three-family coupled track. Superseded measurement candidates preserve raw grades and cannot establish capability conclusions.',
+ 'A design-only next calibration proposal tests original-document interpretation, conflicting evidence and real scoped request/receipt/review lifecycle. It is outside this frozen generation and has not been implemented or measured.'
+ ],accessGaps:[
+ 'Current Qwen32B/235B development attempts failed before inference because the existing AWS SSO session expired. Both have zero scored cases and no ability score. Whole-panel retries and current Anthropic/GPT-OSS/DeepSeek references await user completion of the existing-profile browser sign-in; no IAM or infrastructure changes are requested.',
+ 'Astra-high access probe succeeded, but its preregistered full-panel allowance is$11 and does not fit the remaining$25 session cap. A proposed total cap of$75 awaits direct approval; reservations and prior spending remain preserved.',
+ 'Earlier Bedrock probes returned AccessDenied for latest Anthropic candidates and Grok4.7 on the configured path. Gemini credentials were absent. Kimi has only1/12 historical coverage and no headline score. These are access gaps, not ability failures.',
+ `Token-rate estimates are not invoices. The shared session ledger records$${ledger.reservedUsd.toFixed(6)} against a$${ledger.capUsd} cap, including retained uncertain-call reservations.`,
+ 'The protected static synthetic report is development evidence. Production-classified AWS staging is not deployed or accepted; no production claim data, database connection, application credentials or provider keys are served.'
+ ]};
+writeFileSync(base+'meta/report-context.json',JSON.stringify(context,null,2)+'\n');
+console.log(JSON.stringify({primaryRunIds:context.primaryRunIds,sol:sol.summary,luna:luna.summary,comparison,ledgerUsd:ledger.reservedUsd}));

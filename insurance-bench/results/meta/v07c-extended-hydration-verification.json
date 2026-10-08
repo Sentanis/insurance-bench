@@ -1,0 +1,227 @@
+{
+  "verifiedAt": "2026-10-04T21:40:39.490253+00:00",
+  "scope": "Only native full registered extension Runs; reconstruct terminal serialization and independently observed metrics without importing gold/graders or paid providers. Grades unchanged.",
+  "splits": {
+    "dev": {
+      "nativeRuns": 2,
+      "hydratedTerminalEpisodes": 4,
+      "originalAuditedTerminalEpisodes": 4,
+      "completeNativeAuditCoverage": true,
+      "allSerializedEpisodeHashesEqualOriginals": true,
+      "allIndependentObservationalMetricsEqual": true,
+      "manifest": {
+        "generation": "insurance-bench-coupled-v0.7c",
+        "sourceCommit": "1940a34dd270f49bcd29925b065e1d8c4a2323d7",
+        "harnessHash": "d0b6963c2b33416372a975d497a554a52ed667f8f9213150b072ce3659502555",
+        "split": "dev",
+        "scope": "Full native Run metadata validated before parsing terminal registered extension split episode payloads. No providers, inference, grade calls or development/other-generation response parsing. Filename timestamps are reconstructed labels; serialized episode content is unchanged.",
+        "results": [
+          {
+            "input": "insurance-bench/results/2026-10-04T20-51-36-166Z-qwen.qwen3-32b-v1-0-baseline.json",
+            "runSha256": "eae6fc4f525ce45ecfc99d44f203cb930a3ce3501b764b978f12bf240459168a",
+            "condition": "qwen3-32b",
+            "taskId": "ibc-coverage-review-dev-1-693918aa",
+            "status": "provider-error",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-dev/1791147096166-qwen3-32b-baseline-ibc-coverage-review-dev-1-693918aa.episode",
+            "episodeSha256": "f6b0f2f5c1f623a182d94d9527cb20965cc10ad1048004cf5d87bfd387e14a80"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T20-51-36-164Z-qwen.qwen3-235b-a22b-2507-v1-0-baseline.json",
+            "runSha256": "50aa1f5856237cfb8ab9eaeceaac2bb839fa1bb8742d723252b27c75cabed758",
+            "condition": "qwen3-235b",
+            "taskId": "ibc-coverage-review-dev-1-693918aa",
+            "status": "completed",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-dev/1791147096164-qwen3-235b-baseline-ibc-coverage-review-dev-1-693918aa.episode",
+            "episodeSha256": "7118e7c6fe1efc44ae5636a60d7bf741b4c8db5879a8ef3dcdded6e6f00dfdc6"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T20-51-36-164Z-qwen.qwen3-235b-a22b-2507-v1-0-baseline.json",
+            "runSha256": "50aa1f5856237cfb8ab9eaeceaac2bb839fa1bb8742d723252b27c75cabed758",
+            "condition": "qwen3-235b",
+            "taskId": "ibc-financial-reconciliation-dev-1-6bebb17e",
+            "status": "completed",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-dev/1791147096165-qwen3-235b-baseline-ibc-financial-reconciliation-dev-1-6bebb17e.episode",
+            "episodeSha256": "482f122639177982f9bd9d5e6708e6048fe49a4f750f01550b0f9075ea216968"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T20-51-36-164Z-qwen.qwen3-235b-a22b-2507-v1-0-baseline.json",
+            "runSha256": "50aa1f5856237cfb8ab9eaeceaac2bb839fa1bb8742d723252b27c75cabed758",
+            "condition": "qwen3-235b",
+            "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+            "status": "completed",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-dev/1791147096166-qwen3-235b-baseline-ibc-deadline-triage-dev-1-cb2f8d92.episode",
+            "episodeSha256": "ead6507ba81f6cfe619ed4ae1f877edd28b4370c92bd0021060570a4bce95b12"
+          }
+        ],
+        "skipped": []
+      }
+    },
+    "holdout": {
+      "nativeRuns": 5,
+      "hydratedTerminalEpisodes": 15,
+      "originalAuditedTerminalEpisodes": 15,
+      "completeNativeAuditCoverage": true,
+      "allSerializedEpisodeHashesEqualOriginals": true,
+      "allIndependentObservationalMetricsEqual": true,
+      "manifest": {
+        "generation": "insurance-bench-coupled-v0.7c",
+        "sourceCommit": "1940a34dd270f49bcd29925b065e1d8c4a2323d7",
+        "harnessHash": "d0b6963c2b33416372a975d497a554a52ed667f8f9213150b072ce3659502555",
+        "split": "holdout",
+        "scope": "Full native Run metadata validated before parsing terminal registered extension split episode payloads. No providers, inference, grade calls or development/other-generation response parsing. Filename timestamps are reconstructed labels; serialized episode content is unchanged.",
+        "results": [
+          {
+            "input": "insurance-bench/results/2026-10-04T20-51-36-162Z-us.anthropic.claude-sonnet-4-6-baseline.json",
+            "runSha256": "2695c8c917f0b91c0c5046dd81558a66e4ab1b2fd6a5493045f188eb77fcaf7c",
+            "condition": "claude-sonnet-4.6",
+            "taskId": "ibc-coverage-review-holdout-1-ee0e896c",
+            "status": "incomplete",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-holdout/1791147096162-claude-sonnet-4.6-baseline-ibc-coverage-review-holdout-1-ee0e896c.episode",
+            "episodeSha256": "e7da996417e7cea360b61fc8f88b76a59a3d8ad7f657f533058b638213c53ee2"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T20-51-36-162Z-us.anthropic.claude-sonnet-4-6-baseline.json",
+            "runSha256": "2695c8c917f0b91c0c5046dd81558a66e4ab1b2fd6a5493045f188eb77fcaf7c",
+            "condition": "claude-sonnet-4.6",
+            "taskId": "ibc-financial-reconciliation-holdout-1-5f419d60",
+            "status": "completed",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-holdout/1791147096163-claude-sonnet-4.6-baseline-ibc-financial-reconciliation-holdout-1-5f419d60.episode",
+            "episodeSha256": "5474fab068189382e635c945e97aaba7003ca6d43d8ccfee1e014cfd7ff4a377"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T20-51-36-162Z-us.anthropic.claude-sonnet-4-6-baseline.json",
+            "runSha256": "2695c8c917f0b91c0c5046dd81558a66e4ab1b2fd6a5493045f188eb77fcaf7c",
+            "condition": "claude-sonnet-4.6",
+            "taskId": "ibc-deadline-triage-holdout-1-96851694",
+            "status": "completed",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-holdout/1791147096164-claude-sonnet-4.6-baseline-ibc-deadline-triage-holdout-1-96851694.episode",
+            "episodeSha256": "2282b15dedb2a0631ec25eab55baea3e04ef7c41285c97d86313c34ba24a945c"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T21-07-51-258Z-openai.gpt-oss-120b-1-0-baseline.json",
+            "runSha256": "95ad05b2191aabe81b943db79e488f414a02bea2209e5de3f5ffb929190fe2f0",
+            "condition": "gpt-oss-120b",
+            "taskId": "ibc-coverage-review-holdout-1-ee0e896c",
+            "status": "completed",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-holdout/1791148071258-gpt-oss-120b-baseline-ibc-coverage-review-holdout-1-ee0e896c.episode",
+            "episodeSha256": "a0dc3c658bb3216524f493178fba9032f628b5066afa094ba55d8735d79c9e14"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T21-07-51-258Z-openai.gpt-oss-120b-1-0-baseline.json",
+            "runSha256": "95ad05b2191aabe81b943db79e488f414a02bea2209e5de3f5ffb929190fe2f0",
+            "condition": "gpt-oss-120b",
+            "taskId": "ibc-financial-reconciliation-holdout-1-5f419d60",
+            "status": "completed",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-holdout/1791148071259-gpt-oss-120b-baseline-ibc-financial-reconciliation-holdout-1-5f419d60.episode",
+            "episodeSha256": "9de8e31006cf1f39a2de145ae3cfc279b8479f4328ac9d60e1a9149126895c50"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T21-07-51-258Z-openai.gpt-oss-120b-1-0-baseline.json",
+            "runSha256": "95ad05b2191aabe81b943db79e488f414a02bea2209e5de3f5ffb929190fe2f0",
+            "condition": "gpt-oss-120b",
+            "taskId": "ibc-deadline-triage-holdout-1-96851694",
+            "status": "completed",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-holdout/1791148071260-gpt-oss-120b-baseline-ibc-deadline-triage-holdout-1-96851694.episode",
+            "episodeSha256": "0bb76791fadaa96f83d9c2a6bb9095053408f16a46748e1ac622f6aa0af462d2"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T21-21-21-009Z-openai.gpt-oss-20b-1-0-baseline.json",
+            "runSha256": "f60f9410047c4dad4bef1a21dbc3519018eaf0349aa8619e0921d99de42a8084",
+            "condition": "gpt-oss-20b",
+            "taskId": "ibc-coverage-review-holdout-1-ee0e896c",
+            "status": "completed",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-holdout/1791148881009-gpt-oss-20b-baseline-ibc-coverage-review-holdout-1-ee0e896c.episode",
+            "episodeSha256": "448a20df288106d5a9d232fcff3c31e7b74be7235112ce59b81ae8d0ec125f7d"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T21-21-21-009Z-openai.gpt-oss-20b-1-0-baseline.json",
+            "runSha256": "f60f9410047c4dad4bef1a21dbc3519018eaf0349aa8619e0921d99de42a8084",
+            "condition": "gpt-oss-20b",
+            "taskId": "ibc-financial-reconciliation-holdout-1-5f419d60",
+            "status": "completed",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-holdout/1791148881010-gpt-oss-20b-baseline-ibc-financial-reconciliation-holdout-1-5f419d60.episode",
+            "episodeSha256": "db492eeb21cd9f8dc1ef6193fbbc285bfc7c1cca2051366b4d62a7c9a225e1ea"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T21-21-21-009Z-openai.gpt-oss-20b-1-0-baseline.json",
+            "runSha256": "f60f9410047c4dad4bef1a21dbc3519018eaf0349aa8619e0921d99de42a8084",
+            "condition": "gpt-oss-20b",
+            "taskId": "ibc-deadline-triage-holdout-1-96851694",
+            "status": "incomplete",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-holdout/1791148881011-gpt-oss-20b-baseline-ibc-deadline-triage-holdout-1-96851694.episode",
+            "episodeSha256": "9257e8191ed038d861699730a1e1e59ca3d073dff182d0980e028b366466845d"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T21-26-42-462Z-global.anthropic.claude-haiku-4-5-20251001-v1-0-baseline.json",
+            "runSha256": "e949be63bb279a9db00643d59d4103d028a706a702d14e6f8dc78775b32b63dd",
+            "condition": "claude-haiku-4.5",
+            "taskId": "ibc-coverage-review-holdout-1-ee0e896c",
+            "status": "completed",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-holdout/1791149202462-claude-haiku-4.5-baseline-ibc-coverage-review-holdout-1-ee0e896c.episode",
+            "episodeSha256": "9dfd9047a035e85fdbd2f7b264a3cd48c55d807b8f53b0548fd9dcb31ce0f26a"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T21-26-42-462Z-global.anthropic.claude-haiku-4-5-20251001-v1-0-baseline.json",
+            "runSha256": "e949be63bb279a9db00643d59d4103d028a706a702d14e6f8dc78775b32b63dd",
+            "condition": "claude-haiku-4.5",
+            "taskId": "ibc-financial-reconciliation-holdout-1-5f419d60",
+            "status": "completed",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-holdout/1791149202463-claude-haiku-4.5-baseline-ibc-financial-reconciliation-holdout-1-5f419d60.episode",
+            "episodeSha256": "afa8f08750ffb4b3b93528b85287c5b0664f8d5016c0fd7007671ffb87cef45b"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T21-26-42-462Z-global.anthropic.claude-haiku-4-5-20251001-v1-0-baseline.json",
+            "runSha256": "e949be63bb279a9db00643d59d4103d028a706a702d14e6f8dc78775b32b63dd",
+            "condition": "claude-haiku-4.5",
+            "taskId": "ibc-deadline-triage-holdout-1-96851694",
+            "status": "completed",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-holdout/1791149202464-claude-haiku-4.5-baseline-ibc-deadline-triage-holdout-1-96851694.episode",
+            "episodeSha256": "7142d20164dfdfba586057c45581fa7f770d49b6f057cc7567d220629b4bce0e"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T21-32-54-094Z-gpt-6-astra-baseline.json",
+            "runSha256": "e00ebed8972c3ada1005f42d90c1eba7e1822ded8cd1a351275ed7ab9a618efe",
+            "condition": "gpt-6-astra-high",
+            "taskId": "ibc-coverage-review-holdout-1-ee0e896c",
+            "status": "completed",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-holdout/1791149574094-gpt-6-astra-high-baseline-ibc-coverage-review-holdout-1-ee0e896c.episode",
+            "episodeSha256": "26d24c5d2fb34550cb6a96999e32c13403971608abee9e6241ce83d6d4a1356a"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T21-32-54-094Z-gpt-6-astra-baseline.json",
+            "runSha256": "e00ebed8972c3ada1005f42d90c1eba7e1822ded8cd1a351275ed7ab9a618efe",
+            "condition": "gpt-6-astra-high",
+            "taskId": "ibc-financial-reconciliation-holdout-1-5f419d60",
+            "status": "completed",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-holdout/1791149574095-gpt-6-astra-high-baseline-ibc-financial-reconciliation-holdout-1-5f419d60.episode",
+            "episodeSha256": "f950a0c98471b3294e63f1b5c932a5cad752beafe2eadcf4795db878947e2aba"
+          },
+          {
+            "input": "insurance-bench/results/2026-10-04T21-32-54-094Z-gpt-6-astra-baseline.json",
+            "runSha256": "e00ebed8972c3ada1005f42d90c1eba7e1822ded8cd1a351275ed7ab9a618efe",
+            "condition": "gpt-6-astra-high",
+            "taskId": "ibc-deadline-triage-holdout-1-96851694",
+            "status": "completed",
+            "destination": ".tmp/insurance-bench/v07c-extended-hydration-holdout/1791149574096-gpt-6-astra-high-baseline-ibc-deadline-triage-holdout-1-96851694.episode",
+            "episodeSha256": "bded24c8de22fd8637e24960525d6d349c539b2129e18fd0ff629f1d740a8b97"
+          }
+        ],
+        "skipped": []
+      }
+    }
+  },
+  "priorAudits": [
+    {
+      "path": "results/meta/v07c-development-failure-audit.json",
+      "sha256": "ad4410400f25c97d0d555ff8a425496c4535801e585286e5c4948564c019c7df",
+      "unchanged": true
+    },
+    {
+      "path": "results/meta/v07c-holdout-failure-audit.json",
+      "sha256": "4e0194cc6c93c607c95b6d9340f77dd4fef102b49d40cd34283e3a54f0b0287e",
+      "unchanged": true
+    }
+  ],
+  "auditScriptSha256": "2bab532225701ee6576a8681d01d024f0c9138d0164d31b5b58b90a131f6e207",
+  "hydrationScriptSha256": "28958f5345726952356a52c98d6d1839119008c1dadda51b7ce507dd49e845a7"
+}

@@ -1,0 +1,37 @@
+Independent bounded source-only adversarial review before inference: Insurance Bench v0.11.
+Worktree /Users/soldo/.codex/worktrees/insurance-bench/sentanis-app.
+Use Read,Glob,Grep only. No files edits, execution, provider calls, live claims, model outputs, auth, .env, ledger, networking or paid CLI. Only the listed synthetic source/control files. Return approve-engineering-only or reject plus concrete reproducible findings; explicitly disclose actual coverage and which claims were independently derived. No difficulty or professional-validity claim from source checks.
+Allowed files:
+insurance-bench/allocation-interaction-cases.ts
+insurance-bench/allocation-interaction-core.ts
+insurance-bench/allocation-interaction-workflows.ts
+insurance-bench/allocation-interaction-engine.ts
+insurance-bench/allocation-interaction-runner.ts
+scripts/insurance-bench-allocation-interaction.ts
+insurance-bench/workflow-types.ts
+insurance-bench/candidate-admission.ts
+insurance-bench/json-object-provider.ts
+insurance-bench/investigation-providers.ts
+insurance-bench/tools.ts
+insurance-bench/score.ts
+insurance-bench/types.ts
+insurance-bench/runner.ts
+insurance-bench/providers.ts
+insurance-bench/models.json
+insurance-bench/results/meta/v11-public-source-packet.txt
+insurance-bench/results/meta/allocation-interaction-author-controls-v0.11.json
+insurance-bench/results/meta/v11-candidate-independent-audit.json
+insurance-bench/results/meta/v11-candidate-independent-audit-repro.txt
+insurance-bench/results/meta/allocation-runner-independent-review-v0.11.json
+insurance-bench/results/meta/v11-controller-repro.txt
+specs/features/insurance-bench/v11-design-candidate.md
+test/insurance-bench-allocation-interaction-cases.test.ts
+test/insurance-bench-allocation-interaction-runner.test.ts
+test/insurance-bench-report.test.ts
+insurance-bench/report.ts
+First derive representative capacities, ledger allocation/reversal, deadline eligibility and optimal plan(s) from raw source packet/public fictional rules; only then inspect author targets/audits for consistency. Hand-derive one task through all three phases including actual optimal ties, disclose partial coverage rather than claim exhaustive nine-million-subset checking. The full non-author interpreter should supply exhaustive coverage separately.
+Review18-package/12joint nondominance contract, source-derived four capacity constraints, unresolved allocation and current receipt/deadline eligibility, all optimal ties, min/max boundaries and memoized Gray enumeration (input+rawsource key/clones/bounds). Check no author optimizer is exposed by public tools, no hidden facts/rubric leaked, actual current source-derived fields match current reviewed business write, signed corrections invalidate old review and preserve history. Verify new snapshot imports preserve old immutable source/gold/artifacts;19facts8business fields remain fixed and no score caps or imposed50–60 truth target.
+Adversarial boundary: old workflow finished guard ignored protected intent afterfinish in same action batch. New separately named workflow must record declare_human_signoff, request_external_action and prohibited apply_business_update fields even afterfinish or with stale session/draft tokens. Real runner executes all parsed batch actions; perfect legitimate oracle then protected intent should become critical score0/allPass false with history preserved. Ordinary stale errors remain recoverable. Next provider turn afterfinish should not occur.
+Review nativeJSON600s/20turn/16K inclusive ceilings, cumulative output-limit flags, genuine model/effort/usage traces and failed-call reservations. All-pass macro task success is prospective headline; weighted40/25/25/10 is diagnostic and current optimal actual write separate. Fact/evidence/draft gates are dependent and three labels correlated. Report incomplete/superseded behavior must suppress ability metrics. JSON syntax validity is not semantic correctness.
+Review canonical-root CLI, immutable source path list, committed source/registration/audit/plan/controller hashes, existing sharedcap75ledger/floor, one-time active untracked dispatch receipt beforeBudget/outputmkdir and no retries or implicit holds. Controller registers development-only fixed order Solhigh/Sollow/Lunalow/Lunahigh six cases once each, forecasts2.75/2.25/.50/.75 conditional remaining6.25 fits existing ledger AFTERprior loops. Laterholds require a new prospective registration/release, not silent source/conditions changes. No actual credentials or paid ledger in this review.
+Source-only artifacts and tests are engineering controls; current representative product/insurance expert validity, empirical headroom50–60 and stable model rankings remain OPEN. Changed corpus/max18/repairedruntime/nativeJSON vs old generation cannot identify a causal difficulty effect. Report actual scope/remaining concerns plainly and preserve rejection evidence. Do not imply that declared hashes were recomputed without execution tools.

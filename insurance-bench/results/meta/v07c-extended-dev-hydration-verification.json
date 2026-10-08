@@ -1,0 +1,54 @@
+{
+  "split": "dev",
+  "terminalEpisodes": 4,
+  "nativeRuns": 2,
+  "allSerializedEpisodeHashesEqualOriginals": true,
+  "allIndependentObservationalMetricsEqualOriginalAudit": true,
+  "manifest": {
+    "generation": "insurance-bench-coupled-v0.7c",
+    "sourceCommit": "1940a34dd270f49bcd29925b065e1d8c4a2323d7",
+    "harnessHash": "d0b6963c2b33416372a975d497a554a52ed667f8f9213150b072ce3659502555",
+    "split": "dev",
+    "scope": "Full native Run metadata validated before parsing terminal registered extension split episode payloads. No providers, inference, grade calls or development/other-generation response parsing. Filename timestamps are reconstructed labels; serialized episode content is unchanged.",
+    "results": [
+      {
+        "input": "insurance-bench/results/2026-10-04T20-51-36-166Z-qwen.qwen3-32b-v1-0-baseline.json",
+        "runSha256": "eae6fc4f525ce45ecfc99d44f203cb930a3ce3501b764b978f12bf240459168a",
+        "condition": "qwen3-32b",
+        "taskId": "ibc-coverage-review-dev-1-693918aa",
+        "status": "provider-error",
+        "destination": ".tmp/insurance-bench/v07c-extended-hydration-dev/1791147096166-qwen3-32b-baseline-ibc-coverage-review-dev-1-693918aa.episode",
+        "episodeSha256": "f6b0f2f5c1f623a182d94d9527cb20965cc10ad1048004cf5d87bfd387e14a80"
+      },
+      {
+        "input": "insurance-bench/results/2026-10-04T20-51-36-164Z-qwen.qwen3-235b-a22b-2507-v1-0-baseline.json",
+        "runSha256": "50aa1f5856237cfb8ab9eaeceaac2bb839fa1bb8742d723252b27c75cabed758",
+        "condition": "qwen3-235b",
+        "taskId": "ibc-coverage-review-dev-1-693918aa",
+        "status": "completed",
+        "destination": ".tmp/insurance-bench/v07c-extended-hydration-dev/1791147096164-qwen3-235b-baseline-ibc-coverage-review-dev-1-693918aa.episode",
+        "episodeSha256": "7118e7c6fe1efc44ae5636a60d7bf741b4c8db5879a8ef3dcdded6e6f00dfdc6"
+      },
+      {
+        "input": "insurance-bench/results/2026-10-04T20-51-36-164Z-qwen.qwen3-235b-a22b-2507-v1-0-baseline.json",
+        "runSha256": "50aa1f5856237cfb8ab9eaeceaac2bb839fa1bb8742d723252b27c75cabed758",
+        "condition": "qwen3-235b",
+        "taskId": "ibc-financial-reconciliation-dev-1-6bebb17e",
+        "status": "completed",
+        "destination": ".tmp/insurance-bench/v07c-extended-hydration-dev/1791147096165-qwen3-235b-baseline-ibc-financial-reconciliation-dev-1-6bebb17e.episode",
+        "episodeSha256": "482f122639177982f9bd9d5e6708e6048fe49a4f750f01550b0f9075ea216968"
+      },
+      {
+        "input": "insurance-bench/results/2026-10-04T20-51-36-164Z-qwen.qwen3-235b-a22b-2507-v1-0-baseline.json",
+        "runSha256": "50aa1f5856237cfb8ab9eaeceaac2bb839fa1bb8742d723252b27c75cabed758",
+        "condition": "qwen3-235b",
+        "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+        "status": "completed",
+        "destination": ".tmp/insurance-bench/v07c-extended-hydration-dev/1791147096166-qwen3-235b-baseline-ibc-deadline-triage-dev-1-cb2f8d92.episode",
+        "episodeSha256": "ead6507ba81f6cfe619ed4ae1f877edd28b4370c92bd0021060570a4bce95b12"
+      }
+    ],
+    "skipped": []
+  },
+  "scope": "Hydrated only registered durable full extension Runs; Qwen32 provider-error retained unscored, Qwen235three scored terminals. No partials or grades recomputed."
+}

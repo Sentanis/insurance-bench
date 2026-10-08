@@ -1,0 +1,91 @@
+{
+  "schema": "insurance-bench-v11-controller-independent-review-v1",
+  "reviewedAt": "2026-10-05T01:32:58.933746+00:00",
+  "disposition": "approve-engineering-only",
+  "sourceFingerprint": "9c8a799a8a5d1e853e7c5e58437064e6c2be659ff4ba9060a808fb9a5ec60a45",
+  "fullCorpusHash": "4334b01859d0df0d1a4344ed6af86b59331b1e62c5f34e09331e30189796922c",
+  "controllerSha256": "3fa75b713a1c9803f65d5da31485c2f808d13897f60589f4832087c542938be5",
+  "reviewedFilesSha256": {
+    ".tmp/insurance-bench/v11-panels.ts": "3fa75b713a1c9803f65d5da31485c2f808d13897f60589f4832087c542938be5",
+    "insurance-bench/results/meta/v11-controller-repro.txt": "3fa75b713a1c9803f65d5da31485c2f808d13897f60589f4832087c542938be5",
+    "insurance-bench/candidate-admission.ts": "16ad52e267abe2f42a68d605c11a32ecde4f455a3dc0ce27bf6d1b03db0e509f",
+    "scripts/insurance-bench-allocation-interaction.ts": "9c31b40b9cdb9c9d62931712884e7548d973a917f1777ac583d6f255552a35da",
+    "insurance-bench/allocation-interaction-runner.ts": "0cd1db0e53ccafcfbc1c6de4c05c2de75631c9abd01073888cfd55e9b6b1833f",
+    "specs/features/insurance-bench/v11-design-candidate.md": "066e5a88e32672c1c6151d53c671637c375e40856aa6c91f0ced0228d45ec5ff",
+    "test/insurance-bench-candidate-admission.test.ts": "950fee8c225c746c27c2ec56665d5c06f926682c3058ff0c3ea1bd5a038fcc76",
+    "test/insurance-bench-allocation-interaction-runner.test.ts": "8bfbe17a881829eed7e0b775a1def1324872ae9493060645c55cfafe60523411"
+  },
+  "method": "Bounded static review of the exact controller and its new candidate admission/CLI/runner path; independently re-ran mocked runner and scratch-Git admission tests. Controller was not executed, and no real ledger/auth/provider/model outputs were read. Reviewer authored JSON transport/admission integration but not this controller, allocation cases or semantic engine.",
+  "registeredScope": {
+    "prospectiveOnly": true,
+    "panels": 4,
+    "split": "dev-only",
+    "casesPerPanel": 6,
+    "repeat": 1,
+    "order": [
+      "gpt-6.1-sol-high",
+      "gpt-6.1-sol-low",
+      "gpt-6-luna-low",
+      "gpt-6-luna-high"
+    ],
+    "forecastsUsd": [
+      2.75,
+      2.25,
+      0.5,
+      0.75
+    ],
+    "totalForecastUsd": 6.25,
+    "forecastIsInvoiceGuarantee": false,
+    "registeredHoldout": false
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "priority": "P2",
+      "status": "fixed-before-registration",
+      "issue": "Controller prepare originally bound independent audit only by source fingerprint, permitting a different-seed corpus audit under the same source.",
+      "verifiedRepair": "prepare now additionally requires audit.fullCorpusHash===hash(tasks). Current independent audit fullCorpusHash and datasetHash both equal the actual 4334b018 corpus.",
+      "paidExposureObserved": false
+    }
+  ],
+  "verifiedControls": [
+    "Canonical repository cwd derived from controller file; existing authoritative cap75 ledger and registered reservation floor, no initialize/reset.",
+    "Prepare requires current source/corpus engineering audit, runtime and cross-provider reviews; exact controller SHA approved and byte-identical durable copy.",
+    "All four fixed development profiles use exact configured OpenAI models, baseline,20turns,16384inclusive output,600s transport,JSON-object response. Caller CLI binds selected content/IDs/alias/config/harness/limits and atomic one-time receipt claim before Budget.",
+    "Prospective whole-plan affordability before registration and every remaining forecast before dispatch. Cost/provider/budget/model/process overrun flags halt subsequent calls; per-call shared Budget preserves cap.",
+    "Run binds committed registration/audit/reviews/plan/controller/all immutable runner SOURCE_FILES byte-for-byte using explicit repository-root git.",
+    "Serial predecessor requires terminal-native-run, complete coverage, no process/provider/model/spend flags and exact retained native bytes. Existing receipt prevents duplicate panel dispatch.",
+    "New run validation binds generation/responseFormat/dataset/model/taskIDs/harness/repeat/limits; raw native file is retained without overwrite.",
+    "Current registration template contains no holdout panels, so stage holdout fails before controller lock/output directory/child invocation. Future holdouts require new committed registration/release plus independent development audit and bound committed development dispatch receipts.",
+    "Truncation is recorded even after recovery and bars clean comparisons; controller may continue fixed panels under this declared observation policy. It does not repair or selectively rerun outputs."
+  ],
+  "verification": {
+    "command": "node --import tsx --test test/insurance-bench-candidate-admission.test.ts test/insurance-bench-allocation-interaction-runner.test.ts",
+    "testsPassed": 8,
+    "testsFailed": 0,
+    "evidence": "Actual mocked runner six-development oracles and same-batch post-finish intent critical-zero control passed; scratch-Git admission positive/negative controls passed. No paid transport or controller invocation.",
+    "independentRawAuditCounts": {
+      "tasks": 12,
+      "states": 36,
+      "fieldsPerState": 19,
+      "factualOutputs": 684,
+      "businessFieldsPerState": 8,
+      "businessOutputs": 288,
+      "packageProjections": 648,
+      "packagesPerState": 18,
+      "jointPackagesPerState": 12,
+      "independentlyEnumeratedTerminalMasks": 9437184,
+      "allFinalOptimalTieOracles": 23,
+      "actualToolOracleCases": 12,
+      "failures": 0
+    },
+    "durableCopyMatches": true,
+    "allSourceAuditHashesCurrent": true
+  },
+  "limitations": [
+    "Controller review is engineering admission only; registration, committed freeze and cross-provider review are separate gates.",
+    "Forecast6.25 is an estimate, not a guaranteed complete-panel cost or invoice; no real current balance was independently read. Shared hard cap and remaining-plan checks protect admitted calls, with terminal limitations retained.",
+    "No real child dispatch or external transport was exercised. Exact current-source mocked tests and static guard review support the scope stated.",
+    "This review does not approve a future holdout registration/controller amendment or establish difficulty, expert validity or clean empirical comparisons."
+  ]
+}

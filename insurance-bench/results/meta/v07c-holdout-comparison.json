@@ -1,0 +1,7 @@
+{
+  "computedAt": "2026-10-04T04:25:45.217Z",
+  "generation": "insurance-bench-coupled-v0.7c",
+  "status": "unavailable",
+  "reason": "Output truncation confounds this comparison; preserve runs and rerun all matched conditions at a preregistered common limit",
+  "comparisons": []
+}

@@ -1,0 +1,23 @@
+{
+  "registeredAt": "2026-10-05T00:34:12.648224+00:00",
+  "status": "fresh-holdout-release-no-held-output-read",
+  "sourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+  "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+  "taskIds": [
+    "ibi-fleet-assignment-holdout-1-74f18798",
+    "ibi-premises-chronology-holdout-1-47f9484c",
+    "ibi-multi-exposure-review-holdout-1-3753da40"
+  ],
+  "repeat": 1,
+  "developmentAuditPath": "insurance-bench/results/meta/investigation-development-independent-audit-v0.9.json",
+  "developmentAuditSha256": "66cb0fcc17e32bad90f61c149e62f8c372d3109b56ccade6015adade92962eeb",
+  "developmentDispatchSha256": {
+    "01-sol-high-dev": "7513d2b03768b5641d5d4e4dcfe414c57fe609442873fc1c36244ecd2c200d01",
+    "02-sol-low-dev": "750ebc24d8c8c79eb805a1b89725a23a8875617a65c79010b6b618dc5621a770",
+    "03-luna-low-dev": "aa7d530d1253cac1541744fe20e1c3c1c872ef88775d57abd95da6cf7fd7d5bd",
+    "04-luna-high-dev": "07a07b6cf1191cd06aa096258891d1812f6e40f8625d385d54982eba83fe4859",
+    "05-astra-high-dev": "b1a0934750da7f651032b0123703f5d379c636280dd429382caf1372c2f2594c",
+    "06-sol-high-verify-dev": "da057cf19cdf060d07762d1140e148f3d4f0528e05f1b36e2805776d54d8a5be"
+  },
+  "conditions": "Both models receive the same first untouched case per family once under the unchanged committed registration; original exact model efforts/prompts/resource limits/order, no retries or source/gold changes. Three correlated single-attempt families; frontier target unmet; engineering approval does not imply professional validity."
+}

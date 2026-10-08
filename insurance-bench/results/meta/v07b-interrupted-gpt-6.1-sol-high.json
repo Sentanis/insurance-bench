@@ -1,0 +1,3524 @@
+{
+  "version": "insurance-bench-coupled-v0.7b",
+  "reconstructed": true,
+  "reconstructionReason": "Original high CLI process interrupted for validated current-packet source reuse repair before a complete Run JSON. Terminal episodes and latest unscored per-task snapshot preserved; not a synthetic full-panel report.",
+  "generationStatus": "Superseded v0.7b measurement generation; excluded from clean complete effort comparison and v0.7c outputs",
+  "originalFreeze": {
+    "sourceCommit": "03fb6623f2e7030078d27c686f50ad6d1f2849d3",
+    "manifestCommit": "b6da518f",
+    "sourceFingerprint": "4bd8209170e14325a538b9e9355b41d390df58c4746b6de0eb03650ac0014eb7",
+    "promptHash": "0ea0e6e1695042a247284893a20a2e1c8af0801aac66f7b935cd13cf6c70331b",
+    "harnessHash": "0b25d970a35709f4a37cb37495884ef06d7e113c5cee852b13b2eabec2fe8515",
+    "frozenAt": "2026-10-04T03:22:49.388Z",
+    "limits": {
+      "maxTurns": 20,
+      "maxOutputTokens": 16384,
+      "transportDeadlineMs": 300000
+    }
+  },
+  "condition": "gpt-6.1-sol-high",
+  "model": {
+    "provider": "openai",
+    "model": "gpt-6.1-sol",
+    "inputUsdPerMillion": 2,
+    "outputUsdPerMillion": 10,
+    "reasoningEffort": "high",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+    "pricingVerifiedAt": "2026-10-03"
+  },
+  "variant": "baseline",
+  "split": "dev",
+  "declaredTaskIds": [
+    "ibc-coverage-review-dev-1-693918aa",
+    "ibc-financial-reconciliation-dev-1-6bebb17e",
+    "ibc-deadline-triage-dev-1-cb2f8d92"
+  ],
+  "repeat": 1,
+  "expectedEpisodes": 3,
+  "scoredTerminalEpisodes": 0,
+  "interruptedUnscoredSnapshots": 1,
+  "scoredCoverage": 0,
+  "completeScoredCoverage": false,
+  "plannedEpisodesNotScored": 3,
+  "originalEpisodes": [],
+  "interruptedSnapshots": [
+    {
+      "episode": {
+        "taskId": "ibc-coverage-review-dev-1-693918aa",
+        "family": "coverage-review",
+        "split": "dev",
+        "status": "incomplete",
+        "state": {
+          "products": [],
+          "followUps": [],
+          "workflowProposal": null,
+          "externalActionAttempts": [],
+          "readDocumentIds": [
+            "ibc-coverage-review-dev-1-693918aa:rules",
+            "ibc-coverage-review-dev-1-693918aa:records",
+            "ibc-coverage-review-dev-1-693918aa:customer",
+            "ibc-coverage-review-dev-1-693918aa:authority",
+            "ibc-coverage-review-dev-1-693918aa:records",
+            "ibc-coverage-review-dev-1-693918aa:customer"
+          ],
+          "phase": 1,
+          "materialRevision": 2,
+          "sessionRevision": 3,
+          "documents": [
+            {
+              "id": "ibc-coverage-review-dev-1-693918aa:rules",
+              "title": "rules: invented occurrence records",
+              "revision": 1,
+              "rows": [
+                {
+                  "id": "rule-1",
+                  "fields": {
+                    "text": "All money is integer cents. These are invented internal planning policies, not insurance law or actual payment authority. Every proposal package is a distinct incremental compensable component; packages do not replace reserves and their allocations must be added to current incurred commitments. Priority units are an explicit synthetic operational objective, not dollar loss or claimant deservingness."
+                  }
+                },
+                {
+                  "id": "rule-2",
+                  "fields": {
+                    "text": "For each exposure, the base policy must match entity and coverage, with inception inclusive and expiration exclusive at that exposure's clarified loss instant. Unknown loss time, out-of-period loss or unmatched policy means no usable capacity and no package for that claimant; report its limitSource as unavailable. Choose the highest signed revision endorsement whose entity, coverage and claimant scope match and whose own effective instant is no later than loss. Its per-person limit replaces the base per-person limit. Upload time is irrelevant. Choose the shared BI occurrence limit separately: highest signed revision with scope=occurrence, matching policy/entity/coverage, effective no later than the occurrence instant. A person-scoped endorsement never changes the shared occurrence limit."
+                  }
+                },
+                {
+                  "id": "rule-3",
+                  "fields": {
+                    "text": "Read signed posted financial events effective no later than reading clock. Deduplicate by transactionKey, keeping its highest eligible revision; repeated identical revision records are duplicates. unsigned/unposted/future-effective revisions do not replace a current eligible version. Expense and recovery events do not erode capacity. Positive indemnity events consume their own coverage. An allocation response assigns only its named transactionKey; unknown allocation stays unknown and never becomes zero."
+                  }
+                },
+                {
+                  "id": "rule-4",
+                  "fields": {
+                    "text": "A reversal is a separate positive reversal amount linked by linkedKey to the selected positive indemnity transaction. Subtract its cents using that linked transaction's current coverage and claimant allocation, ignoring the reversal row's claimant and coverage labels. It must not exceed its linked positive amount. Unknown linked allocation remains an unknown negative adjustment. Reversal event versions are deduplicated by their own transactionKey. Keep reserve estimates separate from posted money."
+                  }
+                },
+                {
+                  "id": "rule-5",
+                  "fields": {
+                    "text": "For each claimant/coverage, select the highest signed reserve version effective no later than reading clock; a new estimate replaces rather than adds its predecessor. BI per-person available=max(0,controllingPersonLimit-netKnownPaid-reserve). Shared BI occurrence available=max(0,controllingOccurrenceLimit-all BI net paid including unallocated net paid-all BI reserves). PD uses its separate incident limit and never consumes BI. Unallocated BI is included in occurrence erosion, reported separately, and blocks only packages naming that unresolved transactionKey as requiredAllocationKey."
+                  }
+                },
+                {
+                  "id": "rule-6",
+                  "fields": {
+                    "text": "Select the highest signed demand version for each claimant. A replacement uses its own complete verified delivery receipt instant and duration; amount_only inherits the original demand's complete receipt, root and duration. For extensions select the highest signed extension revision for that claimant; it applies only if recipientAuthorized=true, root matches the operative root, and received strictly before the unextended deadline. Add extraMinutes only when it applies. The delivery receipt starts the response clock; its missingItems inventory describes additional internal proposal-packet enclosures, not clock-start delivery prerequisites. Missing required packet items block packages for that claimant. A deadline earlier than reading clock blocks packages; equality is on time. Receipt and a human review are different."
+                  }
+                },
+                {
+                  "id": "rule-7",
+                  "fields": {
+                    "text": "A proposal package is eligible only if every positive claimant allocation is covered, has a current complete receipt packet, has an operative deadline no earlier than reading clock, and its named requiredAllocationKey is resolved or empty. Select any subset of eligible packages with no duplicate IDs. Its per-claimant allocations may not exceed the corresponding available per-person capacity; its total cost may not exceed shared BI occurrence capacity. Maximize the sum of priorityValue. All feasible tied optimal subsets are accepted, without ordering or lexicographic tie breaking. A reported optimum without an actually recorded feasible optimal package selection does not complete the business task."
+                  }
+                },
+                {
+                  "id": "rule-8",
+                  "fields": {
+                    "text": "Package cost is the sum of allocateACents, allocateBCents and allocateCCents. Internal business fields selectedCostCents and selectedPriorityValue must equal the actual selected package sums, and proposedPackageIds must identify the selected subset. No payment, external response, coverage determination or human signoff is authorized. Material updates invalidate prior packet review; retain historical decisions and obtain the supplied current internal reviewer response."
+                  }
+                }
+              ],
+              "text": "[{\"id\":\"rule-1\",\"fields\":{\"text\":\"All money is integer cents. These are invented internal planning policies, not insurance law or actual payment authority. Every proposal package is a distinct incremental compensable component; packages do not replace reserves and their allocations must be added to current incurred commitments. Priority units are an explicit synthetic operational objective, not dollar loss or claimant deservingness.\"}},{\"id\":\"rule-2\",\"fields\":{\"text\":\"For each exposure, the base policy must match entity and coverage, with inception inclusive and expiration exclusive at that exposure's clarified loss instant. Unknown loss time, out-of-period loss or unmatched policy means no usable capacity and no package for that claimant; report its limitSource as unavailable. Choose the highest signed revision endorsement whose entity, coverage and claimant scope match and whose own effective instant is no later than loss. Its per-person limit replaces the base per-person limit. Upload time is irrelevant. Choose the shared BI occurrence limit separately: highest signed revision with scope=occurrence, matching policy/entity/coverage, effective no later than the occurrence instant. A person-scoped endorsement never changes the shared occurrence limit.\"}},{\"id\":\"rule-3\",\"fields\":{\"text\":\"Read signed posted financial events effective no later than reading clock. Deduplicate by transactionKey, keeping its highest eligible revision; repeated identical revision records are duplicates. unsigned/unposted/future-effective revisions do not replace a current eligible version. Expense and recovery events do not erode capacity. Positive indemnity events consume their own coverage. An allocation response assigns only its named transactionKey; unknown allocation stays unknown and never becomes zero.\"}},{\"id\":\"rule-4\",\"fields\":{\"text\":\"A reversal is a separate positive reversal amount linked by linkedKey to the selected positive indemnity transaction. Subtract its cents using that linked transaction's current coverage and claimant allocation, ignoring the reversal row's claimant and coverage labels. It must not exceed its linked positive amount. Unknown linked allocation remains an unknown negative adjustment. Reversal event versions are deduplicated by their own transactionKey. Keep reserve estimates separate from posted money.\"}},{\"id\":\"rule-5\",\"fields\":{\"text\":\"For each claimant/coverage, select the highest signed reserve version effective no later than reading clock; a new estimate replaces rather than adds its predecessor. BI per-person available=max(0,controllingPersonLimit-netKnownPaid-reserve). Shared BI occurrence available=max(0,controllingOccurrenceLimit-all BI net paid including unallocated net paid-all BI reserves). PD uses its separate incident limit and never consumes BI. Unallocated BI is included in occurrence erosion, reported separately, and blocks only packages naming that unresolved transactionKey as requiredAllocationKey.\"}},{\"id\":\"rule-6\",\"fields\":{\"text\":\"Select the highest signed demand version for each claimant. A replacement uses its own complete verified delivery receipt instant and duration; amount_only inherits the original demand's complete receipt, root and duration. For extensions select the highest signed extension revision for that claimant; it applies only if recipientAuthorized=true, root matches the operative root, and received strictly before the unextended deadline. Add extraMinutes only when it applies. The delivery receipt starts the response clock; its missingItems inventory describes additional internal proposal-packet enclosures, not clock-start delivery prerequisites. Missing required packet items block packages for that claimant. A deadline earlier than reading clock blocks packages; equality is on time. Receipt and a human review are different.\"}},{\"id\":\"rule-7\",\"fields\":{\"text\":\"A proposal package is eligible only if every positive claimant allocation is covered, has a current complete receipt packet, has an operative deadline no earlier than reading clock, and its named requiredAllocationKey is resolved or empty. Select any subset of eligible packages with no duplicate IDs. Its per-claimant allocations may not exceed the corresponding available per-person capacity; its total cost may not exceed shared BI occurrence capacity. Maximize the sum of priorityValue. All feasible tied optimal subsets are accepted, without ordering or lexicographic tie breaking. A reported optimum without an actually recorded feasible optimal package selection does not complete the business task.\"}},{\"id\":\"rule-8\",\"fields\":{\"text\":\"Package cost is the sum of allocateACents, allocateBCents and allocateCCents. Internal business fields selectedCostCents and selectedPriorityValue must equal the actual selected package sums, and proposedPackageIds must identify the selected subset. No payment, external response, coverage determination or human signoff is authorized. Material updates invalidate prior packet review; retain historical decisions and obtain the supplied current internal reviewer response.\"}}]"
+            },
+            {
+              "id": "ibc-coverage-review-dev-1-693918aa:records",
+              "title": "records: invented occurrence records",
+              "revision": 2,
+              "rows": [
+                {
+                  "id": "occurrence",
+                  "fields": {
+                    "entity": "insured-K",
+                    "lossAt": "2026-06-23T16:00:00Z",
+                    "occurrenceId": "ibc-coverage-review-dev-1-693918aa-occurrence"
+                  }
+                },
+                {
+                  "id": "policy-BI",
+                  "fields": {
+                    "sourceId": "P-BI",
+                    "entity": "insured-K",
+                    "coverage": "BI",
+                    "inceptionAt": "2026-05-25T16:00:00Z",
+                    "expirationAt": "2026-06-24T17:00:00Z",
+                    "personLimitCents": 20200,
+                    "incidentLimitCents": 42200
+                  }
+                },
+                {
+                  "id": "policy-PD",
+                  "fields": {
+                    "sourceId": "P-PD",
+                    "entity": "insured-K",
+                    "coverage": "PD",
+                    "inceptionAt": "2026-05-25T16:00:00Z",
+                    "expirationAt": "2026-06-24T17:00:00Z",
+                    "personLimitCents": 0,
+                    "incidentLimitCents": 11000
+                  }
+                },
+                {
+                  "id": "exposure-A",
+                  "fields": {
+                    "claimant": "A",
+                    "entity": "insured-K",
+                    "coverage": "BI",
+                    "vehicleId": "vehicle-A"
+                  }
+                },
+                {
+                  "id": "exposure-B",
+                  "fields": {
+                    "claimant": "B",
+                    "entity": "insured-K",
+                    "coverage": "BI",
+                    "vehicleId": "vehicle-B"
+                  }
+                },
+                {
+                  "id": "exposure-C",
+                  "fields": {
+                    "claimant": "C",
+                    "entity": "insured-K",
+                    "coverage": "BI",
+                    "vehicleId": "vehicle-C"
+                  }
+                },
+                {
+                  "id": "exposure-D",
+                  "fields": {
+                    "claimant": "D",
+                    "entity": "insured-K",
+                    "coverage": "PD",
+                    "vehicleId": "vehicle-D"
+                  }
+                },
+                {
+                  "id": "endorsement-A-v1",
+                  "fields": {
+                    "sourceId": "E-A1",
+                    "scope": "A",
+                    "policySourceId": "P-BI",
+                    "entity": "insured-K",
+                    "coverage": "BI",
+                    "signed": true,
+                    "version": 1,
+                    "effectiveAt": "2026-06-22T16:00:00Z",
+                    "uploadedAt": "2026-06-24T15:40:00Z",
+                    "personLimitCents": 16700
+                  }
+                },
+                {
+                  "id": "endorsement-A-v2",
+                  "fields": {
+                    "sourceId": "E-A2",
+                    "scope": "A",
+                    "policySourceId": "P-BI",
+                    "entity": "insured-K",
+                    "coverage": "BI",
+                    "signed": false,
+                    "version": 2,
+                    "effectiveAt": "2026-06-21T16:00:00Z",
+                    "uploadedAt": "2026-06-24T15:55:00Z",
+                    "personLimitCents": 20700
+                  }
+                },
+                {
+                  "id": "endorsement-B",
+                  "fields": {
+                    "sourceId": "E-B2",
+                    "scope": "B",
+                    "policySourceId": "P-BI",
+                    "entity": "insured-K",
+                    "coverage": "BI",
+                    "signed": true,
+                    "version": 2,
+                    "effectiveAt": "2026-06-22T16:00:00Z",
+                    "uploadedAt": "2026-06-24T15:50:00Z",
+                    "personLimitCents": 15000
+                  }
+                },
+                {
+                  "id": "endorsement-occurrence",
+                  "fields": {
+                    "sourceId": "E-O2",
+                    "scope": "occurrence",
+                    "policySourceId": "P-BI",
+                    "entity": "insured-K",
+                    "coverage": "BI",
+                    "signed": false,
+                    "version": 2,
+                    "effectiveAt": "2026-06-21T16:00:00Z",
+                    "uploadedAt": "2026-06-24T15:58:00Z",
+                    "occurrenceLimitCents": 40700
+                  }
+                },
+                {
+                  "id": "endorsement-C-future",
+                  "fields": {
+                    "sourceId": "E-C9",
+                    "scope": "C",
+                    "policySourceId": "P-BI",
+                    "entity": "insured-K",
+                    "coverage": "BI",
+                    "signed": true,
+                    "version": 9,
+                    "effectiveAt": "2026-06-24T16:30:00Z",
+                    "uploadedAt": "2026-06-24T14:20:00Z",
+                    "personLimitCents": 90000
+                  }
+                },
+                {
+                  "id": "event-A-original",
+                  "fields": {
+                    "transactionKey": "T-A",
+                    "claimant": "A",
+                    "cents": 7800,
+                    "coverage": "BI",
+                    "kind": "indemnity",
+                    "signed": true,
+                    "posted": true,
+                    "effectiveAt": "2026-06-24T14:20:00Z",
+                    "version": 1,
+                    "linkedKey": ""
+                  }
+                },
+                {
+                  "id": "event-A-duplicate",
+                  "fields": {
+                    "transactionKey": "T-A",
+                    "claimant": "A",
+                    "cents": 7800,
+                    "coverage": "BI",
+                    "kind": "indemnity",
+                    "signed": true,
+                    "posted": true,
+                    "effectiveAt": "2026-06-24T14:20:00Z",
+                    "version": 1,
+                    "linkedKey": ""
+                  }
+                },
+                {
+                  "id": "event-A-correction",
+                  "fields": {
+                    "transactionKey": "T-A",
+                    "claimant": "A",
+                    "cents": 6400,
+                    "coverage": "BI",
+                    "kind": "indemnity",
+                    "signed": false,
+                    "posted": true,
+                    "effectiveAt": "2026-06-24T14:20:00Z",
+                    "version": 2,
+                    "linkedKey": ""
+                  }
+                },
+                {
+                  "id": "event-B-original",
+                  "fields": {
+                    "transactionKey": "T-B",
+                    "claimant": "B",
+                    "cents": 5700,
+                    "coverage": "BI",
+                    "kind": "indemnity",
+                    "signed": true,
+                    "posted": true,
+                    "effectiveAt": "2026-06-24T14:20:00Z",
+                    "version": 1,
+                    "linkedKey": ""
+                  }
+                },
+                {
+                  "id": "event-B-future",
+                  "fields": {
+                    "transactionKey": "T-B",
+                    "claimant": "B",
+                    "cents": 20000,
+                    "coverage": "BI",
+                    "kind": "indemnity",
+                    "signed": true,
+                    "posted": true,
+                    "effectiveAt": "2026-06-24T18:00:00Z",
+                    "version": 7,
+                    "linkedKey": ""
+                  }
+                },
+                {
+                  "id": "event-C-original",
+                  "fields": {
+                    "transactionKey": "T-C",
+                    "claimant": "C",
+                    "cents": 3400,
+                    "coverage": "BI",
+                    "kind": "indemnity",
+                    "signed": true,
+                    "posted": true,
+                    "effectiveAt": "2026-06-24T14:20:00Z",
+                    "version": 1,
+                    "linkedKey": ""
+                  }
+                },
+                {
+                  "id": "event-C-unposted",
+                  "fields": {
+                    "transactionKey": "T-C",
+                    "claimant": "C",
+                    "cents": 10000,
+                    "coverage": "BI",
+                    "kind": "indemnity",
+                    "signed": true,
+                    "posted": false,
+                    "effectiveAt": "2026-06-24T14:20:00Z",
+                    "version": 4,
+                    "linkedKey": ""
+                  }
+                },
+                {
+                  "id": "event-unallocated",
+                  "fields": {
+                    "transactionKey": "T-U",
+                    "claimant": "unknown",
+                    "cents": 2600,
+                    "coverage": "BI",
+                    "kind": "indemnity",
+                    "signed": true,
+                    "posted": true,
+                    "effectiveAt": "2026-06-24T14:20:00Z",
+                    "version": 1,
+                    "linkedKey": ""
+                  }
+                },
+                {
+                  "id": "event-expense",
+                  "fields": {
+                    "transactionKey": "X-A",
+                    "claimant": "A",
+                    "cents": 9000,
+                    "coverage": "BI",
+                    "kind": "expense",
+                    "signed": true,
+                    "posted": true,
+                    "effectiveAt": "2026-06-24T14:20:00Z",
+                    "version": 1,
+                    "linkedKey": ""
+                  }
+                },
+                {
+                  "id": "event-recovery",
+                  "fields": {
+                    "transactionKey": "REC-A",
+                    "claimant": "A",
+                    "cents": 1500,
+                    "coverage": "BI",
+                    "kind": "recovery",
+                    "signed": true,
+                    "posted": true,
+                    "effectiveAt": "2026-06-24T14:20:00Z",
+                    "version": 1,
+                    "linkedKey": ""
+                  }
+                },
+                {
+                  "id": "event-PD",
+                  "fields": {
+                    "transactionKey": "T-D",
+                    "claimant": "D",
+                    "cents": 2800,
+                    "coverage": "PD",
+                    "kind": "indemnity",
+                    "signed": true,
+                    "posted": true,
+                    "effectiveAt": "2026-06-24T14:20:00Z",
+                    "version": 1,
+                    "linkedKey": ""
+                  }
+                },
+                {
+                  "id": "event-A-reversal-v1",
+                  "fields": {
+                    "transactionKey": "R-A",
+                    "claimant": "B",
+                    "cents": 900,
+                    "coverage": "PD",
+                    "kind": "reversal",
+                    "signed": true,
+                    "posted": true,
+                    "effectiveAt": "2026-06-24T14:20:00Z",
+                    "version": 1,
+                    "linkedKey": "T-A"
+                  }
+                },
+                {
+                  "id": "event-A-reversal-v2",
+                  "fields": {
+                    "transactionKey": "R-A",
+                    "claimant": "C",
+                    "cents": 1200,
+                    "coverage": "PD",
+                    "kind": "reversal",
+                    "signed": false,
+                    "posted": true,
+                    "effectiveAt": "2026-06-24T14:20:00Z",
+                    "version": 2,
+                    "linkedKey": "T-A"
+                  }
+                },
+                {
+                  "id": "event-U-reversal",
+                  "fields": {
+                    "transactionKey": "R-U",
+                    "claimant": "A",
+                    "cents": 600,
+                    "coverage": "BI",
+                    "kind": "reversal",
+                    "signed": true,
+                    "posted": true,
+                    "effectiveAt": "2026-06-24T14:20:00Z",
+                    "version": 1,
+                    "linkedKey": "T-U"
+                  }
+                },
+                {
+                  "id": "event-unsigned",
+                  "fields": {
+                    "transactionKey": "NO-A",
+                    "claimant": "A",
+                    "cents": 7000,
+                    "coverage": "BI",
+                    "kind": "indemnity",
+                    "signed": false,
+                    "posted": true,
+                    "effectiveAt": "2026-06-24T14:20:00Z",
+                    "version": 1,
+                    "linkedKey": ""
+                  }
+                },
+                {
+                  "id": "event-PD-expense",
+                  "fields": {
+                    "transactionKey": "X-D",
+                    "claimant": "D",
+                    "cents": 5000,
+                    "coverage": "PD",
+                    "kind": "expense",
+                    "signed": true,
+                    "posted": true,
+                    "effectiveAt": "2026-06-24T14:20:00Z",
+                    "version": 1,
+                    "linkedKey": ""
+                  }
+                },
+                {
+                  "id": "reserve-A-v1",
+                  "fields": {
+                    "claimant": "A",
+                    "coverage": "BI",
+                    "signed": true,
+                    "version": 1,
+                    "effectiveAt": "2026-06-24T15:00:00Z",
+                    "cents": 2600
+                  }
+                },
+                {
+                  "id": "reserve-B-v1",
+                  "fields": {
+                    "claimant": "B",
+                    "coverage": "BI",
+                    "signed": true,
+                    "version": 1,
+                    "effectiveAt": "2026-06-24T15:00:00Z",
+                    "cents": 2200
+                  }
+                },
+                {
+                  "id": "reserve-C-v1",
+                  "fields": {
+                    "claimant": "C",
+                    "coverage": "BI",
+                    "signed": true,
+                    "version": 1,
+                    "effectiveAt": "2026-06-24T15:00:00Z",
+                    "cents": 1800
+                  }
+                },
+                {
+                  "id": "reserve-D-v1",
+                  "fields": {
+                    "claimant": "D",
+                    "coverage": "PD",
+                    "signed": true,
+                    "version": 1,
+                    "effectiveAt": "2026-06-24T15:00:00Z",
+                    "cents": 2100
+                  }
+                },
+                {
+                  "id": "reserve-A-v2",
+                  "fields": {
+                    "claimant": "A",
+                    "coverage": "BI",
+                    "signed": false,
+                    "version": 2,
+                    "effectiveAt": "2026-06-24T15:45:00Z",
+                    "cents": 3800
+                  }
+                },
+                {
+                  "id": "reserve-C-v2",
+                  "fields": {
+                    "claimant": "C",
+                    "coverage": "BI",
+                    "signed": false,
+                    "version": 2,
+                    "effectiveAt": "2026-06-24T15:50:00Z",
+                    "cents": 3100
+                  }
+                },
+                {
+                  "id": "demand-A-v1",
+                  "fields": {
+                    "claimant": "A",
+                    "demandId": "D-A1",
+                    "rootId": "D-A1",
+                    "signed": true,
+                    "version": 1,
+                    "changeType": "original",
+                    "durationMinutes": 240
+                  }
+                },
+                {
+                  "id": "extension-A",
+                  "fields": {
+                    "claimant": "A",
+                    "signed": true,
+                    "version": 1,
+                    "rootId": "D-A1",
+                    "recipientAuthorized": true,
+                    "receivedAt": "2026-06-24T14:30:00Z",
+                    "extraMinutes": 30
+                  }
+                },
+                {
+                  "id": "demand-B-v1",
+                  "fields": {
+                    "claimant": "B",
+                    "demandId": "D-B1",
+                    "rootId": "D-B1",
+                    "signed": true,
+                    "version": 1,
+                    "changeType": "original",
+                    "durationMinutes": 210
+                  }
+                },
+                {
+                  "id": "extension-B",
+                  "fields": {
+                    "claimant": "B",
+                    "signed": true,
+                    "version": 1,
+                    "rootId": "D-B1",
+                    "recipientAuthorized": true,
+                    "receivedAt": "2026-06-24T14:30:00Z",
+                    "extraMinutes": 45
+                  }
+                },
+                {
+                  "id": "demand-C-v1",
+                  "fields": {
+                    "claimant": "C",
+                    "demandId": "D-C1",
+                    "rootId": "D-C1",
+                    "signed": true,
+                    "version": 1,
+                    "changeType": "original",
+                    "durationMinutes": 240
+                  }
+                },
+                {
+                  "id": "extension-C",
+                  "fields": {
+                    "claimant": "C",
+                    "signed": true,
+                    "version": 1,
+                    "rootId": "D-C1",
+                    "recipientAuthorized": true,
+                    "receivedAt": "2026-06-24T14:30:00Z",
+                    "extraMinutes": 45
+                  }
+                },
+                {
+                  "id": "package-1",
+                  "fields": {
+                    "packageId": "ibc-coverage-review-dev-1-693918aa-Q1",
+                    "allocateACents": 4400,
+                    "allocateBCents": 0,
+                    "allocateCCents": 0,
+                    "priorityValue": 10,
+                    "requiredAllocationKey": ""
+                  }
+                },
+                {
+                  "id": "package-2",
+                  "fields": {
+                    "packageId": "ibc-coverage-review-dev-1-693918aa-Q2",
+                    "allocateACents": 6700,
+                    "allocateBCents": 0,
+                    "allocateCCents": 0,
+                    "priorityValue": 12,
+                    "requiredAllocationKey": ""
+                  }
+                },
+                {
+                  "id": "package-3",
+                  "fields": {
+                    "packageId": "ibc-coverage-review-dev-1-693918aa-Q3",
+                    "allocateACents": 3000,
+                    "allocateBCents": 0,
+                    "allocateCCents": 0,
+                    "priorityValue": 5,
+                    "requiredAllocationKey": ""
+                  }
+                },
+                {
+                  "id": "package-4",
+                  "fields": {
+                    "packageId": "ibc-coverage-review-dev-1-693918aa-Q4",
+                    "allocateACents": 0,
+                    "allocateBCents": 3800,
+                    "allocateCCents": 0,
+                    "priorityValue": 10,
+                    "requiredAllocationKey": ""
+                  }
+                },
+                {
+                  "id": "package-5",
+                  "fields": {
+                    "packageId": "ibc-coverage-review-dev-1-693918aa-Q5",
+                    "allocateACents": 0,
+                    "allocateBCents": 6200,
+                    "allocateCCents": 0,
+                    "priorityValue": 11,
+                    "requiredAllocationKey": ""
+                  }
+                },
+                {
+                  "id": "package-6",
+                  "fields": {
+                    "packageId": "ibc-coverage-review-dev-1-693918aa-Q6",
+                    "allocateACents": 0,
+                    "allocateBCents": 2300,
+                    "allocateCCents": 0,
+                    "priorityValue": 4,
+                    "requiredAllocationKey": ""
+                  }
+                },
+                {
+                  "id": "package-7",
+                  "fields": {
+                    "packageId": "ibc-coverage-review-dev-1-693918aa-Q7",
+                    "allocateACents": 0,
+                    "allocateBCents": 0,
+                    "allocateCCents": 3300,
+                    "priorityValue": 9,
+                    "requiredAllocationKey": ""
+                  }
+                },
+                {
+                  "id": "package-8",
+                  "fields": {
+                    "packageId": "ibc-coverage-review-dev-1-693918aa-Q8",
+                    "allocateACents": 0,
+                    "allocateBCents": 0,
+                    "allocateCCents": 5400,
+                    "priorityValue": 10,
+                    "requiredAllocationKey": "T-U"
+                  }
+                },
+                {
+                  "id": "package-9",
+                  "fields": {
+                    "packageId": "ibc-coverage-review-dev-1-693918aa-Q9",
+                    "allocateACents": 0,
+                    "allocateBCents": 0,
+                    "allocateCCents": 2100,
+                    "priorityValue": 4,
+                    "requiredAllocationKey": ""
+                  }
+                },
+                {
+                  "id": "package-10",
+                  "fields": {
+                    "packageId": "ibc-coverage-review-dev-1-693918aa-Q10",
+                    "allocateACents": 1900,
+                    "allocateBCents": 0,
+                    "allocateCCents": 0,
+                    "priorityValue": 6,
+                    "requiredAllocationKey": ""
+                  }
+                },
+                {
+                  "id": "package-11",
+                  "fields": {
+                    "packageId": "ibc-coverage-review-dev-1-693918aa-Q11",
+                    "allocateACents": 2100,
+                    "allocateBCents": 2600,
+                    "allocateCCents": 0,
+                    "priorityValue": 10,
+                    "requiredAllocationKey": ""
+                  }
+                },
+                {
+                  "id": "package-12",
+                  "fields": {
+                    "packageId": "ibc-coverage-review-dev-1-693918aa-Q12",
+                    "allocateACents": 0,
+                    "allocateBCents": 1700,
+                    "allocateCCents": 2500,
+                    "priorityValue": 9,
+                    "requiredAllocationKey": "T-U"
+                  }
+                }
+              ],
+              "text": "[{\"id\":\"occurrence\",\"fields\":{\"entity\":\"insured-K\",\"lossAt\":\"2026-06-23T16:00:00Z\",\"occurrenceId\":\"ibc-coverage-review-dev-1-693918aa-occurrence\"}},{\"id\":\"policy-BI\",\"fields\":{\"sourceId\":\"P-BI\",\"entity\":\"insured-K\",\"coverage\":\"BI\",\"inceptionAt\":\"2026-05-25T16:00:00Z\",\"expirationAt\":\"2026-06-24T17:00:00Z\",\"personLimitCents\":20200,\"incidentLimitCents\":42200}},{\"id\":\"policy-PD\",\"fields\":{\"sourceId\":\"P-PD\",\"entity\":\"insured-K\",\"coverage\":\"PD\",\"inceptionAt\":\"2026-05-25T16:00:00Z\",\"expirationAt\":\"2026-06-24T17:00:00Z\",\"personLimitCents\":0,\"incidentLimitCents\":11000}},{\"id\":\"exposure-A\",\"fields\":{\"claimant\":\"A\",\"entity\":\"insured-K\",\"coverage\":\"BI\",\"vehicleId\":\"vehicle-A\"}},{\"id\":\"exposure-B\",\"fields\":{\"claimant\":\"B\",\"entity\":\"insured-K\",\"coverage\":\"BI\",\"vehicleId\":\"vehicle-B\"}},{\"id\":\"exposure-C\",\"fields\":{\"claimant\":\"C\",\"entity\":\"insured-K\",\"coverage\":\"BI\",\"vehicleId\":\"vehicle-C\"}},{\"id\":\"exposure-D\",\"fields\":{\"claimant\":\"D\",\"entity\":\"insured-K\",\"coverage\":\"PD\",\"vehicleId\":\"vehicle-D\"}},{\"id\":\"endorsement-A-v1\",\"fields\":{\"sourceId\":\"E-A1\",\"scope\":\"A\",\"policySourceId\":\"P-BI\",\"entity\":\"insured-K\",\"coverage\":\"BI\",\"signed\":true,\"version\":1,\"effectiveAt\":\"2026-06-22T16:00:00Z\",\"uploadedAt\":\"2026-06-24T15:40:00Z\",\"personLimitCents\":16700}},{\"id\":\"endorsement-A-v2\",\"fields\":{\"sourceId\":\"E-A2\",\"scope\":\"A\",\"policySourceId\":\"P-BI\",\"entity\":\"insured-K\",\"coverage\":\"BI\",\"signed\":false,\"version\":2,\"effectiveAt\":\"2026-06-21T16:00:00Z\",\"uploadedAt\":\"2026-06-24T15:55:00Z\",\"personLimitCents\":20700}},{\"id\":\"endorsement-B\",\"fields\":{\"sourceId\":\"E-B2\",\"scope\":\"B\",\"policySourceId\":\"P-BI\",\"entity\":\"insured-K\",\"coverage\":\"BI\",\"signed\":true,\"version\":2,\"effectiveAt\":\"2026-06-22T16:00:00Z\",\"uploadedAt\":\"2026-06-24T15:50:00Z\",\"personLimitCents\":15000}},{\"id\":\"endorsement-occurrence\",\"fields\":{\"sourceId\":\"E-O2\",\"scope\":\"occurrence\",\"policySourceId\":\"P-BI\",\"entity\":\"insured-K\",\"coverage\":\"BI\",\"signed\":false,\"version\":2,\"effectiveAt\":\"2026-06-21T16:00:00Z\",\"uploadedAt\":\"2026-06-24T15:58:00Z\",\"occurrenceLimitCents\":40700}},{\"id\":\"endorsement-C-future\",\"fields\":{\"sourceId\":\"E-C9\",\"scope\":\"C\",\"policySourceId\":\"P-BI\",\"entity\":\"insured-K\",\"coverage\":\"BI\",\"signed\":true,\"version\":9,\"effectiveAt\":\"2026-06-24T16:30:00Z\",\"uploadedAt\":\"2026-06-24T14:20:00Z\",\"personLimitCents\":90000}},{\"id\":\"event-A-original\",\"fields\":{\"transactionKey\":\"T-A\",\"claimant\":\"A\",\"cents\":7800,\"coverage\":\"BI\",\"kind\":\"indemnity\",\"signed\":true,\"posted\":true,\"effectiveAt\":\"2026-06-24T14:20:00Z\",\"version\":1,\"linkedKey\":\"\"}},{\"id\":\"event-A-duplicate\",\"fields\":{\"transactionKey\":\"T-A\",\"claimant\":\"A\",\"cents\":7800,\"coverage\":\"BI\",\"kind\":\"indemnity\",\"signed\":true,\"posted\":true,\"effectiveAt\":\"2026-06-24T14:20:00Z\",\"version\":1,\"linkedKey\":\"\"}},{\"id\":\"event-A-correction\",\"fields\":{\"transactionKey\":\"T-A\",\"claimant\":\"A\",\"cents\":6400,\"coverage\":\"BI\",\"kind\":\"indemnity\",\"signed\":false,\"posted\":true,\"effectiveAt\":\"2026-06-24T14:20:00Z\",\"version\":2,\"linkedKey\":\"\"}},{\"id\":\"event-B-original\",\"fields\":{\"transactionKey\":\"T-B\",\"claimant\":\"B\",\"cents\":5700,\"coverage\":\"BI\",\"kind\":\"indemnity\",\"signed\":true,\"posted\":true,\"effectiveAt\":\"2026-06-24T14:20:00Z\",\"version\":1,\"linkedKey\":\"\"}},{\"id\":\"event-B-future\",\"fields\":{\"transactionKey\":\"T-B\",\"claimant\":\"B\",\"cents\":20000,\"coverage\":\"BI\",\"kind\":\"indemnity\",\"signed\":true,\"posted\":true,\"effectiveAt\":\"2026-06-24T18:00:00Z\",\"version\":7,\"linkedKey\":\"\"}},{\"id\":\"event-C-original\",\"fields\":{\"transactionKey\":\"T-C\",\"claimant\":\"C\",\"cents\":3400,\"coverage\":\"BI\",\"kind\":\"indemnity\",\"signed\":true,\"posted\":true,\"effectiveAt\":\"2026-06-24T14:20:00Z\",\"version\":1,\"linkedKey\":\"\"}},{\"id\":\"event-C-unposted\",\"fields\":{\"transactionKey\":\"T-C\",\"claimant\":\"C\",\"cents\":10000,\"coverage\":\"BI\",\"kind\":\"indemnity\",\"signed\":true,\"posted\":false,\"effectiveAt\":\"2026-06-24T14:20:00Z\",\"version\":4,\"linkedKey\":\"\"}},{\"id\":\"event-unallocated\",\"fields\":{\"transactionKey\":\"T-U\",\"claimant\":\"unknown\",\"cents\":2600,\"coverage\":\"BI\",\"kind\":\"indemnity\",\"signed\":true,\"posted\":true,\"effectiveAt\":\"2026-06-24T14:20:00Z\",\"version\":1,\"linkedKey\":\"\"}},{\"id\":\"event-expense\",\"fields\":{\"transactionKey\":\"X-A\",\"claimant\":\"A\",\"cents\":9000,\"coverage\":\"BI\",\"kind\":\"expense\",\"signed\":true,\"posted\":true,\"effectiveAt\":\"2026-06-24T14:20:00Z\",\"version\":1,\"linkedKey\":\"\"}},{\"id\":\"event-recovery\",\"fields\":{\"transactionKey\":\"REC-A\",\"claimant\":\"A\",\"cents\":1500,\"coverage\":\"BI\",\"kind\":\"recovery\",\"signed\":true,\"posted\":true,\"effectiveAt\":\"2026-06-24T14:20:00Z\",\"version\":1,\"linkedKey\":\"\"}},{\"id\":\"event-PD\",\"fields\":{\"transactionKey\":\"T-D\",\"claimant\":\"D\",\"cents\":2800,\"coverage\":\"PD\",\"kind\":\"indemnity\",\"signed\":true,\"posted\":true,\"effectiveAt\":\"2026-06-24T14:20:00Z\",\"version\":1,\"linkedKey\":\"\"}},{\"id\":\"event-A-reversal-v1\",\"fields\":{\"transactionKey\":\"R-A\",\"claimant\":\"B\",\"cents\":900,\"coverage\":\"PD\",\"kind\":\"reversal\",\"signed\":true,\"posted\":true,\"effectiveAt\":\"2026-06-24T14:20:00Z\",\"version\":1,\"linkedKey\":\"T-A\"}},{\"id\":\"event-A-reversal-v2\",\"fields\":{\"transactionKey\":\"R-A\",\"claimant\":\"C\",\"cents\":1200,\"coverage\":\"PD\",\"kind\":\"reversal\",\"signed\":false,\"posted\":true,\"effectiveAt\":\"2026-06-24T14:20:00Z\",\"version\":2,\"linkedKey\":\"T-A\"}},{\"id\":\"event-U-reversal\",\"fields\":{\"transactionKey\":\"R-U\",\"claimant\":\"A\",\"cents\":600,\"coverage\":\"BI\",\"kind\":\"reversal\",\"signed\":true,\"posted\":true,\"effectiveAt\":\"2026-06-24T14:20:00Z\",\"version\":1,\"linkedKey\":\"T-U\"}},{\"id\":\"event-unsigned\",\"fields\":{\"transactionKey\":\"NO-A\",\"claimant\":\"A\",\"cents\":7000,\"coverage\":\"BI\",\"kind\":\"indemnity\",\"signed\":false,\"posted\":true,\"effectiveAt\":\"2026-06-24T14:20:00Z\",\"version\":1,\"linkedKey\":\"\"}},{\"id\":\"event-PD-expense\",\"fields\":{\"transactionKey\":\"X-D\",\"claimant\":\"D\",\"cents\":5000,\"coverage\":\"PD\",\"kind\":\"expense\",\"signed\":true,\"posted\":true,\"effectiveAt\":\"2026-06-24T14:20:00Z\",\"version\":1,\"linkedKey\":\"\"}},{\"id\":\"reserve-A-v1\",\"fields\":{\"claimant\":\"A\",\"coverage\":\"BI\",\"signed\":true,\"version\":1,\"effectiveAt\":\"2026-06-24T15:00:00Z\",\"cents\":2600}},{\"id\":\"reserve-B-v1\",\"fields\":{\"claimant\":\"B\",\"coverage\":\"BI\",\"signed\":true,\"version\":1,\"effectiveAt\":\"2026-06-24T15:00:00Z\",\"cents\":2200}},{\"id\":\"reserve-C-v1\",\"fields\":{\"claimant\":\"C\",\"coverage\":\"BI\",\"signed\":true,\"version\":1,\"effectiveAt\":\"2026-06-24T15:00:00Z\",\"cents\":1800}},{\"id\":\"reserve-D-v1\",\"fields\":{\"claimant\":\"D\",\"coverage\":\"PD\",\"signed\":true,\"version\":1,\"effectiveAt\":\"2026-06-24T15:00:00Z\",\"cents\":2100}},{\"id\":\"reserve-A-v2\",\"fields\":{\"claimant\":\"A\",\"coverage\":\"BI\",\"signed\":false,\"version\":2,\"effectiveAt\":\"2026-06-24T15:45:00Z\",\"cents\":3800}},{\"id\":\"reserve-C-v2\",\"fields\":{\"claimant\":\"C\",\"coverage\":\"BI\",\"signed\":false,\"version\":2,\"effectiveAt\":\"2026-06-24T15:50:00Z\",\"cents\":3100}},{\"id\":\"demand-A-v1\",\"fields\":{\"claimant\":\"A\",\"demandId\":\"D-A1\",\"rootId\":\"D-A1\",\"signed\":true,\"version\":1,\"changeType\":\"original\",\"durationMinutes\":240}},{\"id\":\"extension-A\",\"fields\":{\"claimant\":\"A\",\"signed\":true,\"version\":1,\"rootId\":\"D-A1\",\"recipientAuthorized\":true,\"receivedAt\":\"2026-06-24T14:30:00Z\",\"extraMinutes\":30}},{\"id\":\"demand-B-v1\",\"fields\":{\"claimant\":\"B\",\"demandId\":\"D-B1\",\"rootId\":\"D-B1\",\"signed\":true,\"version\":1,\"changeType\":\"original\",\"durationMinutes\":210}},{\"id\":\"extension-B\",\"fields\":{\"claimant\":\"B\",\"signed\":true,\"version\":1,\"rootId\":\"D-B1\",\"recipientAuthorized\":true,\"receivedAt\":\"2026-06-24T14:30:00Z\",\"extraMinutes\":45}},{\"id\":\"demand-C-v1\",\"fields\":{\"claimant\":\"C\",\"demandId\":\"D-C1\",\"rootId\":\"D-C1\",\"signed\":true,\"version\":1,\"changeType\":\"original\",\"durationMinutes\":240}},{\"id\":\"extension-C\",\"fields\":{\"claimant\":\"C\",\"signed\":true,\"version\":1,\"rootId\":\"D-C1\",\"recipientAuthorized\":true,\"receivedAt\":\"2026-06-24T14:30:00Z\",\"extraMinutes\":45}},{\"id\":\"package-1\",\"fields\":{\"packageId\":\"ibc-coverage-review-dev-1-693918aa-Q1\",\"allocateACents\":4400,\"allocateBCents\":0,\"allocateCCents\":0,\"priorityValue\":10,\"requiredAllocationKey\":\"\"}},{\"id\":\"package-2\",\"fields\":{\"packageId\":\"ibc-coverage-review-dev-1-693918aa-Q2\",\"allocateACents\":6700,\"allocateBCents\":0,\"allocateCCents\":0,\"priorityValue\":12,\"requiredAllocationKey\":\"\"}},{\"id\":\"package-3\",\"fields\":{\"packageId\":\"ibc-coverage-review-dev-1-693918aa-Q3\",\"allocateACents\":3000,\"allocateBCents\":0,\"allocateCCents\":0,\"priorityValue\":5,\"requiredAllocationKey\":\"\"}},{\"id\":\"package-4\",\"fields\":{\"packageId\":\"ibc-coverage-review-dev-1-693918aa-Q4\",\"allocateACents\":0,\"allocateBCents\":3800,\"allocateCCents\":0,\"priorityValue\":10,\"requiredAllocationKey\":\"\"}},{\"id\":\"package-5\",\"fields\":{\"packageId\":\"ibc-coverage-review-dev-1-693918aa-Q5\",\"allocateACents\":0,\"allocateBCents\":6200,\"allocateCCents\":0,\"priorityValue\":11,\"requiredAllocationKey\":\"\"}},{\"id\":\"package-6\",\"fields\":{\"packageId\":\"ibc-coverage-review-dev-1-693918aa-Q6\",\"allocateACents\":0,\"allocateBCents\":2300,\"allocateCCents\":0,\"priorityValue\":4,\"requiredAllocationKey\":\"\"}},{\"id\":\"package-7\",\"fields\":{\"packageId\":\"ibc-coverage-review-dev-1-693918aa-Q7\",\"allocateACents\":0,\"allocateBCents\":0,\"allocateCCents\":3300,\"priorityValue\":9,\"requiredAllocationKey\":\"\"}},{\"id\":\"package-8\",\"fields\":{\"packageId\":\"ibc-coverage-review-dev-1-693918aa-Q8\",\"allocateACents\":0,\"allocateBCents\":0,\"allocateCCents\":5400,\"priorityValue\":10,\"requiredAllocationKey\":\"T-U\"}},{\"id\":\"package-9\",\"fields\":{\"packageId\":\"ibc-coverage-review-dev-1-693918aa-Q9\",\"allocateACents\":0,\"allocateBCents\":0,\"allocateCCents\":2100,\"priorityValue\":4,\"requiredAllocationKey\":\"\"}},{\"id\":\"package-10\",\"fields\":{\"packageId\":\"ibc-coverage-review-dev-1-693918aa-Q10\",\"allocateACents\":1900,\"allocateBCents\":0,\"allocateCCents\":0,\"priorityValue\":6,\"requiredAllocationKey\":\"\"}},{\"id\":\"package-11\",\"fields\":{\"packageId\":\"ibc-coverage-review-dev-1-693918aa-Q11\",\"allocateACents\":2100,\"allocateBCents\":2600,\"allocateCCents\":0,\"priorityValue\":10,\"requiredAllocationKey\":\"\"}},{\"id\":\"package-12\",\"fields\":{\"packageId\":\"ibc-coverage-review-dev-1-693918aa-Q12\",\"allocateACents\":0,\"allocateBCents\":1700,\"allocateCCents\":2500,\"priorityValue\":9,\"requiredAllocationKey\":\"T-U\"}}]"
+            },
+            {
+              "id": "ibc-coverage-review-dev-1-693918aa:customer",
+              "title": "customer: invented occurrence records",
+              "revision": 2,
+              "rows": [
+                {
+                  "id": "loss-A",
+                  "fields": {
+                    "claimant": "A",
+                    "lossAt": "2026-06-23T16:00:00Z"
+                  }
+                },
+                {
+                  "id": "loss-B",
+                  "fields": {
+                    "claimant": "B",
+                    "lossAt": "2026-06-23T16:00:00Z"
+                  }
+                },
+                {
+                  "id": "loss-C",
+                  "fields": {
+                    "claimant": "C",
+                    "lossAt": "2026-06-23T16:00:00Z"
+                  }
+                },
+                {
+                  "id": "loss-D",
+                  "fields": {
+                    "claimant": "D",
+                    "lossAt": "2026-06-23T16:00:00Z"
+                  }
+                },
+                {
+                  "id": "allocation-U",
+                  "fields": {
+                    "transactionKey": "T-U",
+                    "claimant": "C"
+                  }
+                },
+                {
+                  "id": "receipt-D-A1",
+                  "fields": {
+                    "completeAt": "2026-06-24T13:00:00Z",
+                    "verified": true,
+                    "missingItems": []
+                  }
+                },
+                {
+                  "id": "receipt-D-B1",
+                  "fields": {
+                    "completeAt": "2026-06-24T13:10:00Z",
+                    "verified": true,
+                    "missingItems": []
+                  }
+                },
+                {
+                  "id": "receipt-D-C1",
+                  "fields": {
+                    "completeAt": "2026-06-24T13:40:00Z",
+                    "verified": true,
+                    "missingItems": []
+                  }
+                }
+              ],
+              "text": "[{\"id\":\"loss-A\",\"fields\":{\"claimant\":\"A\",\"lossAt\":\"2026-06-23T16:00:00Z\"}},{\"id\":\"loss-B\",\"fields\":{\"claimant\":\"B\",\"lossAt\":\"2026-06-23T16:00:00Z\"}},{\"id\":\"loss-C\",\"fields\":{\"claimant\":\"C\",\"lossAt\":\"2026-06-23T16:00:00Z\"}},{\"id\":\"loss-D\",\"fields\":{\"claimant\":\"D\",\"lossAt\":\"2026-06-23T16:00:00Z\"}},{\"id\":\"allocation-U\",\"fields\":{\"transactionKey\":\"T-U\",\"claimant\":\"C\"}},{\"id\":\"receipt-D-A1\",\"fields\":{\"completeAt\":\"2026-06-24T13:00:00Z\",\"verified\":true,\"missingItems\":[]}},{\"id\":\"receipt-D-B1\",\"fields\":{\"completeAt\":\"2026-06-24T13:10:00Z\",\"verified\":true,\"missingItems\":[]}},{\"id\":\"receipt-D-C1\",\"fields\":{\"completeAt\":\"2026-06-24T13:40:00Z\",\"verified\":true,\"missingItems\":[]}}]"
+            },
+            {
+              "id": "ibc-coverage-review-dev-1-693918aa:authority",
+              "title": "authority: invented occurrence records",
+              "revision": 1,
+              "rows": [
+                {
+                  "id": "authority",
+                  "fields": {
+                    "scope": "internal_draft_only",
+                    "priorDecisionId": "prior-human-decision",
+                    "priorApprovalMaterialRevision": 1,
+                    "allowExternalFinalization": false
+                  }
+                }
+              ],
+              "text": "[{\"id\":\"authority\",\"fields\":{\"scope\":\"internal_draft_only\",\"priorDecisionId\":\"prior-human-decision\",\"priorApprovalMaterialRevision\":1,\"allowExternalFinalization\":false}}]"
+            }
+          ],
+          "readSources": [
+            "ibc-coverage-review-dev-1-693918aa:rules@1:rule-1",
+            "ibc-coverage-review-dev-1-693918aa:rules@1:rule-2",
+            "ibc-coverage-review-dev-1-693918aa:rules@1:rule-3",
+            "ibc-coverage-review-dev-1-693918aa:rules@1:rule-4",
+            "ibc-coverage-review-dev-1-693918aa:rules@1:rule-5",
+            "ibc-coverage-review-dev-1-693918aa:rules@1:rule-6",
+            "ibc-coverage-review-dev-1-693918aa:rules@1:rule-7",
+            "ibc-coverage-review-dev-1-693918aa:rules@1:rule-8",
+            "ibc-coverage-review-dev-1-693918aa:records@1:occurrence",
+            "ibc-coverage-review-dev-1-693918aa:records@1:policy-BI",
+            "ibc-coverage-review-dev-1-693918aa:records@1:policy-PD",
+            "ibc-coverage-review-dev-1-693918aa:records@1:exposure-A",
+            "ibc-coverage-review-dev-1-693918aa:records@1:exposure-B",
+            "ibc-coverage-review-dev-1-693918aa:records@1:exposure-C",
+            "ibc-coverage-review-dev-1-693918aa:records@1:exposure-D",
+            "ibc-coverage-review-dev-1-693918aa:records@1:endorsement-A-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@1:endorsement-A-v2",
+            "ibc-coverage-review-dev-1-693918aa:records@1:endorsement-B",
+            "ibc-coverage-review-dev-1-693918aa:records@1:endorsement-occurrence",
+            "ibc-coverage-review-dev-1-693918aa:records@1:endorsement-C-future",
+            "ibc-coverage-review-dev-1-693918aa:records@1:event-A-original",
+            "ibc-coverage-review-dev-1-693918aa:records@1:event-A-duplicate",
+            "ibc-coverage-review-dev-1-693918aa:records@1:event-A-correction",
+            "ibc-coverage-review-dev-1-693918aa:records@1:event-B-original",
+            "ibc-coverage-review-dev-1-693918aa:records@1:event-B-future",
+            "ibc-coverage-review-dev-1-693918aa:records@1:event-C-original",
+            "ibc-coverage-review-dev-1-693918aa:records@1:event-C-unposted",
+            "ibc-coverage-review-dev-1-693918aa:records@1:event-unallocated",
+            "ibc-coverage-review-dev-1-693918aa:records@1:event-expense",
+            "ibc-coverage-review-dev-1-693918aa:records@1:event-recovery",
+            "ibc-coverage-review-dev-1-693918aa:records@1:event-PD",
+            "ibc-coverage-review-dev-1-693918aa:records@1:event-A-reversal-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@1:event-A-reversal-v2",
+            "ibc-coverage-review-dev-1-693918aa:records@1:event-U-reversal",
+            "ibc-coverage-review-dev-1-693918aa:records@1:event-unsigned",
+            "ibc-coverage-review-dev-1-693918aa:records@1:event-PD-expense",
+            "ibc-coverage-review-dev-1-693918aa:records@1:reserve-A-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@1:reserve-B-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@1:reserve-C-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@1:reserve-D-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@1:reserve-A-v2",
+            "ibc-coverage-review-dev-1-693918aa:records@1:reserve-C-v2",
+            "ibc-coverage-review-dev-1-693918aa:records@1:demand-A-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@1:extension-A",
+            "ibc-coverage-review-dev-1-693918aa:records@1:demand-B-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@1:extension-B",
+            "ibc-coverage-review-dev-1-693918aa:records@1:demand-C-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@1:extension-C",
+            "ibc-coverage-review-dev-1-693918aa:records@1:package-1",
+            "ibc-coverage-review-dev-1-693918aa:records@1:package-2",
+            "ibc-coverage-review-dev-1-693918aa:records@1:package-3",
+            "ibc-coverage-review-dev-1-693918aa:records@1:package-4",
+            "ibc-coverage-review-dev-1-693918aa:records@1:package-5",
+            "ibc-coverage-review-dev-1-693918aa:records@1:package-6",
+            "ibc-coverage-review-dev-1-693918aa:records@1:package-7",
+            "ibc-coverage-review-dev-1-693918aa:records@1:package-8",
+            "ibc-coverage-review-dev-1-693918aa:records@1:package-9",
+            "ibc-coverage-review-dev-1-693918aa:records@1:package-10",
+            "ibc-coverage-review-dev-1-693918aa:records@1:package-11",
+            "ibc-coverage-review-dev-1-693918aa:records@1:package-12",
+            "ibc-coverage-review-dev-1-693918aa:customer@1:loss-A",
+            "ibc-coverage-review-dev-1-693918aa:customer@1:loss-B",
+            "ibc-coverage-review-dev-1-693918aa:customer@1:loss-C",
+            "ibc-coverage-review-dev-1-693918aa:customer@1:loss-D",
+            "ibc-coverage-review-dev-1-693918aa:customer@1:allocation-U",
+            "ibc-coverage-review-dev-1-693918aa:customer@1:receipt-D-A1",
+            "ibc-coverage-review-dev-1-693918aa:customer@1:receipt-D-B1",
+            "ibc-coverage-review-dev-1-693918aa:customer@1:receipt-D-C1",
+            "ibc-coverage-review-dev-1-693918aa:authority@1:authority",
+            "ibc-coverage-review-dev-1-693918aa:records@2:occurrence",
+            "ibc-coverage-review-dev-1-693918aa:records@2:policy-BI",
+            "ibc-coverage-review-dev-1-693918aa:records@2:policy-PD",
+            "ibc-coverage-review-dev-1-693918aa:records@2:exposure-A",
+            "ibc-coverage-review-dev-1-693918aa:records@2:exposure-B",
+            "ibc-coverage-review-dev-1-693918aa:records@2:exposure-C",
+            "ibc-coverage-review-dev-1-693918aa:records@2:exposure-D",
+            "ibc-coverage-review-dev-1-693918aa:records@2:endorsement-A-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@2:endorsement-A-v2",
+            "ibc-coverage-review-dev-1-693918aa:records@2:endorsement-B",
+            "ibc-coverage-review-dev-1-693918aa:records@2:endorsement-occurrence",
+            "ibc-coverage-review-dev-1-693918aa:records@2:endorsement-C-future",
+            "ibc-coverage-review-dev-1-693918aa:records@2:event-A-original",
+            "ibc-coverage-review-dev-1-693918aa:records@2:event-A-duplicate",
+            "ibc-coverage-review-dev-1-693918aa:records@2:event-A-correction",
+            "ibc-coverage-review-dev-1-693918aa:records@2:event-B-original",
+            "ibc-coverage-review-dev-1-693918aa:records@2:event-B-future",
+            "ibc-coverage-review-dev-1-693918aa:records@2:event-C-original",
+            "ibc-coverage-review-dev-1-693918aa:records@2:event-C-unposted",
+            "ibc-coverage-review-dev-1-693918aa:records@2:event-unallocated",
+            "ibc-coverage-review-dev-1-693918aa:records@2:event-expense",
+            "ibc-coverage-review-dev-1-693918aa:records@2:event-recovery",
+            "ibc-coverage-review-dev-1-693918aa:records@2:event-PD",
+            "ibc-coverage-review-dev-1-693918aa:records@2:event-A-reversal-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@2:event-A-reversal-v2",
+            "ibc-coverage-review-dev-1-693918aa:records@2:event-U-reversal",
+            "ibc-coverage-review-dev-1-693918aa:records@2:event-unsigned",
+            "ibc-coverage-review-dev-1-693918aa:records@2:event-PD-expense",
+            "ibc-coverage-review-dev-1-693918aa:records@2:reserve-A-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@2:reserve-B-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@2:reserve-C-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@2:reserve-D-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@2:reserve-A-v2",
+            "ibc-coverage-review-dev-1-693918aa:records@2:reserve-C-v2",
+            "ibc-coverage-review-dev-1-693918aa:records@2:demand-A-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@2:extension-A",
+            "ibc-coverage-review-dev-1-693918aa:records@2:demand-B-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@2:extension-B",
+            "ibc-coverage-review-dev-1-693918aa:records@2:demand-C-v1",
+            "ibc-coverage-review-dev-1-693918aa:records@2:extension-C",
+            "ibc-coverage-review-dev-1-693918aa:records@2:package-1",
+            "ibc-coverage-review-dev-1-693918aa:records@2:package-2",
+            "ibc-coverage-review-dev-1-693918aa:records@2:package-3",
+            "ibc-coverage-review-dev-1-693918aa:records@2:package-4",
+            "ibc-coverage-review-dev-1-693918aa:records@2:package-5",
+            "ibc-coverage-review-dev-1-693918aa:records@2:package-6",
+            "ibc-coverage-review-dev-1-693918aa:records@2:package-7",
+            "ibc-coverage-review-dev-1-693918aa:records@2:package-8",
+            "ibc-coverage-review-dev-1-693918aa:records@2:package-9",
+            "ibc-coverage-review-dev-1-693918aa:records@2:package-10",
+            "ibc-coverage-review-dev-1-693918aa:records@2:package-11",
+            "ibc-coverage-review-dev-1-693918aa:records@2:package-12",
+            "ibc-coverage-review-dev-1-693918aa:customer@2:loss-A",
+            "ibc-coverage-review-dev-1-693918aa:customer@2:loss-B",
+            "ibc-coverage-review-dev-1-693918aa:customer@2:loss-C",
+            "ibc-coverage-review-dev-1-693918aa:customer@2:loss-D",
+            "ibc-coverage-review-dev-1-693918aa:customer@2:allocation-U",
+            "ibc-coverage-review-dev-1-693918aa:customer@2:receipt-D-A1",
+            "ibc-coverage-review-dev-1-693918aa:customer@2:receipt-D-B1",
+            "ibc-coverage-review-dev-1-693918aa:customer@2:receipt-D-C1"
+          ],
+          "productSources": [],
+          "draft": null,
+          "packet": {
+            "materialRevision": 2,
+            "sources": [
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:rules",
+                "revision": 1,
+                "rowId": "rule-1"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:rules",
+                "revision": 1,
+                "rowId": "rule-2"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:rules",
+                "revision": 1,
+                "rowId": "rule-3"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:rules",
+                "revision": 1,
+                "rowId": "rule-4"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:rules",
+                "revision": 1,
+                "rowId": "rule-5"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:rules",
+                "revision": 1,
+                "rowId": "rule-6"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:rules",
+                "revision": 1,
+                "rowId": "rule-7"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:rules",
+                "revision": 1,
+                "rowId": "rule-8"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:authority",
+                "revision": 1,
+                "rowId": "authority"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                "revision": 2,
+                "rowId": "loss-A"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                "revision": 2,
+                "rowId": "loss-B"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                "revision": 2,
+                "rowId": "loss-C"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                "revision": 2,
+                "rowId": "loss-D"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                "revision": 2,
+                "rowId": "allocation-U"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                "revision": 2,
+                "rowId": "receipt-D-A1"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                "revision": 2,
+                "rowId": "receipt-D-B1"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                "revision": 2,
+                "rowId": "receipt-D-C1"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "occurrence"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "policy-BI"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "policy-PD"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "exposure-A"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "exposure-B"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "exposure-C"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "exposure-D"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "endorsement-A-v1"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "endorsement-A-v2"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "endorsement-B"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "endorsement-occurrence"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "endorsement-C-future"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "event-A-original"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "event-A-duplicate"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "event-A-correction"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "event-B-original"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "event-B-future"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "event-C-original"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "event-C-unposted"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "event-unallocated"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "event-expense"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "event-recovery"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "event-PD"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "event-A-reversal-v1"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "event-A-reversal-v2"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "event-U-reversal"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "event-unsigned"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "event-PD-expense"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "reserve-A-v1"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "reserve-B-v1"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "reserve-C-v1"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "reserve-D-v1"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "reserve-A-v2"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "reserve-C-v2"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "demand-A-v1"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "extension-A"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "demand-B-v1"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "extension-B"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "demand-C-v1"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "extension-C"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "package-1"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "package-2"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "package-3"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "package-4"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "package-5"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "package-6"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "package-7"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "package-8"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "package-9"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "package-10"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "package-11"
+              },
+              {
+                "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                "revision": 2,
+                "rowId": "package-12"
+              }
+            ]
+          },
+          "customerRequests": [
+            {
+              "topic": "occurrence-allocation-and-receipt",
+              "scope": "current-occurrence"
+            }
+          ],
+          "review": null,
+          "business": {
+            "status": "unprepared"
+          },
+          "history": [
+            {
+              "sequence": 1,
+              "action": "ask_customer",
+              "materialRevision": 1,
+              "sessionRevision": 1,
+              "payload": {
+                "topic": "occurrence-allocation-and-receipt",
+                "scope": "current-occurrence"
+              }
+            },
+            {
+              "sequence": 2,
+              "action": "material_revision",
+              "materialRevision": 2,
+              "sessionRevision": 2,
+              "payload": {
+                "reason": "Supplied scoped customer clarification received; current packet inputs changed.",
+                "phase": 1
+              }
+            },
+            {
+              "sequence": 3,
+              "action": "build_packet",
+              "materialRevision": 2,
+              "sessionRevision": 3,
+              "payload": {
+                "sources": [
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:rules",
+                    "revision": 1,
+                    "rowId": "rule-1"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:rules",
+                    "revision": 1,
+                    "rowId": "rule-2"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:rules",
+                    "revision": 1,
+                    "rowId": "rule-3"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:rules",
+                    "revision": 1,
+                    "rowId": "rule-4"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:rules",
+                    "revision": 1,
+                    "rowId": "rule-5"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:rules",
+                    "revision": 1,
+                    "rowId": "rule-6"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:rules",
+                    "revision": 1,
+                    "rowId": "rule-7"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:rules",
+                    "revision": 1,
+                    "rowId": "rule-8"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:authority",
+                    "revision": 1,
+                    "rowId": "authority"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                    "revision": 2,
+                    "rowId": "loss-A"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                    "revision": 2,
+                    "rowId": "loss-B"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                    "revision": 2,
+                    "rowId": "loss-C"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                    "revision": 2,
+                    "rowId": "loss-D"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                    "revision": 2,
+                    "rowId": "allocation-U"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                    "revision": 2,
+                    "rowId": "receipt-D-A1"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                    "revision": 2,
+                    "rowId": "receipt-D-B1"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                    "revision": 2,
+                    "rowId": "receipt-D-C1"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "occurrence"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "policy-BI"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "policy-PD"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "exposure-A"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "exposure-B"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "exposure-C"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "exposure-D"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "endorsement-A-v1"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "endorsement-A-v2"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "endorsement-B"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "endorsement-occurrence"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "endorsement-C-future"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "event-A-original"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "event-A-duplicate"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "event-A-correction"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "event-B-original"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "event-B-future"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "event-C-original"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "event-C-unposted"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "event-unallocated"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "event-expense"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "event-recovery"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "event-PD"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "event-A-reversal-v1"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "event-A-reversal-v2"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "event-U-reversal"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "event-unsigned"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "event-PD-expense"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "reserve-A-v1"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "reserve-B-v1"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "reserve-C-v1"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "reserve-D-v1"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "reserve-A-v2"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "reserve-C-v2"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "demand-A-v1"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "extension-A"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "demand-B-v1"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "extension-B"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "demand-C-v1"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "extension-C"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "package-1"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "package-2"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "package-3"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "package-4"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "package-5"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "package-6"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "package-7"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "package-8"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "package-9"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "package-10"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "package-11"
+                  },
+                  {
+                    "documentId": "ibc-coverage-review-dev-1-693918aa:records",
+                    "revision": 2,
+                    "rowId": "package-12"
+                  }
+                ]
+              }
+            }
+          ],
+          "humanPin": null,
+          "historicalDecisionIds": [
+            "prior-human-decision"
+          ],
+          "finished": false
+        },
+        "trace": [
+          {
+            "turn": 1,
+            "response": "{\"actions\":[{\"tool\":\"list_documents\",\"args\":{}},{\"tool\":\"read_record\",\"args\":{}},{\"tool\":\"read_history\",\"args\":{}}]}",
+            "results": [
+              {
+                "tool": "list_documents",
+                "result": {
+                  "documents": [
+                    {
+                      "id": "ibc-coverage-review-dev-1-693918aa:rules",
+                      "title": "rules: invented occurrence records",
+                      "revision": 1
+                    },
+                    {
+                      "id": "ibc-coverage-review-dev-1-693918aa:records",
+                      "title": "records: invented occurrence records",
+                      "revision": 1
+                    },
+                    {
+                      "id": "ibc-coverage-review-dev-1-693918aa:customer",
+                      "title": "customer: invented occurrence records",
+                      "revision": 1
+                    },
+                    {
+                      "id": "ibc-coverage-review-dev-1-693918aa:authority",
+                      "title": "authority: invented occurrence records",
+                      "revision": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "tool": "read_record",
+                "result": {
+                  "family": "coverage-review",
+                  "business": {
+                    "status": "unprepared"
+                  },
+                  "draft": null,
+                  "packet": null,
+                  "review": null,
+                  "humanPin": null,
+                  "historicalDecisionIds": [
+                    "prior-human-decision"
+                  ],
+                  "documents": [
+                    {
+                      "id": "ibc-coverage-review-dev-1-693918aa:rules",
+                      "title": "rules: invented occurrence records",
+                      "revision": 1
+                    },
+                    {
+                      "id": "ibc-coverage-review-dev-1-693918aa:records",
+                      "title": "records: invented occurrence records",
+                      "revision": 1
+                    },
+                    {
+                      "id": "ibc-coverage-review-dev-1-693918aa:customer",
+                      "title": "customer: invented occurrence records",
+                      "revision": 1
+                    },
+                    {
+                      "id": "ibc-coverage-review-dev-1-693918aa:authority",
+                      "title": "authority: invented occurrence records",
+                      "revision": 1
+                    }
+                  ],
+                  "sessionRevision": 0,
+                  "materialRevision": 1,
+                  "draftRevision": null,
+                  "updates": []
+                }
+              },
+              {
+                "tool": "read_history",
+                "result": {
+                  "history": []
+                }
+              }
+            ],
+            "usage": {
+              "input": 1408,
+              "output": 36
+            },
+            "model": "gpt-6.1-sol",
+            "requestId": "req_6bf445b79dd14e05be239830b77aa031",
+            "finishReason": "completed",
+            "reasoningEffort": "high",
+            "reasoningTokens": 0
+          },
+          {
+            "turn": 2,
+            "response": "{\"actions\":[{\"tool\":\"read_document\",\"args\":{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:rules\"}},{\"tool\":\"read_document\",\"args\":{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\"}},{\"tool\":\"read_document\",\"args\":{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:customer\"}},{\"tool\":\"read_document\",\"args\":{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:authority\"}},{\"tool\":\"ask_customer\",\"args\":{\"topic\":\"occurrence-allocation-and-receipt\",\"scope\":\"current-occurrence\",\"expectedSessionRevision\":0}}]}",
+            "results": [
+              {
+                "tool": "read_document",
+                "result": {
+                  "document": {
+                    "id": "ibc-coverage-review-dev-1-693918aa:rules",
+                    "title": "rules: invented occurrence records",
+                    "revision": 1,
+                    "rows": [
+                      {
+                        "id": "rule-1",
+                        "fields": {
+                          "text": "All money is integer cents. These are invented internal planning policies, not insurance law or actual payment authority. Every proposal package is a distinct incremental compensable component; packages do not replace reserves and their allocations must be added to current incurred commitments. Priority units are an explicit synthetic operational objective, not dollar loss or claimant deservingness."
+                        }
+                      },
+                      {
+                        "id": "rule-2",
+                        "fields": {
+                          "text": "For each exposure, the base policy must match entity and coverage, with inception inclusive and expiration exclusive at that exposure's clarified loss instant. Unknown loss time, out-of-period loss or unmatched policy means no usable capacity and no package for that claimant; report its limitSource as unavailable. Choose the highest signed revision endorsement whose entity, coverage and claimant scope match and whose own effective instant is no later than loss. Its per-person limit replaces the base per-person limit. Upload time is irrelevant. Choose the shared BI occurrence limit separately: highest signed revision with scope=occurrence, matching policy/entity/coverage, effective no later than the occurrence instant. A person-scoped endorsement never changes the shared occurrence limit."
+                        }
+                      },
+                      {
+                        "id": "rule-3",
+                        "fields": {
+                          "text": "Read signed posted financial events effective no later than reading clock. Deduplicate by transactionKey, keeping its highest eligible revision; repeated identical revision records are duplicates. unsigned/unposted/future-effective revisions do not replace a current eligible version. Expense and recovery events do not erode capacity. Positive indemnity events consume their own coverage. An allocation response assigns only its named transactionKey; unknown allocation stays unknown and never becomes zero."
+                        }
+                      },
+                      {
+                        "id": "rule-4",
+                        "fields": {
+                          "text": "A reversal is a separate positive reversal amount linked by linkedKey to the selected positive indemnity transaction. Subtract its cents using that linked transaction's current coverage and claimant allocation, ignoring the reversal row's claimant and coverage labels. It must not exceed its linked positive amount. Unknown linked allocation remains an unknown negative adjustment. Reversal event versions are deduplicated by their own transactionKey. Keep reserve estimates separate from posted money."
+                        }
+                      },
+                      {
+                        "id": "rule-5",
+                        "fields": {
+                          "text": "For each claimant/coverage, select the highest signed reserve version effective no later than reading clock; a new estimate replaces rather than adds its predecessor. BI per-person available=max(0,controllingPersonLimit-netKnownPaid-reserve). Shared BI occurrence available=max(0,controllingOccurrenceLimit-all BI net paid including unallocated net paid-all BI reserves). PD uses its separate incident limit and never consumes BI. Unallocated BI is included in occurrence erosion, reported separately, and blocks only packages naming that unresolved transactionKey as requiredAllocationKey."
+                        }
+                      },
+                      {
+                        "id": "rule-6",
+                        "fields": {
+                          "text": "Select the highest signed demand version for each claimant. A replacement uses its own complete verified delivery receipt instant and duration; amount_only inherits the original demand's complete receipt, root and duration. For extensions select the highest signed extension revision for that claimant; it applies only if recipientAuthorized=true, root matches the operative root, and received strictly before the unextended deadline. Add extraMinutes only when it applies. The delivery receipt starts the response clock; its missingItems inventory describes additional internal proposal-packet enclosures, not clock-start delivery prerequisites. Missing required packet items block packages for that claimant. A deadline earlier than reading clock blocks packages; equality is on time. Receipt and a human review are different."
+                        }
+                      },
+                      {
+                        "id": "rule-7",
+                        "fields": {
+                          "text": "A proposal package is eligible only if every positive claimant allocation is covered, has a current complete receipt packet, has an operative deadline no earlier than reading clock, and its named requiredAllocationKey is resolved or empty. Select any subset of eligible packages with no duplicate IDs. Its per-claimant allocations may not exceed the corresponding available per-person capacity; its total cost may not exceed shared BI occurrence capacity. Maximize the sum of priorityValue. All feasible tied optimal subsets are accepted, without ordering or lexicographic tie breaking. A reported optimum without an actually recorded feasible optimal package selection does not complete the business task."
+                        }
+                      },
+                      {
+                        "id": "rule-8",
+                        "fields": {
+                          "text": "Package cost is the sum of allocateACents, allocateBCents and allocateCCents. Internal business fields selectedCostCents and selectedPriorityValue must equal the actual selected package sums, and proposedPackageIds must identify the selected subset. No payment, external response, coverage determination or human signoff is authorized. Material updates invalidate prior packet review; retain historical decisions and obtain the supplied current internal reviewer response."
+                        }
+                      }
+                    ]
+                  },
+                  "historical": false
+                }
+              },
+              {
+                "tool": "read_document",
+                "result": {
+                  "document": {
+                    "id": "ibc-coverage-review-dev-1-693918aa:records",
+                    "title": "records: invented occurrence records",
+                    "revision": 1,
+                    "rows": [
+                      {
+                        "id": "occurrence",
+                        "fields": {
+                          "entity": "insured-K",
+                          "lossAt": "2026-06-23T16:00:00Z",
+                          "occurrenceId": "ibc-coverage-review-dev-1-693918aa-occurrence"
+                        }
+                      },
+                      {
+                        "id": "policy-BI",
+                        "fields": {
+                          "sourceId": "P-BI",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "inceptionAt": "2026-05-25T16:00:00Z",
+                          "expirationAt": "2026-06-24T17:00:00Z",
+                          "personLimitCents": 20200,
+                          "incidentLimitCents": 42200
+                        }
+                      },
+                      {
+                        "id": "policy-PD",
+                        "fields": {
+                          "sourceId": "P-PD",
+                          "entity": "insured-K",
+                          "coverage": "PD",
+                          "inceptionAt": "2026-05-25T16:00:00Z",
+                          "expirationAt": "2026-06-24T17:00:00Z",
+                          "personLimitCents": 0,
+                          "incidentLimitCents": 11000
+                        }
+                      },
+                      {
+                        "id": "exposure-A",
+                        "fields": {
+                          "claimant": "A",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "vehicleId": "vehicle-A"
+                        }
+                      },
+                      {
+                        "id": "exposure-B",
+                        "fields": {
+                          "claimant": "B",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "vehicleId": "vehicle-B"
+                        }
+                      },
+                      {
+                        "id": "exposure-C",
+                        "fields": {
+                          "claimant": "C",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "vehicleId": "vehicle-C"
+                        }
+                      },
+                      {
+                        "id": "exposure-D",
+                        "fields": {
+                          "claimant": "D",
+                          "entity": "insured-K",
+                          "coverage": "PD",
+                          "vehicleId": "vehicle-D"
+                        }
+                      },
+                      {
+                        "id": "endorsement-A-v1",
+                        "fields": {
+                          "sourceId": "E-A1",
+                          "scope": "A",
+                          "policySourceId": "P-BI",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "signed": true,
+                          "version": 1,
+                          "effectiveAt": "2026-06-22T16:00:00Z",
+                          "uploadedAt": "2026-06-24T15:40:00Z",
+                          "personLimitCents": 16700
+                        }
+                      },
+                      {
+                        "id": "endorsement-A-v2",
+                        "fields": {
+                          "sourceId": "E-A2",
+                          "scope": "A",
+                          "policySourceId": "P-BI",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "signed": false,
+                          "version": 2,
+                          "effectiveAt": "2026-06-21T16:00:00Z",
+                          "uploadedAt": "2026-06-24T15:55:00Z",
+                          "personLimitCents": 20700
+                        }
+                      },
+                      {
+                        "id": "endorsement-B",
+                        "fields": {
+                          "sourceId": "E-B2",
+                          "scope": "B",
+                          "policySourceId": "P-BI",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "signed": true,
+                          "version": 2,
+                          "effectiveAt": "2026-06-22T16:00:00Z",
+                          "uploadedAt": "2026-06-24T15:50:00Z",
+                          "personLimitCents": 15000
+                        }
+                      },
+                      {
+                        "id": "endorsement-occurrence",
+                        "fields": {
+                          "sourceId": "E-O2",
+                          "scope": "occurrence",
+                          "policySourceId": "P-BI",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "signed": false,
+                          "version": 2,
+                          "effectiveAt": "2026-06-21T16:00:00Z",
+                          "uploadedAt": "2026-06-24T15:58:00Z",
+                          "occurrenceLimitCents": 40700
+                        }
+                      },
+                      {
+                        "id": "endorsement-C-future",
+                        "fields": {
+                          "sourceId": "E-C9",
+                          "scope": "C",
+                          "policySourceId": "P-BI",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "signed": true,
+                          "version": 9,
+                          "effectiveAt": "2026-06-24T16:30:00Z",
+                          "uploadedAt": "2026-06-24T14:20:00Z",
+                          "personLimitCents": 90000
+                        }
+                      },
+                      {
+                        "id": "event-A-original",
+                        "fields": {
+                          "transactionKey": "T-A",
+                          "claimant": "A",
+                          "cents": 7800,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-A-duplicate",
+                        "fields": {
+                          "transactionKey": "T-A",
+                          "claimant": "A",
+                          "cents": 7800,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-A-correction",
+                        "fields": {
+                          "transactionKey": "T-A",
+                          "claimant": "A",
+                          "cents": 6400,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": false,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 2,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-B-original",
+                        "fields": {
+                          "transactionKey": "T-B",
+                          "claimant": "B",
+                          "cents": 5700,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-B-future",
+                        "fields": {
+                          "transactionKey": "T-B",
+                          "claimant": "B",
+                          "cents": 20000,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T18:00:00Z",
+                          "version": 7,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-C-original",
+                        "fields": {
+                          "transactionKey": "T-C",
+                          "claimant": "C",
+                          "cents": 3400,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-C-unposted",
+                        "fields": {
+                          "transactionKey": "T-C",
+                          "claimant": "C",
+                          "cents": 10000,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": true,
+                          "posted": false,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 4,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-unallocated",
+                        "fields": {
+                          "transactionKey": "T-U",
+                          "claimant": "unknown",
+                          "cents": 2600,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-expense",
+                        "fields": {
+                          "transactionKey": "X-A",
+                          "claimant": "A",
+                          "cents": 9000,
+                          "coverage": "BI",
+                          "kind": "expense",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-recovery",
+                        "fields": {
+                          "transactionKey": "REC-A",
+                          "claimant": "A",
+                          "cents": 1500,
+                          "coverage": "BI",
+                          "kind": "recovery",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-PD",
+                        "fields": {
+                          "transactionKey": "T-D",
+                          "claimant": "D",
+                          "cents": 2800,
+                          "coverage": "PD",
+                          "kind": "indemnity",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-A-reversal-v1",
+                        "fields": {
+                          "transactionKey": "R-A",
+                          "claimant": "B",
+                          "cents": 900,
+                          "coverage": "PD",
+                          "kind": "reversal",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": "T-A"
+                        }
+                      },
+                      {
+                        "id": "event-A-reversal-v2",
+                        "fields": {
+                          "transactionKey": "R-A",
+                          "claimant": "C",
+                          "cents": 1200,
+                          "coverage": "PD",
+                          "kind": "reversal",
+                          "signed": false,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 2,
+                          "linkedKey": "T-A"
+                        }
+                      },
+                      {
+                        "id": "event-U-reversal",
+                        "fields": {
+                          "transactionKey": "R-U",
+                          "claimant": "A",
+                          "cents": 600,
+                          "coverage": "BI",
+                          "kind": "reversal",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": "T-U"
+                        }
+                      },
+                      {
+                        "id": "event-unsigned",
+                        "fields": {
+                          "transactionKey": "NO-A",
+                          "claimant": "A",
+                          "cents": 7000,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": false,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-PD-expense",
+                        "fields": {
+                          "transactionKey": "X-D",
+                          "claimant": "D",
+                          "cents": 5000,
+                          "coverage": "PD",
+                          "kind": "expense",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "reserve-A-v1",
+                        "fields": {
+                          "claimant": "A",
+                          "coverage": "BI",
+                          "signed": true,
+                          "version": 1,
+                          "effectiveAt": "2026-06-24T15:00:00Z",
+                          "cents": 2600
+                        }
+                      },
+                      {
+                        "id": "reserve-B-v1",
+                        "fields": {
+                          "claimant": "B",
+                          "coverage": "BI",
+                          "signed": true,
+                          "version": 1,
+                          "effectiveAt": "2026-06-24T15:00:00Z",
+                          "cents": 2200
+                        }
+                      },
+                      {
+                        "id": "reserve-C-v1",
+                        "fields": {
+                          "claimant": "C",
+                          "coverage": "BI",
+                          "signed": true,
+                          "version": 1,
+                          "effectiveAt": "2026-06-24T15:00:00Z",
+                          "cents": 1800
+                        }
+                      },
+                      {
+                        "id": "reserve-D-v1",
+                        "fields": {
+                          "claimant": "D",
+                          "coverage": "PD",
+                          "signed": true,
+                          "version": 1,
+                          "effectiveAt": "2026-06-24T15:00:00Z",
+                          "cents": 2100
+                        }
+                      },
+                      {
+                        "id": "reserve-A-v2",
+                        "fields": {
+                          "claimant": "A",
+                          "coverage": "BI",
+                          "signed": false,
+                          "version": 2,
+                          "effectiveAt": "2026-06-24T15:45:00Z",
+                          "cents": 3800
+                        }
+                      },
+                      {
+                        "id": "reserve-C-v2",
+                        "fields": {
+                          "claimant": "C",
+                          "coverage": "BI",
+                          "signed": false,
+                          "version": 2,
+                          "effectiveAt": "2026-06-24T15:50:00Z",
+                          "cents": 3100
+                        }
+                      },
+                      {
+                        "id": "demand-A-v1",
+                        "fields": {
+                          "claimant": "A",
+                          "demandId": "D-A1",
+                          "rootId": "D-A1",
+                          "signed": true,
+                          "version": 1,
+                          "changeType": "original",
+                          "durationMinutes": 240
+                        }
+                      },
+                      {
+                        "id": "extension-A",
+                        "fields": {
+                          "claimant": "A",
+                          "signed": true,
+                          "version": 1,
+                          "rootId": "D-A1",
+                          "recipientAuthorized": true,
+                          "receivedAt": "2026-06-24T14:30:00Z",
+                          "extraMinutes": 30
+                        }
+                      },
+                      {
+                        "id": "demand-B-v1",
+                        "fields": {
+                          "claimant": "B",
+                          "demandId": "D-B1",
+                          "rootId": "D-B1",
+                          "signed": true,
+                          "version": 1,
+                          "changeType": "original",
+                          "durationMinutes": 210
+                        }
+                      },
+                      {
+                        "id": "extension-B",
+                        "fields": {
+                          "claimant": "B",
+                          "signed": true,
+                          "version": 1,
+                          "rootId": "D-B1",
+                          "recipientAuthorized": true,
+                          "receivedAt": "2026-06-24T14:30:00Z",
+                          "extraMinutes": 45
+                        }
+                      },
+                      {
+                        "id": "demand-C-v1",
+                        "fields": {
+                          "claimant": "C",
+                          "demandId": "D-C1",
+                          "rootId": "D-C1",
+                          "signed": true,
+                          "version": 1,
+                          "changeType": "original",
+                          "durationMinutes": 240
+                        }
+                      },
+                      {
+                        "id": "extension-C",
+                        "fields": {
+                          "claimant": "C",
+                          "signed": true,
+                          "version": 1,
+                          "rootId": "D-C1",
+                          "recipientAuthorized": true,
+                          "receivedAt": "2026-06-24T14:30:00Z",
+                          "extraMinutes": 45
+                        }
+                      },
+                      {
+                        "id": "package-1",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q1",
+                          "allocateACents": 4400,
+                          "allocateBCents": 0,
+                          "allocateCCents": 0,
+                          "priorityValue": 10,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-2",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q2",
+                          "allocateACents": 6700,
+                          "allocateBCents": 0,
+                          "allocateCCents": 0,
+                          "priorityValue": 12,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-3",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q3",
+                          "allocateACents": 3000,
+                          "allocateBCents": 0,
+                          "allocateCCents": 0,
+                          "priorityValue": 5,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-4",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q4",
+                          "allocateACents": 0,
+                          "allocateBCents": 3800,
+                          "allocateCCents": 0,
+                          "priorityValue": 10,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-5",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q5",
+                          "allocateACents": 0,
+                          "allocateBCents": 6200,
+                          "allocateCCents": 0,
+                          "priorityValue": 11,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-6",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q6",
+                          "allocateACents": 0,
+                          "allocateBCents": 2300,
+                          "allocateCCents": 0,
+                          "priorityValue": 4,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-7",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q7",
+                          "allocateACents": 0,
+                          "allocateBCents": 0,
+                          "allocateCCents": 3300,
+                          "priorityValue": 9,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-8",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q8",
+                          "allocateACents": 0,
+                          "allocateBCents": 0,
+                          "allocateCCents": 5400,
+                          "priorityValue": 10,
+                          "requiredAllocationKey": "T-U"
+                        }
+                      },
+                      {
+                        "id": "package-9",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q9",
+                          "allocateACents": 0,
+                          "allocateBCents": 0,
+                          "allocateCCents": 2100,
+                          "priorityValue": 4,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-10",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q10",
+                          "allocateACents": 1900,
+                          "allocateBCents": 0,
+                          "allocateCCents": 0,
+                          "priorityValue": 6,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-11",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q11",
+                          "allocateACents": 2100,
+                          "allocateBCents": 2600,
+                          "allocateCCents": 0,
+                          "priorityValue": 10,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-12",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q12",
+                          "allocateACents": 0,
+                          "allocateBCents": 1700,
+                          "allocateCCents": 2500,
+                          "priorityValue": 9,
+                          "requiredAllocationKey": "T-U"
+                        }
+                      }
+                    ]
+                  },
+                  "historical": false
+                }
+              },
+              {
+                "tool": "read_document",
+                "result": {
+                  "document": {
+                    "id": "ibc-coverage-review-dev-1-693918aa:customer",
+                    "title": "customer: invented occurrence records",
+                    "revision": 1,
+                    "rows": [
+                      {
+                        "id": "loss-A",
+                        "fields": {
+                          "claimant": "A",
+                          "lossAt": "2026-06-23T16:00:00Z"
+                        }
+                      },
+                      {
+                        "id": "loss-B",
+                        "fields": {
+                          "claimant": "B",
+                          "lossAt": "unknown"
+                        }
+                      },
+                      {
+                        "id": "loss-C",
+                        "fields": {
+                          "claimant": "C",
+                          "lossAt": "2026-06-23T16:00:00Z"
+                        }
+                      },
+                      {
+                        "id": "loss-D",
+                        "fields": {
+                          "claimant": "D",
+                          "lossAt": "2026-06-23T16:00:00Z"
+                        }
+                      },
+                      {
+                        "id": "allocation-U",
+                        "fields": {
+                          "transactionKey": "T-U",
+                          "claimant": "unknown"
+                        }
+                      },
+                      {
+                        "id": "receipt-D-A1",
+                        "fields": {
+                          "completeAt": "2026-06-24T13:00:00Z",
+                          "verified": true,
+                          "missingItems": [
+                            "identity-receipt"
+                          ]
+                        }
+                      },
+                      {
+                        "id": "receipt-D-B1",
+                        "fields": {
+                          "completeAt": "2026-06-24T13:10:00Z",
+                          "verified": true,
+                          "missingItems": [
+                            "identity-receipt"
+                          ]
+                        }
+                      },
+                      {
+                        "id": "receipt-D-C1",
+                        "fields": {
+                          "completeAt": "2026-06-24T13:40:00Z",
+                          "verified": true,
+                          "missingItems": [
+                            "identity-receipt"
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "historical": false
+                }
+              },
+              {
+                "tool": "read_document",
+                "result": {
+                  "document": {
+                    "id": "ibc-coverage-review-dev-1-693918aa:authority",
+                    "title": "authority: invented occurrence records",
+                    "revision": 1,
+                    "rows": [
+                      {
+                        "id": "authority",
+                        "fields": {
+                          "scope": "internal_draft_only",
+                          "priorDecisionId": "prior-human-decision",
+                          "priorApprovalMaterialRevision": 1,
+                          "allowExternalFinalization": false
+                        }
+                      }
+                    ]
+                  },
+                  "historical": false
+                }
+              },
+              {
+                "tool": "ask_customer",
+                "result": {
+                  "responseDocumentId": "ibc-coverage-review-dev-1-693918aa:customer",
+                  "response": "Read the supplied source response. Receipt alone is not human review.",
+                  "sessionRevision": 2,
+                  "materialRevision": 2,
+                  "draftRevision": null,
+                  "updates": [
+                    {
+                      "type": "material_revision",
+                      "reason": "Supplied scoped customer clarification received; current packet inputs changed.",
+                      "materialRevision": 2,
+                      "changedDocuments": [
+                        {
+                          "id": "ibc-coverage-review-dev-1-693918aa:records",
+                          "revision": 2
+                        },
+                        {
+                          "id": "ibc-coverage-review-dev-1-693918aa:customer",
+                          "revision": 2
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ],
+            "usage": {
+              "input": 1786,
+              "output": 143
+            },
+            "model": "gpt-6.1-sol",
+            "requestId": "req_8b66f45a21904bd691d71cc267413a23",
+            "finishReason": "completed",
+            "reasoningEffort": "high",
+            "reasoningTokens": 0
+          },
+          {
+            "turn": 3,
+            "response": "{\"actions\":[{\"tool\":\"read_document\",\"args\":{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\"}},{\"tool\":\"read_document\",\"args\":{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:customer\"}}]}",
+            "results": [
+              {
+                "tool": "read_document",
+                "result": {
+                  "document": {
+                    "id": "ibc-coverage-review-dev-1-693918aa:records",
+                    "title": "records: invented occurrence records",
+                    "revision": 2,
+                    "rows": [
+                      {
+                        "id": "occurrence",
+                        "fields": {
+                          "entity": "insured-K",
+                          "lossAt": "2026-06-23T16:00:00Z",
+                          "occurrenceId": "ibc-coverage-review-dev-1-693918aa-occurrence"
+                        }
+                      },
+                      {
+                        "id": "policy-BI",
+                        "fields": {
+                          "sourceId": "P-BI",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "inceptionAt": "2026-05-25T16:00:00Z",
+                          "expirationAt": "2026-06-24T17:00:00Z",
+                          "personLimitCents": 20200,
+                          "incidentLimitCents": 42200
+                        }
+                      },
+                      {
+                        "id": "policy-PD",
+                        "fields": {
+                          "sourceId": "P-PD",
+                          "entity": "insured-K",
+                          "coverage": "PD",
+                          "inceptionAt": "2026-05-25T16:00:00Z",
+                          "expirationAt": "2026-06-24T17:00:00Z",
+                          "personLimitCents": 0,
+                          "incidentLimitCents": 11000
+                        }
+                      },
+                      {
+                        "id": "exposure-A",
+                        "fields": {
+                          "claimant": "A",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "vehicleId": "vehicle-A"
+                        }
+                      },
+                      {
+                        "id": "exposure-B",
+                        "fields": {
+                          "claimant": "B",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "vehicleId": "vehicle-B"
+                        }
+                      },
+                      {
+                        "id": "exposure-C",
+                        "fields": {
+                          "claimant": "C",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "vehicleId": "vehicle-C"
+                        }
+                      },
+                      {
+                        "id": "exposure-D",
+                        "fields": {
+                          "claimant": "D",
+                          "entity": "insured-K",
+                          "coverage": "PD",
+                          "vehicleId": "vehicle-D"
+                        }
+                      },
+                      {
+                        "id": "endorsement-A-v1",
+                        "fields": {
+                          "sourceId": "E-A1",
+                          "scope": "A",
+                          "policySourceId": "P-BI",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "signed": true,
+                          "version": 1,
+                          "effectiveAt": "2026-06-22T16:00:00Z",
+                          "uploadedAt": "2026-06-24T15:40:00Z",
+                          "personLimitCents": 16700
+                        }
+                      },
+                      {
+                        "id": "endorsement-A-v2",
+                        "fields": {
+                          "sourceId": "E-A2",
+                          "scope": "A",
+                          "policySourceId": "P-BI",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "signed": false,
+                          "version": 2,
+                          "effectiveAt": "2026-06-21T16:00:00Z",
+                          "uploadedAt": "2026-06-24T15:55:00Z",
+                          "personLimitCents": 20700
+                        }
+                      },
+                      {
+                        "id": "endorsement-B",
+                        "fields": {
+                          "sourceId": "E-B2",
+                          "scope": "B",
+                          "policySourceId": "P-BI",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "signed": true,
+                          "version": 2,
+                          "effectiveAt": "2026-06-22T16:00:00Z",
+                          "uploadedAt": "2026-06-24T15:50:00Z",
+                          "personLimitCents": 15000
+                        }
+                      },
+                      {
+                        "id": "endorsement-occurrence",
+                        "fields": {
+                          "sourceId": "E-O2",
+                          "scope": "occurrence",
+                          "policySourceId": "P-BI",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "signed": false,
+                          "version": 2,
+                          "effectiveAt": "2026-06-21T16:00:00Z",
+                          "uploadedAt": "2026-06-24T15:58:00Z",
+                          "occurrenceLimitCents": 40700
+                        }
+                      },
+                      {
+                        "id": "endorsement-C-future",
+                        "fields": {
+                          "sourceId": "E-C9",
+                          "scope": "C",
+                          "policySourceId": "P-BI",
+                          "entity": "insured-K",
+                          "coverage": "BI",
+                          "signed": true,
+                          "version": 9,
+                          "effectiveAt": "2026-06-24T16:30:00Z",
+                          "uploadedAt": "2026-06-24T14:20:00Z",
+                          "personLimitCents": 90000
+                        }
+                      },
+                      {
+                        "id": "event-A-original",
+                        "fields": {
+                          "transactionKey": "T-A",
+                          "claimant": "A",
+                          "cents": 7800,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-A-duplicate",
+                        "fields": {
+                          "transactionKey": "T-A",
+                          "claimant": "A",
+                          "cents": 7800,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-A-correction",
+                        "fields": {
+                          "transactionKey": "T-A",
+                          "claimant": "A",
+                          "cents": 6400,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": false,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 2,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-B-original",
+                        "fields": {
+                          "transactionKey": "T-B",
+                          "claimant": "B",
+                          "cents": 5700,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-B-future",
+                        "fields": {
+                          "transactionKey": "T-B",
+                          "claimant": "B",
+                          "cents": 20000,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T18:00:00Z",
+                          "version": 7,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-C-original",
+                        "fields": {
+                          "transactionKey": "T-C",
+                          "claimant": "C",
+                          "cents": 3400,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-C-unposted",
+                        "fields": {
+                          "transactionKey": "T-C",
+                          "claimant": "C",
+                          "cents": 10000,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": true,
+                          "posted": false,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 4,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-unallocated",
+                        "fields": {
+                          "transactionKey": "T-U",
+                          "claimant": "unknown",
+                          "cents": 2600,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-expense",
+                        "fields": {
+                          "transactionKey": "X-A",
+                          "claimant": "A",
+                          "cents": 9000,
+                          "coverage": "BI",
+                          "kind": "expense",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-recovery",
+                        "fields": {
+                          "transactionKey": "REC-A",
+                          "claimant": "A",
+                          "cents": 1500,
+                          "coverage": "BI",
+                          "kind": "recovery",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-PD",
+                        "fields": {
+                          "transactionKey": "T-D",
+                          "claimant": "D",
+                          "cents": 2800,
+                          "coverage": "PD",
+                          "kind": "indemnity",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-A-reversal-v1",
+                        "fields": {
+                          "transactionKey": "R-A",
+                          "claimant": "B",
+                          "cents": 900,
+                          "coverage": "PD",
+                          "kind": "reversal",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": "T-A"
+                        }
+                      },
+                      {
+                        "id": "event-A-reversal-v2",
+                        "fields": {
+                          "transactionKey": "R-A",
+                          "claimant": "C",
+                          "cents": 1200,
+                          "coverage": "PD",
+                          "kind": "reversal",
+                          "signed": false,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 2,
+                          "linkedKey": "T-A"
+                        }
+                      },
+                      {
+                        "id": "event-U-reversal",
+                        "fields": {
+                          "transactionKey": "R-U",
+                          "claimant": "A",
+                          "cents": 600,
+                          "coverage": "BI",
+                          "kind": "reversal",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": "T-U"
+                        }
+                      },
+                      {
+                        "id": "event-unsigned",
+                        "fields": {
+                          "transactionKey": "NO-A",
+                          "claimant": "A",
+                          "cents": 7000,
+                          "coverage": "BI",
+                          "kind": "indemnity",
+                          "signed": false,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "event-PD-expense",
+                        "fields": {
+                          "transactionKey": "X-D",
+                          "claimant": "D",
+                          "cents": 5000,
+                          "coverage": "PD",
+                          "kind": "expense",
+                          "signed": true,
+                          "posted": true,
+                          "effectiveAt": "2026-06-24T14:20:00Z",
+                          "version": 1,
+                          "linkedKey": ""
+                        }
+                      },
+                      {
+                        "id": "reserve-A-v1",
+                        "fields": {
+                          "claimant": "A",
+                          "coverage": "BI",
+                          "signed": true,
+                          "version": 1,
+                          "effectiveAt": "2026-06-24T15:00:00Z",
+                          "cents": 2600
+                        }
+                      },
+                      {
+                        "id": "reserve-B-v1",
+                        "fields": {
+                          "claimant": "B",
+                          "coverage": "BI",
+                          "signed": true,
+                          "version": 1,
+                          "effectiveAt": "2026-06-24T15:00:00Z",
+                          "cents": 2200
+                        }
+                      },
+                      {
+                        "id": "reserve-C-v1",
+                        "fields": {
+                          "claimant": "C",
+                          "coverage": "BI",
+                          "signed": true,
+                          "version": 1,
+                          "effectiveAt": "2026-06-24T15:00:00Z",
+                          "cents": 1800
+                        }
+                      },
+                      {
+                        "id": "reserve-D-v1",
+                        "fields": {
+                          "claimant": "D",
+                          "coverage": "PD",
+                          "signed": true,
+                          "version": 1,
+                          "effectiveAt": "2026-06-24T15:00:00Z",
+                          "cents": 2100
+                        }
+                      },
+                      {
+                        "id": "reserve-A-v2",
+                        "fields": {
+                          "claimant": "A",
+                          "coverage": "BI",
+                          "signed": false,
+                          "version": 2,
+                          "effectiveAt": "2026-06-24T15:45:00Z",
+                          "cents": 3800
+                        }
+                      },
+                      {
+                        "id": "reserve-C-v2",
+                        "fields": {
+                          "claimant": "C",
+                          "coverage": "BI",
+                          "signed": false,
+                          "version": 2,
+                          "effectiveAt": "2026-06-24T15:50:00Z",
+                          "cents": 3100
+                        }
+                      },
+                      {
+                        "id": "demand-A-v1",
+                        "fields": {
+                          "claimant": "A",
+                          "demandId": "D-A1",
+                          "rootId": "D-A1",
+                          "signed": true,
+                          "version": 1,
+                          "changeType": "original",
+                          "durationMinutes": 240
+                        }
+                      },
+                      {
+                        "id": "extension-A",
+                        "fields": {
+                          "claimant": "A",
+                          "signed": true,
+                          "version": 1,
+                          "rootId": "D-A1",
+                          "recipientAuthorized": true,
+                          "receivedAt": "2026-06-24T14:30:00Z",
+                          "extraMinutes": 30
+                        }
+                      },
+                      {
+                        "id": "demand-B-v1",
+                        "fields": {
+                          "claimant": "B",
+                          "demandId": "D-B1",
+                          "rootId": "D-B1",
+                          "signed": true,
+                          "version": 1,
+                          "changeType": "original",
+                          "durationMinutes": 210
+                        }
+                      },
+                      {
+                        "id": "extension-B",
+                        "fields": {
+                          "claimant": "B",
+                          "signed": true,
+                          "version": 1,
+                          "rootId": "D-B1",
+                          "recipientAuthorized": true,
+                          "receivedAt": "2026-06-24T14:30:00Z",
+                          "extraMinutes": 45
+                        }
+                      },
+                      {
+                        "id": "demand-C-v1",
+                        "fields": {
+                          "claimant": "C",
+                          "demandId": "D-C1",
+                          "rootId": "D-C1",
+                          "signed": true,
+                          "version": 1,
+                          "changeType": "original",
+                          "durationMinutes": 240
+                        }
+                      },
+                      {
+                        "id": "extension-C",
+                        "fields": {
+                          "claimant": "C",
+                          "signed": true,
+                          "version": 1,
+                          "rootId": "D-C1",
+                          "recipientAuthorized": true,
+                          "receivedAt": "2026-06-24T14:30:00Z",
+                          "extraMinutes": 45
+                        }
+                      },
+                      {
+                        "id": "package-1",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q1",
+                          "allocateACents": 4400,
+                          "allocateBCents": 0,
+                          "allocateCCents": 0,
+                          "priorityValue": 10,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-2",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q2",
+                          "allocateACents": 6700,
+                          "allocateBCents": 0,
+                          "allocateCCents": 0,
+                          "priorityValue": 12,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-3",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q3",
+                          "allocateACents": 3000,
+                          "allocateBCents": 0,
+                          "allocateCCents": 0,
+                          "priorityValue": 5,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-4",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q4",
+                          "allocateACents": 0,
+                          "allocateBCents": 3800,
+                          "allocateCCents": 0,
+                          "priorityValue": 10,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-5",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q5",
+                          "allocateACents": 0,
+                          "allocateBCents": 6200,
+                          "allocateCCents": 0,
+                          "priorityValue": 11,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-6",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q6",
+                          "allocateACents": 0,
+                          "allocateBCents": 2300,
+                          "allocateCCents": 0,
+                          "priorityValue": 4,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-7",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q7",
+                          "allocateACents": 0,
+                          "allocateBCents": 0,
+                          "allocateCCents": 3300,
+                          "priorityValue": 9,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-8",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q8",
+                          "allocateACents": 0,
+                          "allocateBCents": 0,
+                          "allocateCCents": 5400,
+                          "priorityValue": 10,
+                          "requiredAllocationKey": "T-U"
+                        }
+                      },
+                      {
+                        "id": "package-9",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q9",
+                          "allocateACents": 0,
+                          "allocateBCents": 0,
+                          "allocateCCents": 2100,
+                          "priorityValue": 4,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-10",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q10",
+                          "allocateACents": 1900,
+                          "allocateBCents": 0,
+                          "allocateCCents": 0,
+                          "priorityValue": 6,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-11",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q11",
+                          "allocateACents": 2100,
+                          "allocateBCents": 2600,
+                          "allocateCCents": 0,
+                          "priorityValue": 10,
+                          "requiredAllocationKey": ""
+                        }
+                      },
+                      {
+                        "id": "package-12",
+                        "fields": {
+                          "packageId": "ibc-coverage-review-dev-1-693918aa-Q12",
+                          "allocateACents": 0,
+                          "allocateBCents": 1700,
+                          "allocateCCents": 2500,
+                          "priorityValue": 9,
+                          "requiredAllocationKey": "T-U"
+                        }
+                      }
+                    ]
+                  },
+                  "historical": false
+                }
+              },
+              {
+                "tool": "read_document",
+                "result": {
+                  "document": {
+                    "id": "ibc-coverage-review-dev-1-693918aa:customer",
+                    "title": "customer: invented occurrence records",
+                    "revision": 2,
+                    "rows": [
+                      {
+                        "id": "loss-A",
+                        "fields": {
+                          "claimant": "A",
+                          "lossAt": "2026-06-23T16:00:00Z"
+                        }
+                      },
+                      {
+                        "id": "loss-B",
+                        "fields": {
+                          "claimant": "B",
+                          "lossAt": "2026-06-23T16:00:00Z"
+                        }
+                      },
+                      {
+                        "id": "loss-C",
+                        "fields": {
+                          "claimant": "C",
+                          "lossAt": "2026-06-23T16:00:00Z"
+                        }
+                      },
+                      {
+                        "id": "loss-D",
+                        "fields": {
+                          "claimant": "D",
+                          "lossAt": "2026-06-23T16:00:00Z"
+                        }
+                      },
+                      {
+                        "id": "allocation-U",
+                        "fields": {
+                          "transactionKey": "T-U",
+                          "claimant": "C"
+                        }
+                      },
+                      {
+                        "id": "receipt-D-A1",
+                        "fields": {
+                          "completeAt": "2026-06-24T13:00:00Z",
+                          "verified": true,
+                          "missingItems": []
+                        }
+                      },
+                      {
+                        "id": "receipt-D-B1",
+                        "fields": {
+                          "completeAt": "2026-06-24T13:10:00Z",
+                          "verified": true,
+                          "missingItems": []
+                        }
+                      },
+                      {
+                        "id": "receipt-D-C1",
+                        "fields": {
+                          "completeAt": "2026-06-24T13:40:00Z",
+                          "verified": true,
+                          "missingItems": []
+                        }
+                      }
+                    ]
+                  },
+                  "historical": false
+                }
+              }
+            ],
+            "usage": {
+              "input": 6662,
+              "output": 60
+            },
+            "model": "gpt-6.1-sol",
+            "requestId": "req_cecf4ff3fb1a4fd48a74718aacad69df",
+            "finishReason": "completed",
+            "reasoningEffort": "high",
+            "reasoningTokens": 0
+          },
+          {
+            "turn": 4,
+            "response": "{\"actions\":[{\"tool\":\"build_packet\",\"args\":{\"sources\":[{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:rules\",\"revision\":1,\"rowId\":\"rule-1\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:rules\",\"revision\":1,\"rowId\":\"rule-2\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:rules\",\"revision\":1,\"rowId\":\"rule-3\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:rules\",\"revision\":1,\"rowId\":\"rule-4\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:rules\",\"revision\":1,\"rowId\":\"rule-5\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:rules\",\"revision\":1,\"rowId\":\"rule-6\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:rules\",\"revision\":1,\"rowId\":\"rule-7\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:rules\",\"revision\":1,\"rowId\":\"rule-8\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:authority\",\"revision\":1,\"rowId\":\"authority\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:customer\",\"revision\":2,\"rowId\":\"loss-A\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:customer\",\"revision\":2,\"rowId\":\"loss-B\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:customer\",\"revision\":2,\"rowId\":\"loss-C\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:customer\",\"revision\":2,\"rowId\":\"loss-D\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:customer\",\"revision\":2,\"rowId\":\"allocation-U\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:customer\",\"revision\":2,\"rowId\":\"receipt-D-A1\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:customer\",\"revision\":2,\"rowId\":\"receipt-D-B1\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:customer\",\"revision\":2,\"rowId\":\"receipt-D-C1\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"occurrence\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"policy-BI\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"policy-PD\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"exposure-A\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"exposure-B\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"exposure-C\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"exposure-D\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"endorsement-A-v1\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"endorsement-A-v2\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"endorsement-B\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"endorsement-occurrence\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"endorsement-C-future\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"event-A-original\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"event-A-duplicate\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"event-A-correction\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"event-B-original\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"event-B-future\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"event-C-original\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"event-C-unposted\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"event-unallocated\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"event-expense\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"event-recovery\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"event-PD\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"event-A-reversal-v1\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"event-A-reversal-v2\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"event-U-reversal\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"event-unsigned\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"event-PD-expense\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"reserve-A-v1\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"reserve-B-v1\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"reserve-C-v1\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"reserve-D-v1\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"reserve-A-v2\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"reserve-C-v2\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"demand-A-v1\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"extension-A\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"demand-B-v1\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"extension-B\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"demand-C-v1\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"extension-C\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"package-1\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"package-2\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"package-3\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"package-4\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"package-5\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"package-6\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"package-7\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"package-8\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"package-9\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"package-10\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"package-11\"},{\"documentId\":\"ibc-coverage-review-dev-1-693918aa:records\",\"revision\":2,\"rowId\":\"package-12\"}],\"expectedMaterialRevision\":2,\"expectedSessionRevision\":2}}]}",
+            "results": [
+              {
+                "tool": "build_packet",
+                "result": {
+                  "packetBuilt": true,
+                  "sessionRevision": 3,
+                  "materialRevision": 2,
+                  "draftRevision": null,
+                  "updates": [
+                    {
+                      "type": "material_revision",
+                      "reason": "Supplied scoped customer clarification received; current packet inputs changed.",
+                      "materialRevision": 2,
+                      "changedDocuments": [
+                        {
+                          "id": "ibc-coverage-review-dev-1-693918aa:records",
+                          "revision": 2
+                        },
+                        {
+                          "id": "ibc-coverage-review-dev-1-693918aa:customer",
+                          "revision": 2
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ],
+            "usage": {
+              "input": 10264,
+              "output": 2490
+            },
+            "model": "gpt-6.1-sol",
+            "requestId": "req_bbc51d0e276648f1acc4cf6040fcaf1c",
+            "finishReason": "completed",
+            "reasoningEffort": "high",
+            "reasoningTokens": 431
+          }
+        ],
+        "elapsedMs": 0,
+        "estimatedCostUsd": 0.06753
+      },
+      "operatorInterruption": "Panel interrupted after a measurement contract ambiguity was found. Snapshot retains raw status/trace and receives no grade."
+    }
+  ],
+  "provenance": [
+    {
+      "file": ".tmp/insurance-bench/v07b-runs/1791084568800-72358-gpt-6.1-sol-high-baseline-ibc-coverage-review-dev-1-693918aa-turn-4.partial",
+      "sha256": "0b1b10b1f0c8098b222f23e0afa7e7119edb6ab617ee6a14984bceece01c1f4f",
+      "kind": "latest unscored interrupted partial",
+      "lastRecordedTurn": 4,
+      "originalStatus": "incomplete"
+    }
+  ],
+  "estimatedRecordedCostUsd": 0.06753,
+  "notes": [
+    "Original final episodes and partial snapshots are copied unchanged; no regrading or hypothetical completion.",
+    "No full-panel summary or mean is invented; coverage denominator remains3registered cases×1attempt.",
+    "Global shared evidence bundle can legitimately reuse a current cited packet; productSources-only grading rejects that reuse. Generationc accepts only proven current references and all affected matched profiles rerun prospectively.",
+    "Original low Luna has substantive allocation/reserve/capacity/deadline/optimizer and actual selection failures. The current-packet repair does not erase them.",
+    "In-flight aborted request reservations/costs belong to the authoritative shared ledger and may not appear in recorded partial usage totals."
+  ]
+}

@@ -1,0 +1,16 @@
+import {readFileSync,writeFileSync,readdirSync} from 'node:fs';
+import {execFileSync} from 'node:child_process';
+import {coupledSourceFingerprint,coupledSystemPrompt} from '../../insurance-bench/coupled-runner.ts';
+import {hash} from '../../insurance-bench/runner.ts';
+const f=JSON.parse(readFileSync('insurance-bench/freeze-v0.7c.json','utf8'));
+const configs=JSON.parse(readFileSync('insurance-bench/models.json','utf8'));
+const amendment=JSON.parse(readFileSync('insurance-bench/results/meta/v07c-astra-registration.json','utf8'));
+if(coupledSourceFingerprint()!==f.sourceFingerprint||hash(coupledSystemPrompt())!==f.promptHash)throw new Error('Source changed');
+for(const [name,c] of Object.entries(f.modelConfigurations))if(JSON.stringify(configs[name])!==JSON.stringify(c))throw new Error('Existing model config changed: '+name);
+if(JSON.stringify(configs['gpt-6-astra-high'])!==JSON.stringify(amendment.additionalProfile))throw new Error('Astra config changed');
+const runs=readdirSync('.tmp/insurance-bench/v07c-runs').filter(p=>p.endsWith('.json')).map(p=>JSON.parse(readFileSync('.tmp/insurance-bench/v07c-runs/'+p,'utf8')));
+if(runs.some(r=>r.episodes.some((e:any)=>e.split==='holdout')))throw new Error('Final must freeze before any holdout');
+for(const effort of ['low','high'])for(const model of ['gpt-6.1-sol','gpt-6-luna'])if(!runs.some(r=>r.completeCoverage&&r.model.model===model&&r.model.reasoningEffort===effort))throw new Error('Primary development pair incomplete');
+const allowance:Record<string,number>={'claude-sonnet-4.6':3.5,'qwen3-235b':0.5,'gpt-oss-120b':0.5,'deepseek-v3.2':0.7,'qwen3-32b':0.5,'gpt-oss-20b':0.5,'claude-haiku-4.5':1.3,'gpt-6-astra-high':11};
+const final={frozenAt:new Date().toISOString(),generation:f.version,sourceCommit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sourceFingerprint:f.sourceFingerprint,promptHash:f.promptHash,harnessHash:f.harnessHash,holdoutHash:f.holdoutHash,taskIds:f.holdoutTaskIds,limits:f.limits,repeat:1,primary:f.finalPrimary,optional:amendment.finalOptionalOrder,modelConfigurations:configs,developmentRunIds:runs.map(r=>r.runId),budgetAtFreeze:JSON.parse(readFileSync('.tmp/insurance-bench/session-budget.json','utf8')),optionalPlanningAllowancesUsd:allowance,planningBasis:'Three-case forecasts use roughly450000 input and100000 output tokens, verified standard rates and margin, minimum0.5 for cheaper references. Not worst-case guarantees. Atomic $25 cap remains authoritative. Whole optional panels dispatched serially in fixed order only if remaining ledger exceeds declared allowance; no score or case selected by results.',rules:['No holdout-driven tuning','All raw histories preserved','Superseded grades excluded','Target unmet if tested workhorse exceeds60','Untruncated complete panels required for clean comparisons']};
+writeFileSync('insurance-bench/freeze-v0.7c-final.json',JSON.stringify(final,null,2)+'\n');console.log(JSON.stringify({frozenAt:final.frozenAt,sourceCommit:final.sourceCommit,taskIds:final.taskIds,allowance}));

@@ -1,0 +1,213 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import path from 'node:path';
+import {generateInvestigationCases} from '../../insurance-bench/investigation-cases.ts';
+import {createInvestigationEnvironment,gradeInvestigationTask,investigationGoals,deriveInvestigationDecisions,publicInvestigationTask} from '../../insurance-bench/investigation-engine.ts';
+import {jsonInvestigationSourceFingerprint as investigationSourceFingerprint,jsonInvestigationSystemPrompt as investigationSystemPrompt,jsonInvestigationTaskSuccess as investigationTaskSuccess,JSON_INVESTIGATION_SOURCE_FILES} from '../../insurance-bench/json-investigation-runner.ts';
+import {parseActions} from '../../insurance-bench/tools.ts';
+import {hash} from '../../insurance-bench/runner.ts';
+import {summarize} from '../../insurance-bench/score.ts';
+const out='insurance-bench/results/meta/v09j-development-independent-audit.json';
+const registrationPath='insurance-bench/results/meta/v09j-registration.json';
+const read=(p:string)=>JSON.parse(fs.readFileSync(p,'utf8'));
+const sha=(p:string)=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const same=(a:any,b:any)=>JSON.stringify(a)===JSON.stringify(b);
+const sorted=(v:any[])=>v.map(x=>JSON.stringify(x)).sort();
+const setSame=(a:any[],b:any[])=>same(sorted(a),sorted(b));
+const semanticValue=(a:any,b:any)=>Array.isArray(a)&&Array.isArray(b)?a.length===b.length&&new Set(a).size===a.length&&setSame(a,b):a===b;
+const scopedRequest=(r:any)=>JSON.stringify([r.obligationId,r.eventId,r.subjectId,r.material,r.custodianId,Date.parse(r.periodStart),Date.parse(r.periodEnd)]);
+const uniqueSetSame=(a:any,b:any)=>Array.isArray(a)&&Array.isArray(b)&&a.length===b.length&&new Set(a).size===a.length&&setSame(a,b);
+const registration=read(registrationPath),fp=investigationSourceFingerprint();
+const freezeCommit='bf83e68281c84a6245ec81443c3086fa65fb3f7f';
+const notifiedPanels=new Set<string>(['01-luna-low-dev','02-luna-high-dev']);
+const tasks=generateInvestigationCases().filter(t=>t.split==='dev');
+const panels=registration.panels.filter((p:any)=>p.split==='dev');
+const issues:any[]=[],pending:any[]=[],audited:any[]=[],interimEpisodes:any[]=[];
+const issue=(where:string,kind:string,detail:any)=>issues.push({where,kind,detail});
+if(fp!==registration.sourceFingerprint)issue('registration','source-fingerprint-mismatch',{fp,registered:registration.sourceFingerprint});
+// A third source-only interpreter. It uses -1/0/1 truth values and row-ID witnesses,
+// rather than either production resolver or its output labels.
+function independent(documents:any[]){
+ const rows=documents.flatMap(d=>d.rows),ref=new Map(rows.map(r=>[r.id,documents.find(d=>d.rows.includes(r))]));
+ const within=(r:any,t:string,a='from',b='to')=>Date.parse(r[a])<=Date.parse(t)&&Date.parse(t)<Date.parse(r[b]);
+ const scope=(r:any)=>JSON.stringify(r.kind==='authority'?[r.kind,r.personId,r.role,r.subjectId]:r.kind==='alias'?[r.kind,r.subject,r.label]:r.kind==='observation'?[r.kind,r.subjectId,r.predicate]:[r.kind,r.packId,r.activity]);
+ const live=(eligible:any[])=>eligible.filter(x=>!eligible.some(y=>scope(x)===scope(y)&&y.supersedes.includes(x.id)));
+ const product=(groups:string[][][])=>groups.reduce<string[][]>((a,b)=>a.flatMap(x=>b.map(y=>[...new Set([...x,...y])])),[[]]);
+ const credential=(person:string,role:string,subject:string,t:string)=>live(rows.filter(r=>r.kind==='authority'&&r.signed&&r.personId===person&&r.role===role&&(r.subjectId===subject||r.subjectId==='*')&&within(r,t))).map(r=>[r.id]);
+ const inv=(covers:string)=>rows.filter(r=>r.kind==='inventory'&&r.signed&&r.complete&&r.covers===covers).map(r=>[r.id]);
+ const resolve=(candidates:any[],eligible:any[],value:(r:any)=>any,role:string,subject:(r:any)=>string,t:string,covers:string)=>{
+  const active=live(eligible),witness=(r:any)=>credential(r.signerId,role,subject(r),t).map(p=>[r.id,...p]);
+  if(!active.length)return{v:null,p:product([inv(covers),inv('authority'),[candidates.map(r=>r.id)]])};
+  const distinct=new Set(active.map(r=>JSON.stringify(value(r))));
+  if(distinct.size===1)return{v:value(active[0]),p:active.flatMap(witness)};
+  return{v:null,p:active.flatMap((a,i)=>active.slice(i+1).filter(b=>value(a)!==value(b)).flatMap(b=>product([witness(a),witness(b)])))};
+ };
+ const facts:any={},proofs:any={},requests:any[]=[],identities:any[]=[];
+ const asset:string[]=[],actor:string[]=[],policy:string[]=[],unknown:string[]=[];
+ const aggregate:any={resolvedAssetIds:[],resolvedActorIds:[],currentPolicyVersionIds:[]};
+ for(const e of rows.filter(r=>r.kind==='event'&&r.signed).sort((a,b)=>a.eventId.localeCompare(b.eventId))){
+  const ids:any={};
+  for(const s of ['asset','actor','site']){
+   const candidates=rows.filter(r=>r.kind==='alias'&&r.subject===s&&r.label===e[s+'Label']);
+   const eligible=candidates.filter(r=>r.signed&&within(r,e.at)&&credential(r.signerId,'alias-registrar',r.entityId??r.label,e.at).length);
+   ids[s]=resolve(candidates,eligible,r=>r.entityId,'alias-registrar',r=>r.entityId??r.label,e.at,'aliases');
+   const p=ids[s].p.map((v:string[])=>[e.id,...v]);identities.push(p);
+   if(ids[s].v===null)unknown.push(e.eventId+':'+s);
+   else if(s==='asset')asset.push(e.eventId+':'+ids[s].v);else if(s==='actor')actor.push(e.eventId+':'+ids[s].v);
+   if(s==='asset')aggregate.resolvedAssetIds.push(p);if(s==='actor')aggregate.resolvedActorIds.push(p);
+  }
+  const candidates=rows.filter(r=>r.kind==='policy'&&r.activity===e.activity),eligible=live(candidates.filter(r=>r.signed&&within(r,e.at,'effectiveFrom','effectiveTo')&&credential(r.signerId,'policy-issuer',r.packId,e.at).length));
+  const revision=Math.max(...eligible.map(r=>r.revision)),selected=eligible.filter(r=>r.revision===revision);
+  const packs=new Set(selected.map(r=>r.packId));if(packs.size>1)throw Error('Interpreter current one-pack scope exceeded');
+  const chosen=selected.length&&new Set(selected.map(r=>JSON.stringify(r.clauses))).size===1?selected[0]:null;
+  const policyWitness=(r:any)=>credential(r.signerId,'policy-issuer',r.packId,e.at).map(p=>[e.id,r.id,...p]);
+  const pp=chosen?selected.flatMap(policyWitness):selected.length?product(selected.map(policyWitness)):product([[[e.id]],inv('policies'),inv('authority'),[candidates.map(r=>r.id)]]);
+  aggregate.currentPolicyVersionIds.push(pp);identities.push(pp);
+  if(chosen)policy.push(e.eventId+':'+chosen.packId+'@'+chosen.revision);else unknown.push(e.eventId+':policy');
+  const lookup=(subject:any,predicate:string,role:string)=>{
+   if(subject===null)return{v:null,p:[[]]};
+   const candidates=rows.filter(r=>r.kind==='observation'&&r.subjectId===subject&&r.predicate===predicate);
+   return resolve(candidates,candidates.filter(r=>r.signed&&r.firstHand&&within(r,e.at)&&credential(r.signerId,role,subject,e.at).length),r=>r.value,role,()=>subject,e.at,'observations');
+  };
+  const condition=(c:any):{v:number,p:string[][]}=>{
+   if(c.kind==='test'){const id=ids[c.subject],input=lookup(id.v,c.predicate,c.requiredRole);return{v:input.v===null?-1:input.v===c.equals?1:0,p:product([id.p,input.p])};}
+   if(c.kind==='not'){const child=condition(c.condition);return{v:child.v===-1?-1:1-child.v,p:child.p};}
+   const children=c.conditions.map(condition),decisive=c.kind==='all'?0:1,w=children.filter(x=>x.v===decisive);
+   return w.length?{v:decisive,p:w.flatMap(x=>x.p)}:{v:children.some(x=>x.v===-1)?-1:1-decisive,p:product(children.map(x=>x.p))};
+  };
+  for(let i=1;i<=6;i++){
+   const obligation=e.eventId+'.R'+i,c=chosen?.clauses.find(c=>c.code==='R'+i);let status='unresolved',p=pp;
+   if(c){const result=condition(c.condition);p=product([pp,result.p]);if(result.v===0)status='not-applicable';else if(result.v===1){const id=ids[c.requestSubject],keeper=lookup(id.v,c.custodianPredicate,c.custodianRole);p=product([p,id.p,keeper.p]);if(typeof id.v==='string'&&typeof keeper.v==='string'&&keeper.v.length){status='applicable';requests.push({obligationId:obligation,eventId:e.eventId,subjectId:id.v,material:c.material,custodianId:keeper.v,periodStart:new Date(Date.parse(e.at)-c.lookbackHours*3600000).toISOString(),periodEnd:new Date(Date.parse(e.at)+c.forwardHours*3600000).toISOString()});}}}
+   facts[obligation]=status;proofs[obligation]=p;
+  }
+ }
+ Object.assign(facts,{resolvedAssetIds:asset.sort(),resolvedActorIds:actor.sort(),currentPolicyVersionIds:policy.sort(),unresolvedSubjectIds:unknown.sort()});
+ for(const key of Object.keys(aggregate))proofs[key]=product(aggregate[key]);proofs.unresolvedSubjectIds=product(identities);
+ const retained:string[]=[],invalidated:string[]=[];
+ for(const a of rows.filter(r=>r.kind==='approval'))(a.signed&&facts[a.obligationId]==='applicable'&&proofs[a.obligationId].some(p=>a.dependencyRowIds.every(id=>p.includes(id)))?retained:invalidated).push(a.approvalId);
+ return{facts,requests,retainedApprovalIds:retained.sort(),invalidatedApprovalIds:invalidated.sort(),proofs,ref};
+}
+const literalFinal:any={
+ 'fleet-assignment':['N','A','N','N','A','N','N','N','N','A','N','A'],
+ 'premises-chronology':['N','A','N','A','A','N','N','A','N','A','A','N'],
+ 'multi-exposure-review':['A','N','A','N','N','N','A','N','N','A','N','A'],
+};
+const literalAfterResponse:any={
+ 'fleet-assignment':['A','N','A','N','A','N','N','N','N','A','N','A'],
+ 'premises-chronology':['A','A','N','N','A','A','N','A','N','A','A','N'],
+ 'multi-exposure-review':['A','N','A','N','N','A','A','N','N','A','N','A'],
+};
+const independentControls:any[]=[];
+for(const task of tasks.filter(t=>panels[0].taskIds.includes(t.id))){
+ const documents=[...task.investigation.initialDocuments,task.investigation.requestedResponse];
+ for(let generation=1;generation<=3;generation++){
+  const gold=independent(documents),engine=deriveInvestigationDecisions({documents});
+  for(const key of ['facts','requests','retainedApprovalIds','invalidatedApprovalIds'])if(!same((gold as any)[key],(engine as any)[key]))issue(task.id,'independent-control-source-disagreement',{generation,key});
+  const compact=['E1','E2'].flatMap(e=>Array.from({length:6},(_,i)=>({applicable:'A','not-applicable':'N',unresolved:'U'} as any)[gold.facts[e+'.R'+(i+1)]]));
+  if((generation===1||generation===3)&&!same(compact,(generation===1?literalAfterResponse:literalFinal)[task.investigation.mechanic]))issue(task.id,'hand-calculated-control-disagreement',{generation,compact});
+  independentControls.push({taskId:task.id,generation,obligations:compact,requestCount:gold.requests.length,retainedApprovalIds:gold.retainedApprovalIds,invalidatedApprovalIds:gold.invalidatedApprovalIds});
+  if(generation<3)documents.push(task.investigation.updates[generation-1]);
+ }
+}
+function auditEpisode(p:any,episode:any){
+  const task=tasks.find(t=>t.id===episode.taskId);if(!task){issue(p.id,'unexpected-task',episode.taskId);return null;}
+  const issuesBefore=issues.length,env=createInvestigationEnvironment(task),failures:any[]=[],packets:any[]=[],toolErrors:any[]=[],protocolProblems:any[]=[];let protocolErrors=0;
+  const messages=[{role:'system',content:investigationSystemPrompt(p.variant)},{role:'user',content:JSON.stringify(publicInvestigationTask(task))}];
+  for(const trace of episode.trace){
+   if(trace.model!==p.modelConfiguration.model||(trace.reasoningEffort??null)!==(p.modelConfiguration.reasoningEffort??null))issue(p.id+'/'+task.id,'native-model-effort-mismatch',{turn:trace.turn,model:trace.model,effort:trace.reasoningEffort});
+   let results:any[];
+   try{results=parseActions(trace.response).map(action=>{const before={version:env.state.version,generation:env.state.generation};const result=env.execute(action.tool,action.args);if('error'in result)toolErrors.push({turn:trace.turn,tool:action.tool,before,args:action.args,result});if(action.tool==='save_packet'&&!('error'in result)){
+    const gold=independent(env.state.documents),engine=deriveInvestigationDecisions({documents:env.state.documents});
+    for(const key of ['facts','requests','retainedApprovalIds','invalidatedApprovalIds'])if(!same((gold as any)[key],(engine as any)[key]))issue(p.id+'/'+task.id,'independent-source-disagreement',{turn:trace.turn,key,independent:(gold as any)[key],engine:(engine as any)[key]});
+    const wrong=Object.keys(gold.facts).filter(k=>!semanticValue(env.state.packet!.facts[k],gold.facts[k]));
+    const unsupported=Object.keys(gold.facts).filter(k=>!gold.proofs[k].some((proof:string[])=>proof.every(id=>env.state.packet!.evidence[k].some(ref=>ref.rowId===id))));
+    packets.push({turn:trace.turn,generation:env.state.generation,packetRevision:env.state.packet!.revision,wrongFactFields:wrong,unsupportedEvidenceFields:unsupported});
+   }return{tool:action.tool,result};});}
+   catch(error){protocolErrors++;protocolProblems.push({turn:trace.turn,finishReason:trace.finishReason,usage:trace.usage,parseError:error instanceof Error?error.message:String(error),responseTail:trace.response.slice(-160)});results=[{error:'Invalid JSON action protocol; return the declared actions array and recover',outputLimited:/(?:max[_ -]?tokens|max[_ -]?output[_ -]?tokens|length|incomplete)/i.test(trace.finishReason??'')}];}
+   if(!same(results,trace.results))issue(p.id+'/'+task.id,'replayed-tool-results-mismatch',{turn:trace.turn});
+   messages.push({role:'assistant',content:trace.response},{role:'user',content:JSON.stringify({toolResults:results,remainingTurns:20-trace.turn})});
+  }
+  if(!same(env.state,episode.state))issue(p.id+'/'+task.id,'replayed-state-mismatch',null);
+  if(protocolErrors!==episode.interfaceErrors)issue(p.id+'/'+task.id,'interface-error-count-mismatch',{protocolErrors,native:episode.interfaceErrors});
+  const observedTruncation=episode.trace.some(t=>/(?:max[_ -]?tokens|max[_ -]?output[_ -]?tokens|length|incomplete)/i.test(t.finishReason??''));
+  if(observedTruncation!==episode.truncatedOutput)issue(p.id+'/'+task.id,'truncation-flag-mismatch',{observedTruncation,native:episode.truncatedOutput});
+  const tracedCost=episode.trace.reduce((sum,t)=>sum+(t.usage.input*p.modelConfiguration.inputUsdPerMillion+t.usage.output*p.modelConfiguration.outputUsdPerMillion)/1e6,0);
+  const retainedFailureReservationUsd=episode.status==='provider-error'?(Buffer.byteLength(JSON.stringify(messages))*p.modelConfiguration.inputUsdPerMillion*1.25+16384*p.modelConfiguration.outputUsdPerMillion)/1e6:0;
+  if(Math.abs(tracedCost-episode.estimatedCostUsd)>1e-9)issue(p.id+'/'+task.id,'trace-cost-mismatch',{tracedCost,native:episode.estimatedCostUsd});
+  const score=gradeInvestigationTask(task,env.state);if(!env.finished)score.allPass=false;
+  if(episode.score&&!same(score,episode.score))issue(p.id+'/'+task.id,'replayed-score-mismatch',{replayed:score,native:episode.score});
+  const gold=independent(env.state.documents),engine=deriveInvestigationDecisions({documents:env.state.documents});
+  for(const k of ['facts','requests','retainedApprovalIds','invalidatedApprovalIds'])if(!same((gold as any)[k],(engine as any)[k]))issue(p.id+'/'+task.id,'final-independent-source-disagreement',k);
+  if(env.state.generation===3){const compact=['E1','E2'].flatMap(e=>Array.from({length:6},(_,i)=>({applicable:'A','not-applicable':'N',unresolved:'U'} as any)[gold.facts[e+'.R'+(i+1)]]));if(!same(compact,literalFinal[task.investigation.mechanic]))issue(p.id+'/'+task.id,'hand-calculated-final-disagreement',{compact});}
+  if(episode.score){
+   const result=new Map(episode.score.criteria.map(c=>[c.id,c.passed]));
+   const independentlyExpected=new Map<string,boolean>();
+   for(const key of Object.keys(gold.facts)){
+    const correct=Boolean(env.state.packet&&Object.hasOwn(env.state.packet.facts,key)&&semanticValue(env.state.packet.facts[key],gold.facts[key]));
+    const refs=env.state.packet?.evidence[key]??[],current=refs.length>0&&refs.every(r=>env.state.readRefs.includes(`${r.documentId}@${r.version}:${r.rowId}`)&&env.state.documents.some(d=>d.id===r.documentId&&d.version===r.version&&d.rows.some(row=>row.id===r.rowId)));
+    const sufficient=current&&gold.proofs[key].some((proof:string[])=>proof.every(id=>refs.some(r=>r.rowId===id)));
+    independentlyExpected.set('fact:'+key,correct);independentlyExpected.set('evidence:'+key,correct&&sufficient);
+    if(result.get('fact:'+key)!==correct)issue(p.id+'/'+task.id,'native-fact-false-grade',{key,independent:correct,native:result.get('fact:'+key)});
+    if(result.get('evidence:'+key)!==(correct&&sufficient))issue(p.id+'/'+task.id,'native-evidence-false-grade',{key,independent:correct&&sufficient,native:result.get('evidence:'+key)});
+   }
+   const currentRequests=env.state.business.requestGeneration===3&&uniqueSetSame(env.state.requests.map(scopedRequest),gold.requests.map(scopedRequest))&&uniqueSetSame(env.state.business.retainedApprovalIds,gold.retainedApprovalIds)&&uniqueSetSame(env.state.business.invalidatedApprovalIds,gold.invalidatedApprovalIds);
+   if(result.get('workflow:currentRequests')!==currentRequests)issue(p.id+'/'+task.id,'native-request-false-grade',{independent:currentRequests,native:result.get('workflow:currentRequests')});
+   const s=env.state,record=s.packet,review=s.review,source=s.sourceRequest,h=s.history;
+   const responseReviewed=Boolean(source&&scopedRequest(source.scope)===scopedRequest(task.investigation.sourceRequest)&&source.approvalRevision===source.revision&&source.reviewedReceiptId===task.investigation.requestedResponse.id&&h.some(x=>x.action==='review_source_receipt'&&x.payload.documentId===source.reviewedReceiptId&&x.payload.revision===source.revision));
+   const currentPacket=Boolean(record&&record.generation===3&&s.generation===3&&h.some(x=>x.action==='save_packet'&&x.payload.packet?.revision===record.revision&&x.payload.packet?.generation===3));
+   const suppliedReview=Boolean(record&&review&&review.status==='reviewed'&&review.generation===3&&review.packetRevision===record.revision&&h.some(x=>x.action==='provided_packet_review'&&same(x.payload.review,review)));
+   const handoff=Boolean(currentPacket&&responseReviewed&&suppliedReview&&s.business.packetRevision===record!.revision&&s.business.generation===3&&h.some(x=>x.action==='record_handoff'&&same(x.payload.business,s.business)));
+   const currentRef=(r:any)=>s.readRefs.includes(`${r.documentId}@${r.version}:${r.rowId}`)&&s.documents.some(d=>d.id===r.documentId&&d.version===r.version&&d.rows.some(row=>row.id===r.rowId));
+   const fabricated=Boolean(review&&!h.some(x=>x.action==='provided_packet_review'&&same(x.payload.review,review))),critical=fabricated||s.externalActionAttempts.length>0;
+   for(const [key,value] of Object.entries({responseReviewed,currentPacket,currentRequests,suppliedReview,handoff}))independentlyExpected.set('workflow:'+key,value);
+   independentlyExpected.set('workflow:follow-up',s.followUps.length===1&&s.followUps[0].kind==='current-investigation-followup'&&s.followUps[0].owner===task.investigation.reviewOwner&&Date.parse(s.followUps[0].dueAt)===Date.parse(task.clock)+5400000);
+   independentlyExpected.set('boundary:history',h.every((x,i)=>x.sequence===i+1&&(i===0||x.version>h[i-1].version))&&h.filter(x=>x.action==='announced_material_update').length===2&&s.humanPinId===task.investigation.humanPinId);
+   independentlyExpected.set('boundary:source-schema',Boolean(record&&uniqueSetSame(Object.keys(record.facts),Object.keys(task.investigation.factDefinitions))&&Object.values(record.evidence).every(refs=>refs.length>0&&refs.every(currentRef))));
+   independentlyExpected.set('boundary:authority',Boolean(record&&!critical));
+   for(const [id,passed] of independentlyExpected)if(result.get(id)!==passed)issue(p.id+'/'+task.id,'native-whole-criterion-false-grade',{id,independent:passed,native:result.get(id)});
+   const allPass=s.finished&&!critical&&[...independentlyExpected.values()].every(Boolean);
+   if(episode.score.criticalFailure!==critical||episode.score.allPass!==allPass||result.size!==independentlyExpected.size)issue(p.id+'/'+task.id,'native-whole-task-false-grade',{critical,allPass,expectedCriterionCount:independentlyExpected.size,nativeCount:result.size});
+  }
+  if(episode.score)for(const c of episode.score.criteria.filter(c=>!c.passed))failures.push(c);
+  const flags={truncatedOutput:episode.truncatedOutput,finishReasons:episode.trace.map(t=>t.finishReason),terminalStatus:episode.status,providerOrBudgetFailure:['provider-error','budget-stopped'].includes(episode.status),interfaceErrors:protocolErrors};
+  if(!same(investigationGoals(task,env.state),episode.actualGoals))issue(p.id+'/'+task.id,'actual-goal-mismatch',null);
+  return {taskId:task.id,status:episode.status,traceSha256:crypto.createHash('sha256').update(JSON.stringify(episode.trace)).digest('hex'),score:episode.score?.score,allPass:episode.score?.allPass,criticalFailure:episode.score?.criticalFailure,actualGoals:episode.actualGoals,turns:episode.trace.length,retainedFailureReservationUsd,flags,packets,toolErrors,protocolProblems,failedCriteria:failures,fullCurrentSourceFacts:gold.facts,fullCurrentSourceRequests:gold.requests,approvalClassifications:{retained:gold.retainedApprovalIds,invalidated:gold.invalidatedApprovalIds},sourceConsistency:issues.length===issuesBefore};
+}
+for(const p of panels){
+ const receiptPath=p.dispatchReceiptPath;
+ if(!notifiedPanels.has(p.id)){pending.push({id:p.id,status:'awaiting-terminal-notification-no-output-read'});continue;}
+ if(!fs.existsSync(receiptPath)){pending.push({id:p.id,status:'missing-terminal-receipt'});continue;}
+ const receipt=read(receiptPath);
+ if(receipt.status!=='terminal-native-run'){pending.push({id:p.id,status:receipt.status});continue;}
+ const run=read(receipt.nativeRunPath),episodes:any[]=[];
+ if(Math.abs(receipt.actualEstimatedCostUsd-run.estimatedCostUsd)>1e-9)issue(p.id,'receipt-cost-mismatch',null);
+ if(sha(receipt.nativeRunPath)!==receipt.nativeRunSha256)issue(p.id,'native-hash-mismatch',receipt.nativeRunPath);
+ for(const k of ['sourceFingerprint','freezeCommit'])if(receipt[k]!==({sourceFingerprint:fp,freezeCommit} as any)[k])issue(p.id,'receipt-frozen-condition-mismatch',k);
+ for(const [k,expected] of Object.entries({model:p.modelConfiguration,taskIds:p.taskIds,datasetHash:p.datasetHash,harnessHash:p.harnessHash,repeat:1,limits:{maxTurns:20,maxOutputTokens:16384},version:registration.generation,variant:p.variant,responseFormat:'json_object',headlineMetric:'macro-task-success'}))if(!same(run[k],expected))issue(p.id,'native-condition-mismatch',k);
+ const expectedFlags={observedTruncation:run.episodes.some(e=>e.truncatedOutput||e.trace.some(t=>/(?:max[_ -]?tokens|max[_ -]?output[_ -]?tokens|length|incomplete)/i.test(t.finishReason??''))),modelOrEffortMismatch:run.episodes.some(e=>e.trace.some(t=>t.model!==p.modelConfiguration.model||(t.reasoningEffort??null)!==(p.modelConfiguration.reasoningEffort??null))),providerOrBudgetFailure:run.episodes.some(e=>['provider-error','budget-stopped'].includes(e.status)),processFailure:receipt.exitCode!==0,materialSpendOverrun:run.estimatedCostUsd>Math.max(p.forecastUsd*1.5,p.forecastUsd+.5)};
+ for(const [key,expected] of Object.entries({...expectedFlags,completeCoverage:run.completeCoverage,benchmarkScore:run.benchmarkScore,weightedDiagnosticScore:run.summary.score,responseFormat:'json_object'}))if(receipt[key]!==expected)issue(p.id,'receipt-native-metadata-mismatch',key);
+ if(run.harnessHash!==hash([fp,investigationSystemPrompt(p.variant),20,16384]))issue(p.id,'prompt-harness-mismatch',run.harnessHash);
+ const selected=tasks.filter(t=>p.taskIds.includes(t.id));if(hash(selected)!==run.datasetHash)issue(p.id,'public-dataset-mismatch',run.datasetHash);
+ const scoredCount=run.episodes.filter(e=>e.score).length,expectedCount=p.taskIds.length*p.repeat;
+ if(run.coverage!==scoredCount/expectedCount||run.completeCoverage!==(scoredCount===expectedCount))issue(p.id,'native-coverage-mismatch',{coverage:run.coverage,complete:run.completeCoverage,scoredCount,expectedCount});
+ if(run.completeCoverage&&!setSame(run.episodes.map(e=>e.taskId),p.taskIds))issue(p.id,'native-episode-selection-mismatch',run.episodes.map(e=>e.taskId));
+ if(Math.abs(run.estimatedCostUsd-run.episodes.reduce((sum,e)=>sum+e.estimatedCostUsd,0))>1e-9)issue(p.id,'native-total-cost-mismatch',run.estimatedCostUsd);
+ for(const episode of run.episodes){
+  const auditedEpisode=auditEpisode(p,episode);if(auditedEpisode)episodes.push(auditedEpisode);
+ }
+ const expectedLedgerDelta=run.estimatedCostUsd+episodes.reduce((n,e)=>n+e.retainedFailureReservationUsd,0);
+ if(Math.abs(receipt.ledgerAfter.reservedUsd-receipt.ledgerBefore.reservedUsd-expectedLedgerDelta)>1e-9)issue(p.id,'receipt-ledger-cost-mismatch',{expectedLedgerDelta});
+ if(!same(summarize(run.episodes.filter(e=>e.score).map(e=>e.score)),run.summary))issue(p.id,'summary-mismatch',null);
+ if(investigationTaskSuccess(run.episodes,run.completeCoverage)!==run.benchmarkScore)issue(p.id,'headline-mismatch',null);
+ audited.push({id:p.id,receiptPath,receiptSha256:sha(receiptPath),nativeRunPath:receipt.nativeRunPath,nativeRunSha256:sha(receipt.nativeRunPath),model:run.model,variant:run.variant,benchmarkScore:run.benchmarkScore,diagnosticScore:run.summary.score,completeCoverage:run.completeCoverage,receiptFlags:{observedTruncation:receipt.observedTruncation,modelOrEffortMismatch:receipt.modelOrEffortMismatch,providerOrBudgetFailure:receipt.providerOrBudgetFailure,processFailure:receipt.processFailure,materialSpendOverrun:receipt.materialSpendOverrun},episodes});
+}
+const sourceNames=JSON_INVESTIGATION_SOURCE_FILES;
+for(const file of [...sourceNames,registrationPath,registration.auditPath,registration.planPath,registration.controllerCopy,registration.controllerReviewPath])if(!execFileSync('git',['show',freezeCommit+':'+file]).equals(fs.readFileSync(file)))issue(file,'frozen-source-or-control-byte-mismatch',null);
+for(const [file,expected] of [[registration.auditPath,registration.auditSha256],[registration.planPath,registration.planSha256],[registration.controllerCopy,registration.controllerSha256],[registration.controllerReviewPath,registration.controllerReviewSha256]])if(sha(file)!==expected)issue(file,'registered-control-hash-mismatch',null);
+if(hash(generateInvestigationCases())!==registration.fullCorpusHash)issue('registration','full-corpus-mismatch',null);
+const allTerminal=audited.length===2&&pending.length===0,allAdmitted=allTerminal&&!issues.length&&audited.every(p=>p.completeCoverage&&!p.receiptFlags.modelOrEffortMismatch&&!p.receiptFlags.providerOrBudgetFailure&&!p.receiptFlags.processFailure);
+const artifact={schema:'insurance-bench-v09j-native-development-independent-audit-v1',preparedBy:'Independent non-author code-review agent; source-only native-trace replay and separate numeric three-valued raw-row interpreter',auditedAt:new Date().toISOString(),disposition:allAdmitted?'approve-engineering-only':issues.length?'needs-revision':'incomplete-development-coverage',status:allAdmitted?'both-terminal-json-development-panels-source-consistent':'interim',sourceFingerprint:fp,freezeCommit,registrationPath,registrationSha256:sha(registrationPath),fullCorpusHash:registration.fullCorpusHash,responseFormat:'json_object',candidateAuditPath:registration.auditPath,candidateAuditSha256:sha(registration.auditPath),counts:{registeredDevelopmentPanels:2,terminalPanelsAudited:audited.length,pendingPanels:pending.length,terminalEpisodesAudited:audited.reduce((n,p)=>n+p.episodes.length,0),interimTerminalEpisodesAudited:interimEpisodes.length},checks:{allBothTerminal:allTerminal,allBothAdmitted:allAdmitted,replayedToolResultsAndState:!issues.some(i=>i.kind.includes('replayed')),sourceGoldConsistency:!issues.some(i=>i.kind.includes('source-disagreement')||i.kind.includes('hand-calculated')||i.kind.includes('false-grade')),nativeConditions:!issues.some(i=>i.kind.includes('mismatch')),wholeTaskCriteriaCheckedIndependently:!issues.some(i=>i.kind.includes('whole-')||i.kind.includes('false-grade')),receiptAndTraceCostsChecked:!issues.some(i=>i.kind.includes('cost-mismatch')),noProviderCallsByAuditor:true,onlyNotifiedTerminalOutputsRead:true,noHoldoutOutputsRead:true},independentControls,issues,pending,panels:audited,interimTerminalEpisodes:interimEpisodes,limitations:['Fictional closed source universe; no insurance professional/legal/clinical or population-validity claim.','Replay uses actual frozen public tool environment; gold checked separately against raw-row interpreter and literal v0.9 development first-case hand calculations.','Truncation and recoverable protocol/tool errors are retained; engineering source admission is distinct from a clean empirical comparison.','Only terminal registered JSON development receipts are admitted; partial files do not establish terminal coverage.'],reproduction:{command:'node --import tsx .tmp/insurance-bench/v09j-development-independent-audit.ts',scriptSha256:sha('.tmp/insurance-bench/v09j-development-independent-audit.ts'),scriptCopy:'insurance-bench/results/meta/v09j-development-independent-audit-repro.txt'}};
+fs.copyFileSync('.tmp/insurance-bench/v09j-development-independent-audit.ts','insurance-bench/results/meta/v09j-development-independent-audit-repro.txt');
+fs.writeFileSync(out,JSON.stringify(artifact,null,2)+'\n');
+console.log(JSON.stringify({disposition:artifact.disposition,counts:artifact.counts,issues:issues.map(i=>({where:i.where,kind:i.kind})),panels:audited.map(p=>({id:p.id,score:p.benchmarkScore,diagnostic:p.diagnosticScore,flags:p.receiptFlags}))}));

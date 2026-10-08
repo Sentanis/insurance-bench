@@ -1,0 +1,86 @@
+import assert from "node:assert/strict";
+import {generateEvidenceCases} from "./v08-prepaid-constant-control/evidence-cases.ts";
+import {createEvidenceEnvironment, gradeEvidenceTask} from "./v08-prepaid-constant-control/evidence-engine.ts";
+import type {EvidenceTask,EvidenceLabel,EvidenceFinding} from "./v08-prepaid-constant-control/evidence-types.ts";
+function findings(task: EvidenceTask, current = true, constant?: EvidenceLabel) {
+  return Object.fromEntries(
+    Object.entries(current ? task.evidence.gold : task.evidence.goldBeforeCorrection).map(
+      ([id, answer]) => [
+        id,
+        { status: constant ?? answer.labels[0]!, sources: answer.certificates[0]! },
+      ],
+    ),
+  ) as Record<string, EvidenceFinding>;
+}
+function oracle(task: EvidenceTask, constant?: EvidenceLabel, alternative = false) {
+  const env = createEvidenceEnvironment(task),
+    state = env.state;
+  const run = (tool: string, args: Record<string, unknown> = {}) =>
+    env.execute(tool, {
+      expectedVersion: state.version,
+      generation: state.generation,
+      packetRevision: state.packet?.revision,
+      ...args,
+    });
+  const read = () =>
+    state.documents.forEach((doc) =>
+      assert.equal(run("read_document", { documentId: doc.id }).error, undefined),
+    );
+  read();
+  if (alternative)
+    assert.equal(run("create_follow_up", { ...task.rubric.followUp }).error, undefined);
+  assert.equal(
+    run("draft_request", {
+      propositionIds: task.evidence.requestTargets,
+      entityId: task.evidence.entityId,
+      periodStart: task.evidence.periodStart,
+      periodEnd: task.evidence.periodEnd,
+      item: task.evidence.sourceItem,
+    }).error,
+    undefined,
+  );
+  const requestId = state.request!.id;
+  assert.equal(run("request_approval", { requestId }).error, undefined);
+  assert.equal(run("dispatch_request", { requestId }).error, undefined);
+  read();
+  const mismatch = run("review_receipt", { requestId, documentId: task.evidence.wrongResponse.id });
+  assert.equal(mismatch.error, "scope_mismatch");
+  assert.equal(run("follow_up_request", { requestId }).error, undefined);
+  read();
+  assert.equal(
+    run("review_receipt", { requestId, documentId: task.evidence.response.id }).error,
+    undefined,
+  );
+  assert.equal(
+    run("save_packet", {
+      findings: findings(task, false, constant),
+      memo: "Original-source internal assessment; preserve uncertain and contrary material for the reviewer.",
+    }).error,
+    undefined,
+  );
+  assert.equal(run("request_packet_review").changesRequested, true);
+  read();
+  assert.equal(
+    run("save_packet", {
+      findings: findings(task, true, constant),
+      memo: "Current signed correction is reconciled within its scope; this is an internal source assessment, not a final determination.",
+    }).error,
+    undefined,
+  );
+  assert.equal(run("request_packet_review").error, undefined);
+  assert.equal(run("record_handoff", { owner: "internal-evidence-team" }).error, undefined);
+  if (!alternative)
+    assert.equal(run("create_follow_up", { ...task.rubric.followUp }).error, undefined);
+  run("finish");
+  return env;
+}
+
+const tasks=generateEvidenceCases();
+const result=["supported","refuted","unresolved"].map(label=>{
+ const scores=tasks.map(task=>gradeEvidenceTask(task,oracle(task,label as EvidenceLabel).state));
+ const correct=scores.reduce((sum,score)=>sum+score.criteria.filter(c=>c.component==="facts"&&c.passed).length,0);
+ return {label,correct,total:tasks.reduce((sum,task)=>sum+task.propositions.length,0),score:scores.reduce((sum,score)=>sum+score.score,0)/scores.length,allPass:scores.filter(score=>score.allPass).length};
+});
+assert.deepEqual(result.map(r=>r.correct),[39,57,12]);
+assert.deepEqual(result.map(r=>Number(r.score.toFixed(2))),[58.47,69.31,42.22]);
+console.log(JSON.stringify(result,null,2));

@@ -1,0 +1,94 @@
+{
+  "startedAt": "2026-10-04T21:26:42.134Z",
+  "split": "holdout",
+  "model": "claude-haiku-4.5",
+  "taskIds": [
+    "ibc-coverage-review-holdout-1-ee0e896c",
+    "ibc-financial-reconciliation-holdout-1-5f419d60",
+    "ibc-deadline-triage-holdout-1-96851694"
+  ],
+  "repeat": 1,
+  "limits": {
+    "maxTurns": 20,
+    "maxOutputTokens": 16384,
+    "transportDeadlineMs": 300000
+  },
+  "sourceFingerprint": "d32acb6aef0f3b7e35a29b0fc41a650383fd172cb1cc0de457226efbef87280e",
+  "harnessHash": "d0b6963c2b33416372a975d497a554a52ed667f8f9213150b072ce3659502555",
+  "promptHash": "42bedeffb8638877eb60cd23cb2a9bf8ed82e67c10791b0ee2f7b9f6cb1de1f6",
+  "modelConfiguration": {
+    "provider": "bedrock",
+    "profile": "sentanis-phase0",
+    "region": "us-west-2",
+    "pricingVerifiedAt": "2026-10-03",
+    "model": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "inputUsdPerMillion": 1,
+    "outputUsdPerMillion": 5,
+    "pricingSource": "https://platform.claude.com/docs/en/about-claude/pricing"
+  },
+  "planningAllowanceUsd": 1.3,
+  "futureCalibrationForecastUsd": 28.75,
+  "budgetReview": "insurance-bench/results/meta/v07c-extended-budget-review.json",
+  "officialLimitPreflight": {
+    "condition": "claude-haiku-4.5",
+    "advertisedContext": "200K",
+    "advertisedMaxOutput": "64K",
+    "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-haiku-4-5.html",
+    "verifiedAt": "2026-10-04T21:04:44.523753+00:00",
+    "supportsFrozen16384RequestedOutput": true,
+    "initialRequestContextFits": true,
+    "contextCaveat": "Advertised context is not a guarantee that arbitrary accumulated20-turn history will fit. No model-specific clipping or message truncation is added; actual errors remain visible."
+  },
+  "ledgerBefore": {
+    "reservedUsd": 26.81385818750003,
+    "capUsd": 75,
+    "updatedAt": "2026-10-04T21:26:42.086Z"
+  },
+  "command": [
+    "npx",
+    "tsx",
+    "scripts/insurance-bench.ts",
+    "run",
+    "--suite",
+    "coupled",
+    "--split",
+    "holdout",
+    "--model",
+    "claude-haiku-4.5",
+    "--variant",
+    "baseline",
+    "--per-family",
+    "1",
+    "--case-offset",
+    "0",
+    "--repeat",
+    "1",
+    "--budget",
+    "75",
+    "--ledger",
+    ".tmp/insurance-bench/session-budget.json",
+    "--out",
+    ".tmp/insurance-bench/v07c-extended-runs"
+  ],
+  "status": "terminal-native-run",
+  "endedAt": "2026-10-04T21:32:53.657Z",
+  "exitCode": 0,
+  "ledgerAfter": {
+    "reservedUsd": 28.058002187500033,
+    "capUsd": 75,
+    "updatedAt": "2026-10-04T21:32:53.638Z"
+  },
+  "runId": "2026-10-04T21-26-42-462Z-global.anthropic.claude-haiku-4-5-20251001-v1-0-baseline",
+  "nativeRunPath": "insurance-bench/results/2026-10-04T21-26-42-462Z-global.anthropic.claude-haiku-4-5-20251001-v1-0-baseline.json",
+  "nativeRunSha256": "e949be63bb279a9db00643d59d4103d028a706a702d14e6f8dc78775b32b63dd",
+  "actualEstimatedCostUsd": 1.244144,
+  "completeCoverage": true,
+  "coverage": 1,
+  "scoredEpisodes": 3,
+  "terminalStatuses": [
+    "completed",
+    "completed",
+    "completed"
+  ],
+  "materialSpendOverrun": false
+}

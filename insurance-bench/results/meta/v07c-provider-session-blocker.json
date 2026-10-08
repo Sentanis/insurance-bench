@@ -1,0 +1,14 @@
+{
+  "recordedAt": "2026-10-04T03:58:27.335945+00:00",
+  "generation": "insurance-bench-coupled-v0.7c",
+  "diagnosis": "Read-only STS under recorded sentanis-phase0 profile reports expired SSO token and failed refresh. No successful inference output in either Qwen attempt.",
+  "affectedRunIds": [
+    "2026-10-04T03-56-32-949Z-qwen.qwen3-235b-a22b-2507-v1-0-baseline",
+    "2026-10-04T03-56-32-950Z-qwen.qwen3-32b-v1-0-baseline"
+  ],
+  "accessDisposition": "Existing-profile SSO refresh started; browser extension popup blocks automated continuation. User handoff requested. No profile, IAM, roles, security boundary or runtime modifications.",
+  "retryPolicy": "After session identity confirmed, rerun BOTH whole Qwen panels under frozen unchanged three-case protocol; retain original unscored provider failures and their ledger reservations. Other Bedrock panels wait for session refresh.",
+  "abilityConclusion": null,
+  "budgetCapUsd": 25,
+  "capIncreaseRequest": "Pending direct user response; no authorization inferred."
+}

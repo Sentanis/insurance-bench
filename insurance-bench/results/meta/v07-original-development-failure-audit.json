@@ -1,0 +1,3277 @@
+{
+  "version": "insurance-bench-coupled-v0.7",
+  "auditAt": "2026-10-04T03:22:37.061Z",
+  "status": "superseded original v0.7 development diagnostic; original matched pair incomplete after operator interruption for bare-sourceId contract repair",
+  "freeze": {
+    "sourceCommit": "c2bd80b98e9316ab7d01ebd9c454ad38cdb6ff26",
+    "sourceFingerprint": "054d7087e6e7461d7f8a3eb6cb1950ec445a600828d0bda0b34ba57adc60808e",
+    "harnessHash": "60583dc5ed712ee820cdfcd7f3f9ca98d5a98fdda0ec33474799eac24e971c3f",
+    "developmentHash": "55ea74f1e893f012e540fc4e6ea44b2c540bad9c15577fa07888d96c82fa6026",
+    "frozenAt": "2026-10-04T03:15:53.271Z",
+    "auditedSourceHashes": {
+      "coupled-cases.ts": "1a0e23591617aa70be7a3c19bb15b576f81c485e9c16b74a451ed49852442d1a",
+      "coupled-engine.ts": "6ff25bf5334887ada130ba9721349e74c88b77f4910cf4c48df6564848b769f8",
+      "coupled-runner.ts": "17000c14119a0970336b3aa9cf2e4ae18bcd605fcf2dd3fb0b36d6ad57fa07ed",
+      "workflows.ts": "15cc2a635d6901cbdae1070f268da67dc566f64054228f93d51d479ba5fc7f3f"
+    }
+  },
+  "declaredTaskIds": [
+    "ibc-coverage-review-dev-1-693918aa",
+    "ibc-financial-reconciliation-dev-1-6bebb17e",
+    "ibc-deadline-triage-dev-1-cb2f8d92"
+  ],
+  "scope": "Terminal registered development .episode files only. No partial content, provider calls, frozen-source changes, gold generator/production solver/grader calls or evaluated holdout output reads. Frozen original runner hash is read from git, since current runner contains the separately approved b prompt clarification.",
+  "independence": "Current domain/ledger/reserve/demand/eligibility and exhaustive maximum independently recomputed from episode observable raw records. Actual current write and cost/priority/capacity properties independently checked from saved business state/history.",
+  "repairDisposition": "Original weighted comparison superseded by v0.7b contract clarification; all affected matched low profiles rerun prospectively, with no high/holdout dispatched under original generation.",
+  "gradePolicy": "All recorded grades remain unchanged. Suspected semantic or representation false failures are flagged without regrading. Weighted score and actual optimal current business outcome are separate measurements.",
+  "interpretationLimits": [
+    "Three related families, single attempts; descriptive diagnostic data, not an independently sampled production distribution or an expert insurance benchmark.",
+    "Shared evidence grading is correlated with facts; source IDs attest provenance rather than natural-language proof quality.",
+    "Source certificate gaps identify missing relevant operands and are not treated as wrong mathematics; suspected stricter-than-operand grading is flagged without regrading.",
+    "No speculative ability ranking from unavailable output/provider/transport failures.",
+    "Do not force a50\u201360difficulty target or tune after frozen paid results."
+  ],
+  "contractFindings": [
+    {
+      "episodeFile": ".tmp/insurance-bench/v07-runs/1791083924232-gpt-6-luna-low-baseline-ibc-coverage-review-dev-1-693918aa.episode",
+      "condition": "gpt-6-luna-low",
+      "field": "limitSourceA",
+      "actual": "signed BI endorsement E-A2, person limit 20700 cents",
+      "canonicalSourceId": "E-A2",
+      "disposition": "Output-label contract ambiguity; original public schema says limitSource:string and rule2 specifies unavailable but no covered-exposure bare-sourceId requirement. Correct source selection is not an endorsement reasoning failure."
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07-runs/1791083924232-gpt-6-luna-low-baseline-ibc-coverage-review-dev-1-693918aa.episode",
+      "condition": "gpt-6-luna-low",
+      "field": "limitSourceB",
+      "actual": "signed BI endorsement E-B2, person limit 15000 cents",
+      "canonicalSourceId": "E-B2",
+      "disposition": "Output-label contract ambiguity; original public schema says limitSource:string and rule2 specifies unavailable but no covered-exposure bare-sourceId requirement. Correct source selection is not an endorsement reasoning failure."
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07-runs/1791083924232-gpt-6-luna-low-baseline-ibc-coverage-review-dev-1-693918aa.episode",
+      "condition": "gpt-6-luna-low",
+      "field": "limitSourceC",
+      "actual": "base BI policy P-BI, person limit 20200 cents",
+      "canonicalSourceId": "P-BI",
+      "disposition": "Output-label contract ambiguity; original public schema says limitSource:string and rule2 specifies unavailable but no covered-exposure bare-sourceId requirement. Correct source selection is not an endorsement reasoning failure."
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07-runs/1791084036099-gpt-6-luna-low-baseline-ibc-financial-reconciliation-dev-1-6bebb17e.episode",
+      "condition": "gpt-6-luna-low",
+      "field": "limitSourceA",
+      "actual": "E-A2 signed version 2 endorsement effective before loss; replaces base BI per-person limit",
+      "canonicalSourceId": "E-A2",
+      "disposition": "Output-label contract ambiguity; original public schema says limitSource:string and rule2 specifies unavailable but no covered-exposure bare-sourceId requirement. Correct source selection is not an endorsement reasoning failure."
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07-runs/1791084036099-gpt-6-luna-low-baseline-ibc-financial-reconciliation-dev-1-6bebb17e.episode",
+      "condition": "gpt-6-luna-low",
+      "field": "limitSourceB",
+      "actual": "E-B2 signed version 2 endorsement effective before loss; replaces base BI per-person limit",
+      "canonicalSourceId": "E-B2",
+      "disposition": "Output-label contract ambiguity; original public schema says limitSource:string and rule2 specifies unavailable but no covered-exposure bare-sourceId requirement. Correct source selection is not an endorsement reasoning failure."
+    }
+  ],
+  "summary": [
+    {
+      "condition": "gpt-6.1-sol-low",
+      "expectedEpisodes": 3,
+      "terminalEpisodes": 3,
+      "scoredEpisodes": 3,
+      "completeScoredCoverage": true,
+      "recordedMean": 77.19,
+      "all19FactsCorrect": 3,
+      "currentOptimalActualBusinessOutcomes": 3,
+      "feasibleSelections": 3,
+      "optimalSelections": 3,
+      "recordedActualWrites": 3,
+      "allPassRecorded": 0,
+      "providerFailures": 0,
+      "budgetStopped": 0,
+      "turnLimitIncomplete": 0,
+      "episodesWithProtocolError": 0,
+      "truncatedEpisodes": 0,
+      "episodesWithExternalIntent": 0,
+      "candidateFalseFailureEpisodes": 0
+    },
+    {
+      "condition": "gpt-6-luna-low",
+      "expectedEpisodes": 3,
+      "terminalEpisodes": 2,
+      "scoredEpisodes": 2,
+      "completeScoredCoverage": false,
+      "recordedMean": 63.65,
+      "all19FactsCorrect": 0,
+      "currentOptimalActualBusinessOutcomes": 0,
+      "feasibleSelections": 2,
+      "optimalSelections": 0,
+      "recordedActualWrites": 2,
+      "allPassRecorded": 0,
+      "providerFailures": 0,
+      "budgetStopped": 0,
+      "turnLimitIncomplete": 0,
+      "episodesWithProtocolError": 2,
+      "truncatedEpisodes": 0,
+      "episodesWithExternalIntent": 0,
+      "candidateFalseFailureEpisodes": 2
+    }
+  ],
+  "episodes": [
+    {
+      "episodeFile": ".tmp/insurance-bench/v07-runs/1791083829452-gpt-6.1-sol-low-baseline-ibc-coverage-review-dev-1-693918aa.episode",
+      "episodeSha256": "f8216556726e562961b6e892a9c0622e386f2df7096cda07639dcb7105d100ee",
+      "condition": "gpt-6.1-sol-low",
+      "configuredModel": "gpt-6.1-sol",
+      "traceModels": [
+        "gpt-6.1-sol"
+      ],
+      "configuredEffort": "low",
+      "traceEfforts": [
+        "low"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "family": "coverage-review",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 77.63,
+      "components": {
+        "facts": 100,
+        "evidence": 10.53,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 9,
+      "elapsedMs": 70637,
+      "estimatedCostUsd": 0.23597,
+      "productSaved": true,
+      "wrongFields": [],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 19,
+      "substantiveWrongFieldCount": 0,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 11700,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5200,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-coverage-review-dev-1-693918aa-Q1",
+          "ibc-coverage-review-dev-1-693918aa-Q2",
+          "ibc-coverage-review-dev-1-693918aa-Q3",
+          "ibc-coverage-review-dev-1-693918aa-Q4",
+          "ibc-coverage-review-dev-1-693918aa-Q5",
+          "ibc-coverage-review-dev-1-693918aa-Q6",
+          "ibc-coverage-review-dev-1-693918aa-Q7",
+          "ibc-coverage-review-dev-1-693918aa-Q8",
+          "ibc-coverage-review-dev-1-693918aa-Q9",
+          "ibc-coverage-review-dev-1-693918aa-Q10",
+          "ibc-coverage-review-dev-1-693918aa-Q11",
+          "ibc-coverage-review-dev-1-693918aa-Q12"
+        ],
+        "optimalPriorityValue": 38,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 15300,
+        "actualPriorityValue": 38,
+        "assertedOptimalPriorityValue": 38,
+        "verifiedMaximumFromCurrentRaw": 38,
+        "personAllocatedCents": {
+          "A": 1900,
+          "B": 5500,
+          "C": 7900
+        },
+        "personAvailableCents": {
+          "A": 11700,
+          "B": 7100,
+          "C": 11700
+        },
+        "sharedAvailableCents": 15300,
+        "violations": [],
+        "matchingCurrentActualWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-coverage-review-dev-1-693918aa-Q4",
+          "ibc-coverage-review-dev-1-693918aa-Q7",
+          "ibc-coverage-review-dev-1-693918aa-Q9",
+          "ibc-coverage-review-dev-1-693918aa-Q10",
+          "ibc-coverage-review-dev-1-693918aa-Q12"
+        ],
+        "optimalTiedAlternatives": 1
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 16,
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A"
+        ],
+        "personAvailableACents": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A"
+        ],
+        "netPaidACents": [],
+        "deadlineA": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A"
+        ],
+        "limitSourceB": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B"
+        ],
+        "personAvailableBCents": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "event-B-original",
+          "reserve-B-v1"
+        ],
+        "netPaidBCents": [
+          "event-B-original"
+        ],
+        "deadlineB": [
+          "extension-B"
+        ],
+        "limitSourceC": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C"
+        ],
+        "personAvailableCCents": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C",
+          "event-C-original",
+          "event-unallocated",
+          "event-U-reversal"
+        ],
+        "netPaidCCents": [
+          "event-C-original",
+          "event-unallocated",
+          "event-U-reversal"
+        ],
+        "deadlineC": [
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ],
+        "occurrenceAvailableCents": [
+          "policy-BI",
+          "occurrence",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "event-U-reversal",
+          "reserve-B-v1"
+        ],
+        "pdAvailableCents": [
+          "policy-PD",
+          "event-PD",
+          "reserve-D-v1"
+        ],
+        "reserveTotalBICents": [
+          "reserve-B-v1"
+        ],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12"
+        ],
+        "optimalPriorityValue": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12",
+          "occurrence",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "event-U-reversal",
+          "reserve-B-v1"
+        ],
+        "lateDemandClaimantIds": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ]
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [
+        {
+          "criterion": "evidence:limitSourceA",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:limitSourceB",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:limitSourceC",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-C",
+            "loss-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableACents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableBCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B",
+            "event-B-original",
+            "reserve-B-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableCCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-C",
+            "loss-C",
+            "event-C-original",
+            "event-unallocated",
+            "event-U-reversal"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:occurrenceAvailableCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "occurrence",
+            "event-B-original",
+            "event-C-original",
+            "event-unallocated",
+            "event-U-reversal",
+            "reserve-B-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:pdAvailableCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-PD",
+            "event-PD",
+            "reserve-D-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:netPaidBCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "event-B-original"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:netPaidCCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "event-C-original",
+            "event-unallocated",
+            "event-U-reversal"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:reserveTotalBICents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "reserve-B-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:eligiblePackageIds",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B",
+            "exposure-C",
+            "loss-C",
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A",
+            "extension-B",
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C",
+            "package-1",
+            "package-2",
+            "package-3",
+            "package-4",
+            "package-5",
+            "package-6",
+            "package-7",
+            "package-8",
+            "package-9",
+            "package-10",
+            "package-11",
+            "package-12"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:optimalPriorityValue",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B",
+            "exposure-C",
+            "loss-C",
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A",
+            "extension-B",
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C",
+            "package-1",
+            "package-2",
+            "package-3",
+            "package-4",
+            "package-5",
+            "package-6",
+            "package-7",
+            "package-8",
+            "package-9",
+            "package-10",
+            "package-11",
+            "package-12",
+            "occurrence",
+            "event-B-original",
+            "event-C-original",
+            "event-unallocated",
+            "event-U-reversal",
+            "reserve-B-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:deadlineA",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:deadlineB",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "extension-B"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:deadlineC",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:lateDemandClaimantIds",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A",
+            "extension-B",
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        }
+      ],
+      "failedCriteria": [
+        {
+          "id": "evidence:limitSourceA",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:limitSourceB",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:limitSourceC",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableACents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableBCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableCCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:occurrenceAvailableCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:pdAvailableCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:netPaidBCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:netPaidCCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:reserveTotalBICents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:eligiblePackageIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:optimalPriorityValue",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:deadlineA",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:deadlineB",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:deadlineC",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:lateDemandClaimantIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        }
+      ],
+      "protocolErrorTurns": [],
+      "toolErrors": [],
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Current facts and actual optimal business state pass independently; residual losses are evidence-bundle completeness or protocol/structural criteria",
+      "notes": []
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07-runs/1791083895962-gpt-6.1-sol-low-baseline-ibc-financial-reconciliation-dev-1-6bebb17e.episode",
+      "episodeSha256": "1a4dae3d6304c37a998f094b76f57bac2328ee14e8a877c279a6678fcc24daaa",
+      "condition": "gpt-6.1-sol-low",
+      "configuredModel": "gpt-6.1-sol",
+      "traceModels": [
+        "gpt-6.1-sol"
+      ],
+      "configuredEffort": "low",
+      "traceEfforts": [
+        "low"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-financial-reconciliation-dev-1-6bebb17e",
+      "family": "financial-reconciliation",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 76.32,
+      "components": {
+        "facts": 100,
+        "evidence": 5.26,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 9,
+      "elapsedMs": 66508,
+      "estimatedCostUsd": 0.23599600000000004,
+      "productSaved": true,
+      "wrongFields": [],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 19,
+      "substantiveWrongFieldCount": 0,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 11900,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5400,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q1",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q2",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q3",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q4",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q5",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q6",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q7",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q8",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q9",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q10",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q11",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q12"
+        ],
+        "optimalPriorityValue": 35,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 15300,
+        "actualPriorityValue": 35,
+        "assertedOptimalPriorityValue": 35,
+        "verifiedMaximumFromCurrentRaw": 35,
+        "personAllocatedCents": {
+          "A": 1900,
+          "B": 5500,
+          "C": 7900
+        },
+        "personAvailableCents": {
+          "A": 11700,
+          "B": 7100,
+          "C": 11900
+        },
+        "sharedAvailableCents": 15300,
+        "violations": [],
+        "matchingCurrentActualWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q4",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q8",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q10",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q12"
+        ],
+        "optimalTiedAlternatives": 1
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 4,
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A"
+        ],
+        "personAvailableACents": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "event-A-correction",
+          "event-A-reversal-v2",
+          "reserve-A-v2"
+        ],
+        "netPaidACents": [
+          "event-A-correction",
+          "event-A-reversal-v2"
+        ],
+        "deadlineA": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A"
+        ],
+        "limitSourceB": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B"
+        ],
+        "personAvailableBCents": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "event-B-original",
+          "reserve-B-v1"
+        ],
+        "netPaidBCents": [
+          "event-B-original"
+        ],
+        "deadlineB": [
+          "demand-B-v2",
+          "extension-B"
+        ],
+        "limitSourceC": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C"
+        ],
+        "personAvailableCCents": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C",
+          "event-C-original",
+          "event-unallocated",
+          "event-U-reversal",
+          "reserve-C-v2"
+        ],
+        "netPaidCCents": [
+          "event-C-original",
+          "event-unallocated",
+          "event-U-reversal"
+        ],
+        "deadlineC": [
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ],
+        "occurrenceAvailableCents": [
+          "policy-BI",
+          "occurrence",
+          "event-A-correction",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "event-A-reversal-v2",
+          "event-U-reversal",
+          "reserve-A-v2",
+          "reserve-B-v1",
+          "reserve-C-v2"
+        ],
+        "pdAvailableCents": [
+          "policy-PD",
+          "event-PD",
+          "reserve-D-v1"
+        ],
+        "reserveTotalBICents": [
+          "reserve-A-v2",
+          "reserve-B-v1",
+          "reserve-C-v2"
+        ],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v2",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12"
+        ],
+        "optimalPriorityValue": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v2",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12",
+          "occurrence",
+          "event-A-correction",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "event-A-reversal-v2",
+          "event-U-reversal",
+          "reserve-A-v2",
+          "reserve-B-v1",
+          "reserve-C-v2"
+        ],
+        "lateDemandClaimantIds": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v2",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ]
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [
+        {
+          "criterion": "evidence:limitSourceA",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:limitSourceB",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:limitSourceC",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-C",
+            "loss-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableACents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A",
+            "event-A-correction",
+            "event-A-reversal-v2",
+            "reserve-A-v2"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableBCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B",
+            "event-B-original",
+            "reserve-B-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableCCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-C",
+            "loss-C",
+            "event-C-original",
+            "event-unallocated",
+            "event-U-reversal",
+            "reserve-C-v2"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:occurrenceAvailableCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "occurrence",
+            "event-A-correction",
+            "event-B-original",
+            "event-C-original",
+            "event-unallocated",
+            "event-A-reversal-v2",
+            "event-U-reversal",
+            "reserve-A-v2",
+            "reserve-B-v1",
+            "reserve-C-v2"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:pdAvailableCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-PD",
+            "event-PD",
+            "reserve-D-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:netPaidACents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "event-A-correction",
+            "event-A-reversal-v2"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:netPaidBCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "event-B-original"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:netPaidCCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "event-C-original",
+            "event-unallocated",
+            "event-U-reversal"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:reserveTotalBICents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "reserve-A-v2",
+            "reserve-B-v1",
+            "reserve-C-v2"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:eligiblePackageIds",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B",
+            "exposure-C",
+            "loss-C",
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A",
+            "demand-B-v2",
+            "extension-B",
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C",
+            "package-1",
+            "package-2",
+            "package-3",
+            "package-4",
+            "package-5",
+            "package-6",
+            "package-7",
+            "package-8",
+            "package-9",
+            "package-10",
+            "package-11",
+            "package-12"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:optimalPriorityValue",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B",
+            "exposure-C",
+            "loss-C",
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A",
+            "demand-B-v2",
+            "extension-B",
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C",
+            "package-1",
+            "package-2",
+            "package-3",
+            "package-4",
+            "package-5",
+            "package-6",
+            "package-7",
+            "package-8",
+            "package-9",
+            "package-10",
+            "package-11",
+            "package-12",
+            "occurrence",
+            "event-A-correction",
+            "event-B-original",
+            "event-C-original",
+            "event-unallocated",
+            "event-A-reversal-v2",
+            "event-U-reversal",
+            "reserve-A-v2",
+            "reserve-B-v1",
+            "reserve-C-v2"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:deadlineA",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:deadlineB",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-B-v2",
+            "extension-B"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:deadlineC",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:lateDemandClaimantIds",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A",
+            "demand-B-v2",
+            "extension-B",
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        }
+      ],
+      "failedCriteria": [
+        {
+          "id": "evidence:limitSourceA",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:limitSourceB",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:limitSourceC",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableACents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableBCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableCCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:occurrenceAvailableCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:pdAvailableCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:netPaidACents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:netPaidBCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:netPaidCCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:reserveTotalBICents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:eligiblePackageIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:optimalPriorityValue",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:deadlineA",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:deadlineB",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:deadlineC",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:lateDemandClaimantIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        }
+      ],
+      "protocolErrorTurns": [],
+      "toolErrors": [],
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Current facts and actual optimal business state pass independently; residual losses are evidence-bundle completeness or protocol/structural criteria",
+      "notes": []
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07-runs/1791083924232-gpt-6-luna-low-baseline-ibc-coverage-review-dev-1-693918aa.episode",
+      "episodeSha256": "c17c396abd7619ec1ba90799fec93911619bd184bf0554616b5b064b054a18df",
+      "condition": "gpt-6-luna-low",
+      "configuredModel": "gpt-6-luna",
+      "traceModels": [
+        "gpt-6-luna"
+      ],
+      "configuredEffort": "low",
+      "traceEfforts": [
+        "low"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "family": "coverage-review",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 58.64,
+      "components": {
+        "facts": 73.68,
+        "evidence": 5.26,
+        "workflow": 71.43,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 19,
+      "elapsedMs": 165418,
+      "estimatedCostUsd": 0.0415456,
+      "productSaved": true,
+      "wrongFields": [
+        {
+          "key": "limitSourceA",
+          "actual": "signed BI endorsement E-A2, person limit 20700 cents",
+          "expectedFromCurrentRaw": "E-A2",
+          "diagnosis": "Potential source-ID-label contract ambiguity; semantic source selection matches"
+        },
+        {
+          "key": "limitSourceB",
+          "actual": "signed BI endorsement E-B2, person limit 15000 cents",
+          "expectedFromCurrentRaw": "E-B2",
+          "diagnosis": "Potential source-ID-label contract ambiguity; semantic source selection matches"
+        },
+        {
+          "key": "limitSourceC",
+          "actual": "base BI policy P-BI, person limit 20200 cents",
+          "expectedFromCurrentRaw": "P-BI",
+          "diagnosis": "Potential source-ID-label contract ambiguity; semantic source selection matches"
+        },
+        {
+          "key": "occurrenceAvailableCents",
+          "actual": 15500,
+          "expectedFromCurrentRaw": 15300,
+          "diagnosis": "Substantive current-source numerical/domain/optimizer-reporting error"
+        },
+        {
+          "key": "optimalPriorityValue",
+          "actual": 35,
+          "expectedFromCurrentRaw": 38,
+          "diagnosis": "Substantive current-source numerical/domain/optimizer-reporting error"
+        }
+      ],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 14,
+      "substantiveWrongFieldCount": 2,
+      "possibleRepresentationContractLosses": [
+        {
+          "key": "limitSourceA",
+          "actual": "signed BI endorsement E-A2, person limit 20700 cents",
+          "expectedFromCurrentRaw": "E-A2",
+          "diagnosis": "Correct controlling source ID explicitly identified inside descriptive prose; exact bare-ID grade is representation-sensitive, and public limitSource:string contract does not explicitly say bare sourceId."
+        },
+        {
+          "key": "limitSourceB",
+          "actual": "signed BI endorsement E-B2, person limit 15000 cents",
+          "expectedFromCurrentRaw": "E-B2",
+          "diagnosis": "Correct controlling source ID explicitly identified inside descriptive prose; exact bare-ID grade is representation-sensitive, and public limitSource:string contract does not explicitly say bare sourceId."
+        },
+        {
+          "key": "limitSourceC",
+          "actual": "base BI policy P-BI, person limit 20200 cents",
+          "expectedFromCurrentRaw": "P-BI",
+          "diagnosis": "Correct controlling source ID explicitly identified inside descriptive prose; exact bare-ID grade is representation-sensitive, and public limitSource:string contract does not explicitly say bare sourceId."
+        }
+      ],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 11700,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5200,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-coverage-review-dev-1-693918aa-Q1",
+          "ibc-coverage-review-dev-1-693918aa-Q2",
+          "ibc-coverage-review-dev-1-693918aa-Q3",
+          "ibc-coverage-review-dev-1-693918aa-Q4",
+          "ibc-coverage-review-dev-1-693918aa-Q5",
+          "ibc-coverage-review-dev-1-693918aa-Q6",
+          "ibc-coverage-review-dev-1-693918aa-Q7",
+          "ibc-coverage-review-dev-1-693918aa-Q8",
+          "ibc-coverage-review-dev-1-693918aa-Q9",
+          "ibc-coverage-review-dev-1-693918aa-Q10",
+          "ibc-coverage-review-dev-1-693918aa-Q11",
+          "ibc-coverage-review-dev-1-693918aa-Q12"
+        ],
+        "optimalPriorityValue": 38,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": false,
+        "finalPhase": true,
+        "actualCostCents": 13600,
+        "actualPriorityValue": 33,
+        "assertedOptimalPriorityValue": 35,
+        "verifiedMaximumFromCurrentRaw": 38,
+        "personAllocatedCents": {
+          "A": 4400,
+          "B": 3800,
+          "C": 5400
+        },
+        "personAvailableCents": {
+          "A": 11700,
+          "B": 7100,
+          "C": 11700
+        },
+        "sharedAvailableCents": 15300,
+        "violations": [],
+        "matchingCurrentActualWrite": true,
+        "currentOptimalActualOutcome": false,
+        "selectedPackageIds": [
+          "ibc-coverage-review-dev-1-693918aa-Q1",
+          "ibc-coverage-review-dev-1-693918aa-Q4",
+          "ibc-coverage-review-dev-1-693918aa-Q7",
+          "ibc-coverage-review-dev-1-693918aa-Q9"
+        ],
+        "optimalTiedAlternatives": 1
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 5,
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A"
+        ],
+        "personAvailableACents": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "reserve-A-v2"
+        ],
+        "netPaidACents": [],
+        "deadlineA": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A"
+        ],
+        "limitSourceB": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B"
+        ],
+        "personAvailableBCents": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "event-B-original",
+          "reserve-B-v1"
+        ],
+        "netPaidBCents": [
+          "event-B-original"
+        ],
+        "deadlineB": [
+          "extension-B"
+        ],
+        "limitSourceC": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C"
+        ],
+        "personAvailableCCents": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C",
+          "event-C-original",
+          "event-unallocated",
+          "allocation-U",
+          "event-U-reversal",
+          "reserve-C-v2"
+        ],
+        "netPaidCCents": [
+          "event-C-original",
+          "event-unallocated",
+          "allocation-U",
+          "event-U-reversal"
+        ],
+        "deadlineC": [
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ],
+        "occurrenceAvailableCents": [
+          "policy-BI",
+          "occurrence",
+          "endorsement-occurrence",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "allocation-U",
+          "event-U-reversal",
+          "reserve-A-v2",
+          "reserve-B-v1",
+          "reserve-C-v2"
+        ],
+        "pdAvailableCents": [
+          "policy-PD",
+          "event-PD",
+          "reserve-D-v1"
+        ],
+        "reserveTotalBICents": [
+          "reserve-A-v2",
+          "reserve-B-v1",
+          "reserve-C-v2"
+        ],
+        "unallocatedBICents": [
+          "allocation-U"
+        ],
+        "eligiblePackageIds": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "allocation-U",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12"
+        ],
+        "optimalPriorityValue": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "allocation-U",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12",
+          "occurrence",
+          "endorsement-occurrence",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "event-U-reversal",
+          "reserve-A-v2",
+          "reserve-B-v1",
+          "reserve-C-v2"
+        ],
+        "lateDemandClaimantIds": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ]
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [
+        {
+          "criterion": "evidence:limitSourceA",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:limitSourceB",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:limitSourceC",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-C",
+            "loss-C"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:personAvailableACents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A",
+            "reserve-A-v2"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableBCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B",
+            "event-B-original",
+            "reserve-B-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableCCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-C",
+            "loss-C",
+            "event-C-original",
+            "event-unallocated",
+            "allocation-U",
+            "event-U-reversal",
+            "reserve-C-v2"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:occurrenceAvailableCents",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "occurrence",
+            "endorsement-occurrence",
+            "event-B-original",
+            "event-C-original",
+            "event-unallocated",
+            "allocation-U",
+            "event-U-reversal",
+            "reserve-A-v2",
+            "reserve-B-v1",
+            "reserve-C-v2"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:pdAvailableCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-PD",
+            "event-PD",
+            "reserve-D-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:netPaidBCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "event-B-original"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:netPaidCCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "event-C-original",
+            "event-unallocated",
+            "allocation-U",
+            "event-U-reversal"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:reserveTotalBICents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "reserve-A-v2",
+            "reserve-B-v1",
+            "reserve-C-v2"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:unallocatedBICents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "allocation-U"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:eligiblePackageIds",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B",
+            "exposure-C",
+            "loss-C",
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A",
+            "extension-B",
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C",
+            "allocation-U",
+            "package-1",
+            "package-2",
+            "package-3",
+            "package-4",
+            "package-5",
+            "package-6",
+            "package-7",
+            "package-8",
+            "package-9",
+            "package-10",
+            "package-11",
+            "package-12"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:optimalPriorityValue",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B",
+            "exposure-C",
+            "loss-C",
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A",
+            "extension-B",
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C",
+            "allocation-U",
+            "package-1",
+            "package-2",
+            "package-3",
+            "package-4",
+            "package-5",
+            "package-6",
+            "package-7",
+            "package-8",
+            "package-9",
+            "package-10",
+            "package-11",
+            "package-12",
+            "occurrence",
+            "endorsement-occurrence",
+            "event-B-original",
+            "event-C-original",
+            "event-unallocated",
+            "event-U-reversal",
+            "reserve-A-v2",
+            "reserve-B-v1",
+            "reserve-C-v2"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:deadlineA",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:deadlineB",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "extension-B"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:deadlineC",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:lateDemandClaimantIds",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A",
+            "extension-B",
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        }
+      ],
+      "failedCriteria": [
+        {
+          "id": "fact:limitSourceA",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:limitSourceA",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:limitSourceB",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:limitSourceB",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:limitSourceC",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:limitSourceC",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableACents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableBCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableCCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:occurrenceAvailableCents",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:occurrenceAvailableCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:pdAvailableCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:netPaidBCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:netPaidCCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:reserveTotalBICents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:unallocatedBICents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:eligiblePackageIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:optimalPriorityValue",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:optimalPriorityValue",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:deadlineA",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:deadlineB",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:deadlineC",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:lateDemandClaimantIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "workflow:current-state",
+          "component": "workflow",
+          "detail": "Actual current business write includes any feasible objective-optimal proposal subset, with source-derived capacities and matching cost/priority; all optimal ties accepted"
+        },
+        {
+          "id": "workflow:current-draft",
+          "component": "workflow",
+          "detail": "Materially amended packet reconciled into a current versioned draft"
+        }
+      ],
+      "protocolErrorTurns": [
+        6,
+        7,
+        9,
+        14,
+        16,
+        17
+      ],
+      "toolErrors": [],
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [
+        {
+          "criterion": "fact:limitSourceA",
+          "reason": "Correct controlling source ID explicitly identified inside descriptive prose; exact bare-ID grade is representation-sensitive, and public limitSource:string contract does not explicitly say bare sourceId.",
+          "gradePreserved": true
+        },
+        {
+          "criterion": "fact:limitSourceB",
+          "reason": "Correct controlling source ID explicitly identified inside descriptive prose; exact bare-ID grade is representation-sensitive, and public limitSource:string contract does not explicitly say bare sourceId.",
+          "gradePreserved": true
+        },
+        {
+          "criterion": "fact:limitSourceC",
+          "reason": "Correct controlling source ID explicitly identified inside descriptive prose; exact bare-ID grade is representation-sensitive, and public limitSource:string contract does not explicitly say bare sourceId.",
+          "gradePreserved": true
+        }
+      ],
+      "classification": "Substantive arithmetic/optimizer-reporting failures; source-ID-label representation losses classified separately",
+      "notes": [
+        "Correct controlling source IDs inside narrative labels receive exact-string losses; report them as a public-label ambiguity/representation issue rather than wrong endorsement selection. Original grades remain unchanged.",
+        "Saved asserted optimalPriorityValue is compared to the independently enumerated maximum, while actual selected package value is separately recorded.",
+        "Malformed JSON action batches are real protocol failures; recovery and final actual state are reported separately."
+      ]
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07-runs/1791083980434-gpt-6.1-sol-low-baseline-ibc-deadline-triage-dev-1-cb2f8d92.episode",
+      "episodeSha256": "4be0314500b2cbd784b9c539cd48319255b6d57c30c7d2e2d3f60149f1528fb1",
+      "condition": "gpt-6.1-sol-low",
+      "configuredModel": "gpt-6.1-sol",
+      "traceModels": [
+        "gpt-6.1-sol"
+      ],
+      "configuredEffort": "low",
+      "traceEfforts": [
+        "low"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+      "family": "deadline-triage",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 77.63,
+      "components": {
+        "facts": 100,
+        "evidence": 10.53,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 9,
+      "elapsedMs": 84470,
+      "estimatedCostUsd": 0.253144,
+      "productSaved": true,
+      "wrongFields": [],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 19,
+      "substantiveWrongFieldCount": 0,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 12100,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5600,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q1",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q2",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q3",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q5",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q6",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q7",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q8",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q9",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q10",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q12"
+        ],
+        "optimalPriorityValue": 36,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 15200,
+        "actualPriorityValue": 36,
+        "assertedOptimalPriorityValue": 36,
+        "verifiedMaximumFromCurrentRaw": 36,
+        "personAllocatedCents": {
+          "A": 8800,
+          "B": 6400,
+          "C": 0
+        },
+        "personAvailableCents": {
+          "A": 11700,
+          "B": 7100,
+          "C": 12100
+        },
+        "sharedAvailableCents": 15300,
+        "violations": [],
+        "matchingCurrentActualWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q2",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11"
+        ],
+        "optimalTiedAlternatives": 4
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 12,
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A"
+        ],
+        "personAvailableACents": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A"
+        ],
+        "netPaidACents": [],
+        "deadlineA": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A"
+        ],
+        "limitSourceB": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B"
+        ],
+        "personAvailableBCents": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "event-B-original",
+          "reserve-B-v1"
+        ],
+        "netPaidBCents": [
+          "event-B-original"
+        ],
+        "deadlineB": [
+          "demand-B-v2",
+          "extension-B"
+        ],
+        "limitSourceC": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C"
+        ],
+        "personAvailableCCents": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C",
+          "event-C-original",
+          "event-unallocated",
+          "event-U-reversal"
+        ],
+        "netPaidCCents": [
+          "event-C-original",
+          "event-unallocated",
+          "event-U-reversal"
+        ],
+        "deadlineC": [
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ],
+        "occurrenceAvailableCents": [
+          "policy-BI",
+          "occurrence",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "event-U-reversal",
+          "reserve-B-v1"
+        ],
+        "pdAvailableCents": [
+          "policy-PD",
+          "event-PD",
+          "reserve-D-v1"
+        ],
+        "reserveTotalBICents": [
+          "reserve-B-v1"
+        ],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v2",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "package-1",
+          "package-3",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-12"
+        ],
+        "optimalPriorityValue": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v2",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "package-1",
+          "package-3",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-12",
+          "occurrence",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "event-U-reversal",
+          "reserve-B-v1"
+        ],
+        "lateDemandClaimantIds": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v2",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ]
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [
+        {
+          "criterion": "evidence:limitSourceA",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:limitSourceB",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:limitSourceC",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-C",
+            "loss-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableACents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableBCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B",
+            "event-B-original",
+            "reserve-B-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableCCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-C",
+            "loss-C",
+            "event-C-original",
+            "event-unallocated",
+            "event-U-reversal"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:occurrenceAvailableCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "occurrence",
+            "event-B-original",
+            "event-C-original",
+            "event-unallocated",
+            "event-U-reversal",
+            "reserve-B-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:pdAvailableCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-PD",
+            "event-PD",
+            "reserve-D-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:netPaidBCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "event-B-original"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:netPaidCCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "event-C-original",
+            "event-unallocated",
+            "event-U-reversal"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:reserveTotalBICents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "reserve-B-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:eligiblePackageIds",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B",
+            "exposure-C",
+            "loss-C",
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A",
+            "demand-B-v2",
+            "extension-B",
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C",
+            "package-1",
+            "package-3",
+            "package-5",
+            "package-6",
+            "package-7",
+            "package-8",
+            "package-9",
+            "package-10",
+            "package-12"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:optimalPriorityValue",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B",
+            "exposure-C",
+            "loss-C",
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A",
+            "demand-B-v2",
+            "extension-B",
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C",
+            "package-1",
+            "package-3",
+            "package-5",
+            "package-6",
+            "package-7",
+            "package-8",
+            "package-9",
+            "package-10",
+            "package-12",
+            "occurrence",
+            "event-B-original",
+            "event-C-original",
+            "event-unallocated",
+            "event-U-reversal",
+            "reserve-B-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:deadlineA",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:deadlineB",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-B-v2",
+            "extension-B"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:deadlineC",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:lateDemandClaimantIds",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A",
+            "demand-B-v2",
+            "extension-B",
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        }
+      ],
+      "failedCriteria": [
+        {
+          "id": "evidence:limitSourceA",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:limitSourceB",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:limitSourceC",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableACents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableBCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableCCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:occurrenceAvailableCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:pdAvailableCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:netPaidBCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:netPaidCCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:reserveTotalBICents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:eligiblePackageIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:optimalPriorityValue",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:deadlineA",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:deadlineB",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:deadlineC",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:lateDemandClaimantIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        }
+      ],
+      "protocolErrorTurns": [],
+      "toolErrors": [],
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Current facts and actual optimal business state pass independently; residual losses are evidence-bundle completeness or protocol/structural criteria",
+      "notes": []
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07-runs/1791084036099-gpt-6-luna-low-baseline-ibc-financial-reconciliation-dev-1-6bebb17e.episode",
+      "episodeSha256": "f0992f2d2f8dba7ed0e992a6f96d91cbb5e0c446932f433ba56b714318aee012",
+      "condition": "gpt-6-luna-low",
+      "configuredModel": "gpt-6-luna",
+      "traceModels": [
+        "gpt-6-luna"
+      ],
+      "configuredEffort": "low",
+      "traceEfforts": [
+        "low"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-financial-reconciliation-dev-1-6bebb17e",
+      "family": "financial-reconciliation",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 68.65,
+      "components": {
+        "facts": 78.95,
+        "evidence": 36.84,
+        "workflow": 71.43,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 11,
+      "elapsedMs": 111863,
+      "estimatedCostUsd": 0.023647900000000003,
+      "productSaved": true,
+      "wrongFields": [
+        {
+          "key": "limitSourceA",
+          "actual": "E-A2 signed version 2 endorsement effective before loss; replaces base BI per-person limit",
+          "expectedFromCurrentRaw": "E-A2",
+          "diagnosis": "Potential source-ID-label contract ambiguity; semantic source selection matches"
+        },
+        {
+          "key": "limitSourceB",
+          "actual": "E-B2 signed version 2 endorsement effective before loss; replaces base BI per-person limit",
+          "expectedFromCurrentRaw": "E-B2",
+          "diagnosis": "Potential source-ID-label contract ambiguity; semantic source selection matches"
+        },
+        {
+          "key": "limitSourceC",
+          "actual": "P-BI base BI policy; E-C9 is effective after loss",
+          "expectedFromCurrentRaw": "P-BI",
+          "diagnosis": "Substantive current-source numerical/domain/optimizer-reporting error"
+        },
+        {
+          "key": "optimalPriorityValue",
+          "actual": 31,
+          "expectedFromCurrentRaw": 35,
+          "diagnosis": "Substantive current-source numerical/domain/optimizer-reporting error"
+        }
+      ],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 15,
+      "substantiveWrongFieldCount": 2,
+      "possibleRepresentationContractLosses": [
+        {
+          "key": "limitSourceA",
+          "actual": "E-A2 signed version 2 endorsement effective before loss; replaces base BI per-person limit",
+          "expectedFromCurrentRaw": "E-A2",
+          "diagnosis": "Correct controlling source ID explicitly identified inside descriptive prose; exact bare-ID grade is representation-sensitive, and public limitSource:string contract does not explicitly say bare sourceId."
+        },
+        {
+          "key": "limitSourceB",
+          "actual": "E-B2 signed version 2 endorsement effective before loss; replaces base BI per-person limit",
+          "expectedFromCurrentRaw": "E-B2",
+          "diagnosis": "Correct controlling source ID explicitly identified inside descriptive prose; exact bare-ID grade is representation-sensitive, and public limitSource:string contract does not explicitly say bare sourceId."
+        }
+      ],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 11900,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5400,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q1",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q2",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q3",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q4",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q5",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q6",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q7",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q8",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q9",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q10",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q11",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q12"
+        ],
+        "optimalPriorityValue": 35,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": false,
+        "finalPhase": true,
+        "actualCostCents": 14700,
+        "actualPriorityValue": 31,
+        "assertedOptimalPriorityValue": 31,
+        "verifiedMaximumFromCurrentRaw": 35,
+        "personAllocatedCents": {
+          "A": 6700,
+          "B": 5500,
+          "C": 2500
+        },
+        "personAvailableCents": {
+          "A": 11700,
+          "B": 7100,
+          "C": 11900
+        },
+        "sharedAvailableCents": 15300,
+        "violations": [],
+        "matchingCurrentActualWrite": false,
+        "currentOptimalActualOutcome": false,
+        "selectedPackageIds": [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q2",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q4",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q12"
+        ],
+        "optimalTiedAlternatives": 1
+      },
+      "wrongBusinessFields": [
+        {
+          "key": "selectedCostCents",
+          "actual": 14800,
+          "expectedFromCurrentRaw": 14700
+        }
+      ],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 35,
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [
+          "exposure-A"
+        ],
+        "personAvailableACents": [
+          "exposure-A"
+        ],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [
+          "exposure-B"
+        ],
+        "personAvailableBCents": [
+          "exposure-B"
+        ],
+        "netPaidBCents": [],
+        "deadlineB": [
+          "extension-B"
+        ],
+        "limitSourceC": [
+          "exposure-C"
+        ],
+        "personAvailableCCents": [
+          "exposure-C"
+        ],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [
+          "occurrence"
+        ],
+        "pdAvailableCents": [
+          "event-PD",
+          "reserve-D-v1"
+        ],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [
+          "exposure-A",
+          "exposure-B",
+          "exposure-C",
+          "extension-B",
+          "package-1",
+          "package-3",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11"
+        ],
+        "optimalPriorityValue": [
+          "exposure-A",
+          "exposure-B",
+          "exposure-C",
+          "extension-B",
+          "package-1",
+          "package-3",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "occurrence"
+        ],
+        "lateDemandClaimantIds": [
+          "extension-B"
+        ]
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [
+        {
+          "criterion": "evidence:limitSourceA",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-A"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:limitSourceB",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-B"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:limitSourceC",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-C"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:personAvailableACents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-A"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableBCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-B"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableCCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:occurrenceAvailableCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "occurrence"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:pdAvailableCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "event-PD",
+            "reserve-D-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:eligiblePackageIds",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-A",
+            "exposure-B",
+            "exposure-C",
+            "extension-B",
+            "package-1",
+            "package-3",
+            "package-5",
+            "package-6",
+            "package-7",
+            "package-8",
+            "package-9",
+            "package-10",
+            "package-11"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:optimalPriorityValue",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-A",
+            "exposure-B",
+            "exposure-C",
+            "extension-B",
+            "package-1",
+            "package-3",
+            "package-5",
+            "package-6",
+            "package-7",
+            "package-8",
+            "package-9",
+            "package-10",
+            "package-11",
+            "occurrence"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:deadlineB",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "extension-B"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:lateDemandClaimantIds",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "extension-B"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        }
+      ],
+      "failedCriteria": [
+        {
+          "id": "fact:limitSourceA",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:limitSourceA",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:limitSourceB",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:limitSourceB",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:limitSourceC",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:limitSourceC",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableACents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableBCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableCCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:occurrenceAvailableCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:pdAvailableCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:eligiblePackageIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:optimalPriorityValue",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:optimalPriorityValue",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:deadlineB",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:lateDemandClaimantIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "workflow:current-state",
+          "component": "workflow",
+          "detail": "Actual current business write includes any feasible objective-optimal proposal subset, with source-derived capacities and matching cost/priority; all optimal ties accepted"
+        },
+        {
+          "id": "workflow:current-draft",
+          "component": "workflow",
+          "detail": "Materially amended packet reconciled into a current versioned draft"
+        }
+      ],
+      "protocolErrorTurns": [
+        7
+      ],
+      "toolErrors": [],
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [
+        {
+          "criterion": "fact:limitSourceA",
+          "reason": "Correct controlling source ID explicitly identified inside descriptive prose; exact bare-ID grade is representation-sensitive, and public limitSource:string contract does not explicitly say bare sourceId.",
+          "gradePreserved": true
+        },
+        {
+          "criterion": "fact:limitSourceB",
+          "reason": "Correct controlling source ID explicitly identified inside descriptive prose; exact bare-ID grade is representation-sensitive, and public limitSource:string contract does not explicitly say bare sourceId.",
+          "gradePreserved": true
+        }
+      ],
+      "classification": "Substantive arithmetic/optimizer-reporting failures; source-ID-label representation losses classified separately",
+      "notes": [
+        "Correct controlling source IDs inside narrative labels receive exact-string losses; report them as a public-label ambiguity/representation issue rather than wrong endorsement selection. Original grades remain unchanged.",
+        "Saved asserted optimalPriorityValue is compared to the independently enumerated maximum, while actual selected package value is separately recorded.",
+        "Malformed JSON action batches are real protocol failures; recovery and final actual state are reported separately."
+      ]
+    }
+  ],
+  "repairClosure": {
+    "originalGeneration": "v0.7",
+    "replacementGeneration": "v0.7b",
+    "originalSolCoverage": "3/3 terminal scored; mean77.19and57/57facts correct;3/3current optimal actual business writes. All reductions evidence operand omissions.",
+    "originalLunaCoverage": "2/3 terminal scored plus1unscored interrupted deadline snapshot. Any mean of2observed episodes is partial descriptive data only, not a complete-panel result.",
+    "originalLunaScores": [
+      58.64,
+      68.65
+    ],
+    "labelFinding": "Both completed Luna episodes identify the correct controlling source IDs in descriptive strings; original public contract declared string fields but did not explicitly require bare sourceId. Three identity-label fact losses per episode are contract/representation sensitive, not wrong endorsement selection.",
+    "substantiveFindings": "Coverage shared available15500vs15300, reported optimum35vs38, actual selected priority33vs38; financial actual/reported priority31vsverified35. No ambiguity erases these arithmetic/suboptimal planning failures.",
+    "preservation": "results/meta/v07-original-interrupted-gpt-6-luna-low.json preserves unchanged terminal episodes and latest unscored deadline snapshot, exact original source/prompt/harness fingerprint and raw file hashes.",
+    "grades": "Original grades unchanged; no reconstructed grade or full Luna summary. v0.7b reruns entire affected matched low pair prospectively."
+  },
+  "originalEngineeringApprovalInterpretation": {
+    "status": "Original weighted candidate superseded for covered-source value encoding ambiguity. Original numeric/scenario proof and source-bound pre-inference approval preserved.",
+    "finding": "Prepaid review correctly established numerical rule/gold consistency and field-name/type disclosure but did not establish a unique covered-source value encoding. Paid Luna responses named correct IDs and limits with explanatory prose, a defensible interpretation of the original string schema.",
+    "repair": "v0.7b makes bare sourceId output explicit and clarifies full baseline/amendment evidence bundle. Entire affected low pair rerun; original raw grades retained."
+  }
+}

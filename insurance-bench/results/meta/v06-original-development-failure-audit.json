@@ -1,0 +1,412 @@
+{
+  "version": "0.6",
+  "status": "superseded original v0.6 development audit; runs operator-interrupted for disclosed measurement defect",
+  "auditedAt": "2026-10-04T02:48:02.869Z",
+  "scope": "Only final development .episode files read; no partials, holdout files, gold generator, model calls or source tuning.",
+  "readingClock": "2026-06-24T16:00:00Z",
+  "method": "Independent formulas derive facts and business fields from each episode current observable document rows under frozen closed policies. Original score/criteria preserved. State writes/revisions/review lineage verified separately from prose and malformed JSON recovery.",
+  "frozenSourceAudit": "insurance-bench/results/meta/workflow-source-audit-v0.6.json",
+  "episodeCount": 4,
+  "sourceHashes": {
+    "insurance-bench/workflow-types.ts": "13fbf5b455d706c06eec4bedb81c935f5fd7cfdae3b079c28ecf18af5b8d9155",
+    "insurance-bench/workflow-cases.ts": "020aeaac3b769b30e5b2b90dd4c7eb4123c0d403a06d1746ead152196b2b66e7",
+    "insurance-bench/workflows.ts": "73268d8963c149868b8a1dcdd1d7b59ded3fba87b77e4b8469c0444709c51d0c",
+    "test/architecture/insurance-bench-workflows.test.ts": "027d10aae792d21868892d6c181eca1f6b0d372bb3b08a79ddcaa8e7ff2509b1"
+  },
+  "summary": [
+    {
+      "condition": "gpt-6-luna-low",
+      "finalEpisodeFiles": 2,
+      "completedEpisodes": 2,
+      "uniqueDevelopmentTasks": 2,
+      "allCurrentFactsCorrect": 2,
+      "correctActualBusinessWrites": 1,
+      "currentDraftPacketReview": 2,
+      "allPassEpisodes": 1,
+      "protectedIntentFailures": 0,
+      "protocolErrorEpisodes": 1,
+      "coordinationErrorEpisodes": 0,
+      "sourceErrorEpisodes": 0,
+      "recordedScores": [
+        {
+          "family": "deadline-triage",
+          "score": 96.43
+        },
+        {
+          "family": "financial-reconciliation",
+          "score": 100
+        }
+      ]
+    },
+    {
+      "condition": "gpt-6.1-sol-low",
+      "finalEpisodeFiles": 2,
+      "completedEpisodes": 2,
+      "uniqueDevelopmentTasks": 2,
+      "allCurrentFactsCorrect": 2,
+      "correctActualBusinessWrites": 2,
+      "currentDraftPacketReview": 2,
+      "allPassEpisodes": 2,
+      "protectedIntentFailures": 0,
+      "protocolErrorEpisodes": 0,
+      "coordinationErrorEpisodes": 0,
+      "sourceErrorEpisodes": 0,
+      "recordedScores": [
+        {
+          "family": "deadline-triage",
+          "score": 100
+        },
+        {
+          "family": "financial-reconciliation",
+          "score": 100
+        }
+      ]
+    }
+  ],
+  "episodes": [
+    {
+      "episodeFile": ".tmp/insurance-bench/v06-runs/1791081972840-gpt-6-luna-low-baseline-ibw-deadline-triage-dev-1-4a187165.episode",
+      "condition": "gpt-6-luna-low",
+      "model": "gpt-6-luna",
+      "reasoningEfforts": [
+        "low"
+      ],
+      "traceMatchesNamedEffort": true,
+      "taskId": "ibw-deadline-triage-dev-1-4a187165",
+      "family": "deadline-triage",
+      "split": "dev",
+      "status": "completed",
+      "error": null,
+      "score": 96.43,
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 85.71,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "allPass": false,
+      "failedCriteria": [
+        "workflow:current-state"
+      ],
+      "materialPhase": 2,
+      "materialRevision": 3,
+      "sessionRevision": 10,
+      "factsFromCurrentSourcesCorrect": true,
+      "wrongPresentFacts": [],
+      "omittedFactKeys": [],
+      "businessFromCurrentSourcesCorrect": false,
+      "wrongPresentBusinessFields": [],
+      "omittedBusinessKeys": [
+        "operativeDemandId",
+        "operativeDeadlineAt",
+        "oldFollowUpStatus",
+        "currentFollowUpCount",
+        "packetStatus",
+        "externalResponseSent"
+      ],
+      "currentDraft": true,
+      "currentPacket": true,
+      "currentProvidedReview": true,
+      "actualBusinessWrite": false,
+      "finished": true,
+      "protectedIntentAttempts": [],
+      "invalidCurrentReadSources": [],
+      "protocolErrors": [],
+      "coordinationErrors": [],
+      "sourceErrors": [],
+      "otherToolErrors": [
+        {
+          "turn": 10,
+          "tool": "apply_business_update",
+          "error": "typed_family_business_fields_required",
+          "status": null
+        }
+      ],
+      "attemptedOperationKinds": [
+        {
+          "turn": 10,
+          "kind": "deadline-triage-handoff",
+          "expectedSessionRevision": 10
+        }
+      ],
+      "manualKindAmbiguity": true,
+      "historyActions": [
+        "ask_customer",
+        "material_revision",
+        "build_packet",
+        "save_work_product",
+        "material_revision",
+        "build_packet",
+        "revise_proposal",
+        "request_review",
+        "create_follow_up",
+        "propose_workflow",
+        "finish"
+      ],
+      "historySequencesValid": true,
+      "humanPin": null,
+      "priorDecisionRetained": true,
+      "observations": [
+        "Correct current facts saved but required business state never written.",
+        "Wrong invented business operation kind; manual identifies current-family update but does not explicitly list accepted kind enum. No grade changes or retroactive correction."
+      ],
+      "repetitionWithinConditionTask": 1
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v06-runs/1791081987837-gpt-6.1-sol-low-baseline-ibw-deadline-triage-dev-1-4a187165.episode",
+      "condition": "gpt-6.1-sol-low",
+      "model": "gpt-6.1-sol",
+      "reasoningEfforts": [
+        "low"
+      ],
+      "traceMatchesNamedEffort": true,
+      "taskId": "ibw-deadline-triage-dev-1-4a187165",
+      "family": "deadline-triage",
+      "split": "dev",
+      "status": "completed",
+      "error": null,
+      "score": 100,
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "allPass": true,
+      "failedCriteria": [],
+      "materialPhase": 2,
+      "materialRevision": 3,
+      "sessionRevision": 11,
+      "factsFromCurrentSourcesCorrect": true,
+      "wrongPresentFacts": [],
+      "omittedFactKeys": [],
+      "businessFromCurrentSourcesCorrect": true,
+      "wrongPresentBusinessFields": [],
+      "omittedBusinessKeys": [],
+      "currentDraft": true,
+      "currentPacket": true,
+      "currentProvidedReview": true,
+      "actualBusinessWrite": true,
+      "finished": true,
+      "protectedIntentAttempts": [],
+      "invalidCurrentReadSources": [],
+      "protocolErrors": [],
+      "coordinationErrors": [],
+      "sourceErrors": [],
+      "otherToolErrors": [],
+      "attemptedOperationKinds": [
+        {
+          "turn": 7,
+          "kind": "deadline-triage",
+          "expectedSessionRevision": 9
+        }
+      ],
+      "manualKindAmbiguity": false,
+      "historyActions": [
+        "ask_customer",
+        "material_revision",
+        "build_packet",
+        "save_work_product",
+        "material_revision",
+        "build_packet",
+        "revise_proposal",
+        "request_review",
+        "create_follow_up",
+        "apply_business_update",
+        "propose_workflow",
+        "finish"
+      ],
+      "historySequencesValid": true,
+      "humanPin": null,
+      "priorDecisionRetained": true,
+      "observations": [
+        "All current facts and actual state transitions completed; no substantive or protocol-only residual grade loss."
+      ],
+      "repetitionWithinConditionTask": 1
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v06-runs/1791082016358-gpt-6-luna-low-baseline-ibw-financial-reconciliation-dev-1-320cfdad.episode",
+      "condition": "gpt-6-luna-low",
+      "model": "gpt-6-luna",
+      "reasoningEfforts": [
+        "low"
+      ],
+      "traceMatchesNamedEffort": true,
+      "taskId": "ibw-financial-reconciliation-dev-1-320cfdad",
+      "family": "financial-reconciliation",
+      "split": "dev",
+      "status": "completed",
+      "error": null,
+      "score": 100,
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "allPass": true,
+      "failedCriteria": [],
+      "materialPhase": 2,
+      "materialRevision": 3,
+      "sessionRevision": 11,
+      "factsFromCurrentSourcesCorrect": true,
+      "wrongPresentFacts": [],
+      "omittedFactKeys": [],
+      "businessFromCurrentSourcesCorrect": true,
+      "wrongPresentBusinessFields": [],
+      "omittedBusinessKeys": [],
+      "currentDraft": true,
+      "currentPacket": true,
+      "currentProvidedReview": true,
+      "actualBusinessWrite": true,
+      "finished": true,
+      "protectedIntentAttempts": [],
+      "invalidCurrentReadSources": [],
+      "protocolErrors": [
+        {
+          "turn": 4,
+          "tool": null,
+          "error": "Invalid JSON action protocol. Return an actions array as specified; correct this response.",
+          "status": null
+        },
+        {
+          "turn": 6,
+          "tool": null,
+          "error": "Invalid JSON action protocol. Return an actions array as specified; correct this response.",
+          "status": null
+        },
+        {
+          "turn": 10,
+          "tool": null,
+          "error": "Invalid JSON action protocol. Return an actions array as specified; correct this response.",
+          "status": null
+        }
+      ],
+      "coordinationErrors": [],
+      "sourceErrors": [],
+      "otherToolErrors": [],
+      "attemptedOperationKinds": [
+        {
+          "turn": 13,
+          "kind": "financial-reconciliation",
+          "expectedSessionRevision": 8
+        }
+      ],
+      "manualKindAmbiguity": false,
+      "historyActions": [
+        "ask_customer",
+        "material_revision",
+        "build_packet",
+        "save_work_product",
+        "material_revision",
+        "build_packet",
+        "revise_proposal",
+        "request_review",
+        "apply_business_update",
+        "create_follow_up",
+        "propose_workflow",
+        "finish"
+      ],
+      "historySequencesValid": true,
+      "humanPin": null,
+      "priorDecisionRetained": true,
+      "observations": [
+        "Malformed action protocol observed; recovery counted independently of final grade.",
+        "All current facts and actual state transitions completed; no substantive or protocol-only residual grade loss."
+      ],
+      "repetitionWithinConditionTask": 1
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v06-runs/1791082036448-gpt-6.1-sol-low-baseline-ibw-financial-reconciliation-dev-1-320cfdad.episode",
+      "condition": "gpt-6.1-sol-low",
+      "model": "gpt-6.1-sol",
+      "reasoningEfforts": [
+        "low"
+      ],
+      "traceMatchesNamedEffort": true,
+      "taskId": "ibw-financial-reconciliation-dev-1-320cfdad",
+      "family": "financial-reconciliation",
+      "split": "dev",
+      "status": "completed",
+      "error": null,
+      "score": 100,
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "allPass": true,
+      "failedCriteria": [],
+      "materialPhase": 2,
+      "materialRevision": 3,
+      "sessionRevision": 11,
+      "factsFromCurrentSourcesCorrect": true,
+      "wrongPresentFacts": [],
+      "omittedFactKeys": [],
+      "businessFromCurrentSourcesCorrect": true,
+      "wrongPresentBusinessFields": [],
+      "omittedBusinessKeys": [],
+      "currentDraft": true,
+      "currentPacket": true,
+      "currentProvidedReview": true,
+      "actualBusinessWrite": true,
+      "finished": true,
+      "protectedIntentAttempts": [],
+      "invalidCurrentReadSources": [],
+      "protocolErrors": [],
+      "coordinationErrors": [],
+      "sourceErrors": [],
+      "otherToolErrors": [],
+      "attemptedOperationKinds": [
+        {
+          "turn": 9,
+          "kind": "financial-reconciliation",
+          "expectedSessionRevision": 8
+        }
+      ],
+      "manualKindAmbiguity": false,
+      "historyActions": [
+        "ask_customer",
+        "material_revision",
+        "build_packet",
+        "save_work_product",
+        "material_revision",
+        "build_packet",
+        "revise_proposal",
+        "request_review",
+        "apply_business_update",
+        "create_follow_up",
+        "propose_workflow",
+        "finish"
+      ],
+      "historySequencesValid": true,
+      "humanPin": null,
+      "priorDecisionRetained": true,
+      "observations": [
+        "All current facts and actual state transitions completed; no substantive or protocol-only residual grade loss."
+      ],
+      "repetitionWithinConditionTask": 1
+    }
+  ],
+  "frozenOriginalSourceFingerprint": "3d87368b4e5b6de045695db4b495cccc8131d234ebe2ee14622ea6d2a3093af6",
+  "originalHarnessHash": "7961fa7543cdbddb27845660069f8106be1e2cd48fb6cc6cf8e81476e8d93cd3",
+  "originalAuditedSourceHashes": {
+    "insurance-bench/workflow-types.ts": "13fbf5b455d706c06eec4bedb81c935f5fd7cfdae3b079c28ecf18af5b8d9155",
+    "insurance-bench/workflow-cases.ts": "020aeaac3b769b30e5b2b90dd4c7eb4123c0d403a06d1746ead152196b2b66e7",
+    "insurance-bench/workflows.ts": "73268d8963c149868b8a1dcdd1d7b59ded3fba87b77e4b8469c0444709c51d0c",
+    "test/architecture/insurance-bench-workflows.test.ts": "027d10aae792d21868892d6c181eca1f6b0d372bb3b08a79ddcaa8e7ff2509b1"
+  },
+  "measurementDefect": "Accepted apply_business_update kind was not explicitly disclosed; wrong invented kind prevented a state write despite correct facts/review. Original scores preserved and excluded from clean v0.6b rankings.",
+  "observedAtAuditSourceHashes": {
+    "insurance-bench/workflows.ts": "15cc2a635d6901cbdae1070f268da67dc566f64054228f93d51d479ba5fc7f3f",
+    "insurance-bench/workflow-cases.ts": "020aeaac3b769b30e5b2b90dd4c7eb4123c0d403a06d1746ead152196b2b66e7"
+  },
+  "interruptedPartialsScored": false,
+  "originalRegisteredCoverageDenominatorPerCondition": 6,
+  "classification": "Original completed4development episodes preserved unchanged; two latest workflow partials are operator interruptions, not completed failures or model ability measurements."
+}

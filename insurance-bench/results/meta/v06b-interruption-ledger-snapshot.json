@@ -1,0 +1,11 @@
+{
+  "capturedAt": "2026-10-04T02:58:29.750Z",
+  "sourcePath": ".tmp/insurance-bench/session-budget.json",
+  "sourceSha256": "0d04c103935c996633b42c5e6df543fed100cd520b870555b8eab6db82e4fdf7",
+  "snapshot": {
+    "reservedUsd": 13.924636512500038,
+    "capUsd": 25,
+    "updatedAt": "2026-10-04T02:58:14.228Z"
+  },
+  "scope": "Read-only historical copy of shared capped ledger after v6b interruption; concurrent v5 requests may also post. This is not an interruption-time or v6b-only cost total and never replaces the authoritative mutable ledger."
+}

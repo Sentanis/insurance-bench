@@ -1,0 +1,2714 @@
+{
+  "disposition": "approve-engineering-only",
+  "preparedBy": "Engine implementer; independently implemented resolver vs case-author resolver, with literal hand-controls. Non-author adversarial review remains required.",
+  "limitations": [
+    {
+      "id": "one-policy-pack-per-activity",
+      "scope": "All current source inventories contain exactly one packId for each event activity. Resolvers do not yet define ambiguous equal-highest identical clauses across distinct packIds; no paid/tool-insertable path creates that state. Such an extension requires a separate prospective source contract and controls.",
+      "checks": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "counts": [
+            {
+              "activity": "fleet-assignment",
+              "packCount": 1
+            }
+          ]
+        },
+        {
+          "taskId": "ibi-fleet-assignment-dev-2-9f4fa7dd",
+          "counts": [
+            {
+              "activity": "fleet-assignment",
+              "packCount": 1
+            }
+          ]
+        },
+        {
+          "taskId": "ibi-fleet-assignment-holdout-1-74f18798",
+          "counts": [
+            {
+              "activity": "fleet-assignment",
+              "packCount": 1
+            }
+          ]
+        },
+        {
+          "taskId": "ibi-fleet-assignment-holdout-2-a6916617",
+          "counts": [
+            {
+              "activity": "fleet-assignment",
+              "packCount": 1
+            }
+          ]
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "counts": [
+            {
+              "activity": "premises-chronology",
+              "packCount": 1
+            }
+          ]
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-2-e404d261",
+          "counts": [
+            {
+              "activity": "premises-chronology",
+              "packCount": 1
+            }
+          ]
+        },
+        {
+          "taskId": "ibi-premises-chronology-holdout-1-47f9484c",
+          "counts": [
+            {
+              "activity": "premises-chronology",
+              "packCount": 1
+            }
+          ]
+        },
+        {
+          "taskId": "ibi-premises-chronology-holdout-2-4651e73b",
+          "counts": [
+            {
+              "activity": "premises-chronology",
+              "packCount": 1
+            }
+          ]
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "counts": [
+            {
+              "activity": "multi-exposure-review",
+              "packCount": 1
+            }
+          ]
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-2-4630325",
+          "counts": [
+            {
+              "activity": "multi-exposure-review",
+              "packCount": 1
+            }
+          ]
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-holdout-1-3753da40",
+          "counts": [
+            {
+              "activity": "multi-exposure-review",
+              "packCount": 1
+            }
+          ]
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-holdout-2-c4e6889f",
+          "counts": [
+            {
+              "activity": "multi-exposure-review",
+              "packCount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "not-domain-expert-validation",
+      "scope": "Fictional policies and correlated synthetic families; these engineering controls are not insurance professional validity or population calibration."
+    }
+  ],
+  "schema": "insurance-bench-v09-engine-source-audit-v1",
+  "status": "engineering-controls-and-bounded-independent-repair-review-pass-calibration-only",
+  "scope": "Independent engine resolver compared with separately implemented case resolver over public raw rows; literal hand-calculated engine controls and real supplied tool lifecycle. Engine author assembled this artifact; it does not substitute for non-author adversarial review or insurance expert validation.",
+  "sourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+  "sourceHashes": {
+    "insurance-bench/investigation-types.ts": "97c379fc221d3096395a88fc281deb78638d3684b2c1dd4900d5a9554d171f57",
+    "insurance-bench/investigation-cases.ts": "9384c6dd93130526265050e985f08d74e2510584fde2e8bbccfce7b7dab099fe",
+    "insurance-bench/investigation-engine.ts": "86b02a16542099f107493012df42cb54e1c70bcce6b31046405a1246a98e8c52",
+    "insurance-bench/investigation-runner.ts": "e8ac1a83a0b184fe0fe851a3e34e674db632705fe88c0791a5daed6049bb0183",
+    "insurance-bench/investigation-providers.ts": "e3d93a10653c3bd614bd3e00a983e7bb104509beb32df603cba63aa98c0492ba",
+    "scripts/insurance-bench-investigation.ts": "9247cc07c397656a049b242bcfbafb952ff5ea88625bbbe7a7d8ac1466236527",
+    "test/insurance-bench-investigation-engine.test.ts": "e618a1c5ae9311e152805db6dc11571cdb76ea0086ac8324dd11971e530010b6"
+  },
+  "corpusSha": "b8735f0158297b64a250cdecdcb0fffda42fb85f1fd30e3c07ff5ec45f81d2f5",
+  "datasetHash": "b8735f0158297b64a250cdecdcb0fffda42fb85f1fd30e3c07ff5ec45f81d2f5",
+  "counts": {
+    "tasks": 12,
+    "engineeringSnapshots": 72,
+    "operationalSnapshots": 48,
+    "nonoperationalResponseAbsentLaterGenerations": 24,
+    "factualOutputsChecked": 1152,
+    "authorSufficientProofsAccepted": 1292,
+    "engineSufficientProofsCurrentNonempty": 1292,
+    "actualAllPassToolOracles": 12
+  },
+  "checks": {
+    "semanticAgreement": true,
+    "allPublicFieldsPresent": true,
+    "noEmptyCertificate": true,
+    "currentSourceRowsOnly": true,
+    "authorCertificateSufficiencyAccepted": true,
+    "twoActualCorrectionsPerOracle": true,
+    "allCurrentActualRequestWrites": true,
+    "humanPinPreserved": true,
+    "noPaidCalls": true,
+    "noHeldOutModelOutputsRead": true,
+    "initialApprovalDependenciesPublic": true,
+    "publicAssignmentNoRubric": true
+  },
+  "preInferenceFindings": [
+    {
+      "id": "absence-origin-wording",
+      "status": "clarified-before-inference",
+      "meaning": "Absence proof jointly requires candidate/class inventory/authority inventory; origin IDs are provenance, no rule counts independent observations, conflicting qualifying values remain unknown even when origin IDs match. Aligns public wording to existing resolver without changed factual/request values.",
+      "preservedSnapshot": "investigation-cases-pre-wording-review-501e2c38.txt",
+      "paidCallsUnderAffectedSnapshot": 0
+    },
+    {
+      "id": "post-finish-protected-intent",
+      "status": "fixed-before-inference",
+      "meaning": "Independent non-author reviewer demonstrated a fully correct batch followed by finish then protected intent could escape the finished guard. Protected intent is now checked before finished and stale guards. Both tools tested after actual complete oracle.",
+      "preservedSnapshot": "investigation-independent-audit-v0.9-pre-guard-review-d3aeb8f9.json",
+      "engineReconstruction": "investigation-engine-guard-reconstruction-v0.9.json",
+      "paidCallsUnderAffectedSnapshot": 0
+    },
+    {
+      "id": "initial-approval-future-dependencies",
+      "status": "fixed-before-inference",
+      "meaning": "Initial approval dependencies are now derived from initially public sources before the requested response or updates, preventing withheld-source identifiers in original records.",
+      "caseSnapshot": "investigation-cases-pre-projection-review-d3aeb8f9.txt",
+      "paidCallsUnderAffectedSnapshot": 0
+    },
+    {
+      "id": "approval-extra-reference-ambiguity",
+      "status": "fixed-before-inference",
+      "meaning": "Approval dependencies must be supporting operands in one sufficient relation witness; merely adding current extra references cannot preserve unrelated approval.",
+      "preservedOutputs": "No factual/scoped-request/gold vector change; public rule clarified before paid calls."
+    }
+  ],
+  "literalControls": {
+    "command": "node --import tsx --test test/insurance-bench-investigation-engine.test.ts",
+    "count": 19,
+    "coverage": [
+      "canonical certificate alternatives equal across all72 source states",
+      "exhaustive9-pair all and any truth tables plus3 not inputs",
+      "three-valued all/any/not and short-circuit semantic proof alternatives",
+      "exact UTC request windows",
+      "event-scoped credentials and corrected intervals",
+      "unsigned/cross-scope corrections ignored",
+      "qualified null vs false and inventory-backed missing inputs",
+      "conflicting inputs/policies and absent policy unknown without throw",
+      "same-obligation supporting dependency approval retention",
+      "current source read and provided approval/review lifecycle",
+      "current supersets and alternative proofs accepted",
+      "semantic request error counted once without erasing physical handoff",
+      "fact/evidence accuracy correlation separate from physical workflow",
+      "protected intent before stale token",
+      "equivalent precise ISO instants, invalid calendar/submillisecond rejection"
+    ]
+  },
+  "constantControls": {
+    "description": "Optimistic label-only constants: aggregate identity/policy values, evidence sources, all scoped requests and full structural lifecycle are supplied by oracle. This is a stronger partial-credit floor than a complete naive-agent baseline; headline all-task success is zero for every constant.",
+    "results": {
+      "applicable": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "family": "coverage-review",
+          "split": "dev",
+          "score": 67.5,
+          "components": {
+            "facts": 50,
+            "evidence": 50,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-fleet-assignment-dev-2-9f4fa7dd",
+          "family": "coverage-review",
+          "split": "dev",
+          "score": 67.5,
+          "components": {
+            "facts": 50,
+            "evidence": 50,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-fleet-assignment-holdout-1-74f18798",
+          "family": "coverage-review",
+          "split": "holdout",
+          "score": 71.56,
+          "components": {
+            "facts": 56.25,
+            "evidence": 56.25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-fleet-assignment-holdout-2-a6916617",
+          "family": "coverage-review",
+          "split": "holdout",
+          "score": 67.5,
+          "components": {
+            "facts": 50,
+            "evidence": 50,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "family": "evidence-brief",
+          "split": "dev",
+          "score": 75.63,
+          "components": {
+            "facts": 62.5,
+            "evidence": 62.5,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-2-e404d261",
+          "family": "evidence-brief",
+          "split": "dev",
+          "score": 71.56,
+          "components": {
+            "facts": 56.25,
+            "evidence": 56.25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-premises-chronology-holdout-1-47f9484c",
+          "family": "evidence-brief",
+          "split": "holdout",
+          "score": 71.56,
+          "components": {
+            "facts": 56.25,
+            "evidence": 56.25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-premises-chronology-holdout-2-4651e73b",
+          "family": "evidence-brief",
+          "split": "holdout",
+          "score": 71.56,
+          "components": {
+            "facts": 56.25,
+            "evidence": 56.25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "family": "fraud-referral",
+          "split": "dev",
+          "score": 71.56,
+          "components": {
+            "facts": 56.25,
+            "evidence": 56.25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-2-4630325",
+          "family": "fraud-referral",
+          "split": "dev",
+          "score": 75.63,
+          "components": {
+            "facts": 62.5,
+            "evidence": 62.5,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-holdout-1-3753da40",
+          "family": "fraud-referral",
+          "split": "holdout",
+          "score": 71.56,
+          "components": {
+            "facts": 56.25,
+            "evidence": 56.25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-holdout-2-c4e6889f",
+          "family": "fraud-referral",
+          "split": "holdout",
+          "score": 63.44,
+          "components": {
+            "facts": 43.75,
+            "evidence": 43.75,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        }
+      ],
+      "not-applicable": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "family": "coverage-review",
+          "split": "dev",
+          "score": 83.75,
+          "components": {
+            "facts": 75,
+            "evidence": 75,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-fleet-assignment-dev-2-9f4fa7dd",
+          "family": "coverage-review",
+          "split": "dev",
+          "score": 75.63,
+          "components": {
+            "facts": 62.5,
+            "evidence": 62.5,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-fleet-assignment-holdout-1-74f18798",
+          "family": "coverage-review",
+          "split": "holdout",
+          "score": 75.63,
+          "components": {
+            "facts": 62.5,
+            "evidence": 62.5,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-fleet-assignment-holdout-2-a6916617",
+          "family": "coverage-review",
+          "split": "holdout",
+          "score": 83.75,
+          "components": {
+            "facts": 75,
+            "evidence": 75,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "family": "evidence-brief",
+          "split": "dev",
+          "score": 75.63,
+          "components": {
+            "facts": 62.5,
+            "evidence": 62.5,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-2-e404d261",
+          "family": "evidence-brief",
+          "split": "dev",
+          "score": 79.69,
+          "components": {
+            "facts": 68.75,
+            "evidence": 68.75,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-premises-chronology-holdout-1-47f9484c",
+          "family": "evidence-brief",
+          "split": "holdout",
+          "score": 71.56,
+          "components": {
+            "facts": 56.25,
+            "evidence": 56.25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-premises-chronology-holdout-2-4651e73b",
+          "family": "evidence-brief",
+          "split": "holdout",
+          "score": 75.63,
+          "components": {
+            "facts": 62.5,
+            "evidence": 62.5,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "family": "fraud-referral",
+          "split": "dev",
+          "score": 79.69,
+          "components": {
+            "facts": 68.75,
+            "evidence": 68.75,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-2-4630325",
+          "family": "fraud-referral",
+          "split": "dev",
+          "score": 67.5,
+          "components": {
+            "facts": 50,
+            "evidence": 50,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-holdout-1-3753da40",
+          "family": "fraud-referral",
+          "split": "holdout",
+          "score": 75.63,
+          "components": {
+            "facts": 62.5,
+            "evidence": 62.5,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-holdout-2-c4e6889f",
+          "family": "fraud-referral",
+          "split": "holdout",
+          "score": 87.81,
+          "components": {
+            "facts": 81.25,
+            "evidence": 81.25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        }
+      ],
+      "unresolved": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "family": "coverage-review",
+          "split": "dev",
+          "score": 51.25,
+          "components": {
+            "facts": 25,
+            "evidence": 25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-fleet-assignment-dev-2-9f4fa7dd",
+          "family": "coverage-review",
+          "split": "dev",
+          "score": 59.38,
+          "components": {
+            "facts": 37.5,
+            "evidence": 37.5,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-fleet-assignment-holdout-1-74f18798",
+          "family": "coverage-review",
+          "split": "holdout",
+          "score": 55.31,
+          "components": {
+            "facts": 31.25,
+            "evidence": 31.25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-fleet-assignment-holdout-2-a6916617",
+          "family": "coverage-review",
+          "split": "holdout",
+          "score": 51.25,
+          "components": {
+            "facts": 25,
+            "evidence": 25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "family": "evidence-brief",
+          "split": "dev",
+          "score": 51.25,
+          "components": {
+            "facts": 25,
+            "evidence": 25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-2-e404d261",
+          "family": "evidence-brief",
+          "split": "dev",
+          "score": 51.25,
+          "components": {
+            "facts": 25,
+            "evidence": 25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-premises-chronology-holdout-1-47f9484c",
+          "family": "evidence-brief",
+          "split": "holdout",
+          "score": 59.38,
+          "components": {
+            "facts": 37.5,
+            "evidence": 37.5,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-premises-chronology-holdout-2-4651e73b",
+          "family": "evidence-brief",
+          "split": "holdout",
+          "score": 55.31,
+          "components": {
+            "facts": 31.25,
+            "evidence": 31.25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "family": "fraud-referral",
+          "split": "dev",
+          "score": 51.25,
+          "components": {
+            "facts": 25,
+            "evidence": 25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-2-4630325",
+          "family": "fraud-referral",
+          "split": "dev",
+          "score": 59.38,
+          "components": {
+            "facts": 37.5,
+            "evidence": 37.5,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-holdout-1-3753da40",
+          "family": "fraud-referral",
+          "split": "holdout",
+          "score": 55.31,
+          "components": {
+            "facts": 31.25,
+            "evidence": 31.25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-holdout-2-c4e6889f",
+          "family": "fraud-referral",
+          "split": "holdout",
+          "score": 51.25,
+          "components": {
+            "facts": 25,
+            "evidence": 25,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": false
+        }
+      ]
+    }
+  },
+  "states": [
+    {
+      "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+      "family": "coverage-review",
+      "split": "dev",
+      "generation": 1,
+      "responseAvailable": false,
+      "operational": true,
+      "sourceSha": "234269405e0ac81f86e8ab5c236977d2f6da1d78c1d1338deabd88644b66255c",
+      "derivationSha": "44a0b24011cedebeaa08c13d04ded067e3938ceb6446016b2828483ed2b69142",
+      "applicable": 3,
+      "unresolved": 3,
+      "requestCount": 3,
+      "retainedApprovalIds": [
+        "473634f6-historical-approval-0",
+        "473634f6-historical-approval-1",
+        "473634f6-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+      "family": "coverage-review",
+      "split": "dev",
+      "generation": 2,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "2ae3ba9d0c6b6bbe0b557abc6898eb7a2746c9b189630ed88261a7e4480147a9",
+      "derivationSha": "e169aacb0f90a3a36c9923de0e5785ad0651b45f71b82eb96609520f459938fc",
+      "applicable": 2,
+      "unresolved": 4,
+      "requestCount": 2,
+      "retainedApprovalIds": [
+        "473634f6-historical-approval-1",
+        "473634f6-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": [
+        "473634f6-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+      "family": "coverage-review",
+      "split": "dev",
+      "generation": 3,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "7d586ea50bc5526aad038a22292765705c2a5289575fa5d75d3ddb6df1075f12",
+      "derivationSha": "f9aba434652d83dd28285490875bbb972da9f71ca2669cc15f5d685f55c656f6",
+      "applicable": 2,
+      "unresolved": 4,
+      "requestCount": 2,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "473634f6-historical-approval-0",
+        "473634f6-historical-approval-1",
+        "473634f6-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+      "family": "coverage-review",
+      "split": "dev",
+      "generation": 1,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "af6e81afdced4901b506ba0bd456f6844a1a6bbdd4f7613a285dd62b610513a4",
+      "derivationSha": "cd96d1e59de37e0529bf3001f4a778e0a9edada001d6ee5f5e65547bf214d3d0",
+      "applicable": 5,
+      "unresolved": 0,
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "473634f6-historical-approval-0",
+        "473634f6-historical-approval-1",
+        "473634f6-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+      "family": "coverage-review",
+      "split": "dev",
+      "generation": 2,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "ec4a94950f025e3bdf2cc2019d89efdefb322d3b9549210d20c3c1315392f9dd",
+      "derivationSha": "d327f87921d6ce39254a8fdae53007099e1496a6a0adc795ceee07f50d1c111d",
+      "applicable": 4,
+      "unresolved": 0,
+      "requestCount": 4,
+      "retainedApprovalIds": [
+        "473634f6-historical-approval-1",
+        "473634f6-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": [
+        "473634f6-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+      "family": "coverage-review",
+      "split": "dev",
+      "generation": 3,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "d2babea68141fa03f30517ae823349f5747e9717ae4413d07a430caab48c3474",
+      "derivationSha": "8c80b2fcb5a64b73555b319453519a50549bbeb5dd0c27c0654219899d426f4c",
+      "applicable": 4,
+      "unresolved": 0,
+      "requestCount": 4,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "473634f6-historical-approval-0",
+        "473634f6-historical-approval-1",
+        "473634f6-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-fleet-assignment-dev-2-9f4fa7dd",
+      "family": "coverage-review",
+      "split": "dev",
+      "generation": 1,
+      "responseAvailable": false,
+      "operational": true,
+      "sourceSha": "eb58e4c777d5a0436355ee7f87e62ea2a74c3f5b9ac54a9ca3861bc30f489355",
+      "derivationSha": "fd5cfbab658bebb25bfca92bfa4bdee239adb14c567d4c4fdfaf25145688a559",
+      "applicable": 1,
+      "unresolved": 5,
+      "requestCount": 1,
+      "retainedApprovalIds": [
+        "9f4fa7dd-historical-approval-0"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-fleet-assignment-dev-2-9f4fa7dd",
+      "family": "coverage-review",
+      "split": "dev",
+      "generation": 2,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "2fa3aa7e9405daea45fef29b56bda449de393f8c6a428bb682bd8c40396adc93",
+      "derivationSha": "565503fe839f5e898077cd02360e5d7b7c153d50fa8cee39488ef441da8d26b7",
+      "applicable": 1,
+      "unresolved": 7,
+      "requestCount": 1,
+      "retainedApprovalIds": [
+        "9f4fa7dd-historical-approval-0"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-fleet-assignment-dev-2-9f4fa7dd",
+      "family": "coverage-review",
+      "split": "dev",
+      "generation": 3,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "179823d35f93a604002429602868c098aba2669259e5042e164993624804c3d9",
+      "derivationSha": "928fc61bda80409cb9e2edcd6811f27a39f6fa306e99e573f2e5dfe641fe5450",
+      "applicable": 1,
+      "unresolved": 7,
+      "requestCount": 1,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "9f4fa7dd-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-fleet-assignment-dev-2-9f4fa7dd",
+      "family": "coverage-review",
+      "split": "dev",
+      "generation": 1,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "4c57c5a885bc16c9cd80432b2cd6503917be2af17dd2987a63c37dbb8b81e83a",
+      "derivationSha": "1e00cbc3889d6ab50b422e19b09610de814f9832e24ef70aed14e97e0427ce99",
+      "applicable": 3,
+      "unresolved": 2,
+      "requestCount": 3,
+      "retainedApprovalIds": [
+        "9f4fa7dd-historical-approval-0"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-fleet-assignment-dev-2-9f4fa7dd",
+      "family": "coverage-review",
+      "split": "dev",
+      "generation": 2,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "8671031e51043ffaabd953c31b116395fe877e135e6abc5a618ef5c01221b357",
+      "derivationSha": "3ce735c90b7c37bb5f17c1a497cf667136baa9cb3f63e69db0ced2db472d9ce8",
+      "applicable": 4,
+      "unresolved": 2,
+      "requestCount": 4,
+      "retainedApprovalIds": [
+        "9f4fa7dd-historical-approval-0"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-fleet-assignment-dev-2-9f4fa7dd",
+      "family": "coverage-review",
+      "split": "dev",
+      "generation": 3,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "6571db225da2b1cb85115f1dabfdea5096bd2110a81cfcaf53933affbdd96ae5",
+      "derivationSha": "9b41e4283c052fad6c8cc52ee4ae19ea1b0cbdfecd827e6bdbd0b8559a228ba5",
+      "applicable": 4,
+      "unresolved": 2,
+      "requestCount": 4,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "9f4fa7dd-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-fleet-assignment-holdout-1-74f18798",
+      "family": "coverage-review",
+      "split": "holdout",
+      "generation": 1,
+      "responseAvailable": false,
+      "operational": true,
+      "sourceSha": "7c3130ffced8c25592ea8c6c0e80bb84d588947034d644293919a2e931e5b1ba",
+      "derivationSha": "62c6f77fc5302caa0a8dd77de5a341972109ed2a1c4aca53d924a09075bc90df",
+      "applicable": 4,
+      "unresolved": 3,
+      "requestCount": 4,
+      "retainedApprovalIds": [
+        "74f18798-historical-approval-0",
+        "74f18798-historical-approval-1",
+        "74f18798-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-fleet-assignment-holdout-1-74f18798",
+      "family": "coverage-review",
+      "split": "holdout",
+      "generation": 2,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "4db9baa70d68e46b7c20430282e5acac4be155aa34326f1b5beb2cba768ddb1b",
+      "derivationSha": "d541e4960be7dc59cd3d65bfd904cb0dfa69de7ecf4b12f29cbfc7e16d8edab8",
+      "applicable": 3,
+      "unresolved": 4,
+      "requestCount": 3,
+      "retainedApprovalIds": [
+        "74f18798-historical-approval-1",
+        "74f18798-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": [
+        "74f18798-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-fleet-assignment-holdout-1-74f18798",
+      "family": "coverage-review",
+      "split": "holdout",
+      "generation": 3,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "069205e1bb2bcf4f10d99c8ada8d03f195aa6db11b8364413278f1ee1671e7ea",
+      "derivationSha": "62d0587bba093dbf16e3994b692e12b0a99d6b73addc6aca6f4b1d99f988020a",
+      "applicable": 3,
+      "unresolved": 4,
+      "requestCount": 3,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "74f18798-historical-approval-0",
+        "74f18798-historical-approval-1",
+        "74f18798-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-fleet-assignment-holdout-1-74f18798",
+      "family": "coverage-review",
+      "split": "holdout",
+      "generation": 1,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "7ed82b85fc2a593f57d5e7c3509b35f6d21201a8ca2d230a8e3fd139d6b8fe09",
+      "derivationSha": "a002511618f2ba2d7ba429f49092d4f18815aae5a5a581b1bcd908ff5f5769da",
+      "applicable": 5,
+      "unresolved": 2,
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "74f18798-historical-approval-0",
+        "74f18798-historical-approval-1",
+        "74f18798-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-fleet-assignment-holdout-1-74f18798",
+      "family": "coverage-review",
+      "split": "holdout",
+      "generation": 2,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "f3e22483c709ec730cef63b8b4762672610dc93654795931217823a31d85dbeb",
+      "derivationSha": "5efa96e0d54d17062c8d6f03704ad17f7d433a74cb37e38f3183f7e1e6965dad",
+      "applicable": 5,
+      "unresolved": 1,
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "74f18798-historical-approval-1",
+        "74f18798-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": [
+        "74f18798-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-fleet-assignment-holdout-1-74f18798",
+      "family": "coverage-review",
+      "split": "holdout",
+      "generation": 3,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "7936be25dae89fe9890c2d935591b12beccbe01e3b5b0ee56510e08eed0f761b",
+      "derivationSha": "4200240a3762838500cae1730a451bd0c1cb2323c41ca08062cf6d72a2202187",
+      "applicable": 5,
+      "unresolved": 1,
+      "requestCount": 5,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "74f18798-historical-approval-0",
+        "74f18798-historical-approval-1",
+        "74f18798-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-fleet-assignment-holdout-2-a6916617",
+      "family": "coverage-review",
+      "split": "holdout",
+      "generation": 1,
+      "responseAvailable": false,
+      "operational": true,
+      "sourceSha": "2e1899ae939fdaec9710ac1cbc9eccccee6da806c9dc5ed9008ac9006922532f",
+      "derivationSha": "a3167ce96b8785c131d5643dc0018b299ef5bfe1e758b1220b7208765b20b630",
+      "applicable": 3,
+      "unresolved": 4,
+      "requestCount": 3,
+      "retainedApprovalIds": [
+        "a6916617-historical-approval-0",
+        "a6916617-historical-approval-1",
+        "a6916617-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-fleet-assignment-holdout-2-a6916617",
+      "family": "coverage-review",
+      "split": "holdout",
+      "generation": 2,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "77ff44c20449dd24bc29c3325e95b3ef260abb6566a3d63692df7fec54410e86",
+      "derivationSha": "75dd40a3587ad945dff7a97fefa2102ecf8fed6fa16b83861a2b7ab41e75c27d",
+      "applicable": 2,
+      "unresolved": 5,
+      "requestCount": 2,
+      "retainedApprovalIds": [
+        "a6916617-historical-approval-1",
+        "a6916617-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": [
+        "a6916617-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-fleet-assignment-holdout-2-a6916617",
+      "family": "coverage-review",
+      "split": "holdout",
+      "generation": 3,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "fdbf632a1427c718ffc7a88b24c2a45cab4433c4309bf80a47dbc547c7d4bf1e",
+      "derivationSha": "c1753509523efb55a2c3fd952f8bf63a400c36999644894704adf67c7839245c",
+      "applicable": 2,
+      "unresolved": 4,
+      "requestCount": 2,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "a6916617-historical-approval-0",
+        "a6916617-historical-approval-1",
+        "a6916617-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-fleet-assignment-holdout-2-a6916617",
+      "family": "coverage-review",
+      "split": "holdout",
+      "generation": 1,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "6843f9010be1998af98be705116bae5f531cbaa0fe26770bd7e905c071e2919e",
+      "derivationSha": "7a8b187255b9ca46b2a752b8e831e204f61d00c2ce4ffab0e40e5798c8a79d0b",
+      "applicable": 5,
+      "unresolved": 1,
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "a6916617-historical-approval-0",
+        "a6916617-historical-approval-1",
+        "a6916617-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-fleet-assignment-holdout-2-a6916617",
+      "family": "coverage-review",
+      "split": "holdout",
+      "generation": 2,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "ca923f7476628643f3ddb9ea8ace192ecb9b8e4aec2463bc0a0400d8044a574f",
+      "derivationSha": "f8b78de0a1105df354dddf3a851f353d2d449cb2085075ada87ebdad10390a84",
+      "applicable": 4,
+      "unresolved": 1,
+      "requestCount": 4,
+      "retainedApprovalIds": [
+        "a6916617-historical-approval-1",
+        "a6916617-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": [
+        "a6916617-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-fleet-assignment-holdout-2-a6916617",
+      "family": "coverage-review",
+      "split": "holdout",
+      "generation": 3,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "697c7d45fe5253b82d4560567bb6922ace7a2dd92b9e4b03d5eefc750979b768",
+      "derivationSha": "05a722d46db6b8e3a7a09f25797a0dd01666ec3d3ba5f64eca9aef50e3e6eb2d",
+      "applicable": 4,
+      "unresolved": 0,
+      "requestCount": 4,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "a6916617-historical-approval-0",
+        "a6916617-historical-approval-1",
+        "a6916617-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+      "family": "evidence-brief",
+      "split": "dev",
+      "generation": 1,
+      "responseAvailable": false,
+      "operational": true,
+      "sourceSha": "01ddce43d51848129a20870b70f89be99ad8c1552b202f5d564aca6776dcc879",
+      "derivationSha": "ce13b7fcdae0604ebe8ceed4516e7752523ce37c1356e7961a9a629264a84f0c",
+      "applicable": 5,
+      "unresolved": 2,
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "98bd4c8a-historical-approval-0",
+        "98bd4c8a-historical-approval-1",
+        "98bd4c8a-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+      "family": "evidence-brief",
+      "split": "dev",
+      "generation": 2,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "7b0d1ea6bc00d20c2e519ab9482382f0c1a4db712aaff6f0935abafeeb113703",
+      "derivationSha": "6bca9dddf8a0d89f3e0f36e7c8ae2b7ded2e715b01daa91e475197697f89b34f",
+      "applicable": 5,
+      "unresolved": 1,
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "98bd4c8a-historical-approval-0",
+        "98bd4c8a-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": [
+        "98bd4c8a-historical-approval-1"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+      "family": "evidence-brief",
+      "split": "dev",
+      "generation": 3,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "2f70b2a1f16eea2cbffcb15ca5411132b3056dc6da56bc39cea6bfcecb62fc0d",
+      "derivationSha": "44b8608e07014a6d1c04c5f6f0c545d63deda1516fafea028408c998ec19258f",
+      "applicable": 5,
+      "unresolved": 1,
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "98bd4c8a-historical-approval-0"
+      ],
+      "invalidatedApprovalIds": [
+        "98bd4c8a-historical-approval-1",
+        "98bd4c8a-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+      "family": "evidence-brief",
+      "split": "dev",
+      "generation": 1,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "c086a5e24c2d32cc56b0e3f6e3eceea180292fadd0b4c410c36425591d978997",
+      "derivationSha": "1bf64fc7a36a1f5d74b0420e6c2d0a3f6f2ad29539f86b41a4842b6d1fc83f31",
+      "applicable": 7,
+      "unresolved": 0,
+      "requestCount": 7,
+      "retainedApprovalIds": [
+        "98bd4c8a-historical-approval-0",
+        "98bd4c8a-historical-approval-1",
+        "98bd4c8a-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+      "family": "evidence-brief",
+      "split": "dev",
+      "generation": 2,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "fa43b9a12caf80875b6dbcc94e89928e71311c67f09ad7793e9cf0263d9d84ca",
+      "derivationSha": "53c5eb12a494c74add0caec098c1ead7239eb4cb0c36d9ac7359582c3009fd7f",
+      "applicable": 6,
+      "unresolved": 0,
+      "requestCount": 6,
+      "retainedApprovalIds": [
+        "98bd4c8a-historical-approval-0",
+        "98bd4c8a-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": [
+        "98bd4c8a-historical-approval-1"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+      "family": "evidence-brief",
+      "split": "dev",
+      "generation": 3,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "7276637dd1a7df43da8d5c1723b08ad6ee285c88ddda3c412411f4801353ee30",
+      "derivationSha": "3605d87554e8b5951240c35ec0280a31cae4b063d7b21d70b89bae73158afe99",
+      "applicable": 6,
+      "unresolved": 0,
+      "requestCount": 6,
+      "retainedApprovalIds": [
+        "98bd4c8a-historical-approval-0"
+      ],
+      "invalidatedApprovalIds": [
+        "98bd4c8a-historical-approval-1",
+        "98bd4c8a-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-dev-2-e404d261",
+      "family": "evidence-brief",
+      "split": "dev",
+      "generation": 1,
+      "responseAvailable": false,
+      "operational": true,
+      "sourceSha": "97672a66cd761d96c14ff4f1993693697d0ccef28e002ba390d7233a57ab7564",
+      "derivationSha": "08991fa06c023583a8620cc51727f4953dee01b1c4b90fd4e65cbf230e5e1345",
+      "applicable": 6,
+      "unresolved": 2,
+      "requestCount": 6,
+      "retainedApprovalIds": [
+        "e404d261-historical-approval-0",
+        "e404d261-historical-approval-1",
+        "e404d261-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-premises-chronology-dev-2-e404d261",
+      "family": "evidence-brief",
+      "split": "dev",
+      "generation": 2,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "d0e682e06aa4529204fb809ebb9d8e972836fd7a5725560277224b43ea8b8275",
+      "derivationSha": "1290909c76664e174f7181642f1a0fab35765ab33cce2f3ffeb18246a7c0f5ff",
+      "applicable": 6,
+      "unresolved": 0,
+      "requestCount": 6,
+      "retainedApprovalIds": [
+        "e404d261-historical-approval-0",
+        "e404d261-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": [
+        "e404d261-historical-approval-1"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-dev-2-e404d261",
+      "family": "evidence-brief",
+      "split": "dev",
+      "generation": 3,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "dfa2cfea76f211ac8530a57b5f87ac178fb8bc7c73a1fa03d523bb8c10e64372",
+      "derivationSha": "f20dd9c5832cf237c05ea1e94e092b881c656d12d95dba1b01f953179a44f004",
+      "applicable": 5,
+      "unresolved": 0,
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "e404d261-historical-approval-0"
+      ],
+      "invalidatedApprovalIds": [
+        "e404d261-historical-approval-1",
+        "e404d261-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-dev-2-e404d261",
+      "family": "evidence-brief",
+      "split": "dev",
+      "generation": 1,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "0174ae39865c78aa548e223def2b5cfbcdedf2fc664952293fd81a9878a52a43",
+      "derivationSha": "f0a2286dccfb51c4b1970316123b5546b689aa4c7bd3a799bad0d755b1f61515",
+      "applicable": 7,
+      "unresolved": 1,
+      "requestCount": 7,
+      "retainedApprovalIds": [
+        "e404d261-historical-approval-0",
+        "e404d261-historical-approval-1",
+        "e404d261-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-premises-chronology-dev-2-e404d261",
+      "family": "evidence-brief",
+      "split": "dev",
+      "generation": 2,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "e2a3ea1483560ed30f77d49b92601e3bbe7ba2539714608db5ec1debdf912ddf",
+      "derivationSha": "79c99243ac4e794c2fd957b4867f75959ef72360a8a96190517a1e689f26dae6",
+      "applicable": 6,
+      "unresolved": 0,
+      "requestCount": 6,
+      "retainedApprovalIds": [
+        "e404d261-historical-approval-0",
+        "e404d261-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": [
+        "e404d261-historical-approval-1"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-dev-2-e404d261",
+      "family": "evidence-brief",
+      "split": "dev",
+      "generation": 3,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "bd6977e5b5f627b413ee04ab78330bdac4cf9e167c5b133d033814d301ade1e6",
+      "derivationSha": "6193286eebf53aa70c337cbb53cd9bc7c8089b486b90af8d8a06e2c32a31ca08",
+      "applicable": 5,
+      "unresolved": 0,
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "e404d261-historical-approval-0"
+      ],
+      "invalidatedApprovalIds": [
+        "e404d261-historical-approval-1",
+        "e404d261-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-1-47f9484c",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "generation": 1,
+      "responseAvailable": false,
+      "operational": true,
+      "sourceSha": "d9a9116b9202891976d57cf56fd070eaa3d23a79aac63ff58f58cf206ebc30f0",
+      "derivationSha": "bf07a7a4a617d498b1947d9af9e6e99e9f3286ffb6c601c4c01a979c3d86c892",
+      "applicable": 3,
+      "unresolved": 5,
+      "requestCount": 3,
+      "retainedApprovalIds": [
+        "47f9484c-historical-approval-0",
+        "47f9484c-historical-approval-1",
+        "47f9484c-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-1-47f9484c",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "generation": 2,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "bdd3185ecd82935fb3f36e46d778673afe4107a452d4587deccc71d75b81b67a",
+      "derivationSha": "47912db71ad3174d9f422d73a0868e91c240a08eeabb632a04a161b6a0fa21c9",
+      "applicable": 3,
+      "unresolved": 4,
+      "requestCount": 3,
+      "retainedApprovalIds": [
+        "47f9484c-historical-approval-1",
+        "47f9484c-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": [
+        "47f9484c-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-1-47f9484c",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "generation": 3,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "06aa1acc10624b5752f0a419892698a1f579966234c1f0a886f5a4295428ceb4",
+      "derivationSha": "1fa2af5f8bd1c7d2eda9a4cafb07bf9361d3044dae6467caa7313db9c3e97e55",
+      "applicable": 4,
+      "unresolved": 3,
+      "requestCount": 4,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "47f9484c-historical-approval-0",
+        "47f9484c-historical-approval-1",
+        "47f9484c-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-1-47f9484c",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "generation": 1,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "c07bd7178a5f355c07064d0bfd8a406f39dd34b46d956a56ff9cc2cb6ea0e27b",
+      "derivationSha": "1d5e58ad7614c3505a41a0a057b3eac604fa1f3d7f05317edab62270054acf8d",
+      "applicable": 5,
+      "unresolved": 3,
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "47f9484c-historical-approval-0",
+        "47f9484c-historical-approval-1",
+        "47f9484c-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-1-47f9484c",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "generation": 2,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "a6ebf2f662223476103ec05bbad6b51dad0882fa64ddcc9b58f341dec30cc6a9",
+      "derivationSha": "722d8f9f76d6e0cd822b2e842f2c47eeaf32de8ae907c4d2fb74786a203094fa",
+      "applicable": 4,
+      "unresolved": 3,
+      "requestCount": 4,
+      "retainedApprovalIds": [
+        "47f9484c-historical-approval-1",
+        "47f9484c-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": [
+        "47f9484c-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-1-47f9484c",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "generation": 3,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "bcda3a6ae31873d2305001b3984fbceb0b1977a44a9501ee0b3e673ff46927a9",
+      "derivationSha": "d64e5b00bfac9bb5f724707b888b4d32c1e0f161c08bc6c38bc03e974492fd84",
+      "applicable": 5,
+      "unresolved": 2,
+      "requestCount": 5,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "47f9484c-historical-approval-0",
+        "47f9484c-historical-approval-1",
+        "47f9484c-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-2-4651e73b",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "generation": 1,
+      "responseAvailable": false,
+      "operational": true,
+      "sourceSha": "4604e421aa900e9bc25d893105c6b32d54722865308f99282deb21487f1bfd0d",
+      "derivationSha": "8d1a6b569fc7d2bbfa20a1ca81354453b85eed8eb4c8e34ee2d1cbe47dc2a358",
+      "applicable": 1,
+      "unresolved": 6,
+      "requestCount": 1,
+      "retainedApprovalIds": [
+        "4651e73b-historical-approval-0"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-2-4651e73b",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "generation": 2,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "cede8ffe1482b1f6350d19ca24123701ba1058cbf741b769da555482b8580130",
+      "derivationSha": "5b1efb1c470b241e47e6c22631f724513f45f77ab44407382002a2f646cfaa37",
+      "applicable": 1,
+      "unresolved": 6,
+      "requestCount": 1,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "4651e73b-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-2-4651e73b",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "generation": 3,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "9f8af954bc6b24bb5eeb9ef39a1d6f0af878472e15520657cbf78213c620bcc0",
+      "derivationSha": "ecb7b70d6538daf75ffc450705dfd1a7fe688990a56a2030be801b14709341d8",
+      "applicable": 4,
+      "unresolved": 2,
+      "requestCount": 4,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "4651e73b-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-2-4651e73b",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "generation": 1,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "d1d7fbd83ee5a215e903f88765e0d0a6eac32f4e24b0ec053de0f3636e82a802",
+      "derivationSha": "3383f01b4720bb61ba56f8ac4e29034ac29f9b30583282751accef8fcf0a9e35",
+      "applicable": 3,
+      "unresolved": 4,
+      "requestCount": 3,
+      "retainedApprovalIds": [
+        "4651e73b-historical-approval-0"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-2-4651e73b",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "generation": 2,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "844fef9a131b2f01a38164ef0ee336357368bd3773a1069a60daca006b94a6c8",
+      "derivationSha": "db54aaf379eac1d08f41ec93bdbd893a796eb9a04ed788394a27f66528fab68c",
+      "applicable": 2,
+      "unresolved": 5,
+      "requestCount": 2,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "4651e73b-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-2-4651e73b",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "generation": 3,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "91ff91458af57a67b3e2abf9a2aa6a41f135c1f06f14526da8878bb01fb6242c",
+      "derivationSha": "d584d8138158619e2ab7422c768fac29fe2a810876f52f7af7a847b2d0008701",
+      "applicable": 5,
+      "unresolved": 1,
+      "requestCount": 5,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "4651e73b-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+      "family": "fraud-referral",
+      "split": "dev",
+      "generation": 1,
+      "responseAvailable": false,
+      "operational": true,
+      "sourceSha": "59d09acc30e565260e2796497e0f3adf6859a27bc5c3caaa8cea85b5913be064",
+      "derivationSha": "c0f9f23f00536409f3d83acaf40e4a7364624483e5421a19dbd88f55be520d2d",
+      "applicable": 3,
+      "unresolved": 5,
+      "requestCount": 3,
+      "retainedApprovalIds": [
+        "57c335e-historical-approval-0",
+        "57c335e-historical-approval-1",
+        "57c335e-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+      "family": "fraud-referral",
+      "split": "dev",
+      "generation": 2,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "0b13c7ab9a60e0331830fe27f2291aafe0ffc3e0a69d5a448f4fd25e665e90da",
+      "derivationSha": "00b2093bf133940670c9ae27f1cff2e704f0be7708b0b2f74f50cc0a6c40e88a",
+      "applicable": 3,
+      "unresolved": 5,
+      "requestCount": 3,
+      "retainedApprovalIds": [
+        "57c335e-historical-approval-0",
+        "57c335e-historical-approval-1",
+        "57c335e-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+      "family": "fraud-referral",
+      "split": "dev",
+      "generation": 3,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "7207c89170a8edcf4d1ac9074e3197e175fcb9279326784da0e2696d59a2dbfb",
+      "derivationSha": "eb329dc878248530d768f07570f3a1cf9f5e874b8e8ca4764345c50acdd8cec9",
+      "applicable": 3,
+      "unresolved": 5,
+      "requestCount": 3,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "57c335e-historical-approval-0",
+        "57c335e-historical-approval-1",
+        "57c335e-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+      "family": "fraud-referral",
+      "split": "dev",
+      "generation": 1,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "23d3e185cea00ffbb074fd3e42302a4d2f0cb051d031bcbb05f8435ce01228e1",
+      "derivationSha": "ce60c214fa6e9db59ce1b4d8c3fba26ef13810e532af8d758df6a545aaa3a186",
+      "applicable": 6,
+      "unresolved": 0,
+      "requestCount": 6,
+      "retainedApprovalIds": [
+        "57c335e-historical-approval-0",
+        "57c335e-historical-approval-1",
+        "57c335e-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+      "family": "fraud-referral",
+      "split": "dev",
+      "generation": 2,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "d8938c3a01ec73d81103f889697468f5c8ff0335d52fb55ab486946cc91cd0fd",
+      "derivationSha": "a8c8474c5d9e6af30ea0d7289581b4f83a64fca076692210b86a35afad824764",
+      "applicable": 5,
+      "unresolved": 0,
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "57c335e-historical-approval-0",
+        "57c335e-historical-approval-1",
+        "57c335e-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+      "family": "fraud-referral",
+      "split": "dev",
+      "generation": 3,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "248bb300bfba24e05c3acfd564da7925e17344176a371c5caf4fc6f2aa80d3d2",
+      "derivationSha": "1602eac7b3782df3b25690dabfa40c87150219b7162264bdad05e93652948bec",
+      "applicable": 5,
+      "unresolved": 0,
+      "requestCount": 5,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "57c335e-historical-approval-0",
+        "57c335e-historical-approval-1",
+        "57c335e-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-dev-2-4630325",
+      "family": "fraud-referral",
+      "split": "dev",
+      "generation": 1,
+      "responseAvailable": false,
+      "operational": true,
+      "sourceSha": "390b08112453c35ecd9a2cd496af06e249f4c7f8ac46e3f5fc6cee3b7a7142fc",
+      "derivationSha": "da04f6f6e2f247bc9353e3fc65d9a91ded86d263dc38746b56bf1d26883c4a4b",
+      "applicable": 3,
+      "unresolved": 5,
+      "requestCount": 3,
+      "retainedApprovalIds": [
+        "4630325-historical-approval-0",
+        "4630325-historical-approval-1",
+        "4630325-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-dev-2-4630325",
+      "family": "fraud-referral",
+      "split": "dev",
+      "generation": 2,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "e63e6efd1c80269386d351a6d1b6861d51ea4985661f20a7326b5acd432c20b2",
+      "derivationSha": "2f87340eb4d38a9ecb03fc363169b9460f1ac4e774822859aa47071ea0473ee7",
+      "applicable": 3,
+      "unresolved": 6,
+      "requestCount": 3,
+      "retainedApprovalIds": [
+        "4630325-historical-approval-0",
+        "4630325-historical-approval-1",
+        "4630325-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-dev-2-4630325",
+      "family": "fraud-referral",
+      "split": "dev",
+      "generation": 3,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "70f8d0bf0c0c823dbc199f9020ded35d8885e28fc28604e0f71bc733e93ad0d1",
+      "derivationSha": "e1b3450c90800daa670ff99cb4ab098a84eaaadec87cc308faea8b8bd835bcd7",
+      "applicable": 3,
+      "unresolved": 6,
+      "requestCount": 3,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "4630325-historical-approval-0",
+        "4630325-historical-approval-1",
+        "4630325-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-dev-2-4630325",
+      "family": "fraud-referral",
+      "split": "dev",
+      "generation": 1,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "35f3143ac4508142dc8f808591326d9b7d32f9c9b4a36296c8806268cd0b8c8e",
+      "derivationSha": "eb7218fcc8c5702b3b43e4d838c1c469b83dee5b6c7500bffef662c6936879b3",
+      "applicable": 5,
+      "unresolved": 2,
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "4630325-historical-approval-0",
+        "4630325-historical-approval-1",
+        "4630325-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-dev-2-4630325",
+      "family": "fraud-referral",
+      "split": "dev",
+      "generation": 2,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "d7e050a76eaa210ad8c9a6749ed0c2f474999877efa1cfc00b15ea9ea75549aa",
+      "derivationSha": "7256c2ac2bce380671627d860ccd2c775453a6a368c88f39e9444e0507995b0a",
+      "applicable": 6,
+      "unresolved": 2,
+      "requestCount": 6,
+      "retainedApprovalIds": [
+        "4630325-historical-approval-0",
+        "4630325-historical-approval-1",
+        "4630325-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-dev-2-4630325",
+      "family": "fraud-referral",
+      "split": "dev",
+      "generation": 3,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "b88bbb962cf9aa322ba30b06b0c53973719935e925c8b311bcb74777958a4de6",
+      "derivationSha": "5c80299c24aa1d9fa1557cbf9bd43851adc94107520d01180c8a9d975be56412",
+      "applicable": 6,
+      "unresolved": 2,
+      "requestCount": 6,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "4630325-historical-approval-0",
+        "4630325-historical-approval-1",
+        "4630325-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-1-3753da40",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "generation": 1,
+      "responseAvailable": false,
+      "operational": true,
+      "sourceSha": "42cd1bbaf736daa515ee136a02e591834b8d2f872948592bf3e70aa0abb6fece",
+      "derivationSha": "7dd1fa4a73f774007327faf47c6cfaf18c12e8bfced0d1e76c27de92240779bb",
+      "applicable": 3,
+      "unresolved": 6,
+      "requestCount": 3,
+      "retainedApprovalIds": [
+        "3753da40-historical-approval-0",
+        "3753da40-historical-approval-1",
+        "3753da40-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-1-3753da40",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "generation": 2,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "5c864a8bf48aecc6ee19dc3010027cd5066847785768acfff684e329a0f16fe5",
+      "derivationSha": "0889c1d2159dd9d2000d158825f432bd65e0cc17420aac9f72167a5414869552",
+      "applicable": 3,
+      "unresolved": 6,
+      "requestCount": 3,
+      "retainedApprovalIds": [
+        "3753da40-historical-approval-0",
+        "3753da40-historical-approval-1",
+        "3753da40-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-1-3753da40",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "generation": 3,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "5412a9e69475c388ed579a5498d8e1dbb968ad4e8337d4099babe1e5d059f15a",
+      "derivationSha": "b4e156bff99fe4b7a810433ddfa34f6cf5fedd5aada20e698c11dc86b86c832c",
+      "applicable": 3,
+      "unresolved": 6,
+      "requestCount": 3,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "3753da40-historical-approval-0",
+        "3753da40-historical-approval-1",
+        "3753da40-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-1-3753da40",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "generation": 1,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "bc2b9bba8d069224dede1078d2caaceaea9ccd2cd049abbb0c5f7da9357c26b4",
+      "derivationSha": "b13c19f00da9ed03977c6c43d2f6843007101b67b67e761e7be676322e25f435",
+      "applicable": 6,
+      "unresolved": 1,
+      "requestCount": 6,
+      "retainedApprovalIds": [
+        "3753da40-historical-approval-0",
+        "3753da40-historical-approval-1",
+        "3753da40-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-1-3753da40",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "generation": 2,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "e6577ec31820ae58c4e2420f8cde6fabd9e66fcc4c3115a316511060b8252aac",
+      "derivationSha": "b187aaf893f8637cafc51d6fbc7d60314f99233afceff59b6270a6b43717cc8f",
+      "applicable": 5,
+      "unresolved": 1,
+      "requestCount": 5,
+      "retainedApprovalIds": [
+        "3753da40-historical-approval-0",
+        "3753da40-historical-approval-1",
+        "3753da40-historical-approval-2"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-1-3753da40",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "generation": 3,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "34ed019aafe2ad21298fbfc1692f8cc0ad084482045f30d400144c41e3c7a892",
+      "derivationSha": "7206e55fe84da352acb153af6f17c6a6f4a2eeb7904d42ab80d793fc26596911",
+      "applicable": 5,
+      "unresolved": 1,
+      "requestCount": 5,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "3753da40-historical-approval-0",
+        "3753da40-historical-approval-1",
+        "3753da40-historical-approval-2"
+      ]
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-2-c4e6889f",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "generation": 1,
+      "responseAvailable": false,
+      "operational": true,
+      "sourceSha": "5ef1688caadf9e0b8e4cc8b953c384466fa6fef60b0e0b46378e68755902ac92",
+      "derivationSha": "0e9c8e2af96de778733efc6566ea819c49e395b6a33a600eea9a8538d5ab2a63",
+      "applicable": 1,
+      "unresolved": 5,
+      "requestCount": 1,
+      "retainedApprovalIds": [
+        "c4e6889f-historical-approval-0"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-2-c4e6889f",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "generation": 2,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "0f5e9db671b58018b1848a2dc0855a5d4284acac13197995eb02b8af723804b2",
+      "derivationSha": "f4468bbeb48fa90bc0ba7b5d9997f3b4b78664bfdd8f35ce0eaace53b3299dba",
+      "applicable": 1,
+      "unresolved": 5,
+      "requestCount": 1,
+      "retainedApprovalIds": [
+        "c4e6889f-historical-approval-0"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-2-c4e6889f",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "generation": 3,
+      "responseAvailable": false,
+      "operational": false,
+      "sourceSha": "6d63c580c33c90b0a22db6cb4c9b6430b41e2297070762f345403340b6f0a65d",
+      "derivationSha": "dcad1e70bac0a20e1999622aa6d7260c3ab599296a41e2bf659a634f12b07a53",
+      "applicable": 2,
+      "unresolved": 5,
+      "requestCount": 2,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "c4e6889f-historical-approval-0"
+      ]
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-2-c4e6889f",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "generation": 1,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "f03ed851f0dd7fb1530d385b091af661c3f81ead47f6fa7f3472befeca6ee9b9",
+      "derivationSha": "c87f40c9d5cd302f7c08a2b5858adafe33f32a43c549541a2338ec2df53bdc99",
+      "applicable": 3,
+      "unresolved": 0,
+      "requestCount": 3,
+      "retainedApprovalIds": [
+        "c4e6889f-historical-approval-0"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-2-c4e6889f",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "generation": 2,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "6204a8941ebad108fecca22562017d15884f407a40f5e6810e29e350d37205be",
+      "derivationSha": "2b74578d73c16cc524aabee205b00f4a147c612113073886b22236e2cabb0fb8",
+      "applicable": 2,
+      "unresolved": 0,
+      "requestCount": 2,
+      "retainedApprovalIds": [
+        "c4e6889f-historical-approval-0"
+      ],
+      "invalidatedApprovalIds": []
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-2-c4e6889f",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "generation": 3,
+      "responseAvailable": true,
+      "operational": true,
+      "sourceSha": "486da5279a6ecbfdea7ebccbd1dcdec7e29f9b47570eed320699717cef4a4bef",
+      "derivationSha": "47b6d42d981c46b315433d54edbaf0619dd515ed82a6d66eebfb780e1ca96da0",
+      "applicable": 3,
+      "unresolved": 0,
+      "requestCount": 3,
+      "retainedApprovalIds": [],
+      "invalidatedApprovalIds": [
+        "c4e6889f-historical-approval-0"
+      ]
+    }
+  ],
+  "actualToolOracles": [
+    {
+      "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+      "sourceRequestSha": "d9ef973ca138884c4c95d0ba99225c586b3f9d14f4195daa4ada82c18a4077eb",
+      "phases": [
+        {
+          "generation": 1,
+          "packetRevision": 1,
+          "requestCount": 5,
+          "requestsSha": "f3dc012fb8a57f15e84f01756f5c83b9cd8e15cd92dbeac724349b957c010e47",
+          "factsSha": "798b3c2c8fc0ef87b8ec5c98c4db734e97366c3614aeb13d7e6962ec98ee73c3",
+          "retainedApprovalIds": [
+            "473634f6-historical-approval-0",
+            "473634f6-historical-approval-1",
+            "473634f6-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 2,
+          "packetRevision": 2,
+          "requestCount": 4,
+          "requestsSha": "94e0d137225c3eeffbb76d7ff93629688db8e32eed30bfc83ab81469496cd2cd",
+          "factsSha": "fb6358edc7905cacc4a09b1801efe44dce9436eb9d0c201150e8a2662551b221",
+          "retainedApprovalIds": [
+            "473634f6-historical-approval-1",
+            "473634f6-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": [
+            "473634f6-historical-approval-0"
+          ]
+        },
+        {
+          "generation": 3,
+          "packetRevision": 3,
+          "requestCount": 4,
+          "requestsSha": "654686d9b294e3c397be9aae6cda7ef02a98a422bd4a22c19b16549fd8fff578",
+          "factsSha": "b4b5ddd0e2fdb82f935e69de93ebd51e17d06d9d67613e82052f2922821ff74f",
+          "retainedApprovalIds": [],
+          "invalidatedApprovalIds": [
+            "473634f6-historical-approval-0",
+            "473634f6-historical-approval-1",
+            "473634f6-historical-approval-2"
+          ]
+        }
+      ],
+      "score": 100,
+      "allPass": true,
+      "actualGoals": {
+        "responseReviewed": true,
+        "currentPacket": true,
+        "currentRequests": true,
+        "suppliedReview": true,
+        "handoff": true
+      },
+      "currentRequestCount": 4,
+      "historySha": "efd8c85aec1b9da9aad2488deea99a53f9818e6b343cf181a1560e2b854e7b3b"
+    },
+    {
+      "taskId": "ibi-fleet-assignment-dev-2-9f4fa7dd",
+      "sourceRequestSha": "d9b9dbc9f58ea534892dfec0fa2e846526eec4aebc9c0de1d859358cea27598e",
+      "phases": [
+        {
+          "generation": 1,
+          "packetRevision": 1,
+          "requestCount": 3,
+          "requestsSha": "ed93110d26913e29f7393217801eb280b9ee9e3f68cb210891aebea8c287c16f",
+          "factsSha": "d64b2eb1ea7c9d0f4913c5a13203b867e03571f84cfc85f0f32431eadcb9d8ec",
+          "retainedApprovalIds": [
+            "9f4fa7dd-historical-approval-0"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 2,
+          "packetRevision": 2,
+          "requestCount": 4,
+          "requestsSha": "b10e0c3a17ab43d79ec6da8d430c4a6a40cbd7fe950d3b77d19c9802636e6f19",
+          "factsSha": "b56011067e6db3e571e351514efe302c466a9475352dbf31899c757295139944",
+          "retainedApprovalIds": [
+            "9f4fa7dd-historical-approval-0"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 3,
+          "packetRevision": 3,
+          "requestCount": 4,
+          "requestsSha": "c4e9cd34fb48c6df0be15e45f7905eed7bb0febe5f5438898e49d6a137917146",
+          "factsSha": "360b0bb31caea14bfbf96c8282696cf4af7587b951491ef6bd973cb907932c49",
+          "retainedApprovalIds": [],
+          "invalidatedApprovalIds": [
+            "9f4fa7dd-historical-approval-0"
+          ]
+        }
+      ],
+      "score": 100,
+      "allPass": true,
+      "actualGoals": {
+        "responseReviewed": true,
+        "currentPacket": true,
+        "currentRequests": true,
+        "suppliedReview": true,
+        "handoff": true
+      },
+      "currentRequestCount": 4,
+      "historySha": "60d5282335076ccb392b824d3c073eb6122020a4ea66913041d1dfa945996d3c"
+    },
+    {
+      "taskId": "ibi-fleet-assignment-holdout-1-74f18798",
+      "sourceRequestSha": "692019dc20801dad5d3c769aa95544b815aa37e1741a7518f1fea4e6848279a5",
+      "phases": [
+        {
+          "generation": 1,
+          "packetRevision": 1,
+          "requestCount": 5,
+          "requestsSha": "f4372006b96ce6f2e5433257735a9783fc004a2e7f60b3cabe31bc753ddce359",
+          "factsSha": "0ed825422954b02b94a37f131dbd7d559e2c4f318eb8bd5520929fac40755237",
+          "retainedApprovalIds": [
+            "74f18798-historical-approval-0",
+            "74f18798-historical-approval-1",
+            "74f18798-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 2,
+          "packetRevision": 2,
+          "requestCount": 5,
+          "requestsSha": "08fd0bd68d598f450a47f675944b3c55d8b6d33906175ac03e02f4fa27060c28",
+          "factsSha": "4762c4f6ced1fd4b95e46487a4466cb0da1f105eae33ba5e9fec0c0338068774",
+          "retainedApprovalIds": [
+            "74f18798-historical-approval-1",
+            "74f18798-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": [
+            "74f18798-historical-approval-0"
+          ]
+        },
+        {
+          "generation": 3,
+          "packetRevision": 3,
+          "requestCount": 5,
+          "requestsSha": "fd5c135b03d40634c2bbac7543b94458b8ffe3fa528819f4f6a747e1434ac364",
+          "factsSha": "0d6a63a967ca0458a88c0d1bb151b3873d93faec36afd0416e1fc9cbbeaf8557",
+          "retainedApprovalIds": [],
+          "invalidatedApprovalIds": [
+            "74f18798-historical-approval-0",
+            "74f18798-historical-approval-1",
+            "74f18798-historical-approval-2"
+          ]
+        }
+      ],
+      "score": 100,
+      "allPass": true,
+      "actualGoals": {
+        "responseReviewed": true,
+        "currentPacket": true,
+        "currentRequests": true,
+        "suppliedReview": true,
+        "handoff": true
+      },
+      "currentRequestCount": 5,
+      "historySha": "2145cf7311d6a4c911e4407ffe5c644b02d91b9b88b7ca288265111f61bbad2d"
+    },
+    {
+      "taskId": "ibi-fleet-assignment-holdout-2-a6916617",
+      "sourceRequestSha": "c9ee9c336c9a24549d1354156dabd0e1e5cd2cf64128aa206a5bc90ab38bd7be",
+      "phases": [
+        {
+          "generation": 1,
+          "packetRevision": 1,
+          "requestCount": 5,
+          "requestsSha": "0444eb693d23f4bc72682bd20b3a72c58b29ba7464d207b6abab553b7f73ffc1",
+          "factsSha": "be9ed19cecfa26ef821f0ad0b8f9295f06002a80dbb5a7ca8e789bb3402e815d",
+          "retainedApprovalIds": [
+            "a6916617-historical-approval-0",
+            "a6916617-historical-approval-1",
+            "a6916617-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 2,
+          "packetRevision": 2,
+          "requestCount": 4,
+          "requestsSha": "a4421a7ddcb54972c0009b4952534f7b8f4d8b6f11043db8a5d5afb82fa5bcdf",
+          "factsSha": "e9cff6a2539432c63caeca720b540214ae8b043063ff8bc249ce6e4afd9de29b",
+          "retainedApprovalIds": [
+            "a6916617-historical-approval-1",
+            "a6916617-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": [
+            "a6916617-historical-approval-0"
+          ]
+        },
+        {
+          "generation": 3,
+          "packetRevision": 3,
+          "requestCount": 4,
+          "requestsSha": "0b9f57ab1154c1128db706bad0999adf939e422e30a96938f32b439ac1a2a473",
+          "factsSha": "61a0b1055605f17ae7c4cc02f9e59c7430793b7c415ebee718d9cd63eb5017c1",
+          "retainedApprovalIds": [],
+          "invalidatedApprovalIds": [
+            "a6916617-historical-approval-0",
+            "a6916617-historical-approval-1",
+            "a6916617-historical-approval-2"
+          ]
+        }
+      ],
+      "score": 100,
+      "allPass": true,
+      "actualGoals": {
+        "responseReviewed": true,
+        "currentPacket": true,
+        "currentRequests": true,
+        "suppliedReview": true,
+        "handoff": true
+      },
+      "currentRequestCount": 4,
+      "historySha": "d8d8e47fc1ea37c0d11b193ab4dfe8769075a5883f42c3b907051e51ea5b8674"
+    },
+    {
+      "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+      "sourceRequestSha": "6bb65213c903b267bf110cbcfd85250e5bba899ed6b719576e6ca72cd102e8ff",
+      "phases": [
+        {
+          "generation": 1,
+          "packetRevision": 1,
+          "requestCount": 7,
+          "requestsSha": "c26f62d97db52d6e95e9acf64940fd0f2bceaf26cc219fdf8053cccbbc37200a",
+          "factsSha": "f5e5815ae3058028344536a48ef331b8f2957eb04d2f0935d59efac9ff0b2814",
+          "retainedApprovalIds": [
+            "98bd4c8a-historical-approval-0",
+            "98bd4c8a-historical-approval-1",
+            "98bd4c8a-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 2,
+          "packetRevision": 2,
+          "requestCount": 6,
+          "requestsSha": "5c97fe69aded40f4daa2f1dbcc62ede171903d4744a2c0d9552aa94f38c7ef1f",
+          "factsSha": "cf16fc0b7fcea1d169d7c203f536172296a7cd1a3b60d89309e8b8b06a221eb0",
+          "retainedApprovalIds": [
+            "98bd4c8a-historical-approval-0",
+            "98bd4c8a-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": [
+            "98bd4c8a-historical-approval-1"
+          ]
+        },
+        {
+          "generation": 3,
+          "packetRevision": 3,
+          "requestCount": 6,
+          "requestsSha": "4faadc0e6589eb208ffcd7de4e177f6361a4f0aab0c0db211f0e64e60c863af8",
+          "factsSha": "2aac746f7c9c6e61c412024174500c07893affc32d21d2257988ed0eb6522c58",
+          "retainedApprovalIds": [
+            "98bd4c8a-historical-approval-0"
+          ],
+          "invalidatedApprovalIds": [
+            "98bd4c8a-historical-approval-1",
+            "98bd4c8a-historical-approval-2"
+          ]
+        }
+      ],
+      "score": 100,
+      "allPass": true,
+      "actualGoals": {
+        "responseReviewed": true,
+        "currentPacket": true,
+        "currentRequests": true,
+        "suppliedReview": true,
+        "handoff": true
+      },
+      "currentRequestCount": 6,
+      "historySha": "4948ec1b59b30e86998bd61965a76610cb70fee37bbc14f671fd9d36e4778124"
+    },
+    {
+      "taskId": "ibi-premises-chronology-dev-2-e404d261",
+      "sourceRequestSha": "1780b43725c3e88bce96cd40cd1a3ba09e5b5594c8c7ccae6424a0977e14dacf",
+      "phases": [
+        {
+          "generation": 1,
+          "packetRevision": 1,
+          "requestCount": 7,
+          "requestsSha": "9823b8fa636d09642a1f9342c1c5bcf3007a3b4e92ce41c63018b387be20ed24",
+          "factsSha": "a67df189b8ba766b2c463fc658e7bb75ca5dda780c2d61201a47118ab8075e6c",
+          "retainedApprovalIds": [
+            "e404d261-historical-approval-0",
+            "e404d261-historical-approval-1",
+            "e404d261-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 2,
+          "packetRevision": 2,
+          "requestCount": 6,
+          "requestsSha": "b4e099c7c9a56ce97650ee19157d188314b9da15019d6a8d8d4c532232e2c308",
+          "factsSha": "3fab60b28e7aaeef60eccff671b6502210284ebce98edf9dbb79f66616568fd3",
+          "retainedApprovalIds": [
+            "e404d261-historical-approval-0",
+            "e404d261-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": [
+            "e404d261-historical-approval-1"
+          ]
+        },
+        {
+          "generation": 3,
+          "packetRevision": 3,
+          "requestCount": 5,
+          "requestsSha": "6745936812e66c4966c85ffec77bb9d32b599148b49cccb8ea4d1bd105bab414",
+          "factsSha": "9481d07daa8885fcc7060ece308bb2267b87299d5a0922fa5d5e243abbcf97b5",
+          "retainedApprovalIds": [
+            "e404d261-historical-approval-0"
+          ],
+          "invalidatedApprovalIds": [
+            "e404d261-historical-approval-1",
+            "e404d261-historical-approval-2"
+          ]
+        }
+      ],
+      "score": 100,
+      "allPass": true,
+      "actualGoals": {
+        "responseReviewed": true,
+        "currentPacket": true,
+        "currentRequests": true,
+        "suppliedReview": true,
+        "handoff": true
+      },
+      "currentRequestCount": 5,
+      "historySha": "7b7f54485359d000d9f5ba62982a12ff15481ec9bae1cbb84e9ef23d83fc0e22"
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-1-47f9484c",
+      "sourceRequestSha": "cece24ed6fa962e47768446616d61a7021fe6cfe346b0440977b95078cf67e32",
+      "phases": [
+        {
+          "generation": 1,
+          "packetRevision": 1,
+          "requestCount": 5,
+          "requestsSha": "f6e539761cffcf5e6e31c1235f2e75a267ab20370f3358c4c626034c5d3bf049",
+          "factsSha": "932217df3d10540c56c86fe2032025931f31790be5a548edc127e0994157a800",
+          "retainedApprovalIds": [
+            "47f9484c-historical-approval-0",
+            "47f9484c-historical-approval-1",
+            "47f9484c-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 2,
+          "packetRevision": 2,
+          "requestCount": 4,
+          "requestsSha": "7bce95aba679a88656c74aebc7542526c721793b6a623650e269ba2876a9719f",
+          "factsSha": "4080937d14cd999e86efa698102a13fc3ced4daa4d049fb72e596ebec351ad74",
+          "retainedApprovalIds": [
+            "47f9484c-historical-approval-1",
+            "47f9484c-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": [
+            "47f9484c-historical-approval-0"
+          ]
+        },
+        {
+          "generation": 3,
+          "packetRevision": 3,
+          "requestCount": 5,
+          "requestsSha": "740e124b946ed5a4d882f82ab12608e234e9dee5f2a3a5652c467dd3d4bf6ac4",
+          "factsSha": "21f6336571d5bdd960f9aaf6d7d7d267d1879a81136728e8e8bd4d455846fcc3",
+          "retainedApprovalIds": [],
+          "invalidatedApprovalIds": [
+            "47f9484c-historical-approval-0",
+            "47f9484c-historical-approval-1",
+            "47f9484c-historical-approval-2"
+          ]
+        }
+      ],
+      "score": 100,
+      "allPass": true,
+      "actualGoals": {
+        "responseReviewed": true,
+        "currentPacket": true,
+        "currentRequests": true,
+        "suppliedReview": true,
+        "handoff": true
+      },
+      "currentRequestCount": 5,
+      "historySha": "ecf02f56d314dbff4d261f44fa14ef448de90dec10ab83becabc1a67cce998cb"
+    },
+    {
+      "taskId": "ibi-premises-chronology-holdout-2-4651e73b",
+      "sourceRequestSha": "633fe8b641cf2969343e25db067a0c7660c5092334905200d7d8a97612857c57",
+      "phases": [
+        {
+          "generation": 1,
+          "packetRevision": 1,
+          "requestCount": 3,
+          "requestsSha": "7878747c2ecec525796cbfddadaa59477c59a7e45c379f41e0cbb1e43e00d314",
+          "factsSha": "12cb11eb740a85bf38db6012930518d26494b7a93bcaf34490081e661242b496",
+          "retainedApprovalIds": [
+            "4651e73b-historical-approval-0"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 2,
+          "packetRevision": 2,
+          "requestCount": 2,
+          "requestsSha": "9275aaddc7a8d89f48afaa655a7e0d08fc56c5240495100f7c59a30f0c1c89da",
+          "factsSha": "7ad2d7387108bc0e83f5d629c9e13ccb93f5ad28ddaedd4f5ebe45efd6ea7e0e",
+          "retainedApprovalIds": [],
+          "invalidatedApprovalIds": [
+            "4651e73b-historical-approval-0"
+          ]
+        },
+        {
+          "generation": 3,
+          "packetRevision": 3,
+          "requestCount": 5,
+          "requestsSha": "91f04311620f237c21e25c52061d442456b10df36ceed639d845de0e7218a4b1",
+          "factsSha": "6787b593a94fd618e37a517e65be2a375eddb1aa86677eaed536c4fa0d139ab7",
+          "retainedApprovalIds": [],
+          "invalidatedApprovalIds": [
+            "4651e73b-historical-approval-0"
+          ]
+        }
+      ],
+      "score": 100,
+      "allPass": true,
+      "actualGoals": {
+        "responseReviewed": true,
+        "currentPacket": true,
+        "currentRequests": true,
+        "suppliedReview": true,
+        "handoff": true
+      },
+      "currentRequestCount": 5,
+      "historySha": "9a4eebe179e7d9c1c161c507bc88e0121f6a05bcb8e1957f97814e0e7d94fd72"
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+      "sourceRequestSha": "db23e89871ab75af3d4e45f300137c05bd84ffa6c1dce596b4a2a68452ce315b",
+      "phases": [
+        {
+          "generation": 1,
+          "packetRevision": 1,
+          "requestCount": 6,
+          "requestsSha": "7d1d33fb4f678db0284aec5f98441ae465ec709255456a858be044cf11e4bbed",
+          "factsSha": "77178d7e3c0b7f94146674c3ce37e22cfb9b46941c7f0d53d3126c23030ef45c",
+          "retainedApprovalIds": [
+            "57c335e-historical-approval-0",
+            "57c335e-historical-approval-1",
+            "57c335e-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 2,
+          "packetRevision": 2,
+          "requestCount": 5,
+          "requestsSha": "885190e7bac341bf3da2d4966573da5b1ddd1e0cd6c1d640cf1a73fe27dd1fbf",
+          "factsSha": "1588545edb55ad68c8589ccf0c9b5000b86bba73232b0a33dc629dc3d7966792",
+          "retainedApprovalIds": [
+            "57c335e-historical-approval-0",
+            "57c335e-historical-approval-1",
+            "57c335e-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 3,
+          "packetRevision": 3,
+          "requestCount": 5,
+          "requestsSha": "0632d2751ec59070e66d799204b9e9b7e6c08f242b2353fd440b84b36a2711db",
+          "factsSha": "cbf909e8c2a4ad2d0933e4a6eb000c44bb03cba9d32b4f42a4119dab114857db",
+          "retainedApprovalIds": [],
+          "invalidatedApprovalIds": [
+            "57c335e-historical-approval-0",
+            "57c335e-historical-approval-1",
+            "57c335e-historical-approval-2"
+          ]
+        }
+      ],
+      "score": 100,
+      "allPass": true,
+      "actualGoals": {
+        "responseReviewed": true,
+        "currentPacket": true,
+        "currentRequests": true,
+        "suppliedReview": true,
+        "handoff": true
+      },
+      "currentRequestCount": 5,
+      "historySha": "41617890a1837b6fac0e902b8b2fd4570a35af78181a4dc1c9dbe9c5a8f4b521"
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-dev-2-4630325",
+      "sourceRequestSha": "2445de01e538de10e68433551739844240d7341efe1418f9868c3109b207f97a",
+      "phases": [
+        {
+          "generation": 1,
+          "packetRevision": 1,
+          "requestCount": 5,
+          "requestsSha": "9cfc7c08311e0c0300374e80f3044a7f201fe3e363f2770781bc70a94a6da346",
+          "factsSha": "b4bbf98c8ae7493d93384c25d6a2039e58e13a5dd70069cc53f20e4241e095cc",
+          "retainedApprovalIds": [
+            "4630325-historical-approval-0",
+            "4630325-historical-approval-1",
+            "4630325-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 2,
+          "packetRevision": 2,
+          "requestCount": 6,
+          "requestsSha": "fa9551ccd7c02c620c248db9e06477b8efb7df3603fc495bc05fc8298cc83509",
+          "factsSha": "8101fc0b5b1664af1940332f0e222276d85d323fcc6c3cb09b6a9ac32007bfb7",
+          "retainedApprovalIds": [
+            "4630325-historical-approval-0",
+            "4630325-historical-approval-1",
+            "4630325-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 3,
+          "packetRevision": 3,
+          "requestCount": 6,
+          "requestsSha": "cf572b35a6df061924d18d21ed40ad563d39f11a5de7c85f459577b5a6292849",
+          "factsSha": "4303a4c8354984d0b300e33b6f527826b56a2e834d71a8a39a947ae7e574a114",
+          "retainedApprovalIds": [],
+          "invalidatedApprovalIds": [
+            "4630325-historical-approval-0",
+            "4630325-historical-approval-1",
+            "4630325-historical-approval-2"
+          ]
+        }
+      ],
+      "score": 100,
+      "allPass": true,
+      "actualGoals": {
+        "responseReviewed": true,
+        "currentPacket": true,
+        "currentRequests": true,
+        "suppliedReview": true,
+        "handoff": true
+      },
+      "currentRequestCount": 6,
+      "historySha": "6e392f1b663838474da4920f23c7d3dbba576708780f7c2aee8e5cf498518cbe"
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-1-3753da40",
+      "sourceRequestSha": "799fc62ebf585a79fa45d1b322cc649b88216b98dc3bda2cb046619a50d45032",
+      "phases": [
+        {
+          "generation": 1,
+          "packetRevision": 1,
+          "requestCount": 6,
+          "requestsSha": "78d2e2a7ef1972539782babe832447fb20a6251d244b6b359198c58e243b8f07",
+          "factsSha": "2c66448424200faa26b6b6c1a15acaaca8ec3dc6d05558fb2b09f643d2da0380",
+          "retainedApprovalIds": [
+            "3753da40-historical-approval-0",
+            "3753da40-historical-approval-1",
+            "3753da40-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 2,
+          "packetRevision": 2,
+          "requestCount": 5,
+          "requestsSha": "d5157a1352befc5a53300c8749a302af153c7ecd1f52f2b6421f21fa7a5429eb",
+          "factsSha": "57136d0f518dd37a6e0d1f347a7bc22876036faa10ce1f09f810e706dc01cb79",
+          "retainedApprovalIds": [
+            "3753da40-historical-approval-0",
+            "3753da40-historical-approval-1",
+            "3753da40-historical-approval-2"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 3,
+          "packetRevision": 3,
+          "requestCount": 5,
+          "requestsSha": "6b97404e90b33c40e4d427084633a0744591f390b2f4a1a21755c9ac1abcafeb",
+          "factsSha": "5b1a92c2705b6f4df96885269537910e67bc320432f92c4eadc73a6b08ae7747",
+          "retainedApprovalIds": [],
+          "invalidatedApprovalIds": [
+            "3753da40-historical-approval-0",
+            "3753da40-historical-approval-1",
+            "3753da40-historical-approval-2"
+          ]
+        }
+      ],
+      "score": 100,
+      "allPass": true,
+      "actualGoals": {
+        "responseReviewed": true,
+        "currentPacket": true,
+        "currentRequests": true,
+        "suppliedReview": true,
+        "handoff": true
+      },
+      "currentRequestCount": 5,
+      "historySha": "8400c189826ad392dd025bc67aaf7ed8b119fa12fc2058f961ce1e45346a17d2"
+    },
+    {
+      "taskId": "ibi-multi-exposure-review-holdout-2-c4e6889f",
+      "sourceRequestSha": "942ac48c4fef5b425eb3325f1a060a672d1bb86983fe1cf4c078b0863eda4136",
+      "phases": [
+        {
+          "generation": 1,
+          "packetRevision": 1,
+          "requestCount": 3,
+          "requestsSha": "c7a1a79c510f7fb2e9b191ef8901ac15658e3e800dec46bd77675c78bd79c62f",
+          "factsSha": "39d1fec3850b9f46c5ef00554dc62af455e45d5e4566bcf0fb0fb997d26753a4",
+          "retainedApprovalIds": [
+            "c4e6889f-historical-approval-0"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 2,
+          "packetRevision": 2,
+          "requestCount": 2,
+          "requestsSha": "ade8740d82d2ac63405d610b35972fd69efb21d0dc9c60316b900076daab9ee9",
+          "factsSha": "baa0d5dc1145b3421eb16fb44888980f5f82ca585fe37880fec1be1a79c4a9d1",
+          "retainedApprovalIds": [
+            "c4e6889f-historical-approval-0"
+          ],
+          "invalidatedApprovalIds": []
+        },
+        {
+          "generation": 3,
+          "packetRevision": 3,
+          "requestCount": 3,
+          "requestsSha": "9de570a72cb70e05b7d5a6b2065e167849206b6fe08432d21aa52f544e4e6d15",
+          "factsSha": "b757a5de59ba3584ae495fb5591bfb0f678dcff768ca1c99c672b25a20d26ef3",
+          "retainedApprovalIds": [],
+          "invalidatedApprovalIds": [
+            "c4e6889f-historical-approval-0"
+          ]
+        }
+      ],
+      "score": 100,
+      "allPass": true,
+      "actualGoals": {
+        "responseReviewed": true,
+        "currentPacket": true,
+        "currentRequests": true,
+        "suppliedReview": true,
+        "handoff": true
+      },
+      "currentRequestCount": 3,
+      "historySha": "3bef4db857fabdb26e46022028b7a55eaaa80eafb3258c3d606c78ea36ba5d51"
+    }
+  ],
+  "reproduction": {
+    "command": "npx tsx .tmp/insurance-bench/v09-engine-source-audit.ts",
+    "scriptCopy": "insurance-bench/results/meta/investigation-source-audit-v0.9-script.txt",
+    "uses": "Source-only engineering states and actual simulator tool calls; no provider/network invocation."
+  },
+  "independentReviewPath": "insurance-bench/results/meta/investigation-independent-opus-review-v0.9.json",
+  "independentReviewSha256": "b7edccf0cfb2a53480815ad7c5f54470243aaa83ae85aa5b8ffe2aad26c8181e"
+}

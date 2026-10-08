@@ -1,0 +1,68 @@
+{
+  "createdAt": "2026-10-05T01:49:37.460Z",
+  "sourceFingerprint": "107e4af647e3ee1e64a771b8702eebece95e88223a220d8c3560104f994d5385",
+  "registrationSha256": "caddc50bb68955f375ec9e29e2e035ed39d0c40e8c78da429658b35d685db8d3",
+  "independentAuditSha256": "9bdf3722a8ff658f6e169ba463fab667af564f0fcbbdc2bd02ea591ebe4d0667",
+  "headlineMetric": "macro-task-success",
+  "headlineScores": [
+    {
+      "runId": "2026-10-05T01-18-38-204Z-gpt-6-luna-low-baseline-investigation",
+      "effort": "low",
+      "macroTaskSuccess": 0,
+      "weightedDiagnostic": 51.35,
+      "interfaceErrors": 0,
+      "truncatedOutput": false
+    },
+    {
+      "runId": "2026-10-05T01-24-44-945Z-gpt-6-luna-high-baseline-investigation",
+      "effort": "high",
+      "macroTaskSuccess": 0,
+      "weightedDiagnostic": 72.4,
+      "interfaceErrors": 0,
+      "truncatedOutput": false
+    }
+  ],
+  "comparison": {
+    "axis": "effort",
+    "baselineRunId": "2026-10-05T01-18-38-204Z-gpt-6-luna-low-baseline-investigation",
+    "treatmentRunId": "2026-10-05T01-24-44-945Z-gpt-6-luna-high-baseline-investigation",
+    "cases": 3,
+    "attemptsPerCase": 1,
+    "scoreDelta": 21.04,
+    "completionDelta": 0,
+    "componentDeltas": {
+      "facts": 12.5,
+      "evidence": 37.5,
+      "workflow": 22.22,
+      "boundaries": 11.11
+    },
+    "caseWins": 2,
+    "caseTies": 0,
+    "caseLosses": 1,
+    "familyClusterBootstrap95": [
+      -9.37,
+      40.42
+    ],
+    "families": [
+      {
+        "family": "coverage-review",
+        "scoreDelta": 40.42
+      },
+      {
+        "family": "evidence-brief",
+        "scoreDelta": 32.08
+      },
+      {
+        "family": "fraud-referral",
+        "scoreDelta": -9.37
+      }
+    ],
+    "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+  },
+  "rounding": "Paired per-case diagnostic delta21.04 differs from rounded summary headline72.40−51.35=21.05. Both whole-task scores remain0; no headline improvement.",
+  "limitations": [
+    "Three correlated cases, one attempt, negative-to-positive descriptive family bootstrap includeszero; no stable population or pure domain-reasoning effect.",
+    "Old strict-JSON v0.9 and nativeJSON v0.9j are distinct source/version/harness conditions; cross-generation changes are descriptive, not normalized causal contrast.",
+    "High panel final task incomplete at20turns; all3attempts scored, no output ceiling flag; exact failures remain native."
+  ]
+}

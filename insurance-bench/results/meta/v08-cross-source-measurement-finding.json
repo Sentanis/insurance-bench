@@ -1,0 +1,1031 @@
+{
+  "recordedAt": "2026-10-04T22:27:18.934Z",
+  "generation": "insurance-bench-evidence-v0.8",
+  "sourceFingerprint": "b4a648a8cb12bc94a938a74ccb03d5c8bc1e692fcd060f55690362750031d64c",
+  "corpusHash": "0b33183872bf68e251943727ea2054d971d7e01ef091ee05dc33cc7ba4b36c30",
+  "status": "superseded-measurement-defect-no-more-paid-v0.8",
+  "authority": "Parent confirmed Q9 cross-source false grade and canceled transport resume. No source/gold/grade/old audit/review/registration/controller modifications.",
+  "cause": "Prepaid derivation and author annotations independently matched an incomplete per-proposition source decomposition; both omitted required source-response implications across propositions. Engineering controls passing did not prove joint semantic uniqueness.",
+  "confirmedAffectedSourceCases": [
+    "ibe-evidence-brief-dev-1-809bfa3c",
+    "ibe-evidence-brief-holdout-1-5d55eace"
+  ],
+  "potentialAdditionalSourceCases": [
+    "ibe-evidence-brief-dev-2-59ea906b",
+    "ibe-evidence-brief-holdout-2-2377f3d5"
+  ],
+  "confirmedAffectedPhaseCount": 4,
+  "potentialAdditionalPhaseCount": 4,
+  "actualObservedFailure": {
+    "taskId": "ibe-evidence-brief-dev-1-809bfa3c",
+    "actualQ9": "supported",
+    "recordedQ9Expected": "unresolved",
+    "failedCriteria": [
+      "fact:Q9",
+      "evidence:Q9"
+    ],
+    "recordedRawScore": 92.78,
+    "recordedWorkflow": 100,
+    "recordedBoundary": 100,
+    "correlatedLoss": 7.22,
+    "actualCurrentHandoff": true,
+    "newResponseAndManifestAndPriorCustodyCited": true,
+    "rawNativePath": "insurance-bench/results/2026-10-04T22-01-56-859Z-gpt-6.1-sol-high-baseline-evidence.json",
+    "rawNativeSha256": "f2be6ed54bb783fd460def331f7ace41193e9e22634a0bdee46688277562e1a0",
+    "noRetroactiveRegrade": true
+  },
+  "transport": {
+    "firstPanelScoredCoverage": "4/6",
+    "terminalObserved": "5/6",
+    "headline": null,
+    "error": "Insurance Bench openai: request exceeded 300 seconds",
+    "noRetryOrLaterPanel": true
+  },
+  "reviewLimit": "This is engineering/source-consistency evidence, not insurance/legal/clinical expert validity. No held-out model output was inspected; held-out source construction reviewed only as engineering. Additional-source interactions are flagged with uncertainty rather than invented replacement gold.",
+  "matrix": [
+    {
+      "taskId": "ibe-coverage-review-dev-1-3cc88288",
+      "family": "coverage-review",
+      "split": "dev",
+      "variant": 0,
+      "publicPropositions": [
+        {
+          "id": "Q1",
+          "statement": "The record establishes that the named driver had signed permission to use the scheduled vehicle during the requested period."
+        },
+        {
+          "id": "Q2",
+          "statement": "The supplemental record signed by Ari is a valid scoped first-hand record for the scheduled entity and requested period under the supplied evidence policy."
+        },
+        {
+          "id": "Q3",
+          "statement": "The operative calendar response date requested by the letter is June24,2026."
+        },
+        {
+          "id": "Q4",
+          "statement": "Mara personally witnessed the vehicle striking the loading gate."
+        },
+        {
+          "id": "Q5",
+          "statement": "The later signed correction withdraws the dispatcher's observation that the vehicle was parked at bay4."
+        },
+        {
+          "id": "Q6",
+          "statement": "The two vendor reports independently corroborate two separate originating observations."
+        },
+        {
+          "id": "Q7",
+          "statement": "The intake material establishes the claimant had no earlier symptoms involving the same body area."
+        },
+        {
+          "id": "Q8",
+          "statement": "The named clinic has already billed $18,000 for the services at issue."
+        },
+        {
+          "id": "Q9",
+          "statement": "The custody records and current source manifest establish when this matter's requested original file was captured."
+        }
+      ],
+      "originalManifest": "Source manifest signed by source keeper: The original file for this matter has digest F-1019773576. A preview digest PREVIEW-1019773576 is a different file.",
+      "originalCustody": "For digest F-1019773576: Custodian signed: File received June24 at10:00 and uploaded at10:20. Original capture time is not available. Receipt and upload logs do not record when the camera captured it.",
+      "currentRequiredResponse": {
+        "documentId": "ibe-coverage-review-dev-1-3cc88288-response-current",
+        "version": 1,
+        "sectionId": "s1",
+        "text": "Original permission instrument signed by the authorized vehicle owner: I grant the named driver permission to use vehicle-3cc88288 for local deliveries during 2026-06-23T00:00:00Z through 2026-06-24T00:00:00Z. The named driver countersigned this instrument; permission is for that stated period and entity only."
+      },
+      "correctionScope": "Signed correction to dispatch note DN-1019773576. Paragraph C is withdrawn and replaced: that person was a visitor, not the claimant. Two circulated versions use paragraph B for different assertions. The version targeted by my earlier withdrawal note was not retained; I cannot determine whether the bay4 observation is the withdrawn assertion. Paragraph A is retained. Signed by the same dispatcher who authored DN-1019773576.",
+      "phases": [
+        {
+          "phase": "initial-only",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-approved-current-response",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-provided-correction-and-current-review",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        }
+      ],
+      "assessment": "Current permission or observer response supplies Q1-specific evidence without asserting requested original capture metadata. No Q9 collision observed.",
+      "otherPropositionInteractionCheck": {
+        "Q1": "Current received source is directly decisive; original keeper lack of source is not a contrary observation.",
+        "Q2": "Supplement validity still requires its OWN label/time/authority; current original capture time is not the missing supplement observation/inspection time.",
+        "Q3": "Source capture, service, signed-letter or upload dates do not establish verified receipt for relative calendar response.",
+        "Q4": "Current scoped response does not supersede signed gate witness own-vs-relayed account.",
+        "Q5": "Second scoped dispatch correction controls only its named identity/location assertion; none of these corrections changes original-file capture evidence.",
+        "Q6": "Third response does not create independence between the TWO vendor reports; their explicit copy/unknown/independent origin relations remain.",
+        "Q7": "Current source response does not identify or change participant-signed body-area history; dispatch visitor correction does not invalidate independent role-roster claimant identity.",
+        "Q8": "Current permission/camera/observer response does not establish clinic billing of estimate amount.",
+        "Q9": "No current-response capture-time assertion."
+      }
+    },
+    {
+      "taskId": "ibe-coverage-review-dev-2-f5e7c447",
+      "family": "coverage-review",
+      "split": "dev",
+      "variant": 1,
+      "publicPropositions": [
+        {
+          "id": "Q1",
+          "statement": "The record establishes that the named driver had signed permission to use the scheduled vehicle during the requested period."
+        },
+        {
+          "id": "Q2",
+          "statement": "The supplemental record signed by Ari is a valid scoped first-hand record for the scheduled entity and requested period under the supplied evidence policy."
+        },
+        {
+          "id": "Q3",
+          "statement": "The operative calendar response date requested by the letter is June24,2026."
+        },
+        {
+          "id": "Q4",
+          "statement": "Owen personally witnessed the vehicle striking the loading gate."
+        },
+        {
+          "id": "Q5",
+          "statement": "The later signed correction withdraws the dispatcher's observation that the vehicle was parked at bay4."
+        },
+        {
+          "id": "Q6",
+          "statement": "The two vendor reports independently corroborate two separate originating observations."
+        },
+        {
+          "id": "Q7",
+          "statement": "The intake material establishes the claimant had no earlier symptoms involving the same body area."
+        },
+        {
+          "id": "Q8",
+          "statement": "The named clinic has already billed $18,000 for the services at issue."
+        },
+        {
+          "id": "Q9",
+          "statement": "The custody records and current source manifest leave this matter's requested original capture time unknown."
+        }
+      ],
+      "originalManifest": "Source manifest signed by source keeper: The original file for this matter has digest F-4125606983. A preview digest PREVIEW-4125606983 is a different file.",
+      "originalCustody": "For digest F-4125606983: Custodian signed: Original file metadata records capture June23 at09:10. The upload at June24 at10:20 is later, and belongs to a copied preview. I verified the original capture metadata before making this statement.",
+      "currentRequiredResponse": {
+        "documentId": "ibe-coverage-review-dev-2-f5e7c447-response-current",
+        "version": 1,
+        "sectionId": "s1",
+        "text": "Original instrument signed by the authorized vehicle owner: I expressly withheld the named driver's permission to use vehicle-f5e7c447 during 2026-06-23T00:00:00Z through 2026-06-24T00:00:00Z. The earlier confirmation was an unsigned proposal; no permission was granted for this period."
+      },
+      "correctionScope": "Signed correction to dispatch note DN-4125606983. Paragraph B is withdrawn; it was copied from another vehicle's entry. Paragraphs A and C are retained. Signed by the same dispatcher who authored DN-4125606983.",
+      "phases": [
+        {
+          "phase": "initial-only",
+          "annotationQ9": "refuted",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-approved-current-response",
+          "annotationQ9": "refuted",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-provided-correction-and-current-review",
+          "annotationQ9": "refuted",
+          "crossSourceIssue": false
+        }
+      ],
+      "assessment": "Current permission or observer response supplies Q1-specific evidence without asserting requested original capture metadata. No Q9 collision observed.",
+      "otherPropositionInteractionCheck": {
+        "Q1": "Current received source is directly decisive; original keeper lack of source is not a contrary observation.",
+        "Q2": "Supplement validity still requires its OWN label/time/authority; current original capture time is not the missing supplement observation/inspection time.",
+        "Q3": "Source capture, service, signed-letter or upload dates do not establish verified receipt for relative calendar response.",
+        "Q4": "Current scoped response does not supersede signed gate witness own-vs-relayed account.",
+        "Q5": "Second scoped dispatch correction controls only its named identity/location assertion; none of these corrections changes original-file capture evidence.",
+        "Q6": "Third response does not create independence between the TWO vendor reports; their explicit copy/unknown/independent origin relations remain.",
+        "Q7": "Current source response does not identify or change participant-signed body-area history; dispatch visitor correction does not invalidate independent role-roster claimant identity.",
+        "Q8": "Current permission/camera/observer response does not establish clinic billing of estimate amount.",
+        "Q9": "No current-response capture-time assertion."
+      }
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-1-3c5734fa",
+      "family": "coverage-review",
+      "split": "holdout",
+      "variant": 2,
+      "publicPropositions": [
+        {
+          "id": "Q1",
+          "statement": "The record establishes that the named driver had signed permission to use the scheduled vehicle during the requested period."
+        },
+        {
+          "id": "Q2",
+          "statement": "The supplemental record signed by Ari is a valid scoped first-hand record for the scheduled entity and requested period under the supplied evidence policy."
+        },
+        {
+          "id": "Q3",
+          "statement": "The operative calendar response date requested by the letter is June24,2026."
+        },
+        {
+          "id": "Q4",
+          "statement": "Leena did not personally witness the vehicle striking the loading gate."
+        },
+        {
+          "id": "Q5",
+          "statement": "The later signed correction withdraws the dispatcher's observation that the vehicle was parked at bay4."
+        },
+        {
+          "id": "Q6",
+          "statement": "The two vendor reports independently corroborate two separate originating observations."
+        },
+        {
+          "id": "Q7",
+          "statement": "The intake material establishes the claimant had no earlier symptoms involving the same body area."
+        },
+        {
+          "id": "Q8",
+          "statement": "The named clinic has already billed $18,000 for the services at issue."
+        },
+        {
+          "id": "Q9",
+          "statement": "The custody records and current source manifest establish when this matter's requested original file was captured."
+        }
+      ],
+      "originalManifest": "Source manifest signed by source keeper: The original file for this matter has digest F-1012348154. A preview digest PREVIEW-1012348154 is a different file.",
+      "originalCustody": "For digest F-1012348154: Custodian signed: The only timestamp retained is the copying workstation's modification time. The original capture clock was not retained and cannot be inferred from that copying time.",
+      "currentRequiredResponse": {
+        "documentId": "ibe-coverage-review-holdout-1-3c5734fa-response-current",
+        "version": 1,
+        "sectionId": "s1",
+        "text": "Original permission instrument signed by the authorized vehicle owner: I grant the named driver permission to use vehicle-3c5734fa for local deliveries during 2026-06-21T00:00:00Z through 2026-06-24T00:00:00Z. The named driver countersigned this instrument; permission is for that stated period and entity only."
+      },
+      "correctionScope": "Signed correction to dispatch note DN-1012348154. The cover heading bay7 is a transcription mistake. Paragraph B records my observation correctly and is retained; paragraph C is retained too. Signed by the same dispatcher who authored DN-1012348154.",
+      "phases": [
+        {
+          "phase": "initial-only",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-approved-current-response",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-provided-correction-and-current-review",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        }
+      ],
+      "assessment": "Current permission or observer response supplies Q1-specific evidence without asserting requested original capture metadata. No Q9 collision observed.",
+      "otherPropositionInteractionCheck": {
+        "Q1": "Current received source is directly decisive; original keeper lack of source is not a contrary observation.",
+        "Q2": "Supplement validity still requires its OWN label/time/authority; current original capture time is not the missing supplement observation/inspection time.",
+        "Q3": "Source capture, service, signed-letter or upload dates do not establish verified receipt for relative calendar response.",
+        "Q4": "Current scoped response does not supersede signed gate witness own-vs-relayed account.",
+        "Q5": "Second scoped dispatch correction controls only its named identity/location assertion; none of these corrections changes original-file capture evidence.",
+        "Q6": "Third response does not create independence between the TWO vendor reports; their explicit copy/unknown/independent origin relations remain.",
+        "Q7": "Current source response does not identify or change participant-signed body-area history; dispatch visitor correction does not invalidate independent role-roster claimant identity.",
+        "Q8": "Current permission/camera/observer response does not establish clinic billing of estimate amount.",
+        "Q9": "No current-response capture-time assertion."
+      }
+    },
+    {
+      "taskId": "ibe-coverage-review-holdout-2-38624011",
+      "family": "coverage-review",
+      "split": "holdout",
+      "variant": 3,
+      "publicPropositions": [
+        {
+          "id": "Q1",
+          "statement": "The record establishes that the named driver had signed permission to use the scheduled vehicle during the requested period."
+        },
+        {
+          "id": "Q2",
+          "statement": "The supplemental record signed by Ari is a valid scoped first-hand record for the scheduled entity and requested period under the supplied evidence policy."
+        },
+        {
+          "id": "Q3",
+          "statement": "The operative calendar response date requested by the letter is June24,2026."
+        },
+        {
+          "id": "Q4",
+          "statement": "Dario personally witnessed the vehicle striking the loading gate."
+        },
+        {
+          "id": "Q5",
+          "statement": "The later signed correction retains the dispatcher's observation that the vehicle was parked at bay4."
+        },
+        {
+          "id": "Q6",
+          "statement": "The two vendor reports independently corroborate two separate originating observations."
+        },
+        {
+          "id": "Q7",
+          "statement": "The intake material establishes the claimant had no earlier symptoms involving the same body area."
+        },
+        {
+          "id": "Q8",
+          "statement": "The clinic's $18,000 figure is a projected future-care scenario rather than an amount already billed."
+        },
+        {
+          "id": "Q9",
+          "statement": "The custody records and current source manifest establish when this matter's requested original file was captured."
+        }
+      ],
+      "originalManifest": "Source manifest signed by source keeper: The original file digest for this matter was not retained. Digest F-945963025 belongs to an archived camera file, but I cannot confirm whether that is this matter's requested original. A preview digest PREVIEW-945963025 is a different file.",
+      "originalCustody": "For digest F-945963025: Custodian signed: I recovered the original capture metadata, June24 at08:00. The header June23 in the forwarded preview is the forwarding-template date; it is not original capture metadata.",
+      "currentRequiredResponse": {
+        "documentId": "ibe-coverage-review-holdout-2-38624011-response-current",
+        "version": 1,
+        "sectionId": "s1",
+        "text": "Original instrument signed by the authorized vehicle owner: I expressly withheld the named driver's permission to use vehicle-38624011 during 2026-06-23T00:00:00Z through 2026-06-24T12:00:00Z. The earlier confirmation was an unsigned proposal; no permission was granted for this period."
+      },
+      "correctionScope": "Signed correction to dispatch note DN-945963025. Paragraph B is withdrawn because I could not see the location field; paragraph A's arrival-time observation is retained. Signed by the same dispatcher who authored DN-945963025.",
+      "phases": [
+        {
+          "phase": "initial-only",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-approved-current-response",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-provided-correction-and-current-review",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        }
+      ],
+      "assessment": "Current permission or observer response supplies Q1-specific evidence without asserting requested original capture metadata. No Q9 collision observed.",
+      "otherPropositionInteractionCheck": {
+        "Q1": "Current received source is directly decisive; original keeper lack of source is not a contrary observation.",
+        "Q2": "Supplement validity still requires its OWN label/time/authority; current original capture time is not the missing supplement observation/inspection time.",
+        "Q3": "Source capture, service, signed-letter or upload dates do not establish verified receipt for relative calendar response.",
+        "Q4": "Current scoped response does not supersede signed gate witness own-vs-relayed account.",
+        "Q5": "Second scoped dispatch correction controls only its named identity/location assertion; none of these corrections changes original-file capture evidence.",
+        "Q6": "Third response does not create independence between the TWO vendor reports; their explicit copy/unknown/independent origin relations remain.",
+        "Q7": "Current source response does not identify or change participant-signed body-area history; dispatch visitor correction does not invalidate independent role-roster claimant identity.",
+        "Q8": "Current permission/camera/observer response does not establish clinic billing of estimate amount.",
+        "Q9": "No current-response capture-time assertion."
+      }
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-1-809bfa3c",
+      "family": "evidence-brief",
+      "split": "dev",
+      "variant": 0,
+      "publicPropositions": [
+        {
+          "id": "Q1",
+          "statement": "The record establishes that the requested camera original was captured on the scheduled vehicle during the requested period."
+        },
+        {
+          "id": "Q2",
+          "statement": "The supplemental record signed by Ari is a valid scoped first-hand record for the scheduled entity and requested period under the supplied evidence policy."
+        },
+        {
+          "id": "Q3",
+          "statement": "The operative calendar response date requested by the letter is June24,2026."
+        },
+        {
+          "id": "Q4",
+          "statement": "Mara personally witnessed the vehicle striking the loading gate."
+        },
+        {
+          "id": "Q5",
+          "statement": "The later signed correction withdraws the dispatcher's observation that the vehicle was parked at bay4."
+        },
+        {
+          "id": "Q6",
+          "statement": "The two vendor reports independently corroborate two separate originating observations."
+        },
+        {
+          "id": "Q7",
+          "statement": "The intake material establishes the claimant had no earlier symptoms involving the same body area."
+        },
+        {
+          "id": "Q8",
+          "statement": "The named clinic has already billed $18,000 for the services at issue."
+        },
+        {
+          "id": "Q9",
+          "statement": "The custody records and current source manifest establish when this matter's requested original file was captured."
+        }
+      ],
+      "originalManifest": "Source manifest signed by source keeper: The original file for this matter has digest F-2157705788. A preview digest PREVIEW-2157705788 is a different file.",
+      "originalCustody": "For digest F-2157705788: Custodian signed: File received June24 at10:00 and uploaded at10:20. Original capture time is not available. Receipt and upload logs do not record when the camera captured it.",
+      "currentRequiredResponse": {
+        "documentId": "ibe-evidence-brief-dev-1-809bfa3c-response-current",
+        "version": 1,
+        "sectionId": "s1",
+        "text": "Original custody statement signed by the camera custodian: I personally inspected the original file and its capture metadata. It records capture on vehicle-809bfa3c at 2026-06-23T00:00:00Z. The requested original is included; this is not the copied preview or its upload log."
+      },
+      "correctionScope": "Signed correction to dispatch note DN-2157705788. Paragraph C is withdrawn and replaced: that person was a visitor, not the claimant. Two circulated versions use paragraph B for different assertions. The version targeted by my earlier withdrawal note was not retained; I cannot determine whether the bay4 observation is the withdrawn assertion. Paragraph A is retained. Signed by the same dispatcher who authored DN-2157705788.",
+      "phases": [
+        {
+          "phase": "initial-only",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-approved-current-response",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": "confirmed-defensible-supported-Q9-certificate"
+        },
+        {
+          "phase": "after-provided-correction-and-current-review",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": "confirmed-defensible-supported-Q9-certificate"
+        }
+      ],
+      "assessment": "New signed current custody response gives exact capture instant for requested original; current manifest identifies this matter original. The public proposition does not exclude newly obtained custody records. Initial unknown clock cannot force unresolved after stronger requested source arrives. Annotation rejects defensible supported finding.",
+      "otherPropositionInteractionCheck": {
+        "Q1": "Current received source is directly decisive; original keeper lack of source is not a contrary observation.",
+        "Q2": "Supplement validity still requires its OWN label/time/authority; current original capture time is not the missing supplement observation/inspection time.",
+        "Q3": "Source capture, service, signed-letter or upload dates do not establish verified receipt for relative calendar response.",
+        "Q4": "Current scoped response does not supersede signed gate witness own-vs-relayed account.",
+        "Q5": "Second scoped dispatch correction controls only its named identity/location assertion; none of these corrections changes original-file capture evidence.",
+        "Q6": "Third response does not create independence between the TWO vendor reports; their explicit copy/unknown/independent origin relations remain.",
+        "Q7": "Current source response does not identify or change participant-signed body-area history; dispatch visitor correction does not invalidate independent role-roster claimant identity.",
+        "Q8": "Current permission/camera/observer response does not establish clinic billing of estimate amount.",
+        "Q9": "Cross-source dependency must be jointly considered; cannot grade old custody snapshot alone."
+      }
+    },
+    {
+      "taskId": "ibe-evidence-brief-dev-2-59ea906b",
+      "family": "evidence-brief",
+      "split": "dev",
+      "variant": 1,
+      "publicPropositions": [
+        {
+          "id": "Q1",
+          "statement": "The record establishes that the requested camera original was captured on the scheduled vehicle during the requested period."
+        },
+        {
+          "id": "Q2",
+          "statement": "The supplemental record signed by Ari is a valid scoped first-hand record for the scheduled entity and requested period under the supplied evidence policy."
+        },
+        {
+          "id": "Q3",
+          "statement": "The operative calendar response date requested by the letter is June24,2026."
+        },
+        {
+          "id": "Q4",
+          "statement": "Owen personally witnessed the vehicle striking the loading gate."
+        },
+        {
+          "id": "Q5",
+          "statement": "The later signed correction withdraws the dispatcher's observation that the vehicle was parked at bay4."
+        },
+        {
+          "id": "Q6",
+          "statement": "The two vendor reports independently corroborate two separate originating observations."
+        },
+        {
+          "id": "Q7",
+          "statement": "The intake material establishes the claimant had no earlier symptoms involving the same body area."
+        },
+        {
+          "id": "Q8",
+          "statement": "The named clinic has already billed $18,000 for the services at issue."
+        },
+        {
+          "id": "Q9",
+          "statement": "The custody records and current source manifest leave this matter's requested original capture time unknown."
+        }
+      ],
+      "originalManifest": "Source manifest signed by source keeper: The original file for this matter has digest F-1508544619. A preview digest PREVIEW-1508544619 is a different file.",
+      "originalCustody": "For digest F-1508544619: Custodian signed: Original file metadata records capture June23 at09:10. The upload at June24 at10:20 is later, and belongs to a copied preview. I verified the original capture metadata before making this statement.",
+      "currentRequiredResponse": {
+        "documentId": "ibe-evidence-brief-dev-2-59ea906b-response-current",
+        "version": 1,
+        "sectionId": "s1",
+        "text": "Original camera statement signed by custodian: I personally inspected the file; it was captured on other-vehicle in May. It was expressly not captured on vehicle-59ea906b during 2026-06-23T00:00:00Z through 2026-06-24T00:00:00Z. The preview's matching filename does not change the original metadata."
+      },
+      "correctionScope": "Signed correction to dispatch note DN-1508544619. Paragraph B is withdrawn; it was copied from another vehicle's entry. Paragraphs A and C are retained. Signed by the same dispatcher who authored DN-1508544619.",
+      "phases": [
+        {
+          "phase": "initial-only",
+          "annotationQ9": "refuted",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-approved-current-response",
+          "annotationQ9": "refuted",
+          "crossSourceIssue": "potential-file-identity-or-conflicting-capture-time-ambiguity"
+        },
+        {
+          "phase": "after-provided-correction-and-current-review",
+          "annotationQ9": "refuted",
+          "crossSourceIssue": "potential-file-identity-or-conflicting-capture-time-ambiguity"
+        }
+      ],
+      "assessment": "Current requested camera statement identifies original/file capture in May on other vehicle. Variant1 original custody+manifest identifies same matter original capture June23; no explicit digest join or supersession resolves whether these describe same file (conflict) or distinct files. Variant3 initial digest-to-matter link remains unknown; current response identity/granularity is not expressly joined. Do not force a replacement label; flag source semantic ambiguity before new measurements.",
+      "otherPropositionInteractionCheck": {
+        "Q1": "Current received source is directly decisive; original keeper lack of source is not a contrary observation.",
+        "Q2": "Supplement validity still requires its OWN label/time/authority; current original capture time is not the missing supplement observation/inspection time.",
+        "Q3": "Source capture, service, signed-letter or upload dates do not establish verified receipt for relative calendar response.",
+        "Q4": "Current scoped response does not supersede signed gate witness own-vs-relayed account.",
+        "Q5": "Second scoped dispatch correction controls only its named identity/location assertion; none of these corrections changes original-file capture evidence.",
+        "Q6": "Third response does not create independence between the TWO vendor reports; their explicit copy/unknown/independent origin relations remain.",
+        "Q7": "Current source response does not identify or change participant-signed body-area history; dispatch visitor correction does not invalidate independent role-roster claimant identity.",
+        "Q8": "Current permission/camera/observer response does not establish clinic billing of estimate amount.",
+        "Q9": "Cross-source dependency must be jointly considered; cannot grade old custody snapshot alone."
+      }
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-1-5d55eace",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "variant": 2,
+      "publicPropositions": [
+        {
+          "id": "Q1",
+          "statement": "The record establishes that the requested camera original was captured on the scheduled vehicle during the requested period."
+        },
+        {
+          "id": "Q2",
+          "statement": "The supplemental record signed by Ari is a valid scoped first-hand record for the scheduled entity and requested period under the supplied evidence policy."
+        },
+        {
+          "id": "Q3",
+          "statement": "The operative calendar response date requested by the letter is June24,2026."
+        },
+        {
+          "id": "Q4",
+          "statement": "Leena did not personally witness the vehicle striking the loading gate."
+        },
+        {
+          "id": "Q5",
+          "statement": "The later signed correction withdraws the dispatcher's observation that the vehicle was parked at bay4."
+        },
+        {
+          "id": "Q6",
+          "statement": "The two vendor reports independently corroborate two separate originating observations."
+        },
+        {
+          "id": "Q7",
+          "statement": "The intake material establishes the claimant had no earlier symptoms involving the same body area."
+        },
+        {
+          "id": "Q8",
+          "statement": "The named clinic has already billed $18,000 for the services at issue."
+        },
+        {
+          "id": "Q9",
+          "statement": "The custody records and current source manifest establish when this matter's requested original file was captured."
+        }
+      ],
+      "originalManifest": "Source manifest signed by source keeper: The original file for this matter has digest F-1565911758. A preview digest PREVIEW-1565911758 is a different file.",
+      "originalCustody": "For digest F-1565911758: Custodian signed: The only timestamp retained is the copying workstation's modification time. The original capture clock was not retained and cannot be inferred from that copying time.",
+      "currentRequiredResponse": {
+        "documentId": "ibe-evidence-brief-holdout-1-5d55eace-response-current",
+        "version": 1,
+        "sectionId": "s1",
+        "text": "Original custody statement signed by the camera custodian: I personally inspected the original file and its capture metadata. It records capture on vehicle-5d55eace at 2026-06-21T00:00:00Z. The requested original is included; this is not the copied preview or its upload log."
+      },
+      "correctionScope": "Signed correction to dispatch note DN-1565911758. The cover heading bay7 is a transcription mistake. Paragraph B records my observation correctly and is retained; paragraph C is retained too. Signed by the same dispatcher who authored DN-1565911758.",
+      "phases": [
+        {
+          "phase": "initial-only",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-approved-current-response",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": "confirmed-defensible-supported-Q9-certificate"
+        },
+        {
+          "phase": "after-provided-correction-and-current-review",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": "confirmed-defensible-supported-Q9-certificate"
+        }
+      ],
+      "assessment": "New signed current custody response gives exact capture instant for requested original; current manifest identifies this matter original. The public proposition does not exclude newly obtained custody records. Initial unknown clock cannot force unresolved after stronger requested source arrives. Annotation rejects defensible supported finding.",
+      "otherPropositionInteractionCheck": {
+        "Q1": "Current received source is directly decisive; original keeper lack of source is not a contrary observation.",
+        "Q2": "Supplement validity still requires its OWN label/time/authority; current original capture time is not the missing supplement observation/inspection time.",
+        "Q3": "Source capture, service, signed-letter or upload dates do not establish verified receipt for relative calendar response.",
+        "Q4": "Current scoped response does not supersede signed gate witness own-vs-relayed account.",
+        "Q5": "Second scoped dispatch correction controls only its named identity/location assertion; none of these corrections changes original-file capture evidence.",
+        "Q6": "Third response does not create independence between the TWO vendor reports; their explicit copy/unknown/independent origin relations remain.",
+        "Q7": "Current source response does not identify or change participant-signed body-area history; dispatch visitor correction does not invalidate independent role-roster claimant identity.",
+        "Q8": "Current permission/camera/observer response does not establish clinic billing of estimate amount.",
+        "Q9": "Cross-source dependency must be jointly considered; cannot grade old custody snapshot alone."
+      }
+    },
+    {
+      "taskId": "ibe-evidence-brief-holdout-2-2377f3d5",
+      "family": "evidence-brief",
+      "split": "holdout",
+      "variant": 3,
+      "publicPropositions": [
+        {
+          "id": "Q1",
+          "statement": "The record establishes that the requested camera original was captured on the scheduled vehicle during the requested period."
+        },
+        {
+          "id": "Q2",
+          "statement": "The supplemental record signed by Ari is a valid scoped first-hand record for the scheduled entity and requested period under the supplied evidence policy."
+        },
+        {
+          "id": "Q3",
+          "statement": "The operative calendar response date requested by the letter is June24,2026."
+        },
+        {
+          "id": "Q4",
+          "statement": "Dario personally witnessed the vehicle striking the loading gate."
+        },
+        {
+          "id": "Q5",
+          "statement": "The later signed correction retains the dispatcher's observation that the vehicle was parked at bay4."
+        },
+        {
+          "id": "Q6",
+          "statement": "The two vendor reports independently corroborate two separate originating observations."
+        },
+        {
+          "id": "Q7",
+          "statement": "The intake material establishes the claimant had no earlier symptoms involving the same body area."
+        },
+        {
+          "id": "Q8",
+          "statement": "The clinic's $18,000 figure is a projected future-care scenario rather than an amount already billed."
+        },
+        {
+          "id": "Q9",
+          "statement": "The custody records and current source manifest establish when this matter's requested original file was captured."
+        }
+      ],
+      "originalManifest": "Source manifest signed by source keeper: The original file digest for this matter was not retained. Digest F-595063765 belongs to an archived camera file, but I cannot confirm whether that is this matter's requested original. A preview digest PREVIEW-595063765 is a different file.",
+      "originalCustody": "For digest F-595063765: Custodian signed: I recovered the original capture metadata, June24 at08:00. The header June23 in the forwarded preview is the forwarding-template date; it is not original capture metadata.",
+      "currentRequiredResponse": {
+        "documentId": "ibe-evidence-brief-holdout-2-2377f3d5-response-current",
+        "version": 1,
+        "sectionId": "s1",
+        "text": "Original camera statement signed by custodian: I personally inspected the file; it was captured on other-vehicle in May. It was expressly not captured on vehicle-2377f3d5 during 2026-06-23T00:00:00Z through 2026-06-24T12:00:00Z. The preview's matching filename does not change the original metadata."
+      },
+      "correctionScope": "Signed correction to dispatch note DN-595063765. Paragraph B is withdrawn because I could not see the location field; paragraph A's arrival-time observation is retained. Signed by the same dispatcher who authored DN-595063765.",
+      "phases": [
+        {
+          "phase": "initial-only",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-approved-current-response",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": "potential-file-identity-or-conflicting-capture-time-ambiguity"
+        },
+        {
+          "phase": "after-provided-correction-and-current-review",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": "potential-file-identity-or-conflicting-capture-time-ambiguity"
+        }
+      ],
+      "assessment": "Current requested camera statement identifies original/file capture in May on other vehicle. Variant1 original custody+manifest identifies same matter original capture June23; no explicit digest join or supersession resolves whether these describe same file (conflict) or distinct files. Variant3 initial digest-to-matter link remains unknown; current response identity/granularity is not expressly joined. Do not force a replacement label; flag source semantic ambiguity before new measurements.",
+      "otherPropositionInteractionCheck": {
+        "Q1": "Current received source is directly decisive; original keeper lack of source is not a contrary observation.",
+        "Q2": "Supplement validity still requires its OWN label/time/authority; current original capture time is not the missing supplement observation/inspection time.",
+        "Q3": "Source capture, service, signed-letter or upload dates do not establish verified receipt for relative calendar response.",
+        "Q4": "Current scoped response does not supersede signed gate witness own-vs-relayed account.",
+        "Q5": "Second scoped dispatch correction controls only its named identity/location assertion; none of these corrections changes original-file capture evidence.",
+        "Q6": "Third response does not create independence between the TWO vendor reports; their explicit copy/unknown/independent origin relations remain.",
+        "Q7": "Current source response does not identify or change participant-signed body-area history; dispatch visitor correction does not invalidate independent role-roster claimant identity.",
+        "Q8": "Current permission/camera/observer response does not establish clinic billing of estimate amount.",
+        "Q9": "Cross-source dependency must be jointly considered; cannot grade old custody snapshot alone."
+      }
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-1-a47a3330",
+      "family": "fraud-referral",
+      "split": "dev",
+      "variant": 0,
+      "publicPropositions": [
+        {
+          "id": "Q1",
+          "statement": "The record establishes that the named observer personally saw the scheduled vehicle at the depot during the requested period."
+        },
+        {
+          "id": "Q2",
+          "statement": "The supplemental record signed by Ari is a valid scoped first-hand record for the scheduled entity and requested period under the supplied evidence policy."
+        },
+        {
+          "id": "Q3",
+          "statement": "The operative calendar response date requested by the letter is June24,2026."
+        },
+        {
+          "id": "Q4",
+          "statement": "Mara personally witnessed the vehicle striking the loading gate."
+        },
+        {
+          "id": "Q5",
+          "statement": "The later signed correction withdraws the dispatcher's observation that the vehicle was parked at bay4."
+        },
+        {
+          "id": "Q6",
+          "statement": "The two vendor reports independently corroborate two separate originating observations."
+        },
+        {
+          "id": "Q7",
+          "statement": "The intake material establishes the claimant had no earlier symptoms involving the same body area."
+        },
+        {
+          "id": "Q8",
+          "statement": "The named clinic has already billed $18,000 for the services at issue."
+        },
+        {
+          "id": "Q9",
+          "statement": "The custody records and current source manifest establish when this matter's requested original file was captured."
+        }
+      ],
+      "originalManifest": "Source manifest signed by source keeper: The original file for this matter has digest F-2759471920. A preview digest PREVIEW-2759471920 is a different file.",
+      "originalCustody": "For digest F-2759471920: Custodian signed: File received June24 at10:00 and uploaded at10:20. Original capture time is not available. Receipt and upload logs do not record when the camera captured it.",
+      "currentRequiredResponse": {
+        "documentId": "ibe-fraud-referral-dev-1-a47a3330-response-current",
+        "version": 1,
+        "sectionId": "s1",
+        "text": "Original observer account signed by the named observer: I personally saw vehicle-a47a3330 at the depot during 2026-06-23T00:00:00Z through 2026-06-24T00:00:00Z. I observed it directly; this is my account, not a report from a radio call. My earlier partial note concerns another visit outside this period."
+      },
+      "correctionScope": "Signed correction to dispatch note DN-2759471920. Paragraph C is withdrawn and replaced: that person was a visitor, not the claimant. Two circulated versions use paragraph B for different assertions. The version targeted by my earlier withdrawal note was not retained; I cannot determine whether the bay4 observation is the withdrawn assertion. Paragraph A is retained. Signed by the same dispatcher who authored DN-2759471920.",
+      "phases": [
+        {
+          "phase": "initial-only",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-approved-current-response",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-provided-correction-and-current-review",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        }
+      ],
+      "assessment": "Current permission or observer response supplies Q1-specific evidence without asserting requested original capture metadata. No Q9 collision observed.",
+      "otherPropositionInteractionCheck": {
+        "Q1": "Current received source is directly decisive; original keeper lack of source is not a contrary observation.",
+        "Q2": "Supplement validity still requires its OWN label/time/authority; current original capture time is not the missing supplement observation/inspection time.",
+        "Q3": "Source capture, service, signed-letter or upload dates do not establish verified receipt for relative calendar response.",
+        "Q4": "Current scoped response does not supersede signed gate witness own-vs-relayed account.",
+        "Q5": "Second scoped dispatch correction controls only its named identity/location assertion; none of these corrections changes original-file capture evidence.",
+        "Q6": "Third response does not create independence between the TWO vendor reports; their explicit copy/unknown/independent origin relations remain.",
+        "Q7": "Current source response does not identify or change participant-signed body-area history; dispatch visitor correction does not invalidate independent role-roster claimant identity.",
+        "Q8": "Current permission/camera/observer response does not establish clinic billing of estimate amount.",
+        "Q9": "No current-response capture-time assertion."
+      }
+    },
+    {
+      "taskId": "ibe-fraud-referral-dev-2-46b8accf",
+      "family": "fraud-referral",
+      "split": "dev",
+      "variant": 1,
+      "publicPropositions": [
+        {
+          "id": "Q1",
+          "statement": "The record establishes that the named observer personally saw the scheduled vehicle at the depot during the requested period."
+        },
+        {
+          "id": "Q2",
+          "statement": "The supplemental record signed by Ari is a valid scoped first-hand record for the scheduled entity and requested period under the supplied evidence policy."
+        },
+        {
+          "id": "Q3",
+          "statement": "The operative calendar response date requested by the letter is June24,2026."
+        },
+        {
+          "id": "Q4",
+          "statement": "Owen personally witnessed the vehicle striking the loading gate."
+        },
+        {
+          "id": "Q5",
+          "statement": "The later signed correction withdraws the dispatcher's observation that the vehicle was parked at bay4."
+        },
+        {
+          "id": "Q6",
+          "statement": "The two vendor reports independently corroborate two separate originating observations."
+        },
+        {
+          "id": "Q7",
+          "statement": "The intake material establishes the claimant had no earlier symptoms involving the same body area."
+        },
+        {
+          "id": "Q8",
+          "statement": "The named clinic has already billed $18,000 for the services at issue."
+        },
+        {
+          "id": "Q9",
+          "statement": "The custody records and current source manifest leave this matter's requested original capture time unknown."
+        }
+      ],
+      "originalManifest": "Source manifest signed by source keeper: The original file for this matter has digest F-1186507983. A preview digest PREVIEW-1186507983 is a different file.",
+      "originalCustody": "For digest F-1186507983: Custodian signed: Original file metadata records capture June23 at09:10. The upload at June24 at10:20 is later, and belongs to a copied preview. I verified the original capture metadata before making this statement.",
+      "currentRequiredResponse": {
+        "documentId": "ibe-fraud-referral-dev-2-46b8accf-response-current",
+        "version": 1,
+        "sectionId": "s1",
+        "text": "Original observer account signed by the named observer: I did not personally see vehicle-46b8accf at the depot during 2026-06-23T00:00:00Z through 2026-06-24T00:00:00Z. The earlier description was attributed to another person's radio message; I correct that attribution here."
+      },
+      "correctionScope": "Signed correction to dispatch note DN-1186507983. Paragraph B is withdrawn; it was copied from another vehicle's entry. Paragraphs A and C are retained. Signed by the same dispatcher who authored DN-1186507983.",
+      "phases": [
+        {
+          "phase": "initial-only",
+          "annotationQ9": "refuted",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-approved-current-response",
+          "annotationQ9": "refuted",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-provided-correction-and-current-review",
+          "annotationQ9": "refuted",
+          "crossSourceIssue": false
+        }
+      ],
+      "assessment": "Current permission or observer response supplies Q1-specific evidence without asserting requested original capture metadata. No Q9 collision observed.",
+      "otherPropositionInteractionCheck": {
+        "Q1": "Current received source is directly decisive; original keeper lack of source is not a contrary observation.",
+        "Q2": "Supplement validity still requires its OWN label/time/authority; current original capture time is not the missing supplement observation/inspection time.",
+        "Q3": "Source capture, service, signed-letter or upload dates do not establish verified receipt for relative calendar response.",
+        "Q4": "Current scoped response does not supersede signed gate witness own-vs-relayed account.",
+        "Q5": "Second scoped dispatch correction controls only its named identity/location assertion; none of these corrections changes original-file capture evidence.",
+        "Q6": "Third response does not create independence between the TWO vendor reports; their explicit copy/unknown/independent origin relations remain.",
+        "Q7": "Current source response does not identify or change participant-signed body-area history; dispatch visitor correction does not invalidate independent role-roster claimant identity.",
+        "Q8": "Current permission/camera/observer response does not establish clinic billing of estimate amount.",
+        "Q9": "No current-response capture-time assertion."
+      }
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-1-48e133e2",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "variant": 2,
+      "publicPropositions": [
+        {
+          "id": "Q1",
+          "statement": "The record establishes that the named observer personally saw the scheduled vehicle at the depot during the requested period."
+        },
+        {
+          "id": "Q2",
+          "statement": "The supplemental record signed by Ari is a valid scoped first-hand record for the scheduled entity and requested period under the supplied evidence policy."
+        },
+        {
+          "id": "Q3",
+          "statement": "The operative calendar response date requested by the letter is June24,2026."
+        },
+        {
+          "id": "Q4",
+          "statement": "Leena did not personally witness the vehicle striking the loading gate."
+        },
+        {
+          "id": "Q5",
+          "statement": "The later signed correction withdraws the dispatcher's observation that the vehicle was parked at bay4."
+        },
+        {
+          "id": "Q6",
+          "statement": "The two vendor reports independently corroborate two separate originating observations."
+        },
+        {
+          "id": "Q7",
+          "statement": "The intake material establishes the claimant had no earlier symptoms involving the same body area."
+        },
+        {
+          "id": "Q8",
+          "statement": "The named clinic has already billed $18,000 for the services at issue."
+        },
+        {
+          "id": "Q9",
+          "statement": "The custody records and current source manifest establish when this matter's requested original file was captured."
+        }
+      ],
+      "originalManifest": "Source manifest signed by source keeper: The original file for this matter has digest F-1222718434. A preview digest PREVIEW-1222718434 is a different file.",
+      "originalCustody": "For digest F-1222718434: Custodian signed: The only timestamp retained is the copying workstation's modification time. The original capture clock was not retained and cannot be inferred from that copying time.",
+      "currentRequiredResponse": {
+        "documentId": "ibe-fraud-referral-holdout-1-48e133e2-response-current",
+        "version": 1,
+        "sectionId": "s1",
+        "text": "Original observer account signed by the named observer: I personally saw vehicle-48e133e2 at the depot during 2026-06-21T00:00:00Z through 2026-06-24T00:00:00Z. I observed it directly; this is my account, not a report from a radio call. My earlier partial note concerns another visit outside this period."
+      },
+      "correctionScope": "Signed correction to dispatch note DN-1222718434. The cover heading bay7 is a transcription mistake. Paragraph B records my observation correctly and is retained; paragraph C is retained too. Signed by the same dispatcher who authored DN-1222718434.",
+      "phases": [
+        {
+          "phase": "initial-only",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-approved-current-response",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-provided-correction-and-current-review",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        }
+      ],
+      "assessment": "Current permission or observer response supplies Q1-specific evidence without asserting requested original capture metadata. No Q9 collision observed.",
+      "otherPropositionInteractionCheck": {
+        "Q1": "Current received source is directly decisive; original keeper lack of source is not a contrary observation.",
+        "Q2": "Supplement validity still requires its OWN label/time/authority; current original capture time is not the missing supplement observation/inspection time.",
+        "Q3": "Source capture, service, signed-letter or upload dates do not establish verified receipt for relative calendar response.",
+        "Q4": "Current scoped response does not supersede signed gate witness own-vs-relayed account.",
+        "Q5": "Second scoped dispatch correction controls only its named identity/location assertion; none of these corrections changes original-file capture evidence.",
+        "Q6": "Third response does not create independence between the TWO vendor reports; their explicit copy/unknown/independent origin relations remain.",
+        "Q7": "Current source response does not identify or change participant-signed body-area history; dispatch visitor correction does not invalidate independent role-roster claimant identity.",
+        "Q8": "Current permission/camera/observer response does not establish clinic billing of estimate amount.",
+        "Q9": "No current-response capture-time assertion."
+      }
+    },
+    {
+      "taskId": "ibe-fraud-referral-holdout-2-bb9ca1d9",
+      "family": "fraud-referral",
+      "split": "holdout",
+      "variant": 3,
+      "publicPropositions": [
+        {
+          "id": "Q1",
+          "statement": "The record establishes that the named observer personally saw the scheduled vehicle at the depot during the requested period."
+        },
+        {
+          "id": "Q2",
+          "statement": "The supplemental record signed by Ari is a valid scoped first-hand record for the scheduled entity and requested period under the supplied evidence policy."
+        },
+        {
+          "id": "Q3",
+          "statement": "The operative calendar response date requested by the letter is June24,2026."
+        },
+        {
+          "id": "Q4",
+          "statement": "Dario personally witnessed the vehicle striking the loading gate."
+        },
+        {
+          "id": "Q5",
+          "statement": "The later signed correction retains the dispatcher's observation that the vehicle was parked at bay4."
+        },
+        {
+          "id": "Q6",
+          "statement": "The two vendor reports independently corroborate two separate originating observations."
+        },
+        {
+          "id": "Q7",
+          "statement": "The intake material establishes the claimant had no earlier symptoms involving the same body area."
+        },
+        {
+          "id": "Q8",
+          "statement": "The clinic's $18,000 figure is a projected future-care scenario rather than an amount already billed."
+        },
+        {
+          "id": "Q9",
+          "statement": "The custody records and current source manifest establish when this matter's requested original file was captured."
+        }
+      ],
+      "originalManifest": "Source manifest signed by source keeper: The original file digest for this matter was not retained. Digest F-3147604441 belongs to an archived camera file, but I cannot confirm whether that is this matter's requested original. A preview digest PREVIEW-3147604441 is a different file.",
+      "originalCustody": "For digest F-3147604441: Custodian signed: I recovered the original capture metadata, June24 at08:00. The header June23 in the forwarded preview is the forwarding-template date; it is not original capture metadata.",
+      "currentRequiredResponse": {
+        "documentId": "ibe-fraud-referral-holdout-2-bb9ca1d9-response-current",
+        "version": 1,
+        "sectionId": "s1",
+        "text": "Original observer account signed by the named observer: I did not personally see vehicle-bb9ca1d9 at the depot during 2026-06-23T00:00:00Z through 2026-06-24T12:00:00Z. The earlier description was attributed to another person's radio message; I correct that attribution here."
+      },
+      "correctionScope": "Signed correction to dispatch note DN-3147604441. Paragraph B is withdrawn because I could not see the location field; paragraph A's arrival-time observation is retained. Signed by the same dispatcher who authored DN-3147604441.",
+      "phases": [
+        {
+          "phase": "initial-only",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-approved-current-response",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        },
+        {
+          "phase": "after-provided-correction-and-current-review",
+          "annotationQ9": "unresolved",
+          "crossSourceIssue": false
+        }
+      ],
+      "assessment": "Current permission or observer response supplies Q1-specific evidence without asserting requested original capture metadata. No Q9 collision observed.",
+      "otherPropositionInteractionCheck": {
+        "Q1": "Current received source is directly decisive; original keeper lack of source is not a contrary observation.",
+        "Q2": "Supplement validity still requires its OWN label/time/authority; current original capture time is not the missing supplement observation/inspection time.",
+        "Q3": "Source capture, service, signed-letter or upload dates do not establish verified receipt for relative calendar response.",
+        "Q4": "Current scoped response does not supersede signed gate witness own-vs-relayed account.",
+        "Q5": "Second scoped dispatch correction controls only its named identity/location assertion; none of these corrections changes original-file capture evidence.",
+        "Q6": "Third response does not create independence between the TWO vendor reports; their explicit copy/unknown/independent origin relations remain.",
+        "Q7": "Current source response does not identify or change participant-signed body-area history; dispatch visitor correction does not invalidate independent role-roster claimant identity.",
+        "Q8": "Current permission/camera/observer response does not establish clinic billing of estimate amount.",
+        "Q9": "No current-response capture-time assertion."
+      }
+    }
+  ]
+}

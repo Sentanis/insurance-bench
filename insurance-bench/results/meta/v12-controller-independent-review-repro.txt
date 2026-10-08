@@ -1,0 +1,86 @@
+"""Source-only v12 controller fixtures. No real ledger/native/provider access."""
+import pathlib,tempfile,json,hashlib,subprocess,shutil,os
+REPO=pathlib.Path(__file__).resolve().parents[2]
+SOURCE=REPO/'.tmp/insurance-bench/v12-panels.ts'
+CLI=REPO/'node_modules/tsx/dist/cli.mjs'
+B=SOURCE.read_bytes(); S=B.decode(); H=lambda b:hashlib.sha256(b).hexdigest()
+FP='a'*64; TASKS=[{'id':f't{i}','family':f'f{i}','split':'dev'} for i in range(3)]
+CANON=lambda o:json.dumps(o,separators=(',',':'),ensure_ascii=False).encode()
+results=[]
+with tempfile.TemporaryDirectory(prefix='ib-v12-controller-') as directory:
+ root=pathlib.Path(directory)
+ def put(p,v):
+  f=root/p;f.parent.mkdir(parents=True,exist_ok=True);f.write_bytes(v if isinstance(v,bytes) else (json.dumps(v)+'\n').encode())
+ def get(p): return json.loads((root/p).read_text())
+ def digest(p):return H((root/p).read_bytes())
+ def git(*args):return subprocess.check_output(['git',*args],cwd=root,stderr=subprocess.DEVNULL).decode().strip()
+ put('package.json',b'{"type":"module"}\n')
+ put('insurance-bench/runner.ts',b"import crypto from 'node:crypto'; export const hash=(x:unknown)=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');\n")
+ put('insurance-bench/dependency-allocation-cases.ts',('export const generateDependencyAllocationCases=()=>'+json.dumps(TASKS)+';\n').encode())
+ put('insurance-bench/dependency-allocation-runner.ts',(f"export const DEPENDENCY_ALLOCATION_VERSION='insurance-bench-dependency-allocation-v0.12'; export const dependencyAllocationSourceFingerprint=()=>'{FP}'; export const DEPENDENCY_ALLOCATION_SOURCE_FILES=Object.freeze(['insurance-bench/runner.ts','insurance-bench/dependency-allocation-cases.ts','insurance-bench/dependency-allocation-runner.ts']); export const dependencyAllocationSystemPrompt=()=> 'JSON fixture system';\n").encode())
+ # Replace ONLY spawn binding in fixture copy; actual git subprocess remains available.
+ mock=S.replace("import {spawn,execFileSync} from 'node:child_process';","import {execFileSync} from 'node:child_process'; const spawn:any=()=>{throw new Error('Mock forbids all inference child processes');};")
+ controller='.tmp/insurance-bench/v12-panels.ts';put(controller,mock.encode())
+ audit='insurance-bench/results/meta/v12-candidate-independent-audit.json'
+ put(audit,{'disposition':'approve-engineering-only','sourceFingerprint':FP,'fullCorpusHash':H(CANON(TASKS))})
+ for name in ['dependency-allocation-runner-independent-review-v0.12.json','v12-independent-opus-review.json']:
+  put('insurance-bench/results/meta/'+name,{'disposition':'approve-engineering-only','sourceFingerprint':FP})
+ put('insurance-bench/results/meta/v12-controller-independent-review.json',{'disposition':'approve-engineering-only','controllerSha256':digest(controller)})
+ put('specs/features/insurance-bench/v12-development-plan.md',b'Fixture only; never paid.\n')
+ ledger='.tmp/insurance-bench/session-budget.json';put(ledger,{'capUsd':75,'reservedUsd':72.26526888750007})
+ models={'gpt-6.1-sol-high':{'provider':'openai','model':'gpt-6.1-sol','reasoningEffort':'high'},'gpt-6-luna-high':{'provider':'openai','model':'gpt-6-luna','reasoningEffort':'high'}};put('insurance-bench/models.json',models)
+ parents=[]; audited=[]
+ for i in range(4):
+  rid=f'p{i}';rp=f'insurance-bench/results/meta/fake-v11-{rid}.json';np=f'insurance-bench/results/fake-v11-{rid}.json';put(np,{'fixture':rid})
+  put(rp,{'status':'terminal-native-run','completeCoverage':True,'nativeRunPath':np,'nativeRunSha256':digest(np),'processFailure':False,'providerOrBudgetFailure':False,'modelOrEffortMismatch':False,'materialSpendOverrun':False})
+  parents.append({'id':rid,'dispatchReceiptPath':rp});audited.append({'panelId':rid,'receiptSha256':digest(rp),'nativeRunSha256':digest(np)})
+ pr='insurance-bench/results/meta/v11-registration.json';put(pr,{'sourceFingerprint':'b'*64,'fullCorpusHash':'c'*64,'panels':parents})
+ pa='insurance-bench/results/meta/v11-development-independent-audit.json';put(pa,{'disposition':'approve-engineering-only','status':'final','registrationSha256':digest(pr),'sourceFingerprint':'b'*64,'fullCorpusHash':'c'*64,'issues':[],'pending':[],'panels':audited,'counts':{'terminalEpisodesAudited':24}})
+ def run(name,args,ok=False,cwd=None):
+  p=subprocess.run(['node',str(CLI),str(root/controller),'--candidate','dependency',*args],cwd=cwd or root,capture_output=True,text=True,timeout=20)
+  passed=(p.returncode==0)==ok;results.append({'control':name,'passed':passed,'exitCode':p.returncode})
+  if not passed:raise AssertionError(name+': '+p.stderr[-900:])
+ run('valid zero-cost fixture prepare',['--mode','prepare'],True)
+ reg='insurance-bench/results/meta/v12-registration.json'; baseline=(root/reg).read_bytes()
+ run('valid zero-cost fixture validation',['--mode','validate'],True)
+ run('canonical root rejection',['--mode','validate'],cwd=root/'.tmp')
+ run('no holdout stage',['--mode','run','--stage','holdout','--freeze-commit','d'*40])
+ run('no release option',['--mode','run','--stage','dev','--freeze-commit','d'*40,'--release','fake.json'])
+ def mutation(name,p,new):
+  old=(root/p).read_bytes();put(p,new)
+  try:run(name,['--mode','validate'])
+  finally:put(p,old)
+ mutation('ledger cap cannot reset',ledger,{'capUsd':25,'reservedUsd':72.26526888750007})
+ mutation('ledger floor cannot shrink',ledger,{'capUsd':75,'reservedUsd':72})
+ oldreg=(root/reg).read_bytes();oldledger=(root/ledger).read_bytes();(root/reg).unlink();put(ledger,{'capUsd':75,'reservedUsd':74.6})
+ try:run('whole forecast checked before registration',['--mode','prepare'])
+ finally:put(reg,oldreg);put(ledger,oldledger)
+ old=(root/ledger).read_bytes();(root/ledger).unlink()
+ try:run('missing existing ledger',['--mode','validate'])
+ finally:put(ledger,old)
+ for name,modify in [
+  ('selection drift',lambda r:r.update(perFamily=2)),
+  ('corpus drift',lambda r:r.update(fullCorpusHash='x'*64)),
+  ('model configuration drift',lambda r:r['panels'][0]['modelConfiguration'].update(reasoningEffort='low')),
+  ('wrong panel order',lambda r:r['panels'].reverse()),
+  ('changed task identities',lambda r:r['panels'][0].update(taskIds=['other'])),
+  ('changed prompt hash',lambda r:r['panels'][0].update(promptHash='x'*64)),
+  ('changed output limit',lambda r:r['panels'][0].update(limits={'maxTurns':20,'maxOutputTokens':8192})),
+  ('receipt path drift',lambda r:r['panels'][0].update(dispatchReceiptPath='elsewhere.json')),
+ ]:
+  r=json.loads(baseline);modify(r);mutation(name,reg,r)
+ mutation('unfinished parent audit',pa,dict(get(pa),pending=['p3']))
+ mutation('parent receipt identity drift',parents[0]['dispatchReceiptPath'],dict(get(parents[0]['dispatchReceiptPath']),completeCoverage=False))
+ mutation('runtime review mismatch','insurance-bench/results/meta/dependency-allocation-runner-independent-review-v0.12.json',{'disposition':'approve-engineering-only','sourceFingerprint':'x'*64})
+ git('init','-q');git('config','user.name','Fixture');git('config','user.email','fixture@example.invalid');git('add','-f','.');git('commit','-qm','zero-cost fixture controls');commit=git('rev-parse','HEAD')
+ # No successful run is executed: these stop before the forbidden child spawn.
+ oldledger=(root/ledger).read_bytes();put(ledger,{'capUsd':75,'reservedUsd':74.6})
+ try:run('whole remaining forecast checked before dispatch',['--mode','run','--stage','dev','--freeze-commit',commit])
+ finally:put(ledger,oldledger)
+ rp=get(reg)['panels'][0]['dispatchReceiptPath'];put(rp,{'status':'terminal-native-run'})
+ try:run('no duplicate panel dispatch',['--mode','run','--stage','dev','--freeze-commit',commit])
+ finally:(root/rp).unlink()
+ # A changed committed source must fail before controller lock, output creation or forbidden spawn.
+ put('insurance-bench/runner.ts',(root/'insurance-bench/runner.ts').read_bytes()+b'// fixture drift\n')
+ run('git committed exact-source rejection',['--mode','run','--stage','dev','--freeze-commit',commit])
+ print(json.dumps({'controls':results,'passed':len(results),'providerCalls':0,'realLedgerReads':0,'realNativeReads':0,'controllerExecuted':'isolated mock Git fixture only','sourceSha256':H(B)},indent=2))

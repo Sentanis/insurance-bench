@@ -1,0 +1,5 @@
+
+> sentanis@0.1.0 insurance:bench
+> tsx scripts/insurance-bench.ts probe --models gpt-6-astra-high --max-output-tokens 2048
+
+{"name":"gpt-6-astra-high","model":"gpt-6-astra","accessible":true,"usableText":true,"finishReason":"completed","reasoningEffort":"high","inputTokens":15,"outputTokens":22}

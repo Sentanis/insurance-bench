@@ -1,0 +1,165 @@
+{
+  "gpt-6.1-sol": {
+    "provider": "openai",
+    "model": "gpt-6.1-sol",
+    "inputUsdPerMillion": 2,
+    "outputUsdPerMillion": 10,
+    "reasoningEffort": "low"
+  },
+  "claude-sonnet-5.5": {
+    "provider": "bedrock",
+    "model": "global.anthropic.claude-sonnet-5-5",
+    "inputUsdPerMillion": 2,
+    "outputUsdPerMillion": 10,
+    "profile": "sentanis-phase0",
+    "region": "us-west-2"
+  },
+  "claude-opus-5.5": {
+    "provider": "bedrock",
+    "model": "global.anthropic.claude-opus-5-5",
+    "inputUsdPerMillion": 4,
+    "outputUsdPerMillion": 20,
+    "profile": "sentanis-phase0",
+    "region": "us-west-2"
+  },
+  "deepseek-v3.2": {
+    "provider": "bedrock",
+    "model": "deepseek.v3.2",
+    "inputUsdPerMillion": 0.62,
+    "outputUsdPerMillion": 1.85,
+    "profile": "sentanis-phase0",
+    "region": "us-west-2"
+  },
+  "qwen3-235b": {
+    "provider": "bedrock",
+    "model": "qwen.qwen3-235b-a22b-2507-v1:0",
+    "inputUsdPerMillion": 0.22,
+    "outputUsdPerMillion": 0.88,
+    "profile": "sentanis-phase0",
+    "region": "us-west-2"
+  },
+  "grok-4.7": {
+    "provider": "bedrock",
+    "model": "global.xai.grok-4.7",
+    "inputUsdPerMillion": 2,
+    "outputUsdPerMillion": 6,
+    "profile": "sentanis-phase0",
+    "region": "us-west-2"
+  },
+  "gpt-oss-120b": {
+    "provider": "bedrock",
+    "model": "openai.gpt-oss-120b-1:0",
+    "inputUsdPerMillion": 0.15,
+    "outputUsdPerMillion": 0.6,
+    "profile": "sentanis-phase0",
+    "region": "us-east-1"
+  },
+  "kimi-k3": {
+    "provider": "bedrock",
+    "model": "us.moonshotai.kimi-k3",
+    "inputUsdPerMillion": 2,
+    "outputUsdPerMillion": 8,
+    "profile": "sentanis-phase0",
+    "region": "us-east-1"
+  },
+  "claude-sonnet-5": {
+    "provider": "bedrock",
+    "model": "global.anthropic.claude-sonnet-5",
+    "inputUsdPerMillion": 3,
+    "outputUsdPerMillion": 15,
+    "profile": "sentanis-phase0",
+    "region": "us-west-2"
+  },
+  "claude-sonnet-4.6": {
+    "provider": "bedrock",
+    "model": "us.anthropic.claude-sonnet-4-6",
+    "inputUsdPerMillion": 3.3,
+    "outputUsdPerMillion": 16.5,
+    "profile": "sentanis-phase0",
+    "region": "us-west-2"
+  },
+  "gpt-6.1-sol-low": {
+    "provider": "openai",
+    "model": "gpt-6.1-sol",
+    "inputUsdPerMillion": 2,
+    "outputUsdPerMillion": 10,
+    "reasoningEffort": "low",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+    "pricingVerifiedAt": "2026-10-03"
+  },
+  "gpt-6.1-sol-high": {
+    "provider": "openai",
+    "model": "gpt-6.1-sol",
+    "inputUsdPerMillion": 2,
+    "outputUsdPerMillion": 10,
+    "reasoningEffort": "high",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+    "pricingVerifiedAt": "2026-10-03"
+  },
+  "gpt-6-luna-low": {
+    "provider": "openai",
+    "model": "gpt-6-luna",
+    "inputUsdPerMillion": 0.1,
+    "outputUsdPerMillion": 0.5,
+    "reasoningEffort": "low",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+    "pricingVerifiedAt": "2026-10-03"
+  },
+  "gpt-6-luna-high": {
+    "provider": "openai",
+    "model": "gpt-6-luna",
+    "inputUsdPerMillion": 0.1,
+    "outputUsdPerMillion": 0.5,
+    "reasoningEffort": "high",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+    "pricingVerifiedAt": "2026-10-03"
+  },
+  "gpt-5.4-nano-low": {
+    "provider": "openai",
+    "model": "gpt-5.4-nano",
+    "inputUsdPerMillion": 0.2,
+    "outputUsdPerMillion": 1.25,
+    "reasoningEffort": "low",
+    "pricingSource": "https://developers.openai.com/api/docs/models/gpt-5.4-nano",
+    "pricingVerifiedAt": "2026-10-03"
+  },
+  "qwen3-32b": {
+    "provider": "bedrock",
+    "profile": "sentanis-phase0",
+    "region": "us-west-2",
+    "pricingVerifiedAt": "2026-10-03",
+    "model": "qwen.qwen3-32b-v1:0",
+    "inputUsdPerMillion": 0.15,
+    "outputUsdPerMillion": 0.6,
+    "pricingSource": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-west-2/index.json"
+  },
+  "gpt-oss-20b": {
+    "provider": "bedrock",
+    "profile": "sentanis-phase0",
+    "region": "us-west-2",
+    "pricingVerifiedAt": "2026-10-03",
+    "model": "openai.gpt-oss-20b-1:0",
+    "inputUsdPerMillion": 0.07,
+    "outputUsdPerMillion": 0.3,
+    "pricingSource": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-west-2/index.json"
+  },
+  "claude-haiku-4.5": {
+    "provider": "bedrock",
+    "profile": "sentanis-phase0",
+    "region": "us-west-2",
+    "pricingVerifiedAt": "2026-10-03",
+    "model": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "inputUsdPerMillion": 1,
+    "outputUsdPerMillion": 5,
+    "pricingSource": "https://platform.claude.com/docs/en/about-claude/pricing"
+  },
+  "gpt-6-astra-high": {
+    "provider": "openai",
+    "model": "gpt-6-astra",
+    "inputUsdPerMillion": 10,
+    "outputUsdPerMillion": 50,
+    "reasoningEffort": "high",
+    "pricingSource": "https://developers.openai.com/api/docs/pricing",
+    "pricingVerifiedAt": "2026-10-04"
+  }
+}

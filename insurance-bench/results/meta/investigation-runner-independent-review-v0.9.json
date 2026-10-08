@@ -1,0 +1,110 @@
+{
+  "reviewedAt": "2026-10-04T22:51:39Z",
+  "generation": "insurance-bench-investigation-v0.9",
+  "reviewerRole": "Independent documentation/report agent; runner/controller reviewed read-only. Report/tests were then implemented under explicit ownership.",
+  "disposition": "approve-reviewed-harness-engineering-only",
+  "scope": "Runner outbound serialization, isolated transport snapshot, CLI limits/model selection, shared ledger/controller admission guards and report metric presentation. No paid model call or controller dispatch.",
+  "reviewedFileSha256": {
+    "insurance-bench/investigation-runner.ts": "e8ac1a83a0b184fe0fe851a3e34e674db632705fe88c0791a5daed6049bb0183",
+    "scripts/insurance-bench-investigation.ts": "9247cc07c397656a049b242bcfbafb952ff5ea88625bbbe7a7d8ac1466236527",
+    "insurance-bench/investigation-providers.ts": "e3d93a10653c3bd614bd3e00a983e7bb104509beb32df603cba63aa98c0492ba",
+    "test/insurance-bench-investigation-runner.test.ts": "a40ddd67d43cec4fb82090ea435b4a5221f25f937e942e347179667bbcdd5014",
+    "test/insurance-bench-investigation-providers.test.ts": "d62e3ed3a9103e043c2d45ea59db0defe203878e3ca7e739a3cedfdd92b536bd",
+    ".tmp/insurance-bench/v09-run-panels.ts": "66546b260b4eeb83e92350c2dbd94fa1469ae14d8fde6409e2b3be4675fcc0c7",
+    "insurance-bench/report.ts": "509c0c9dfc27799810a74ba0e92d6974ce656dc42a2a717dca21ae58a5e1c428",
+    "test/insurance-bench-report.test.ts": "dc1622fb86f0502846bd79df7110f76fb863587266a6cb33484cae48d4ff5f9e"
+  },
+  "shaSemantics": "Direct current file-byte SHA256 at review time; not the final whole-runtime sourceFingerprint. Engine/cases under independent construction are excluded from this approval.",
+  "excludedFromApproval": [
+    "investigation-types.ts substantive domain contract",
+    "investigation-cases.ts generation/answer meanings",
+    "investigation-engine.ts full-current-source derivation, sufficient certificates and business-rule correctness",
+    "final source freeze/registration",
+    "insurance/legal/clinical expert validity",
+    "model difficulty/effort separation",
+    "protected report Chrome acceptance after these edits"
+  ],
+  "checks": [
+    {
+      "check": "public-message-projection",
+      "evidence": "Runner serializes system prompt plus publicInvestigationTask projection: id/family/clock/instruction/public fact definitions/public sourceRequest/reviewOwner, not whole task/rubric/requestedResponse/updates. Initial state uses initialDocuments. Further execute-tool future/gold isolation is engine-audit scope.",
+      "result": "verified bounded projection; not full engine approval"
+    },
+    {
+      "check": "deadline-only-snapshot",
+      "evidence": "After removing new introductory comment, investigation-providers byte content equals legacy providers with only300000\u2192600000 constant substitution. HTTP abort600s, AWS read595s/processkill600s/AWS_MAX_ATTEMPTS1; no adapter retry/fallback. Historical provider300s unchanged.",
+      "result": "verified by source comparison and2 mocked provider tests"
+    },
+    {
+      "check": "exact-settings-and-lineage",
+      "evidence": "CLI selects exact models.json alias/config and validates output ceilings; defaults OpenAI16384/Bedrock8192,20turns. OpenAI native effort/identity/usage/finishReason preserved. Fingerprint includes runtime sources/models/CLI; controller compares current source, corpus, model config, prompt/harness/task IDs and git-show current byte identity at freeze commit.",
+      "result": "verified source; no real native-admission claim"
+    },
+    {
+      "check": "spend-and-errors",
+      "evidence": "Authoritative same75 ledger; no alternate ledger CLI option/reset. Per-call reservations retain on transport failure; budget stop invokes no provider. Successful usage settlement preserves raw turn protocol/truncation/reasoning metadata. Terminal output recovery is graded raw with limitation; provider/budget failures are unscored and suppress incomplete panel headline.",
+      "result": "verified mocked runner controls"
+    },
+    {
+      "check": "controller-fixed-order",
+      "evidence": "Eight fixed conditions select first generated case per family/split, CLIper-family1/caseoffset0/repeat1. Current ledger must cover all remaining forecasts before each panel. Controller lock and existing dispatch receipts fail closed against duplicate calls; no automatic stale-lock removal. Native source/model/effort/limits mismatch, provider/budget/process failure and material spend overrun pause later dispatch.",
+      "result": "verified source only; no controller executed"
+    },
+    {
+      "check": "separate-holdout-release",
+      "evidence": "Exact committed source/registration/manifest required. Holdout release binds unchanged harness/taskset/repeat, independently approved committed dev audit path+SHA and each of6 committed dev dispatch hashes; validated native predecessors are required.",
+      "result": "verified corrected source only"
+    },
+    {
+      "check": "report-v09-metric",
+      "evidence": "v0.9 renders macro-task-success benchmarkScore; missing/null unavailable, invalid IDs superseded. Weighted partial remains diagnostic. Actual handoff uses workflow:handoff, independently of semantic all-pass/currentRequests/optimization; broad truncation visible. Variant/harness/corpus groups separate.600s/unequal provider caps and coarse33.33 resolution disclosed.",
+      "result": "14 report tests pass; older12 regression controls retained"
+    }
+  ],
+  "findings": [
+    {
+      "id": "IR-01",
+      "severity": "P2",
+      "status": "fixed-source-verified",
+      "problem": "Predecessor guard formerly accepted endedAt without a successfully validated terminal native receipt, allowing a process-ended-awaiting-native-validation receipt to satisfy progression if a holdout release was committed.",
+      "repair": "Require statusterminal-native-run, completeCoverage true, native path/SHA, current native byte hash and failure flags; bind committed independent development audit/hash and all6 committed development dispatch receipt hashes in holdout release.",
+      "validation": "Read-only inspection of corrected controller; no paid/controller runtime execution."
+    }
+  ],
+  "budgetPlan": {
+    "approvedTotalCapUsd": 75,
+    "snapshotReservedUsd": 34.6515821875,
+    "snapshotRemainingUsd": 40.3484178125,
+    "allEightPanelsCases": 3,
+    "selection": "first generated dev/holdout case per family; unused second cases unmeasured",
+    "forecastTotalUsd": 34.25,
+    "unallocatedFromSnapshotUsd": 6.0984178125,
+    "solForecastPerPanelUsd": 2.5,
+    "astraForecastPerPanelUsd": 11.5,
+    "lunaLowForecastUsd": 0.5,
+    "lunaHighForecastUsd": 0.75,
+    "rationale": "Retain six-case allowances after halving case counts. Prior complete c three-case Astra actual estimate5.51955; Sol-high complete dev1.159822/hold1.188666. New actual public source output35\u201336KB plus three packet/request saves may cost more; internal74KB source aggregate includes duplicate representation and is not billed outbound size.",
+    "limitations": "Forecasts are not invoices or hard up-front reservations of future panels. Per-call cap and entire remaining-forecast admission guard remain necessary; unknown latency/reasoning/failure reservations can defer panels. Three headline units resolve0/33.33/66.67/100 and cannot localize50\u201360."
+  },
+  "verification": {
+    "runnerProviderTestsPassed": 6,
+    "reportTestsPassed": 14,
+    "combinedTestsPassed": 20,
+    "fullNpmCheck": "exit0 after typed fixture repair",
+    "reportEslint": "exit0",
+    "gitDiffCheck": "exit0"
+  },
+  "paidInferencePerformed": false,
+  "sourceEditsByReviewer": [
+    "insurance-bench/report.ts",
+    "test/insurance-bench-report.test.ts"
+  ],
+  "scientificClaim": "None: bounded engineering approval does not establish domain gold correctness, professional validity, model scores or accepted industry benchmark.",
+  "mechanicalMetadataAmendment": {
+    "reviewedAt": "2026-10-04T22:55:22.067751+00:00",
+    "change": "Controller preparation compares audit.datasetHash against hash(generated tasks), matching the v0.9 audit datasetHash/corpusSha metadata contract; former corpusHash was a v0.8 field.",
+    "sourceFingerprintObserved": "d3aeb8f9ffb019fbaf262a8a57052dee6a9711f4d459eca27bf8d742ccf1664b",
+    "validation": "Read-only source inspection verifies exact datasetHash equality guard and unchanged prospective panel selection/limits. No controller execution or inference.",
+    "semanticOrScoringChange": false
+  }
+}

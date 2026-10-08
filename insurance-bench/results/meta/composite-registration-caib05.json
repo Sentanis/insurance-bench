@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-10-07",
+  "purpose": "Pinned numeric-source projections and local engineering-audited configured-system observations; no new model or judge calls.",
+  "files": {
+    "insurance-bench/composite-published.json": "178fe45eb30facbb0bf2b44257f8f1759c718d35973ea018ea9b6ed9d745867d",
+    "insurance-bench/composite-supplemental.json": "c1fd8d1e5fef20576ba3a7d0bca2551727acc81f7fea6773ab31e00be783640e",
+    "insurance-bench/composite-docs.json": "c0e8739bbde5589f13720584bfdf52b57d8c0a52fcad95a85c484ba0392d5402",
+    "insurance-bench/results/meta/composite-published-source-receipt.json": "00ae124f53edcd0c5a3345b44d35a41a0e0d2321f9756c3536e5abcaab92d92c",
+    "insurance-bench/results/meta/composite-supplemental-source-receipt.json": "79a87d1a4abdbe9e4edde49eb6cc4014f4a4932b679b7468c1370a08b51c77eb"
+  },
+  "nativeFiles": {
+    "insurance-bench/results/2026-10-05T04-11-33-454Z-gpt-6.1-sol-high-baseline-dependency-allocation.json": "b2408cb48b940ec99d44170d6d2ee60b48e74f2daf448ea7cd4972cf5dd9fe4d",
+    "insurance-bench/results/2026-10-05T04-19-42-463Z-gpt-6-luna-high-baseline-dependency-allocation.json": "4a6e16fd03bc3d4fb8974274256548965405929f3fc35550d8ff148a35090306"
+  },
+  "nativeAuditFile": "insurance-bench/results/meta/v12-development-independent-audit.json",
+  "nativeAuditSha256": "fe2f597182a1f632d6e7dc2518028f2aaf7997e6670cb8cdceec9f08fb9a8e8a"
+}

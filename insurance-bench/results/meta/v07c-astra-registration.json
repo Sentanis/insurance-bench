@@ -1,0 +1,28 @@
+{
+  "registeredAt": "2026-10-04T03:45:28.883757+00:00",
+  "generation": "insurance-bench-coupled-v0.7c",
+  "reason": "Read-only catalog refresh identifies Astra flagship, which was absent from original frozen profiles. Catalog alone does not establish inference access.",
+  "additionalProfile": {
+    "provider": "openai",
+    "model": "gpt-6-astra",
+    "inputUsdPerMillion": 10,
+    "outputUsdPerMillion": 50,
+    "reasoningEffort": "high",
+    "pricingSource": "https://developers.openai.com/api/docs/pricing",
+    "pricingVerifiedAt": "2026-10-04"
+  },
+  "probeOnlyBeforeFinal": "One 2048-output-token access probe under existing shared ledger, no ability score.",
+  "finalOptionalOrder": [
+    "claude-sonnet-4.6",
+    "qwen3-235b",
+    "gpt-oss-120b",
+    "deepseek-v3.2",
+    "qwen3-32b",
+    "gpt-oss-20b",
+    "claude-haiku-4.5",
+    "gpt-6-astra-high"
+  ],
+  "panelPolicy": "Astra complete same-three-case high-effort panel only after earlier registered profiles, if affordable. No partial headline. Existing model configurations, corpus, grader and weights unchanged.",
+  "budgetCapUsd": 25,
+  "standardPricing": true
+}

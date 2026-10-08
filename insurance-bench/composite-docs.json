@@ -1,0 +1,219 @@
+[
+  {
+    "id": "harvey-lab",
+    "name": "Harvey Legal Agent Benchmark",
+    "componentId": "legal-agent",
+    "runability": "public",
+    "description": "Legal work-product assignments with matter files, instructions and lawyer-authored rubrics. The public task pool includes insurance coverage, reservation-of-rights letters, reinsurance, litigation and contract review. Documents are synthetic and lawyer-reviewed, rather than production claim records.",
+    "measures": "Whether an agent can discover relevant files, reconcile issues and produce a reviewable deliverable. Native task all-pass requires every rubric criterion to pass; criterion pass rate is a separate diagnostic.",
+    "runInstructions": "We can run the public release ourselves: pin harveyai/harvey-labs and lab-core, provision an isolated file sandbox with document tooling, run a supported model adapter, and grade saved outputs. Standard dual judging requires separately available OpenAI and Anthropic judge models; DOCX grading requires pandoc. Solver and judge costs both need prospective admission.",
+    "grading": "The imported Vals cohort averages task all-pass rates from GPT5.5 medium and Sonnet4.6 judges. Each judge requires all task criteria; their mean is not criterion-level partial credit. Preserve judge disagreement and inspect borderline outputs.",
+    "links": [
+      {
+        "label": "Public tasks and harness",
+        "url": "https://github.com/harveyai/harvey-labs"
+      },
+      {
+        "label": "Public tutorial",
+        "url": "https://github.com/harveyai/harvey-labs/blob/main/docs/tutorial.md"
+      },
+      {
+        "label": "Published Vals cohort",
+        "url": "https://www.vals.ai/benchmarks/hlab"
+      }
+    ],
+    "caveats": [
+      "Vals explicitly describes its scored cohort as held out. Public-release runs cannot reproduce that exact private cohort; even the open operator harness does not supply private tasks.",
+      "The public tutorial acknowledges document imperfections. Source and rubric audits and human sampling remain necessary.",
+      "The imported Claude Fable5 result used Opus4.8 fallback on four tasks. Its reported11.25 is preserved as reference evidence and excluded from single-model composite calculation."
+    ],
+    "observationBenchmarks": [
+      "Harvey LAB (Vals)"
+    ]
+  },
+  {
+    "id": "legalbench",
+    "name": "LegalBench",
+    "componentId": "legal-reasoning",
+    "runability": "public",
+    "description": "A collection of legal reasoning datasets covering issue spotting, rule application, interpretation, recall and related textual tasks. We use the published Vals accuracy cohort as the initial grounded-legal component.",
+    "measures": "Task-specific legal reasoning accuracy. This is a supporting skill measure rather than an end-to-end insurance workflow test.",
+    "runInstructions": "We can run public LegalBench tasks ourselves using the upstream prompts, inputs and task-specific evaluation code. Freeze the selected tasks, source documents, parsing, model effort and resource limits. Respect each task's upstream dataset license.",
+    "grading": "Use task-native answer evaluation and balanced/task-specific accuracy as documented for the selected release. The displayed Vals overall accuracy is an operator-reported cohort; another prompt, subset or harness gets a separate label.",
+    "links": [
+      {
+        "label": "LegalBench source",
+        "url": "https://github.com/HazyResearch/legalbench"
+      },
+      {
+        "label": "Dataset and tasks",
+        "url": "https://hazyresearch.stanford.edu/legalbench"
+      },
+      {
+        "label": "Published Vals results",
+        "url": "https://www.vals.ai/benchmarks/legal_bench"
+      }
+    ],
+    "caveats": [
+      "LegalBench has per-task creator licenses, not one blanket data license.",
+      "Older or easier tasks may be saturated; keep them as diagnostics and validate effort/tier discrimination on separate frozen development and evaluation sets.",
+      "Public benchmark questions can be present in training. These are not uncontaminated secret holdouts."
+    ],
+    "observationBenchmarks": [
+      "LegalBench (Vals)"
+    ]
+  },
+  {
+    "id": "legalbench-rag",
+    "name": "LegalBench-RAG",
+    "componentId": "legal-reasoning",
+    "runability": "public",
+    "description": "A retrieval benchmark with legal questions and gold supporting character spans in source documents. It draws on CUAD, ContractNLI, MAUD and PrivacyQA.",
+    "measures": "Whether the retrieval system returns the relevant evidence, using precision and recall down to character spans. It does not measure an LLM's complete legal work product.",
+    "runInstructions": "We can run public questions and span evaluation ourselves with a pinned retrieval index and source corpus. Keep the same search tools and retrieval limits across compared agents, or label distinct retrieval systems separately.",
+    "grading": "Deterministic span precision/recall. This is a documentation and future diagnostic component, not an imported single-model score in the current index.",
+    "links": [
+      {
+        "label": "Repository and dataset link",
+        "url": "https://github.com/zeroentropy-ai/legalbenchrag"
+      }
+    ],
+    "caveats": [
+      "CUAD and ContractNLI source documents can overlap with LegalBench-derived tasks. Deduplicate by parent document and split by matter/document.",
+      "An embedding or retrieval-pipeline score must not be silently assigned to a language model."
+    ],
+    "observationBenchmarks": []
+  },
+  {
+    "id": "omnidocbench",
+    "name": "OmniDocBench",
+    "componentId": "documents",
+    "runability": "subset",
+    "description": "Document parsing across varied PDF pages, layouts, text, formulas, tables and reading order. The imported table is explicitly v1.6_full, pinned to a maintainer README revision.",
+    "measures": "End-to-end Markdown parsing quality. Overall combines text accuracy, table structure and formula recognition: ((1-text edit distance)×100 + table TEDS + formula CDM)/3.",
+    "runInstructions": "We can technically run the released images, annotations, inference scripts and scorer. Pin dataset/scorer version and model or fixed parsing pipeline. The dataset permits research and excludes commercial use, without defining that boundary. An unpaid public comparative study may qualify as research; not charging alone does not establish permission, especially when the use develops or selects models for a commercial product. Research use may be permitted; clarify the intended use before relying on commercial-use permission. This site imports published numeric results without copying the PDF dataset.",
+    "grading": "Native end-to-end Overall, not the separate table-only Overall metric. Do not mix v1.5, v1.6_full or component-only tables. OCR-only performance and downstream agent performance are different tracks.",
+    "links": [
+      {
+        "label": "Source and exact score table",
+        "url": "https://github.com/opendatalab/OmniDocBench/blob/f133a71e9e91c3621c7ce8994200a7b394a06eb3/README.md"
+      },
+      {
+        "label": "Released dataset",
+        "url": "https://huggingface.co/datasets/opendatalab/OmniDocBench"
+      }
+    ],
+    "caveats": [
+      "The code's Apache2.0 license does not override the dataset's research-only/noncommercial statement.",
+      "For-profit affiliation alone does not resolve the use classification. The dataset statement does not specify a Creative Commons NonCommercial license; that separate definition cannot settle these terms.",
+      "Specialized parsers and document pipelines are system results; they are not necessarily general language models.",
+      "Use a fixed OCR helper for cross-model agent comparisons, and test native vision separately. A text-only model's native vision component is unavailable, not zero ability."
+    ],
+    "observationBenchmarks": [
+      "OmniDocBench"
+    ]
+  },
+  {
+    "id": "ocrbench",
+    "name": "OCRBench v2",
+    "componentId": "documents",
+    "runability": "public",
+    "description": "Text-centric vision questions covering recognition, localization and reasoning across document and scene-text scenarios. It is a supplementary diagnostic rather than a second default document weight.",
+    "measures": "Visual text reading and text-based reasoning, including difficult samples. Insurance-oriented selection should emphasize document/table tasks over unrelated scene-text trivia.",
+    "runInstructions": "We can technically run the released benchmark and scorer with image-capable models. The pinned README permits research and excludes commercial use, without defining that boundary. Unpaid comparative research may be permitted; product-directed model selection has an unresolved commercial-use boundary. Pin the release and declare raw-image versus OCR-assisted inputs before comparing.",
+    "grading": "Use the released task-specific metrics. No OCRBench score was substituted for an OmniDocBench score in this index.",
+    "links": [
+      {
+        "label": "OCRBench v2 source",
+        "url": "https://github.com/Yuliang-Liu/MultimodalOCR/blob/4e363b3f499811b43d792ef0bb33932ef05eca27/OCRBench_v2/README.md"
+      }
+    ],
+    "caveats": [
+      "Research-only/noncommercial dataset statement. Code availability and absence of a sale do not alone establish permission for the intended use.",
+      "Availability of code does not establish one uniform reuse license for all source images.",
+      "Native vision and fixed-OCR-assisted agent tracks have different resource conditions."
+    ],
+    "observationBenchmarks": []
+  },
+  {
+    "id": "gdpval",
+    "name": "GDPval",
+    "componentId": "knowledge-work",
+    "runability": "subset",
+    "description": "Professional tasks with reference files and finished deliverables such as documents and spreadsheets. The public gold release contains220 tasks across44 occupations; the larger original1320-task evaluation is not fully public.",
+    "measures": "In the imported September2025 cohort, human experts blindly compare model output against the expert deliverable. We retain Figure5's win-or-tie rate, not wins-only, rubric all-pass or an Elo rating.",
+    "runInstructions": "We can run the220 public-gold tasks ourselves, generate deliverables and perform local rubric evaluation or arrange blinded expert review. Reference files, gold deliverables and rubrics are publicly released. We cannot independently reproduce the unreleased full task set or recreate historical human judgments just by calling an automated grader. Verify data reuse terms before redistribution.",
+    "grading": "Human expert preference is the reference metric used here. Automated rubric grading is useful for development but must be labeled GDPval-adapted rubric performance. The current grading site says rubrics and gold deliverables are open for local workflows rather than requiring its former submission service.",
+    "links": [
+      {
+        "label": "Public gold data and rubrics",
+        "url": "https://huggingface.co/datasets/openai/gdpval"
+      },
+      {
+        "label": "Paper with Figure5",
+        "url": "https://cdn.openai.com/pdf/d5eb7428-c4e9-4a33-bd86-86dd4bcf12ce/GDPval.pdf"
+      },
+      {
+        "label": "Grading instructions",
+        "url": "https://evals.openai.com/gdpval/grading"
+      }
+    ],
+    "caveats": [
+      "The displayed seven scores are historical expert-comparison observations, not October2026 reruns.",
+      "A local LLM judge is not interchangeable with human experts; judge agreement and sampling need validation.",
+      "Do not convert Artificial Analysis GDPval Elo into a percentage or merge it with these win-or-tie rates."
+    ],
+    "observationBenchmarks": [
+      "GDPval"
+    ]
+  },
+  {
+    "id": "finqa",
+    "name": "FinQA",
+    "componentId": "knowledge-work",
+    "runability": "public",
+    "description": "Financial numerical reasoning over textual context and tables, with questions, answers and reasoning programs. It is useful for reconciliation and spreadsheet/financial diagnostics.",
+    "measures": "Whether a model derives the correct numerical result and reasoning program from the supplied financial data.",
+    "runInstructions": "We can run the public data and released evaluator ourselves. Freeze splits and parsing; score the answer/program with the declared evaluation semantics. Numerical grading can be deterministic and does not need a paid judge. Review underlying data terms as well as repository licensing.",
+    "grading": "Native execution accuracy and program accuracy are distinct. FinQA is documented as a supplementary diagnostic; no FinQA or other finance score is substituted for a missing GDPval expert rate.",
+    "links": [
+      {
+        "label": "Data and evaluation code",
+        "url": "https://github.com/czyssrs/FinQA"
+      }
+    ],
+    "caveats": [
+      "Public financial-report questions do not establish insurance-book representativeness.",
+      "Safe reasoning-program interpretation should restrict operations rather than execute arbitrary model-authored code."
+    ],
+    "observationBenchmarks": []
+  },
+  {
+    "id": "sentanis-workflows",
+    "name": "Sentanis Insurance Bench workflows",
+    "componentId": "insurance-workflows",
+    "runability": "local",
+    "description": "Our fictional in-memory investigations, changing evidence, deadline triage, reconciliation and reviewed internal handoffs. The composite displays the two fully audited v0.12 high-effort native runs as separate local profiles.",
+    "measures": "Equally family-weighted completed-task success under the frozen all-criteria rubric. Both retained runs score66.67, with2/3 actual current optimal writes; weighted partial credit95.34 remains a diagnostic.",
+    "runInstructions": "We control this harness and can run it ourselves with admitted providers and a prospectively frozen protocol. Fix and independently review phase-preserving conversation transport before pure model/protocol causal comparisons. Restore the conservative ledger and dispatch locks before any future calls; no new model or judge dispatch is part of this page build.",
+    "grading": "Deterministic source, criterion and current-state grading, independently audited against full native traces. Existing frozen sources and grades are unchanged. Local profile IDs are never silently joined to a published profile on a family name.",
+    "links": [
+      {
+        "label": "Harness and research pilot",
+        "url": "https://github.com/Sentanis/sentanis-app/pull/69"
+      },
+      {
+        "label": "Full v0.12 audit",
+        "url": "https://github.com/Sentanis/sentanis-app/blob/main/insurance-bench/results/meta/v12-development-independent-audit.json"
+      }
+    ],
+    "caveats": [
+      "Three correlated task families and one attempt per profile cannot establish a stable model ranking or continuous50–60 frontier calibration.",
+      "The frozen adapter loses assistant phases; recovered interface errors cannot be localized to pure model final-answer failures.",
+      "Engineering correctness is separate from insurance-expert validity and production readiness."
+    ],
+    "observationBenchmarks": [
+      "Insurance Bench"
+    ]
+  }
+]

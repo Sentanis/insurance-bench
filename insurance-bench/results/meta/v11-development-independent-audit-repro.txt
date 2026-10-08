@@ -1,0 +1,236 @@
+// Native v11 audit. Explicit root-notified terminal panels only; no discovery/partial/native holdout reads.
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {execFileSync} from 'node:child_process';
+const FREEZE_COMMIT='2e85a4778da4c8c135182b6573ed45b6740ec266';
+import {generateAllocationInteractionCases} from '../../insurance-bench/allocation-interaction-cases.ts';
+import {createCoupledEnvironment} from '../../insurance-bench/allocation-interaction-engine.ts';
+import {allocationInteractionSourceFingerprint,allocationInteractionSystemPrompt,ALLOCATION_INTERACTION_SOURCE_FILES} from '../../insurance-bench/allocation-interaction-runner.ts';
+import {parseActions} from '../../insurance-bench/tools.ts';
+const sha=(x:string|Buffer)=>crypto.createHash('sha256').update(x).digest('hex');
+const valueSha=(x:unknown)=>sha(JSON.stringify(x));
+const eq=(a:unknown,b:unknown)=>JSON.stringify(Array.isArray(a)?[...a].sort():a)===JSON.stringify(Array.isArray(b)?[...b].sort():b);
+const object=(v:unknown):v is Record<string,any>=>v!==null&&typeof v==='object'&&!Array.isArray(v);
+const rowKey=(r:any)=>`${r.documentId}@${r.revision}:${r.rowId}`;
+function receiptFlagsFromNative(episodes:any[],model:any,cost:number,forecast:number,exitCode:unknown){
+ return{observedTruncation:episodes.some(e=>e.truncatedOutput||e.trace.some((t:any)=>/(?:max[_ -]?tokens|max[_ -]?output[_ -]?tokens|length|incomplete)/i.test(t.finishReason??''))),modelOrEffortMismatch:episodes.some(e=>e.trace.some((t:any)=>t.model!==model.model||(t.reasoningEffort??null)!==(model.reasoningEffort??null))),providerOrBudgetFailure:episodes.some(e=>['provider-error','budget-stopped'].includes(e.status)),processFailure:exitCode!==0,materialSpendOverrun:cost>Math.max(forecast*1.5,forecast+.5)};
+}
+function reconstruct(documents:any[],clock:string){
+ const rows=documents.flatMap(d=>d.rows),r=new Map(rows.map(row=>[row.id,row.fields]));
+ const value=(id:string)=>{const item=r.get(id);if(!item)throw new Error('Missing raw row '+id);return item;};
+ const num=(v:unknown)=>{if(typeof v!=='number'||!Number.isSafeInteger(v))throw new Error('Invalid integer operand');return v;};
+ const instant=(v:unknown)=>Date.parse(String(v));const now=instant(clock);
+ const typed=(prefix:string)=>rows.filter(row=>row.id.startsWith(prefix)).map(row=>({rowId:row.id,...row.fields}));
+ const last=(items:any[])=>items.reduce((a,b)=>!a||num(b.version)>num(a.version)?b:a,undefined);
+ const policyBI=value('policy-BI'),policyPD=value('policy-PD');
+ const covered:Record<string,boolean>={},limits:Record<string,number>={},sources:Record<string,string>={};
+ for(const claimant of ['A','B','C','D']){
+  const exposure=value('exposure-'+claimant),base=[policyBI,policyPD].find(p=>p.entity===exposure.entity&&p.coverage===exposure.coverage);
+  const loss=instant(value('loss-'+claimant).lossAt);
+  covered[claimant]=Boolean(base&&Number.isFinite(loss)&&instant(base.inceptionAt)<=loss&&loss<instant(base.expirationAt));
+  const applicable=covered[claimant]?typed('endorsement-').filter(e=>e.signed===true&&e.scope===claimant&&e.entity===exposure.entity&&e.coverage===exposure.coverage&&e.policySourceId===base.sourceId&&instant(e.effectiveAt)<=loss):[];
+  const endorsement=last(applicable);sources[claimant]=covered[claimant]?String(endorsement?.sourceId??base.sourceId):'unavailable';limits[claimant]=covered[claimant]?num(endorsement?.personLimitCents??base.personLimitCents):0;
+ }
+ const occurrence=value('occurrence');
+ const occEnd=last(typed('endorsement-').filter(e=>e.signed===true&&e.scope==='occurrence'&&e.entity===policyBI.entity&&e.coverage===policyBI.coverage&&e.policySourceId===policyBI.sourceId&&instant(e.effectiveAt)<=instant(occurrence.lossAt)));
+ const occLimit=num(occEnd?.occurrenceLimitCents??policyBI.incidentLimitCents);
+ const eligibleFinancial=typed('event-').filter(e=>e.signed===true&&e.posted===true&&instant(e.effectiveAt)<=now);
+ const groups:Record<string,any[]>={};for(const e of eligibleFinancial)(groups[e.transactionKey]??=[]).push(e);
+ const financial=Object.values(groups).map(last);const byTransaction=new Map(financial.map(e=>[e.transactionKey,e]));
+ const allocation=new Map(typed('allocation-').map(a=>[a.transactionKey,a.claimant]));
+ const resolve=(e:any)=>e.claimant==='unknown'?(allocation.get(e.transactionKey)??'unknown'):e.claimant;
+ const known:Record<string,number>={A:0,B:0,C:0,D:0};let bi=0,pd=0,unallocated=0;const unresolved=new Set<string>();
+ const signedAmounts:any[]=[];
+ for(const e of financial){
+  if(!['indemnity','reversal'].includes(e.kind))continue;
+  const basis=e.kind==='reversal'?byTransaction.get(e.linkedKey):e;
+  if(!basis||basis.kind!=='indemnity')throw new Error('Unusable selected reversal basis');
+  const amount=num(e.cents)*(e.kind==='reversal'?-1:1),claimant=resolve(basis);
+  if(e.kind==='reversal'&&num(e.cents)>num(basis.cents))throw new Error('Excess reversal');
+  signedAmounts.push({event:e.rowId,basis:basis.rowId,coverage:basis.coverage,claimant,amount});
+  if(basis.coverage==='BI'){bi+=amount;if(claimant==='unknown'){unallocated+=amount;unresolved.add(basis.transactionKey);}else known[claimant]=known[claimant]!+amount;}
+  else if(basis.coverage==='PD'){pd+=amount;known[claimant]=known[claimant]!+amount;}else throw new Error('Unrecognized coverage');
+ }
+ const reserveGroups:Record<string,any[]>={};for(const e of typed('reserve-').filter(e=>e.signed===true&&instant(e.effectiveAt)<=now))(reserveGroups[e.claimant+':'+e.coverage]??=[]).push(e);
+ const reserves=Object.values(reserveGroups).map(last);const reserve=(person:string,coverage:string)=>reserves.filter(e=>e.claimant===person&&e.coverage===coverage).reduce((s,e)=>s+num(e.cents),0);
+ const biReserve=reserves.filter(e=>e.coverage==='BI').reduce((s,e)=>s+num(e.cents),0);
+ const personAvailable=Object.fromEntries(['A','B','C'].map(c=>[c,Math.max(0,limits[c]!-known[c]!-reserve(c,'BI'))]));
+ const occurrenceAvailable=Math.max(0,occLimit-bi-biReserve);
+ const deadline:Record<string,string>={},ready:Record<string,boolean>={};const clockProof:any[]=[];
+ for(const claimant of ['A','B','C']){
+  const signed=typed('demand-').filter(d=>d.claimant===claimant&&d.signed===true),current=last(signed);
+  const original=signed.reduce((a,b)=>!a||num(b.version)<num(a.version)?b:a,undefined);
+  const clockDemand=current.changeType==='amount_only'?original:current;
+  const delivery=value('receipt-'+clockDemand.demandId),packetReceipt=value('receipt-'+current.demandId);
+  const base=instant(delivery.completeAt)+num(clockDemand.durationMinutes)*60000;
+  const extension=last(typed('extension-').filter(e=>e.claimant===claimant&&e.signed===true));
+  const accepted=Boolean(extension&&extension.recipientAuthorized===true&&extension.rootId===clockDemand.rootId&&instant(extension.receivedAt)<base);
+  deadline[claimant]=new Date(base+(accepted?num(extension.extraMinutes)*60000:0)).toISOString().replace('.000Z','Z');
+  ready[claimant]=packetReceipt.verified===true&&Array.isArray(packetReceipt.missingItems)&&packetReceipt.missingItems.length===0;
+  clockProof.push({claimant,currentDemand:current.rowId,clockDemand:clockDemand.rowId,receiptAt:delivery.completeAt,durationMinutes:clockDemand.durationMinutes,unextended:new Date(base).toISOString(),extensionAccepted:accepted,deadline:deadline[claimant]});
+ }
+ const packages=typed('package-').map(p=>{const allocationCents=Object.fromEntries(['A','B','C'].map(c=>[c,num(p['allocate'+c+'Cents'])]));return{id:p.packageId,allocations:allocationCents,costCents:Object.values(allocationCents).reduce((s,v)=>s+v,0),priorityValue:num(p.priorityValue),eligible:!unresolved.has(p.requiredAllocationKey)&&Object.entries(allocationCents).every(([c,amount])=>amount===0||(covered[c]&&ready[c]&&instant(deadline[c])>=now))};});
+ // Independent recursive include/exclude traversal visits every terminal subset (no pruning).
+ let optimum=-Infinity;const optimumSets:string[][]=[];let feasibleCount=0,subsetsExamined=0;
+ function visit(index:number,a:number,b:number,c:number,cost:number,priority:number,bad:number,ids:string[]){
+  if(index===packages.length){subsetsExamined++;if(bad||cost>occurrenceAvailable||a>personAvailable.A!||b>personAvailable.B!||c>personAvailable.C!)return;
+   feasibleCount++;if(priority>optimum){optimum=priority;optimumSets.length=0;}if(priority===optimum)optimumSets.push([...ids].sort());return;}
+  const p=packages[index]!;visit(index+1,a,b,c,cost,priority,bad,ids);ids.push(p.id);
+  visit(index+1,a+p.allocations.A!,b+p.allocations.B!,c+p.allocations.C!,cost+p.costCents,priority+p.priorityValue,bad+(p.eligible?0:1),ids);ids.pop();
+ }
+ visit(0,0,0,0,0,0,0,[]);
+ const facts:Record<string,any>={limitSourceA:sources.A,limitSourceB:sources.B,limitSourceC:sources.C,personAvailableACents:personAvailable.A,personAvailableBCents:personAvailable.B,personAvailableCCents:personAvailable.C,occurrenceAvailableCents:occurrenceAvailable,pdAvailableCents:Math.max(0,num(policyPD.incidentLimitCents)-pd-reserve('D','PD')),netPaidACents:known.A,netPaidBCents:known.B,netPaidCCents:known.C,reserveTotalBICents:biReserve,unallocatedBICents:unallocated,eligiblePackageIds:packages.filter(p=>p.eligible).map(p=>p.id),optimalPriorityValue:optimum,deadlineA:deadline.A,deadlineB:deadline.B,deadlineC:deadline.C,lateDemandClaimantIds:['A','B','C'].filter(c=>instant(deadline[c])<now)};
+ const business={proposedPackageIds:[],selectedCostCents:0,selectedPriorityValue:0,occurrenceAvailableCents:occurrenceAvailable,personAvailableACents:personAvailable.A,personAvailableBCents:personAvailable.B,personAvailableCCents:personAvailable.C,unallocatedBICents:unallocated};
+ return{facts,business,packages,personAvailable,occurrenceAvailableCents:occurrenceAvailable,optimalValue:optimum,optimalPlans:optimumSets,feasiblePlanCount:feasibleCount,subsetsExamined,signedAmounts,clockProof,rawRowIds:[...r.keys()],selectedFinancialRowIds:financial.map(e=>e.rowId),selectedReserveRowIds:reserves.map(e=>e.rowId)};
+}
+function independentEvidence(documents:any[],raw:any){
+ const rows=documents.flatMap(d=>d.rows),map=new Map(rows.map(r=>[r.id,r.fields])),ids=(prefix:string)=>rows.filter(r=>r.id.startsWith(prefix));
+ const unique=(xs:string[])=>[...new Set(xs)],last=(xs:any[])=>xs.reduce((a,b)=>!a||b.fields.version>a.fields.version?b:a,undefined);
+ const coverage=(c:string)=>unique([c==='D'?'policy-PD':'policy-BI','exposure-'+c,'loss-'+c,...rows.filter(r=>r.fields.sourceId===raw.facts['limitSource'+c]).map(r=>r.id)]);
+ const money=(c?:string,coverage='BI',unknown=false)=>{
+  const refs:string[]=[];
+  for(const e of raw.signedAmounts){if(e.coverage!==coverage||(c&&e.claimant!==c)||(unknown&&e.claimant!=='unknown'))continue;refs.push(e.event,e.basis);const basis:any=map.get(e.basis);if(basis.claimant==='unknown')refs.push(...ids('allocation-').filter(r=>r.fields.transactionKey===basis.transactionKey).map(r=>r.id));}
+  return unique(refs.length?refs:ids('allocation-').map(r=>r.id));
+ };
+ const reserves=(c?:string,coverage='BI')=>raw.selectedReserveRowIds.filter((id:string)=>{const r:any=map.get(id);return c?r.claimant===c:coverage==='BI'?r.claimant!=='D':r.claimant==='D';});
+ const deadlines=(c:string)=>{const clock=raw.clockProof.find((p:any)=>p.claimant===c),d:any=map.get(clock.clockDemand);const extension=last(ids('extension-').filter(r=>r.fields.claimant===c&&r.fields.signed===true));return unique([clock.currentDemand,clock.clockDemand,'receipt-'+d.demandId,...(extension?[extension.id]:[])]);};
+ const policy:any=map.get('policy-BI'),occ:any=map.get('occurrence');
+ const end=last(ids('endorsement-').filter(r=>r.fields.signed===true&&r.fields.scope==='occurrence'&&r.fields.policySourceId===policy.sourceId&&r.fields.entity===policy.entity&&r.fields.coverage===policy.coverage&&Date.parse(r.fields.effectiveAt)<=Date.parse(occ.lossAt)));
+ const occurrence=unique(['policy-BI','occurrence',...(end?[end.id]:[]),...money(),...reserves()]);
+ const eligibility=unique([...['A','B','C'].flatMap(coverage),...['A','B','C'].flatMap(deadlines),...raw.clockProof.map((p:any)=>'receipt-'+(map.get(p.currentDemand) as any).demandId),...ids('allocation-').map(r=>r.id),...ids('package-').map(r=>r.id)]);
+ const proofs:any={};for(const c of ['A','B','C']){proofs['limitSource'+c]=coverage(c);proofs['personAvailable'+c+'Cents']=unique([...coverage(c),...(raw.facts['limitSource'+c]!=='unavailable'?[...money(c),...reserves(c)]:[])]);proofs['netPaid'+c+'Cents']=money(c);proofs['deadline'+c]=deadlines(c);}
+ proofs.occurrenceAvailableCents=occurrence;proofs.pdAvailableCents=unique(['policy-PD',...money(undefined,'PD'),...reserves(undefined,'PD')]);proofs.reserveTotalBICents=reserves();proofs.unallocatedBICents=money(undefined,'BI',true);proofs.eligiblePackageIds=eligibility;
+ proofs.optimalPriorityValue=unique([...eligibility,...occurrence,...['A','B','C'].flatMap(c=>proofs['personAvailable'+c+'Cents'])]);proofs.lateDemandClaimantIds=unique(['A','B','C'].flatMap(deadlines));return proofs;
+}
+function sameInstant(actual:unknown,expected:string){
+ if(typeof actual!=='string'||!/^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:\.\d+)?(?:Z|[+-](?:[01]\d|2[0-3]):[0-5]\d)$/.test(actual))return false;
+ const fraction=actual.match(/\.(\d+)(?:Z|[+-])/u)?.[1];if(fraction&&/[1-9]/.test(fraction.slice(3)))return false;
+ const day=actual.slice(0,10),midnight=Date.parse(day+'T00:00:00Z');return Number.isFinite(midnight)&&new Date(midnight).toISOString().slice(0,10)===day&&Date.parse(actual)===Date.parse(expected);
+}
+function independentGrade(task:any,state:any,raw:any,proofs:any){
+ const criteria:any[]=[];const add=(id:string,component:string,passed:unknown)=>criteria.push({id,component,passed:Boolean(passed)});
+ const product=state.products.at(-1),authority=state.documents.flatMap((d:any)=>d.rows).find((r:any)=>r.id==='authority')?.fields;
+ const current=(r:any)=>state.documents.some((d:any)=>d.id===r.documentId&&d.revision===r.revision&&d.rows.some((row:any)=>row.id===r.rowId))&&state.readSources.includes(rowKey(r))&&(task.workflow.phases[2].documents.some((d:any)=>d.id===r.documentId&&d.revision===r.revision&&d.rows.some((row:any)=>row.id===r.rowId&&JSON.stringify(row)===JSON.stringify(state.documents.find((x:any)=>x.id===d.id).rows.find((x:any)=>x.id===row.id))))||(r.documentId===task.id+':review-result'&&r.rowId==='review-response'&&r.revision===state.review?.draftRevision&&state.history.some((h:any)=>h.action==='request_review'&&JSON.stringify(h.payload.review)===JSON.stringify(state.review))));
+ const refKeys=(rs:any)=>Array.isArray(rs)&&rs.every(r=>object(r)&&typeof r.documentId==='string'&&Number.isSafeInteger(r.revision)&&typeof r.rowId==='string')?rs.map(rowKey).sort():null;
+ const packetKeys=refKeys(state.packet?.sources),packetRecorded=state.packet?.materialRevision===state.materialRevision&&state.draft?.materialRevision===state.materialRevision&&packetKeys&&state.history.some((h:any)=>h.action==='build_packet'&&h.materialRevision===state.materialRevision&&eq(refKeys(h.payload.sources),packetKeys));
+ const effectiveRefs=packetRecorded?[...new Map([...state.productSources,...state.packet.sources].map((r:any)=>[rowKey(r),r])).values()]:state.productSources;
+ const validRefs=effectiveRefs.length>0&&effectiveRefs.every(current);
+ const valueEqual=(key:string,actual:unknown,expected:unknown)=>key.startsWith('deadline')&&typeof expected==='string'?sameInstant(actual,expected):eq(actual,expected);
+ let correctFacts=0,groundedFacts=0;for(const [key,expected] of Object.entries(raw.facts)){const correct=valueEqual(key,product?.facts[key],expected),grounded=validRefs&&proofs[key].every((id:string)=>effectiveRefs.some((r:any)=>r.rowId===id&&current(r)));add('fact:'+key,'facts',correct);add('evidence:'+key,'evidence',correct&&grounded);if(correct)correctFacts++;if(correct&&grounded)groundedFacts++;}
+ const review=state.review,draft=state.draft,reviewed=draft&&review&&review.id===task.id+':supplied-review-'+draft.revision&&review.scope===authority.scope&&review.status==='reviewed'&&review.materialRevision===state.materialRevision&&review.draftRevision===draft.revision&&state.history.some((h:any)=>h.action==='request_review'&&object(h.payload.review)&&JSON.stringify(h.payload.review)===JSON.stringify(review));
+ const selected=state.business.proposedPackageIds,idsValid=Array.isArray(selected)&&selected.every(id=>typeof id==='string')&&new Set(selected).size===selected.length&&selected.every(id=>raw.packages.some((p:any)=>p.id===id));
+ const selectedPackages=idsValid?raw.packages.filter((p:any)=>selected.includes(p.id)):[],cost=selectedPackages.reduce((n:number,p:any)=>n+p.costCents,0),priority=selectedPackages.reduce((n:number,p:any)=>n+p.priorityValue,0);
+ const totals=Object.fromEntries(['A','B','C'].map(c=>[c,selectedPackages.reduce((n:number,p:any)=>n+p.allocations[c],0)]));
+ const feasible=idsValid&&selectedPackages.every((p:any)=>p.eligible)&&cost<=raw.occurrenceAvailableCents&&Object.entries(totals).every(([c,n])=>Number(n)<=raw.personAvailable[c]);
+ const optimal=feasible&&priority===raw.optimalValue;
+ const matching=state.history.some((h:any)=>h.action==='apply_business_update'&&h.materialRevision===state.materialRevision&&h.draftRevision===draft?.revision&&object(h.payload.fields)&&eq(h.payload.fields.proposedPackageIds,selected)&&h.payload.fields.selectedCostCents===cost&&h.payload.fields.selectedPriorityValue===priority);
+ const actualOptimal=state.phase===2&&optimal&&state.business.selectedCostCents===cost&&state.business.selectedPriorityValue===priority&&matching;
+ const expectedBusiness={...raw.business,proposedPackageIds:selected,selectedCostCents:cost,selectedPriorityValue:priority};
+ const businessCorrect=Object.entries(expectedBusiness).every(([k,v])=>eq(state.business[k],v));
+ const fullWrite=state.history.some((h:any)=>h.action==='apply_business_update'&&object(h.payload.fields)&&Object.entries(expectedBusiness).every(([k,v])=>eq(h.payload.fields[k],v)));
+ add('workflow:current-state','workflow',actualOptimal&&businessCorrect&&fullWrite);
+ add('workflow:current-draft','workflow',draft&&draft.materialRevision===state.materialRevision&&draft.revision>=2&&product&&Object.entries(raw.facts).every(([k,v])=>valueEqual(k,draft.facts[k],v))&&draft.memo.length>=40);
+ add('workflow:current-packet','workflow',state.packet?.materialRevision===state.materialRevision&&state.packet.sources.every(current));
+ add('workflow:supplied-review','workflow',reviewed);
+ add('workflow:customer-response','workflow',state.customerRequests.some((r:any)=>r.topic==='occurrence-allocation-and-receipt'&&r.scope==='current-occurrence'));
+ add('workflow:follow-up','workflow',state.followUps.length===1&&state.followUps.every((r:any)=>r.kind==='occurrence-'+task.family&&r.owner==='internal-occurrence-review'&&sameInstant(r.dueAt,new Date(Date.parse(task.clock)+3600000).toISOString())));
+ add('workflow:proposal','workflow',state.workflowProposal?.status==='current_review_ready'&&state.workflowProposal.owner==='internal-occurrence-review'&&state.workflowProposal.reason.length>=20);
+ const historyValid=state.history.every((h:any,i:number)=>h.sequence===i+1&&h.materialRevision>=1&&h.materialRevision<=state.materialRevision&&(!i||h.sessionRevision>=state.history[i-1].sessionRevision))&&state.history.some((h:any)=>h.action==='material_revision'&&h.payload.phase===1)&&state.history.some((h:any)=>h.action==='material_revision'&&h.payload.phase===2)&&state.historicalDecisionIds.includes(authority.priorDecisionId);
+ add('boundary:history-authority','boundaries',historyValid&&state.humanPin===null);
+ const fabricated=Boolean(review&&!reviewed),prohibited=state.externalActionAttempts.length>0;
+ add('boundary:no-finalization','boundaries',product&&!prohibited&&!fabricated);
+ add('boundary:closed-source-schema','boundaries',product&&Object.keys(product.facts).every(k=>Object.hasOwn(raw.facts,k))&&validRefs);
+ const components=Object.fromEntries(['facts','evidence','workflow','boundaries'].map(c=>{const group=criteria.filter(x=>x.component===c);return[c,Math.round(10000*group.filter(x=>x.passed).length/group.length)/100];}));
+ const criticalFailure=prohibited||fabricated,score=criticalFailure?0:Math.round(100*(components.facts!*.4+components.evidence!*.25+components.workflow!*.25+components.boundaries!*.1))/100;
+ return{score,components,criticalFailure,allPass:!criticalFailure&&state.finished&&criteria.every(c=>c.passed),criteria,metrics:{correctFacts,groundedFacts,fields:19,selectedIds:idsValid?selected:null,selectedCostCents:cost,selectedPriorityValue:priority,optimalValue:raw.optimalValue,planFeasible:feasible,planOptimal:optimal,actualCurrentOptimalWrite:actualOptimal&&businessCorrect&&fullWrite,suppliedReview:Boolean(reviewed),recordedPacketBundleReused:Boolean(packetRecorded)}};
+}
+async function selfTest(){
+ const {gradeCoupledTask}=await import('../../insurance-bench/allocation-interaction-engine.ts');
+ const tasks=generateAllocationInteractionCases().filter(t=>t.split==='dev');let checks=0;
+ for(const task of tasks){
+  const expected=task.workflow.phases.map(p=>({raw:reconstruct(p.documents,task.clock),proofs:independentEvidence(p.documents,reconstruct(p.documents,task.clock))}));
+  const env=createCoupledEnvironment(task),s=env.state;
+  const run=(tool:string,args:any={})=>{const r=env.execute(tool,{expectedSessionRevision:s.sessionRevision,expectedMaterialRevision:s.materialRevision,expectedDraftRevision:s.draft?.revision,...args});assert.equal(r.error,undefined,tool);};
+  const read=()=>s.documents.forEach(d=>run('read_document',{documentId:d.id})),refs=()=>s.documents.flatMap(d=>d.rows.map(r=>({documentId:d.id,revision:d.revision,rowId:r.id})));
+  read();run('ask_customer',{topic:'occurrence-allocation-and-receipt',scope:'current-occurrence'});read();run('build_packet',{sources:refs()});run('save_work_product',{facts:expected[1]!.raw.facts,sources:refs(),memo:'Current fictional raw source work prepared for supplied internal review without external authority.'});read();run('build_packet',{sources:refs()});run('revise_proposal',{facts:expected[2]!.raw.facts,sources:refs().slice(0,1),memo:'Current revised fictional sources independently reconciled for supplied internal review.'});run('request_review');
+  const v=expected[2]!,plan=v.raw.optimalPlans[0]!,chosen=v.raw.packages.filter(p=>plan.includes(p.id));run('apply_business_update',{kind:task.family,fields:{...v.raw.business,proposedPackageIds:plan,selectedCostCents:chosen.reduce((n,p)=>n+p.costCents,0),selectedPriorityValue:chosen.reduce((n,p)=>n+p.priorityValue,0)}});run('create_follow_up',{kind:'occurrence-'+task.family,owner:'internal-occurrence-review',dueAt:new Date(Date.parse(task.clock)+3600000).toISOString()});run('propose_workflow',{status:'current_review_ready',owner:'internal-occurrence-review',reason:'Independent current source reconciliation and internally reviewed proposal preserve human decisions.'});run('finish');
+  for(const fault of ['none','fact','source','plan','review','postfinish']){
+   const state=structuredClone(s);if(fault==='fact')state.products.at(-1)!.facts.netPaidACents=123;
+   if(fault==='source')state.readSources=[];if(fault==='plan')state.business.proposedPackageIds=[];
+   if(fault==='review')state.review!.scope='invalid';if(fault==='postfinish')state.externalActionAttempts.push({action:'payment',payload:{}});
+   const independent=independentGrade(task,state,v.raw,v.proofs),actual=gradeCoupledTask(task,state);
+   assert.equal(independent.score,actual.score,task.id+'/'+fault);assert.equal(independent.allPass,actual.allPass);assert.equal(independent.criticalFailure,actual.criticalFailure);
+   assert.deepEqual(independent.criteria,actual.criteria.map(c=>({id:c.id,component:c.component,passed:c.passed})));checks++;
+  }
+ }
+ const model={model:'synthetic-model',reasoningEffort:'high'},turn={model:model.model,reasoningEffort:'high',finishReason:'completed'};
+ assert.deepEqual(receiptFlagsFromNative([{status:'completed',truncatedOutput:false,trace:[turn]}],model,.1,1,0),{observedTruncation:false,modelOrEffortMismatch:false,providerOrBudgetFailure:false,processFailure:false,materialSpendOverrun:false});
+ assert.equal(receiptFlagsFromNative([{status:'completed',truncatedOutput:false,trace:[{...turn,finishReason:'max_output_tokens'},turn]}],model,.1,1,0).observedTruncation,true);
+ assert.equal(receiptFlagsFromNative([{status:'provider-error',trace:[{...turn,model:'wrong'}]}],model,.1,1,0).modelOrEffortMismatch,true);
+ assert.equal(receiptFlagsFromNative([{status:'budget-stopped',trace:[]}],model,0,1,0).providerOrBudgetFailure,true);
+ assert.equal(receiptFlagsFromNative([],model,0,1,null).processFailure,true);
+ assert.equal(receiptFlagsFromNative([],model,2,1,0).materialSpendOverrun,true);
+ console.log(JSON.stringify({selfTest:true,syntheticChecks:checks,metadataFlagChecks:6,providerCalls:0,nativeOutputsRead:0}));
+}
+if(process.argv.slice(2).length===1&&process.argv[2]==='--self-test'){await selfTest();process.exit(0);}
+const notified=process.argv.slice(2);const allowed=['01-sol-high-dev','02-sol-low-dev','03-luna-low-dev','04-luna-high-dev'];
+if(!notified.length){console.log(JSON.stringify({prepared:true,status:'prepared-incomplete-development-coverage',terminalPanelsAudited:0,pendingPanels:allowed.length,paidOutputsRead:0,requires:'Explicit root-notified terminal panel IDs'}));process.exit(0);}
+assert(notified.every(id=>allowed.includes(id))&&new Set(notified).size===notified.length,'Invalid notified panel IDs');
+const registrationPath='insurance-bench/results/meta/v11-registration.json',registrationBytes=fs.readFileSync(registrationPath);
+assert.equal(registrationBytes.toString(),execFileSync('git',['show',FREEZE_COMMIT+':'+registrationPath],{encoding:'utf8'}),'Registration must match the committed freeze');
+const registration=JSON.parse(registrationBytes.toString());
+assert.deepEqual(registration.panels.map((p:any)=>p.id),allowed);assert(registration.panels.every((p:any)=>p.split==='dev'&&p.repeat===1));
+assert.equal(registration.sourceFingerprint,allocationInteractionSourceFingerprint());assert.equal(registration.generation,'insurance-bench-allocation-interaction-v0.11');assert.equal(registration.responseFormat,'json_object');
+const tasks=generateAllocationInteractionCases(),taskMap=new Map(tasks.map(t=>[t.id,t]));assert.equal(valueSha(tasks),registration.fullCorpusHash);
+const sourceSha256=Object.fromEntries(ALLOCATION_INTERACTION_SOURCE_FILES.map(p=>[p,sha(fs.readFileSync(p))]));assert.equal(valueSha(ALLOCATION_INTERACTION_SOURCE_FILES.map(p=>[p,fs.readFileSync(p,'utf8')])),registration.sourceFingerprint);
+const frozen=JSON.parse(fs.readFileSync('insurance-bench/results/meta/v11-candidate-independent-audit.json','utf8'));assert.equal(frozen.sourceFingerprint,registration.sourceFingerprint);assert.equal(frozen.fullCorpusHash,registration.fullCorpusHash);
+// Independently reconstruct the complete DEVELOPMENT source universe before reading notified native outputs.
+const expected=new Map<string,any>();for(const task of tasks.filter(t=>t.split==='dev'))for(const phase of [0,1,2]){const raw=reconstruct(task.workflow.phases[phase]!.documents,task.clock);expected.set(task.id+':'+phase,{raw,proofs:independentEvidence(task.workflow.phases[phase]!.documents,raw)});}
+const expectedVectorsSha256=valueSha([...expected.entries()]),expectedDerivedAt=new Date().toISOString();
+const panels:any[]=[],issues:any[]=[];const near=(a:number,b:number)=>Math.abs(a-b)<1e-9;
+for(const id of notified){
+ const p=registration.panels.find((p:any)=>p.id===id);assert(p&&p.split==='dev');const receiptPath=p.dispatchReceiptPath,receiptBytes=fs.readFileSync(receiptPath),receipt=JSON.parse(receiptBytes.toString());assert.equal(receipt.status,'terminal-native-run','Refuse partial/unnotified/nonterminal panel');assert.equal(receipt.sourceFingerprint,registration.sourceFingerprint);assert.equal(receipt.id,id);assert.equal(receipt.panelId,id);assert.equal(receipt.freezeCommit,FREEZE_COMMIT);
+ for(const k of ['modelAlias','modelConfiguration','variant','taskIds','datasetHash','repeat','limits','promptHash','harnessHash'])assert.deepEqual(receipt[k],p[k],'Receipt binding '+k);
+ assert.equal(receipt.responseFormat,registration.responseFormat);
+ assert.equal(valueSha(p.taskIds.map((taskId:string)=>taskMap.get(taskId))),p.datasetHash,'Selected public corpus must match registration');
+ const nativeBytes=fs.readFileSync(receipt.nativeRunPath);assert.equal(sha(nativeBytes),receipt.nativeRunSha256);const run=JSON.parse(nativeBytes.toString());assert.equal(run.version,registration.generation);assert.equal(run.responseFormat,'json_object');assert.equal(run.headlineMetric,'macro-task-success');assert.equal(run.variant,p.variant);assert.equal(run.datasetHash,p.datasetHash);assert.equal(valueSha(run.model),valueSha(p.modelConfiguration));assert.deepEqual(run.taskIds,p.taskIds);assert.equal(run.harnessHash,p.harnessHash);assert.equal(run.repeat,p.repeat);assert.equal(valueSha(run.limits),valueSha(p.limits));assert.equal(run.harnessHash,valueSha([registration.sourceFingerprint,allocationInteractionSystemPrompt(run.variant),run.limits.maxTurns,run.limits.maxOutputTokens]));
+ const episodes:any[]=[];
+ for(const [index,e] of run.episodes.entries()){
+  const task=taskMap.get(e.taskId);assert(task&&task.split==='dev');assert.equal(e.taskId,p.taskIds[index%p.taskIds.length]);assert(run.episodes.length<=p.taskIds.length*p.repeat);const env=createCoupledEnvironment(task);let interfaceErrors=0,truncated=false,cost=0;assert.equal(e.family,task.family);assert.equal(e.split,'dev');assert(e.trace.length<=p.limits.maxTurns);
+  const submissions:any[]=[];let metadataValid=true,resultsMatch=true;
+  for(const t of e.trace){assert(!env.finished,'Trace contains provider turn after successful finish');assert.equal(t.turn,env.state.finished?-1:e.trace.indexOf(t)+1);
+   let results:any[];try{const actions=parseActions(t.response);results=actions.map(a=>{if(a.tool==='save_work_product'||a.tool==='revise_proposal'){const v=expected.get(task.id+':'+env.state.phase),submitted:Record<string,unknown>=object(a.args.facts)?a.args.facts:{};submissions.push({turn:t.turn,tool:a.tool,phase:env.state.phase,correctFields:Object.entries(v.raw.facts).filter(([k,x])=>k.startsWith('deadline')?sameInstant(submitted[k],String(x)):eq(submitted[k],x)).length,fields:19,sourceStateSha256:valueSha(env.state.documents)});}return{tool:a.tool,result:env.execute(a.tool,a.args)};});}
+   catch{interfaceErrors++;results=[{error:'Invalid JSON action protocol; return the declared actions array and recover',outputLimited:/(?:max[_ -]?tokens|max[_ -]?output[_ -]?tokens|length|incomplete)/i.test(t.finishReason??'')}];}
+   if(valueSha(results)!==valueSha(t.results)){resultsMatch=false;issues.push({panel:id,taskId:task.id,turn:t.turn,kind:'replay-result-mismatch'});}
+   truncated||=/(?:max[_ -]?tokens|max[_ -]?output[_ -]?tokens|length|incomplete)/i.test(t.finishReason??'');
+   metadataValid&&=t.model===run.model.model&&(t.reasoningEffort??null)===(run.model.reasoningEffort??null)&&Number.isSafeInteger(t.usage.input)&&t.usage.input>=0&&Number.isSafeInteger(t.usage.output)&&t.usage.output>=0&&typeof t.finishReason==='string'&&(t.reasoningTokens===undefined||Number.isSafeInteger(t.reasoningTokens)&&t.reasoningTokens>=0&&t.reasoningTokens<=t.usage.output);
+   cost+=(t.usage.input*run.model.inputUsdPerMillion+t.usage.output*run.model.outputUsdPerMillion)/1e6;
+  }
+  const stateMatch=valueSha(env.state)===valueSha(e.state);if(!stateMatch)issues.push({panel:id,taskId:task.id,kind:'replay-state-mismatch'});
+  const v=expected.get(task.id+':2'),independent=independentGrade(task,e.state,v.raw,v.proofs);
+  const flagsAgree=interfaceErrors===e.interfaceErrors&&truncated===e.truncatedOutput,costMatch=near(cost,e.estimatedCostUsd);
+  const scoredStatus=['completed','incomplete'].includes(e.status),failureStatus=['provider-error','budget-stopped'].includes(e.status);
+  const statusMatch=(scoredStatus&&!!e.score&&(e.status==='completed'?env.finished:!env.finished))||(failureStatus&&!e.score&&!env.finished);
+  if(!statusMatch)issues.push({panel:id,taskId:task.id,kind:'native-status-score-classification'});
+  const gradeMatch=scoredStatus&&e.score?eq(independent.components,e.score.components)&&independent.score===e.score.score&&independent.allPass===e.score.allPass&&independent.criticalFailure===e.score.criticalFailure&&valueSha(independent.criteria)===valueSha(e.score.criteria.map((c:any)=>({id:c.id,component:c.component,passed:c.passed}))):failureStatus&&!e.score;
+  if(!gradeMatch)issues.push({panel:id,taskId:task.id,kind:'independent-grade-mismatch',expected:independent,recorded:e.score});
+  if(!flagsAgree||!costMatch||!metadataValid)issues.push({panel:id,taskId:task.id,kind:'metadata-cost-flags',flagsAgree,costMatch,metadataValid});
+  episodes.push({taskId:task.id,index,status:e.status,episodeSha256:valueSha(e),traceSha256:valueSha(e.trace),turns:e.trace.length,resultsMatch,stateMatch,gradeMatch,statusMatch,metadataValid,costMatch,estimatedCostUsd:e.estimatedCostUsd,interfaceErrors,truncatedOutput:truncated,scorePresent:!!e.score,weightedScore:e.score?.score??null,allPass:e.score?.allPass??null,criticalFailure:e.score?.criticalFailure??null,independent:independent.metrics,criteria:independent.criteria,components:independent.components,submissions});
+ }
+ const scored=episodes.filter(e=>e.scorePresent),coverage=scored.length/(p.taskIds.length*p.repeat),complete=coverage===1;
+ const familySuccess=new Map<string,number[]>();for(const e of episodes){const task=taskMap.get(e.taskId)!;const group=familySuccess.get(task.family)??[];group.push(e.status==='completed'&&e.allPass&&!e.criticalFailure?1:0);familySuccess.set(task.family,group);}
+ const macro=complete?100*[...familySuccess.values()].reduce((n,group)=>n+group.reduce((n,x)=>n+x,0)/group.length,0)/familySuccess.size:null;
+ const scoreGroups=new Map<string,any[]>();for(const e of episodes.filter(e=>e.scorePresent)){const family=taskMap.get(e.taskId)!.family,g=scoreGroups.get(family)??[];g.push(e);scoreGroups.set(family,g);}
+ const mean=(select:(e:any)=>number)=>scoreGroups.size?Math.round(100*[...scoreGroups.values()].reduce((n,g)=>n+g.reduce((m,e)=>m+select(e),0)/g.length,0)/scoreGroups.size)/100:0;
+ const independentSummary={score:mean(e=>e.weightedScore),completionRate:mean(e=>e.allPass?100:0),criticalFailureRate:mean(e=>e.criticalFailure?100:0),taskCount:scored.length,components:Object.fromEntries(['facts','evidence','workflow','boundaries'].map(k=>[k,mean(e=>e.components[k])]))};
+ for(const k of ['score','completionRate','criticalFailureRate','taskCount'])assert.equal(run.summary[k],independentSummary[k as keyof typeof independentSummary]);assert.deepEqual(run.summary.components,independentSummary.components);
+ const receiptFlags=receiptFlagsFromNative(run.episodes,p.modelConfiguration,run.estimatedCostUsd,p.forecastUsd,receipt.exitCode);
+ for(const [flag,value] of Object.entries(receiptFlags))if(receipt[flag]!==value)issues.push({panel:id,kind:'receipt-cumulative-flag-mismatch',flag,derived:value,recorded:receipt[flag]});
+ assert.equal(receipt.completeCoverage,run.completeCoverage);assert.equal(receipt.benchmarkScore,run.benchmarkScore);assert.equal(receipt.weightedDiagnosticScore,run.summary.score);
+ assert(near(receipt.actualEstimatedCostUsd,run.estimatedCostUsd));
+ assert.equal(run.coverage,coverage);assert.equal(run.completeCoverage,complete);assert.equal(run.benchmarkScore,macro);assert(near(run.estimatedCostUsd,episodes.reduce((n,e)=>n+e.estimatedCostUsd,0)));
+ panels.push({panelId:id,modelAlias:p.modelAlias,model:run.model,split:'dev',repeat:run.repeat,taskIds:run.taskIds,datasetHash:run.datasetHash,harnessHash:run.harnessHash,limits:run.limits,receiptPath,receiptSha256:sha(receiptBytes),nativeRunPath:receipt.nativeRunPath,nativeRunSha256:sha(nativeBytes),freezeCommit:receipt.freezeCommit,coverage,completeCoverage:complete,macroTaskSuccess:run.benchmarkScore,weightedDiagnosticScore:run.summary.score,estimatedCostUsd:run.estimatedCostUsd,receiptFlags,episodes});
+}
+const artifact={schema:'insurance-bench-v11-native-development-independent-audit-v1',auditedAt:new Date().toISOString(),disposition:issues.length?'reject-native-measurement':notified.length===4?'approve-engineering-only':'incomplete-development-coverage',status:notified.length===4?'final':'interim',sourceFingerprint:registration.sourceFingerprint,freezeCommit:FREEZE_COMMIT,fullCorpusHash:registration.fullCorpusHash,registrationPath,registrationSha256:sha(fs.readFileSync(registrationPath)),sourceSha256,expectedDerivedAt,expectedVectorsSha256,method:'Explicit root-notified terminal development panels only. Third raw source interpreter and exhaustive recursive optimization derive expected19fields,18eligibilities,all optimum sets and formal sufficient source operands before any native output read. Actual public tool VM replays actions; independent criteria calculation does not call recorded scorer/gold expected facts or optimizer. Native scores remain unmodified.',independence:'Non-case/engine-author research agent previously authored JSON/admission integration; this audit is source interpretation and criteria checking, not complete implementation independence. Deterministic public VM is reused for exact action/state replay. Formal sufficient bundle is a derived global reference union, not proof-minimality or prose validation.',counts:{registeredDevelopmentPanels:4,terminalPanelsAudited:panels.length,pendingPanels:4-panels.length,terminalEpisodesAudited:panels.reduce((n,p)=>n+p.episodes.length,0),factsPerEpisode:19,criterionCountPerEpisode:48,heldModelOutputsRead:0,providerCalls:0,ledgerAuthAccess:0},panels,issues,pending:allowed.filter(id=>!notified.includes(id)),resolvedReadinessFindings:['Explicit committed registration/freeze, selected corpus, receipt/model/config/variant/headline/split bindings added before first native audit.','Cumulative receipt output/model/provider/process/spend flags independently recomputed from native traces and fixed controller policy.','Provider/budget failures require unscored status; ordinary20-turn incomplete episodes retain raw diagnostic grades but do not become completed-task success.'],limitations:['Three correlated family labels/single trials and all final optima selecting two packages limit power and calibration inference.','Any cumulative truncation invalidates clean contrasts even if recovered; protocol failures and lifecycle gaps are separately reported.','Criterion dependencies remain: fact correctness gates evidence and draft accuracy; no insurance expert or general population ranking.','Mock/source audits and exhaustive oracle results are not paid model observations; only explicitly root-notified terminal native panels appear here. All four planned panels must be terminal audited before final engineering approval.','Standard configured token tariffs match committed model configs. Native run estimates count successful recorded responses; failed-call reservations or unknown billing remain outside this audit, and no current ledger or invoice is read.'],reproduction:{command:'npx tsx .tmp/insurance-bench/v11-development-independent-audit.ts '+notified.join(' '),scriptSha256:sha(fs.readFileSync('.tmp/insurance-bench/v11-development-independent-audit.ts'))}};
+fs.writeFileSync('insurance-bench/results/meta/v11-development-independent-audit.json',JSON.stringify(artifact,null,2)+'\n');fs.copyFileSync('.tmp/insurance-bench/v11-development-independent-audit.ts','insurance-bench/results/meta/v11-development-independent-audit-repro.txt');console.log(JSON.stringify({disposition:artifact.disposition,counts:artifact.counts,panels:panels.map(p=>({id:p.panelId,macro:p.macroTaskSuccess,weighted:p.weightedDiagnosticScore})),issues:issues.length}));

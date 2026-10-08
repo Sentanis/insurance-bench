@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import {compareRuns} from '../../insurance-bench/compare.ts';
+import {hash,type Run} from '../../insurance-bench/runner.ts';
+const base='insurance-bench/results/meta/', read=(p:string)=>JSON.parse(fs.readFileSync(p,'utf8'));
+const sha=(p:string)=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const regPath=base+'v10-registration.json',reg=read(regPath),auditPath=base+'v10-development-independent-audit.json',audit=read(auditPath);
+if(audit.disposition!=='approve-engineering-only'||audit.registrationSha256!==sha(regPath)||audit.sourceFingerprint!==reg.sourceFingerprint||audit.fullCorpusHash!==reg.fullCorpusHash||audit.issues.length||audit.pending.length||audit.panels.length!==reg.panels.length) throw new Error('Full current independent native admission required');
+const rr=reg.panels.map((p:any)=>{const receipt=read(p.dispatchReceiptPath),admitted=audit.panels.find((a:any)=>a.id===p.id);if(!admitted||receipt.status!=='terminal-native-run'||sha(p.dispatchReceiptPath)!==admitted.receiptSha256||sha(receipt.nativeRunPath)!==receipt.nativeRunSha256||receipt.nativeRunSha256!==admitted.nativeRunSha256||receipt.observedTruncation)throw new Error('Exact clean terminal binding required');const run=read(receipt.nativeRunPath) as Run;if(run.version!==reg.generation||hash(run.model)!==hash(p.modelConfiguration)||run.harnessHash!==p.harnessHash||run.datasetHash!==p.datasetHash)throw new Error('Native configuration differs');return run;});
+const result={analyzedAt:new Date().toISOString(),sourceFingerprint:reg.sourceFingerprint,fullCorpusHash:reg.fullCorpusHash,registrationSha256:sha(regPath),independentAuditSha256:sha(auditPath),comparisons:[compareRuns(rr[1],rr[0],'tier')],nativeMacroDifference:(rr[0] as Run & {benchmarkScore:number}).benchmarkScore-(rr[1] as Run & {benchmarkScore:number}).benchmarkScore,scope:'Six development cases, single attempt, three correlated templated families. Criteria all-pass and actual completed-task macro are distinct; here both contrasts happen to equal100. No causal cross-generation hardness or professional-validity claim.',rounding:'Paired diagnostics use native per-case values; subtracting rounded panel summaries may differ by0.01.'};
+fs.writeFileSync(base+'v10-development-comparisons.json',JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify(result));

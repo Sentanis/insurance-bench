@@ -1,0 +1,46 @@
+{
+  "reviewedAt": "2026-10-04T23:12:13.114298+00:00",
+  "sourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+  "disposition": "approve-engineering-only",
+  "scope": "Initial full static cross-provider review plus independent non-author runtime rejection, bounded repairs and independent Opus repair approval. No professional validity, model difficulty or staging acceptance.",
+  "fullReviewPath": "investigation-independent-opus-review-v0.9-pre-guard-review.json",
+  "fullReviewedFingerprint": "d3aeb8f9ffb019fbaf262a8a57052dee6a9711f4d459eca27bf8d742ccf1664b",
+  "fullReviewMissedDefect": "Protected intent after finish in the same parsed batch could produce100/allPasstrue. Non-author runtime reviewer reproduced this before inference; historical qualified approval preserved as fallible evidence.",
+  "nonAuthorReviewer": "/root/investigation_review",
+  "nonAuthorDispositionAtOldFingerprint": "needs-revision",
+  "nonAuthorReconstruction": "Final development semantics manually reconstructed for all3 mechanisms; source propagation, interval eligibility, scoped requests checked. Zero-cost real runner reproduced final-batch false pass; no provider call.",
+  "boundedRepairReviewPath": "investigation-independent-opus-repair-review-v0.9.json",
+  "boundedRepairReviewSha256": "a28e949525b5a85f62c9a07150c5540fc103a827afbda0df5b78448a8690fa55",
+  "repairs": [
+    "Prohibited intent recorded before both finished and stale guards; engine and real runner tests cover both illegal tools after otherwiseperfect100 oracle",
+    "Initial approval dependencies generated from response-absent current public source snapshot; all12 cases exclude withheld row IDs",
+    "Public absence proof now requires candidates/class inventory/authority inventory jointly; source origin IDs explicitly do not count corroboration",
+    "Canonical certificate alternatives compared across all72 source phases"
+  ],
+  "verification": {
+    "focusedTestsPassed": 52,
+    "counts": {
+      "cases": 12,
+      "engine": 19,
+      "runner": 5,
+      "providers": 2,
+      "report": 14
+    },
+    "typecheck": "npm run check exit0 after final test narrowing repair",
+    "ownedLint": "exit0",
+    "legacyBeforeBoundedRepair": "1168 passed with test-concurrency1; default runs preserve existingJev3secondwall-clock failures9.4/5.48s",
+    "architecture": "1679 passed/3skipped with maxWorkers1/no-file-parallelism; default6 unrelated5secondtimeouts preserved",
+    "web": "815passed default"
+  },
+  "paidV09Calls": 0,
+  "claudeMaxEngineeringReferenceCostUsd": 3.139216,
+  "billingMeaning": "List reference from Claude Max review usage; not invoice or benchmark provider ability spend.",
+  "remainingLimits": [
+    "Current generated fixtures use one policy pack per activity",
+    "unresolvedSubjectIds is empty at final generation in every current case; aggregate-field shortcut quality gap remains",
+    "No independent insurance/legal/clinical expert labels",
+    "Static Opus review spot-reconstructs limited cases; fullphase exhaustive checks are engine/case engineering controls",
+    "Three preselected anchors per condition give coarse33.33-point headline resolution;50\u201360cannot be localized in this small loop",
+    "Default test timing gates failed under concurrency; bounded concurrency functional results are reported separately"
+  ]
+}

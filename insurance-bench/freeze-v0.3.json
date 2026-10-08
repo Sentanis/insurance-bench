@@ -1,0 +1,127 @@
+{
+  "frozenAt": "2026-10-04T01:23:23.371Z",
+  "version": "insurance-bench-challenge-v0.3",
+  "candidate": 1,
+  "sourceCommit": "ae57d20f883ded1781e9c6fa8c3c2312894078b6",
+  "corpusHash": "7eaeb4cffac98b95c61b81f814a59af1ee85e2b2c2fd775c94d6d977f6b42692",
+  "developmentHash": "74d4c76d68c3bc5aa25b0edbd8fbb15a4b5eb0ed0ed561b36bba4a9dc5d7da2c",
+  "holdoutHash": "56f63c868426e13da218c343bc9367c6ed15ab2cbe3250a898e33bfd8c5e3dde",
+  "sourceFingerprint": "b984b028a3a95da0ad4882a24aeeb89ac6f69a6792e3f347d51bd2a47ec6c335",
+  "harnessHash": "2359c1653f47669449bde193fc09abf58c38d849a672a77b689110afa86a5f65",
+  "devTaskIds": [
+    "ib3-deadline-triage-dev-1-e7f9312c",
+    "ib3-coverage-review-dev-1-b448e120",
+    "ib3-financial-reconciliation-dev-1-1384b654",
+    "ib3-evidence-brief-dev-1-9b5e64c8",
+    "ib3-fraud-referral-dev-1-82e8e07c",
+    "ib3-workflow-handoff-dev-1-6a0c5d70"
+  ],
+  "holdoutTaskIds": [
+    "ib3-deadline-triage-holdout-1-ae1d6f3e",
+    "ib3-deadline-triage-holdout-2-ab4e4d85",
+    "ib3-coverage-review-holdout-1-9b544752",
+    "ib3-coverage-review-holdout-2-ab233e89",
+    "ib3-financial-reconciliation-holdout-1-49d2b6a6",
+    "ib3-financial-reconciliation-holdout-2-c71e5dcd",
+    "ib3-evidence-brief-holdout-1-c898913a",
+    "ib3-evidence-brief-holdout-2-64b56f51",
+    "ib3-fraud-referral-holdout-1-a2d8eb0e",
+    "ib3-fraud-referral-holdout-2-e3787715",
+    "ib3-workflow-handoff-holdout-1-3b8e1822",
+    "ib3-workflow-handoff-holdout-2-3b95b919"
+  ],
+  "limits": {
+    "maxTurns": 10,
+    "maxOutputTokens": 16384,
+    "transportDeadlineMs": 120000
+  },
+  "repeat": 2,
+  "cycle1": [
+    "gpt-6.1-sol-low",
+    "gpt-6-luna-low"
+  ],
+  "cycle2": [
+    "gpt-6.1-sol-high",
+    "gpt-6-luna-high"
+  ],
+  "cycle3": [
+    "qwen3-32b",
+    "qwen3-235b"
+  ],
+  "modelConfigurations": {
+    "gpt-6.1-sol-low": {
+      "provider": "openai",
+      "model": "gpt-6.1-sol",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 10,
+      "reasoningEffort": "low",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "gpt-6-luna-low": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "inputUsdPerMillion": 0.1,
+      "outputUsdPerMillion": 0.5,
+      "reasoningEffort": "low",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "gpt-6.1-sol-high": {
+      "provider": "openai",
+      "model": "gpt-6.1-sol",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 10,
+      "reasoningEffort": "high",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "gpt-6-luna-high": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "inputUsdPerMillion": 0.1,
+      "outputUsdPerMillion": 0.5,
+      "reasoningEffort": "high",
+      "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "pricingVerifiedAt": "2026-10-03"
+    },
+    "qwen3-32b": {
+      "provider": "bedrock",
+      "profile": "sentanis-phase0",
+      "region": "us-west-2",
+      "pricingVerifiedAt": "2026-10-03",
+      "model": "qwen.qwen3-32b-v1:0",
+      "inputUsdPerMillion": 0.15,
+      "outputUsdPerMillion": 0.6,
+      "pricingSource": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-west-2/index.json"
+    },
+    "qwen3-235b": {
+      "provider": "bedrock",
+      "model": "qwen.qwen3-235b-a22b-2507-v1:0",
+      "inputUsdPerMillion": 0.22,
+      "outputUsdPerMillion": 0.88,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    }
+  },
+  "pairedUncertainty": {
+    "seed": 1729,
+    "samples": 10000,
+    "unit": "workflow-family cluster; repeated attempts averaged within task"
+  },
+  "budget": {
+    "ledgerPath": ".tmp/insurance-bench/session-budget.json",
+    "capUsd": 25,
+    "atFreeze": {
+      "reservedUsd": 4.394902837500009,
+      "capUsd": 25,
+      "updatedAt": "2026-10-04T01:11:24.802Z"
+    }
+  },
+  "rules": [
+    "Development-only calibration. No artificial score caps or changed component weights.",
+    "Three documented development generations maximum; retain null and nonmonotonic outcomes.",
+    "Fresh heldout generation must not be tuned after execution.",
+    "Any output truncation invalidates clean effort discrimination; retain raw runs."
+  ]
+}

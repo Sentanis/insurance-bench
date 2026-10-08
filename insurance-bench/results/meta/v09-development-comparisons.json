@@ -1,0 +1,3828 @@
+{
+  "createdAt": "2026-10-05T00:31:38.670Z",
+  "status": "six-terminal-development-panels",
+  "registrationPath": "insurance-bench/results/meta/v09-registration.json",
+  "registrationSha256": "8eb37ff89467dad06611f0e7d258ac2e818d13db0e1bd86077b9cb1f5dfbc2f2",
+  "sourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+  "headlineMetric": "macro-task-success",
+  "panels": [
+    {
+      "panelId": "01-sol-high-dev",
+      "runId": "2026-10-04T23-19-13-453Z-gpt-6.1-sol-high-baseline-investigation",
+      "modelAlias": "gpt-6.1-sol-high",
+      "exactModel": "gpt-6.1-sol",
+      "provider": "openai",
+      "declaredEffort": "high",
+      "variant": "baseline",
+      "sourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+      "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+      "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+      "receiptSha256": "7513d2b03768b5641d5d4e4dcfe414c57fe609442873fc1c36244ecd2c200d01",
+      "nativePath": "insurance-bench/results/2026-10-04T23-19-13-453Z-gpt-6.1-sol-high-baseline-investigation.json",
+      "nativeSha256": "3c9b022dab01bf9512095ea48f96658301ed0a9331e3c106a1e3ef117b83108d",
+      "headlineMetric": "macro-task-success",
+      "macroTaskSuccess": 100,
+      "weightedDiagnostic": 100,
+      "observedScoredSubsetDiagnostic": {
+        "score": 100,
+        "denominatorScoredAttempts": 3,
+        "fullPanelHeadline": true
+      },
+      "coverage": {
+        "expectedAttempts": 3,
+        "observedAttempts": 3,
+        "scoredAttempts": 3,
+        "completeCoverage": true,
+        "nativeFraction": 1,
+        "statuses": {
+          "completed": 3,
+          "incomplete": 0,
+          "provider-error": 0,
+          "budget-stopped": 0
+        }
+      },
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "current16Fields": {
+        "distinctFields": 16,
+        "expectedAcrossPanel": 48,
+        "observedCriteria": 48,
+        "correct": 48
+      },
+      "evidence": {
+        "observedCriteria": 48,
+        "passed": 48
+      },
+      "perField": [
+        {
+          "key": "E1.R1",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R2",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R3",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R4",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R5",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R6",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R1",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R2",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R3",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R4",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R5",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R6",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "currentPolicyVersionIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "resolvedActorIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "resolvedAssetIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "unresolvedSubjectIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        }
+      ],
+      "actualGoals": {
+        "responseReviewed": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "currentPacket": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "currentRequests": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "suppliedReview": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "handoff": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        }
+      },
+      "allPass": {
+        "passed": 3,
+        "failed": 0,
+        "unscoredOrMissing": 0,
+        "total": 3
+      },
+      "criticalFailures": 0,
+      "resource": {
+        "configuredLimits": {
+          "maxTurns": 20,
+          "maxOutputTokens": 16384
+        },
+        "transportDeadlineMs": 600000,
+        "estimatedCostUsd": 2.0681760000000002,
+        "elapsedMs": 1202870,
+        "turns": 40,
+        "inputTokens": 734783,
+        "outputTokens": 59861,
+        "reasoningTokens": 2575,
+        "nativeReasoningUsageReportedTurns": 40,
+        "cumulativeOutputLimited": false,
+        "interfaceErrors": 0
+      },
+      "limitations": {
+        "processFailure": false,
+        "providerOrBudgetFailure": false,
+        "modelOrEffortMismatch": false,
+        "materialSpendOverrun": false
+      },
+      "cases": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "family": "coverage-review",
+          "status": "completed",
+          "weightedDiagnostic": 100,
+          "components": {
+            "facts": 100,
+            "evidence": 100,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "incorrectFields": [],
+          "failedEvidenceFields": [],
+          "failedCriteria": [],
+          "interfaceErrors": 0,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 252392,
+          "estimatedCostUsd": 0.5716840000000001
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "family": "evidence-brief",
+          "status": "completed",
+          "weightedDiagnostic": 100,
+          "components": {
+            "facts": 100,
+            "evidence": 100,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "incorrectFields": [],
+          "failedEvidenceFields": [],
+          "failedCriteria": [],
+          "interfaceErrors": 0,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 332270,
+          "estimatedCostUsd": 0.786864
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "family": "fraud-referral",
+          "status": "completed",
+          "weightedDiagnostic": 100,
+          "components": {
+            "facts": 100,
+            "evidence": 100,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "incorrectFields": [],
+          "failedEvidenceFields": [],
+          "failedCriteria": [],
+          "interfaceErrors": 0,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 618208,
+          "estimatedCostUsd": 0.7096279999999999
+        }
+      ]
+    },
+    {
+      "panelId": "02-sol-low-dev",
+      "runId": "2026-10-04T23-40-47-023Z-gpt-6.1-sol-low-baseline-investigation",
+      "modelAlias": "gpt-6.1-sol-low",
+      "exactModel": "gpt-6.1-sol",
+      "provider": "openai",
+      "declaredEffort": "low",
+      "variant": "baseline",
+      "sourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+      "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+      "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+      "receiptSha256": "750ebc24d8c8c79eb805a1b89725a23a8875617a65c79010b6b618dc5621a770",
+      "nativePath": "insurance-bench/results/2026-10-04T23-40-47-023Z-gpt-6.1-sol-low-baseline-investigation.json",
+      "nativeSha256": "ca97569c38fb3025d869a2b6dbcb674c4d137c00829915aa8b8d13b0a63ac5a1",
+      "headlineMetric": "macro-task-success",
+      "macroTaskSuccess": 100,
+      "weightedDiagnostic": 100,
+      "observedScoredSubsetDiagnostic": {
+        "score": 100,
+        "denominatorScoredAttempts": 3,
+        "fullPanelHeadline": true
+      },
+      "coverage": {
+        "expectedAttempts": 3,
+        "observedAttempts": 3,
+        "scoredAttempts": 3,
+        "completeCoverage": true,
+        "nativeFraction": 1,
+        "statuses": {
+          "completed": 3,
+          "incomplete": 0,
+          "provider-error": 0,
+          "budget-stopped": 0
+        }
+      },
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "current16Fields": {
+        "distinctFields": 16,
+        "expectedAcrossPanel": 48,
+        "observedCriteria": 48,
+        "correct": 48
+      },
+      "evidence": {
+        "observedCriteria": 48,
+        "passed": 48
+      },
+      "perField": [
+        {
+          "key": "E1.R1",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R2",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R3",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R4",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R5",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R6",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R1",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R2",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R3",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R4",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R5",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R6",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "currentPolicyVersionIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "resolvedActorIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "resolvedAssetIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "unresolvedSubjectIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        }
+      ],
+      "actualGoals": {
+        "responseReviewed": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "currentPacket": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "currentRequests": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "suppliedReview": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "handoff": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        }
+      },
+      "allPass": {
+        "passed": 3,
+        "failed": 0,
+        "unscoredOrMissing": 0,
+        "total": 3
+      },
+      "criticalFailures": 0,
+      "resource": {
+        "configuredLimits": {
+          "maxTurns": 20,
+          "maxOutputTokens": 16384
+        },
+        "transportDeadlineMs": 600000,
+        "estimatedCostUsd": 1.4270100000000001,
+        "elapsedMs": 475819,
+        "turns": 41,
+        "inputTokens": 550005,
+        "outputTokens": 32700,
+        "reasoningTokens": 578,
+        "nativeReasoningUsageReportedTurns": 41,
+        "cumulativeOutputLimited": false,
+        "interfaceErrors": 0
+      },
+      "limitations": {
+        "processFailure": false,
+        "providerOrBudgetFailure": false,
+        "modelOrEffortMismatch": false,
+        "materialSpendOverrun": false
+      },
+      "cases": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "family": "coverage-review",
+          "status": "completed",
+          "weightedDiagnostic": 100,
+          "components": {
+            "facts": 100,
+            "evidence": 100,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "incorrectFields": [],
+          "failedEvidenceFields": [],
+          "failedCriteria": [],
+          "interfaceErrors": 0,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 157558,
+          "estimatedCostUsd": 0.5083960000000001
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "family": "evidence-brief",
+          "status": "completed",
+          "weightedDiagnostic": 100,
+          "components": {
+            "facts": 100,
+            "evidence": 100,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "incorrectFields": [],
+          "failedEvidenceFields": [],
+          "failedCriteria": [],
+          "interfaceErrors": 0,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 169208,
+          "estimatedCostUsd": 0.445944
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "family": "fraud-referral",
+          "status": "completed",
+          "weightedDiagnostic": 100,
+          "components": {
+            "facts": 100,
+            "evidence": 100,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "incorrectFields": [],
+          "failedEvidenceFields": [],
+          "failedCriteria": [],
+          "interfaceErrors": 0,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 149053,
+          "estimatedCostUsd": 0.47267000000000003
+        }
+      ]
+    },
+    {
+      "panelId": "03-luna-low-dev",
+      "runId": "2026-10-04T23-48-44-384Z-gpt-6-luna-low-baseline-investigation",
+      "modelAlias": "gpt-6-luna-low",
+      "exactModel": "gpt-6-luna",
+      "provider": "openai",
+      "declaredEffort": "low",
+      "variant": "baseline",
+      "sourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+      "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+      "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+      "receiptSha256": "aa7d530d1253cac1541744fe20e1c3c1c872ef88775d57abd95da6cf7fd7d5bd",
+      "nativePath": "insurance-bench/results/2026-10-04T23-48-44-384Z-gpt-6-luna-low-baseline-investigation.json",
+      "nativeSha256": "5f9af0c59ce238b5a2f80669bf0bb478805a1e6b96db649cfc6ab3ed55dd7bfc",
+      "headlineMetric": "macro-task-success",
+      "macroTaskSuccess": 0,
+      "weightedDiagnostic": 33.89,
+      "observedScoredSubsetDiagnostic": {
+        "score": 33.89,
+        "denominatorScoredAttempts": 3,
+        "fullPanelHeadline": true
+      },
+      "coverage": {
+        "expectedAttempts": 3,
+        "observedAttempts": 3,
+        "scoredAttempts": 3,
+        "completeCoverage": true,
+        "nativeFraction": 1,
+        "statuses": {
+          "completed": 3,
+          "incomplete": 0,
+          "provider-error": 0,
+          "budget-stopped": 0
+        }
+      },
+      "components": {
+        "facts": 60.42,
+        "evidence": 0,
+        "workflow": 16.67,
+        "boundaries": 55.56
+      },
+      "current16Fields": {
+        "distinctFields": 16,
+        "expectedAcrossPanel": 48,
+        "observedCriteria": 48,
+        "correct": 29
+      },
+      "evidence": {
+        "observedCriteria": 48,
+        "passed": 0
+      },
+      "perField": [
+        {
+          "key": "E1.R1",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R2",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R3",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R4",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R5",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R6",
+          "facts": {
+            "passed": 1,
+            "failed": 2,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R1",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R2",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R3",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R4",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R5",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R6",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "currentPolicyVersionIds",
+          "facts": {
+            "passed": 1,
+            "failed": 2,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "resolvedActorIds",
+          "facts": {
+            "passed": 1,
+            "failed": 2,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "resolvedAssetIds",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "unresolvedSubjectIds",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        }
+      ],
+      "actualGoals": {
+        "responseReviewed": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "currentPacket": {
+          "passed": 0,
+          "failed": 3,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "currentRequests": {
+          "passed": 0,
+          "failed": 3,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "suppliedReview": {
+          "passed": 0,
+          "failed": 3,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "handoff": {
+          "passed": 0,
+          "failed": 3,
+          "unscoredOrMissing": 0,
+          "total": 3
+        }
+      },
+      "allPass": {
+        "passed": 0,
+        "failed": 3,
+        "unscoredOrMissing": 0,
+        "total": 3
+      },
+      "criticalFailures": 0,
+      "resource": {
+        "configuredLimits": {
+          "maxTurns": 20,
+          "maxOutputTokens": 16384
+        },
+        "transportDeadlineMs": 600000,
+        "estimatedCostUsd": 0.10442850000000001,
+        "elapsedMs": 254424,
+        "turns": 54,
+        "inputTokens": 880800,
+        "outputTokens": 32697,
+        "reasoningTokens": 3101,
+        "nativeReasoningUsageReportedTurns": 54,
+        "cumulativeOutputLimited": false,
+        "interfaceErrors": 8
+      },
+      "limitations": {
+        "processFailure": false,
+        "providerOrBudgetFailure": false,
+        "modelOrEffortMismatch": false,
+        "materialSpendOverrun": false
+      },
+      "cases": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "family": "coverage-review",
+          "status": "completed",
+          "weightedDiagnostic": 4.17,
+          "components": {
+            "facts": 0,
+            "evidence": 0,
+            "workflow": 16.67,
+            "boundaries": 0
+          },
+          "allPass": false,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": false,
+            "currentRequests": false,
+            "suppliedReview": false,
+            "handoff": false
+          },
+          "incorrectFields": [
+            "E1.R1",
+            "E1.R2",
+            "E1.R3",
+            "E1.R4",
+            "E1.R5",
+            "E1.R6",
+            "E2.R1",
+            "E2.R2",
+            "E2.R3",
+            "E2.R4",
+            "E2.R5",
+            "E2.R6",
+            "resolvedAssetIds",
+            "resolvedActorIds",
+            "currentPolicyVersionIds",
+            "unresolvedSubjectIds"
+          ],
+          "failedEvidenceFields": [
+            "E1.R1",
+            "E1.R2",
+            "E1.R3",
+            "E1.R4",
+            "E1.R5",
+            "E1.R6",
+            "E2.R1",
+            "E2.R2",
+            "E2.R3",
+            "E2.R4",
+            "E2.R5",
+            "E2.R6",
+            "resolvedAssetIds",
+            "resolvedActorIds",
+            "currentPolicyVersionIds",
+            "unresolvedSubjectIds"
+          ],
+          "failedCriteria": [
+            "fact:E1.R1",
+            "evidence:E1.R1",
+            "fact:E1.R2",
+            "evidence:E1.R2",
+            "fact:E1.R3",
+            "evidence:E1.R3",
+            "fact:E1.R4",
+            "evidence:E1.R4",
+            "fact:E1.R5",
+            "evidence:E1.R5",
+            "fact:E1.R6",
+            "evidence:E1.R6",
+            "fact:E2.R1",
+            "evidence:E2.R1",
+            "fact:E2.R2",
+            "evidence:E2.R2",
+            "fact:E2.R3",
+            "evidence:E2.R3",
+            "fact:E2.R4",
+            "evidence:E2.R4",
+            "fact:E2.R5",
+            "evidence:E2.R5",
+            "fact:E2.R6",
+            "evidence:E2.R6",
+            "fact:resolvedAssetIds",
+            "evidence:resolvedAssetIds",
+            "fact:resolvedActorIds",
+            "evidence:resolvedActorIds",
+            "fact:currentPolicyVersionIds",
+            "evidence:currentPolicyVersionIds",
+            "fact:unresolvedSubjectIds",
+            "evidence:unresolvedSubjectIds",
+            "workflow:currentPacket",
+            "workflow:currentRequests",
+            "workflow:suppliedReview",
+            "workflow:handoff",
+            "workflow:follow-up",
+            "boundary:history",
+            "boundary:source-schema",
+            "boundary:authority"
+          ],
+          "interfaceErrors": 2,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 81362,
+          "estimatedCostUsd": 0.0315924
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "family": "evidence-brief",
+          "status": "completed",
+          "weightedDiagnostic": 51.67,
+          "components": {
+            "facts": 93.75,
+            "evidence": 0,
+            "workflow": 16.67,
+            "boundaries": 100
+          },
+          "allPass": false,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": false,
+            "currentRequests": false,
+            "suppliedReview": false,
+            "handoff": false
+          },
+          "incorrectFields": [
+            "currentPolicyVersionIds"
+          ],
+          "failedEvidenceFields": [
+            "E1.R1",
+            "E1.R2",
+            "E1.R3",
+            "E1.R4",
+            "E1.R5",
+            "E1.R6",
+            "E2.R1",
+            "E2.R2",
+            "E2.R3",
+            "E2.R4",
+            "E2.R5",
+            "E2.R6",
+            "resolvedAssetIds",
+            "resolvedActorIds",
+            "currentPolicyVersionIds",
+            "unresolvedSubjectIds"
+          ],
+          "failedCriteria": [
+            "evidence:E1.R1",
+            "evidence:E1.R2",
+            "evidence:E1.R3",
+            "evidence:E1.R4",
+            "evidence:E1.R5",
+            "evidence:E1.R6",
+            "evidence:E2.R1",
+            "evidence:E2.R2",
+            "evidence:E2.R3",
+            "evidence:E2.R4",
+            "evidence:E2.R5",
+            "evidence:E2.R6",
+            "evidence:resolvedAssetIds",
+            "evidence:resolvedActorIds",
+            "fact:currentPolicyVersionIds",
+            "evidence:currentPolicyVersionIds",
+            "evidence:unresolvedSubjectIds",
+            "workflow:currentPacket",
+            "workflow:currentRequests",
+            "workflow:suppliedReview",
+            "workflow:handoff",
+            "workflow:follow-up"
+          ],
+          "interfaceErrors": 2,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 102985,
+          "estimatedCostUsd": 0.04152130000000001
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "family": "fraud-referral",
+          "status": "completed",
+          "weightedDiagnostic": 45.83,
+          "components": {
+            "facts": 87.5,
+            "evidence": 0,
+            "workflow": 16.67,
+            "boundaries": 66.67
+          },
+          "allPass": false,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": false,
+            "currentRequests": false,
+            "suppliedReview": false,
+            "handoff": false
+          },
+          "incorrectFields": [
+            "E1.R6",
+            "resolvedActorIds"
+          ],
+          "failedEvidenceFields": [
+            "E1.R1",
+            "E1.R2",
+            "E1.R3",
+            "E1.R4",
+            "E1.R5",
+            "E1.R6",
+            "E2.R1",
+            "E2.R2",
+            "E2.R3",
+            "E2.R4",
+            "E2.R5",
+            "E2.R6",
+            "resolvedAssetIds",
+            "resolvedActorIds",
+            "currentPolicyVersionIds",
+            "unresolvedSubjectIds"
+          ],
+          "failedCriteria": [
+            "evidence:E1.R1",
+            "evidence:E1.R2",
+            "evidence:E1.R3",
+            "evidence:E1.R4",
+            "evidence:E1.R5",
+            "fact:E1.R6",
+            "evidence:E1.R6",
+            "evidence:E2.R1",
+            "evidence:E2.R2",
+            "evidence:E2.R3",
+            "evidence:E2.R4",
+            "evidence:E2.R5",
+            "evidence:E2.R6",
+            "evidence:resolvedAssetIds",
+            "fact:resolvedActorIds",
+            "evidence:resolvedActorIds",
+            "evidence:currentPolicyVersionIds",
+            "evidence:unresolvedSubjectIds",
+            "workflow:currentPacket",
+            "workflow:currentRequests",
+            "workflow:suppliedReview",
+            "workflow:handoff",
+            "workflow:follow-up",
+            "boundary:history"
+          ],
+          "interfaceErrors": 4,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 70077,
+          "estimatedCostUsd": 0.031314800000000004
+        }
+      ]
+    },
+    {
+      "panelId": "04-luna-high-dev",
+      "runId": "2026-10-04T23-52-59-436Z-gpt-6-luna-high-baseline-investigation",
+      "modelAlias": "gpt-6-luna-high",
+      "exactModel": "gpt-6-luna",
+      "provider": "openai",
+      "declaredEffort": "high",
+      "variant": "baseline",
+      "sourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+      "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+      "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+      "receiptSha256": "07a07b6cf1191cd06aa096258891d1812f6e40f8625d385d54982eba83fe4859",
+      "nativePath": "insurance-bench/results/2026-10-04T23-52-59-436Z-gpt-6-luna-high-baseline-investigation.json",
+      "nativeSha256": "e1f71c4986f3ad7f3870a30393430aac65eb1bb08ab658f237791062774cd4ad",
+      "headlineMetric": "macro-task-success",
+      "macroTaskSuccess": 0,
+      "weightedDiagnostic": 58.79,
+      "observedScoredSubsetDiagnostic": {
+        "score": 58.79,
+        "denominatorScoredAttempts": 3,
+        "fullPanelHeadline": true
+      },
+      "coverage": {
+        "expectedAttempts": 3,
+        "observedAttempts": 3,
+        "scoredAttempts": 3,
+        "completeCoverage": true,
+        "nativeFraction": 1,
+        "statuses": {
+          "completed": 2,
+          "incomplete": 1,
+          "provider-error": 0,
+          "budget-stopped": 0
+        }
+      },
+      "components": {
+        "facts": 89.58,
+        "evidence": 22.92,
+        "workflow": 33.34,
+        "boundaries": 88.89
+      },
+      "current16Fields": {
+        "distinctFields": 16,
+        "expectedAcrossPanel": 48,
+        "observedCriteria": 48,
+        "correct": 43
+      },
+      "evidence": {
+        "observedCriteria": 48,
+        "passed": 11
+      },
+      "perField": [
+        {
+          "key": "E1.R1",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 1,
+            "failed": 2,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R2",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 1,
+            "failed": 2,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R3",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R4",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R5",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R6",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R1",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 1,
+            "failed": 2,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R2",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 1,
+            "failed": 2,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R3",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R4",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 1,
+            "failed": 2,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R5",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R6",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 0,
+            "failed": 3,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "currentPolicyVersionIds",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "resolvedActorIds",
+          "facts": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 2,
+            "failed": 1,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "resolvedAssetIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 1,
+            "failed": 2,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "unresolvedSubjectIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 1,
+            "failed": 2,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        }
+      ],
+      "actualGoals": {
+        "responseReviewed": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "currentPacket": {
+          "passed": 1,
+          "failed": 2,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "currentRequests": {
+          "passed": 1,
+          "failed": 2,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "suppliedReview": {
+          "passed": 1,
+          "failed": 2,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "handoff": {
+          "passed": 0,
+          "failed": 3,
+          "unscoredOrMissing": 0,
+          "total": 3
+        }
+      },
+      "allPass": {
+        "passed": 0,
+        "failed": 3,
+        "unscoredOrMissing": 0,
+        "total": 3
+      },
+      "criticalFailures": 0,
+      "resource": {
+        "configuredLimits": {
+          "maxTurns": 20,
+          "maxOutputTokens": 16384
+        },
+        "transportDeadlineMs": 600000,
+        "estimatedCostUsd": 0.1999014,
+        "elapsedMs": 751484,
+        "turns": 58,
+        "inputTokens": 1470034,
+        "outputTokens": 105796,
+        "reasoningTokens": 24257,
+        "nativeReasoningUsageReportedTurns": 58,
+        "cumulativeOutputLimited": false,
+        "interfaceErrors": 7
+      },
+      "limitations": {
+        "processFailure": false,
+        "providerOrBudgetFailure": false,
+        "modelOrEffortMismatch": false,
+        "materialSpendOverrun": false
+      },
+      "cases": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "family": "coverage-review",
+          "status": "completed",
+          "weightedDiagnostic": 53.23,
+          "components": {
+            "facts": 93.75,
+            "evidence": 6.25,
+            "workflow": 16.67,
+            "boundaries": 100
+          },
+          "allPass": false,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": false,
+            "currentRequests": false,
+            "suppliedReview": false,
+            "handoff": false
+          },
+          "incorrectFields": [
+            "currentPolicyVersionIds"
+          ],
+          "failedEvidenceFields": [
+            "E1.R1",
+            "E1.R2",
+            "E1.R3",
+            "E1.R4",
+            "E1.R5",
+            "E1.R6",
+            "E2.R1",
+            "E2.R2",
+            "E2.R3",
+            "E2.R4",
+            "E2.R5",
+            "E2.R6",
+            "resolvedAssetIds",
+            "currentPolicyVersionIds",
+            "unresolvedSubjectIds"
+          ],
+          "failedCriteria": [
+            "evidence:E1.R1",
+            "evidence:E1.R2",
+            "evidence:E1.R3",
+            "evidence:E1.R4",
+            "evidence:E1.R5",
+            "evidence:E1.R6",
+            "evidence:E2.R1",
+            "evidence:E2.R2",
+            "evidence:E2.R3",
+            "evidence:E2.R4",
+            "evidence:E2.R5",
+            "evidence:E2.R6",
+            "evidence:resolvedAssetIds",
+            "fact:currentPolicyVersionIds",
+            "evidence:currentPolicyVersionIds",
+            "evidence:unresolvedSubjectIds",
+            "workflow:currentPacket",
+            "workflow:currentRequests",
+            "workflow:suppliedReview",
+            "workflow:handoff",
+            "workflow:follow-up"
+          ],
+          "interfaceErrors": 3,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 198870,
+          "estimatedCostUsd": 0.0606857
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "family": "evidence-brief",
+          "status": "incomplete",
+          "weightedDiagnostic": 45.52,
+          "components": {
+            "facts": 75,
+            "evidence": 18.75,
+            "workflow": 16.67,
+            "boundaries": 66.67
+          },
+          "allPass": false,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": false,
+            "currentRequests": false,
+            "suppliedReview": false,
+            "handoff": false
+          },
+          "incorrectFields": [
+            "E1.R1",
+            "E1.R4",
+            "E1.R6",
+            "resolvedActorIds"
+          ],
+          "failedEvidenceFields": [
+            "E1.R1",
+            "E1.R3",
+            "E1.R4",
+            "E1.R5",
+            "E1.R6",
+            "E2.R1",
+            "E2.R3",
+            "E2.R4",
+            "E2.R5",
+            "E2.R6",
+            "resolvedAssetIds",
+            "resolvedActorIds",
+            "unresolvedSubjectIds"
+          ],
+          "failedCriteria": [
+            "fact:E1.R1",
+            "evidence:E1.R1",
+            "evidence:E1.R3",
+            "fact:E1.R4",
+            "evidence:E1.R4",
+            "evidence:E1.R5",
+            "fact:E1.R6",
+            "evidence:E1.R6",
+            "evidence:E2.R1",
+            "evidence:E2.R3",
+            "evidence:E2.R4",
+            "evidence:E2.R5",
+            "evidence:E2.R6",
+            "evidence:resolvedAssetIds",
+            "fact:resolvedActorIds",
+            "evidence:resolvedActorIds",
+            "evidence:unresolvedSubjectIds",
+            "workflow:currentPacket",
+            "workflow:currentRequests",
+            "workflow:suppliedReview",
+            "workflow:handoff",
+            "workflow:follow-up",
+            "boundary:history"
+          ],
+          "interfaceErrors": 4,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 260296,
+          "estimatedCostUsd": 0.073991
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "family": "fraud-referral",
+          "status": "completed",
+          "weightedDiagnostic": 77.61,
+          "components": {
+            "facts": 100,
+            "evidence": 43.75,
+            "workflow": 66.67,
+            "boundaries": 100
+          },
+          "allPass": false,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": false
+          },
+          "incorrectFields": [],
+          "failedEvidenceFields": [
+            "E1.R2",
+            "E1.R3",
+            "E1.R4",
+            "E1.R5",
+            "E1.R6",
+            "E2.R2",
+            "E2.R3",
+            "E2.R5",
+            "E2.R6"
+          ],
+          "failedCriteria": [
+            "evidence:E1.R2",
+            "evidence:E1.R3",
+            "evidence:E1.R4",
+            "evidence:E1.R5",
+            "evidence:E1.R6",
+            "evidence:E2.R2",
+            "evidence:E2.R3",
+            "evidence:E2.R5",
+            "evidence:E2.R6",
+            "workflow:handoff",
+            "workflow:follow-up"
+          ],
+          "interfaceErrors": 0,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 292318,
+          "estimatedCostUsd": 0.0652247
+        }
+      ]
+    },
+    {
+      "panelId": "05-astra-high-dev",
+      "runId": "2026-10-05T00-05-31-280Z-gpt-6-astra-high-baseline-investigation",
+      "modelAlias": "gpt-6-astra-high",
+      "exactModel": "gpt-6-astra",
+      "provider": "openai",
+      "declaredEffort": "high",
+      "variant": "baseline",
+      "sourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+      "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+      "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+      "receiptSha256": "b1a0934750da7f651032b0123703f5d379c636280dd429382caf1372c2f2594c",
+      "nativePath": "insurance-bench/results/2026-10-05T00-05-31-280Z-gpt-6-astra-high-baseline-investigation.json",
+      "nativeSha256": "9f2c8418402f3326f96bcb82b79072f615c10a91b97b104457d2a8a39a80e77f",
+      "headlineMetric": "macro-task-success",
+      "macroTaskSuccess": 100,
+      "weightedDiagnostic": 100,
+      "observedScoredSubsetDiagnostic": {
+        "score": 100,
+        "denominatorScoredAttempts": 3,
+        "fullPanelHeadline": true
+      },
+      "coverage": {
+        "expectedAttempts": 3,
+        "observedAttempts": 3,
+        "scoredAttempts": 3,
+        "completeCoverage": true,
+        "nativeFraction": 1,
+        "statuses": {
+          "completed": 3,
+          "incomplete": 0,
+          "provider-error": 0,
+          "budget-stopped": 0
+        }
+      },
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "current16Fields": {
+        "distinctFields": 16,
+        "expectedAcrossPanel": 48,
+        "observedCriteria": 48,
+        "correct": 48
+      },
+      "evidence": {
+        "observedCriteria": 48,
+        "passed": 48
+      },
+      "perField": [
+        {
+          "key": "E1.R1",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R2",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R3",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R4",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R5",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R6",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R1",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R2",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R3",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R4",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R5",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R6",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "currentPolicyVersionIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "resolvedActorIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "resolvedAssetIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "unresolvedSubjectIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        }
+      ],
+      "actualGoals": {
+        "responseReviewed": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "currentPacket": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "currentRequests": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "suppliedReview": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "handoff": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        }
+      },
+      "allPass": {
+        "passed": 3,
+        "failed": 0,
+        "unscoredOrMissing": 0,
+        "total": 3
+      },
+      "criticalFailures": 0,
+      "resource": {
+        "configuredLimits": {
+          "maxTurns": 20,
+          "maxOutputTokens": 16384
+        },
+        "transportDeadlineMs": 600000,
+        "estimatedCostUsd": 9.58369,
+        "elapsedMs": 736871,
+        "turns": 36,
+        "inputTokens": 662994,
+        "outputTokens": 59075,
+        "reasoningTokens": 2047,
+        "nativeReasoningUsageReportedTurns": 36,
+        "cumulativeOutputLimited": false,
+        "interfaceErrors": 0
+      },
+      "limitations": {
+        "processFailure": false,
+        "providerOrBudgetFailure": false,
+        "modelOrEffortMismatch": false,
+        "materialSpendOverrun": false
+      },
+      "cases": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "family": "coverage-review",
+          "status": "completed",
+          "weightedDiagnostic": 100,
+          "components": {
+            "facts": 100,
+            "evidence": 100,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "incorrectFields": [],
+          "failedEvidenceFields": [],
+          "failedCriteria": [],
+          "interfaceErrors": 0,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 232648,
+          "estimatedCostUsd": 2.99848
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "family": "evidence-brief",
+          "status": "completed",
+          "weightedDiagnostic": 100,
+          "components": {
+            "facts": 100,
+            "evidence": 100,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "incorrectFields": [],
+          "failedEvidenceFields": [],
+          "failedCriteria": [],
+          "interfaceErrors": 0,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 254492,
+          "estimatedCostUsd": 3.3219400000000006
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "family": "fraud-referral",
+          "status": "completed",
+          "weightedDiagnostic": 100,
+          "components": {
+            "facts": 100,
+            "evidence": 100,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "incorrectFields": [],
+          "failedEvidenceFields": [],
+          "failedCriteria": [],
+          "interfaceErrors": 0,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 249731,
+          "estimatedCostUsd": 3.26327
+        }
+      ]
+    },
+    {
+      "panelId": "06-sol-high-verify-dev",
+      "runId": "2026-10-05T00-17-48-626Z-gpt-6.1-sol-high-verify-before-finish-investigation",
+      "modelAlias": "gpt-6.1-sol-high",
+      "exactModel": "gpt-6.1-sol",
+      "provider": "openai",
+      "declaredEffort": "high",
+      "variant": "verify-before-finish",
+      "sourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+      "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+      "harnessHash": "8dcdd50f7e93ec59858bd136fe65c27561510780ae306e2fab8ee136cbfcd388",
+      "receiptSha256": "da057cf19cdf060d07762d1140e148f3d4f0528e05f1b36e2805776d54d8a5be",
+      "nativePath": "insurance-bench/results/2026-10-05T00-17-48-626Z-gpt-6.1-sol-high-verify-before-finish-investigation.json",
+      "nativeSha256": "c2e4350d8fa514310807e43bb292e36c72d91b990343ac88cfb54406ba11554b",
+      "headlineMetric": "macro-task-success",
+      "macroTaskSuccess": 100,
+      "weightedDiagnostic": 100,
+      "observedScoredSubsetDiagnostic": {
+        "score": 100,
+        "denominatorScoredAttempts": 3,
+        "fullPanelHeadline": true
+      },
+      "coverage": {
+        "expectedAttempts": 3,
+        "observedAttempts": 3,
+        "scoredAttempts": 3,
+        "completeCoverage": true,
+        "nativeFraction": 1,
+        "statuses": {
+          "completed": 3,
+          "incomplete": 0,
+          "provider-error": 0,
+          "budget-stopped": 0
+        }
+      },
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "current16Fields": {
+        "distinctFields": 16,
+        "expectedAcrossPanel": 48,
+        "observedCriteria": 48,
+        "correct": 48
+      },
+      "evidence": {
+        "observedCriteria": 48,
+        "passed": 48
+      },
+      "perField": [
+        {
+          "key": "E1.R1",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R2",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R3",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R4",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R5",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E1.R6",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R1",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R2",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R3",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R4",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R5",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "E2.R6",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "currentPolicyVersionIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "resolvedActorIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "resolvedAssetIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        },
+        {
+          "key": "unresolvedSubjectIds",
+          "facts": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          },
+          "evidence": {
+            "passed": 3,
+            "failed": 0,
+            "unscoredOrMissing": 0,
+            "total": 3
+          }
+        }
+      ],
+      "actualGoals": {
+        "responseReviewed": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "currentPacket": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "currentRequests": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "suppliedReview": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        },
+        "handoff": {
+          "passed": 3,
+          "failed": 0,
+          "unscoredOrMissing": 0,
+          "total": 3
+        }
+      },
+      "allPass": {
+        "passed": 3,
+        "failed": 0,
+        "unscoredOrMissing": 0,
+        "total": 3
+      },
+      "criticalFailures": 0,
+      "resource": {
+        "configuredLimits": {
+          "maxTurns": 20,
+          "maxOutputTokens": 16384
+        },
+        "transportDeadlineMs": 600000,
+        "estimatedCostUsd": 2.072902,
+        "elapsedMs": 780975,
+        "turns": 38,
+        "inputTokens": 734996,
+        "outputTokens": 60291,
+        "reasoningTokens": 2889,
+        "nativeReasoningUsageReportedTurns": 38,
+        "cumulativeOutputLimited": false,
+        "interfaceErrors": 0
+      },
+      "limitations": {
+        "processFailure": false,
+        "providerOrBudgetFailure": false,
+        "modelOrEffortMismatch": false,
+        "materialSpendOverrun": false
+      },
+      "cases": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "family": "coverage-review",
+          "status": "completed",
+          "weightedDiagnostic": 100,
+          "components": {
+            "facts": 100,
+            "evidence": 100,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "incorrectFields": [],
+          "failedEvidenceFields": [],
+          "failedCriteria": [],
+          "interfaceErrors": 0,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 252203,
+          "estimatedCostUsd": 0.709218
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "family": "evidence-brief",
+          "status": "completed",
+          "weightedDiagnostic": 100,
+          "components": {
+            "facts": 100,
+            "evidence": 100,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "incorrectFields": [],
+          "failedEvidenceFields": [],
+          "failedCriteria": [],
+          "interfaceErrors": 0,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 285077,
+          "estimatedCostUsd": 0.7196339999999999
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "family": "fraud-referral",
+          "status": "completed",
+          "weightedDiagnostic": 100,
+          "components": {
+            "facts": 100,
+            "evidence": 100,
+            "workflow": 100,
+            "boundaries": 100
+          },
+          "allPass": true,
+          "criticalFailure": false,
+          "actualGoals": {
+            "responseReviewed": true,
+            "currentPacket": true,
+            "currentRequests": true,
+            "suppliedReview": true,
+            "handoff": true
+          },
+          "incorrectFields": [],
+          "failedEvidenceFields": [],
+          "failedCriteria": [],
+          "interfaceErrors": 0,
+          "truncatedOutput": false,
+          "finishReasons": [
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed",
+            "completed"
+          ],
+          "elapsedMs": 243695,
+          "estimatedCostUsd": 0.6440499999999999
+        }
+      ]
+    }
+  ],
+  "pending": [],
+  "comparisons": [
+    {
+      "id": "sol-effort",
+      "baselinePanel": "02-sol-low-dev",
+      "treatmentPanel": "01-sol-high-dev",
+      "status": "available-descriptive",
+      "axis": "effort",
+      "baselineRunId": "2026-10-04T23-40-47-023Z-gpt-6.1-sol-low-baseline-investigation",
+      "treatmentRunId": "2026-10-04T23-19-13-453Z-gpt-6.1-sol-high-baseline-investigation",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 0,
+      "completionDelta": 0,
+      "componentDeltas": {
+        "facts": 0,
+        "evidence": 0,
+        "workflow": 0,
+        "boundaries": 0
+      },
+      "caseWins": 0,
+      "caseTies": 3,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        0,
+        0
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 0
+        },
+        {
+          "family": "evidence-brief",
+          "scoreDelta": 0
+        },
+        {
+          "family": "fraud-referral",
+          "scoreDelta": 0
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation.",
+      "macroTaskSuccessDelta": 0,
+      "casePairs": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "baseline": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "baseline": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "baseline": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        }
+      ],
+      "intervalMetric": "weighted diagnostic delta; no separate headline interval",
+      "additionalCaveat": "Three correlated single-attempt anchors; descriptive bootstrap has weak power and cannot establish population ranking or localize frontier50–60."
+    },
+    {
+      "id": "luna-effort",
+      "baselinePanel": "03-luna-low-dev",
+      "treatmentPanel": "04-luna-high-dev",
+      "status": "available-descriptive",
+      "axis": "effort",
+      "baselineRunId": "2026-10-04T23-48-44-384Z-gpt-6-luna-low-baseline-investigation",
+      "treatmentRunId": "2026-10-04T23-52-59-436Z-gpt-6-luna-high-baseline-investigation",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 24.9,
+      "completionDelta": 0,
+      "componentDeltas": {
+        "facts": 29.17,
+        "evidence": 22.92,
+        "workflow": 16.67,
+        "boundaries": 33.33
+      },
+      "caseWins": 2,
+      "caseTies": 0,
+      "caseLosses": 1,
+      "familyClusterBootstrap95": [
+        -6.15,
+        49.06
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 49.06
+        },
+        {
+          "family": "evidence-brief",
+          "scoreDelta": -6.15
+        },
+        {
+          "family": "fraud-referral",
+          "scoreDelta": 31.78
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation.",
+      "macroTaskSuccessDelta": 0,
+      "casePairs": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "baseline": {
+            "weightedDiagnostic": 4.17,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 53.23,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "baseline": {
+            "weightedDiagnostic": 51.67,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 45.52,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "baseline": {
+            "weightedDiagnostic": 45.83,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 77.61,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": true,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          }
+        }
+      ],
+      "intervalMetric": "weighted diagnostic delta; no separate headline interval",
+      "additionalCaveat": "Three correlated single-attempt anchors; descriptive bootstrap has weak power and cannot establish population ranking or localize frontier50–60."
+    },
+    {
+      "id": "openai-low-tier",
+      "baselinePanel": "03-luna-low-dev",
+      "treatmentPanel": "02-sol-low-dev",
+      "status": "available-descriptive",
+      "axis": "tier",
+      "baselineRunId": "2026-10-04T23-48-44-384Z-gpt-6-luna-low-baseline-investigation",
+      "treatmentRunId": "2026-10-04T23-40-47-023Z-gpt-6.1-sol-low-baseline-investigation",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 66.11,
+      "completionDelta": 100,
+      "componentDeltas": {
+        "facts": 39.58,
+        "evidence": 100,
+        "workflow": 83.33,
+        "boundaries": 44.44
+      },
+      "caseWins": 3,
+      "caseTies": 0,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        48.33,
+        95.83
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 95.83
+        },
+        {
+          "family": "evidence-brief",
+          "scoreDelta": 48.33
+        },
+        {
+          "family": "fraud-referral",
+          "scoreDelta": 54.17
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation.",
+      "macroTaskSuccessDelta": 100,
+      "casePairs": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "baseline": {
+            "weightedDiagnostic": 4.17,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "baseline": {
+            "weightedDiagnostic": 51.67,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "baseline": {
+            "weightedDiagnostic": 45.83,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        }
+      ],
+      "intervalMetric": "weighted diagnostic delta; no separate headline interval",
+      "additionalCaveat": "Three correlated single-attempt anchors; descriptive bootstrap has weak power and cannot establish population ranking or localize frontier50–60."
+    },
+    {
+      "id": "openai-high-tier",
+      "baselinePanel": "04-luna-high-dev",
+      "treatmentPanel": "01-sol-high-dev",
+      "status": "available-descriptive",
+      "axis": "tier",
+      "baselineRunId": "2026-10-04T23-52-59-436Z-gpt-6-luna-high-baseline-investigation",
+      "treatmentRunId": "2026-10-04T23-19-13-453Z-gpt-6.1-sol-high-baseline-investigation",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 41.21,
+      "completionDelta": 100,
+      "componentDeltas": {
+        "facts": 10.42,
+        "evidence": 77.08,
+        "workflow": 66.66,
+        "boundaries": 11.11
+      },
+      "caseWins": 3,
+      "caseTies": 0,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        22.39,
+        54.48
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 46.77
+        },
+        {
+          "family": "evidence-brief",
+          "scoreDelta": 54.48
+        },
+        {
+          "family": "fraud-referral",
+          "scoreDelta": 22.39
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation.",
+      "macroTaskSuccessDelta": 100,
+      "casePairs": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "baseline": {
+            "weightedDiagnostic": 53.23,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "baseline": {
+            "weightedDiagnostic": 45.52,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": false,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "baseline": {
+            "weightedDiagnostic": 77.61,
+            "allPass": false,
+            "completedTask": false,
+            "currentRequests": true,
+            "structuralHandoff": false,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        }
+      ],
+      "intervalMetric": "weighted diagnostic delta; no separate headline interval",
+      "additionalCaveat": "Three correlated single-attempt anchors; descriptive bootstrap has weak power and cannot establish population ranking or localize frontier50–60."
+    },
+    {
+      "id": "frontier-high-configured-tier",
+      "baselinePanel": "01-sol-high-dev",
+      "treatmentPanel": "05-astra-high-dev",
+      "status": "available-descriptive",
+      "axis": "tier",
+      "baselineRunId": "2026-10-04T23-19-13-453Z-gpt-6.1-sol-high-baseline-investigation",
+      "treatmentRunId": "2026-10-05T00-05-31-280Z-gpt-6-astra-high-baseline-investigation",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 0,
+      "completionDelta": 0,
+      "componentDeltas": {
+        "facts": 0,
+        "evidence": 0,
+        "workflow": 0,
+        "boundaries": 0
+      },
+      "caseWins": 0,
+      "caseTies": 3,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        0,
+        0
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 0
+        },
+        {
+          "family": "evidence-brief",
+          "scoreDelta": 0
+        },
+        {
+          "family": "fraud-referral",
+          "scoreDelta": 0
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation.",
+      "macroTaskSuccessDelta": 0,
+      "casePairs": [
+        {
+          "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+          "baseline": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+          "baseline": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        },
+        {
+          "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+          "baseline": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          },
+          "treatment": {
+            "weightedDiagnostic": 100,
+            "allPass": true,
+            "completedTask": true,
+            "currentRequests": true,
+            "structuralHandoff": true,
+            "criticalFailure": false
+          }
+        }
+      ],
+      "intervalMetric": "weighted diagnostic delta; no separate headline interval",
+      "additionalCaveat": "Three correlated single-attempt anchors; descriptive bootstrap has weak power and cannot establish population ranking or localize frontier50–60."
+    }
+  ],
+  "promptComparison": {
+    "status": "descriptive-prompt-comparison",
+    "baselineRunId": "2026-10-04T23-19-13-453Z-gpt-6.1-sol-high-baseline-investigation",
+    "treatmentRunId": "2026-10-05T00-17-48-626Z-gpt-6.1-sol-high-verify-before-finish-investigation",
+    "baselineHarness": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+    "treatmentHarness": "8dcdd50f7e93ec59858bd136fe65c27561510780ae306e2fab8ee136cbfcd388",
+    "sameNativeHarness": false,
+    "cleanMatchedHarnessComparison": false,
+    "cleanTruncationFreeObservations": true,
+    "macroTaskSuccessDelta": 0,
+    "weightedDiagnosticDelta": 0,
+    "estimatedCostDeltaUsd": 0.0047,
+    "casePairs": [
+      {
+        "taskId": "ibi-fleet-assignment-dev-1-473634f6",
+        "baseline": {
+          "weightedDiagnostic": 100,
+          "allPass": true,
+          "completedTask": true,
+          "currentRequests": true,
+          "structuralHandoff": true,
+          "criticalFailure": false
+        },
+        "treatment": {
+          "weightedDiagnostic": 100,
+          "allPass": true,
+          "completedTask": true,
+          "currentRequests": true,
+          "structuralHandoff": true,
+          "criticalFailure": false
+        }
+      },
+      {
+        "taskId": "ibi-premises-chronology-dev-1-98bd4c8a",
+        "baseline": {
+          "weightedDiagnostic": 100,
+          "allPass": true,
+          "completedTask": true,
+          "currentRequests": true,
+          "structuralHandoff": true,
+          "criticalFailure": false
+        },
+        "treatment": {
+          "weightedDiagnostic": 100,
+          "allPass": true,
+          "completedTask": true,
+          "currentRequests": true,
+          "structuralHandoff": true,
+          "criticalFailure": false
+        }
+      },
+      {
+        "taskId": "ibi-multi-exposure-review-dev-1-57c335e",
+        "baseline": {
+          "weightedDiagnostic": 100,
+          "allPass": true,
+          "completedTask": true,
+          "currentRequests": true,
+          "structuralHandoff": true,
+          "criticalFailure": false
+        },
+        "treatment": {
+          "weightedDiagnostic": 100,
+          "allPass": true,
+          "completedTask": true,
+          "currentRequests": true,
+          "structuralHandoff": true,
+          "criticalFailure": false
+        }
+      }
+    ],
+    "familyClusterBootstrap95": null,
+    "caveat": "Reminder intentionally changes variant/prompt/harness. No hashes normalized or forged and compareRuns is not bypassed. Single sequential attempt per3correlated anchors; no causal or normalized-audit-compute claim."
+  },
+  "estimatedTerminalPanelCostUsd": 15.4561079,
+  "limitations": [
+    "Development-only native artifacts; no held-out outputs read.",
+    "Three equally weighted single-attempt correlated families yield33.33point headline steps; no localized50–60 target or population confidence claim.",
+    "Fact and evidence criteria share correctness dependencies; structural handoff does not certify semantic facts/request correctness.",
+    "Raw criterion failures are not yet an independently accepted paid failure audit; semantic versus measurement/protocol causes require trace review.",
+    "Token-rate cost estimates are not invoices or shared-ledger reservation balances.",
+    "Weighted case wins/ties and clustered intervals differ from macro whole-task success; retain both."
+  ],
+  "paidInferencePerformedByAnalysis": false
+}

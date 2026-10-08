@@ -1,0 +1,58 @@
+Independent source-only review: Insurance Bench interaction candidate v0.10
+
+Worktree: /Users/soldo/.codex/worktrees/insurance-bench/sentanis-app
+Disposition requested: approve-engineering-only or reject, with concrete reproducible findings. This is a non-author semantic/source review before any candidate inference. Do not edit files, invoke providers, run benchmark inference, inspect model outputs or credentials, or access live data. Frozen v0.9 conditions and outcomes are outside scope. Source construction of fresh holdout fixtures is permitted; evaluated holdout/model outputs are not.
+
+Exact permitted source files (relative to worktree):
+  insurance-bench/interaction-cases.ts
+  insurance-bench/investigation-types.ts
+  insurance-bench/investigation-engine.ts
+  insurance-bench/investigation-cases.ts
+  insurance-bench/interaction-runner.ts
+  scripts/insurance-bench-interaction.ts
+  test/insurance-bench-interaction-cases.test.ts
+  test/insurance-bench-investigation-engine.test.ts
+  test/insurance-bench-investigation-cases.test.ts
+  insurance-bench/results/meta/interaction-author-controls-v0.10.json
+  insurance-bench/results/meta/interaction-source-audit-v0.10.json
+  insurance-bench/results/meta/interaction-source-audit-v0.10-script.txt
+  specs/features/insurance-bench/v10-design-candidate.md
+Read expected vectors, author controls and independent audit only after deriving your own representative raw-source results; use them as comparison evidence, not semantic authority. No other results, traces, registrations, ledger or auth files are allowed. Your allowed tools are Read,Glob,Grep only: do not execute scripts or generate scratch files. Review source and hand-derive representative vectors, disclosing exact coverage; do not run the CLI's paid path.
+
+Design difference to review:
+The new generator has twelve fictional tasks (two development and two fresh holdout constructions per existing three correlated family labels), fresh IDs and deterministic seed100419. It retains two events, six R1-R6 clauses per event, sixteen output fields, one governing policy-pack lineage per activity, and the exact existing investigation engine. It changes source relationships: the events have different activities and policy packs, joined through aliases to the same physical site. Nested all/any/not conditions combine asset eligibility, actor assignment/delegation, site holds, waivers, preservation and contradiction/revocation exceptions. Null is explicit unavailable input, distinct from false. No static label vector, score cap, desired truth distribution or model-output-selected retry is part of construction.
+
+The supplied response resolves the initial E1 null asset alias and shared-site null hold. Correction1 changes only E1's actor mapping. Correction2 supplies a site hold correction qualified from12:00 and a new activity-B policy revision effective12:00, changing request material, subject and period for specific E2 obligations. E1 occurs10:00, E2 occurs14:00; a narrowing supersession must not retire an earlier mapping for E1. Signed credentials qualify at the relevant event instant, with inclusive-from/exclusive-to intervals. Initially retained approvals may cite only initially public sources. Supporting dependencies must be part of a sufficient current proof for their exact obligation; extra unrelated current refs cannot preserve approval.
+
+Required independent derivation:
+1. From original public narratives, raw rows and ASTs, implement or hand-recompute twelve tasks x three generations x response absent/present =72 engineering snapshots. Distinguish48 operational snapshots (initial absent, received response, correction1, correction2) from counterfactual absent-response snapshots. Compare all sixteen fields, twelve obligation statuses, identity aggregates, exact scoped requests and retained/invalidated approval IDs against both resolvers only after independently deriving them. A pair of implementations agreeing is insufficient by itself.
+2. Trace each event/activity to its policy pack, alias/entity identities, primitive observations and event-time credential scope. Verify shared-site binding is real evidence and that changing a disconnected site's facts cannot affect the other activity. Check all relevant revisions, explicit same-key supersedes and qualifier intervals before retirement. A later credential must not authorize an earlier event. Equal eligible conflicts must produce unresolved rather than arbitrary selection.
+3. Independently apply Kleene three-valued all/any/not rules, including decisive true-any/false-all branches masking unknown operands, nested exceptions and null custodian handling. Check family-specific AST differences rather than assuming identical labels establish identical source semantics. Identify any publicly defensible alternative interpretation or missing rule definition.
+4. Audit minimal sufficient alternative certificates for every current field and obligation. A sufficient alternate branch or equal-content qualified witness should count; valid extras should not invalidate a sufficient certificate. Conversely a partial path, wrong revision, unqualified signer, disconnected subject, incomplete aggregate identity proof or future dependency must not earn credit. Check unknown/absence certificates use authoritative null, conflicts or explicit complete inventories, not an empty proof.
+5. Audit approvals initially visible only and tied to exact obligation/event support, including retained alternate witnesses despite a different packet path, invalidation after actor/policy changes even when status remains applicable, and the distinction between supporting operands and unrelated current refs. Ensure no hidden response or later correction IDs leak through initial approval dependencies, instructions, field descriptions, source lists or tool observations.
+6. Exercise source-only actual public tools: scoped source request, supplied response entering full derivation, packet creation, provided review, two announced material corrections, revision review, current request/business handoff and exact+90-minute follow-up. Confirm structural completion is independent from semantic request correctness, stale/out-of-order writes do not earn credit, and prohibited intent is critical even after finish or stale version. Do not rely solely on direct state mutation or a score oracle.
+7. Inspect the separate runner/CLI admission boundaries and public contract for undocumented literals, schemas, accepted kind/scope, packet reuse, action serialization and insufficient source visibility. Source/result leakage must be excluded. Report transport-wrapper change separately from source-complexity change; no causal cross-generation difficulty ablation follows from changing both.
+
+Fairness and reporting limits:
+Author controls currently report72 snapshots,48 hand vectors and twelve full-tool oracle completions; independently verify rather than adopting those claims. Serialized public-source bytes are approximately36.6-44.9KB versus35.4-43.7KB for v0.9; shortest field-support packet11.4-15.2KB versus14.4-17.6KB, static measurements only. Check size claims and accidental duplication; token pressure is not the proposed difficulty mechanism. Families share an interpreter and coverage/evidence share many vectors, so neither twelve tasks nor three labels establishes twelve independent mechanisms or professional insurance validity.
+
+Return a concise review with exact reviewed SHA256s, state/count coverage, independent method, concrete findings with file/row/obligation references, negative controls exercised and residual limitations. A suspected false grade or source ambiguity is a reject pending triage; do not silently repair, regrade, cap results or infer model ability. If full72 independent recomputation cannot be completed, disclose precise coverage and do not claim exhaustive validation. All supplied results are synthetic engineering controls, not measured model outcomes.
+
+Additional exact source allowlist for paid-admission/JSON-transport review:
+ insurance-bench/candidate-admission.ts
+ insurance-bench/json-object-provider.ts
+ insurance-bench/json-investigation-runner.ts
+ insurance-bench/investigation-providers.ts
+ insurance-bench/providers.ts
+ insurance-bench/runner.ts
+ insurance-bench/tools.ts
+ insurance-bench/score.ts
+ insurance-bench/types.ts
+ insurance-bench/models.json
+ scripts/insurance-bench-json-investigation.ts
+ test/insurance-bench-candidate-admission.test.ts
+ test/insurance-bench-candidate-provenance.test.ts
+ test/insurance-bench-json-object-provider.test.ts
+ .tmp/insurance-bench/candidate-panels.ts
+ specs/features/insurance-bench/v09-json-diagnostic-plan.md
+Inspect controller fixed serial forecast, exact committed source/config/audit/registration/ledger floor, no reset/new ledger, duplicate rejection, native metadata/budget flags, holdout audit/release gate. No execution/provider/credential/ledger/output access. Both current new candidate paths use exact existing transport600s with JSON mode and strict parser; do not infer semantic/schema correctness from JSON mode.

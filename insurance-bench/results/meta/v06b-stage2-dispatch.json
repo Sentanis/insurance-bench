@@ -1,0 +1,19 @@
+{
+  "declaredAt": "2026-10-04T02:54:37.663241+00:00",
+  "profiles": [
+    "gpt-6.1-sol-high",
+    "gpt-6-luna-high"
+  ],
+  "tasks": "unchanged firstdev deadline/financial/workflow,2attempts",
+  "ledger": {
+    "reservedUsd": 13.573964087500038,
+    "capUsd": 25,
+    "updatedAt": "2026-10-04T02:54:12.181Z"
+  },
+  "estimatesUsd": {
+    "pair": 1.6,
+    "pendingV5": 0.7,
+    "candidate5DevFinalPlanningAllowance": 7
+  },
+  "decision": "dispatchcompletepair; atomiccap remainsauthoritative, estimatesnotguarantees"
+}

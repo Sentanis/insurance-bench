@@ -1,0 +1,1468 @@
+{
+  "auditedAt": "2026-10-04T22:21:34.573Z",
+  "generation": "insurance-bench-evidence-v0.8",
+  "sourceFingerprint": "b4a648a8cb12bc94a938a74ccb03d5c8bc1e692fcd060f55690362750031d64c",
+  "fullCorpusHash": "0b33183872bf68e251943727ea2054d971d7e01ef091ee05dc33cc7ba4b36c30",
+  "scope": "Registered development TERMINAL episodes only. No partial outputs, no holdout model outputs, no gold/grader/production-engine import, no inference, no regrading/tuning.",
+  "independentDerivation": {
+    "path": "insurance-bench/results/meta/evidence-independent-audit-v0.8.json",
+    "sha256": "f7a9cdecf4daf8135c0a06c39ad9155f04ded4ca8350685f93767082f1996e14",
+    "method": "Frozen pre-inference independent public-source derivation supplies target labels/minimal operands. Terminal available sources/read references/history determine retrieval, correction and actual lifecycle; missing response is diagnosed as incomplete required source retrieval rather than unsupported negative certainty."
+  },
+  "reproduction": {
+    "script": "results/meta/v08-development-failure-audit-script.txt",
+    "scriptSha256": "7e8e62aade8bceb9f42dc30f97c5a19e06acc82a14d7f8ca9daa2de0c62948a1",
+    "command": "Copy helper unchanged to .tmp/insurance-bench/v08-development-failure-audit.ts then npx tsx SCRIPT EPISODE_DIR REPORT_PATH. Durable native-Run hydration will be added when panels complete."
+  },
+  "interpretationLimits": [
+    "Six correlated invented cases per condition, no insurance/legal/clinical expert validation or stable-population rank.",
+    "Facts/evidence dependent; structural workflow evaluated separately. Ungraded prose remains inspection-only.",
+    "No numeric panel ability score for incomplete scored coverage/provider failure. Truncated configured results preserved but clean contrasts unavailable.",
+    "Constant-label perfect-lifecycle scaffold scores~56.66partialdiagnostic and0headline; desired50–60success is not a grading rule."
+  ],
+  "summary": [
+    {
+      "panelId": "01-sol-high-dev",
+      "condition": "gpt-6.1-sol-high",
+      "representation": "original",
+      "expectedTasks": 6,
+      "terminalTasks": 5,
+      "scoredTasks": 4,
+      "completeCoverage": false,
+      "headlineCompleteTaskSuccessObserved": null,
+      "partialSuccessCount": 3,
+      "weightedMeanObserved": null,
+      "independentlyCorrectFinalLabels": 35,
+      "expectedFinalLabelDenominator": 54,
+      "scoredCaseLabelDenominator": 36,
+      "contestedTargetLabels": 1,
+      "actualCurrentHandoffs": 4,
+      "truncatedEpisodes": 0,
+      "providerOrBudgetFailures": 1,
+      "identityMismatches": 0,
+      "suspectedFalseGradeEpisodes": 1,
+      "estimatedReturnedRequestCostUsd": 0.7973439999999999,
+      "cleanContrastEligible": false
+    },
+    {
+      "panelId": "02-sol-low-dev",
+      "condition": "gpt-6.1-sol-low",
+      "representation": "original",
+      "expectedTasks": 6,
+      "terminalTasks": 0,
+      "scoredTasks": 0,
+      "completeCoverage": false,
+      "headlineCompleteTaskSuccessObserved": null,
+      "partialSuccessCount": 0,
+      "weightedMeanObserved": null,
+      "independentlyCorrectFinalLabels": 0,
+      "expectedFinalLabelDenominator": 54,
+      "scoredCaseLabelDenominator": 0,
+      "contestedTargetLabels": 0,
+      "actualCurrentHandoffs": 0,
+      "truncatedEpisodes": 0,
+      "providerOrBudgetFailures": 0,
+      "identityMismatches": 0,
+      "suspectedFalseGradeEpisodes": 0,
+      "estimatedReturnedRequestCostUsd": 0,
+      "cleanContrastEligible": false
+    },
+    {
+      "panelId": "03-luna-low-dev",
+      "condition": "gpt-6-luna-low",
+      "representation": "original",
+      "expectedTasks": 6,
+      "terminalTasks": 0,
+      "scoredTasks": 0,
+      "completeCoverage": false,
+      "headlineCompleteTaskSuccessObserved": null,
+      "partialSuccessCount": 0,
+      "weightedMeanObserved": null,
+      "independentlyCorrectFinalLabels": 0,
+      "expectedFinalLabelDenominator": 54,
+      "scoredCaseLabelDenominator": 0,
+      "contestedTargetLabels": 0,
+      "actualCurrentHandoffs": 0,
+      "truncatedEpisodes": 0,
+      "providerOrBudgetFailures": 0,
+      "identityMismatches": 0,
+      "suspectedFalseGradeEpisodes": 0,
+      "estimatedReturnedRequestCostUsd": 0,
+      "cleanContrastEligible": false
+    },
+    {
+      "panelId": "04-luna-high-dev",
+      "condition": "gpt-6-luna-high",
+      "representation": "original",
+      "expectedTasks": 6,
+      "terminalTasks": 0,
+      "scoredTasks": 0,
+      "completeCoverage": false,
+      "headlineCompleteTaskSuccessObserved": null,
+      "partialSuccessCount": 0,
+      "weightedMeanObserved": null,
+      "independentlyCorrectFinalLabels": 0,
+      "expectedFinalLabelDenominator": 54,
+      "scoredCaseLabelDenominator": 0,
+      "contestedTargetLabels": 0,
+      "actualCurrentHandoffs": 0,
+      "truncatedEpisodes": 0,
+      "providerOrBudgetFailures": 0,
+      "identityMismatches": 0,
+      "suspectedFalseGradeEpisodes": 0,
+      "estimatedReturnedRequestCostUsd": 0,
+      "cleanContrastEligible": false
+    },
+    {
+      "panelId": "05-astra-high-dev",
+      "condition": "gpt-6-astra-high",
+      "representation": "original",
+      "expectedTasks": 6,
+      "terminalTasks": 0,
+      "scoredTasks": 0,
+      "completeCoverage": false,
+      "headlineCompleteTaskSuccessObserved": null,
+      "partialSuccessCount": 0,
+      "weightedMeanObserved": null,
+      "independentlyCorrectFinalLabels": 0,
+      "expectedFinalLabelDenominator": 54,
+      "scoredCaseLabelDenominator": 0,
+      "contestedTargetLabels": 0,
+      "actualCurrentHandoffs": 0,
+      "truncatedEpisodes": 0,
+      "providerOrBudgetFailures": 0,
+      "identityMismatches": 0,
+      "suspectedFalseGradeEpisodes": 0,
+      "estimatedReturnedRequestCostUsd": 0,
+      "cleanContrastEligible": false
+    },
+    {
+      "panelId": "06-sol-high-normalized-dev",
+      "condition": "gpt-6.1-sol-high",
+      "representation": "normalized-diagnostic",
+      "expectedTasks": 6,
+      "terminalTasks": 0,
+      "scoredTasks": 0,
+      "completeCoverage": false,
+      "headlineCompleteTaskSuccessObserved": null,
+      "partialSuccessCount": 0,
+      "weightedMeanObserved": null,
+      "independentlyCorrectFinalLabels": 0,
+      "expectedFinalLabelDenominator": 54,
+      "scoredCaseLabelDenominator": 0,
+      "contestedTargetLabels": 0,
+      "actualCurrentHandoffs": 0,
+      "truncatedEpisodes": 0,
+      "providerOrBudgetFailures": 0,
+      "identityMismatches": 0,
+      "suspectedFalseGradeEpisodes": 0,
+      "estimatedReturnedRequestCostUsd": 0,
+      "cleanContrastEligible": false
+    }
+  ],
+  "episodes": [
+    {
+      "panelId": "01-sol-high-dev",
+      "condition": "gpt-6.1-sol-high",
+      "representation": "original",
+      "taskId": "ibe-coverage-review-dev-1-3cc88288",
+      "family": "coverage-review",
+      "episodeFile": "1791151316859-10040-gpt-6.1-sol-high-evidence-ibe-coverage-review-dev-1-3cc88288.episode",
+      "episodeSha256": "2dda1189faddf4493f45c900fb4e4af7494172304b95935fab8b0987085f8688",
+      "status": "completed",
+      "finished": true,
+      "allPassRecorded": true,
+      "weightedScoreRecorded": 100,
+      "componentsRecorded": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailureRecorded": false,
+      "estimatedCostUsd": 0.160244,
+      "error": null,
+      "currentGeneration": 2,
+      "availableResponse": true,
+      "availableCorrection": true,
+      "findings": [
+        {
+          "propositionId": "Q1",
+          "independentlyExpectedCurrentLabel": "supported",
+          "registeredTargetLabel": "supported",
+          "actual": "supported",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q2",
+          "independentlyExpectedCurrentLabel": "supported",
+          "registeredTargetLabel": "supported",
+          "actual": "supported",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q3",
+          "independentlyExpectedCurrentLabel": "unresolved",
+          "registeredTargetLabel": "unresolved",
+          "actual": "unresolved",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q4",
+          "independentlyExpectedCurrentLabel": "refuted",
+          "registeredTargetLabel": "refuted",
+          "actual": "refuted",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q5",
+          "independentlyExpectedCurrentLabel": "unresolved",
+          "registeredTargetLabel": "unresolved",
+          "actual": "unresolved",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q6",
+          "independentlyExpectedCurrentLabel": "refuted",
+          "registeredTargetLabel": "refuted",
+          "actual": "refuted",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q7",
+          "independentlyExpectedCurrentLabel": "refuted",
+          "registeredTargetLabel": "refuted",
+          "actual": "refuted",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q8",
+          "independentlyExpectedCurrentLabel": "unresolved",
+          "registeredTargetLabel": "unresolved",
+          "actual": "unresolved",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q9",
+          "independentlyExpectedCurrentLabel": "unresolved",
+          "registeredTargetLabel": "unresolved",
+          "actual": "unresolved",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        }
+      ],
+      "actualLifecycle": {
+        "exactRequest": true,
+        "responseReviewed": true,
+        "currentPacket": true,
+        "currentProvidedReview": true,
+        "actualCurrentHandoff": true,
+        "followUpCurrent": true
+      },
+      "failedCriteria": [],
+      "protocolErrors": [
+        {
+          "turn": 7,
+          "tool": "review_receipt",
+          "error": "scope_mismatch",
+          "status": null
+        }
+      ],
+      "interfaceErrors": 0,
+      "truncatedOutput": false,
+      "finishReasons": [
+        {
+          "turn": 1,
+          "reason": "completed",
+          "outputTokens": 56,
+          "reasoningTokens": 18
+        },
+        {
+          "turn": 2,
+          "reason": "completed",
+          "outputTokens": 276,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 3,
+          "reason": "completed",
+          "outputTokens": 187,
+          "reasoningTokens": 107
+        },
+        {
+          "turn": 4,
+          "reason": "completed",
+          "outputTokens": 56,
+          "reasoningTokens": 15
+        },
+        {
+          "turn": 5,
+          "reason": "completed",
+          "outputTokens": 38,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 6,
+          "reason": "completed",
+          "outputTokens": 35,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 7,
+          "reason": "completed",
+          "outputTokens": 113,
+          "reasoningTokens": 53
+        },
+        {
+          "turn": 8,
+          "reason": "completed",
+          "outputTokens": 39,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 9,
+          "reason": "completed",
+          "outputTokens": 87,
+          "reasoningTokens": 51
+        },
+        {
+          "turn": 10,
+          "reason": "completed",
+          "outputTokens": 1042,
+          "reasoningTokens": 125
+        },
+        {
+          "turn": 11,
+          "reason": "completed",
+          "outputTokens": 45,
+          "reasoningTokens": 12
+        },
+        {
+          "turn": 12,
+          "reason": "completed",
+          "outputTokens": 36,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 13,
+          "reason": "completed",
+          "outputTokens": 1256,
+          "reasoningTokens": 128
+        },
+        {
+          "turn": 14,
+          "reason": "completed",
+          "outputTokens": 134,
+          "reasoningTokens": 39
+        }
+      ],
+      "identityMatches": true,
+      "externalIntentAttempts": 0,
+      "crossSourceAmbiguities": [],
+      "suspectedFalseGrades": [],
+      "criterionDependency": "Evidence label gate depends on the same semantic label as fact. Current-state/current-packet lifecycle is structural and does not duplicate semantic label accuracy."
+    },
+    {
+      "panelId": "01-sol-high-dev",
+      "condition": "gpt-6.1-sol-high",
+      "representation": "original",
+      "taskId": "ibe-coverage-review-dev-2-f5e7c447",
+      "family": "coverage-review",
+      "episodeFile": "1791151316859-10040-gpt-6.1-sol-high-evidence-ibe-coverage-review-dev-2-f5e7c447.episode",
+      "episodeSha256": "b0532446e89ac0f1083c2eee7e2402d06a8ade2f850297b33b420e1d927fa43e",
+      "status": "completed",
+      "finished": true,
+      "allPassRecorded": true,
+      "weightedScoreRecorded": 100,
+      "componentsRecorded": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailureRecorded": false,
+      "estimatedCostUsd": 0.21162399999999998,
+      "error": null,
+      "currentGeneration": 2,
+      "availableResponse": true,
+      "availableCorrection": true,
+      "findings": [
+        {
+          "propositionId": "Q1",
+          "independentlyExpectedCurrentLabel": "refuted",
+          "registeredTargetLabel": "refuted",
+          "actual": "refuted",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q2",
+          "independentlyExpectedCurrentLabel": "refuted",
+          "registeredTargetLabel": "refuted",
+          "actual": "refuted",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q3",
+          "independentlyExpectedCurrentLabel": "unresolved",
+          "registeredTargetLabel": "unresolved",
+          "actual": "unresolved",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q4",
+          "independentlyExpectedCurrentLabel": "supported",
+          "registeredTargetLabel": "supported",
+          "actual": "supported",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q5",
+          "independentlyExpectedCurrentLabel": "supported",
+          "registeredTargetLabel": "supported",
+          "actual": "supported",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q6",
+          "independentlyExpectedCurrentLabel": "unresolved",
+          "registeredTargetLabel": "unresolved",
+          "actual": "unresolved",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q7",
+          "independentlyExpectedCurrentLabel": "supported",
+          "registeredTargetLabel": "supported",
+          "actual": "supported",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q8",
+          "independentlyExpectedCurrentLabel": "supported",
+          "registeredTargetLabel": "supported",
+          "actual": "supported",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q9",
+          "independentlyExpectedCurrentLabel": "refuted",
+          "registeredTargetLabel": "refuted",
+          "actual": "refuted",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        }
+      ],
+      "actualLifecycle": {
+        "exactRequest": true,
+        "responseReviewed": true,
+        "currentPacket": true,
+        "currentProvidedReview": true,
+        "actualCurrentHandoff": true,
+        "followUpCurrent": true
+      },
+      "failedCriteria": [],
+      "protocolErrors": [
+        {
+          "turn": 6,
+          "tool": "review_receipt",
+          "error": "scope_mismatch",
+          "status": null
+        }
+      ],
+      "interfaceErrors": 0,
+      "truncatedOutput": false,
+      "finishReasons": [
+        {
+          "turn": 1,
+          "reason": "completed",
+          "outputTokens": 47,
+          "reasoningTokens": 18
+        },
+        {
+          "turn": 2,
+          "reason": "completed",
+          "outputTokens": 357,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 3,
+          "reason": "completed",
+          "outputTokens": 102,
+          "reasoningTokens": 60
+        },
+        {
+          "turn": 4,
+          "reason": "completed",
+          "outputTokens": 39,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 5,
+          "reason": "completed",
+          "outputTokens": 36,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 6,
+          "reason": "completed",
+          "outputTokens": 77,
+          "reasoningTokens": 15
+        },
+        {
+          "turn": 7,
+          "reason": "completed",
+          "outputTokens": 40,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 8,
+          "reason": "completed",
+          "outputTokens": 35,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 9,
+          "reason": "completed",
+          "outputTokens": 156,
+          "reasoningTokens": 95
+        },
+        {
+          "turn": 10,
+          "reason": "completed",
+          "outputTokens": 1141,
+          "reasoningTokens": 123
+        },
+        {
+          "turn": 11,
+          "reason": "completed",
+          "outputTokens": 31,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 12,
+          "reason": "completed",
+          "outputTokens": 49,
+          "reasoningTokens": 10
+        },
+        {
+          "turn": 13,
+          "reason": "completed",
+          "outputTokens": 1273,
+          "reasoningTokens": 92
+        },
+        {
+          "turn": 14,
+          "reason": "completed",
+          "outputTokens": 31,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 15,
+          "reason": "completed",
+          "outputTokens": 38,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 16,
+          "reason": "completed",
+          "outputTokens": 54,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 17,
+          "reason": "completed",
+          "outputTokens": 17,
+          "reasoningTokens": 0
+        }
+      ],
+      "identityMatches": true,
+      "externalIntentAttempts": 0,
+      "crossSourceAmbiguities": [],
+      "suspectedFalseGrades": [],
+      "criterionDependency": "Evidence label gate depends on the same semantic label as fact. Current-state/current-packet lifecycle is structural and does not duplicate semantic label accuracy."
+    },
+    {
+      "panelId": "01-sol-high-dev",
+      "condition": "gpt-6.1-sol-high",
+      "representation": "original",
+      "taskId": "ibe-evidence-brief-dev-1-809bfa3c",
+      "family": "evidence-brief",
+      "episodeFile": "1791151316859-10040-gpt-6.1-sol-high-evidence-ibe-evidence-brief-dev-1-809bfa3c.episode",
+      "episodeSha256": "da820f3c7fc8a990e4476c1485bbfd825e8b89664b3fa38804c0f3dc4ff539cc",
+      "status": "completed",
+      "finished": true,
+      "allPassRecorded": false,
+      "weightedScoreRecorded": 92.78,
+      "componentsRecorded": {
+        "facts": 88.89,
+        "evidence": 88.89,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailureRecorded": false,
+      "estimatedCostUsd": 0.22226600000000002,
+      "error": null,
+      "currentGeneration": 2,
+      "availableResponse": true,
+      "availableCorrection": true,
+      "findings": [
+        {
+          "propositionId": "Q1",
+          "independentlyExpectedCurrentLabel": "supported",
+          "registeredTargetLabel": "supported",
+          "actual": "supported",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q2",
+          "independentlyExpectedCurrentLabel": "supported",
+          "registeredTargetLabel": "supported",
+          "actual": "supported",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q3",
+          "independentlyExpectedCurrentLabel": "unresolved",
+          "registeredTargetLabel": "unresolved",
+          "actual": "unresolved",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q4",
+          "independentlyExpectedCurrentLabel": "refuted",
+          "registeredTargetLabel": "refuted",
+          "actual": "refuted",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q5",
+          "independentlyExpectedCurrentLabel": "unresolved",
+          "registeredTargetLabel": "unresolved",
+          "actual": "unresolved",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q6",
+          "independentlyExpectedCurrentLabel": "refuted",
+          "registeredTargetLabel": "refuted",
+          "actual": "refuted",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q7",
+          "independentlyExpectedCurrentLabel": "refuted",
+          "registeredTargetLabel": "refuted",
+          "actual": "refuted",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q8",
+          "independentlyExpectedCurrentLabel": "unresolved",
+          "registeredTargetLabel": "unresolved",
+          "actual": "unresolved",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q9",
+          "independentlyExpectedCurrentLabel": "unresolved",
+          "registeredTargetLabel": "unresolved",
+          "actual": "supported",
+          "correctIndependentTarget": null,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "suspected-cross-source-gold-ambiguity-not-confirmed-substantive-error",
+          "matchFrozenPrepaidLabel": false
+        }
+      ],
+      "actualLifecycle": {
+        "exactRequest": true,
+        "responseReviewed": true,
+        "currentPacket": true,
+        "currentProvidedReview": true,
+        "actualCurrentHandoff": true,
+        "followUpCurrent": true
+      },
+      "failedCriteria": [
+        {
+          "id": "fact:Q9",
+          "component": "facts",
+          "passed": false,
+          "detail": "Closed-fiction adjudicable proposition; professional truth/expert validation not claimed"
+        },
+        {
+          "id": "evidence:Q9",
+          "component": "evidence",
+          "passed": false,
+          "detail": "Correct classification plus any author-annotated sufficient source relation; fact dependence disclosed, no quote/style matching"
+        }
+      ],
+      "protocolErrors": [
+        {
+          "turn": 7,
+          "tool": "review_receipt",
+          "error": "scope_mismatch",
+          "status": null
+        }
+      ],
+      "interfaceErrors": 0,
+      "truncatedOutput": false,
+      "finishReasons": [
+        {
+          "turn": 1,
+          "reason": "completed",
+          "outputTokens": 43,
+          "reasoningTokens": 14
+        },
+        {
+          "turn": 2,
+          "reason": "completed",
+          "outputTokens": 296,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 3,
+          "reason": "completed",
+          "outputTokens": 137,
+          "reasoningTokens": 55
+        },
+        {
+          "turn": 4,
+          "reason": "completed",
+          "outputTokens": 41,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 5,
+          "reason": "completed",
+          "outputTokens": 40,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 6,
+          "reason": "completed",
+          "outputTokens": 37,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 7,
+          "reason": "completed",
+          "outputTokens": 91,
+          "reasoningTokens": 27
+        },
+        {
+          "turn": 8,
+          "reason": "completed",
+          "outputTokens": 41,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 9,
+          "reason": "completed",
+          "outputTokens": 36,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 10,
+          "reason": "completed",
+          "outputTokens": 178,
+          "reasoningTokens": 115
+        },
+        {
+          "turn": 11,
+          "reason": "completed",
+          "outputTokens": 1158,
+          "reasoningTokens": 161
+        },
+        {
+          "turn": 12,
+          "reason": "completed",
+          "outputTokens": 60,
+          "reasoningTokens": 27
+        },
+        {
+          "turn": 13,
+          "reason": "completed",
+          "outputTokens": 38,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 14,
+          "reason": "completed",
+          "outputTokens": 1232,
+          "reasoningTokens": 93
+        },
+        {
+          "turn": 15,
+          "reason": "completed",
+          "outputTokens": 31,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 16,
+          "reason": "completed",
+          "outputTokens": 38,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 17,
+          "reason": "completed",
+          "outputTokens": 54,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 18,
+          "reason": "completed",
+          "outputTokens": 17,
+          "reasoningTokens": 0
+        }
+      ],
+      "identityMatches": true,
+      "externalIntentAttempts": 0,
+      "crossSourceAmbiguities": [
+        {
+          "id": "Q9-current-custody-response",
+          "proposition": "The custody records and current source manifest establish when this matter requested original file was captured.",
+          "recordedExpectationFromPrepaidAudit": "unresolved",
+          "actual": "supported",
+          "currentResponseRef": {
+            "documentId": "ibe-evidence-brief-dev-1-809bfa3c-response-current",
+            "version": 1,
+            "sectionId": "s1"
+          },
+          "currentResponseText": "Original custody statement signed by the camera custodian: I personally inspected the original file and its capture metadata. It records capture on vehicle-809bfa3c at 2026-06-23T00:00:00Z. The requested original is included; this is not the copied preview or its upload log.",
+          "assessment": "Defensible alternate sufficient evidence: newly required signed camera-custody response identifies requested original and exact capture instant; manifest supplies original-matter relation. No public rule excludes this response from custody records. Earlier signed unknown availability need not contradict newly obtained metadata. Prepaid independent derivation missed this cross-proposition link. Measurement ambiguity/gold sufficiency candidate; preserve grade, no regrade or tuning."
+        }
+      ],
+      "suspectedFalseGrades": [
+        {
+          "id": "fact:Q9/evidence:Q9",
+          "reason": "Defensible alternate sufficient evidence: newly required signed camera-custody response identifies requested original and exact capture instant; manifest supplies original-matter relation. No public rule excludes this response from custody records. Earlier signed unknown availability need not contradict newly obtained metadata. Prepaid independent derivation missed this cross-proposition link. Measurement ambiguity/gold sufficiency candidate; preserve grade, no regrade or tuning."
+        }
+      ],
+      "criterionDependency": "Evidence label gate depends on the same semantic label as fact. Current-state/current-packet lifecycle is structural and does not duplicate semantic label accuracy."
+    },
+    {
+      "panelId": "01-sol-high-dev",
+      "condition": "gpt-6.1-sol-high",
+      "representation": "original",
+      "taskId": "ibe-evidence-brief-dev-2-59ea906b",
+      "family": "evidence-brief",
+      "episodeFile": "1791151316859-10040-gpt-6.1-sol-high-evidence-ibe-evidence-brief-dev-2-59ea906b.episode",
+      "episodeSha256": "651f90cf0c365d5ab2dd78fb8a3e13705d0dd27063d57db71c4f7f1ec92fdb8e",
+      "status": "completed",
+      "finished": true,
+      "allPassRecorded": true,
+      "weightedScoreRecorded": 100,
+      "componentsRecorded": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailureRecorded": false,
+      "estimatedCostUsd": 0.18455000000000002,
+      "error": null,
+      "currentGeneration": 2,
+      "availableResponse": true,
+      "availableCorrection": true,
+      "findings": [
+        {
+          "propositionId": "Q1",
+          "independentlyExpectedCurrentLabel": "refuted",
+          "registeredTargetLabel": "refuted",
+          "actual": "refuted",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q2",
+          "independentlyExpectedCurrentLabel": "refuted",
+          "registeredTargetLabel": "refuted",
+          "actual": "refuted",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q3",
+          "independentlyExpectedCurrentLabel": "unresolved",
+          "registeredTargetLabel": "unresolved",
+          "actual": "unresolved",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q4",
+          "independentlyExpectedCurrentLabel": "supported",
+          "registeredTargetLabel": "supported",
+          "actual": "supported",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q5",
+          "independentlyExpectedCurrentLabel": "supported",
+          "registeredTargetLabel": "supported",
+          "actual": "supported",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q6",
+          "independentlyExpectedCurrentLabel": "unresolved",
+          "registeredTargetLabel": "unresolved",
+          "actual": "unresolved",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q7",
+          "independentlyExpectedCurrentLabel": "supported",
+          "registeredTargetLabel": "supported",
+          "actual": "supported",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q8",
+          "independentlyExpectedCurrentLabel": "supported",
+          "registeredTargetLabel": "supported",
+          "actual": "supported",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        },
+        {
+          "propositionId": "Q9",
+          "independentlyExpectedCurrentLabel": "refuted",
+          "registeredTargetLabel": "refuted",
+          "actual": "refuted",
+          "correctIndependentTarget": true,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [],
+          "currentReferenceFailures": [],
+          "classification": "independent-target-and-operands-supported"
+        }
+      ],
+      "actualLifecycle": {
+        "exactRequest": true,
+        "responseReviewed": true,
+        "currentPacket": true,
+        "currentProvidedReview": true,
+        "actualCurrentHandoff": true,
+        "followUpCurrent": true
+      },
+      "failedCriteria": [],
+      "protocolErrors": [
+        {
+          "turn": 1,
+          "tool": null,
+          "error": "Invalid JSON action protocol; return the declared actions array and recover",
+          "status": null
+        },
+        {
+          "turn": 6,
+          "tool": "review_receipt",
+          "error": "scope_mismatch",
+          "status": null
+        }
+      ],
+      "interfaceErrors": 1,
+      "truncatedOutput": false,
+      "finishReasons": [
+        {
+          "turn": 1,
+          "reason": "completed",
+          "outputTokens": 183,
+          "reasoningTokens": 105
+        },
+        {
+          "turn": 2,
+          "reason": "completed",
+          "outputTokens": 38,
+          "reasoningTokens": 9
+        },
+        {
+          "turn": 3,
+          "reason": "completed",
+          "outputTokens": 381,
+          "reasoningTokens": 22
+        },
+        {
+          "turn": 4,
+          "reason": "completed",
+          "outputTokens": 76,
+          "reasoningTokens": 34
+        },
+        {
+          "turn": 5,
+          "reason": "completed",
+          "outputTokens": 118,
+          "reasoningTokens": 77
+        },
+        {
+          "turn": 6,
+          "reason": "completed",
+          "outputTokens": 88,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 7,
+          "reason": "completed",
+          "outputTokens": 134,
+          "reasoningTokens": 92
+        },
+        {
+          "turn": 8,
+          "reason": "completed",
+          "outputTokens": 86,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 9,
+          "reason": "completed",
+          "outputTokens": 1144,
+          "reasoningTokens": 171
+        },
+        {
+          "turn": 10,
+          "reason": "completed",
+          "outputTokens": 60,
+          "reasoningTokens": 27
+        },
+        {
+          "turn": 11,
+          "reason": "completed",
+          "outputTokens": 37,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 12,
+          "reason": "completed",
+          "outputTokens": 1232,
+          "reasoningTokens": 73
+        },
+        {
+          "turn": 13,
+          "reason": "completed",
+          "outputTokens": 82,
+          "reasoningTokens": 49
+        },
+        {
+          "turn": 14,
+          "reason": "completed",
+          "outputTokens": 84,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 15,
+          "reason": "completed",
+          "outputTokens": 67,
+          "reasoningTokens": 48
+        }
+      ],
+      "identityMatches": true,
+      "externalIntentAttempts": 0,
+      "crossSourceAmbiguities": [],
+      "suspectedFalseGrades": [],
+      "criterionDependency": "Evidence label gate depends on the same semantic label as fact. Current-state/current-packet lifecycle is structural and does not duplicate semantic label accuracy."
+    },
+    {
+      "panelId": "01-sol-high-dev",
+      "condition": "gpt-6.1-sol-high",
+      "representation": "original",
+      "taskId": "ibe-fraud-referral-dev-1-a47a3330",
+      "family": "fraud-referral",
+      "episodeFile": "1791151316859-10040-gpt-6.1-sol-high-evidence-ibe-fraud-referral-dev-1-a47a3330.episode",
+      "episodeSha256": "0dd5a90fb8826f124902c07cf83a2a86eb3e437d88c6eb81234e8654208db09b",
+      "status": "provider-error",
+      "finished": false,
+      "allPassRecorded": null,
+      "weightedScoreRecorded": null,
+      "componentsRecorded": null,
+      "criticalFailureRecorded": null,
+      "estimatedCostUsd": 0.01866,
+      "error": "Insurance Bench openai: request exceeded 300 seconds",
+      "currentGeneration": 1,
+      "availableResponse": false,
+      "availableCorrection": false,
+      "findings": [
+        {
+          "propositionId": "Q1",
+          "independentlyExpectedCurrentLabel": "unresolved-before-required-source-is-obtained",
+          "registeredTargetLabel": "supported",
+          "actual": null,
+          "correctIndependentTarget": false,
+          "requiredSourceNotObtained": true,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [
+            {
+              "documentId": "ibe-fraud-referral-dev-1-a47a3330-response-current",
+              "version": 1,
+              "sectionId": "s1"
+            }
+          ],
+          "currentReferenceFailures": [],
+          "classification": "no-persisted-finding"
+        },
+        {
+          "propositionId": "Q2",
+          "independentlyExpectedCurrentLabel": "supported",
+          "registeredTargetLabel": "supported",
+          "actual": null,
+          "correctIndependentTarget": false,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [
+            {
+              "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-1",
+              "version": 1,
+              "sectionId": "s2"
+            },
+            {
+              "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-4",
+              "version": 1,
+              "sectionId": "s2"
+            },
+            {
+              "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-9",
+              "version": 1,
+              "sectionId": "s2"
+            }
+          ],
+          "currentReferenceFailures": [],
+          "classification": "no-persisted-finding"
+        },
+        {
+          "propositionId": "Q3",
+          "independentlyExpectedCurrentLabel": "unresolved",
+          "registeredTargetLabel": "unresolved",
+          "actual": null,
+          "correctIndependentTarget": false,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [
+            {
+              "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-2",
+              "version": 1,
+              "sectionId": "s1"
+            }
+          ],
+          "currentReferenceFailures": [],
+          "classification": "no-persisted-finding"
+        },
+        {
+          "propositionId": "Q4",
+          "independentlyExpectedCurrentLabel": "refuted",
+          "registeredTargetLabel": "refuted",
+          "actual": null,
+          "correctIndependentTarget": false,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [
+            {
+              "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-3",
+              "version": 1,
+              "sectionId": "s1"
+            }
+          ],
+          "currentReferenceFailures": [],
+          "classification": "no-persisted-finding"
+        },
+        {
+          "propositionId": "Q5",
+          "independentlyExpectedCurrentLabel": "unresolved",
+          "registeredTargetLabel": "unresolved",
+          "actual": null,
+          "correctIndependentTarget": false,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [
+            {
+              "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-4",
+              "version": 1,
+              "sectionId": "s1"
+            }
+          ],
+          "currentReferenceFailures": [],
+          "classification": "no-persisted-finding"
+        },
+        {
+          "propositionId": "Q6",
+          "independentlyExpectedCurrentLabel": "refuted",
+          "registeredTargetLabel": "refuted",
+          "actual": null,
+          "correctIndependentTarget": false,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [
+            {
+              "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-6",
+              "version": 1,
+              "sectionId": "s1"
+            }
+          ],
+          "currentReferenceFailures": [],
+          "classification": "no-persisted-finding"
+        },
+        {
+          "propositionId": "Q7",
+          "independentlyExpectedCurrentLabel": "refuted",
+          "registeredTargetLabel": "refuted",
+          "actual": null,
+          "correctIndependentTarget": false,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [
+            {
+              "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-7",
+              "version": 1,
+              "sectionId": "s2"
+            },
+            {
+              "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-4",
+              "version": 1,
+              "sectionId": "s2"
+            }
+          ],
+          "currentReferenceFailures": [],
+          "classification": "no-persisted-finding"
+        },
+        {
+          "propositionId": "Q8",
+          "independentlyExpectedCurrentLabel": "unresolved",
+          "registeredTargetLabel": "unresolved",
+          "actual": null,
+          "correctIndependentTarget": false,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [
+            {
+              "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-8",
+              "version": 1,
+              "sectionId": "s1"
+            }
+          ],
+          "currentReferenceFailures": [],
+          "classification": "no-persisted-finding"
+        },
+        {
+          "propositionId": "Q9",
+          "independentlyExpectedCurrentLabel": "unresolved",
+          "registeredTargetLabel": "unresolved",
+          "actual": null,
+          "correctIndependentTarget": false,
+          "requiredSourceNotObtained": false,
+          "sourceAvailableButNotRead": false,
+          "missingIndependentMinimalOperands": [
+            {
+              "documentId": "ibe-fraud-referral-dev-1-a47a3330-doc-9",
+              "version": 1,
+              "sectionId": "s1"
+            }
+          ],
+          "currentReferenceFailures": [],
+          "classification": "no-persisted-finding"
+        }
+      ],
+      "actualLifecycle": {
+        "exactRequest": false,
+        "responseReviewed": false,
+        "currentPacket": false,
+        "currentProvidedReview": false,
+        "actualCurrentHandoff": false,
+        "followUpCurrent": false
+      },
+      "failedCriteria": [],
+      "protocolErrors": [],
+      "interfaceErrors": 0,
+      "truncatedOutput": false,
+      "finishReasons": [
+        {
+          "turn": 1,
+          "reason": "completed",
+          "outputTokens": 56,
+          "reasoningTokens": 27
+        },
+        {
+          "turn": 2,
+          "reason": "completed",
+          "outputTokens": 286,
+          "reasoningTokens": 0
+        },
+        {
+          "turn": 3,
+          "reason": "completed",
+          "outputTokens": 163,
+          "reasoningTokens": 81
+        }
+      ],
+      "identityMatches": true,
+      "externalIntentAttempts": 0,
+      "crossSourceAmbiguities": [],
+      "suspectedFalseGrades": [],
+      "criterionDependency": "Evidence label gate depends on the same semantic label as fact. Current-state/current-packet lifecycle is structural and does not duplicate semantic label accuracy."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-10-04T22:01:12.124398+00:00",
+  "sourceFingerprint": "b4a648a8cb12bc94a938a74ccb03d5c8bc1e692fcd060f55690362750031d64c",
+  "checks": {
+    "npm run check": "pass",
+    "owned eslint": "pass",
+    "focused combined tests": "43/43 pass before additional Gemini ceiling test; Gemini final16/16 pass",
+    "npm test": "1131 legacy pass;1679 architecture pass3skip;815webpass"
+  },
+  "paidV08InferencePerformed": false,
+  "limitations": [
+    "Static cross-provider source review and independent synthetic-source audit, no insurance-expert validation",
+    "Current generated document versions remain1; revision/generation and new correction scope tested",
+    "Evidence accepts sufficient certificate plus additional valid current references; no citation precision/prose grading"
+  ]
+}

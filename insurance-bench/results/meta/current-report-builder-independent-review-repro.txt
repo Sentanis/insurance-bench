@@ -1,0 +1,68 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import {compareRuns} from '../../insurance-bench/compare.ts';
+import type {Run} from '../../insurance-bench/runner.ts';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {admitRegisteredReportPanels, type ReportBuilderIO} from '../../insurance-bench/report-admission.ts';
+const base='insurance-bench/results/',meta=base+'meta/';
+const resultPath=(p:string):string=>{
+ if(!p.startsWith(base)||path.isAbsolute(p)||p.split('/').includes('..'))throw new Error('Report path binding failed');
+ return p;
+};
+const filesystem: ReportBuilderIO = {
+ readJson: p=>JSON.parse(fs.readFileSync(p,'utf8')),
+ sha: p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex'),
+ exists: p=>fs.existsSync(p),
+ listRuns: ()=>fs.readdirSync(base).filter(n=>n.endsWith('.json')).map(n=>base+n),
+};
+export function buildCurrentReportContext(io: ReportBuilderIO=filesystem){
+ const json=(p:string)=>io.readJson(p) as any;
+ const prior=json(meta+'report-context-v0.7c-extended-preserved.json');
+ const v9=admitRegisteredReportPanels(meta+'v09-registration.json',[
+  meta+'investigation-development-independent-audit-v0.9.json',meta+'investigation-holdout-independent-audit-v0.9.json'],io,true);
+ const candidates:Record<string,Run[]>={};
+ for(const slug of ['v09j','v10','v11','v12'])if(io.exists(meta+slug+'-registration.json')){
+  candidates[slug]=admitRegisteredReportPanels(meta+slug+'-registration.json',[meta+slug+'-development-independent-audit.json'],io);
+ }
+ // Historical bodies are loaded only after every registered panel is admitted.
+ const runs=io.listRuns().map(p=>json(resultPath(p)) as Run);
+const cIds=["2026-10-04T04-05-33-650Z-gpt-6.1-sol-baseline","2026-10-04T04-05-33-650Z-gpt-6-luna-baseline","2026-10-04T20-51-36-162Z-us.anthropic.claude-sonnet-4-6-baseline","2026-10-04T21-07-51-258Z-openai.gpt-oss-120b-1-0-baseline","2026-10-04T21-21-21-009Z-openai.gpt-oss-20b-1-0-baseline","2026-10-04T21-26-42-462Z-global.anthropic.claude-haiku-4-5-20251001-v1-0-baseline","2026-10-04T21-32-54-094Z-gpt-6-astra-baseline","2026-10-04T20-51-36-164Z-qwen.qwen3-235b-a22b-2507-v1-0-baseline","2026-10-04T20-51-36-166Z-qwen.qwen3-32b-v1-0-baseline"];
+const primaryRunIds=[...v9.map(r=>r.runId),...Object.values(candidates).flat().map(r=>r.runId),...cIds];
+const comparisons=[...prior.comparisons,...json(meta+'v09-development-comparisons.json').comparisons];
+const unavailableContrasts:string[]=[];
+const addComparison=(baseline:Run,treatment:Run,axis:"effort"|"tier")=>{const limited=[baseline,treatment].some(r=>r.episodes.some(e=>(e as typeof e&{truncatedOutput?:boolean}).truncatedOutput||e.trace.some(t=>/(?:max[_ -]?tokens|max[_ -]?output[_ -]?tokens|length|incomplete)/i.test(t.finishReason??""))));try{if(limited)throw new Error("Cumulative output limit flag bars clean comparison");comparisons.push(compareRuns(baseline,treatment,axis));}catch(e){unavailableContrasts.push(`${treatment.runId} versus ${baseline.runId}: ${e instanceof Error?e.message:String(e)}`);}};
+for(const [slug,rr] of Object.entries(candidates)){
+ if(slug==='v09j'){if(rr.length!==2)throw new Error('Unexpected registered panel count');addComparison(rr[0]!,rr[1]!,'effort');}
+ if(slug==='v10'){if(rr.length!==2)throw new Error('Unexpected registered panel count');addComparison(rr[1]!,rr[0]!,'tier');}
+ if(slug==='v11'){if(rr.length!==4)throw new Error('Unexpected registered panel count');addComparison(rr[1]!,rr[0]!,'effort');addComparison(rr[2]!,rr[3]!,'effort');addComparison(rr[3]!,rr[0]!,'tier');}
+}
+const ledger=json('.tmp/insurance-bench/session-budget.json');
+const findings=[
+ ...unavailableContrasts.map(s=>"Unavailable clean contrast: "+s),
+ 'The frontier50–60 difficulty target remains a research gate. Frozen v0.9 Sol-high/Sol-low/Astra-high all score100 macro task success in development; fresh Sol-high and Astra-high holdouts both100 across three cases each. Independent audits find no false grades or truncation. Sol effort and the verification reminder do not improve those ceiling scores.',
+ 'V0.9 Luna-low/high score0 macro task success, with33.89/58.79 diagnostic weighted partial credit. Actual malformed JSON, insufficient current proof, invalid scope and stale/incomplete handoff confound an insurance-reasoning interpretation. All saved labels, lifecycle state and41 criterion booleans are independently checked; frontier versus lower-tier separation alone does not make a calibrated benchmark.',
+ ...Object.entries(candidates).map(([slug,rr])=>`${slug}: ${rr.map(r=>`${r.model.model} ${r.model.reasoningEffort??'default'} ${(r as Run&{benchmarkScore:number|null}).benchmarkScore===null?'unavailable':(r as Run&{benchmarkScore:number}).benchmarkScore.toFixed(2)} macro / ${r.summary.score.toFixed(2)} weighted diagnostic, ${r.summary.taskCount}/${r.taskIds.length*r.repeat} scored, $${r.estimatedCostUsd.toFixed(6)}`).join('; ')}. Native JSON object transport; exact cases, conditions and full terminal traces retained with independent native audit. No prior generation is regraded.`),
+ 'JSON-object transport requests native JSON-object output; incomplete or truncated responses still require validation. Syntactic validity does not establish evidence, task schema, current approvals or workflow recovery. The JSON diagnostic preserves v0.9 semantic cases as a separately versioned condition. Interaction v0.10 changes sources and transport; v0.11 changes allocation sources, maximum search count, transport and repaired runtime. Cross-generation score changes are descriptive; they cannot identify a causal hardness effect.',
+ 'New headline is equally family-weighted whole-task success;40/25/25/10 weighted partial credit remains diagnostic. Historical c rows retain their original weighted headline. Different native versions, corpus/harnesses, transport, task sets, split, variant and repeated attempts are separate panels. Never pool them into one leaderboard.',
+ 'Three correlated families, single attempts, dependent fact/evidence/draft criteria and33.33-point v0.9 or16.67-point six-case resolution limit calibration power. Memo quality and professional insurance, legal or clinical validity are not established. Human domain validation and representative product coverage remain open.',
+ ...prior.findings.filter((s:string)=>!s.includes('v0.8 evidence candidate is PAUSED')&&!s.includes('requested frontier difficulty target')&&!s.includes('separate v0.9 candidate')),
+ 'The older coupled workflow has a reachable same-response finish-state guard defect: protected intent afterfinish is ignored. A separate independent audit checks15 native runs/39episodes/434turns/976accepted actions and473 supplementary snapshots: no postfinish action or protected intent occurs in saved c traces. No historical grade is changed or source retroactively repaired. New allocation runtime addresses this boundary before inference; old engineering approval is limited by this newly recorded defect.',
+ 'The v0.8 evidence candidate is superseded: a source-propagation false grade affects Q9 after required current custodian evidence. Four of six tasks scored before a provider timeout, no ability headline or clean comparison. Raw source/gold/native/reviews remain unchanged; the invalid row is suppressed from ability metrics.'
+];
+const conditionWarnings={...prior.conditionWarnings};
+for(const r of runs.filter(r=>r.version==='insurance-bench-coupled-v0.7c'))conditionWarnings[r.runId]=(conditionWarnings[r.runId]?conditionWarnings[r.runId]+' ':'')+'Historical weighted headline;300-second request deadline versus600s for new investigation/interaction/allocation conditions. Reachable finish-state guard defect found; independent retained-trace audit finds zero postfinish actions in these paid native runs. No retroactive regrade.';
+for(const r of [...v9,...Object.values(candidates).flat()])conditionWarnings[r.runId]=(conditionWarnings[r.runId]?conditionWarnings[r.runId]+" ":"")+"Prospectively registered600-second request deadline,20turns and16384inclusive output tokens. Whole-task success is the headline; weighted partial credit diagnostic.";
+const accessGaps=[
+ ...prior.accessGaps.filter((s:string)=>!s.includes('shared session ledger')&&!s.includes('CA-IB03 accepts')&&!s.includes('user approved a $75')),
+ `User-approved cap remains $75 TOTAL with no reset. Authoritative ledger snapshot${ledger.updatedAt??' current'}: $${ledger.reservedUsd.toFixed(6)} reserved/estimated; $${(75-ledger.reservedUsd).toFixed(6)} remains. Token-rate estimates and retained failed-call reservations are not invoices. Source-only different-provider subscription reviews are separately labeled engineering review, not benchmark ability calls or invoice spend.`,
+ 'Protected static synthetic development report only: no live claim material, database connection, application credentials or provider keys. Prior CA-IB03 accepts only its historical artifact; this updated report requires its own commit-bound preview and realChrome receipt. This does not prove AWS production-classified staging or application release acceptance.'
+];
+const context={generation:'Investigation and allocation research — separate frozen conditions',primaryRunIds,invalidRunIds:prior.invalidRunIds,comparisons,conditionWarnings,findings,accessGaps};
+return context;
+}
+if(process.argv[1] && path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
+ const context=buildCurrentReportContext();
+ fs.writeFileSync(meta+'report-context.json',JSON.stringify(context,null,2)+'\n');
+ console.log(JSON.stringify({primaryRows:context.primaryRunIds.length}));
+}

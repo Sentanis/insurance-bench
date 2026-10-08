@@ -1,0 +1,115 @@
+{
+  "recordedAt": "2026-10-04T21:46:20.626180+00:00",
+  "capUsd": 75,
+  "sameAuthoritativeLedger": ".tmp/insurance-bench/session-budget.json",
+  "ledgerBeforeExtendedUsd": 20.20268017000003,
+  "ledgerSnapshot": {
+    "reservedUsd": 33.577552187500046,
+    "capUsd": 75,
+    "updatedAt": "2026-10-04T21:39:51.828Z"
+  },
+  "remainingLedgerUsd": 41.422447812499954,
+  "sumEstimatedSuccessfulReturnedRequestCostUsd": 13.235230430000001,
+  "extendedLedgerIncreaseUsd": 13.374872017500017,
+  "retainedFailedReservationsUsd": 0.13964158750001587,
+  "latestAccessProbeRetainedUsd": 0.118198,
+  "otherFailedReservationResidualUsd": 0.021443587500015876,
+  "panels": [
+    {
+      "condition": "qwen3-235b",
+      "split": "dev",
+      "estimatedSuccessfulRequestCostUsd": 0.18279976,
+      "nativeRunPath": "insurance-bench/results/2026-10-04T20-51-36-164Z-qwen.qwen3-235b-a22b-2507-v1-0-baseline.json",
+      "nativeRunSha256": "50aa1f5856237cfb8ab9eaeceaac2bb839fa1bb8742d723252b27c75cabed758",
+      "pricing": {
+        "inputUsdPerMillion": 0.22,
+        "outputUsdPerMillion": 0.88
+      },
+      "abilityCoverage": 1,
+      "forecastUsd": 0.5
+    },
+    {
+      "condition": "qwen3-32b",
+      "split": "dev",
+      "estimatedSuccessfulRequestCostUsd": 0.010295099999999998,
+      "nativeRunPath": "insurance-bench/results/2026-10-04T20-51-36-166Z-qwen.qwen3-32b-v1-0-baseline.json",
+      "nativeRunSha256": "eae6fc4f525ce45ecfc99d44f203cb930a3ce3501b764b978f12bf240459168a",
+      "pricing": {
+        "inputUsdPerMillion": 0.15,
+        "outputUsdPerMillion": 0.6
+      },
+      "abilityCoverage": 0,
+      "forecastUsd": 0.5
+    },
+    {
+      "condition": "claude-haiku-4.5",
+      "split": "holdout",
+      "estimatedSuccessfulRequestCostUsd": 1.244144,
+      "nativeRunPath": "insurance-bench/results/2026-10-04T21-26-42-462Z-global.anthropic.claude-haiku-4-5-20251001-v1-0-baseline.json",
+      "nativeRunSha256": "e949be63bb279a9db00643d59d4103d028a706a702d14e6f8dc78775b32b63dd",
+      "pricing": {
+        "inputUsdPerMillion": 1,
+        "outputUsdPerMillion": 5
+      },
+      "abilityCoverage": 1,
+      "forecastUsd": 1.3
+    },
+    {
+      "condition": "claude-sonnet-4.6",
+      "split": "holdout",
+      "estimatedSuccessfulRequestCostUsd": 6.1156062,
+      "nativeRunPath": "insurance-bench/results/2026-10-04T20-51-36-162Z-us.anthropic.claude-sonnet-4-6-baseline.json",
+      "nativeRunSha256": "2695c8c917f0b91c0c5046dd81558a66e4ab1b2fd6a5493045f188eb77fcaf7c",
+      "pricing": {
+        "inputUsdPerMillion": 3.3,
+        "outputUsdPerMillion": 16.5
+      },
+      "abilityCoverage": 1,
+      "forecastUsd": 3.5
+    },
+    {
+      "condition": "gpt-6-astra-high",
+      "split": "holdout",
+      "estimatedSuccessfulRequestCostUsd": 5.519550000000001,
+      "nativeRunPath": "insurance-bench/results/2026-10-04T21-32-54-094Z-gpt-6-astra-baseline.json",
+      "nativeRunSha256": "e00ebed8972c3ada1005f42d90c1eba7e1822ded8cd1a351275ed7ab9a618efe",
+      "pricing": {
+        "inputUsdPerMillion": 10,
+        "outputUsdPerMillion": 50
+      },
+      "abilityCoverage": 1,
+      "forecastUsd": 11
+    },
+    {
+      "condition": "gpt-oss-120b",
+      "split": "holdout",
+      "estimatedSuccessfulRequestCostUsd": 0.10600229999999998,
+      "nativeRunPath": "insurance-bench/results/2026-10-04T21-07-51-258Z-openai.gpt-oss-120b-1-0-baseline.json",
+      "nativeRunSha256": "95ad05b2191aabe81b943db79e488f414a02bea2209e5de3f5ffb929190fe2f0",
+      "pricing": {
+        "inputUsdPerMillion": 0.15,
+        "outputUsdPerMillion": 0.6
+      },
+      "abilityCoverage": 1,
+      "forecastUsd": 0.5
+    },
+    {
+      "condition": "gpt-oss-20b",
+      "split": "holdout",
+      "estimatedSuccessfulRequestCostUsd": 0.05683307,
+      "nativeRunPath": "insurance-bench/results/2026-10-04T21-21-21-009Z-openai.gpt-oss-20b-1-0-baseline.json",
+      "nativeRunSha256": "f60f9410047c4dad4bef1a21dbc3519018eaf0349aa8619e0921d99de42a8084",
+      "pricing": {
+        "inputUsdPerMillion": 0.07,
+        "outputUsdPerMillion": 0.3
+      },
+      "abilityCoverage": 1,
+      "forecastUsd": 0.5
+    }
+  ],
+  "futureCalibrationForecastUsd": 28.75,
+  "forecastIsNotActualReservation": true,
+  "pricingLimit": "Frozen configured per-token rates are estimates, not provider invoices; cache accounting preserved. Successful returned requests includes unscored Qwen32 pre-failure turns. Transport/access failures remain unscored with retained worst-case reservations. Ledger includes retained reservations, not a claim of billed cost.",
+  "sonnetForecastOverrunReviewed": true,
+  "noCapResetOrIncreaseBeyondUserAuthorized75": true
+}

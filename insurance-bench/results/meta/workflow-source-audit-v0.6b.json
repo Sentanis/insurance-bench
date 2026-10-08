@@ -1,0 +1,39 @@
+{
+  "version": "0.6b",
+  "status": "approved: narrow tool-contract measurement repair",
+  "reviewedAt": "2026-10-04T02:49:16.549Z",
+  "sourceHashes": {
+    "insurance-bench/workflow-types.ts": "13fbf5b455d706c06eec4bedb81c935f5fd7cfdae3b079c28ecf18af5b8d9155",
+    "insurance-bench/workflow-cases.ts": "020aeaac3b769b30e5b2b90dd4c7eb4123c0d403a06d1746ead152196b2b66e7",
+    "insurance-bench/workflows.ts": "15cc2a635d6901cbdae1070f268da67dc566f64054228f93d51d479ba5fc7f3f",
+    "test/architecture/insurance-bench-workflows.test.ts": "027d10aae792d21868892d6c181eca1f6b0d372bb3b08a79ddcaa8e7ff2509b1"
+  },
+  "casesAndGoldUnchanged": true,
+  "previousCasesSha256": "020aeaac3b769b30e5b2b90dd4c7eb4123c0d403a06d1746ead152196b2b66e7",
+  "previousEngineSha256": "73268d8963c149868b8a1dcdd1d7b59ded3fba87b77e4b8469c0444709c51d0c",
+  "originalEngineReconstructionSha256": "73268d8963c149868b8a1dcdd1d7b59ded3fba87b77e4b8469c0444709c51d0c",
+  "repairScopeByteProof": "Replacing exactly the new public kind-enum phrase and removing exactly the acceptedKind error property reconstructs the original audited engine SHA256.",
+  "kindContract": "Public task.family is returned to the model; accepted kind is now explicitly all six public family strings in the manual and supplied on schema rejection.",
+  "goldLeakCheck": "acceptedKind reveals the already-public assignment family, no hidden factual value or future source.",
+  "otherPublicContractsChecked": [
+    "Customer topic/scope explicit per task",
+    "Fact and business field schemas/types/accepted string labels visible",
+    "Follow-up kind/owner/due time explicit",
+    "Workflow status/owner explicit",
+    "Evidence request scope/time/items are current source row fields",
+    "Session/material/draft prerequisites and protected intent rules public"
+  ],
+  "remainingConcreteUndocumentedContract": null,
+  "verification": {
+    "focusedWorkflowTests": 21,
+    "paidCalls": 0,
+    "holdoutReads": 0,
+    "sourceEdits": 0
+  },
+  "history": "Original0.6 audit is preserved; this audit is separate. Original low development runs were interrupted and superseded. Matched complete low conditions must restart under0.6b.",
+  "laterDevelopmentDiagnostic": {
+    "narrowKindRepairApprovalPreserved": true,
+    "defectObservedAfterPaidRuns": "Public remainingAuthorityScopes field is semantically broader than its hidden only-open-gate projection; no paid scores changed.",
+    "audit": "v06b-development-failure-audit.json"
+  }
+}

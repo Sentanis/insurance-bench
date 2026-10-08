@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "provider": "Anthropic Claude Code",
+  "requestedModel": "claude-opus-4-8",
+  "effort": "high",
+  "mode": "source supplied via stdin; tools/MCP disabled; no session persistence; existing authentication",
+  "status": "timeout",
+  "deadlineSeconds": 180,
+  "verdict": null,
+  "sourceSha256": {
+    "insurance-bench/selfrun-coordinator.ts": "0b736d4b806916b8744a030bae9d38e6746072b5b25376599ecd0b829d76650f",
+    "insurance-bench/selfrun-transport.ts": "2339c92548a4c75e6ee58d27ca5dfb3e92e43beea5662bf0f3707272c5c9927e",
+    "scripts/insurance-bench-selfrun.ts": "5e1f3ee1cfc81e51acc60f4387d6369785960c023ca6bf37c60bba8fbc61f8ce",
+    "scripts/build-insurance-bench-selfrun.ts": "41ea541a63ffd2f91f56f2f2a5b65acef1a487fc2618cb05c6c55d3df40ddae8",
+    "insurance-bench/selfrun-site.ts": "4a0cd3698189e4d73e055c57f438019d5b5197d352ae6136fc6867379aea27ea"
+  },
+  "scope": "Additional source engineering review only; no scored benchmark or jury call. Independent final coordinator review separately approved newer source."
+}

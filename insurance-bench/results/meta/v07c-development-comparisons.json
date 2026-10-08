@@ -1,0 +1,158 @@
+{
+  "computedAt": "2026-10-04T04:06:21.106Z",
+  "generation": "insurance-bench-coupled-v0.7c",
+  "comparisons": [
+    {
+      "axis": "effort",
+      "baselineRunId": "2026-10-04T03-39-43-210Z-gpt-6.1-sol-baseline",
+      "treatmentRunId": "2026-10-04T03-46-16-198Z-gpt-6.1-sol-baseline",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 0,
+      "completionDelta": 0,
+      "componentDeltas": {
+        "facts": 0,
+        "evidence": 0,
+        "workflow": 0,
+        "boundaries": 0
+      },
+      "currentStateDelta": 0,
+      "caseWins": 0,
+      "caseTies": 3,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        0,
+        0
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 0
+        },
+        {
+          "family": "financial-reconciliation",
+          "scoreDelta": 0
+        },
+        {
+          "family": "deadline-triage",
+          "scoreDelta": 0
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    },
+    {
+      "axis": "effort",
+      "baselineRunId": "2026-10-04T03-39-43-210Z-gpt-6-luna-baseline",
+      "treatmentRunId": "2026-10-04T03-46-16-197Z-gpt-6-luna-baseline",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 41.19,
+      "completionDelta": 66.67,
+      "componentDeltas": {
+        "facts": 45.62,
+        "evidence": 40.35,
+        "workflow": 38.09,
+        "boundaries": 33.33
+      },
+      "currentStateDelta": 66.67,
+      "caseWins": 3,
+      "caseTies": 0,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        23.2,
+        72.71
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 72.71
+        },
+        {
+          "family": "financial-reconciliation",
+          "scoreDelta": 27.67
+        },
+        {
+          "family": "deadline-triage",
+          "scoreDelta": 23.2
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    },
+    {
+      "axis": "tier",
+      "baselineRunId": "2026-10-04T03-39-43-210Z-gpt-6-luna-baseline",
+      "treatmentRunId": "2026-10-04T03-39-43-210Z-gpt-6.1-sol-baseline",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 49.1,
+      "completionDelta": 100,
+      "componentDeltas": {
+        "facts": 47.37,
+        "evidence": 59.65,
+        "workflow": 47.62,
+        "boundaries": 33.33
+      },
+      "currentStateDelta": 100,
+      "caseWins": 3,
+      "caseTies": 0,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        23.2,
+        96.43
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 96.43
+        },
+        {
+          "family": "financial-reconciliation",
+          "scoreDelta": 27.67
+        },
+        {
+          "family": "deadline-triage",
+          "scoreDelta": 23.2
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    },
+    {
+      "axis": "tier",
+      "baselineRunId": "2026-10-04T03-46-16-197Z-gpt-6-luna-baseline",
+      "treatmentRunId": "2026-10-04T03-46-16-198Z-gpt-6.1-sol-baseline",
+      "cases": 3,
+      "attemptsPerCase": 1,
+      "scoreDelta": 7.91,
+      "completionDelta": 33.33,
+      "componentDeltas": {
+        "facts": 1.75,
+        "evidence": 19.3,
+        "workflow": 9.52,
+        "boundaries": 0
+      },
+      "currentStateDelta": 33.33,
+      "caseWins": 1,
+      "caseTies": 2,
+      "caseLosses": 0,
+      "familyClusterBootstrap95": [
+        0,
+        23.72
+      ],
+      "families": [
+        {
+          "family": "coverage-review",
+          "scoreDelta": 23.72
+        },
+        {
+          "family": "financial-reconciliation",
+          "scoreDelta": 0
+        },
+        {
+          "family": "deadline-triage",
+          "scoreDelta": 0
+        }
+      ],
+      "caveat": "Descriptive paired difference (treatment minus baseline), 10000 seeded bootstrap samples of family clusters. Repeated attempts are averaged within case. The evaluated templated families are a small correlated sample; the interval does not establish population capability. Configured-system comparisons can vary model and effort together and cannot establish a pure effort effect. Clean contrasts exclude output truncation."
+    }
+  ]
+}

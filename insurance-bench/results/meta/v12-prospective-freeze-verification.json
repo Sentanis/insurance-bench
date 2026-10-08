@@ -1,0 +1,48 @@
+{
+  "status": "pass-engineering-only",
+  "sourceCommit": "2e85a4778da4c8c135182b6573ed45b6740ec266",
+  "v11NativeAudit": "All4terminalpanels/24episodes/1152criteria independentlyconsistent; no regrading",
+  "v12": "Prospective two3case high-effort panels; registration prepared and validated; no inference before committed freeze",
+  "v12ControllerControls": 23,
+  "v12ReportBuilderControls": 10,
+  "directStrictControllerAndBuilderCompile": "pass independently recorded",
+  "evaluatedSourceChangesAfter2e85": false,
+  "checksInheritedAtUnchangedSource": [
+    "Current whole-repository typechecking and51focused controls",
+    "1241serialized legacy tests; no default-concurrent pass claim"
+  ],
+  "authoritativeLedgerCheckpoint": {
+    "reservedUsd": 72.26526888750007,
+    "capUsd": 75,
+    "updatedAt": "2026-10-05T03:43:29.482Z"
+  },
+  "prospectiveForecastUsd": 2.5,
+  "artifactSha256": {
+    "v11-development-independent-audit.json": "2f6ed5b0219fe49b02e50b0b78fe16ee51b8e8527170f61fdfc5d436d150b21d",
+    "v11-development-comparisons.json": "756fe434998d3ea59d972742a6dae3e2eac1540703e91e9618f87030d92ab788",
+    "v11-comparison-independent-review.json": "dfb1531cbf82edbedf96e0d0e027a173f2fa4815c4bfa47645c7e814cbf3cfee",
+    "v12-registration.json": "37fb73dc4fd2ba2072fdf0fd9ad1a12a4dc0ccd1654b323cd3ca9c21eb6ea81e",
+    "v12-controller-independent-review.json": "c2abdd7ea7bf4d89e6f7a2b9ca75f0c363909d6f5dd155928ea488f2db70c205",
+    "v12-controller-repro.txt": "a97106aef00d478cc846ac796f57fb516efe30fcf89af195f896cd1bcf4d2344",
+    "v12-candidate-independent-audit.json": "764f9e0d9a553d8d1825c6690b71526f7d6c5f1a0759047f742045142881ffbe",
+    "dependency-allocation-runner-independent-review-v0.12.json": "5900e3a27b7e0b51cd54a33045603351170bcf4d0256824f6526ca6c4829720a",
+    "v12-independent-opus-review.json": "fa69594fcb9c80552acd38e49da51be9aef1c4b246a8ad713753a70bfd746f7e",
+    "current-report-v12-builder-independent-review.json": "f1685bcae09ffb1f6aead977242178c4d6f4d043f735db323c6b75482ebe18b4",
+    "v12-development-independent-audit.json": "8de2110efffc8d731882693a3ac62c05143a20219dc0101faa2fdeabbc40dc39",
+    "v12-development-independent-audit-repro.txt": "c62cd32502250f89ee5021b9461541badc30d2d3c79c140f8c4dd4bd5255f539"
+  },
+  "limitations": [
+    "Engineering and provenance checks do not establish observed v12 model difficulty or professional validity",
+    "Real report builder not executed; changed preview/Chrome acceptance pending",
+    "Ledger includes standard-rate estimates and retained uncertain-call reservations, not invoices"
+  ],
+  "v12NativeAuditReadiness": {
+    "actualPanelsAudited": 0,
+    "independentGradeControls": 66,
+    "adverseNativeMetadataControls": 11,
+    "prospectiveBindingMockControls": 70,
+    "mockNativeEpisodes": 6,
+    "directStrictCompile": "pass",
+    "terminalAuthorization": "unset; actual paid outputs cannot be read before root notification"
+  }
+}

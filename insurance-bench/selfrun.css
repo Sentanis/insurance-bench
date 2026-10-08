@@ -1,0 +1,73 @@
+.selfrun-page .site-header nav { gap: clamp(12px, 2vw, 30px); }
+.selfrun-page .lead h1 { font-size: clamp(40px, 5vw, 62px); }
+.selfrun-page .data-ribbon span { text-transform: none; letter-spacing: 0; font-size: 12px; }
+.selfrun-scope { margin: 0 0 38px; padding: 22px 24px; border: 1px solid var(--line); background: var(--paper); }
+.selfrun-scope p { max-width: 920px; margin-bottom: 10px; color: #405460; font-size: 13px; }
+.selfrun-scope p:last-child { margin-bottom: 0; }
+.selfrun-filters { grid-template-columns: minmax(220px, 1.15fr) minmax(300px, 1.2fr) minmax(145px, .8fr); margin-bottom: 14px; }
+.selfrun-analysis { margin: 38px 0 48px; padding: 23px 24px 18px; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line-dark); background: #f8fafb; }
+.selfrun-analysis .section-heading { align-items: end; margin-bottom: 12px; }
+.selfrun-analysis .section-heading > p { max-width: 390px; }
+.selfrun-plot-controls { display: grid; grid-template-columns: minmax(190px, .9fr) minmax(280px, 1.4fr) minmax(180px, .8fr); gap: 15px; align-items: end; margin: 0 0 8px; }
+.selfrun-plot-controls > label { display: flex; min-width: 0; flex-direction: column; gap: 5px; color: var(--muted); font-size: 11px; font-weight: 660; }
+.selfrun-plot-controls select { height: 38px; padding: 7px 10px; border: 1px solid var(--line-dark); border-radius: 0; background: white; color: var(--ink); font-size: 13px; }
+.effort-picker { display: flex; min-width: 0; flex-wrap: wrap; gap: 8px 18px; margin: 0; padding: 7px 10px 8px; border: 1px solid var(--line-dark); background: white; }
+.effort-picker legend { padding: 0 4px; color: var(--muted); font-size: 11px; font-weight: 660; }
+.effort-picker label { display: inline-flex; align-items: center; gap: 6px; color: var(--ink); font-size: 12px; font-weight: 520; }
+.effort-picker input { accent-color: var(--blue); }
+.selfrun-chart-frame { position: relative; min-height: 300px; border: 1px solid var(--line); background: white; }
+.selfrun-chart { display: block; width: 100%; height: auto; min-height: 300px; max-height: 450px; }
+.selfrun-chart text { fill: #61717b; font-family: inherit; font-size: 11px; font-variant-numeric: tabular-nums; }
+.selfrun-chart .chart-axis-label { fill: #344c59; font-size: 12px; font-weight: 680; }
+.selfrun-chart .chart-grid line { stroke: #e4eaed; stroke-width: 1; }
+.selfrun-chart .chart-axis { stroke: #71818a; stroke-width: 1.2; }
+.selfrun-chart .chart-connection { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; opacity: .68; }
+.selfrun-chart .chart-marker { stroke: white; stroke-width: 2; vector-effect: non-scaling-stroke; }
+.selfrun-chart .chart-point:focus .chart-marker { stroke: #152f3d; stroke-width: 3; }
+.selfrun-chart-empty { position: absolute; inset: 50% auto auto 50%; width: min(90%, 430px); margin: 0; transform: translate(-50%, -50%); color: var(--muted); text-align: center; font-size: 14px; }
+.selfrun-legend { display: flex; flex-wrap: wrap; gap: 8px 17px; margin: 12px 0 0; padding: 0; list-style: none; }
+.selfrun-legend li { display: inline-flex; align-items: center; gap: 7px; color: #405460; font-size: 11px; }
+.legend-swatch { display: inline-block; width: 9px; height: 9px; flex: 0 0 9px; border-radius: 50%; }
+.chart-note { margin: 10px 0 0; color: var(--muted); font-size: 11px; }
+.effort-filter { min-height: 39px; align-content: center; }
+.selfrun-table { min-width: 1590px; }
+.selfrun-table th, .selfrun-table td { padding: 14px 12px; }
+.selfrun-table .selfrun-model { position: sticky; left: 0; z-index: 2; min-width: 190px; width: 190px; background: var(--paper); overflow-wrap: anywhere; }
+.selfrun-table thead .selfrun-model { z-index: 3; background: #edf2f5; }
+.selfrun-model > span { display: block; }
+.selfrun-effort { margin-top: 7px; color: var(--blue); font-size: 11px; font-weight: 650; }
+.selfrun-table .selfrun-group-start > * { border-top: 2px solid var(--line-dark); }
+.selfrun-result { min-width: 205px; background: #f7fafb; }
+.selfrun-result strong { font-size: 14px; }
+.selfrun-result > span, .selfrun-component > span, .selfrun-usage > span, .selfrun-time > span { display: block; margin-top: 5px; color: var(--muted); font-size: 10px; line-height: 1.4; }
+.selfrun-result > .selfrun-status { color: #315c4a; font-weight: 700; }
+.selfrun-result > .status-not-attempted, .selfrun-result > .status-stopped-access { color: var(--amber); }
+.selfrun-result > .status-running { color: var(--blue); }
+.selfrun-component { position: relative; min-width: 112px; }
+.selfrun-component strong { font-size: 13px; font-variant-numeric: tabular-nums; }
+.selfrun-usage { min-width: 190px; font-variant-numeric: tabular-nums; }
+.selfrun-time { min-width: 130px; font-variant-numeric: tabular-nums; }
+.selfrun-unavailable { color: var(--muted); }
+.selfrun-method { max-width: 100%; }
+.selfrun-method > p { max-width: 880px; }
+.selfrun-provenance { display: grid; grid-template-columns: 150px minmax(0, 1fr); max-width: 880px; gap: 7px 16px; margin: 20px 0; font-size: 12px; }
+.selfrun-provenance dt { color: var(--muted); }
+.selfrun-provenance dd { margin: 0; overflow-wrap: anywhere; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+[hidden] { display: none !important; }
+@media (max-width: 620px) {
+  .selfrun-page .site-header { flex-wrap: wrap; justify-content: flex-start; gap: 0; padding-top: 12px; }
+  .selfrun-page .site-header nav { width: 100%; justify-content: space-between; gap: 10px; }
+  .selfrun-page .site-header nav a { min-height: 44px; }
+  .selfrun-page .site-header nav a:last-child { display: inline-flex; }
+  .selfrun-page .lead h1 { font-size: 43px; }
+  .selfrun-scope { padding: 18px 15px; }
+  .selfrun-filters { grid-template-columns: minmax(0, 1fr); }
+  .selfrun-analysis { margin: 26px 0 36px; padding: 17px 12px; }
+  .selfrun-plot-controls { grid-template-columns: minmax(0, 1fr); }
+  .selfrun-chart-frame { min-height: 250px; overflow: hidden; }
+  .selfrun-chart { min-width: 690px; min-height: 250px; transform-origin: top left; }
+  .selfrun-table .selfrun-model { position: static; min-width: 165px; width: 165px; }
+  .selfrun-provenance { grid-template-columns: 1fr; gap: 2px; }
+  .selfrun-provenance dd { margin-bottom: 10px; }
+}

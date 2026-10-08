@@ -1,0 +1,100 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import {generateCoupledCases} from '../../insurance-bench/coupled-cases.ts';
+import {publicWorkflowTask,WORKFLOW_TOOLS} from '../../insurance-bench/workflows.ts';
+const sha=(s:string)=>crypto.createHash('sha256').update(s).digest('hex');
+const eq=(a:unknown,b:unknown)=>JSON.stringify(Array.isArray(a)?[...a].sort():a)===JSON.stringify(Array.isArray(b)?[...b].sort():b);
+const failures:any[]=[];const observations:any[]=[];
+const must=(okay:boolean,context:any)=>{if(!okay)failures.push(context);};
+function reconstruct(documents:any[],clock:string){
+ const rows=documents.flatMap(d=>d.rows),r=new Map(rows.map(row=>[row.id,row.fields]));
+ const value=(id:string)=>{const item=r.get(id);if(!item)throw new Error('Missing raw row '+id);return item;};
+ const num=(v:unknown)=>{if(typeof v!=='number'||!Number.isSafeInteger(v))throw new Error('Invalid integer operand');return v;};
+ const instant=(v:unknown)=>Date.parse(String(v));const now=instant(clock);
+ const typed=(prefix:string)=>rows.filter(row=>row.id.startsWith(prefix)).map(row=>({rowId:row.id,...row.fields}));
+ const last=(items:any[])=>items.reduce((a,b)=>!a||num(b.version)>num(a.version)?b:a,undefined);
+ const policyBI=value('policy-BI'),policyPD=value('policy-PD');
+ const covered:Record<string,boolean>={},limits:Record<string,number>={},sources:Record<string,string>={};
+ for(const claimant of ['A','B','C','D']){
+  const exposure=value('exposure-'+claimant),base=[policyBI,policyPD].find(p=>p.entity===exposure.entity&&p.coverage===exposure.coverage);
+  const loss=instant(value('loss-'+claimant).lossAt);
+  covered[claimant]=Boolean(base&&Number.isFinite(loss)&&instant(base.inceptionAt)<=loss&&loss<instant(base.expirationAt));
+  const applicable=covered[claimant]?typed('endorsement-').filter(e=>e.signed===true&&e.scope===claimant&&e.entity===exposure.entity&&e.coverage===exposure.coverage&&e.policySourceId===base.sourceId&&instant(e.effectiveAt)<=loss):[];
+  const endorsement=last(applicable);sources[claimant]=covered[claimant]?String(endorsement?.sourceId??base.sourceId):'unavailable';limits[claimant]=covered[claimant]?num(endorsement?.personLimitCents??base.personLimitCents):0;
+ }
+ const occurrence=value('occurrence');
+ const occEnd=last(typed('endorsement-').filter(e=>e.signed===true&&e.scope==='occurrence'&&e.entity===policyBI.entity&&e.coverage===policyBI.coverage&&e.policySourceId===policyBI.sourceId&&instant(e.effectiveAt)<=instant(occurrence.lossAt)));
+ const occLimit=num(occEnd?.occurrenceLimitCents??policyBI.incidentLimitCents);
+ const eligibleFinancial=typed('event-').filter(e=>e.signed===true&&e.posted===true&&instant(e.effectiveAt)<=now);
+ const groups:Record<string,any[]>={};for(const e of eligibleFinancial)(groups[e.transactionKey]??=[]).push(e);
+ const financial=Object.values(groups).map(last);const byTransaction=new Map(financial.map(e=>[e.transactionKey,e]));
+ const allocation=new Map(typed('allocation-').map(a=>[a.transactionKey,a.claimant]));
+ const resolve=(e:any)=>e.claimant==='unknown'?(allocation.get(e.transactionKey)??'unknown'):e.claimant;
+ const known:Record<string,number>={A:0,B:0,C:0,D:0};let bi=0,pd=0,unallocated=0;const unresolved=new Set<string>();
+ const signedAmounts:any[]=[];
+ for(const e of financial){
+  if(!['indemnity','reversal'].includes(e.kind))continue;
+  const basis=e.kind==='reversal'?byTransaction.get(e.linkedKey):e;
+  if(!basis||basis.kind!=='indemnity')throw new Error('Unusable selected reversal basis');
+  const amount=num(e.cents)*(e.kind==='reversal'?-1:1),claimant=resolve(basis);
+  if(e.kind==='reversal'&&num(e.cents)>num(basis.cents))throw new Error('Excess reversal');
+  signedAmounts.push({event:e.rowId,basis:basis.rowId,coverage:basis.coverage,claimant,amount});
+  if(basis.coverage==='BI'){bi+=amount;if(claimant==='unknown'){unallocated+=amount;unresolved.add(basis.transactionKey);}else known[claimant]+=amount;}
+  else if(basis.coverage==='PD'){pd+=amount;known[claimant]+=amount;}else throw new Error('Unrecognized coverage');
+ }
+ const reserveGroups:Record<string,any[]>={};for(const e of typed('reserve-').filter(e=>e.signed===true&&instant(e.effectiveAt)<=now))(reserveGroups[e.claimant+':'+e.coverage]??=[]).push(e);
+ const reserves=Object.values(reserveGroups).map(last);const reserve=(person:string,coverage:string)=>reserves.filter(e=>e.claimant===person&&e.coverage===coverage).reduce((s,e)=>s+num(e.cents),0);
+ const biReserve=reserves.filter(e=>e.coverage==='BI').reduce((s,e)=>s+num(e.cents),0);
+ const personAvailable=Object.fromEntries(['A','B','C'].map(c=>[c,Math.max(0,limits[c]-known[c]-reserve(c,'BI'))]));
+ const occurrenceAvailable=Math.max(0,occLimit-bi-biReserve);
+ const deadline:Record<string,string>={},ready:Record<string,boolean>={};const clockProof:any[]=[];
+ for(const claimant of ['A','B','C']){
+  const signed=typed('demand-').filter(d=>d.claimant===claimant&&d.signed===true),current=last(signed);
+  const original=signed.reduce((a,b)=>!a||num(b.version)<num(a.version)?b:a,undefined);
+  const clockDemand=current.changeType==='amount_only'?original:current;
+  const delivery=value('receipt-'+clockDemand.demandId),packetReceipt=value('receipt-'+current.demandId);
+  const base=instant(delivery.completeAt)+num(clockDemand.durationMinutes)*60000;
+  const extension=last(typed('extension-').filter(e=>e.claimant===claimant&&e.signed===true));
+  const accepted=Boolean(extension&&extension.recipientAuthorized===true&&extension.rootId===clockDemand.rootId&&instant(extension.receivedAt)<base);
+  deadline[claimant]=new Date(base+(accepted?num(extension.extraMinutes)*60000:0)).toISOString().replace('.000Z','Z');
+  ready[claimant]=packetReceipt.verified===true&&Array.isArray(packetReceipt.missingItems)&&packetReceipt.missingItems.length===0;
+  clockProof.push({claimant,currentDemand:current.rowId,clockDemand:clockDemand.rowId,receiptAt:delivery.completeAt,durationMinutes:clockDemand.durationMinutes,unextended:new Date(base).toISOString(),extensionAccepted:accepted,deadline:deadline[claimant]});
+ }
+ const packages=typed('package-').map(p=>{const allocationCents=Object.fromEntries(['A','B','C'].map(c=>[c,num(p['allocate'+c+'Cents'])]));return{id:p.packageId,allocations:allocationCents,costCents:Object.values(allocationCents).reduce((s,v)=>s+v,0),priorityValue:num(p.priorityValue),eligible:!unresolved.has(p.requiredAllocationKey)&&Object.entries(allocationCents).every(([c,amount])=>amount===0||(covered[c]&&ready[c]&&instant(deadline[c])>=now))};});
+ // An independently generated powerset is checked against raw-derived capacities. No production solver/evaluator or normalized constraints are used.
+ let combinations:any[][]=[[]];for(const p of packages)combinations=combinations.concat(combinations.map(set=>set.concat(p)));
+ let optimum=-Infinity;const optimumSets:string[][]=[];let feasibleCount=0;
+ for(const subset of combinations){
+  const totals=Object.fromEntries(['A','B','C'].map(c=>[c,subset.reduce((s,p)=>s+p.allocations[c],0)]));
+  const cost=subset.reduce((s,p)=>s+p.costCents,0),priority=subset.reduce((s,p)=>s+p.priorityValue,0);
+  if(subset.some(p=>!p.eligible)||cost>occurrenceAvailable||Object.entries(totals).some(([c,cents])=>cents>personAvailable[c]))continue;
+  feasibleCount++;if(priority>optimum){optimum=priority;optimumSets.length=0;}if(priority===optimum)optimumSets.push(subset.map(p=>p.id).sort());
+ }
+ const facts:Record<string,any>={limitSourceA:sources.A,limitSourceB:sources.B,limitSourceC:sources.C,personAvailableACents:personAvailable.A,personAvailableBCents:personAvailable.B,personAvailableCCents:personAvailable.C,occurrenceAvailableCents:occurrenceAvailable,pdAvailableCents:Math.max(0,num(policyPD.incidentLimitCents)-pd-reserve('D','PD')),netPaidACents:known.A,netPaidBCents:known.B,netPaidCCents:known.C,reserveTotalBICents:biReserve,unallocatedBICents:unallocated,eligiblePackageIds:packages.filter(p=>p.eligible).map(p=>p.id),optimalPriorityValue:optimum,deadlineA:deadline.A,deadlineB:deadline.B,deadlineC:deadline.C,lateDemandClaimantIds:['A','B','C'].filter(c=>instant(deadline[c])<now)};
+ const business={proposedPackageIds:[],selectedCostCents:0,selectedPriorityValue:0,occurrenceAvailableCents:occurrenceAvailable,personAvailableACents:personAvailable.A,personAvailableBCents:personAvailable.B,personAvailableCCents:personAvailable.C,unallocatedBICents:unallocated};
+ return{facts,business,packages,personAvailable,occurrenceAvailableCents:occurrenceAvailable,optimalValue:optimum,optimalPlans:optimumSets,feasiblePlanCount:feasibleCount,subsetsExamined:combinations.length,signedAmounts,clockProof,rawRowIds:[...r.keys()],selectedFinancialRowIds:financial.map(e=>e.rowId),selectedReserveRowIds:reserves.map(e=>e.rowId)};
+}
+const tasks=generateCoupledCases();let factCount=0,businessCount=0,packageCount=0,subsets=0,sourceRequirements=0;
+for(const task of tasks){
+ const visible=publicWorkflowTask(task);must(Object.keys(visible).sort().join(',')==='clock,family,id,instruction',{task:task.id,issue:'Public gold projection leak'});
+ must(task.workflow.updateKind===visible.family&&WORKFLOW_TOOLS.includes('requires kind equal to the assignment\'s public family value'),{task:task.id,issue:'Undisclosed business kind'});
+ must(task.instruction.includes('topic='+task.workflow.customerTopic)&&task.instruction.includes('scope='+task.workflow.customerScope),{task:task.id,issue:'Undisclosed customer scope/topic'});
+ must(task.instruction.includes('kind='+task.workflow.followUpKind)&&task.instruction.includes('owner='+task.rubric.followUp.owner),{task:task.id,issue:'Undisclosed follow-up value'});
+ for(const phase of [0,1,2] as const){
+  const declared=task.workflow.phases[phase],hidden=task.coupled.phases[phase],independent=reconstruct(declared.documents,task.clock);
+  for(const [field,value] of Object.entries(independent.facts)){factCount++;must(eq(value,declared.facts[field]),{task:task.id,phase,field,expectedFromRaw:value,gold:declared.facts[field]});must(task.instruction.includes(field+':'),{task:task.id,phase,field,issue:'Undisclosed fact field'});}
+  for(const [field,value] of Object.entries(independent.business)){businessCount++;must(eq(value,declared.business[field]),{task:task.id,phase,businessField:field,expectedFromRaw:value,gold:declared.business[field]});must(task.instruction.includes(field+':'),{task:task.id,phase,field,issue:'Undisclosed business field'});}
+  must(eq(Object.keys(independent.facts),Object.keys(declared.facts)),{task:task.id,phase,issue:'Fact key set mismatch'});
+  for(const key of ['personAvailable','occurrenceAvailableCents','packages','optimalValue','feasiblePlanCount','subsetsExamined'] as const)must(JSON.stringify(independent[key])===JSON.stringify(hidden[key]),{task:task.id,phase,issue:'Constraint mismatch',field:key,expectedFromRaw:independent[key],gold:hidden[key]});
+  const setStrings=(values:string[][])=>values.map(ids=>JSON.stringify([...ids].sort())).sort();must(eq(setStrings(independent.optimalPlans),setStrings(hidden.optimalPlans)),{task:task.id,phase,issue:'Tied optimum set mismatch'});
+  for(const [field,ids] of Object.entries(declared.evidence)){sourceRequirements+=ids.length;must(Object.hasOwn(independent.facts,field),{task:task.id,phase,issue:'Evidence undefined fact',field});for(const rowId of ids)must(independent.rawRowIds.includes(rowId),{task:task.id,phase,field,rowId,issue:'Required source absent'});}
+  packageCount+=independent.packages.length;subsets+=independent.subsetsExamined;
+  observations.push({taskId:task.id,split:task.split,phase,rawRows:independent.rawRowIds.length,facts:independent.facts,selectedFinancialRowIds:independent.selectedFinancialRowIds,selectedReserveRowIds:independent.selectedReserveRowIds,signedAmounts:independent.signedAmounts,deadlineProof:independent.clockProof,eligiblePackageCount:independent.packages.filter(p=>p.eligible).length,optimalValue:independent.optimalValue,optimalPlans:independent.optimalPlans,feasiblePlanCount:independent.feasiblePlanCount,evidenceRequirements:Object.values(declared.evidence).reduce((s,ids)=>s+ids.length,0),uniqueRequiredSources:new Set(Object.values(declared.evidence).flat()).size});
+ }
+}
+const first=observations.find(row=>row.taskId===tasks[0].id&&row.phase===2);const firstRaw=tasks[0].workflow.phases[2].documents.flatMap(d=>d.rows);const firstBI=firstRaw.find(r=>r.id==='policy-BI')!.fields;const jitter=Number(firstBI.personLimitCents)-20000;
+const handExpected={limitSourceA:'E-A2',limitSourceB:'E-B2',limitSourceC:'P-BI',netPaidACents:5000+jitter,netPaidBCents:5700,netPaidCCents:5400,personAvailableACents:11700,personAvailableBCents:7100,personAvailableCCents:11500+jitter,reserveTotalBICents:9100,occurrenceAvailableCents:15300,pdAvailableCents:6100,unallocatedBICents:0,deadlineA:'2026-06-24T17:30:00Z',deadlineB:'2026-06-24T17:15:00Z',deadlineC:'2026-06-24T18:25:00Z',lateDemandClaimantIds:[]};
+for(const [field,value] of Object.entries(handExpected))must(eq(value,first.facts[field]),{issue:'Independent hand calculation mismatch',field,expected:value,actual:first.facts[field]});
+const sourcePaths=['insurance-bench/coupled-cases.ts','insurance-bench/coupled-engine.ts','insurance-bench/coupled-runner.ts','insurance-bench/workflows.ts','insurance-bench/workflow-types.ts','test/architecture/insurance-bench-coupled.test.ts'];
+const report={version:'insurance-bench-coupled-v0.7',auditedAt:new Date().toISOString(),status:failures.length?'reject':'raw numerical/schema audit passed; semantic review still to be finalized',scope:'Pre-inference source engineering review of all stored36phase definitions; no evaluated holdout output or model inference read/called.',sourceHashes:Object.fromEntries(sourcePaths.map(p=>[p,sha(fs.readFileSync(p,'utf8'))])),auditScriptSha256:sha(fs.readFileSync('.tmp/insurance-bench/v07-independent-source-audit.ts','utf8')),independence:'Only generator and public projection/tool manual imported. Independent policy/ledger/reserve/demand/eligibility derivation operates on raw rows and an independent powerset checker operates on those raw-derived constraints. Production deriveCoupledPhase, solveCoupled, evaluateCoupledPlan, grader and normalized constraints never supply independent expected values.',counts:{tasks:tasks.length,phases:observations.length,factualOutputs:factCount,businessFields:businessCount,packageProjections:packageCount,enumeratedSubsets:subsets,requiredSourceReferences:sourceRequirements,failures:failures.length},handCalculationControl:{taskId:tasks[0].id,phase:2,jitterCents:jitter,expected:handExpected,calculationNotes:["A corrected positive6200+jitter minus linked reversal1200=5000+jitter; reversal PD/B/C labels are ignored.","Known C3400 plus resolved U2600 minus linked U reversal600=5400. Expense/recovery excluded. Unknown net remaining0.","BI reserves replace predecessors:3800+2200+3100=9100. Occurrence40500+jitter minus16100+jitter net BI minus9100=15300. PD11000−2800−2100=6100.","A deadline13:00+240minutes+30extension=17:30; B replacement15:45+90=17:15 with old-root extension rejected; C13:40+240+45=18:25."]},failures,observations};
+fs.writeFileSync('.tmp/insurance-bench/v07-independent-source-audit.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({status:report.status,counts:report.counts,failures:failures.slice(0,6)}));

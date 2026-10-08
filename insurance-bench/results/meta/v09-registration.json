@@ -1,0 +1,312 @@
+{
+  "registeredAt": "2026-10-04T23:18:50.849Z",
+  "status": "prospective-no-inference-before-freeze",
+  "generation": "insurance-bench-investigation-v0.9",
+  "sourceFingerprint": "7b8ed81c9a0a0c546205e58cdeb80bc3ce159e7801f2db22c5358eb6e1543cae",
+  "promptHash": "86a249e08db56fc4519a1cc9ffeab158c61a25cea95c6ca9626d5ceac60017fd",
+  "fullCorpusHash": "b8735f0158297b64a250cdecdcb0fffda42fb85f1fd30e3c07ff5ec45f81d2f5",
+  "auditPath": "insurance-bench/results/meta/investigation-independent-audit-v0.9.json",
+  "auditSha256": "8e4e633370485a074bbc1ebec6c19cd3fc3b8476bd391e0c27d9699a49c398f0",
+  "planPath": "specs/features/insurance-bench/v09-experiment-plan-draft.md",
+  "planSha256": "283ada298dcf205d79d1b56370c7a4a01d85a6cfbe501a82fd1fa222cc651ba3",
+  "controllerPath": ".tmp/insurance-bench/v09-run-panels.ts",
+  "controllerSha256": "66546b260b4eeb83e92350c2dbd94fa1469ae14d8fde6409e2b3be4675fcc0c7",
+  "capUsd": 75,
+  "ledgerPath": ".tmp/insurance-bench/session-budget.json",
+  "ledgerAtRegistration": {
+    "reservedUsd": 34.65158218750003,
+    "capUsd": 75,
+    "updatedAt": "2026-10-04T22:07:30.928Z"
+  },
+  "forecastTotalUsd": 34.25,
+  "headlineMetric": "macro-task-success",
+  "diagnosticWeights": {
+    "facts": 40,
+    "evidence": 25,
+    "workflow": 25,
+    "boundaries": 10
+  },
+  "panels": [
+    {
+      "id": "01-sol-high-dev",
+      "modelAlias": "gpt-6.1-sol-high",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6.1-sol",
+        "inputUsdPerMillion": 2,
+        "outputUsdPerMillion": 10,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "split": "dev",
+      "variant": "baseline",
+      "forecastUsd": 2.5,
+      "taskIds": [
+        "ibi-fleet-assignment-dev-1-473634f6",
+        "ibi-premises-chronology-dev-1-98bd4c8a",
+        "ibi-multi-exposure-review-dev-1-57c335e"
+      ],
+      "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+      "correspondenceIds": [
+        "ibi-fleet-assignment-dev-1-473634f6",
+        "ibi-premises-chronology-dev-1-98bd4c8a",
+        "ibi-multi-exposure-review-dev-1-57c335e"
+      ],
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384,
+        "transportDeadlineMs": 600000
+      },
+      "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f"
+    },
+    {
+      "id": "02-sol-low-dev",
+      "modelAlias": "gpt-6.1-sol-low",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6.1-sol",
+        "inputUsdPerMillion": 2,
+        "outputUsdPerMillion": 10,
+        "reasoningEffort": "low",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "split": "dev",
+      "variant": "baseline",
+      "forecastUsd": 2.5,
+      "taskIds": [
+        "ibi-fleet-assignment-dev-1-473634f6",
+        "ibi-premises-chronology-dev-1-98bd4c8a",
+        "ibi-multi-exposure-review-dev-1-57c335e"
+      ],
+      "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+      "correspondenceIds": [
+        "ibi-fleet-assignment-dev-1-473634f6",
+        "ibi-premises-chronology-dev-1-98bd4c8a",
+        "ibi-multi-exposure-review-dev-1-57c335e"
+      ],
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384,
+        "transportDeadlineMs": 600000
+      },
+      "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f"
+    },
+    {
+      "id": "03-luna-low-dev",
+      "modelAlias": "gpt-6-luna-low",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6-luna",
+        "inputUsdPerMillion": 0.1,
+        "outputUsdPerMillion": 0.5,
+        "reasoningEffort": "low",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "split": "dev",
+      "variant": "baseline",
+      "forecastUsd": 0.5,
+      "taskIds": [
+        "ibi-fleet-assignment-dev-1-473634f6",
+        "ibi-premises-chronology-dev-1-98bd4c8a",
+        "ibi-multi-exposure-review-dev-1-57c335e"
+      ],
+      "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+      "correspondenceIds": [
+        "ibi-fleet-assignment-dev-1-473634f6",
+        "ibi-premises-chronology-dev-1-98bd4c8a",
+        "ibi-multi-exposure-review-dev-1-57c335e"
+      ],
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384,
+        "transportDeadlineMs": 600000
+      },
+      "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f"
+    },
+    {
+      "id": "04-luna-high-dev",
+      "modelAlias": "gpt-6-luna-high",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6-luna",
+        "inputUsdPerMillion": 0.1,
+        "outputUsdPerMillion": 0.5,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "split": "dev",
+      "variant": "baseline",
+      "forecastUsd": 0.75,
+      "taskIds": [
+        "ibi-fleet-assignment-dev-1-473634f6",
+        "ibi-premises-chronology-dev-1-98bd4c8a",
+        "ibi-multi-exposure-review-dev-1-57c335e"
+      ],
+      "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+      "correspondenceIds": [
+        "ibi-fleet-assignment-dev-1-473634f6",
+        "ibi-premises-chronology-dev-1-98bd4c8a",
+        "ibi-multi-exposure-review-dev-1-57c335e"
+      ],
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384,
+        "transportDeadlineMs": 600000
+      },
+      "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f"
+    },
+    {
+      "id": "05-astra-high-dev",
+      "modelAlias": "gpt-6-astra-high",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputUsdPerMillion": 10,
+        "outputUsdPerMillion": 50,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/pricing",
+        "pricingVerifiedAt": "2026-10-04"
+      },
+      "split": "dev",
+      "variant": "baseline",
+      "forecastUsd": 11.5,
+      "taskIds": [
+        "ibi-fleet-assignment-dev-1-473634f6",
+        "ibi-premises-chronology-dev-1-98bd4c8a",
+        "ibi-multi-exposure-review-dev-1-57c335e"
+      ],
+      "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+      "correspondenceIds": [
+        "ibi-fleet-assignment-dev-1-473634f6",
+        "ibi-premises-chronology-dev-1-98bd4c8a",
+        "ibi-multi-exposure-review-dev-1-57c335e"
+      ],
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384,
+        "transportDeadlineMs": 600000
+      },
+      "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f"
+    },
+    {
+      "id": "06-sol-high-verify-dev",
+      "modelAlias": "gpt-6.1-sol-high",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6.1-sol",
+        "inputUsdPerMillion": 2,
+        "outputUsdPerMillion": 10,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "split": "dev",
+      "variant": "verify-before-finish",
+      "forecastUsd": 2.5,
+      "taskIds": [
+        "ibi-fleet-assignment-dev-1-473634f6",
+        "ibi-premises-chronology-dev-1-98bd4c8a",
+        "ibi-multi-exposure-review-dev-1-57c335e"
+      ],
+      "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+      "correspondenceIds": [
+        "ibi-fleet-assignment-dev-1-473634f6",
+        "ibi-premises-chronology-dev-1-98bd4c8a",
+        "ibi-multi-exposure-review-dev-1-57c335e"
+      ],
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384,
+        "transportDeadlineMs": 600000
+      },
+      "harnessHash": "8dcdd50f7e93ec59858bd136fe65c27561510780ae306e2fab8ee136cbfcd388"
+    },
+    {
+      "id": "07-sol-high-holdout",
+      "modelAlias": "gpt-6.1-sol-high",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6.1-sol",
+        "inputUsdPerMillion": 2,
+        "outputUsdPerMillion": 10,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "pricingVerifiedAt": "2026-10-03"
+      },
+      "split": "holdout",
+      "variant": "baseline",
+      "forecastUsd": 2.5,
+      "taskIds": [
+        "ibi-fleet-assignment-holdout-1-74f18798",
+        "ibi-premises-chronology-holdout-1-47f9484c",
+        "ibi-multi-exposure-review-holdout-1-3753da40"
+      ],
+      "datasetHash": "4cf66d562bf334aaf1442969e5c65bb8426bf000c5e24eb7340f363471f0efe8",
+      "correspondenceIds": [
+        "ibi-fleet-assignment-holdout-1-74f18798",
+        "ibi-premises-chronology-holdout-1-47f9484c",
+        "ibi-multi-exposure-review-holdout-1-3753da40"
+      ],
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384,
+        "transportDeadlineMs": 600000
+      },
+      "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f"
+    },
+    {
+      "id": "08-astra-high-holdout",
+      "modelAlias": "gpt-6-astra-high",
+      "modelConfiguration": {
+        "provider": "openai",
+        "model": "gpt-6-astra",
+        "inputUsdPerMillion": 10,
+        "outputUsdPerMillion": 50,
+        "reasoningEffort": "high",
+        "pricingSource": "https://developers.openai.com/api/docs/pricing",
+        "pricingVerifiedAt": "2026-10-04"
+      },
+      "split": "holdout",
+      "variant": "baseline",
+      "forecastUsd": 11.5,
+      "taskIds": [
+        "ibi-fleet-assignment-holdout-1-74f18798",
+        "ibi-premises-chronology-holdout-1-47f9484c",
+        "ibi-multi-exposure-review-holdout-1-3753da40"
+      ],
+      "datasetHash": "4cf66d562bf334aaf1442969e5c65bb8426bf000c5e24eb7340f363471f0efe8",
+      "correspondenceIds": [
+        "ibi-fleet-assignment-holdout-1-74f18798",
+        "ibi-premises-chronology-holdout-1-47f9484c",
+        "ibi-multi-exposure-review-holdout-1-3753da40"
+      ],
+      "repeat": 1,
+      "limits": {
+        "maxTurns": 20,
+        "maxOutputTokens": 16384,
+        "transportDeadlineMs": 600000
+      },
+      "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f"
+    }
+  ],
+  "guards": [
+    "Serial fixed order, no outcome-selected reruns or task/model substitutions",
+    "Before each panel entire remaining forecast must fit current authoritative ledger",
+    "Forecast material overrun pauses before next panel; no automatic resume without a new reviewed prospective amendment",
+    "No held-out output before separately committed final holdout release of unchanged source/harness/tasksets",
+    "Observed cumulative truncatedOutput or broad finishReason rejects clean contrasts; scores preserved",
+    "Provider/budget failures retain unscored coverage and reservations; no selective case retry"
+  ],
+  "paidInferencePerformed": false
+}

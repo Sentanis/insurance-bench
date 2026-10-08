@@ -1,0 +1,123 @@
+{
+  "schema": "insurance-bench-candidate-prepaid-gate-independent-review-v1",
+  "reviewedAt": "2026-10-05T00:34:22.928Z",
+  "preparedBy": "Independent non-author code-review agent",
+  "disposition": "approve-engineering-only",
+  "sourceFingerprint": {
+    "json": "107e4af647e3ee1e64a771b8702eebece95e88223a220d8c3560104f994d5385",
+    "interaction": "a6922f85d03bc6180610a8ac06ff8cdaf78c8a74c0e0ebb6cc410f429f0c69d8"
+  },
+  "sourceHashes": {
+    "insurance-bench/investigation-types.ts": "97c379fc221d3096395a88fc281deb78638d3684b2c1dd4900d5a9554d171f57",
+    "insurance-bench/investigation-cases.ts": "9384c6dd93130526265050e985f08d74e2510584fde2e8bbccfce7b7dab099fe",
+    "insurance-bench/investigation-engine.ts": "86b02a16542099f107493012df42cb54e1c70bcce6b31046405a1246a98e8c52",
+    "insurance-bench/json-investigation-runner.ts": "cb6791b62b6d87ec79837b023b1ef8851c43e29dd339b16064b555e1c8363a37",
+    "insurance-bench/json-object-provider.ts": "e3c569e92ecd0e1494009a19c1d327e2ad095d82cab7c87cc9ae501a39e9349a",
+    "insurance-bench/investigation-providers.ts": "e3d93a10653c3bd614bd3e00a983e7bb104509beb32df603cba63aa98c0492ba",
+    "insurance-bench/providers.ts": "532698d5d3850394ff8efc1288bd1975b504a8283503da585b68d55883fb565e",
+    "insurance-bench/candidate-admission.ts": "16ad52e267abe2f42a68d605c11a32ecde4f455a3dc0ce27bf6d1b03db0e509f",
+    "insurance-bench/runner.ts": "944113810c1d4fa7768cc1a8e69f6c797cd1480086c180c174f64b76cd713d64",
+    "insurance-bench/tools.ts": "0d5faa748b29587a9eabb8614f38039b41a4f6dd734be3a59377cfb0aec21124",
+    "insurance-bench/types.ts": "60322fa5e518736d7ada605dd527f673f95b834361c7e031a5533c58a9d50aad",
+    "insurance-bench/score.ts": "712c2966fa750b758fb7f886c49c1986453cb56491d7ec295787da32d6af2949",
+    "insurance-bench/models.json": "6b2a9d673de555106b64ce15ab20df7948594eb707cb8176354e6388e88b87fd",
+    "scripts/insurance-bench-json-investigation.ts": "ae8ab29c0cb78c9bf37269c754367425baea0017307489fa4913a3014c6288b5",
+    "insurance-bench/interaction-cases.ts": "5f5bad98e8710ba969fe57f885521b214f3d3d4254ec06d2e93e81824afe1c81",
+    "insurance-bench/interaction-runner.ts": "606fba4cce93f7fa383fb5706b0a59ada17af600055afee1708257cf284002f0",
+    "scripts/insurance-bench-interaction.ts": "3b863bc5bae37371a2786952d41ee2f05c927c6bdfb06c1b419890621a6ad5b0",
+    "test/insurance-bench-candidate-admission.test.ts": "950fee8c225c746c27c2ec56665d5c06f926682c3058ff0c3ea1bd5a038fcc76",
+    "test/insurance-bench-candidate-provenance.test.ts": "2da9e571453b79773a8db741c0326bacc32c2c70f7a0b2ecd6081ab8d96b64e5",
+    "test/insurance-bench-json-object-provider.test.ts": "f6c38824e8f4649546c9b4e0bd5a05294a388e8040d59a8c6dbbc5c45d3808db",
+    ".tmp/insurance-bench/candidate-panels.ts": "4f8f84276ae6da299e1cd4f29ef3605d7e428f6f9b753b3eb89ee4f09b874e05"
+  },
+  "scope": "Prospective public CLI admission, one-time claim, serial controller, canonical shared ledger, committed provenance and JSON transport; v0.10 raw source admission belongs to separate non-author audit.",
+  "preservedOriginalReview": {
+    "path": "insurance-bench/results/meta/candidate-provenance-independent-review.json",
+    "sha256": "cbd6851753b6c04d380dbe7ee822e7473e23d401b5f571da82c32a5526a20a7a",
+    "disposition": "needs-prepaid-control-gate",
+    "jsonSourceFingerprint": "035ab13411f79c08bc5b5d15f36fff98d6cc947202203baa079a0a8b52be45ec",
+    "interactionSourceFingerprint": "a8898ed85479d9970ba50a717919b1f6a298501ebbd8109f1750942a8bb5031d"
+  },
+  "checks": [
+    {
+      "id": "canonical-committed-admission",
+      "result": "pass-source-and-controls",
+      "evidence": "Canonical entry-script root and cwd; immutable fingerprint path arrays; source/registration/audit exact bytes in full freeze commit; exact generation, raw corpus/task hash, prompt/harness/model/effort, split/repeat/limits; strict relative paths and symlink denial. Before Budget or output directory."
+    },
+    {
+      "id": "canonical-existing-total-ledger",
+      "result": "pass-source-and-controls",
+      "evidence": "Existing canonical .tmp ledger required, cap75, reserved finite nonnegative within75 and registered floor; never initialize/reset in admission. Inherited Budget reserves worst-case per call and retains failed reservation."
+    },
+    {
+      "id": "one-time-public-cli-claim",
+      "result": "pass-source-and-controls",
+      "evidence": "Both public CLIs claim receiptPath+.claim using wx after read-only admission and before output mkdir/Budget. Claim remains on failure and second call fails; no retry/remove. This resolves direct public CLI reentry outside controller lock."
+    },
+    {
+      "id": "fresh-holdout-release",
+      "result": "pass-source-and-controls",
+      "evidence": "Both helper and controller require committed release matching source/harness/task IDs/repeat, exact committed approved independent development audit SHA and all nonempty registered dev panel committed receipt SHAs. Helper rejects incomplete terminal coverage, process/provider/budget/model/effort/material-spend flags."
+    },
+    {
+      "id": "serial-prospective-controller",
+      "result": "pass-source",
+      "evidence": "Prepare/validate make no inference. Fixed panel order, global wx controller lock, no overwrites or existing receipt retries, immutable source/plan/audit/controller/registration committed before run. Every remaining forecast must fit existing ledger before dispatch. Native predecessor SHA/config/coverage/failure controls and terminal process/provider/model/spend flags stop subsequent paid dispatches."
+    },
+    {
+      "id": "native-json-bridge",
+      "result": "pass-mock",
+      "evidence": "Exact inherited Responses endpoint, native model/effort, headers/signal,600000ms deadline, output ceiling/store=false preserved. Only addition text.format.type=json_object. No JSON repair, response fallback or retries. Usage/refusal/truncation/errors retained."
+    },
+    {
+      "id": "distinct-native-generation",
+      "result": "pass-source-and-controls",
+      "evidence": "New source/harness fingerprint and responseFormat=json_object metadata; public tasks omit private investigation/rubric; macro-success distinct from weighted diagnostic. No history relabel/regrade path."
+    }
+  ],
+  "resolvedFindings": [
+    {
+      "id": "unregistered-and-CWD-ledger-bypass",
+      "fixedAt": [
+        "insurance-bench/candidate-admission.ts:41",
+        "scripts/insurance-bench-json-investigation.ts:176",
+        "scripts/insurance-bench-interaction.ts:177"
+      ]
+    },
+    {
+      "id": "reusable-dispatched-receipt",
+      "fixedAt": [
+        "insurance-bench/candidate-admission.ts:99",
+        "scripts/insurance-bench-json-investigation.ts:197",
+        "scripts/insurance-bench-interaction.ts:198"
+      ]
+    },
+    {
+      "id": "direct-holdout-missing-development-receipt-bindings",
+      "fixedAt": [
+        "insurance-bench/candidate-admission.ts:86"
+      ]
+    }
+  ],
+  "issues": [],
+  "validation": {
+    "command": "node --import tsx --test test/insurance-bench-candidate-admission.test.ts test/insurance-bench-candidate-provenance.test.ts test/insurance-bench-json-object-provider.test.ts",
+    "tests": 9,
+    "passed": 9,
+    "realProviderCalls": 0,
+    "realSharedLedgerTouched": false,
+    "heldOutModelOutputsRead": false
+  },
+  "limitations": [
+    "Engineering admission for current source only; no provider acceptance or new ability evidence.",
+    "Controller code reviewed with source-only controls; no paid run/registration/holdout output was produced by this auditor.",
+    "Forecasts are prospective estimates, protected by serial affordability and stop flags plus total ledger; they are not guaranteed final costs.",
+    "Frozen v0.9 observations/source reviews and original candidate rejection remain immutable.",
+    "No professional insurance/legal/clinical or population validity claim."
+  ],
+  "reproduction": {
+    "command": "node --import tsx .tmp/insurance-bench/candidate-gate-independent-artifacts.ts",
+    "scriptSha256": "e0bd37eb879075ef22e644c5da8c466666473580a9b19585abda8d42a6f09dd3",
+    "scriptCopy": "insurance-bench/results/meta/candidate-gate-independent-repro.txt"
+  }
+}

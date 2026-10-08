@@ -1,0 +1,901 @@
+{
+  "schema": "insurance-bench-current-report-final-integration-independent-review-v1",
+  "reviewedAt": "2026-10-05T04:54:41.290Z",
+  "disposition": "approve-engineering-only",
+  "scope": "Current report admission/helper source, pure mocks and explicitly root-authorized already released/audited cohort metadata. Actual context builder is never imported or executed. No report publication or ledger access.",
+  "sourceSha256": {
+    "insurance-bench/report-admission.ts": "42463db576270ba4f6cb85cc61529810f6ab188f3f3da1a5eca1ecb2e6051930",
+    "test/insurance-bench-report.test.ts": "5a0f254a7b925b3b30392723b63adaeed8d32f270f8aaa38afede92c748f6071",
+    ".tmp/insurance-bench/current-report-context.ts": "9910a2dba5442ad9422c23da64cd9a584a32b2a3ff4e11646d2ae6035c9e5266",
+    "insurance-bench/report.ts": "bbc0b2c5d41ca13ef4586719c0c10b3c62f27ff43a5ac65c52088bf325cfec36"
+  },
+  "findings": [
+    {
+      "id": "FINAL-REPORT-01",
+      "severity": "important",
+      "status": "resolved",
+      "original": "Legacy held audit source freeze was only syntax-checked; a different valid source SHA from its exact hashed parent development audit was admitted and native bodies loaded.",
+      "proof": "Separate dev/hold mock audits: dev d*40, hold f*40, release/held receipt e*40, sealed exact release+parent hashes. Original helper accepted. Repaired helper rejects before either native JSON body.",
+      "resolution": "Parent development freeze must be valid40SHA and equal held audit source freeze; releaseCommit remains distinct and matches dispatch receipt."
+    }
+  ],
+  "controls": [
+    {
+      "name": "different-valid-held-source-freeze",
+      "rejected": true,
+      "beforeNativeJSON": true
+    },
+    {
+      "name": "missing-source-parent",
+      "rejected": true,
+      "beforeNativeJSON": true
+    },
+    {
+      "name": "parent-wrong-valid-source-freeze",
+      "rejected": true,
+      "beforeNativeJSON": true
+    },
+    {
+      "name": "release-source-corpus-mismatch",
+      "rejected": true,
+      "beforeNativeJSON": true
+    },
+    {
+      "name": "release-harness-mismatch",
+      "rejected": true,
+      "beforeNativeJSON": true
+    },
+    {
+      "name": "release-task-order",
+      "rejected": true,
+      "beforeNativeJSON": true
+    },
+    {
+      "name": "release-repeat",
+      "rejected": true,
+      "beforeNativeJSON": true
+    },
+    {
+      "name": "release-parent-registration-proof",
+      "rejected": true,
+      "beforeNativeJSON": true
+    },
+    {
+      "name": "release-parent-dispatch-proof",
+      "rejected": true,
+      "beforeNativeJSON": true
+    },
+    {
+      "name": "release-wrong-dispatch-commit",
+      "rejected": true,
+      "beforeNativeJSON": true
+    },
+    {
+      "name": "partial-release",
+      "rejected": true,
+      "beforeNativeJSON": true
+    },
+    {
+      "name": "stale-independent-audit",
+      "rejected": true,
+      "beforeNativeJSON": true
+    },
+    {
+      "name": "receipt-model-effort",
+      "rejected": true,
+      "beforeNativeJSON": true
+    },
+    {
+      "name": "native-model",
+      "rejected": true
+    },
+    {
+      "name": "native-responseFormat",
+      "rejected": true
+    },
+    {
+      "name": "native-taskIds",
+      "rejected": true
+    },
+    {
+      "name": "native-limits",
+      "rejected": true
+    },
+    {
+      "name": "native-split",
+      "rejected": true
+    }
+  ],
+  "cohortAdmissions": [
+    {
+      "slug": "v09",
+      "registrationPath": "insurance-bench/results/meta/v09-registration.json",
+      "registrationSha256": "8eb37ff89467dad06611f0e7d258ac2e818d13db0e1bd86077b9cb1f5dfbc2f2",
+      "audits": [
+        {
+          "path": "insurance-bench/results/meta/investigation-development-independent-audit-v0.9.json",
+          "sha256": "66cb0fcc17e32bad90f61c149e62f8c372d3109b56ccade6015adade92962eeb"
+        },
+        {
+          "path": "insurance-bench/results/meta/investigation-holdout-independent-audit-v0.9.json",
+          "sha256": "bc9ea61bec0c039d6023129082b9ccf675e1274836301ee70e8bc76daeb196b6"
+        }
+      ],
+      "panels": [
+        {
+          "runId": "2026-10-04T23-19-13-453Z-gpt-6.1-sol-high-baseline-investigation",
+          "version": "insurance-bench-investigation-v0.9",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6.1-sol",
+            "inputUsdPerMillion": 2,
+            "outputUsdPerMillion": 10,
+            "reasoningEffort": "high",
+            "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+            "pricingVerifiedAt": "2026-10-03"
+          },
+          "split": [
+            "dev"
+          ],
+          "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+          "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+          "taskIds": [
+            "ibi-fleet-assignment-dev-1-473634f6",
+            "ibi-premises-chronology-dev-1-98bd4c8a",
+            "ibi-multi-exposure-review-dev-1-57c335e"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 3
+        },
+        {
+          "runId": "2026-10-04T23-40-47-023Z-gpt-6.1-sol-low-baseline-investigation",
+          "version": "insurance-bench-investigation-v0.9",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6.1-sol",
+            "inputUsdPerMillion": 2,
+            "outputUsdPerMillion": 10,
+            "reasoningEffort": "low",
+            "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+            "pricingVerifiedAt": "2026-10-03"
+          },
+          "split": [
+            "dev"
+          ],
+          "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+          "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+          "taskIds": [
+            "ibi-fleet-assignment-dev-1-473634f6",
+            "ibi-premises-chronology-dev-1-98bd4c8a",
+            "ibi-multi-exposure-review-dev-1-57c335e"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 3
+        },
+        {
+          "runId": "2026-10-04T23-48-44-384Z-gpt-6-luna-low-baseline-investigation",
+          "version": "insurance-bench-investigation-v0.9",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6-luna",
+            "inputUsdPerMillion": 0.1,
+            "outputUsdPerMillion": 0.5,
+            "reasoningEffort": "low",
+            "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+            "pricingVerifiedAt": "2026-10-03"
+          },
+          "split": [
+            "dev"
+          ],
+          "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+          "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+          "taskIds": [
+            "ibi-fleet-assignment-dev-1-473634f6",
+            "ibi-premises-chronology-dev-1-98bd4c8a",
+            "ibi-multi-exposure-review-dev-1-57c335e"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 3
+        },
+        {
+          "runId": "2026-10-04T23-52-59-436Z-gpt-6-luna-high-baseline-investigation",
+          "version": "insurance-bench-investigation-v0.9",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6-luna",
+            "inputUsdPerMillion": 0.1,
+            "outputUsdPerMillion": 0.5,
+            "reasoningEffort": "high",
+            "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+            "pricingVerifiedAt": "2026-10-03"
+          },
+          "split": [
+            "dev"
+          ],
+          "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+          "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+          "taskIds": [
+            "ibi-fleet-assignment-dev-1-473634f6",
+            "ibi-premises-chronology-dev-1-98bd4c8a",
+            "ibi-multi-exposure-review-dev-1-57c335e"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 3
+        },
+        {
+          "runId": "2026-10-05T00-05-31-280Z-gpt-6-astra-high-baseline-investigation",
+          "version": "insurance-bench-investigation-v0.9",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6-astra",
+            "inputUsdPerMillion": 10,
+            "outputUsdPerMillion": 50,
+            "reasoningEffort": "high",
+            "pricingSource": "https://developers.openai.com/api/docs/pricing",
+            "pricingVerifiedAt": "2026-10-04"
+          },
+          "split": [
+            "dev"
+          ],
+          "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+          "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+          "taskIds": [
+            "ibi-fleet-assignment-dev-1-473634f6",
+            "ibi-premises-chronology-dev-1-98bd4c8a",
+            "ibi-multi-exposure-review-dev-1-57c335e"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 3
+        },
+        {
+          "runId": "2026-10-05T00-17-48-626Z-gpt-6.1-sol-high-verify-before-finish-investigation",
+          "version": "insurance-bench-investigation-v0.9",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6.1-sol",
+            "inputUsdPerMillion": 2,
+            "outputUsdPerMillion": 10,
+            "reasoningEffort": "high",
+            "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+            "pricingVerifiedAt": "2026-10-03"
+          },
+          "split": [
+            "dev"
+          ],
+          "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+          "harnessHash": "8dcdd50f7e93ec59858bd136fe65c27561510780ae306e2fab8ee136cbfcd388",
+          "taskIds": [
+            "ibi-fleet-assignment-dev-1-473634f6",
+            "ibi-premises-chronology-dev-1-98bd4c8a",
+            "ibi-multi-exposure-review-dev-1-57c335e"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 3
+        },
+        {
+          "runId": "2026-10-05T00-34-57-306Z-gpt-6.1-sol-high-baseline-investigation",
+          "version": "insurance-bench-investigation-v0.9",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6.1-sol",
+            "inputUsdPerMillion": 2,
+            "outputUsdPerMillion": 10,
+            "reasoningEffort": "high",
+            "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+            "pricingVerifiedAt": "2026-10-03"
+          },
+          "split": [
+            "holdout"
+          ],
+          "datasetHash": "4cf66d562bf334aaf1442969e5c65bb8426bf000c5e24eb7340f363471f0efe8",
+          "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+          "taskIds": [
+            "ibi-fleet-assignment-holdout-1-74f18798",
+            "ibi-premises-chronology-holdout-1-47f9484c",
+            "ibi-multi-exposure-review-holdout-1-3753da40"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 3
+        },
+        {
+          "runId": "2026-10-05T00-49-28-690Z-gpt-6-astra-high-baseline-investigation",
+          "version": "insurance-bench-investigation-v0.9",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6-astra",
+            "inputUsdPerMillion": 10,
+            "outputUsdPerMillion": 50,
+            "reasoningEffort": "high",
+            "pricingSource": "https://developers.openai.com/api/docs/pricing",
+            "pricingVerifiedAt": "2026-10-04"
+          },
+          "split": [
+            "holdout"
+          ],
+          "datasetHash": "4cf66d562bf334aaf1442969e5c65bb8426bf000c5e24eb7340f363471f0efe8",
+          "harnessHash": "b4b9bd1ff0fb0c20092e86e0737e0f5cf3365790d4e0c6ce4838d6a28528675f",
+          "taskIds": [
+            "ibi-fleet-assignment-holdout-1-74f18798",
+            "ibi-premises-chronology-holdout-1-47f9484c",
+            "ibi-multi-exposure-review-holdout-1-3753da40"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 3
+        }
+      ],
+      "readPaths": [
+        "insurance-bench/results/meta/v09-registration.json",
+        "insurance-bench/results/meta/investigation-development-independent-audit-v0.9.json",
+        "insurance-bench/results/meta/investigation-holdout-independent-audit-v0.9.json",
+        "insurance-bench/results/meta/v09-dispatch-01-sol-high-dev.json",
+        "insurance-bench/results/meta/v09-dispatch-02-sol-low-dev.json",
+        "insurance-bench/results/meta/v09-dispatch-03-luna-low-dev.json",
+        "insurance-bench/results/meta/v09-dispatch-04-luna-high-dev.json",
+        "insurance-bench/results/meta/v09-dispatch-05-astra-high-dev.json",
+        "insurance-bench/results/meta/v09-dispatch-06-sol-high-verify-dev.json",
+        "insurance-bench/results/meta/v09-dispatch-07-sol-high-holdout.json",
+        "insurance-bench/results/meta/v09-holdout-release.json",
+        "insurance-bench/results/meta/investigation-development-independent-audit-v0.9.json",
+        "insurance-bench/results/meta/v09-dispatch-08-astra-high-holdout.json",
+        "insurance-bench/results/meta/v09-holdout-release.json",
+        "insurance-bench/results/meta/investigation-development-independent-audit-v0.9.json",
+        "insurance-bench/results/2026-10-04T23-19-13-453Z-gpt-6.1-sol-high-baseline-investigation.json",
+        "insurance-bench/results/2026-10-04T23-40-47-023Z-gpt-6.1-sol-low-baseline-investigation.json",
+        "insurance-bench/results/2026-10-04T23-48-44-384Z-gpt-6-luna-low-baseline-investigation.json",
+        "insurance-bench/results/2026-10-04T23-52-59-436Z-gpt-6-luna-high-baseline-investigation.json",
+        "insurance-bench/results/2026-10-05T00-05-31-280Z-gpt-6-astra-high-baseline-investigation.json",
+        "insurance-bench/results/2026-10-05T00-17-48-626Z-gpt-6.1-sol-high-verify-before-finish-investigation.json",
+        "insurance-bench/results/2026-10-05T00-34-57-306Z-gpt-6.1-sol-high-baseline-investigation.json",
+        "insurance-bench/results/2026-10-05T00-49-28-690Z-gpt-6-astra-high-baseline-investigation.json"
+      ],
+      "sha256": {
+        "insurance-bench/results/meta/v09-registration.json": "8eb37ff89467dad06611f0e7d258ac2e818d13db0e1bd86077b9cb1f5dfbc2f2",
+        "insurance-bench/results/meta/v09-dispatch-01-sol-high-dev.json": "7513d2b03768b5641d5d4e4dcfe414c57fe609442873fc1c36244ecd2c200d01",
+        "insurance-bench/results/2026-10-04T23-19-13-453Z-gpt-6.1-sol-high-baseline-investigation.json": "3c9b022dab01bf9512095ea48f96658301ed0a9331e3c106a1e3ef117b83108d",
+        "insurance-bench/results/meta/v09-dispatch-02-sol-low-dev.json": "750ebc24d8c8c79eb805a1b89725a23a8875617a65c79010b6b618dc5621a770",
+        "insurance-bench/results/2026-10-04T23-40-47-023Z-gpt-6.1-sol-low-baseline-investigation.json": "ca97569c38fb3025d869a2b6dbcb674c4d137c00829915aa8b8d13b0a63ac5a1",
+        "insurance-bench/results/meta/v09-dispatch-03-luna-low-dev.json": "aa7d530d1253cac1541744fe20e1c3c1c872ef88775d57abd95da6cf7fd7d5bd",
+        "insurance-bench/results/2026-10-04T23-48-44-384Z-gpt-6-luna-low-baseline-investigation.json": "5f9af0c59ce238b5a2f80669bf0bb478805a1e6b96db649cfc6ab3ed55dd7bfc",
+        "insurance-bench/results/meta/v09-dispatch-04-luna-high-dev.json": "07a07b6cf1191cd06aa096258891d1812f6e40f8625d385d54982eba83fe4859",
+        "insurance-bench/results/2026-10-04T23-52-59-436Z-gpt-6-luna-high-baseline-investigation.json": "e1f71c4986f3ad7f3870a30393430aac65eb1bb08ab658f237791062774cd4ad",
+        "insurance-bench/results/meta/v09-dispatch-05-astra-high-dev.json": "b1a0934750da7f651032b0123703f5d379c636280dd429382caf1372c2f2594c",
+        "insurance-bench/results/2026-10-05T00-05-31-280Z-gpt-6-astra-high-baseline-investigation.json": "9f2c8418402f3326f96bcb82b79072f615c10a91b97b104457d2a8a39a80e77f",
+        "insurance-bench/results/meta/v09-dispatch-06-sol-high-verify-dev.json": "da057cf19cdf060d07762d1140e148f3d4f0528e05f1b36e2805776d54d8a5be",
+        "insurance-bench/results/2026-10-05T00-17-48-626Z-gpt-6.1-sol-high-verify-before-finish-investigation.json": "c2e4350d8fa514310807e43bb292e36c72d91b990343ac88cfb54406ba11554b",
+        "insurance-bench/results/meta/v09-dispatch-07-sol-high-holdout.json": "21783e31af57e5ba4a646147330f9263c5c29b369788166bd145e48fd0a68e0b",
+        "insurance-bench/results/meta/v09-holdout-release.json": "4615df85171577bdf15eeb7ec8d9f894388a6547e02894b3aead3c383fc255c9",
+        "insurance-bench/results/meta/investigation-development-independent-audit-v0.9.json": "66cb0fcc17e32bad90f61c149e62f8c372d3109b56ccade6015adade92962eeb",
+        "insurance-bench/results/2026-10-05T00-34-57-306Z-gpt-6.1-sol-high-baseline-investigation.json": "f407c6bd45ff204520b0bc0fd30a6bfdea841f5f0b842d4e9359411d6e709ba1",
+        "insurance-bench/results/meta/v09-dispatch-08-astra-high-holdout.json": "45966bde856ffde6aeb40d5f4b6479c057421ebbb893a1595cf01939ec6cc984",
+        "insurance-bench/results/2026-10-05T00-49-28-690Z-gpt-6-astra-high-baseline-investigation.json": "47a5318c657931cd95588235f52a3b154424c6b4059410b09d2f795195d5cf2e",
+        "insurance-bench/results/meta/investigation-holdout-independent-audit-v0.9.json": "bc9ea61bec0c039d6023129082b9ccf675e1274836301ee70e8bc76daeb196b6"
+      }
+    },
+    {
+      "slug": "v09j",
+      "registrationPath": "insurance-bench/results/meta/v09j-registration.json",
+      "registrationSha256": "caddc50bb68955f375ec9e29e2e035ed39d0c40e8c78da429658b35d685db8d3",
+      "audits": [
+        {
+          "path": "insurance-bench/results/meta/v09j-development-independent-audit.json",
+          "sha256": "9bdf3722a8ff658f6e169ba463fab667af564f0fcbbdc2bd02ea591ebe4d0667"
+        }
+      ],
+      "panels": [
+        {
+          "runId": "2026-10-05T01-18-38-204Z-gpt-6-luna-low-baseline-investigation",
+          "version": "insurance-bench-investigation-v0.9j-json-object",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6-luna",
+            "inputUsdPerMillion": 0.1,
+            "outputUsdPerMillion": 0.5,
+            "reasoningEffort": "low",
+            "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+            "pricingVerifiedAt": "2026-10-03"
+          },
+          "split": [
+            "dev"
+          ],
+          "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+          "harnessHash": "ab8296b3627cba048ab27d9d98842b67ad142110e09ccd82c98d3520df4105c6",
+          "taskIds": [
+            "ibi-fleet-assignment-dev-1-473634f6",
+            "ibi-premises-chronology-dev-1-98bd4c8a",
+            "ibi-multi-exposure-review-dev-1-57c335e"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 3
+        },
+        {
+          "runId": "2026-10-05T01-24-44-945Z-gpt-6-luna-high-baseline-investigation",
+          "version": "insurance-bench-investigation-v0.9j-json-object",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6-luna",
+            "inputUsdPerMillion": 0.1,
+            "outputUsdPerMillion": 0.5,
+            "reasoningEffort": "high",
+            "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+            "pricingVerifiedAt": "2026-10-03"
+          },
+          "split": [
+            "dev"
+          ],
+          "datasetHash": "30cefcc0a21ce1d172c826fc8da55108da9e7c31d064252970fa777e9e44bbac",
+          "harnessHash": "ab8296b3627cba048ab27d9d98842b67ad142110e09ccd82c98d3520df4105c6",
+          "taskIds": [
+            "ibi-fleet-assignment-dev-1-473634f6",
+            "ibi-premises-chronology-dev-1-98bd4c8a",
+            "ibi-multi-exposure-review-dev-1-57c335e"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 3
+        }
+      ],
+      "readPaths": [
+        "insurance-bench/results/meta/v09j-registration.json",
+        "insurance-bench/results/meta/v09j-development-independent-audit.json",
+        "insurance-bench/results/meta/v09j-dispatch-01-luna-low-dev.json",
+        "insurance-bench/results/meta/v09j-dispatch-02-luna-high-dev.json",
+        "insurance-bench/results/2026-10-05T01-18-38-204Z-gpt-6-luna-low-baseline-investigation.json",
+        "insurance-bench/results/2026-10-05T01-24-44-945Z-gpt-6-luna-high-baseline-investigation.json"
+      ],
+      "sha256": {
+        "insurance-bench/results/meta/v09j-registration.json": "caddc50bb68955f375ec9e29e2e035ed39d0c40e8c78da429658b35d685db8d3",
+        "insurance-bench/results/meta/v09j-dispatch-01-luna-low-dev.json": "ce86e9d3c28de1e588198cc10272fb1c6b6159827b2ad7d6feb1e8e107da5350",
+        "insurance-bench/results/2026-10-05T01-18-38-204Z-gpt-6-luna-low-baseline-investigation.json": "afc7306c0e83e9511c2cee0dd2745f27119dd552178ee5d061959c6f62c41001",
+        "insurance-bench/results/meta/v09j-dispatch-02-luna-high-dev.json": "a97a95576c71201f55eb7fa05cfe9802a66cea0229f144d342c24cc57141fbab",
+        "insurance-bench/results/2026-10-05T01-24-44-945Z-gpt-6-luna-high-baseline-investigation.json": "c2c52f209aceaf23c8679b8966659535902d7c206e06bf768fa0855fc49c33a2",
+        "insurance-bench/results/meta/v09j-development-independent-audit.json": "9bdf3722a8ff658f6e169ba463fab667af564f0fcbbdc2bd02ea591ebe4d0667"
+      }
+    },
+    {
+      "slug": "v10",
+      "registrationPath": "insurance-bench/results/meta/v10-registration.json",
+      "registrationSha256": "4d9bf5516d27952268f1a3e8d4caf95814e264be8cc4ed49f829e21598bf971d",
+      "audits": [
+        {
+          "path": "insurance-bench/results/meta/v10-development-independent-audit.json",
+          "sha256": "9cc94c1c4bfc19a7a0ea79d78bd0e2922fae1b031282d8f536f4c6cc835fd23c"
+        }
+      ],
+      "panels": [
+        {
+          "runId": "2026-10-05T01-38-18-326Z-gpt-6.1-sol-high-baseline-investigation",
+          "version": "insurance-bench-interaction-v0.10",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6.1-sol",
+            "inputUsdPerMillion": 2,
+            "outputUsdPerMillion": 10,
+            "reasoningEffort": "high",
+            "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+            "pricingVerifiedAt": "2026-10-03"
+          },
+          "split": [
+            "dev"
+          ],
+          "datasetHash": "be606e3705ada2e8443dd278be89dc45ff16e376a890fa0a055f8fd9006e3011",
+          "harnessHash": "b4a96a4bb6a68f5055f2be90a0bf9e278e22e995bbac4e8e9f1d2801aff13f76",
+          "taskIds": [
+            "ibx-fleet-assignment-dev-1-275890c6",
+            "ibx-fleet-assignment-dev-2-a8f3316d",
+            "ibx-premises-chronology-dev-1-425bfd5a",
+            "ibx-premises-chronology-dev-2-ffd6acf1",
+            "ibx-multi-exposure-review-dev-1-2c3a092e",
+            "ibx-multi-exposure-review-dev-2-8087beb5"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 6
+        },
+        {
+          "runId": "2026-10-05T02-05-49-682Z-gpt-6-luna-high-baseline-investigation",
+          "version": "insurance-bench-interaction-v0.10",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6-luna",
+            "inputUsdPerMillion": 0.1,
+            "outputUsdPerMillion": 0.5,
+            "reasoningEffort": "high",
+            "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+            "pricingVerifiedAt": "2026-10-03"
+          },
+          "split": [
+            "dev"
+          ],
+          "datasetHash": "be606e3705ada2e8443dd278be89dc45ff16e376a890fa0a055f8fd9006e3011",
+          "harnessHash": "b4a96a4bb6a68f5055f2be90a0bf9e278e22e995bbac4e8e9f1d2801aff13f76",
+          "taskIds": [
+            "ibx-fleet-assignment-dev-1-275890c6",
+            "ibx-fleet-assignment-dev-2-a8f3316d",
+            "ibx-premises-chronology-dev-1-425bfd5a",
+            "ibx-premises-chronology-dev-2-ffd6acf1",
+            "ibx-multi-exposure-review-dev-1-2c3a092e",
+            "ibx-multi-exposure-review-dev-2-8087beb5"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 6
+        }
+      ],
+      "readPaths": [
+        "insurance-bench/results/meta/v10-registration.json",
+        "insurance-bench/results/meta/v10-development-independent-audit.json",
+        "insurance-bench/results/meta/v10-dispatch-01-sol-high-dev.json",
+        "insurance-bench/results/meta/v10-dispatch-02-luna-high-dev.json",
+        "insurance-bench/results/2026-10-05T01-38-18-326Z-gpt-6.1-sol-high-baseline-investigation.json",
+        "insurance-bench/results/2026-10-05T02-05-49-682Z-gpt-6-luna-high-baseline-investigation.json"
+      ],
+      "sha256": {
+        "insurance-bench/results/meta/v10-registration.json": "4d9bf5516d27952268f1a3e8d4caf95814e264be8cc4ed49f829e21598bf971d",
+        "insurance-bench/results/meta/v10-dispatch-01-sol-high-dev.json": "5b3f7a5775c7e17177f9e18d73ac402e5f1771bd652311f161f6ac5ec2e3cbd5",
+        "insurance-bench/results/2026-10-05T01-38-18-326Z-gpt-6.1-sol-high-baseline-investigation.json": "5a33851ae6392bf8d7ab75c223e37d38fc560a9c61ac5abb7912ccc67cceff68",
+        "insurance-bench/results/meta/v10-dispatch-02-luna-high-dev.json": "00100f511915fda68340fb0c755d9ab2b832677e80d3110e4547e5ba30b5cb61",
+        "insurance-bench/results/2026-10-05T02-05-49-682Z-gpt-6-luna-high-baseline-investigation.json": "58de1dca0e69c03897ab21e51a406bc75452a67731874d6ebe51b470c402384a",
+        "insurance-bench/results/meta/v10-development-independent-audit.json": "9cc94c1c4bfc19a7a0ea79d78bd0e2922fae1b031282d8f536f4c6cc835fd23c"
+      }
+    },
+    {
+      "slug": "v11",
+      "registrationPath": "insurance-bench/results/meta/v11-registration.json",
+      "registrationSha256": "16fb33a1840c171ca1b7e9b6391e005ffe7427d2a48c839d754093c12c36c14c",
+      "audits": [
+        {
+          "path": "insurance-bench/results/meta/v11-development-independent-audit.json",
+          "sha256": "2f6ed5b0219fe49b02e50b0b78fe16ee51b8e8527170f61fdfc5d436d150b21d"
+        }
+      ],
+      "panels": [
+        {
+          "runId": "2026-10-05T02-47-38-010Z-gpt-6.1-sol-high-baseline-allocation-interaction",
+          "version": "insurance-bench-allocation-interaction-v0.11",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6.1-sol",
+            "inputUsdPerMillion": 2,
+            "outputUsdPerMillion": 10,
+            "reasoningEffort": "high",
+            "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+            "pricingVerifiedAt": "2026-10-03"
+          },
+          "split": [
+            "dev"
+          ],
+          "datasetHash": "c4851866d8f599d40e857d793f1173f3276631fd873c8969cbbd14717caff8ff",
+          "harnessHash": "ef755fa2977de64f7dcfce8f613b9ba0d65e8df8c33cef4b2e1c567f3f5027ed",
+          "taskIds": [
+            "iba-coverage-review-dev-1-b4c46e06",
+            "iba-coverage-review-dev-2-6cd4edad",
+            "iba-financial-reconciliation-dev-1-84590e9a",
+            "iba-financial-reconciliation-dev-2-ddd00d31",
+            "iba-deadline-triage-dev-1-4e618e6e",
+            "iba-deadline-triage-dev-2-fee102f5"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 6
+        },
+        {
+          "runId": "2026-10-05T03-00-44-801Z-gpt-6.1-sol-low-baseline-allocation-interaction",
+          "version": "insurance-bench-allocation-interaction-v0.11",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6.1-sol",
+            "inputUsdPerMillion": 2,
+            "outputUsdPerMillion": 10,
+            "reasoningEffort": "low",
+            "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+            "pricingVerifiedAt": "2026-10-03"
+          },
+          "split": [
+            "dev"
+          ],
+          "datasetHash": "c4851866d8f599d40e857d793f1173f3276631fd873c8969cbbd14717caff8ff",
+          "harnessHash": "ef755fa2977de64f7dcfce8f613b9ba0d65e8df8c33cef4b2e1c567f3f5027ed",
+          "taskIds": [
+            "iba-coverage-review-dev-1-b4c46e06",
+            "iba-coverage-review-dev-2-6cd4edad",
+            "iba-financial-reconciliation-dev-1-84590e9a",
+            "iba-financial-reconciliation-dev-2-ddd00d31",
+            "iba-deadline-triage-dev-1-4e618e6e",
+            "iba-deadline-triage-dev-2-fee102f5"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 6
+        },
+        {
+          "runId": "2026-10-05T03-12-36-117Z-gpt-6-luna-low-baseline-allocation-interaction",
+          "version": "insurance-bench-allocation-interaction-v0.11",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6-luna",
+            "inputUsdPerMillion": 0.1,
+            "outputUsdPerMillion": 0.5,
+            "reasoningEffort": "low",
+            "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+            "pricingVerifiedAt": "2026-10-03"
+          },
+          "split": [
+            "dev"
+          ],
+          "datasetHash": "c4851866d8f599d40e857d793f1173f3276631fd873c8969cbbd14717caff8ff",
+          "harnessHash": "ef755fa2977de64f7dcfce8f613b9ba0d65e8df8c33cef4b2e1c567f3f5027ed",
+          "taskIds": [
+            "iba-coverage-review-dev-1-b4c46e06",
+            "iba-coverage-review-dev-2-6cd4edad",
+            "iba-financial-reconciliation-dev-1-84590e9a",
+            "iba-financial-reconciliation-dev-2-ddd00d31",
+            "iba-deadline-triage-dev-1-4e618e6e",
+            "iba-deadline-triage-dev-2-fee102f5"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 6
+        },
+        {
+          "runId": "2026-10-05T03-21-31-856Z-gpt-6-luna-high-baseline-allocation-interaction",
+          "version": "insurance-bench-allocation-interaction-v0.11",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6-luna",
+            "inputUsdPerMillion": 0.1,
+            "outputUsdPerMillion": 0.5,
+            "reasoningEffort": "high",
+            "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+            "pricingVerifiedAt": "2026-10-03"
+          },
+          "split": [
+            "dev"
+          ],
+          "datasetHash": "c4851866d8f599d40e857d793f1173f3276631fd873c8969cbbd14717caff8ff",
+          "harnessHash": "ef755fa2977de64f7dcfce8f613b9ba0d65e8df8c33cef4b2e1c567f3f5027ed",
+          "taskIds": [
+            "iba-coverage-review-dev-1-b4c46e06",
+            "iba-coverage-review-dev-2-6cd4edad",
+            "iba-financial-reconciliation-dev-1-84590e9a",
+            "iba-financial-reconciliation-dev-2-ddd00d31",
+            "iba-deadline-triage-dev-1-4e618e6e",
+            "iba-deadline-triage-dev-2-fee102f5"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 6
+        }
+      ],
+      "readPaths": [
+        "insurance-bench/results/meta/v11-registration.json",
+        "insurance-bench/results/meta/v11-development-independent-audit.json",
+        "insurance-bench/results/meta/v11-dispatch-01-sol-high-dev.json",
+        "insurance-bench/results/meta/v11-dispatch-02-sol-low-dev.json",
+        "insurance-bench/results/meta/v11-dispatch-03-luna-low-dev.json",
+        "insurance-bench/results/meta/v11-dispatch-04-luna-high-dev.json",
+        "insurance-bench/results/2026-10-05T02-47-38-010Z-gpt-6.1-sol-high-baseline-allocation-interaction.json",
+        "insurance-bench/results/2026-10-05T03-00-44-801Z-gpt-6.1-sol-low-baseline-allocation-interaction.json",
+        "insurance-bench/results/2026-10-05T03-12-36-117Z-gpt-6-luna-low-baseline-allocation-interaction.json",
+        "insurance-bench/results/2026-10-05T03-21-31-856Z-gpt-6-luna-high-baseline-allocation-interaction.json"
+      ],
+      "sha256": {
+        "insurance-bench/results/meta/v11-registration.json": "16fb33a1840c171ca1b7e9b6391e005ffe7427d2a48c839d754093c12c36c14c",
+        "insurance-bench/results/meta/v11-dispatch-01-sol-high-dev.json": "4f8e2be5979eed69b8b2f82d82ccbe6acc4007e320af1456aafb56c86d6551cf",
+        "insurance-bench/results/2026-10-05T02-47-38-010Z-gpt-6.1-sol-high-baseline-allocation-interaction.json": "8e13c1cbff5eaff08da14e554c4295d632cb46bb19f7f62a7a4dae85f09668c9",
+        "insurance-bench/results/meta/v11-dispatch-02-sol-low-dev.json": "44c89ac3ffb836d1d6f4febc00e5dfa9bc97e49209a8a3f83c2f58d1460c596a",
+        "insurance-bench/results/2026-10-05T03-00-44-801Z-gpt-6.1-sol-low-baseline-allocation-interaction.json": "2cf746c2f354d20dca23d4ce1ed6d8d6582fd59500ad2c9165b823103ffd589a",
+        "insurance-bench/results/meta/v11-dispatch-03-luna-low-dev.json": "c507fea6d4f4b67f13f2a127906547b776fd3328c9bd8d60701cb0b9ba95006d",
+        "insurance-bench/results/2026-10-05T03-12-36-117Z-gpt-6-luna-low-baseline-allocation-interaction.json": "9c93449280987372d648e3ae195eaa3483e5ad72a283754c06499ebaa72f63a0",
+        "insurance-bench/results/meta/v11-dispatch-04-luna-high-dev.json": "ea0d42c696be32c1e240c011811d916c660bb85b9e37ae9bf44bee87b092462a",
+        "insurance-bench/results/2026-10-05T03-21-31-856Z-gpt-6-luna-high-baseline-allocation-interaction.json": "5ff363089a6d5f49a3f34807451b02ee973b78e2da65fc7ba8a3be71cbd3f4a5",
+        "insurance-bench/results/meta/v11-development-independent-audit.json": "2f6ed5b0219fe49b02e50b0b78fe16ee51b8e8527170f61fdfc5d436d150b21d"
+      }
+    },
+    {
+      "slug": "v12",
+      "registrationPath": "insurance-bench/results/meta/v12-registration.json",
+      "registrationSha256": "37fb73dc4fd2ba2072fdf0fd9ad1a12a4dc0ccd1654b323cd3ca9c21eb6ea81e",
+      "audits": [
+        {
+          "path": "insurance-bench/results/meta/v12-development-independent-audit.json",
+          "sha256": "fe2f597182a1f632d6e7dc2518028f2aaf7997e6670cb8cdceec9f08fb9a8e8a"
+        }
+      ],
+      "panels": [
+        {
+          "runId": "2026-10-05T04-11-33-454Z-gpt-6.1-sol-high-baseline-dependency-allocation",
+          "version": "insurance-bench-dependency-allocation-v0.12",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6.1-sol",
+            "inputUsdPerMillion": 2,
+            "outputUsdPerMillion": 10,
+            "reasoningEffort": "high",
+            "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+            "pricingVerifiedAt": "2026-10-03"
+          },
+          "split": [
+            "dev"
+          ],
+          "datasetHash": "3569a95573c576d64469d470999ce0f387254a5c430db7f125eadd857f7aa5d8",
+          "harnessHash": "4004345cd0bea50e0afe76b4acbda198759e7041b83ac9f8ce2796df668c0456",
+          "taskIds": [
+            "ibda-coverage-review-dev-1-761c0426",
+            "ibda-financial-reconciliation-dev-1-248bf6ba",
+            "ibda-deadline-triage-dev-1-d1cbe88e"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 3
+        },
+        {
+          "runId": "2026-10-05T04-19-42-463Z-gpt-6-luna-high-baseline-dependency-allocation",
+          "version": "insurance-bench-dependency-allocation-v0.12",
+          "model": {
+            "provider": "openai",
+            "model": "gpt-6-luna",
+            "inputUsdPerMillion": 0.1,
+            "outputUsdPerMillion": 0.5,
+            "reasoningEffort": "high",
+            "pricingSource": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+            "pricingVerifiedAt": "2026-10-03"
+          },
+          "split": [
+            "dev"
+          ],
+          "datasetHash": "3569a95573c576d64469d470999ce0f387254a5c430db7f125eadd857f7aa5d8",
+          "harnessHash": "4004345cd0bea50e0afe76b4acbda198759e7041b83ac9f8ce2796df668c0456",
+          "taskIds": [
+            "ibda-coverage-review-dev-1-761c0426",
+            "ibda-financial-reconciliation-dev-1-248bf6ba",
+            "ibda-deadline-triage-dev-1-d1cbe88e"
+          ],
+          "repeat": 1,
+          "limits": {
+            "maxTurns": 20,
+            "maxOutputTokens": 16384
+          },
+          "completeCoverage": true,
+          "episodes": 3
+        }
+      ],
+      "readPaths": [
+        "insurance-bench/results/meta/v12-registration.json",
+        "insurance-bench/results/meta/v12-development-independent-audit.json",
+        "insurance-bench/results/meta/v12-dispatch-01-sol-high-dev.json",
+        "insurance-bench/results/meta/v12-dispatch-02-luna-high-dev.json",
+        "insurance-bench/results/2026-10-05T04-11-33-454Z-gpt-6.1-sol-high-baseline-dependency-allocation.json",
+        "insurance-bench/results/2026-10-05T04-19-42-463Z-gpt-6-luna-high-baseline-dependency-allocation.json"
+      ],
+      "sha256": {
+        "insurance-bench/results/meta/v12-registration.json": "37fb73dc4fd2ba2072fdf0fd9ad1a12a4dc0ccd1654b323cd3ca9c21eb6ea81e",
+        "insurance-bench/results/meta/v12-dispatch-01-sol-high-dev.json": "71e2d0d41e153a15b0094a72b11957275ab832f5a51023017980b62f4cc8ae3a",
+        "insurance-bench/results/2026-10-05T04-11-33-454Z-gpt-6.1-sol-high-baseline-dependency-allocation.json": "b2408cb48b940ec99d44170d6d2ee60b48e74f2daf448ea7cd4972cf5dd9fe4d",
+        "insurance-bench/results/meta/v12-dispatch-02-luna-high-dev.json": "ff65a359c3c131396dde5b8a5d55649105afd716895f2552444183b26f59c0b9",
+        "insurance-bench/results/2026-10-05T04-19-42-463Z-gpt-6-luna-high-baseline-dependency-allocation.json": "4a6e16fd03bc3d4fb8974274256548965405929f3fc35550d8ff148a35090306",
+        "insurance-bench/results/meta/v12-development-independent-audit.json": "fe2f597182a1f632d6e7dc2518028f2aaf7997e6670cb8cdceec9f08fb9a8e8a"
+      }
+    }
+  ],
+  "verification": {
+    "focusedReportTests": "PASS25/25: npx tsx --test test/insurance-bench-report.test.ts",
+    "directStrictCompile": "PASS: helper, portable report tests, ignored current builder source and independent repro with --ignoreConfig strict/noUncheckedIndexedAccess",
+    "independentMocks": "PASS18: separate parent/held audit context and metadata-first failures",
+    "actualCohortAdmission": "PASS5 cohorts/18 panels/72 episodes"
+  },
+  "legacyReleaseBindings": {
+    "sourceFreeze": "cf4075d6fbeea1a9d882bbdea471824101b5f07d",
+    "parentDevelopmentSourceFreeze": "cf4075d6fbeea1a9d882bbdea471824101b5f07d",
+    "dispatchReleaseCommit": "74b404334129582a5b91445e02416d3d1acd4333",
+    "releasePath": "insurance-bench/results/meta/v09-holdout-release.json",
+    "releaseSha256": "4615df85171577bdf15eeb7ec8d9f894388a6547e02894b3aead3c383fc255c9",
+    "parentDevelopmentAuditPath": "insurance-bench/results/meta/investigation-development-independent-audit-v0.9.json",
+    "parentDevelopmentAuditSha256": "66cb0fcc17e32bad90f61c149e62f8c372d3109b56ccade6015adade92962eeb"
+  },
+  "counts": {
+    "registeredCohorts": 5,
+    "registeredPanels": 18,
+    "registeredEpisodes": 72,
+    "pureControls": 18,
+    "providerCalls": 0,
+    "ledgerReads": 0,
+    "authReads": 0,
+    "builderExecutions": 0,
+    "publications": 0,
+    "unreleasedHoldoutReads": 0
+  },
+  "factualIntegration": {
+    "v12": "Both66.67macro95.34diagnostic; same currentB2packet eligibility mistake; configured-condition tie only.",
+    "protocolAttribution": "Two recovered extracted-response/action-interface incidents, no truncation. Flattened block/phase-free traces cannot localize pure-model or provider JSON-mode fault or causal score impact.",
+    "historical": "Preserved comparisons and invalidv8 ability suppression remain; native observations are not regraded.",
+    "pairing": "V12 fixed registered IDs bind baseline Luna-high→treatment Sol-high tier; versions/task sets/harnesses/formats/splits remain separate."
+  },
+  "limitations": [
+    "This review validates admission/provenance and factual integration. Prior independent native audits own semantic reconstruction; their exact hashes are retained per cohort.",
+    "Native metadata is parsed only after all audit/receipt/digest bindings of each cohort pass. SHA verification reads exact bytes; it does not render or interpret a native body before admission.",
+    "No actual builder/ledger/report export/publication or browser preview acceptance is established. Those remain parent-owned acceptance.",
+    "Merged dependency state does not alter frozen benchmark sources or historical grades."
+  ],
+  "reproduction": {
+    "command": "npx tsx .tmp/insurance-bench/current-report-final-integration-independent-review.ts",
+    "scriptSha256": "458d349ddba98eba57ba8c37b0d1f73bd25f2b3dc920b95c7d48d99f3f578924",
+    "scriptCopy": "insurance-bench/results/meta/current-report-final-integration-independent-review-repro.txt"
+  }
+}

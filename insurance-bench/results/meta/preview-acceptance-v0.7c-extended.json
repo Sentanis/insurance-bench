@@ -1,0 +1,67 @@
+{
+  "recordedAt": "2026-10-04T22:26:04Z",
+  "acceptanceId": "CA-IB03",
+  "status": "verified",
+  "scope": "Protected static synthetic extended v0.7c report; accepted artifact predates the v0.8 source-propagation-fault update. No application, AWS staging or benchmark-validity acceptance.",
+  "browserEvidenceSource": "Parent integration agent real Chrome observation, supplied to documentation agent on 2026-10-04; documentation agent did not repeat browser actions.",
+  "url": "https://insurance-bench-ghxqxmua9-sentanis.vercel.app",
+  "deploymentId": "dpl_6ZrCyVtKLiMV3Q5rCpQbjmSZ6aBM",
+  "deployedCodeCommit": "901c0218d9688705cf2a2c2b4ae5cfffe483d6d7",
+  "protection": {
+    "vercelSso": "all",
+    "anonymousHttpStatus": 302,
+    "authenticatedHttpStatus": 200,
+    "bypassKeysUsed": false
+  },
+  "htmlIntegrity": {
+    "sourceSha256": "daae4b5b17f65f8e072374ec737fa869be0167a8bedcff67c109a656fcb00873",
+    "servedSha256": "acc1836486b7cb568882389ab7898bbdaadb33aac36e3319d6a0a5d8e2caf8ec",
+    "difference": "Only Vercel live-toolbar insertion; application report source otherwise identical",
+    "toolbarInsertionBytes": 163,
+    "toolbarInsertionSha256": "9f03d8f7ba42300cb6d7b492e1738e844a462a1a682c63c4284d9f7ac308f4f5"
+  },
+  "checks": {
+    "holdoutRows": 7,
+    "developmentRows": 2,
+    "allRenderedFieldsVerified": true,
+    "astraAllPass": "3/3",
+    "astraActualCurrentOptima": "3/3",
+    "astraExpandedCaseDetails": "Three passed cases",
+    "historicalRunCount": 46,
+    "historyMouseOpen": true,
+    "historyEnterClose": true,
+    "reloadHistoryCollapsed": true,
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "freshReloadRequestCount": 7,
+    "requestOrigins": "Report origin, vercel.live, non-HTTP only; no claims-app or model-provider requests",
+    "mobileViewportWidth": 390,
+    "mobileDocumentWidth": 390,
+    "mobileTableOverflow": "auto",
+    "mobileTableContainerWidth": 358,
+    "temporaryViewportReset": true
+  },
+  "screenshots": [
+    {
+      "path": ".tmp/insurance-bench-extended-preview.png",
+      "sha256": "e3e4424a69e4b2ab3c1758689b88f38805c676ad96aa3415ec7e6f7ef0ee1158",
+      "committed": false
+    },
+    {
+      "path": ".tmp/insurance-bench-extended-rows.png",
+      "sha256": "f3f679e9e6b8ce07004beb4760be1b54e14048886dc31d6a8aed3d76215ae69e",
+      "committed": false
+    },
+    {
+      "path": ".tmp/insurance-bench-extended-mobile.png",
+      "sha256": "7a544db51ead080135aae3e28291c501760e140d74163fa32d9acb4e1763b63a",
+      "committed": false
+    }
+  ],
+  "remainingGates": [
+    "Report containing the later v0.8 supersession finding requires a new commit-bound preview and Chrome acceptance.",
+    "Professional calibration, frontier target and provider admission gaps remain open.",
+    "Production-classified AWS staging remains separate and unaccepted."
+  ],
+  "priorReceiptUnchanged": "preview-acceptance-v0.7c.json"
+}

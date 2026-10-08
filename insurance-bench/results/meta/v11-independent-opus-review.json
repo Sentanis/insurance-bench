@@ -1,0 +1,59 @@
+{
+  "reviewedAt": "2026-10-05T01:43:42.955Z",
+  "disposition": "approve-engineering-only",
+  "sourceFingerprint": "9c8a799a8a5d1e853e7c5e58437064e6c2be659ff4ba9060a808fb9a5ec60a45",
+  "fullCorpusHash": "4334b01859d0df0d1a4344ed6af86b59331b1e62c5f34e09331e30189796922c",
+  "reviewModel": "claude-opus-4-8",
+  "method": "Existing Claude Max subscription, source-only Read/Glob/Grep, safe mode/no persistence/dontAsk, no execution/edit/provider ability calls/auth/live data or paid ledger.",
+  "rawReviewPath": "insurance-bench/results/meta/v11-independent-opus-review-raw.json",
+  "rawReviewSha256": "4a164dddfc7cf85e00e553c286be3856a0de01eebc0a263d2c2d69d7c257830f",
+  "promptPath": "insurance-bench/results/meta/v11-independent-opus-review-prompt.txt",
+  "promptSha256": "70df704169f8312a26633909ed81a599e4343772d65e46a9548acfa09789c24a",
+  "numTurns": 26,
+  "durationMs": 640450,
+  "estimatedEngineeringReferenceCostUsd": 3.8335715000000006,
+  "costScope": "List-price reference from existing subscription source review; not benchmark API ability spend, paid-ledger settlement or an invoice.",
+  "reviewedSourceSha256": {
+    "insurance-bench/allocation-interaction-core.ts": "e4d02a659dc24f4dea3bb4234cd57b8185aac0b78b2bbdc78c575248c6dfcbae",
+    "insurance-bench/allocation-interaction-cases.ts": "f954ead8bc903df06a18f116478f6862ebb163058576446c577b33dc8c79d368",
+    "insurance-bench/allocation-interaction-workflows.ts": "4cce168812d14e7e3324ee9107964321c15aea03a418ed2ec22336d125a8f0b7",
+    "insurance-bench/allocation-interaction-engine.ts": "0ef6e2c879a4acfa52b3017113e4b8d814fb8f9c426ee6abdab171b5455a3358",
+    "insurance-bench/allocation-interaction-runner.ts": "0cd1db0e53ccafcfbc1c6de4c05c2de75631c9abd01073888cfd55e9b6b1833f",
+    "insurance-bench/workflow-types.ts": "13fbf5b455d706c06eec4bedb81c935f5fd7cfdae3b079c28ecf18af5b8d9155",
+    "insurance-bench/json-object-provider.ts": "e3c569e92ecd0e1494009a19c1d327e2ad095d82cab7c87cc9ae501a39e9349a",
+    "insurance-bench/investigation-providers.ts": "e3d93a10653c3bd614bd3e00a983e7bb104509beb32df603cba63aa98c0492ba",
+    "insurance-bench/providers.ts": "532698d5d3850394ff8efc1288bd1975b504a8283503da585b68d55883fb565e",
+    "insurance-bench/candidate-admission.ts": "16ad52e267abe2f42a68d605c11a32ecde4f455a3dc0ce27bf6d1b03db0e509f",
+    "insurance-bench/runner.ts": "944113810c1d4fa7768cc1a8e69f6c797cd1480086c180c174f64b76cd713d64",
+    "insurance-bench/tools.ts": "0d5faa748b29587a9eabb8614f38039b41a4f6dd734be3a59377cfb0aec21124",
+    "insurance-bench/types.ts": "60322fa5e518736d7ada605dd527f673f95b834361c7e031a5533c58a9d50aad",
+    "insurance-bench/score.ts": "712c2966fa750b758fb7f886c49c1986453cb56491d7ec295787da32d6af2949",
+    "insurance-bench/models.json": "6b2a9d673de555106b64ce15ab20df7948594eb707cb8176354e6388e88b87fd",
+    "scripts/insurance-bench-allocation-interaction.ts": "9c31b40b9cdb9c9d62931712884e7548d973a917f1777ac583d6f255552a35da"
+  },
+  "independentAuditSha256": "72d7dec9d806cf2f67e74d077d57dc584b94ad8c65c24d3ea56519d6e70ea63f",
+  "runtimeReviewSha256": "019e4be0192e15192437565ea31af61db472a9056361d88d349ee67454b816ca",
+  "controllerReviewSha256": "05b62da9882102f6d7d3fbebd4f75be16a486c97fd674568f735902e462f2d07",
+  "coverage": {
+    "handDerivedTasks": 1,
+    "totalTasks": 12,
+    "handDerivedPhases": 3,
+    "handOptimalValues": [
+      21,
+      23,
+      22
+    ],
+    "actualToolsExecuted": false,
+    "subsetEnumerationExecuted": false,
+    "hashesRecomputedByReviewer": false,
+    "executionHashVerification": "Root binds exact bytes here; independent non-author interpreter/runtime/controller audits independently verify exact hashes and executable controls."
+  },
+  "limitations": [
+    "Bounded one-task cross-provider hand derivation/code inspection, not all36states or9.4M enumeration; full execution belongs to separate non-author audit.",
+    "Raw reviewer prose says10single+12joint despite18total; executable independent/author counts establish6single+12joint. This prose arithmetic error is not a source/corpus defect; raw review unchanged.",
+    "Raw review groups truncation with dispatch-stop flags. Controller records truncation and clean-comparison guards reject it; only process/provider/budget/model/effort/material-spend flags pause next paid panel. Exact native behavior/plan govern, not that summary wording.",
+    "Allfinaloptima2packages, correlated3families and six-case resolution limit difficulty/coverage; no empirical ability or professional validity is approved.",
+    "Changed corpus/max18/repairedruntime/nativeJSON vs old generations cannot identify a causal hardness effect."
+  ],
+  "rawResult": "I now have everything needed. All remaining engineering claims are independently confirmed in source:\n\n- **600s deadline**: `PROVIDER_TIMEOUT_MS = 600_000` (investigation-providers.ts:78), enforced via `AbortController` in `requestJson` (182-196) and passed through unchanged by the JSON wrapper (it *requires* `init.signal`, json-object-provider.ts:40).\n- **No retry/fallback/repair**: `complete` comment at 255 and the wrapper comment at 74; a failed call stays failed.\n- **Genuine usage/traces**: `tokens()` throws if usage is missing/invalid (203-211); model identity from `body.model`, `finishReason` from `incomplete_details.reason ?? status`, reasoning effort recorded and a provider effort swap throws (327-336).\n- **Cumulative truncation**: `episode.truncatedOutput ||= turnTruncated` (runner 153), flagged from finishReason regex.\n- **Failed-call reservation retained**: `budget.reserve` precedes the call; on `provider-error`/`budget-stopped` it `break`s *without* `settle` (137-139, 128-131), so the worst-case reservation stays held; only success calls `settle` (146).\n- **Ceilings**: `limits()` enforces 1–20 turns and 128–16384 inclusive output (82-91).\n- **Macro headline**: family-weighted complete-task-success, `null` unless `completeCoverage` and every episode scored (52-71).\n\n---\n\n# Verdict: approve-engineering-only\n\n**Insurance Bench v0.11 — independent bounded source-only adversarial review (pre-inference).**\n\n## Scope and method (disclosed honestly)\nRead/Glob/Grep only. No execution, no provider/network/auth/.env/ledger access, no paid CLI, no model outputs. I inspected only the synthetic source and control files. I **did not** run the test suite, **did not** execute the 9.4M-subset enumeration, and **did not** recompute any declared SHA-256 hash — I have no execution tools, so every \"hash matches\" relation below is the authors'/prior reviewers' claim, verified by me only for *internal structural consistency*, not recomputed.\n\n## Independently derived (before reading any author target)\nI hand-derived `dev-1-b4c46e06` (the public source packet) through all three phases from the raw rules alone:\n\n- **Capacities** — Phase 0: A/B/C = 5000/5000/6000, occ 10000. Phase 1 (records rev 2): 5000/5000/5000. Phase 2 (records rev 3): **3000**/5000/5000. The phase-2 A-cap drop is caused by the signed `endorsement-current-v2` (scope A, `personLimitCents 12000`, version 2, effective 2026-06-23T15:00Z) — the highest signed revision effective ≤ loss.\n- **Eligibility** — Phase 0: 6 packages (C blocked by the missing `custodian-enclosure` receipt item; Q8/Q12 blocked by unresolved allocation-U); Phases 1 & 2: all 18 eligible.\n- **Optimal ties** — Phase 0: value 21 `{Q1,Q2}`. Phase 1: value 23 `{Q10,Q12}`. Phase 2: value **22**, exactly two ties `{Q9,Q10}` and `{Q12,Q15}` (both cost 10000, within the occurrence budget). I caught my own earlier arithmetic error (`{Q8,Q13}` costs 11000 > 10000, infeasible) and corrected it.\n\nAll of the above **match the author controls (`allocation-interaction-author-controls-v0.11.json`) and the independent audit's hand-controls exactly.** The two-stage optimum changes across the signed amendment (phase-1 `{Q10,Q12}` needs A=4000 and is broken at phase 2), confirming the \"signed correction invalidates the prior review\" contract.\n\nI then confirmed the generator (`allocation-interaction-cases.ts`) actually produces this packet: 18 `shapes` (10 single + **12 non-dominated joint** vectors), the coverage-review deltas (+1 on Q1, +2 on Q10) reproducing the exact packet priorities, and the variant-0 scope-A amendment at `at(-1500)`=2026-06-23T15:00Z.\n\n## Confirmed engineering properties\n- **No optimizer/gold/rubric leaked to the model**: public message is only `publicWorkflowTask` = `{id,family,instruction,clock}`; `execute`/`read_record`/`list_documents`/`save` return no gold; `gradeCoupledTask` binds any feasible objective-optimal tie *after* grading, never supplying the answer (engine comment line 7).\n- **Solver**: `solveCoupled` throws at >18 packages; Gray-code enumeration preserves all ties; memo keyed on `{constraints, sourceIdentity}` with `structuredClone` on get and set (no cache poisoning); `CACHE_LIMIT` bounded.\n- **Post-finish protected-intent boundary repaired** in the newly-named `allocation-interaction-workflows.ts`: `request_external_action`, `declare_human_signoff`, and prohibited `apply_business_update` are recorded (→ `externalActionAttempts`/critical) *before* the `state.finished` and session/packet guards (151-178), so a perfect-oracle batch followed by protected intent → `criticalFailure`, score 0, `allPass` false, history preserved. Ordinary post-finish actions still fall through to recoverable `episode_finished`. The old `workflows.ts` defect remains preserved, unmodified.\n- **Transport/ceilings/accounting**: as itemized above (600s, 20-turn, 128–16384, no retry, genuine usage, cumulative truncation, retained failed-call reservation, null-headline on incomplete coverage).\n- **Controller/admission**: canonical realpath root, runner-owned immutable source path list (never caller-supplied), exact-byte committed-freeze verification via `git show`, exactly-one panel match, shared **$75 cap / registered floor never reset**, `wx` one-time lock + `.claim` file, untracked `dispatched` receipt, serial fixed order (Sol-high $2.75 / Sol-low $2.25 / Luna-low $0.50 / Luna-high $0.75 = **$6.25**, each remaining forecast must fit before dispatch), and native-run provenance flags (truncation / model-effort / provider-budget / overrun) that halt subsequent panels. Admission is read-only and makes no provider/auth/ledger-write call. Holdout path requires separately committed release + audited terminal dev receipts.\n- **Scoring**: 40/25/25/10 diagnostic with dependent facts/evidence/draft gates; `criticalFailure → 0`; macro headline separate from diagnostic; incomplete/superseded episodes suppressed from the ability headline.\n\n## Remaining concerns / explicit limitations\n1. This certifies **engineering correctness of the exact current synthetic source only**. It does **not** certify professional insurance/legal validity, real-provider behavior, or any ability/difficulty claim — and the design's own \"50–60 frontier\" is a research target, never a scoring adjustment.\n2. **Coverage is partial, not exhaustive**: I hand-derived one task (all three phases, all ties) and verified the enumeration *algorithm* by reading. I did not and cannot execute the 262,144-subset-per-snapshot / 9,437,184-total enumeration, nor re-run the 23-test suite the runner-review reports as passing.\n3. **No hash was recomputed.** The declared source/registration/audit/plan/controller SHA-256 values are internally consistent with how the controller/admission consume them, but a byte-level recomputation requires execution tools and remains outstanding evidence.\n4. The three task families share one occurrence engine and remain correlated; six dev cases give only ~16.67-pt resolution — limited statistical power, as the plan itself states.\n\nWithin that disclosed scope, I found no correctness defect, no gold/optimizer leak, and no boundary regression. **Disposition: approve-engineering-only.**"
+}

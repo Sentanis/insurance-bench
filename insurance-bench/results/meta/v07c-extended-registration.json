@@ -1,0 +1,187 @@
+{
+  "registeredAt": "2026-10-04T20:49:56.591Z",
+  "approvalCommit": "556ce30a",
+  "scope": "Post-approval extension of existing frozen c; unchanged source/gold/configuration/settings and same shared ledger. New attempts preserve expired-SSO predecessors.",
+  "totalCapUsd": 75,
+  "ledgerPath": ".tmp/insurance-bench/session-budget.json",
+  "ledgerAtRegistration": {
+    "reservedUsd": 20.20268017000003,
+    "capUsd": 75,
+    "updatedAt": "2026-10-04T20:43:12.567317+00:00"
+  },
+  "sourceFingerprint": "d32acb6aef0f3b7e35a29b0fc41a650383fd172cb1cc0de457226efbef87280e",
+  "promptHash": "42bedeffb8638877eb60cd23cb2a9bf8ed82e67c10791b0ee2f7b9f6cb1de1f6",
+  "harnessHash": "d0b6963c2b33416372a975d497a554a52ed667f8f9213150b072ce3659502555",
+  "freeze": "insurance-bench/freeze-v0.7c-final.json",
+  "developmentHash": "55ea74f1e893f012e540fc4e6ea44b2c540bad9c15577fa07888d96c82fa6026",
+  "holdoutHash": "38421edb1f1cd4ee59aac56635a7b16a18e2ef6c1c8f60f637d55866ff15a6c2",
+  "devTaskIds": [
+    "ibc-coverage-review-dev-1-693918aa",
+    "ibc-financial-reconciliation-dev-1-6bebb17e",
+    "ibc-deadline-triage-dev-1-cb2f8d92"
+  ],
+  "holdoutTaskIds": [
+    "ibc-coverage-review-holdout-1-ee0e896c",
+    "ibc-financial-reconciliation-holdout-1-5f419d60",
+    "ibc-deadline-triage-holdout-1-96851694"
+  ],
+  "repeat": 1,
+  "limits": {
+    "maxTurns": 20,
+    "maxOutputTokens": 16384,
+    "transportDeadlineMs": 300000
+  },
+  "recoveryDevOrder": [
+    "qwen3-32b",
+    "qwen3-235b"
+  ],
+  "optionalFinalSerialOrder": [
+    "claude-sonnet-4.6",
+    "qwen3-235b",
+    "gpt-oss-120b",
+    "deepseek-v3.2",
+    "qwen3-32b",
+    "gpt-oss-20b",
+    "claude-haiku-4.5",
+    "gpt-6-astra-high"
+  ],
+  "planningAllowancesUsd": {
+    "claude-sonnet-4.6": 3.5,
+    "qwen3-235b": 0.5,
+    "gpt-oss-120b": 0.5,
+    "deepseek-v3.2": 0.7,
+    "qwen3-32b": 0.5,
+    "gpt-oss-20b": 0.5,
+    "claude-haiku-4.5": 1.3,
+    "gpt-6-astra-high": 11
+  },
+  "refreshedAccessProbes": {
+    "models": [
+      "claude-sonnet-5.5",
+      "claude-opus-5.5",
+      "claude-sonnet-5",
+      "grok-4.7"
+    ],
+    "maxOutputTokens": 2048,
+    "oneAttemptEach": true,
+    "abilityCondition": false
+  },
+  "modelConfigurations": {
+    "qwen3-32b": {
+      "provider": "bedrock",
+      "profile": "sentanis-phase0",
+      "region": "us-west-2",
+      "pricingVerifiedAt": "2026-10-03",
+      "model": "qwen.qwen3-32b-v1:0",
+      "inputUsdPerMillion": 0.15,
+      "outputUsdPerMillion": 0.6,
+      "pricingSource": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-west-2/index.json"
+    },
+    "qwen3-235b": {
+      "provider": "bedrock",
+      "model": "qwen.qwen3-235b-a22b-2507-v1:0",
+      "inputUsdPerMillion": 0.22,
+      "outputUsdPerMillion": 0.88,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "claude-sonnet-4.6": {
+      "provider": "bedrock",
+      "model": "us.anthropic.claude-sonnet-4-6",
+      "inputUsdPerMillion": 3.3,
+      "outputUsdPerMillion": 16.5,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "gpt-oss-120b": {
+      "provider": "bedrock",
+      "model": "openai.gpt-oss-120b-1:0",
+      "inputUsdPerMillion": 0.15,
+      "outputUsdPerMillion": 0.6,
+      "profile": "sentanis-phase0",
+      "region": "us-east-1"
+    },
+    "deepseek-v3.2": {
+      "provider": "bedrock",
+      "model": "deepseek.v3.2",
+      "inputUsdPerMillion": 0.62,
+      "outputUsdPerMillion": 1.85,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "gpt-oss-20b": {
+      "provider": "bedrock",
+      "profile": "sentanis-phase0",
+      "region": "us-west-2",
+      "pricingVerifiedAt": "2026-10-03",
+      "model": "openai.gpt-oss-20b-1:0",
+      "inputUsdPerMillion": 0.07,
+      "outputUsdPerMillion": 0.3,
+      "pricingSource": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-west-2/index.json"
+    },
+    "claude-haiku-4.5": {
+      "provider": "bedrock",
+      "profile": "sentanis-phase0",
+      "region": "us-west-2",
+      "pricingVerifiedAt": "2026-10-03",
+      "model": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "inputUsdPerMillion": 1,
+      "outputUsdPerMillion": 5,
+      "pricingSource": "https://platform.claude.com/docs/en/about-claude/pricing"
+    },
+    "gpt-6-astra-high": {
+      "provider": "openai",
+      "model": "gpt-6-astra",
+      "inputUsdPerMillion": 10,
+      "outputUsdPerMillion": 50,
+      "reasoningEffort": "high",
+      "pricingSource": "https://developers.openai.com/api/docs/pricing",
+      "pricingVerifiedAt": "2026-10-04"
+    },
+    "claude-sonnet-5.5": {
+      "provider": "bedrock",
+      "model": "global.anthropic.claude-sonnet-5-5",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 10,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "claude-opus-5.5": {
+      "provider": "bedrock",
+      "model": "global.anthropic.claude-opus-5-5",
+      "inputUsdPerMillion": 4,
+      "outputUsdPerMillion": 20,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "claude-sonnet-5": {
+      "provider": "bedrock",
+      "model": "global.anthropic.claude-sonnet-5",
+      "inputUsdPerMillion": 3,
+      "outputUsdPerMillion": 15,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    },
+    "grok-4.7": {
+      "provider": "bedrock",
+      "model": "global.xai.grok-4.7",
+      "inputUsdPerMillion": 2,
+      "outputUsdPerMillion": 6,
+      "profile": "sentanis-phase0",
+      "region": "us-west-2"
+    }
+  },
+  "rules": [
+    "No inference outside shared ledger/cap75",
+    "Check whole-panel allowance before dispatch; forecasts are estimates, stop further dispatch if material overrun",
+    "Qwen dev pair may overlap Sonnet final; final optional panels remain serial in declared order",
+    "No selective case/model reruns; provider failures/truncations remain visible and unscored where applicable",
+    "Terminal registered episodes only audited; no partial grading or source/gold tuning",
+    "New access success is reported before any separately preregistered ability condition"
+  ],
+  "previousFailedQwenRunIds": [
+    "2026-10-04T03-56-32-949Z-qwen.qwen3-235b-a22b-2507-v1-0-baseline",
+    "2026-10-04T03-56-32-950Z-qwen.qwen3-32b-v1-0-baseline"
+  ],
+  "keyPresent": true
+}

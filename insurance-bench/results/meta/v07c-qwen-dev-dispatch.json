@@ -1,0 +1,28 @@
+{
+  "registeredAt": "2026-10-04T03:56:32.627Z",
+  "generation": "insurance-bench-coupled-v0.7c",
+  "stage": "qwen-dev",
+  "profiles": [
+    "qwen3-32b",
+    "qwen3-235b"
+  ],
+  "taskIds": [
+    "ibc-coverage-review-dev-1-693918aa",
+    "ibc-financial-reconciliation-dev-1-6bebb17e",
+    "ibc-deadline-triage-dev-1-cb2f8d92"
+  ],
+  "sourceFingerprint": "d32acb6aef0f3b7e35a29b0fc41a650383fd172cb1cc0de457226efbef87280e",
+  "harnessHash": "d0b6963c2b33416372a975d497a554a52ed667f8f9213150b072ce3659502555",
+  "ledgerAtDispatch": {
+    "reservedUsd": 18.725326637500004,
+    "capUsd": 25,
+    "updatedAt": "2026-10-04T03:56:00.813Z"
+  },
+  "planningAllowanceUsd": 5,
+  "affordable": true,
+  "forecastPolicy": "Planning allowance is an estimate, not a guarantee or allocation that bypasses the atomic shared cap; preserve fixed case/order and incomplete coverage.",
+  "unchanged": true,
+  "executionOverlap": "Sol high complete; Luna high still active. Independent registered Qwen pair overlaps final high dev work to reduce wall time; unchanged case/profile order and no holdout outputs. Shared ledger remains authoritative.",
+  "remainingHighForecastUsd": 0.3,
+  "primaryFinalPlanningAllowanceUsd": 4
+}

@@ -1,0 +1,128 @@
+{
+  "schema": "insurance-bench-allocation-runner-independent-review-v0.11-v1",
+  "reviewedAt": "2026-10-05T01:34:02.522Z",
+  "preparedBy": "Independent non-author code-review agent for root-authored allocation runner/CLI/report",
+  "disposition": "approve-engineering-only",
+  "generation": "insurance-bench-allocation-interaction-v0.11",
+  "sourceFingerprint": "9c8a799a8a5d1e853e7c5e58437064e6c2be659ff4ba9060a808fb9a5ec60a45",
+  "fullCorpusHash": "4334b01859d0df0d1a4344ed6af86b59331b1e62c5f34e09331e30189796922c",
+  "sourceFiles": [
+    "insurance-bench/allocation-interaction-core.ts",
+    "insurance-bench/allocation-interaction-cases.ts",
+    "insurance-bench/allocation-interaction-workflows.ts",
+    "insurance-bench/allocation-interaction-engine.ts",
+    "insurance-bench/allocation-interaction-runner.ts",
+    "insurance-bench/workflow-types.ts",
+    "insurance-bench/json-object-provider.ts",
+    "insurance-bench/investigation-providers.ts",
+    "insurance-bench/providers.ts",
+    "insurance-bench/candidate-admission.ts",
+    "insurance-bench/runner.ts",
+    "insurance-bench/tools.ts",
+    "insurance-bench/types.ts",
+    "insurance-bench/score.ts",
+    "insurance-bench/models.json",
+    "scripts/insurance-bench-allocation-interaction.ts"
+  ],
+  "sourceHashes": {
+    "insurance-bench/allocation-interaction-core.ts": "e4d02a659dc24f4dea3bb4234cd57b8185aac0b78b2bbdc78c575248c6dfcbae",
+    "insurance-bench/allocation-interaction-cases.ts": "f954ead8bc903df06a18f116478f6862ebb163058576446c577b33dc8c79d368",
+    "insurance-bench/allocation-interaction-workflows.ts": "4cce168812d14e7e3324ee9107964321c15aea03a418ed2ec22336d125a8f0b7",
+    "insurance-bench/allocation-interaction-engine.ts": "0ef6e2c879a4acfa52b3017113e4b8d814fb8f9c426ee6abdab171b5455a3358",
+    "insurance-bench/allocation-interaction-runner.ts": "0cd1db0e53ccafcfbc1c6de4c05c2de75631c9abd01073888cfd55e9b6b1833f",
+    "insurance-bench/workflow-types.ts": "13fbf5b455d706c06eec4bedb81c935f5fd7cfdae3b079c28ecf18af5b8d9155",
+    "insurance-bench/json-object-provider.ts": "e3c569e92ecd0e1494009a19c1d327e2ad095d82cab7c87cc9ae501a39e9349a",
+    "insurance-bench/investigation-providers.ts": "e3d93a10653c3bd614bd3e00a983e7bb104509beb32df603cba63aa98c0492ba",
+    "insurance-bench/providers.ts": "532698d5d3850394ff8efc1288bd1975b504a8283503da585b68d55883fb565e",
+    "insurance-bench/candidate-admission.ts": "16ad52e267abe2f42a68d605c11a32ecde4f455a3dc0ce27bf6d1b03db0e509f",
+    "insurance-bench/runner.ts": "944113810c1d4fa7768cc1a8e69f6c797cd1480086c180c174f64b76cd713d64",
+    "insurance-bench/tools.ts": "0d5faa748b29587a9eabb8614f38039b41a4f6dd734be3a59377cfb0aec21124",
+    "insurance-bench/types.ts": "60322fa5e518736d7ada605dd527f673f95b834361c7e031a5533c58a9d50aad",
+    "insurance-bench/score.ts": "712c2966fa750b758fb7f886c49c1986453cb56491d7ec295787da32d6af2949",
+    "insurance-bench/models.json": "6b2a9d673de555106b64ce15ab20df7948594eb707cb8176354e6388e88b87fd",
+    "scripts/insurance-bench-allocation-interaction.ts": "9c31b40b9cdb9c9d62931712884e7548d973a917f1777ac583d6f255552a35da",
+    "insurance-bench/report.ts": "6c870eb6e695eb3a093acdfc51b783f215fcdc14f9c9480e201f0bbf62eabdfa",
+    "test/insurance-bench-allocation-interaction-runner.test.ts": "ffdd9dec4674f26b47a5c38ea5130aaf4075e5379adc5bff1048046d14d7e5c1",
+    "test/insurance-bench-report.test.ts": "7fe66b09c82ac1e2d681417fe0e005405f7af6ce570020f073af8b56614f36d8"
+  },
+  "scope": "Bounded runtime/CLI/report integration review; source/gold/optimization admission belongs to separate third-interpreter audit and cross-provider review.",
+  "checks": [
+    {
+      "id": "public-task-privacy",
+      "result": "pass-source-and-mock",
+      "evidence": "Explicit publicWorkflowTask exports id/family/instruction/clock only. Both basic and full six-case runner controls inspect actual model messages: workflow/coupled/rubric absent; no private solver or gold tool."
+    },
+    {
+      "id": "actual-perfect-native-runner",
+      "result": "pass-mock",
+      "evidence": "All6 dev cases through real runAllocationInteractionPanel/episode and actual tool VM, writes via parsed JSON only; each10turns completed, current optimal business write,100macro and100weighted diagnostic, complete scored coverage; versionv0.11/responseFormat=json_object. Oracle reads fixture annotations to isolate runtime integration and is not an independent semantic source audit."
+    },
+    {
+      "id": "same-batch-post-finish-protected-intent",
+      "result": "pass-mock",
+      "evidence": "Actual perfect completion followed in same parsed response by request_external_action execute_payment and declare_human_signoff with stale session token; both attempts recorded after finish, criticalFailure true, score0/allPass false/macro0. Runtime executes entire parsed batch; protected intent precedes finished/stale guards."
+    },
+    {
+      "id": "current-outcome-is-actual-write",
+      "result": "pass-mock",
+      "evidence": "Correct current facts/draft and supplied internal review followed by recorded empty suboptimal business plan: facts pass, actual workflow:current-state fails, macro0. Report exposes current optimal plan outcome separately from weighted diagnostics and completed-task success."
+    },
+    {
+      "id": "truncation-and-native-errors",
+      "result": "pass-mock-and-source",
+      "evidence": "Truncation is cumulative across recovered turns, malformed JSON counted without repair/fallback, native effort/reasoning/finish/usage retained; output128–16384 inclusive and20turn ceiling. Provider failure remains unscored, retains prior worst-case reservation and stops later panel episodes; budget refusal invokes no provider. Native JSON wrapper retains600000ms inherited deadline."
+    },
+    {
+      "id": "headline-and-coverage",
+      "result": "pass-mock",
+      "evidence": "Family-weighted success counts only completed/noncritical/allPass episodes. Missing coverage/score yields null headline, incomplete task yields0success, critical failure yields0success. Report shows macro headline and diagnostic separately, suppresses incomplete/superseded headlines and separates version/dataset/harness panels."
+    },
+    {
+      "id": "canonical-cli-prepaid-guards",
+      "result": "pass-source-and-controls",
+      "evidence": "Entry-script-derived canonical root, immutable committed source manifest, exact task/raw corpus/prompt/model/effort/harness/limits/split/variant/repeat admission, existing total75 ledger floor and prospective receipt, then persistent wx one-time claim before output mkdir/Budget. Unsupported providers, options, counts or cap rejected before reservation. Holdout paths use shared reviewed release/development-receipt gates."
+    },
+    {
+      "id": "historical-native-preservation",
+      "result": "pass-source",
+      "evidence": "Separate v0.11 native run/version/source manifest and output filenames. No read/relabel/regrade of historical native runs. Report method labels synthetic limitations and does not infer larger search means greater difficulty."
+    }
+  ],
+  "resolvedFindings": [
+    {
+      "id": "undefined-public-task-function",
+      "priority": "important-before-paid",
+      "location": "insurance-bench/allocation-interaction-runner.ts:107",
+      "observed": "Three existing runner tests threw ReferenceError publicCoupledTask is not defined before invoke.",
+      "repair": "Root changed call to imported publicWorkflowTask; existing and expanded mock controls now pass."
+    }
+  ],
+  "issues": [],
+  "validation": {
+    "command": "node --import tsx --test test/insurance-bench-allocation-interaction-runner.test.ts test/insurance-bench-report.test.ts",
+    "tests": 23,
+    "passed": 23,
+    "runnerTests": 7,
+    "reportTests": 16,
+    "typeCheck": {
+      "command": "npm run check",
+      "exitCode": 0
+    },
+    "reviewerEditedOnly": "test/insurance-bench-allocation-interaction-runner.test.ts (three new controls; existing controls preserved)",
+    "providerCalls": 0,
+    "authRead": false,
+    "realSharedLedgerReadOrChanged": false,
+    "paidNativeOrPartialOutputsReadForThisReview": false,
+    "commitsByReviewer": 0
+  },
+  "limitations": [
+    "Engineering approval for exact current runtime source only; no real provider admission or allocation model ability evidence.",
+    "Fixture oracle controls validate runner/tool integration, not independently the truth of author gold; independent raw source and exhaustive subset audit are separate required evidence.",
+    "No professional insurance/legal/clinical or population validation.",
+    "Weighted score and current optimal write remain dependent on fictional deterministic rules; three task families share mechanics."
+  ],
+  "reproduction": {
+    "command": "node --import tsx .tmp/insurance-bench/allocation-runner-independent-review.ts",
+    "scriptSha256": "f618f48902aecb3a4b3cde1ea5953864dee76f99d78030dd0dead62e8e007b7b"
+  }
+}

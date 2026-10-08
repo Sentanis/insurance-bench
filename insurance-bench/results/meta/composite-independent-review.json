@@ -1,0 +1,181 @@
+{
+  "schema": "insurance-bench-composite-independent-review-v1",
+  "reviewedAt": "2026-10-08T05:14:21.744Z",
+  "disposition": "approve-engineering-only",
+  "sourceSha256": {
+    "insurance-bench/composite.ts": "6df43be49c5f754ed75532c4ca90902988fbfb8e858bc51457d2afc15dc6c963",
+    "insurance-bench/composite-admission.ts": "af3fbbe033766a6c21abba66b22038e238144c34d1107ed0d20e3d8962b1b182",
+    "insurance-bench/composite-site.ts": "e0e517081d543a610eb547c7dcd1c01cc0f14f945ea742a5e28960a594366fae",
+    "insurance-bench/composite-client.ts": "7ec855fe2c8ca1f80fde538f90fc8937c5f802dccf50311d5813d81514e6f44c",
+    "insurance-bench/composite.css": "7287029f7b86c7db5c08790fa7c5bbff725cbce8b496dd9337767c4bc51dde19",
+    "scripts/build-insurance-bench-composite.ts": "a52f7ac749f65606921d4168e1af949666c22526b4a186c56cd0e512281f21a0",
+    "test/insurance-bench-composite.test.ts": "52ff246239e929aefab8e2e7f9febec0cb0e8a6e858b13bc37dd59cda978ed6e",
+    "insurance-bench/composite-registration.json": "47e9fa54fabea076502eb5c793d3cf69fa915a78a9546a3afd12ed3e22a17f98",
+    "insurance-bench/composite-data.json": "1778472d45d2c8a8780b9dab980f3630fa1469c81545ae7b093093f21a2ae9f6",
+    "insurance-bench/results/meta/composite-build-receipt.json": "6f4a75dc09a53b7b88f07a8ef0a0aaf3db1040b2ff485a33bc55cf7f0566e1e8"
+  },
+  "inputHashes": {
+    "insurance-bench/composite-published.json": "178fe45eb30facbb0bf2b44257f8f1759c718d35973ea018ea9b6ed9d745867d",
+    "insurance-bench/composite-supplemental.json": "c1fd8d1e5fef20576ba3a7d0bca2551727acc81f7fea6773ab31e00be783640e",
+    "insurance-bench/composite-docs.json": "c0e8739bbde5589f13720584bfdf52b57d8c0a52fcad95a85c484ba0392d5402",
+    "insurance-bench/results/meta/composite-published-source-receipt.json": "00ae124f53edcd0c5a3345b44d35a41a0e0d2321f9756c3536e5abcaab92d92c",
+    "insurance-bench/results/meta/composite-supplemental-source-receipt.json": "79a87d1a4abdbe9e4edde49eb6cc4014f4a4932b679b7468c1370a08b51c77eb"
+  },
+  "registrationSha256": "47e9fa54fabea076502eb5c793d3cf69fa915a78a9546a3afd12ed3e22a17f98",
+  "primaryCacheSha256": {
+    ".tmp/insurance-bench/composite-sources/vals-legalbench.html": "7d5ca89c5a9dbbdb889d0fad54b295d715ee5befd51d49f421647c1603d9db72",
+    ".tmp/insurance-bench/composite-sources/vals-hlab.html": "0353207e443b21da90b20dc38dff545f100adbb99bd924cd544893bb9e6840a7",
+    ".tmp/insurance-bench/composite-sources/omnidoc-readme.md": "a799f3dabee0d8e2be9f990fc325c3fefadb8d7f8d0cf56148406547d495a3ad",
+    ".tmp/insurance-bench/composite-sources/gdpval-paper.pdf": "37c7604bc9da68cd8d9345ad16938164fe985182ad723fcb09e9415f84dc25d4",
+    ".tmp/insurance-bench/composite-sources/gdpval-page5.png": "700eee45f9a208b8a9872ce88311f6dc9f1cca5066b79afd252e9d38ec12817b"
+  },
+  "counts": {
+    "modelProfiles": 212,
+    "observations": 269,
+    "eligibleObservations": 268,
+    "fullCanonicalScores": 0,
+    "rawValsRows": 225,
+    "embeddedValsValues": 225,
+    "projectedObservations": 269,
+    "rawOmniDocRows": 35,
+    "independentRowMath": 212,
+    "observedZeroRows": 17,
+    "negativeAdmissionControls": 14,
+    "domControls": 30,
+    "newModelOrJudgeCalls": 0,
+    "appDbAuthLedgerAccess": 0,
+    "actualBuilderExecutions": 0,
+    "publication": 0,
+    "unreleasedHoldoutsRead": 0
+  },
+  "findings": [
+    {
+      "id": "COMP01",
+      "file": "insurance-bench/composite.ts",
+      "status": "resolved",
+      "issue": "Positive finite weight underflow silently omitted a required component;1e308 versus Number.MIN_VALUE returned a full80 score despite missing positive-weight evidence.",
+      "repair": "Reject unrepresentable positive normalized weights."
+    },
+    {
+      "id": "COMP02",
+      "file": "insurance-bench/composite.ts",
+      "status": "resolved",
+      "issue": "Invalid calendar dates passed regex-only source validation.",
+      "repair": "Validate ISO date by real calendar roundtrip."
+    },
+    {
+      "id": "COMP03",
+      "file": "insurance-bench/composite-site.ts",
+      "status": "resolved",
+      "issue": "Reference-only11.25 source value was hidden in inspector.",
+      "repair": "Numeric recorded value retained with explicit exclusion; matrix remains unscored."
+    },
+    {
+      "id": "COMP04",
+      "file": "insurance-bench/composite-site.ts",
+      "status": "resolved",
+      "issue": "Supplementary RAG/OCRBench/FinQA cards claimed counts from other benchmarks sharing the category.",
+      "repair": "Explicit observationBenchmarks mapping; supplementary cards show no imported scores."
+    },
+    {
+      "id": "COMP05",
+      "file": "insurance-bench/composite.css",
+      "status": "resolved",
+      "issue": "Mobile header hid only archive entry.",
+      "repair": "Footer retains archive navigation."
+    },
+    {
+      "id": "COMP06",
+      "file": "scripts/build-insurance-bench-composite.ts",
+      "status": "resolved",
+      "issue": "Schema-only build accepted valid-range source edits without native/receipt binding.",
+      "repair": "Registered preflight before output mutation; projection and exact source contracts bound to receipts."
+    },
+    {
+      "id": "COMP07",
+      "file": "insurance-bench/composite-admission.ts",
+      "status": "resolved",
+      "issue": "Resealed native99/projection/receipt could cite unchanged approved66.67 audit; category/metric substitutions were admitted.",
+      "repair": "Exact audit panel SHA/macro/coverage and audited episode success; exact benchmark/component/native metric/version/eligibility; explicit engineering disposition."
+    }
+  ],
+  "controls": [
+    {
+      "name": "valid-range99 projection drift",
+      "rejected": true
+    },
+    {
+      "name": "resealed99 projection versus receipt",
+      "rejected": true
+    },
+    {
+      "name": "resealed native99 against unchanged independent audit",
+      "rejected": true
+    },
+    {
+      "name": "public-componentId",
+      "rejected": true
+    },
+    {
+      "name": "public-benchmark",
+      "rejected": true
+    },
+    {
+      "name": "public-benchmarkVersion",
+      "rejected": true
+    },
+    {
+      "name": "public-metric",
+      "rejected": true
+    },
+    {
+      "name": "public-eligible",
+      "rejected": true
+    },
+    {
+      "name": "omnidoc-componentId",
+      "rejected": true
+    },
+    {
+      "name": "omnidoc-benchmark",
+      "rejected": true
+    },
+    {
+      "name": "omnidoc-benchmarkVersion",
+      "rejected": true
+    },
+    {
+      "name": "omnidoc-metric",
+      "rejected": true
+    },
+    {
+      "name": "omnidoc-eligible",
+      "rejected": true
+    },
+    {
+      "name": "rejected native audit cannot approve",
+      "rejected": true
+    }
+  ],
+  "methods": "Independent raw accessibility-table and Astro metadata parsing for225Valsrows; independent35row README table parsing; GDPvalFigure5 visually confirmed seven wins+ties labels.269observations/profiles/identities traced through projections;212composite rows independently recomputed as known weighted points and missing mass, with no row normalization. Disposable fixture attacks verify preflight; in-memory DOM and deterministic esbuild outputs verify UI and current static artifact. Real builder is not executed.",
+  "interpretation": "Source-qualified reported reference index across distinct native metrics and operator/system conditions.212profiles269observations do not imply common-harness models or complete composites. All canonical composites are correctly blocked; custom subset scores and bounds are explicit, not confidence intervals or latent ability estimates.",
+  "verification": {
+    "focusedTests": "14/14PASS, separately run during review",
+    "staticOutputs": "HTML/docs/data/CSS/client exact source-generated bytes; archived research HTML byte-identical",
+    "dom": "Source filters/profile isolation/global custom/canonical reset/actualzero/reference exclusions/disclosure/XSS controls pass",
+    "sourceGuards": "All disposable numeric/native/audit/category/metric/version/eligibility substitutions reject before output mutation",
+    "directStrictTypecheck": "PASS: tsc --ignoreConfig --noEmit --module nodenext --target es2022 --types node --allowImportingTsExtensions --strict --noUncheckedIndexedAccess --skipLibCheck over core/admission/site/client/builder/tests"
+  },
+  "limitations": [
+    "No staging/Vercel deployment, real Chrome/browser rendering, accessibility layout audit, production acceptance, domain-expert validity, current API model availability or renewed spend authorization is established. Parent owns those gates.",
+    "Profiles from different operators are intentionally independent; published Vals labels span recorded benchmark-specific settings rather than a common resource harness.",
+    "Two historical local V12 observations remain configured-system engineering measurements, with phase-loss/causal-attribution limitations; native bytes and grades are unchanged.",
+    "Public numeric source extraction is verified; this is not legal advice or a comprehensive dataset-license review. OmniDoc research-only/noncommercial restriction and public/private cohort boundaries remain visible.",
+    "Reproduction requires the hash-recorded ignored public cache files; their source receipts remain durable. No network retrieval is performed by this script."
+  ],
+  "reproduction": {
+    "command": "node --import tsx --input-type=module < insurance-bench/results/meta/composite-independent-review-repro.txt",
+    "scriptCopy": "insurance-bench/results/meta/composite-independent-review-repro.txt",
+    "scriptSha256": "3cfea6540a603b5c25105f544a6692907038a1bea88637c1bedf39cf74943327"
+  }
+}

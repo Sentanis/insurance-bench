@@ -1,0 +1,8 @@
+{
+  "reviewedSourceFingerprint": "d3aeb8f9ffb019fbaf262a8a57052dee6a9711f4d459eca27bf8d742ccf1664b",
+  "disposition": "historical-qualified-approval-missed-reachable-post-finish-guard-defect",
+  "rawReviewSha256": "b4c7147332d94b3fe205870b26c9609dc37b4313932ec32d69837f42e24b9d0e",
+  "confirmedLaterFinding": "A separate non-author reviewer reproduced a fully correct real-runner100 false pass when finish preceded prohibited intent in one batch; fixed before inference. Initial historical approvals also exposed withheld response provenance and were repaired before inference.",
+  "scope": "Static Opus engineering review did not run tests; manual reconstruction covered one fleet variant and literal fixture, not all current closure. Retained raw report is fallible evidence, not authority.",
+  "billing": "Claude Max list reference cost2.6382235 is not an invoice and is not benchmark ability inference."
+}

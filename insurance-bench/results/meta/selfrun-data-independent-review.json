@@ -1,0 +1,312 @@
+{
+  "version": "selfrun-data-independent-review-v1",
+  "reviewedAt": "2026-10-08T06:19:13.658Z",
+  "decision": "approved-engineering-and-data-only",
+  "reviewer": "independent child agent selfrun_data_review",
+  "scope": [
+    "insurance-bench/selfrun-public-sources.ts",
+    "insurance-bench/selfrun-source-receipt.json",
+    "insurance-bench/selfrun-synthetic.ts",
+    "test/insurance-bench-selfrun-public-sources.test.ts",
+    "test/insurance-bench-selfrun-synthetic.test.ts"
+  ],
+  "reviewedFileSha256": {
+    "insurance-bench/selfrun-public-sources.ts": "866009f7b0b14e1c41b27f5632ebaab0a35682f21ddbf9801e20d7cb2849be4a",
+    "insurance-bench/selfrun-source-receipt.json": "ed8fed1447337a5ae35b2249588587c6f06b5668ea4155d9e86649d3f06d0bde",
+    "insurance-bench/selfrun-synthetic.ts": "dc2bac6f2850c39d8123ddda81355d5adc3db302189ed5b4480bf5b9a3274b18",
+    "test/insurance-bench-selfrun-public-sources.test.ts": "16d036acde7d003def1a513bafc1ec59dae7d495c8d3cb617702a8b8648f97a4",
+    "test/insurance-bench-selfrun-synthetic.test.ts": "845b59770a29d7377ed915b3edb75f2e52910f4a35bbf9420e6ad2be18b89d13"
+  },
+  "safety": {
+    "modelCalls": 0,
+    "networkCalls": 0,
+    "liveDataRead": false,
+    "envRead": false,
+    "oldNativeOrHoldoutOutputsRead": false,
+    "authOrLedgerRead": false
+  },
+  "focusedTests": {
+    "command": "NODE_ENV=test node --import tsx --test test/insurance-bench-selfrun-public-sources.test.ts test/insurance-bench-selfrun-synthetic.test.ts",
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0
+  },
+  "synthetic": {
+    "tasks": 8,
+    "fieldsIndependentlyRecomputed": 66,
+    "decimalMethod": "Python Decimal with ROUND_HALF_UP, values extracted independently from SVG source nodes or supplied sourceTexts; finite scheduling enumeration and critical-chain lower-bound proof",
+    "checks": [
+      {
+        "taskId": "original-documents-01",
+        "fieldCount": 9,
+        "allFieldsMatched": true,
+        "recomputed": {
+          "ax7_quantity": 6,
+          "bx2_quantity": 5,
+          "cx8_quantity": 2,
+          "rejected_billed": [
+            "AX7:2",
+            "CX8:1"
+          ],
+          "goods_subtotal_usd": 292.1,
+          "discount_usd": 5.84,
+          "tax_usd": 22.9,
+          "payable_usd": 321.16,
+          "receipt_line": "Receipt R-204: CX8 | delivered 2 | returned 0"
+        },
+        "derivation": "Accepted min(ordered,billed,delivered-returned) = 6/5/2; 6*14.25+5*33.40+2*19.80=292.10; half-up discount 5.84; half-up tax 22.90; add untaxed shipping 12 ->321.16. Signed receipt line copied exactly."
+      },
+      {
+        "taskId": "original-documents-02",
+        "fieldCount": 6,
+        "allFieldsMatched": true,
+        "recomputed": {
+          "loaded_crates": [
+            "M12",
+            "M16"
+          ],
+          "loaded_gross_kg": 277.9,
+          "loaded_net_kg": 244,
+          "excluded_east_crates": [
+            "M14",
+            "M15"
+          ],
+          "exact_boundary_release_allowed": true,
+          "departure_utc": "2027-02-11T09:00:00Z"
+        },
+        "derivation": "M12/M16 satisfy EAST/seal/release; M14 withdrawn, M15 unsealed; M13 WEST excluded from requested exclusion list. M16 signed corrected gross 149.50; gross 128.40+149.50=277.90; tare 18.40+15.50=33.90; net244.00. Equality permitted at09:00 UTC."
+      },
+      {
+        "taskId": "original-documents-03",
+        "fieldCount": 6,
+        "allFieldsMatched": true,
+        "recomputed": {
+          "passed_points": [
+            "A",
+            "C",
+            "D",
+            "E"
+          ],
+          "failed_points": [
+            "B"
+          ],
+          "adjusted_d_grams": 1007.5,
+          "adjusted_e_grams": 1980,
+          "maximum_error_percent": 1.1,
+          "release_allowed": false
+        },
+        "derivation": "Current adjusted A100.60/B202.20/C496.00/D1007.50/E1980.00; exact percentages0.60/1.10/0.80/0.75/1.00. Only B fails; E equality passes before rounding; max1.10%; no release."
+      },
+      {
+        "taskId": "original-documents-04",
+        "fieldCount": 6,
+        "allFieldsMatched": true,
+        "recomputed": {
+          "allowed_meal_usd": 84,
+          "allowed_train_usd": 48.45,
+          "allowed_hotel_usd": 235,
+          "reimbursement_usd": 410.05,
+          "refund_usd": 19.75,
+          "excluded_receipts": [
+            "E05",
+            "E06"
+          ]
+        },
+        "derivation": "Meal min95.40/3*28=84; rail68.20-19.75=48.45; hotel2*min115/110+15=235; taxi42.60 once; total410.05; E05 unsigned/E06 duplicate rejected; partially allowed receipts retained."
+      },
+      {
+        "taskId": "original-work-01",
+        "fieldCount": 7,
+        "allFieldsMatched": true,
+        "recomputed": {
+          "may_expense_usd": 3050,
+          "ending_payable_and_accrual_usd": 5050,
+          "june_prepaid_asset_usd": 500,
+          "prior_estimate_reversal_usd": -2000,
+          "april_trueup_expense_usd": 150,
+          "unbilled_may_accrual_usd": 1850,
+          "may_expense_evidence": [
+            "CM-MAY",
+            "EST-APR",
+            "FINAL-APR",
+            "I-MAY",
+            "S-MAY"
+          ]
+        },
+        "derivation": "Custom controller supersedes ordinary external accounting: May1850+1200-150+2150-2000=3050; control2900+3050-900=5050; June prepaid500 outside liability; reversal-2000/trueup150; preparation June3 admits June1/2 evidence."
+      },
+      {
+        "taskId": "original-work-02",
+        "fieldCount": 10,
+        "allFieldsMatched": true,
+        "recomputed": {
+          "amber_total_usd": 14120,
+          "amber_tax_usd": 1170,
+          "birch_total_usd": 13810,
+          "birch_tax_usd": 1110,
+          "cedar_total_usd": 14760,
+          "cedar_tax_usd": 1160,
+          "eligible_order": [
+            "Amber",
+            "Cedar"
+          ],
+          "ineligible_vendors": [
+            "Birch"
+          ],
+          "selected_vendor": "Amber",
+          "runner_up_gap_usd": 640
+        },
+        "derivation": "Seats100*6; taxable seats+setup-credit. Amber base11700 tax1170 total14120; Birch11100 tax1110 total13810 but launch14>12; Cedar11600 tax1160 total14760. Eligible Amber/Cedar; gap640; response equality4 allowed."
+      },
+      {
+        "taskId": "original-work-03",
+        "fieldCount": 9,
+        "allFieldsMatched": true,
+        "recomputed": {
+          "start_a": 0,
+          "start_b": 2,
+          "start_c": 2,
+          "start_d": 5,
+          "start_e": 5,
+          "start_f": 8,
+          "completion_hour": 9,
+          "completion_utc": "2027-07-12T17:00:00Z",
+          "rig_order": [
+            "B",
+            "D",
+            "F"
+          ]
+        },
+        "derivation": "A->B->E->F critical chain2+3+3+1 proves horizon>=9. Exhaustive Cartesian integer starts at horizon9 checked precedence/<=2 crews/<=1 rig half-open slots; lex minimum(0,2,2,5,5,8), finish9 at17:00UTC; rigB,D,F."
+      },
+      {
+        "taskId": "original-work-04",
+        "fieldCount": 13,
+        "allFieldsMatched": true,
+        "recomputed": {
+          "corrected_april_cost_usd": 20850,
+          "corrected_may_cost_usd": 25800,
+          "corrected_actual_cost_usd": 46650,
+          "through_may_budget_cost_usd": 48000,
+          "volume_variance_usd": -2400,
+          "price_variance_usd": 1050,
+          "actual_budget_variance_usd": -1350,
+          "june_internal_units": 310,
+          "june_outsourced_units": 20,
+          "june_forecast_cost_usd": 27570,
+          "quarter_forecast_units": 900,
+          "quarter_forecast_cost_usd": 74220,
+          "quarter_forecast_variance_usd": 2220
+        },
+        "derivation": "April21450-600=20850; May26040-240=25800; actual46650 vs48000; volume(570-600)*80=-2400; price46650-570*80=1050; bridge-1350. June310*83+20*92=27570; quarterunits900/cost74220 vs72000 ->+2220 unfavorable."
+      }
+    ],
+    "visualQa": {
+      "directory": "/tmp/sentanis-original-selfrun-review",
+      "pages": 8,
+      "dimensions": [
+        1500,
+        1900
+      ],
+      "allEightViewed": true,
+      "readable": true,
+      "clippingFound": false
+    },
+    "serialization": {
+      "explicitAllowList": true,
+      "noExpected": true,
+      "noSvg": true,
+      "noDocumentTextSubstitute": true,
+      "documentSourceTextsEmpty": true
+    }
+  },
+  "publicSources": {
+    "files": 25,
+    "allSha256AndBytesVerified": true,
+    "commits": {
+      "harvey": "f699603c5d121d8b64003bfdc5545e5c2d4dd12f",
+      "legalbenchRepository": "b46bf4ffae90524b2b72aaa30e7745fe9db64481",
+      "legalbenchDataset": "daec8237410aa23e3faf4bc41ad8b3a7e1696826"
+    },
+    "legalbench": {
+      "selection": "Python stdlib csv independently confirmed first six rows per A/B/C and original file order",
+      "testRows": 133,
+      "selectedIds": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "14",
+        "15",
+        "17",
+        "19",
+        "25"
+      ],
+      "labelCounts": {
+        "A": 6,
+        "B": 6,
+        "C": 6
+      },
+      "allPrivateLabelsMatchPinnedRows": true,
+      "officialDemonstrations": 5,
+      "exactPolicyClaimLabelTriplesChecked": true,
+      "noTargetLabelsAddedToIdsOrSourceTexts": true,
+      "licensesVerified": "Pinned task README CC BY 4.0; attribution/source/modification notice and license link retained",
+      "professionalValidity": "Crowd-derived insurance ambiguity labels are not authoritative legal determinations"
+    },
+    "harvey": [
+      {
+        "id": "harvey-lab-insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements",
+        "criteriaCount": 38,
+        "documents": 4,
+        "fullRubricInActorSerialization": false,
+        "matchCriteriaInActorSerialization": [],
+        "privateExpectedOnlyArtifactName": true,
+        "metadataNonEnumerable": true,
+        "currentDocsTrackedChanges": false
+      },
+      {
+        "id": "harvey-lab-insurance/compare-reinsurance-treaty-against-underlying-policy",
+        "criteriaCount": 39,
+        "documents": 5,
+        "fullRubricInActorSerialization": false,
+        "matchCriteriaInActorSerialization": [],
+        "privateExpectedOnlyArtifactName": true,
+        "metadataNonEnumerable": true,
+        "currentDocsTrackedChanges": false
+      },
+      {
+        "id": "harvey-lab-insurance/extract-key-terms-from-reservation-of-rights-letter",
+        "criteriaCount": 40,
+        "documents": 5,
+        "fullRubricInActorSerialization": false,
+        "matchCriteriaInActorSerialization": [],
+        "privateExpectedOnlyArtifactName": true,
+        "metadataNonEnumerable": true,
+        "currentDocsTrackedChanges": false
+      }
+    ],
+    "licenses": {
+      "harveyMITFullNoticeHash": "f92627d2ebe80fc0add3b171b2d7eee5e28a98dd0d0a4a5ee5829314243bb3b9",
+      "syntheticNatureVerifiedFromPinnedTutorial": true,
+      "redistributionNote": "Retain full harvey/LICENSE notice with redistributed substantial source/packet copies; source-level packet attribution currently references the frozen notice."
+    }
+  },
+  "issues": [],
+  "limitations": [
+    "Engineering/data correctness only; legal or professional expert validity is not established.",
+    "Public LegalBench/Harvey questions and rubrics can be known or externally looked up; hidden-key serialization does not establish contamination freedom.",
+    "Harvey text extraction and JSON documentText delivery are adaptations and do not establish native DOCX layout or native full-LAB/standard-dual-judge parity.",
+    "No actor, grader, API, or model call was made in this review."
+  ],
+  "nonBlockingObservation": "Manifest revision1 and revision2 both list M16 145.50 before the signed149.50 correction. This is redundant history, not an unresolved authority conflict."
+}

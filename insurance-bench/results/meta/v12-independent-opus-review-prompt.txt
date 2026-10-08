@@ -1,0 +1,36 @@
+Independent bounded source-only adversarial engineering review: Insurance Bench dependency allocation v0.12.
+Worktree /Users/soldo/.codex/worktrees/insurance-bench/sentanis-app.
+Use Read,Glob,Grep only. No edits, execution, networking, live claims, model outputs, auth, .env, shared budget ledger, registration discovery or paid benchmark CLI. Only the listed synthetic source/control files. Return approve-engineering-only or reject with concrete reproducible findings; explicitly disclose actual coverage and independently derived claims. No difficulty/professional-validity or admission claim from source checks.
+Allowed files:
+insurance-bench/dependency-allocation-core.ts
+insurance-bench/dependency-allocation-cases.ts
+insurance-bench/dependency-allocation-engine.ts
+insurance-bench/dependency-allocation-runner.ts
+scripts/insurance-bench-dependency-allocation.ts
+insurance-bench/allocation-interaction-workflows.ts
+insurance-bench/workflow-types.ts
+insurance-bench/candidate-admission.ts
+insurance-bench/json-object-provider.ts
+insurance-bench/investigation-providers.ts
+insurance-bench/tools.ts
+insurance-bench/score.ts
+insurance-bench/types.ts
+insurance-bench/runner.ts
+insurance-bench/providers.ts
+insurance-bench/models.json
+insurance-bench/results/meta/v12-public-source-packet.txt
+insurance-bench/results/meta/dependency-allocation-author-controls-v0.12.json
+insurance-bench/results/meta/v12-candidate-independent-audit.json
+insurance-bench/results/meta/v12-candidate-independent-audit-repro.txt
+insurance-bench/results/meta/dependency-allocation-runner-independent-review-v0.12.json
+specs/features/insurance-bench/v12-design-candidate.md
+test/insurance-bench-dependency-allocation-cases.test.ts
+test/insurance-bench-dependency-allocation-runner.test.ts
+
+First derive representative capacities, ledger allocation/reversal, deadline eligibility, operative component contracts and all optimal plan ties for ONE source task through all THREE phases from the raw public packet/rules BEFORE inspecting author targets/audits. Disclose hand derivation as partial coverage, not executable full36-state/nine-million-subset checks. Report concrete selected plans and objective values, including changed accepted plans where the objective ties.
+Review current signed component-contract version selection at the reading clock. Unsigned/future revisions cannot replace operative packages, and contradictory equally qualified current versions must reject. Optional requiresPackageIds/excludesPackageIds default empty. Individual eligibility is separate from whole-subset feasibility: every selected prerequisite must also be selected; cyclic prerequisites permit complete all-or-none bundles; either-side exclusion forbids co-selection. Every selected package must still fit all four capacity constraints and all deadline/source eligibility. Missing prerequisite references make that selection infeasible. All feasible optimal ties must be retained. Eighteen distinct packages is the explicit bounded universe, including six single-claimant and twelve joint components in these fixtures. Cache identity must bind full current source and contracts and clone values. The private exact optimizer is not a model tool.
+Review19facts/eight actual business fields/three phases, genuine current source operands, revision-bound review, actual optimal recorded proposal write and preservation of earlier human judgments. Gold/rubric/constraints must not enter public tools or model messages. No target50–60 truth distribution, arbitrary score cap or score-based fixture construction.
+The new engine imports the FROZEN repaired allocation-interaction-workflows.ts snapshot. Check protected intent is recorded even afterfinish/stale tokens in the same batch and yields critical score0; all parsed actions execute, but another provider turn afterfinished is not dispatched. Ordinary stale conflicts are recoverable. Every old frozen candidate must remain untouched.
+Review native JSON object request,600-second provider deadline,20turn/16384 inclusive output limits, cumulative truncation flags, exact native model/effort/usage traces, retained uncertain failure reservations, macro all-criteria completed-task headline, weighted40/25/25/10 diagnostic and actual optimal current write separate. Syntax requests are not semantic/schema guarantees. Native incomplete provider coverage must be unscored, not ability zero.
+Review canonical-root CLI, immutable source path list, exact committed source/registration/audit/plan/controller admission, existing75 total ledger/floor and one-time receipt claim BEFOREBudget/output directories; no retries/fallback/implicit held calls. NO v12 registration/controller or paid run exists; this review DOES NOT authorize inference. Future admission additionally requires actual prior-loop outcomes, remaining whole-plan affordability, separate controller review and a committed prospective freeze. Do not read those loops' model outputs.
+This conditional engineering candidate has shared graph/scaffolding across three correlated labels and a larger source packet. Author/interpreter oracle consistency does not prove empirical hardness, representative product coverage, professional insurance validity or stable ranking. Full non-author execution evidence is separate from this bounded code/hand review. Declared hashes are not recomputed by a Read/Glob/Grep-only reviewer; disclose that limitation. Return an exact disposition string such as 'Disposition: approve-engineering-only.' when justified, otherwise reject.

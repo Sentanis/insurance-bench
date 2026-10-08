@@ -1,0 +1,179 @@
+{
+  "version": "selfrun-integration-independent-review-v2",
+  "reviewedAt": "2026-10-08T06:55:39.104574+00:00",
+  "decision": "approved-engineering-for-frozen-dispatch-and-raw-admitted-publication",
+  "reviewer": "independent child agent selfrun_integration_review",
+  "scope": [
+    "insurance-bench/selfrun-coordinator.ts",
+    "scripts/insurance-bench-selfrun.ts",
+    "test/insurance-bench-selfrun-coordinator.test.ts",
+    "insurance-bench/selfrun-site.ts",
+    "scripts/build-insurance-bench-selfrun.ts"
+  ],
+  "reviewedFileSha256": {
+    "insurance-bench/selfrun-coordinator.ts": "0b736d4b806916b8744a030bae9d38e6746072b5b25376599ecd0b829d76650f",
+    "scripts/insurance-bench-selfrun.ts": "5e1f3ee1cfc81e51acc60f4387d6369785960c023ca6bf37c60bba8fbc61f8ce",
+    "test/insurance-bench-selfrun-coordinator.test.ts": "aa9bcea711877ec4d7db8eba6953f7d8649a7a6f5e3fdf34a38241bd7d95713c",
+    "insurance-bench/selfrun-site.ts": "4a0cd3698189e4d73e055c57f438019d5b5197d352ae6136fc6867379aea27ea",
+    "scripts/build-insurance-bench-selfrun.ts": "41ea541a63ffd2f91f56f2f2a5b65acef1a487fc2618cb05c6c55d3df40ddae8",
+    "insurance-bench/selfrun-transport.ts": "2339c92548a4c75e6ee58d27ca5dfb3e92e43beea5662bf0f3707272c5c9927e",
+    "test/insurance-bench-selfrun-site.test.ts": "e955bb96c2744a810ef96524b7bc980cc8432bd0a48e42136daa9e4b71f75e9a"
+  },
+  "safety": {
+    "providerCalls": 0,
+    "networkCalls": 0,
+    "liveDataRead": false,
+    "envRead": false,
+    "oldNativeOrHoldoutOutputsRead": false,
+    "authOrLedgerRead": false,
+    "implementationEdited": false
+  },
+  "strengths": [
+    "Public actor serialization excludes expected outputs, full Harvey criteria, and native private optimizer state; static publication creates a fresh allow-listed metrics object.",
+    "Malformed candidate labels are measured failures, malformed or incomplete jury output is a gap, and inaccessible models never receive zero ability scores.",
+    "Chronological native conversations preserve actual executed phase/revision changes; exclusive claims, a process-level run lock, and request-identity deduplication prevent ordinary retry and concurrent run duplication."
+  ],
+  "tests": {
+    "focusedCommand": "node --import tsx --test test/insurance-bench-selfrun-coordinator.test.ts test/insurance-bench-selfrun-site.test.ts",
+    "passed": 16,
+    "failed": 0,
+    "skipped": 0,
+    "reproCommand": "node --import tsx insurance-bench/results/meta/selfrun-integration-independent-review-repro.ts",
+    "reproUsesOnlyExistingPublicCacheAndNewSyntheticCohort": true,
+    "offlineInjectedRequests": 378,
+    "realProviderCalls": 0
+  },
+  "additionalObservations": [
+    "Publication now accepts a frozen cohort root, regrades from validated raw receipts and deterministic native replay, and ignores saved summary.json as measurement authority.",
+    "Durable known usage survives interrupted task-result records; unknown portions remain separate from known usage.",
+    "A killed coordinator leaves run.lock in place. Recovery must confirm no transport process remains before removing a stale lock; automatic deletion is intentionally fail-closed.",
+    "Approval is bound to the recorded source hashes. Prepare a new cohort after implementation edits, and do not modify frozen implementation during dispatch."
+  ],
+  "limitations": [
+    "Engineering integration approval only; no legal/professional expert validity, contamination freedom, standard benchmark parity, staging acceptance, or provider ability result is established.",
+    "The 80-point value is a deliberately constructed offline mock: exact legal/synthetic answers, all-pass mock juries, and intentionally failing native episodes. It is not a model result.",
+    "Provider transport and dataset gold were independently audited elsewhere. This review exercised coordinator integration and receipt admission using only cached public sources and new synthetic artifacts.",
+    "Configured CLI model identity remains distinct from provider-observed identity. Unknown cost remains null; no API ledger or credential was inspected.",
+    "Receipt cross-checks reject inconsistent or edited records; this is not a cryptographic attestation against an operator who fabricates every related local artifact."
+  ],
+  "initialCheckpoint": {
+    "reviewedAt": "2026-10-08T06:44:00Z",
+    "decision": "needs-revision-before-dispatch-or-publication",
+    "reviewedFileSha256": {
+      "insurance-bench/selfrun-coordinator.ts": "fb2e9eb60741672058a1b5cb353764d2db3aa1acc23a9207bb8575ab1fe2baf6",
+      "scripts/insurance-bench-selfrun.ts": "88ec3ed022eb2d78d7c7052eb07a118f76f25b79db7f1256266b64b7eb37a47b",
+      "scripts/build-insurance-bench-selfrun.ts": "8b2ebb9e926631e5c67953aa0d44a7f882ed969ad9e9972e43c4d318cc4e18e8",
+      "insurance-bench/selfrun-site.ts": "ac2a1b8c7ef69ef6c4a1ac5f6bffc4b926e91a3ce0f7854922243942aced6224",
+      "test/insurance-bench-selfrun-coordinator.test.ts": "376e155c239c08fd6f988a234690d12034fcd85596ac1ce4a47c7ed9843b858b"
+    },
+    "focusedTestsPassed": 9
+  },
+  "resolvedIssues": [
+    {
+      "id": "ISR-1",
+      "severity": "critical",
+      "blocking": false,
+      "location": "insurance-bench/selfrun-coordinator.ts:319-339; selfrun-transport.ts:85",
+      "problem": "The real Harvey task IDs contain a slash and long slugs. Direct interpolation into claim/result paths requires missing intermediate directories, and direct interpolation into transport request IDs violates the transport's slash-free 99-character identity contract.",
+      "repro": {
+        "parallel": 1,
+        "transport": "offline injected completion",
+        "candidateCallsBeforeFailure": 1,
+        "failure": "ENOENT opening <PRIVATE_OUTPUT_DIR>/gpt-6.1-sol-low/harvey-lab-insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements.claim.json"
+      },
+      "impact": "The first non-LegalBench task aborts each worker after a real batch has already consumed subscription usage. Existing tests hide the problem with simplified harvey-0 IDs.",
+      "recommendation": "Derive an injective bounded path/request key from the immutable full task ID, keep taskId unchanged in records, use the key consistently for claims, requests, responses, traces, and result loading, and exercise the exact public task IDs with an offline transport before dispatch.",
+      "status": "resolved-and-independently-reproduced"
+    },
+    {
+      "id": "ISR-2",
+      "severity": "critical",
+      "blocking": false,
+      "location": "scripts/build-insurance-bench-selfrun.ts:8-11; selfrun-site.ts:57-121; selfrun-coordinator.ts:223-242",
+      "problem": "The builder accepts arbitrary self-consistent summary JSON with a syntactically valid hash and cohort ID. It does not authenticate the cohort registration, validate the frozen source and grader, check response/request identities, or recompute task grades from raw evidence. The adapter also admits a five-task panel and noncanonical limits under the matched-selfrun-v1 name.",
+      "repro": {
+        "actualCohortTaskResults": 0,
+        "fabricated100PointCompositesAdmitted": 18,
+        "fiveTaskProtocolAdmitted": true
+      },
+      "impact": "A wrong, edited, or fabricated summary can become a purported admitted matched benchmark. Arithmetic checks alone do not make the scores measurements.",
+      "recommendation": "Build from a validated cohort root; independently derive a summary from registered task IDs, immutable raw request/response records and native traces, regrade static/native outputs with the frozen grader, enforce canonical limits/counts/juries, compare any supplied summary to that derived object, and only then apply the public metric allow-list. Reject edited raw scores and mismatched response identities rather than merely recalculating aggregate arithmetic.",
+      "status": "resolved-and-independently-reproduced"
+    },
+    {
+      "id": "ISR-3",
+      "severity": "important",
+      "blocking": false,
+      "location": "insurance-bench/selfrun-coordinator.ts:141-146; 379-386",
+      "problem": "Freeze validation pins profile configuration and limits but does not require the protocol's exact juries, weights, context policy, native seed, or receipt hash. Recomputing sourceSha in both copies of registration.json admits two Luna-low juries while the protocol still claims the fixed blinded pair.",
+      "repro": {
+        "modifiedJuriesAccepted": [
+          {
+            "model": "gpt-6-luna",
+            "effort": "low"
+          },
+          {
+            "model": "gpt-6-luna",
+            "effort": "low"
+          }
+        ]
+      },
+      "recommendation": "Validate every canonical protocol field against its current constant and pinned receipt; include explicit negative tests for jury model/effort, weights, context policy, native seed, and source-receipt substitution before dispatch.",
+      "status": "resolved-and-independently-reproduced"
+    },
+    {
+      "id": "ISR-4",
+      "severity": "minor",
+      "blocking": false,
+      "location": "insurance-bench/selfrun-site.ts:150",
+      "problem": "The public method says each episode permits 20 turns and 20 actions, while the inherited prompt and parser permit 20 actions per response, up to 400 per episode.",
+      "repro": {
+        "turns": 20,
+        "executedActions": 400,
+        "result": "resource-budget-failure",
+        "score": 0
+      },
+      "recommendation": "Describe 20 actions per response in the public method and name the field accordingly, or deliberately enforce a total episode budget if that is the intended new protocol.",
+      "status": "resolved-and-independently-reproduced"
+    },
+    {
+      "id": "ISR-5",
+      "severity": "important",
+      "status": "resolved-and-independently-reproduced",
+      "blocking": false,
+      "problem": "During re-review a missing event-chain crash window could leave a standalone raw result gradeable without required event binding.",
+      "resolution": "ENOENT clears the tentative result; missing event evidence makes raw admission a gap or rejects a conflicting stored score. Failed-request usage also requires matching durable turn evidence."
+    }
+  ],
+  "issues": [],
+  "remediationEvidence": {
+    "coordinatorSha256": "0b736d4b806916b8744a030bae9d38e6746072b5b25376599ecd0b829d76650f",
+    "emptyPreparedCohortComposites": 0,
+    "realPublicIdMatrix": {
+      "tasks": 32,
+      "profiles": 18,
+      "offlineRequests": 378,
+      "admittedMockComposite": 80,
+      "nativeComponent": 0,
+      "actualAbilityMeasured": false,
+      "candidateInputTokensPerProfile": 150,
+      "juryInputTokensPerProfile": 60,
+      "sumRequestLatencyMsPerProfile": 63
+    },
+    "noRetryResumeRequests": 0,
+    "changedRehashedJuriesRejected": true,
+    "fabricatedSummaryIgnored": true,
+    "editedStoredSyntheticScoreRejected": true,
+    "editedJuryResponseRejected": true,
+    "editedNativeTraceRejected": true,
+    "missingEventsAndCoordinatorResponseRejectedWithMeasuredStoredScore": true,
+    "interruptedLegalTask": {
+      "composite": null,
+      "legalComponent": null,
+      "knownCandidateInputTokens": 150,
+      "candidateInputTokens": 150
+    },
+    "fiveTaskProtocolRejected": true,
+    "publicMetricsExcludePrivateText": true
+  }
+}

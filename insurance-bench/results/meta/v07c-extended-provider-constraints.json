@@ -1,0 +1,86 @@
+{
+  "recordedAt": "2026-10-04T20:58:20.417296+00:00",
+  "scope": "Claim-free official model-card lookup after Qwen32 development ValidationException; no second inference and no frozen settings changed.",
+  "frozenRequestedOutputLimit": 16384,
+  "models": [
+    {
+      "condition": "qwen3-32b",
+      "model": "qwen.qwen3-32b-v1:0",
+      "advertisedContext": "32K",
+      "advertisedMaxOutput": "8K",
+      "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-qwen-qwen3-32b.html",
+      "observed": "Eight successful nonempty assistant responses, then ValidationException. Frozen adapter discarded detailed cause, so exact failed request reason is unknown."
+    },
+    {
+      "condition": "qwen3-235b",
+      "advertisedContext": "256K",
+      "advertisedMaxOutput": "8K",
+      "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-qwen-qwen3-235b-a22b-2507.html",
+      "observed": "Active development calls accepted frozen16384 request ceiling; no observed truncation at this lookup."
+    },
+    {
+      "condition": "deepseek-v3.2",
+      "advertisedContext": "164K",
+      "advertisedMaxOutput": "8K",
+      "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-deepseek-deepseek-v3-2.html",
+      "observed": "No extended final inference yet."
+    },
+    {
+      "condition": "gpt-oss-120b",
+      "advertisedContext": "128K",
+      "advertisedMaxOutput": "16K",
+      "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-oss-120b.html",
+      "verifiedAt": "2026-10-04T21:04:44.523660+00:00",
+      "supportsFrozen16384RequestedOutput": true,
+      "initialRequestContextFits": true,
+      "contextCaveat": "Advertised context is not a guarantee that arbitrary accumulated20-turn history will fit. No model-specific clipping or message truncation is added; actual errors remain visible."
+    },
+    {
+      "condition": "gpt-oss-20b",
+      "advertisedContext": "128K",
+      "advertisedMaxOutput": "16K",
+      "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-oss-20b.html",
+      "verifiedAt": "2026-10-04T21:04:44.523751+00:00",
+      "supportsFrozen16384RequestedOutput": true,
+      "initialRequestContextFits": true,
+      "contextCaveat": "Advertised context is not a guarantee that arbitrary accumulated20-turn history will fit. No model-specific clipping or message truncation is added; actual errors remain visible."
+    },
+    {
+      "condition": "claude-haiku-4.5",
+      "advertisedContext": "200K",
+      "advertisedMaxOutput": "64K",
+      "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-haiku-4-5.html",
+      "verifiedAt": "2026-10-04T21:04:44.523753+00:00",
+      "supportsFrozen16384RequestedOutput": true,
+      "initialRequestContextFits": true,
+      "contextCaveat": "Advertised context is not a guarantee that arbitrary accumulated20-turn history will fit. No model-specific clipping or message truncation is added; actual errors remain visible."
+    },
+    {
+      "condition": "gpt-6-astra-high",
+      "advertisedContext": "1050000",
+      "advertisedMaxOutput": "128000",
+      "source": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "verifiedAt": "2026-10-04T21:04:44.523755+00:00",
+      "supportsFrozen16384RequestedOutput": true,
+      "initialRequestContextFits": true,
+      "contextCaveat": "Advertised context is not a guarantee that arbitrary accumulated20-turn history will fit. No model-specific clipping or message truncation is added; actual errors remain visible."
+    },
+    {
+      "condition": "claude-sonnet-4.6",
+      "advertisedContext": "1M",
+      "advertisedMaxOutput": "64K",
+      "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-4-6.html",
+      "verifiedAt": "2026-10-04T21:04:44.523756+00:00",
+      "supportsFrozen16384RequestedOutput": true,
+      "initialRequestContextFits": true,
+      "contextCaveat": "Advertised context is not a guarantee that arbitrary accumulated20-turn history will fit. No model-specific clipping or message truncation is added; actual errors remain visible."
+    }
+  ],
+  "disposition": "Prospective provider-constraint deferrals are coverage gaps without abilityscores. No frozenconfig or alreadyactivepanel changes.",
+  "prospectiveCoordinatorDecision": {
+    "at": "2026-10-04T21:00:14.650879+00:00",
+    "decision": "After exact8Kmax-output evidence, defer NEW Qwen32/Qwen235/DeepSeek holdout panels before inference. Preserve active Qwen235 dev wholepanel unchanged, exclude clean-tierclaims because config outside advertisedlimits. Supported Sonnet/OSS/Haiku/Astra panels continue in original relativeorder.",
+    "supersedes": "Earlier continue instruction preceded max-output evidence.",
+    "future": "New generation may preregister supported provider ceilings with explicit per-provider disclosure."
+  }
+}

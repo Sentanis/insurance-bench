@@ -1,0 +1,6 @@
+{
+  "amendedAt": "2026-10-03T22:25:26.270Z",
+  "originalRunnerSha256": "0242619cb870023b184fcf20385254c698f7ad0c582c772d04d921fa17862455",
+  "amendedRunnerSha256": "c46fa86f58124710f47a36e902fc6009f9f52101ae0519c25ecdf87510b73fe9",
+  "scope": "Only bounded EEXIST budget-lock retry; no model-facing prompt, tool, provider, corpus, score or limit changes. Interrupted runs retained separately; source fingerprints remain distinct."
+}

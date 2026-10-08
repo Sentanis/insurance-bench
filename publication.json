@@ -1,0 +1,26 @@
+{
+  "sourceRepository": "Sentanis/sentanis-app",
+  "sourceCommit": "87a18d45746cab84156387daf07ee88b2671605c",
+  "deploymentId": "dpl_HeuGY5kCFRhGr4cLos7z1RTwM2pi",
+  "deploymentUrl": "https://insurance-bench-l1fcsz4jf-sentanis.vercel.app",
+  "deploymentGitDirty": true,
+  "artifacts": {
+    "assets/composite.css": "7287029f7b86c7db5c08790fa7c5bbff725cbce8b496dd9337767c4bc51dde19",
+    "assets/composite.js": "eca8cceba8151721598a032c15cc6b2d5944422904b76f77d1e0ec3f2393c919",
+    "assets/selfrun.css": "7c33d3c57f8a66063d80d1acb0076d81db9675e1b89cbace81cc596bb1e79486",
+    "assets/selfrun.js": "62c8bea4312a30b56b52b7a77d715f70de26e8be60bb085e4858c3fbd2ea6d09",
+    "benchmarks/index.html": "8e3987a76fe1f3cc68b4b040b5a0917c0a01e44c1c0d5743abfed33baa5ff8ab",
+    "index.html": "8436464d9acfe04241d06cf69faccded21f85edcc189f1888daa1282ef6d7e7f",
+    "research.html": "9dfb0be1496cc9558239c5faf09841755e8715a730017b06a97c8b21dd89bcdf",
+    "scores.json": "f94d55a7183b6c9976e4d843135227803fb7233f0e16a746072bdbbd96766b1f",
+    "self-runs/index.html": "65e3e7cf40b75f025a1a9e79cf340e1371a1dfad8a7b00724087b6c01348e0ed",
+    "self-runs/selfrun-data.json": "4700f609819798ad2dfea4e8547d86f028b793fb5cd602b5a589639aca890f13"
+  },
+  "publicExportRedactions": [
+    "insurance-bench/results/meta/v11-implementation-verification-repro.txt",
+    "insurance-bench/results/meta/v11-implementation-verification.json",
+    "insurance-bench/results/meta/post-v12-serialized-legacy-verification.json"
+  ],
+  "productionDeploymentId": "dpl_6fDgSVMXciDcDRvUhmmZ7xqLttJ9",
+  "productionDomain": "insurancebench.sentanis.ai"
+}

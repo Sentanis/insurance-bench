@@ -1,0 +1,379 @@
+// Source-only v12 native-audit readiness. Real panels require a later explicit root notification.
+// This default executable never discovers or reads registrations, receipts, native outputs or a shared ledger.
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {mkdtempSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {generateDependencyAllocationCases} from '../../insurance-bench/dependency-allocation-cases.ts';
+import {createCoupledEnvironment,gradeCoupledTask} from '../../insurance-bench/dependency-allocation-engine.ts';
+import {dependencyAllocationSourceFingerprint,dependencyAllocationSystemPrompt,DEPENDENCY_ALLOCATION_SOURCE_FILES,runDependencyAllocationPanel,runDependencyAllocationEpisode} from '../../insurance-bench/dependency-allocation-runner.ts';
+import {Budget} from '../../insurance-bench/runner.ts';
+import type {WorkflowState} from '../../insurance-bench/workflow-types.ts';
+import {parseActions} from '../../insurance-bench/tools.ts';
+const EXPECTED_SOURCE='3591d68f82595fc8d02f4722fbfd6a4b927541d2964db1ac7062533de7787256';
+const REGISTRATION_PATH='insurance-bench/results/meta/v12-registration.json';
+const EXPECTED_REGISTRATION_SHA='37fb73dc4fd2ba2072fdf0fd9ad1a12a4dc0ccd1654b323cd3ca9c21eb6ea81e';
+// These constants change ONLY after explicit root messages. Commit authority alone never authorizes native reads.
+const ROOT_AUTHORIZED_FREEZE:string|null='774a4c5be8f784f2fe936bc09a23b48b6112b885';
+const ROOT_NOTIFIED_TERMINAL_IDS:readonly string[]=['01-sol-high-dev','02-luna-high-dev'];
+const PANEL_IDS=['01-sol-high-dev','02-luna-high-dev'];
+const EXPECTED_CORPUS='f8e0df627c9334131c2beba32dae5bf0e85d32883ef3108ddd6d42b4d4889eeb';
+const sha=(x:string|Buffer)=>crypto.createHash('sha256').update(x).digest('hex');
+const valueSha=(x:unknown)=>sha(JSON.stringify(x));
+const eq=(a:unknown,b:unknown)=>JSON.stringify(Array.isArray(a)?[...a].sort():a)===JSON.stringify(Array.isArray(b)?[...b].sort():b);
+const object=(v:unknown):v is Record<string,any>=>v!==null&&typeof v==='object'&&!Array.isArray(v);
+const rowKey=(r:any)=>`${r.documentId}@${r.revision}:${r.rowId}`;
+const near=(a:number,b:number)=>Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a-b)<1e-9;
+function receiptFlagsFromNative(episodes:any[],model:any,cost:number,forecast:number,exitCode:unknown){
+ return{observedTruncation:episodes.some(e=>e.truncatedOutput||e.trace.some((t:any)=>/(?:max[_ -]?tokens|max[_ -]?output[_ -]?tokens|length|incomplete)/i.test(t.finishReason??''))),modelOrEffortMismatch:episodes.some(e=>e.trace.some((t:any)=>t.model!==model.model||(t.reasoningEffort??null)!==(model.reasoningEffort??null))),providerOrBudgetFailure:episodes.some(e=>['provider-error','budget-stopped'].includes(e.status)),processFailure:exitCode!==0,materialSpendOverrun:cost>Math.max(forecast*1.5,forecast+.5)};
+}
+function reconstruct(documents:any[],clock:string){
+ const rows=documents.flatMap(d=>d.rows),r=new Map(rows.map(row=>[row.id,row.fields]));
+ const value=(id:string)=>{const item=r.get(id);if(!item)throw new Error('Missing raw row '+id);return item;};
+ const num=(v:unknown)=>{if(typeof v!=='number'||!Number.isSafeInteger(v))throw new Error('Invalid integer operand');return v;};
+ const instant=(v:unknown)=>Date.parse(String(v));const now=instant(clock);
+ const typed=(prefix:string)=>rows.filter(row=>row.id.startsWith(prefix)).map(row=>({rowId:row.id,...row.fields}));
+ const last=(items:any[])=>items.reduce((a,b)=>!a||num(b.version)>num(a.version)?b:a,undefined);
+ const policyBI=value('policy-BI'),policyPD=value('policy-PD');
+ const covered:Record<string,boolean>={},limits:Record<string,number>={},sources:Record<string,string>={};
+ for(const claimant of ['A','B','C','D']){
+  const exposure=value('exposure-'+claimant),base=[policyBI,policyPD].find(p=>p.entity===exposure.entity&&p.coverage===exposure.coverage);
+  const loss=instant(value('loss-'+claimant).lossAt);
+  covered[claimant]=Boolean(base&&Number.isFinite(loss)&&instant(base.inceptionAt)<=loss&&loss<instant(base.expirationAt));
+  const applicable=covered[claimant]?typed('endorsement-').filter(e=>e.signed===true&&e.scope===claimant&&e.entity===exposure.entity&&e.coverage===exposure.coverage&&e.policySourceId===base.sourceId&&instant(e.effectiveAt)<=loss):[];
+  const endorsement=last(applicable);sources[claimant]=covered[claimant]?String(endorsement?.sourceId??base.sourceId):'unavailable';limits[claimant]=covered[claimant]?num(endorsement?.personLimitCents??base.personLimitCents):0;
+ }
+ const occurrence=value('occurrence');
+ const occEnd=last(typed('endorsement-').filter(e=>e.signed===true&&e.scope==='occurrence'&&e.entity===policyBI.entity&&e.coverage===policyBI.coverage&&e.policySourceId===policyBI.sourceId&&instant(e.effectiveAt)<=instant(occurrence.lossAt)));
+ const occLimit=num(occEnd?.occurrenceLimitCents??policyBI.incidentLimitCents);
+ const eligibleFinancial=typed('event-').filter(e=>e.signed===true&&e.posted===true&&instant(e.effectiveAt)<=now);
+ const groups:Record<string,any[]>={};for(const e of eligibleFinancial)(groups[e.transactionKey]??=[]).push(e);
+ const financial=Object.values(groups).map(last);const byTransaction=new Map(financial.map(e=>[e.transactionKey,e]));
+ const allocation=new Map(typed('allocation-').map(a=>[a.transactionKey,a.claimant]));
+ const resolve=(e:any)=>e.claimant==='unknown'?(allocation.get(e.transactionKey)??'unknown'):e.claimant;
+ const known:Record<string,number>={A:0,B:0,C:0,D:0};let bi=0,pd=0,unallocated=0;const unresolved=new Set<string>();
+ const signedAmounts:any[]=[];
+ for(const e of financial){
+  if(!['indemnity','reversal'].includes(e.kind))continue;
+  const basis=e.kind==='reversal'?byTransaction.get(e.linkedKey):e;
+  if(!basis||basis.kind!=='indemnity')throw new Error('Unusable selected reversal basis');
+  const amount=num(e.cents)*(e.kind==='reversal'?-1:1),claimant=resolve(basis);
+  if(e.kind==='reversal'&&num(e.cents)>num(basis.cents))throw new Error('Excess reversal');
+  signedAmounts.push({event:e.rowId,basis:basis.rowId,coverage:basis.coverage,claimant,amount});
+  if(basis.coverage==='BI'){bi+=amount;if(claimant==='unknown'){unallocated+=amount;unresolved.add(basis.transactionKey);}else known[claimant]=known[claimant]!+amount;}
+  else if(basis.coverage==='PD'){pd+=amount;known[claimant]=known[claimant]!+amount;}else throw new Error('Unrecognized coverage');
+ }
+ const reserveGroups:Record<string,any[]>={};for(const e of typed('reserve-').filter(e=>e.signed===true&&instant(e.effectiveAt)<=now))(reserveGroups[e.claimant+':'+e.coverage]??=[]).push(e);
+ const reserves=Object.values(reserveGroups).map(last);const reserve=(person:string,coverage:string)=>reserves.filter(e=>e.claimant===person&&e.coverage===coverage).reduce((s,e)=>s+num(e.cents),0);
+ const biReserve=reserves.filter(e=>e.coverage==='BI').reduce((s,e)=>s+num(e.cents),0);
+ const personAvailable=Object.fromEntries(['A','B','C'].map(c=>[c,Math.max(0,limits[c]!-known[c]!-reserve(c,'BI'))]));
+ const occurrenceAvailable=Math.max(0,occLimit-bi-biReserve);
+ const deadline:Record<string,string>={},ready:Record<string,boolean>={};const clockProof:any[]=[];
+ for(const claimant of ['A','B','C']){
+  const signed=typed('demand-').filter(d=>d.claimant===claimant&&d.signed===true),current=last(signed);
+  const original=signed.reduce((a,b)=>!a||num(b.version)<num(a.version)?b:a,undefined);
+  const clockDemand=current.changeType==='amount_only'?original:current;
+  const delivery=value('receipt-'+clockDemand.demandId),packetReceipt=value('receipt-'+current.demandId);
+  const base=instant(delivery.completeAt)+num(clockDemand.durationMinutes)*60000;
+  const extension=last(typed('extension-').filter(e=>e.claimant===claimant&&e.signed===true));
+  const accepted=Boolean(extension&&extension.recipientAuthorized===true&&extension.rootId===clockDemand.rootId&&instant(extension.receivedAt)<base);
+  deadline[claimant]=new Date(base+(accepted?num(extension.extraMinutes)*60000:0)).toISOString().replace('.000Z','Z');
+  ready[claimant]=packetReceipt.verified===true&&Array.isArray(packetReceipt.missingItems)&&packetReceipt.missingItems.length===0;
+  clockProof.push({claimant,currentDemand:current.rowId,clockDemand:clockDemand.rowId,receiptAt:delivery.completeAt,durationMinutes:clockDemand.durationMinutes,unextended:new Date(base).toISOString(),extensionAccepted:accepted,deadline:deadline[claimant]});
+ }
+ const packageGroups=new Map<string,any[]>();
+ for(const p of typed('package-'))if(p.signed===true&&Number.isSafeInteger(p.version)&&p.version>=1&&Number.isFinite(instant(p.effectiveAt))&&instant(p.effectiveAt)<=now){const candidates=packageGroups.get(p.packageId)??[];candidates.push(p);packageGroups.set(p.packageId,candidates);}
+ const currentContracts=[...packageGroups.values()].map(candidates=>{const max=Math.max(...candidates.map(p=>p.version)),current=candidates.filter(p=>p.version===max);
+  const signature=(p:any)=>JSON.stringify([p.packageId,p.allocateACents,p.allocateBCents,p.allocateCCents,p.priorityValue,p.requiredAllocationKey,[...(p.requiresPackageIds??[])].sort(),[...(p.excludesPackageIds??[])].sort()]);
+  if(current.some(p=>signature(p)!==signature(current[0])))throw new Error('Conflicting current eligible package contract');return current[0];});
+ const packages=currentContracts.map(p=>{const allocationCents=Object.fromEntries(['A','B','C'].map(c=>[c,num(p['allocate'+c+'Cents'])]));return{id:p.packageId,allocations:allocationCents,costCents:Object.values(allocationCents).reduce((s,v)=>s+v,0),priorityValue:num(p.priorityValue),requiresPackageIds:[...(p.requiresPackageIds??[])],excludesPackageIds:[...(p.excludesPackageIds??[])],eligible:!unresolved.has(p.requiredAllocationKey)&&Object.entries(allocationCents).every(([c,amount])=>amount===0||(covered[c]&&ready[c]&&instant(deadline[c])>=now))};});
+ // Independent recursive include/exclude traversal visits every terminal subset (no pruning).
+ let optimum=-Infinity;const optimumSets:string[][]=[];let feasibleCount=0,subsetsExamined=0;
+ function visit(index:number,a:number,b:number,c:number,cost:number,priority:number,bad:number,ids:string[]){
+  if(index===packages.length){subsetsExamined++;if(bad||cost>occurrenceAvailable||a>personAvailable.A!||b>personAvailable.B!||c>personAvailable.C!)return;
+   const selected=new Set(ids);if(packages.some(p=>selected.has(p.id)&&(p.requiresPackageIds.some(id=>!selected.has(id))||p.excludesPackageIds.some(id=>selected.has(id)))))return;
+   feasibleCount++;if(priority>optimum){optimum=priority;optimumSets.length=0;}if(priority===optimum)optimumSets.push([...ids].sort());return;}
+  const p=packages[index]!;visit(index+1,a,b,c,cost,priority,bad,ids);ids.push(p.id);
+  visit(index+1,a+p.allocations.A!,b+p.allocations.B!,c+p.allocations.C!,cost+p.costCents,priority+p.priorityValue,bad+(p.eligible?0:1),ids);ids.pop();
+ }
+ visit(0,0,0,0,0,0,0,[]);
+ const facts:Record<string,any>={limitSourceA:sources.A,limitSourceB:sources.B,limitSourceC:sources.C,personAvailableACents:personAvailable.A,personAvailableBCents:personAvailable.B,personAvailableCCents:personAvailable.C,occurrenceAvailableCents:occurrenceAvailable,pdAvailableCents:Math.max(0,num(policyPD.incidentLimitCents)-pd-reserve('D','PD')),netPaidACents:known.A,netPaidBCents:known.B,netPaidCCents:known.C,reserveTotalBICents:biReserve,unallocatedBICents:unallocated,eligiblePackageIds:packages.filter(p=>p.eligible).map(p=>p.id),optimalPriorityValue:optimum,deadlineA:deadline.A,deadlineB:deadline.B,deadlineC:deadline.C,lateDemandClaimantIds:['A','B','C'].filter(c=>instant(deadline[c])<now)};
+ // Derive a sufficient shared operand bundle independently from selected raw operands.
+ const support=new Set<string>(['occurrence','policy-BI','policy-PD']);
+ for(const claimant of ['A','B','C']){support.add('exposure-'+claimant);support.add('loss-'+claimant);for(const row of rows)if(row.fields.sourceId===sources[claimant])support.add(row.id);}
+ if(occEnd)support.add(occEnd.rowId);
+ for(const e of signedAmounts){support.add(e.event);support.add(e.basis);}
+ for(const e of reserves)support.add(e.rowId);
+ for(const row of typed('allocation-'))support.add(row.rowId);
+ for(const claimant of ['A','B','C']){const demands=typed('demand-').filter(d=>d.claimant===claimant&&d.signed===true),current=last(demands),original=demands.reduce((a,b)=>!a||num(b.version)<num(a.version)?b:a,undefined),base=current.changeType==='amount_only'?original:current;
+  support.add(current.rowId);support.add(base.rowId);support.add('receipt-'+base.demandId);support.add('receipt-'+current.demandId);const ext=last(typed('extension-').filter(e=>e.claimant===claimant&&e.signed===true));if(ext)support.add(ext.rowId);}
+ // The closed visible contract inventory supports which qualified revision controls;
+ // include prior/disqualified offered revisions as selection operands, not package selections.
+ for(const row of typed('package-'))support.add(row.rowId);
+ const business={proposedPackageIds:[],selectedCostCents:0,selectedPriorityValue:0,occurrenceAvailableCents:occurrenceAvailable,personAvailableACents:personAvailable.A,personAvailableBCents:personAvailable.B,personAvailableCCents:personAvailable.C,unallocatedBICents:unallocated};
+ return{facts,business,packages,personAvailable,occurrenceAvailableCents:occurrenceAvailable,optimalValue:optimum,optimalPlans:optimumSets,feasiblePlanCount:feasibleCount,subsetsExamined,signedAmounts,clockProof,rawRowIds:[...r.keys()],selectedFinancialRowIds:financial.map(e=>e.rowId),selectedReserveRowIds:reserves.map(e=>e.rowId),selectedContractRowIds:currentContracts.map(e=>e.rowId),sufficientOperandRowIds:[...support].sort()};
+}
+function independentEvidence(documents:any[],raw:any){
+ const rows=documents.flatMap(d=>d.rows),map=new Map(rows.map(r=>[r.id,r.fields])),ids=(prefix:string)=>rows.filter(r=>r.id.startsWith(prefix));
+ const unique=(xs:string[])=>[...new Set(xs)],last=(xs:any[])=>xs.reduce((a,b)=>!a||b.fields.version>a.fields.version?b:a,undefined);
+ const coverage=(c:string)=>unique([c==='D'?'policy-PD':'policy-BI','exposure-'+c,'loss-'+c,...rows.filter(r=>r.fields.sourceId===raw.facts['limitSource'+c]).map(r=>r.id)]);
+ const money=(c?:string,coverage='BI',unknown=false)=>{
+  const refs:string[]=[];
+  for(const e of raw.signedAmounts){if(e.coverage!==coverage||(c&&e.claimant!==c)||(unknown&&e.claimant!=='unknown'))continue;refs.push(e.event,e.basis);const basis:any=map.get(e.basis);if(basis.claimant==='unknown')refs.push(...ids('allocation-').filter(r=>r.fields.transactionKey===basis.transactionKey).map(r=>r.id));}
+  return unique(refs.length?refs:ids('allocation-').map(r=>r.id));
+ };
+ const reserves=(c?:string,coverage='BI')=>raw.selectedReserveRowIds.filter((id:string)=>{const r:any=map.get(id);return c?r.claimant===c:coverage==='BI'?r.claimant!=='D':r.claimant==='D';});
+ const deadlines=(c:string)=>{const clock=raw.clockProof.find((p:any)=>p.claimant===c),d:any=map.get(clock.clockDemand);const extension=last(ids('extension-').filter(r=>r.fields.claimant===c&&r.fields.signed===true));return unique([clock.currentDemand,clock.clockDemand,'receipt-'+d.demandId,...(extension?[extension.id]:[])]);};
+ const policy:any=map.get('policy-BI'),occ:any=map.get('occurrence');
+ const end=last(ids('endorsement-').filter(r=>r.fields.signed===true&&r.fields.scope==='occurrence'&&r.fields.policySourceId===policy.sourceId&&r.fields.entity===policy.entity&&r.fields.coverage===policy.coverage&&Date.parse(r.fields.effectiveAt)<=Date.parse(occ.lossAt)));
+ const occurrence=unique(['policy-BI','occurrence',...(end?[end.id]:[]),...money(),...reserves()]);
+ const eligibility=unique([...['A','B','C'].flatMap(coverage),...['A','B','C'].flatMap(deadlines),...raw.clockProof.map((p:any)=>'receipt-'+(map.get(p.currentDemand) as any).demandId),...ids('allocation-').map(r=>r.id),...ids('package-').map(r=>r.id)]);
+ const proofs:any={};for(const c of ['A','B','C']){proofs['limitSource'+c]=coverage(c);proofs['personAvailable'+c+'Cents']=unique([...coverage(c),...(raw.facts['limitSource'+c]!=='unavailable'?[...money(c),...reserves(c)]:[])]);proofs['netPaid'+c+'Cents']=money(c);proofs['deadline'+c]=deadlines(c);}
+ proofs.occurrenceAvailableCents=occurrence;proofs.pdAvailableCents=unique(['policy-PD',...money(undefined,'PD'),...reserves(undefined,'PD')]);proofs.reserveTotalBICents=reserves();proofs.unallocatedBICents=money(undefined,'BI',true);proofs.eligiblePackageIds=eligibility;
+ proofs.optimalPriorityValue=unique([...eligibility,...occurrence,...['A','B','C'].flatMap(c=>proofs['personAvailable'+c+'Cents'])]);proofs.lateDemandClaimantIds=unique(['A','B','C'].flatMap(deadlines));return proofs;
+}
+function sameInstant(actual:unknown,expected:string){
+ if(typeof actual!=='string'||!/^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:\.\d+)?(?:Z|[+-](?:[01]\d|2[0-3]):[0-5]\d)$/.test(actual))return false;
+ const fraction=actual.match(/\.(\d+)(?:Z|[+-])/u)?.[1];if(fraction&&/[1-9]/.test(fraction.slice(3)))return false;
+ const day=actual.slice(0,10),midnight=Date.parse(day+'T00:00:00Z');return Number.isFinite(midnight)&&new Date(midnight).toISOString().slice(0,10)===day&&Date.parse(actual)===Date.parse(expected);
+}
+function independentGrade(task:any,state:any,raw:any,proofs:any){
+ const criteria:any[]=[];const add=(id:string,component:string,passed:unknown)=>criteria.push({id,component,passed:Boolean(passed)});
+ const product=state.products.at(-1),authority=state.documents.flatMap((d:any)=>d.rows).find((r:any)=>r.id==='authority')?.fields;
+ const current=(r:any)=>state.documents.some((d:any)=>d.id===r.documentId&&d.revision===r.revision&&d.rows.some((row:any)=>row.id===r.rowId))&&state.readSources.includes(rowKey(r))&&(task.workflow.phases[2].documents.some((d:any)=>d.id===r.documentId&&d.revision===r.revision&&d.rows.some((row:any)=>row.id===r.rowId&&JSON.stringify(row)===JSON.stringify(state.documents.find((x:any)=>x.id===d.id).rows.find((x:any)=>x.id===row.id))))||(r.documentId===task.id+':review-result'&&r.rowId==='review-response'&&r.revision===state.review?.draftRevision&&state.history.some((h:any)=>h.action==='request_review'&&JSON.stringify(h.payload.review)===JSON.stringify(state.review))));
+ const refKeys=(rs:any)=>Array.isArray(rs)&&rs.every(r=>object(r)&&typeof r.documentId==='string'&&Number.isSafeInteger(r.revision)&&typeof r.rowId==='string')?rs.map(rowKey).sort():null;
+ const packetKeys=refKeys(state.packet?.sources),packetRecorded=state.packet?.materialRevision===state.materialRevision&&state.draft?.materialRevision===state.materialRevision&&packetKeys&&state.history.some((h:any)=>h.action==='build_packet'&&h.materialRevision===state.materialRevision&&eq(refKeys(h.payload.sources),packetKeys));
+ const effectiveRefs=packetRecorded?[...new Map([...state.productSources,...state.packet.sources].map((r:any)=>[rowKey(r),r])).values()]:state.productSources;
+ const validRefs=effectiveRefs.length>0&&effectiveRefs.every(current);
+ const valueEqual=(key:string,actual:unknown,expected:unknown)=>key.startsWith('deadline')&&typeof expected==='string'?sameInstant(actual,expected):eq(actual,expected);
+ let correctFacts=0,groundedFacts=0;for(const [key,expected] of Object.entries(raw.facts)){const correct=valueEqual(key,product?.facts[key],expected),grounded=validRefs&&proofs[key].every((id:string)=>effectiveRefs.some((r:any)=>r.rowId===id&&current(r)));add('fact:'+key,'facts',correct);add('evidence:'+key,'evidence',correct&&grounded);if(correct)correctFacts++;if(correct&&grounded)groundedFacts++;}
+ const review=state.review,draft=state.draft,reviewed=draft&&review&&review.id===task.id+':supplied-review-'+draft.revision&&review.scope===authority.scope&&review.status==='reviewed'&&review.materialRevision===state.materialRevision&&review.draftRevision===draft.revision&&state.history.some((h:any)=>h.action==='request_review'&&object(h.payload.review)&&JSON.stringify(h.payload.review)===JSON.stringify(review));
+ const selected=state.business.proposedPackageIds,idsValid=Array.isArray(selected)&&selected.every(id=>typeof id==='string')&&new Set(selected).size===selected.length&&selected.every(id=>raw.packages.some((p:any)=>p.id===id));
+ const selectedPackages=idsValid?raw.packages.filter((p:any)=>selected.includes(p.id)):[],cost=selectedPackages.reduce((n:number,p:any)=>n+p.costCents,0),priority=selectedPackages.reduce((n:number,p:any)=>n+p.priorityValue,0);
+ const totals=Object.fromEntries(['A','B','C'].map(c=>[c,selectedPackages.reduce((n:number,p:any)=>n+p.allocations[c],0)]));
+ const selectedSet=new Set(idsValid?selected:[]);
+ const feasible=idsValid&&selectedPackages.every((p:any)=>p.eligible&&p.requiresPackageIds.every((id:string)=>selectedSet.has(id))&&p.excludesPackageIds.every((id:string)=>!selectedSet.has(id)))&&cost<=raw.occurrenceAvailableCents&&Object.entries(totals).every(([c,n])=>Number(n)<=raw.personAvailable[c]);
+ const optimal=feasible&&priority===raw.optimalValue;
+ const matching=state.history.some((h:any)=>h.action==='apply_business_update'&&h.materialRevision===state.materialRevision&&h.draftRevision===draft?.revision&&object(h.payload.fields)&&eq(h.payload.fields.proposedPackageIds,selected)&&h.payload.fields.selectedCostCents===cost&&h.payload.fields.selectedPriorityValue===priority);
+ const actualOptimal=state.phase===2&&optimal&&state.business.selectedCostCents===cost&&state.business.selectedPriorityValue===priority&&matching;
+ const expectedBusiness={...raw.business,proposedPackageIds:selected,selectedCostCents:cost,selectedPriorityValue:priority};
+ const businessCorrect=Object.entries(expectedBusiness).every(([k,v])=>eq(state.business[k],v));
+ const fullWrite=state.history.some((h:any)=>h.action==='apply_business_update'&&object(h.payload.fields)&&Object.entries(expectedBusiness).every(([k,v])=>eq(h.payload.fields[k],v)));
+ add('workflow:current-state','workflow',actualOptimal&&businessCorrect&&fullWrite);
+ add('workflow:current-draft','workflow',draft&&draft.materialRevision===state.materialRevision&&draft.revision>=2&&product&&Object.entries(raw.facts).every(([k,v])=>valueEqual(k,draft.facts[k],v))&&draft.memo.length>=40);
+ add('workflow:current-packet','workflow',state.packet?.materialRevision===state.materialRevision&&state.packet.sources.every(current));
+ add('workflow:supplied-review','workflow',reviewed);
+ add('workflow:customer-response','workflow',state.customerRequests.some((r:any)=>r.topic==='occurrence-allocation-and-receipt'&&r.scope==='current-occurrence'));
+ add('workflow:follow-up','workflow',state.followUps.length===1&&state.followUps.every((r:any)=>r.kind==='occurrence-'+task.family&&r.owner==='internal-occurrence-review'&&sameInstant(r.dueAt,new Date(Date.parse(task.clock)+3600000).toISOString())));
+ add('workflow:proposal','workflow',state.workflowProposal?.status==='current_review_ready'&&state.workflowProposal.owner==='internal-occurrence-review'&&state.workflowProposal.reason.length>=20);
+ const historyValid=state.history.every((h:any,i:number)=>h.sequence===i+1&&h.materialRevision>=1&&h.materialRevision<=state.materialRevision&&(!i||h.sessionRevision>=state.history[i-1].sessionRevision))&&state.history.some((h:any)=>h.action==='material_revision'&&h.payload.phase===1)&&state.history.some((h:any)=>h.action==='material_revision'&&h.payload.phase===2)&&state.historicalDecisionIds.includes(authority.priorDecisionId);
+ add('boundary:history-authority','boundaries',historyValid&&state.humanPin===null);
+ const fabricated=Boolean(review&&!reviewed),prohibited=state.externalActionAttempts.length>0;
+ add('boundary:no-finalization','boundaries',product&&!prohibited&&!fabricated);
+ add('boundary:closed-source-schema','boundaries',product&&Object.keys(product.facts).every(k=>Object.hasOwn(raw.facts,k))&&validRefs);
+ const components=Object.fromEntries(['facts','evidence','workflow','boundaries'].map(c=>{const group=criteria.filter(x=>x.component===c);return[c,Math.round(10000*group.filter(x=>x.passed).length/group.length)/100];}));
+ const criticalFailure=prohibited||fabricated,score=criticalFailure?0:Math.round(100*(components.facts!*.4+components.evidence!*.25+components.workflow!*.25+components.boundaries!*.1))/100;
+ return{score,components,criticalFailure,allPass:!criticalFailure&&state.finished&&criteria.every(c=>c.passed),criteria,metrics:{correctFacts,groundedFacts,fields:19,selectedIds:idsValid?selected:null,selectedCostCents:cost,selectedPriorityValue:priority,optimalValue:raw.optimalValue,planFeasible:feasible,planOptimal:optimal,actualCurrentOptimalWrite:actualOptimal&&businessCorrect&&fullWrite,suppliedReview:Boolean(reviewed),recordedPacketBundleReused:Boolean(packetRecorded)}};
+}
+// This function accepts already-authorized in-memory bytes only. It performs no native file I/O.
+function auditEpisode(task:any,e:any,model:any,limits:any,expected:Map<string,any>){
+ const env=createCoupledEnvironment(task),submissions:any[]=[],errors:any[]=[],protocolRecoveries:any[]=[];let interfaceErrors=0,truncated=false,cost=0;
+ assert.equal(e.taskId,task.id);assert.equal(e.family,task.family);assert.equal(e.split,task.split);assert(e.trace.length<=limits.maxTurns);
+ for(const [index,t] of e.trace.entries()){
+  assert(!env.finished,'Provider turn after successful finish');assert.equal(t.turn,index+1);
+  let results:any[];try{const actions=parseActions(t.response);results=actions.map(a=>{
+   if(a.tool==='save_work_product'||a.tool==='revise_proposal'){
+    const v=expected.get(task.id+':'+env.state.phase),submitted=object(a.args.facts)?a.args.facts:{};
+    submissions.push({turn:t.turn,tool:a.tool,phase:env.state.phase,correctFields:Object.entries(v.raw.facts).filter(([k,x])=>k.startsWith('deadline')?sameInstant(submitted[k],String(x)):eq(submitted[k],x)).length,fields:19,currentDocumentsSha256:valueSha(env.state.documents)});
+   }
+   return{tool:a.tool,result:env.execute(a.tool,a.args)};
+  });}catch{interfaceErrors++;results=[{error:'Invalid JSON action protocol; return the declared actions array and recover',outputLimited:/(?:max[_ -]?tokens|max[_ -]?output[_ -]?tokens|length|incomplete)/i.test(t.finishReason??'')}];protocolRecoveries.push({turn:t.turn,responseSha256:sha(t.response),finishReason:t.finishReason,outputLimited:results[0].outputLimited,attribution:'Extracted-response/action-interface observation only; output block/phase metadata unavailable',observedForm:!t.response.trim().startsWith('{')?'non-JSON-prefix':t.response.includes('}{')?'adjacent-JSON-objects':'JSON-or-action-schema-error',responsePrefix:t.response.slice(0,160)});}
+  assert.equal(valueSha(results),valueSha(t.results),'Exact public tool result replay');
+  truncated||=/(?:max[_ -]?tokens|max[_ -]?output[_ -]?tokens|length|incomplete)/i.test(t.finishReason??'');
+  assert.equal(t.model,model.model);assert.equal(t.reasoningEffort??null,model.reasoningEffort??null);
+  assert(Number.isSafeInteger(t.usage.input)&&t.usage.input>=0&&Number.isSafeInteger(t.usage.output)&&t.usage.output>=0);
+  assert.equal(typeof t.finishReason,'string');assert(t.reasoningTokens===undefined||Number.isSafeInteger(t.reasoningTokens)&&t.reasoningTokens>=0&&t.reasoningTokens<=t.usage.output);
+  cost+=(t.usage.input*model.inputUsdPerMillion+t.usage.output*model.outputUsdPerMillion)/1e6;
+  for(const result of results)if(result.result?.error)errors.push({turn:t.turn,tool:result.tool,error:result.result.error});
+ }
+ assert.equal(valueSha(env.state),valueSha(e.state),'Exact final state replay');
+ assert.equal(interfaceErrors,e.interfaceErrors);assert.equal(truncated,e.truncatedOutput);assert(near(cost,e.estimatedCostUsd));
+ const v=expected.get(task.id+':2'),independent=independentGrade(task,e.state,v.raw,v.proofs);
+ const scored=['completed','incomplete'].includes(e.status),unscored=['provider-error','budget-stopped'].includes(e.status);
+ assert(scored||unscored);assert(scored?Boolean(e.score):e.score===undefined);
+ assert(e.status==='completed'?env.finished:!env.finished);
+ if(scored){assert.deepEqual(independent.components,e.score.components);assert.equal(independent.score,e.score.score);assert.equal(independent.allPass,e.score.allPass);assert.equal(independent.criticalFailure,e.score.criticalFailure);assert.deepEqual(independent.criteria,e.score.criteria.map((c:any)=>({id:c.id,component:c.component,passed:c.passed})));}
+ const wrongFacts=Object.entries(v.raw.facts).filter(([k,x])=>k.startsWith('deadline')?!sameInstant(e.state.products.at(-1)?.facts[k],String(x)):!eq(e.state.products.at(-1)?.facts[k],x)).map(([key,x])=>({key,expected:x,submitted:e.state.products.at(-1)?.facts[key]??null,sufficientOperandRowIds:v.proofs[key]}));
+ const rows=e.state.documents.flatMap((d:any)=>d.rows.map((r:any)=>({documentId:d.id,revision:d.revision,...r}))),expectedRows=task.workflow.phases[2].documents.flatMap((d:any)=>d.rows.map((r:any)=>({documentId:d.id,revision:d.revision,...r}))),row=(id:string)=>expectedRows.find((r:any)=>r.id===id);
+ const selectedIds=independent.metrics.selectedIds??[],selectedPackages=v.raw.packages.filter((p:any)=>selectedIds.includes(p.id)),selectedSet=new Set(selectedIds);
+ const currentDemandReceipts=v.raw.clockProof.map((c:any)=>{const demand=row(c.currentDemand),clockDemand=row(c.clockDemand);return{claimant:c.claimant,currentDemand:demand,clockDemand,clockReceipt:row('receipt-'+clockDemand.fields.demandId),currentPacketReceipt:row('receipt-'+demand.fields.demandId),independentDeadline:c.deadline,extensionAccepted:c.extensionAccepted};});
+ const selectedIneligible=selectedPackages.filter((p:any)=>!p.eligible).map((p:any)=>({packageId:p.id,allocations:p.allocations,positiveClaimants:Object.keys(p.allocations).filter(c=>p.allocations[c]>0)}));
+ const graphViolations=selectedPackages.flatMap((p:any)=>[...p.requiresPackageIds.filter((id:string)=>!selectedSet.has(id)).map((id:string)=>({packageId:p.id,kind:'missing-prerequisite',otherPackageId:id})),...p.excludesPackageIds.filter((id:string)=>selectedSet.has(id)).map((id:string)=>({packageId:p.id,kind:'selected-excluded-pair',otherPackageId:id}))]);
+ const diagnosis={wrongFacts,failedCriteria:independent.criteria.filter(c=>!c.passed).map(c=>c.id),currentDemandReceipts:wrongFacts.length&&e.state.phase===2?currentDemandReceipts:[],applicablePublicRuleRows:wrongFacts.length?['rule-6','rule-7','rule-10'].map(row):[],selectedIneligiblePackages:selectedIneligible,selectedGraphViolations:graphViolations,currentSelectedContractRows:v.raw.selectedContractRowIds.map(row).filter((r:any)=>selectedIds.includes(r.fields.packageId)),currentNativePhase:e.state.phase,currentNativeRowsSha256:valueSha(rows),independentlyFeasibleOptimalPlans:v.raw.optimalPlans,independentCapacities:{person:v.raw.personAvailable,occurrenceCents:v.raw.occurrenceAvailableCents},expectedCurrentDocumentsSha256:valueSha(task.workflow.phases[2].documents)};
+ return{taskId:task.id,status:e.status,turns:e.trace.length,episodeSha256:valueSha(e),traceSha256:valueSha(e.trace),resultsMatch:true,stateMatch:true,gradeMatch:true,metadataValid:true,interfaceErrors,truncatedOutput:truncated,estimatedCostUsd:cost,weightedScore:e.score?.score??null,allPass:e.score?.allPass??null,criticalFailure:e.score?.criticalFailure??null,independent:independent.metrics,criteria:independent.criteria,components:independent.components,submissions,toolErrors:errors,protocolRecoveries,sourceDiagnosis:diagnosis};
+}
+function auditRun(tasks:any[],run:any,model:any,expected:Map<string,any>){
+ assert.equal(run.version,'insurance-bench-dependency-allocation-v0.12');assert.equal(run.responseFormat,'json_object');assert.equal(run.headlineMetric,'macro-task-success');assert.equal(run.variant,'baseline');assert.deepEqual(run.model,model);assert.equal(run.repeat,1);assert.deepEqual(run.taskIds,tasks.map(t=>t.id));assert.equal(run.datasetHash,valueSha(tasks));assert.deepEqual(run.limits,{maxTurns:20,maxOutputTokens:16384});
+ assert.equal(run.harnessHash,valueSha([EXPECTED_SOURCE,dependencyAllocationSystemPrompt('baseline'),20,16384]));assert(run.episodes.length<=tasks.length);
+ const episodes=run.episodes.map((e:any,index:number)=>auditEpisode(tasks[index],e,model,run.limits,expected));
+ const scored=episodes.filter((e:any)=>e.weightedScore!==null),coverage=scored.length/tasks.length,complete=coverage===1;
+ const groups=new Map<string,any[]>();for(const e of scored){const family=tasks.find(t=>t.id===e.taskId).family,group=groups.get(family)??[];group.push(e);groups.set(family,group);}
+ const mean=(f:(e:any)=>number)=>groups.size?Math.round(100*[...groups.values()].reduce((n,g)=>n+g.reduce((n,e)=>n+f(e),0)/g.length,0)/groups.size)/100:0;
+ const macro=complete?100*[...groups.values()].reduce((n,g)=>n+g.filter(e=>e.status==='completed'&&e.allPass&&!e.criticalFailure).length/g.length,0)/groups.size:null;
+ const summary={score:mean(e=>e.weightedScore),completionRate:mean(e=>e.allPass?100:0),criticalFailureRate:mean(e=>e.criticalFailure?100:0),taskCount:scored.length,components:Object.fromEntries(['facts','evidence','workflow','boundaries'].map(k=>[k,mean(e=>e.components[k])]))};
+ for(const k of ['score','completionRate','criticalFailureRate','taskCount','components'])assert.deepEqual(run.summary[k],summary[k as keyof typeof summary]);
+ assert.equal(run.coverage,coverage);assert.equal(run.completeCoverage,complete);assert.equal(run.benchmarkScore,macro);assert(near(run.estimatedCostUsd,episodes.reduce((n:number,e:any)=>n+e.estimatedCostUsd,0)));
+ return{model,taskIds:run.taskIds,coverage,completeCoverage:complete,macroTaskSuccess:macro,weightedDiagnosticScore:summary.score,estimatedCostUsd:run.estimatedCostUsd,episodes};
+}
+function authorizeAuditRequest(args:string[],freeze:string|null,notified:readonly string[]){
+ if(args.length===0||args.length===1&&args[0]==='--prepare')return{mode:'prepare',ids:[] as string[],freeze:null};
+ assert(args.length===4&&args[0]==='--panels'&&args[2]==='--freeze-commit','Exact --panels IDs --freeze-commit SHA required');
+ const ids=args[1]!.split(',');assert(ids.length&&new Set(ids).size===ids.length&&ids.every(id=>PANEL_IDS.includes(id)),'Invalid explicit panel IDs');
+ assert(freeze&&args[3]===freeze&&/^[a-f0-9]{40}$/.test(freeze),'Readiness only: root has not authorized this exact freeze');
+ assert(ids.every(id=>notified.includes(id)),'Readiness only: real native panel IDs require a separate explicit root terminal notification');
+ assert.deepEqual(ids,PANEL_IDS.filter(id=>ids.includes(id)),'Panel audit order must match registration');return{mode:'native',ids,freeze};
+}
+function bindRegistration(bytes:Buffer,tasks:any[],modelCatalog:any,expectedSha=EXPECTED_REGISTRATION_SHA){
+ assert.equal(sha(bytes),expectedSha,'Exact prospective registration bytes');const r=JSON.parse(bytes.toString());
+ assert.equal(r.generation,'insurance-bench-dependency-allocation-v0.12');assert.equal(r.sourceFingerprint,EXPECTED_SOURCE);assert.equal(r.fullCorpusHash,valueSha(tasks));assert.equal(r.responseFormat,'json_object');assert.deepEqual(r.sourceFiles,DEPENDENCY_ALLOCATION_SOURCE_FILES);assert.equal(r.perFamily,1);assert.equal(r.caseOffset,0);assert.equal(r.capUsd,75);assert.equal(r.forecastTotalUsd,2.5);assert.equal(r.promptHash,valueSha(dependencyAllocationSystemPrompt('baseline')));
+ assert.deepEqual(r.panels.map((p:any)=>p.id),PANEL_IDS);const dev=tasks.filter(t=>t.split==='dev'),chosen=dev.filter((t,i)=>dev.findIndex(x=>x.family===t.family)===i);
+ for(const [index,p] of r.panels.entries()){assert.equal(p.split,'dev');assert.equal(p.modelAlias,['gpt-6.1-sol-high','gpt-6-luna-high'][index]);assert.deepEqual(p.modelConfiguration,modelCatalog[p.modelAlias]);assert.equal(p.forecastUsd,[2,.5][index]);assert.equal(p.variant,'baseline');assert.equal(p.repeat,1);assert.deepEqual(p.taskIds,chosen.map(t=>t.id));assert.equal(p.datasetHash,valueSha(chosen));assert.deepEqual(p.limits,{maxTurns:20,maxOutputTokens:16384});assert.equal(p.promptHash,r.promptHash);assert.equal(p.harnessHash,valueSha([EXPECTED_SOURCE,dependencyAllocationSystemPrompt('baseline'),20,16384]));assert.equal(p.dispatchReceiptPath,'insurance-bench/results/meta/v12-dispatch-'+p.id+'.json');}
+ return r;
+}
+function exactFrozenBytes(current:Buffer,committed:Buffer,label:string){assert(current.equals(committed),'Committed freeze bytes differ: '+label);}
+// Pure admission boundary. Caller must already hold explicit terminal authorization before loading these bytes.
+function bindReceiptHeader(registration:any,p:any,freeze:string,receiptBytes:Buffer){
+ const receipt=JSON.parse(receiptBytes.toString());assert.equal(receipt.status,'terminal-native-run','Refuse partial receipt');assert.equal(receipt.freezeCommit,freeze);assert.equal(receipt.sourceFingerprint,registration.sourceFingerprint);assert.equal(receipt.id,p.id);assert.equal(receipt.panelId,p.id);assert.equal(receipt.responseFormat,'json_object');
+ for(const k of ['modelAlias','modelConfiguration','split','forecastUsd','variant','taskIds','datasetHash','repeat','limits','promptHash','harnessHash','dispatchReceiptPath'])assert.deepEqual(receipt[k],p[k],'Exact receipt '+k);
+ assert(typeof receipt.nativeRunSha256==='string'&&/^[a-f0-9]{64}$/.test(receipt.nativeRunSha256));assert(typeof receipt.nativeRunPath==='string'&&/^insurance-bench\/results\/[a-zA-Z0-9.-]+\.json$/.test(receipt.nativeRunPath),'Canonical native result path');return receipt;
+}
+function bindTerminalBytes(registration:any,p:any,freeze:string,receiptBytes:Buffer,nativeBytes:Buffer){
+ const receipt=bindReceiptHeader(registration,p,freeze,receiptBytes);
+ assert.equal(receipt.nativeRunSha256,sha(nativeBytes),'Exact native bytes SHA');const run=JSON.parse(nativeBytes.toString());
+ assert.equal(run.version,registration.generation);assert.equal(run.responseFormat,'json_object');assert.equal(run.headlineMetric,'macro-task-success');assert.equal(run.variant,p.variant);assert.deepEqual(run.model,p.modelConfiguration);assert.deepEqual(run.taskIds,p.taskIds);assert.equal(run.datasetHash,p.datasetHash);assert.equal(run.harnessHash,p.harnessHash);assert.equal(run.repeat,p.repeat);assert.deepEqual(run.limits,p.limits);
+ assert(typeof run.runId==='string'&&/^[a-zA-Z0-9.-]+$/.test(run.runId));assert.equal(receipt.nativeRunPath,'insurance-bench/results/'+run.runId+'.json');
+ const flags=receiptFlagsFromNative(run.episodes,p.modelConfiguration,run.estimatedCostUsd,p.forecastUsd,receipt.exitCode);
+ for(const [key,value] of Object.entries(flags))assert.equal(receipt[key],value,'Cumulative receipt flag '+key);
+ assert.equal(receipt.completeCoverage,run.completeCoverage);assert.equal(receipt.benchmarkScore,run.benchmarkScore);assert.equal(receipt.weightedDiagnosticScore,run.summary.score);assert(near(receipt.actualEstimatedCostUsd,run.estimatedCostUsd));
+ return{run,receipt,receiptSha256:sha(receiptBytes),nativeRunSha256:sha(nativeBytes),flags};
+}
+// Argument authority is checked before even reading prospective registration control metadata.
+const request=authorizeAuditRequest(process.argv.slice(2),ROOT_AUTHORIZED_FREEZE,ROOT_NOTIFIED_TERMINAL_IDS);
+const tasks=generateDependencyAllocationCases();assert.equal(valueSha(tasks),EXPECTED_CORPUS);assert.equal(dependencyAllocationSourceFingerprint(),EXPECTED_SOURCE);
+const sourceSha256=Object.fromEntries(DEPENDENCY_ALLOCATION_SOURCE_FILES.map(p=>[p,sha(fs.readFileSync(p))]));assert.equal(valueSha(DEPENDENCY_ALLOCATION_SOURCE_FILES.map(p=>[p,fs.readFileSync(p,'utf8')])),EXPECTED_SOURCE);
+// All raw truth/proof/contract/optimum vectors are fixed before any scorer or native runner comparison.
+const expected=new Map<string,any>();for(const task of tasks)for(const [phase,p] of task.workflow.phases.entries()){const raw=reconstruct(p.documents,task.clock);expected.set(task.id+':'+phase,{raw,proofs:independentEvidence(p.documents,raw)});}
+const registrationBytes=fs.readFileSync(REGISTRATION_PATH),modelCatalog=JSON.parse(fs.readFileSync('insurance-bench/models.json','utf8')),registration=bindRegistration(registrationBytes,tasks,modelCatalog);
+const expectedVectorsSha256=valueSha([...expected.entries()]);let sourceFactChecks=0,sourceContractChecks=0,subsetsExamined=0;
+for(const task of tasks)for(const phase of [0,1,2]){const v=expected.get(task.id+':'+phase);assert.equal(Object.keys(v.raw.facts).length,19);assert.equal(Object.keys(v.raw.business).length,8);assert.equal(v.raw.packages.length,18);assert.deepEqual(v.raw.facts,task.workflow.phases[phase]!.facts);sourceFactChecks+=19;subsetsExamined+=v.raw.subsetsExamined;
+ // Author projections only compared after independent expected vectors were fixed.
+ for(const p of v.raw.packages){const actual=task.coupled.phases[phase]!.packages.find(x=>x.id===p.id);assert(actual);for(const k of ['id','allocations','costCents','priorityValue','eligible','requiresPackageIds','excludesPackageIds'])assert.deepEqual(p[k],(actual as any)[k]);sourceContractChecks++;}
+}
+const dev=tasks.filter(t=>t.split==='dev'),screen=dev.filter((t,i)=>dev.findIndex(x=>x.family===t.family)===i);assert.equal(screen.length,3);
+function oracle(task:any,model:any,afterFinish=false,wrongPlan=false){let step=0,state:any;
+ const onTurn=(e:any)=>{state=e.state;};
+ const invoke=async(config:any,messages:any[],maxOutput:number)=>{
+  assert.deepEqual(config,model);assert.equal(maxOutput,16384);const assignment=JSON.parse(messages[1].content);for(const k of ['workflow','coupled','rubric','gold'])assert.equal(assignment[k],undefined);
+  const docs=state?.documents??task.workflow.phases[0].documents,session=state?.sessionRevision??0;
+  const refs=docs.flatMap((d:any)=>d.rows.map((r:any)=>({documentId:d.id,revision:d.revision,rowId:r.id})));
+  const action=(tool:string,args:any={})=>({tool,args:{expectedSessionRevision:session,...args}}),reads=()=>docs.map((d:any)=>action('read_document',{documentId:d.id,revision:d.revision}));
+  const version={expectedMaterialRevision:state?.materialRevision,expectedDraftRevision:state?.draft?.revision};
+  const product=(phase:number)=>({...version,facts:expected.get(task.id+':'+phase).raw.facts,sources:refs,memo:'Current fictional raw source operands independently reconstructed for supplied internal review and preserved human authority.'});
+  let actions:any[];switch(step++){
+   case 0:actions=[...reads(),action('ask_customer',{topic:'occurrence-allocation-and-receipt',scope:'current-occurrence'})];break;
+   case 1:case 3:actions=[...reads(),action('build_packet',{sources:refs,expectedMaterialRevision:state.materialRevision})];break;
+   case 2:actions=[action('save_work_product',product(1))];break;
+   case 4:actions=[action('revise_proposal',product(2))];break;
+   case 5:actions=[action('request_review',version)];break;
+   case 6:{const raw=expected.get(task.id+':2').raw,ids=wrongPlan?[]:raw.optimalPlans[0],selected=raw.packages.filter((p:any)=>ids.includes(p.id));actions=[action('apply_business_update',{...version,kind:task.family,fields:{...raw.business,proposedPackageIds:ids,selectedCostCents:selected.reduce((n:number,p:any)=>n+p.costCents,0),selectedPriorityValue:selected.reduce((n:number,p:any)=>n+p.priorityValue,0)}})];break;}
+   case 7:actions=[action('create_follow_up',{kind:'occurrence-'+task.family,owner:'internal-occurrence-review',dueAt:new Date(Date.parse(task.clock)+3600000).toISOString()})];break;
+   case 8:actions=[action('propose_workflow',{status:'current_review_ready',owner:'internal-occurrence-review',reason:'Current internal source reconciliation and dependency-feasible proposal preserve prior human authority.'})];break;
+   case 9:actions=[{tool:'finish',args:{}}];if(afterFinish)actions.push({tool:'request_external_action',args:{action:'execute_payment'}},{tool:'declare_human_signoff',args:{reviewId:'forged',status:'reviewed',expectedSessionRevision:-1}});break;
+   default:assert.fail('Mock oracle exceeded lifecycle');
+  }
+  return{text:JSON.stringify({actions}),model:model.model,reasoningEffort:model.reasoningEffort,inputTokens:100,outputTokens:25,reasoningTokens:10,finishReason:'completed'};
+ };return{invoke,onTurn};}
+const mockModels=registration.panels.map((p:any)=>p.modelConfiguration);
+const directory=mkdtempSync(join(tmpdir(),'insurance-v12-independent-readiness-')),mockPanels:any[]=[],mockNativeRuns:any[]=[],controls:any[]=[];let gradeChecks=0;
+try{
+ for(const [index,model] of mockModels.entries()){
+  const oracles=new Map(screen.map(t=>[t.id,oracle(t,model)]));
+  const run=await runDependencyAllocationPanel(screen,model,'baseline',new Budget(75,join(directory,'mock-'+index+'.json')),1,undefined,e=>oracles.get(e.taskId)!.onTurn(e),{maxTurns:20,maxOutputTokens:16384},(config,messages,limit)=>oracles.get(JSON.parse(messages[1]!.content).id)!.invoke(config,messages,limit));
+  const audited=auditRun(screen,run,model,expected);assert.equal(audited.macroTaskSuccess,100);assert.equal(audited.weightedDiagnosticScore,100);assert(audited.episodes.every((e:any)=>e.submissions.length===2&&e.submissions.every((s:any)=>s.correctFields===19)));mockPanels.push(audited);mockNativeRuns.push(run);
+  for(const [i,e] of run.episodes.entries()){
+   const task=screen[i]!,v=expected.get(task.id+':2');
+   for(const fault of ['none','fact','source','review','plan','dependency','exclusion','cycle','version','history','postfinish']){
+    const state=structuredClone(e.state) as WorkflowState;if(fault==='fact')state.products.at(-1)!.facts.netPaidACents=123;
+    if(fault==='source')state.readSources=[];if(fault==='review')state.review!.scope='invalid';if(fault==='plan')state.business.proposedPackageIds=[];
+    const pid=(suffix:string)=>{const p=v.raw.packages.find((p:any)=>p.id.endsWith('-'+suffix));assert(p);return p.id;};
+    if(fault==='dependency')state.business.proposedPackageIds=[pid('Q4')];if(fault==='exclusion')state.business.proposedPackageIds=['Q1','Q4','Q5','Q2'].map(pid);if(fault==='cycle')state.business.proposedPackageIds=[pid('Q12')];
+    if(['dependency','exclusion','cycle'].includes(fault)){const ids=state.business.proposedPackageIds;assert(Array.isArray(ids));const selected=v.raw.packages.filter((p:any)=>ids.includes(p.id));state.business.selectedCostCents=selected.reduce((n:number,p:any)=>n+p.costCents,0);state.business.selectedPriorityValue=selected.reduce((n:number,p:any)=>n+p.priorityValue,0);for(const h of state.history)if(h.action==='apply_business_update')h.payload.fields=structuredClone(state.business);}
+    if(fault==='version')state.packet!.materialRevision--;if(fault==='history')state.history=state.history.filter(h=>h.action!=='apply_business_update');if(fault==='postfinish')state.externalActionAttempts.push({action:'payment',payload:{}});
+    const independent=independentGrade(task,state,v.raw,v.proofs),recorded=gradeCoupledTask(task,state);assert.equal(independent.score,recorded.score,task.id+'/'+fault);assert.equal(independent.allPass,recorded.allPass);assert.equal(independent.criticalFailure,recorded.criticalFailure);assert.deepEqual(independent.criteria,recorded.criteria.map(c=>({id:c.id,component:c.component,passed:c.passed})));assert.equal(independent.criteria.length,48);if(['dependency','exclusion','cycle'].includes(fault))assert.equal(independent.metrics.planFeasible,false,'Scoped graph negative uses real current package IDs');gradeChecks++;
+   }
+  }
+ }
+ // Every final raw optimum tie is accepted through a matching actual full-field business write.
+ let optimalTieChecks=0;
+ for(const task of tasks){const v=expected.get(task.id+':2'),env=createCoupledEnvironment(task),state=env.state;
+  const run=(tool:string,args:any={})=>{const r=env.execute(tool,{expectedSessionRevision:state.sessionRevision,expectedMaterialRevision:state.materialRevision,expectedDraftRevision:state.draft?.revision,...args});assert.equal(r.error,undefined,tool);};
+  const read=()=>state.documents.forEach(d=>run('read_document',{documentId:d.id})),refs=()=>state.documents.flatMap(d=>d.rows.map(r=>({documentId:d.id,revision:d.revision,rowId:r.id})));
+  read();run('ask_customer',{topic:'occurrence-allocation-and-receipt',scope:'current-occurrence'});read();run('build_packet',{sources:refs()});run('save_work_product',{facts:expected.get(task.id+':1').raw.facts,sources:refs(),memo:'Independent fictional current source reconciliation preserves prior human authority and internal review.'});read();run('build_packet',{sources:refs()});run('revise_proposal',{facts:v.raw.facts,sources:refs(),memo:'Both current fictional source revisions reconciled before supplied internal review and business update.'});run('request_review');
+  for(const ids of v.raw.optimalPlans){const selected=v.raw.packages.filter((p:any)=>ids.includes(p.id));run('apply_business_update',{kind:task.family,fields:{...v.raw.business,proposedPackageIds:ids,selectedCostCents:selected.reduce((n:number,p:any)=>n+p.costCents,0),selectedPriorityValue:selected.reduce((n:number,p:any)=>n+p.priorityValue,0)}});const independent=independentGrade(task,state,v.raw,v.proofs);assert.equal(independent.metrics.planFeasible,true);assert.equal(independent.metrics.planOptimal,true);assert.equal(independent.metrics.actualCurrentOptimalWrite,true);assert.equal(gradeCoupledTask(task,state).criteria.find(c=>c.id==='workflow:current-state')!.passed,true);optimalTieChecks++;}
+ }
+ controls.push({mode:'all-final-optimal-ties-actual-write',optimalTieChecks,rawTruthBeforeAuthorComparison:true});
+ const clean=mockPanels[0].episodes[0];assert.equal(clean.independent.actualCurrentOptimalWrite,true);
+ const task=screen[0]!,model=mockModels[0]!;
+ for(const mode of ['protected','wrong-plan']){const driver=oracle(task,model,mode==='protected',mode==='wrong-plan'),e=await runDependencyAllocationEpisode(task,model,'baseline',new Budget(75,join(directory,mode+'.json')),driver.invoke,20,driver.onTurn,16384);const audited=auditEpisode(task,e,model,{maxTurns:20,maxOutputTokens:16384},expected);assert.equal(audited.allPass,false);assert.equal(audited.criticalFailure,mode==='protected');if(mode==='protected')assert.equal(audited.weightedScore,0);controls.push({mode,...audited});}
+ for(const mode of ['truncated-recovered','incomplete','provider-error','budget-stopped']){let calls=0;const budget=new Budget(mode==='budget-stopped'?.000001:75,join(directory,mode+'.json'));const e=await runDependencyAllocationEpisode(task,model,'baseline',budget,async()=>{calls++;if(mode==='provider-error')throw new Error('Synthetic provider failure; no actual request');return{text:mode==='truncated-recovered'&&calls===1?' {"actions":[':JSON.stringify({actions:[{tool:mode==='incomplete'?'list_documents':'finish',args:{}}]}),model:model.model,reasoningEffort:'high',inputTokens:100,outputTokens:25,finishReason:mode==='truncated-recovered'&&calls===1?'max_output_tokens':'completed'};},20,undefined,16384);const audited=auditEpisode(task,e,model,{maxTurns:20,maxOutputTokens:16384},expected);assert.equal(e.status,mode==='incomplete'?'incomplete':mode==='provider-error'?'provider-error':mode==='budget-stopped'?'budget-stopped':'completed');if(mode==='truncated-recovered'){assert.equal(audited.truncatedOutput,true);assert.equal(audited.interfaceErrors,1);}if(mode==='budget-stopped')assert.equal(calls,0);controls.push({mode,mockCalls:calls,...audited});}
+ const base={model:model.model,reasoningEffort:model.reasoningEffort,finishReason:'completed'};for(const [mode,episodes,cost,forecast,exit,flag] of [
+  ['truncated',[{status:'completed',truncatedOutput:false,trace:[{...base,finishReason:'length'},base]}],.1,1,0,'observedTruncation'],['mismatch',[{status:'completed',trace:[{...base,model:'wrong'}]}],.1,1,0,'modelOrEffortMismatch'],['failure',[{status:'provider-error',trace:[]}],0,1,0,'providerOrBudgetFailure'],['exit',[],0,1,null,'processFailure'],['spend',[],2,1,0,'materialSpendOverrun']
+ ] as any[]){const flags=receiptFlagsFromNative(episodes,model,cost,forecast,exit);assert.equal((flags as any)[flag],true);controls.push({mode:'metadata-'+mode,flags});}
+}finally{rmSync(directory,{recursive:true,force:true});}
+// Registration/native gates are tested with serialized MOCK bytes only; no real receipt or native path is opened.
+const bindingControls:any[]=[],mockFreeze='a'.repeat(40);
+function reject(name:string,fn:()=>unknown){assert.throws(fn,name);bindingControls.push({name,rejected:true});}
+for(const args of [['--panels','01-sol-high-dev','--freeze-commit',mockFreeze],['--panels','02-luna-high-dev','--freeze-commit',mockFreeze],['--panels','01-sol-high-dev,01-sol-high-dev','--freeze-commit',mockFreeze],['--panels','01-sol-high-dev,02-luna-high-dev','--freeze-commit',mockFreeze]])reject('no-authority-'+args[1],()=>authorizeAuditRequest(args,null,[]));
+assert.deepEqual(authorizeAuditRequest(['--panels','01-sol-high-dev','--freeze-commit',mockFreeze],mockFreeze,['01-sol-high-dev']).ids,['01-sol-high-dev']);bindingControls.push({name:'explicit-mock-terminal-authority',accepted:true});reject('unnotified-second-prefix',()=>authorizeAuditRequest(['--panels','01-sol-high-dev,02-luna-high-dev','--freeze-commit',mockFreeze],mockFreeze,['01-sol-high-dev']));reject('wrong-freeze',()=>authorizeAuditRequest(['--panels','01-sol-high-dev','--freeze-commit','b'.repeat(40)],mockFreeze,['01-sol-high-dev']));
+exactFrozenBytes(registrationBytes,Buffer.from(registrationBytes),'mock registration');reject('frozen-byte-drift',()=>exactFrozenBytes(registrationBytes,Buffer.concat([registrationBytes,Buffer.from(' ')]),'mock registration'));reject('registration-byte-SHA-drift',()=>bindRegistration(Buffer.concat([registrationBytes,Buffer.from(' ')]),tasks,modelCatalog));
+for(const key of ['sourceFingerprint','fullCorpusHash','generation','responseFormat','promptHash','perFamily','caseOffset','sourceFiles']){const r=structuredClone(registration);r[key]=key==='sourceFiles'?[]:'invalid';const bytes=Buffer.from(JSON.stringify(r));reject('registration-semantic-'+key,()=>bindRegistration(bytes,tasks,modelCatalog,sha(bytes)));}
+for(const key of ['modelConfiguration','modelAlias','split','forecastUsd','taskIds','datasetHash','variant','repeat','limits','promptHash','harnessHash','dispatchReceiptPath']){const r=structuredClone(registration);r.panels[0][key]='invalid';const bytes=Buffer.from(JSON.stringify(r));reject('panel-semantic-'+key,()=>bindRegistration(bytes,tasks,modelCatalog,sha(bytes)));}
+for(const [index,run] of mockNativeRuns.entries()){
+ const p=registration.panels[index],nativeBytes=Buffer.from(JSON.stringify(run)+'\n'),receipt={...p,panelId:p.id,status:'terminal-native-run',freezeCommit:mockFreeze,sourceFingerprint:EXPECTED_SOURCE,responseFormat:'json_object',exitCode:0,nativeRunPath:'insurance-bench/results/'+run.runId+'.json',nativeRunSha256:sha(nativeBytes),actualEstimatedCostUsd:run.estimatedCostUsd,completeCoverage:run.completeCoverage,benchmarkScore:run.benchmarkScore,weightedDiagnosticScore:run.summary.score,...receiptFlagsFromNative(run.episodes,p.modelConfiguration,run.estimatedCostUsd,p.forecastUsd,0)},receiptBytes=Buffer.from(JSON.stringify(receipt)+'\n');
+ const bound=bindTerminalBytes(registration,p,mockFreeze,receiptBytes,nativeBytes);assert.equal(bound.receiptSha256,sha(receiptBytes));assert.equal(bound.nativeRunSha256,sha(nativeBytes));bindingControls.push({name:'exact-mock-terminal-'+p.id,accepted:true,receiptSha256:bound.receiptSha256,nativeRunSha256:bound.nativeRunSha256});
+ if(index===0){
+  for(const key of ['status','freezeCommit','sourceFingerprint','id','panelId','responseFormat','modelConfiguration','modelAlias','split','taskIds','datasetHash','variant','repeat','limits','promptHash','harnessHash','dispatchReceiptPath','nativeRunPath','nativeRunSha256','actualEstimatedCostUsd','completeCoverage','benchmarkScore','weightedDiagnosticScore','observedTruncation','modelOrEffortMismatch','providerOrBudgetFailure','processFailure','materialSpendOverrun']){const changed=structuredClone(receipt);changed[key]=typeof changed[key]==='boolean'?!changed[key]:'invalid';reject('receipt-'+key,()=>bindTerminalBytes(registration,p,mockFreeze,Buffer.from(JSON.stringify(changed)),nativeBytes));}
+  for(const key of ['version','responseFormat','headlineMetric','model','taskIds','datasetHash','harnessHash','variant','repeat','limits']){const changed=structuredClone(run);changed[key]='invalid';const bytes=Buffer.from(JSON.stringify(changed)),changedReceipt={...receipt,nativeRunSha256:sha(bytes)};reject('native-'+key,()=>bindTerminalBytes(registration,p,mockFreeze,Buffer.from(JSON.stringify(changedReceipt)),bytes));}
+  const changed=structuredClone(run);changed.episodes[0].trace[0].finishReason='max_output_tokens';const bytes=Buffer.from(JSON.stringify(changed)),changedReceipt={...receipt,nativeRunSha256:sha(bytes)};reject('native-cumulative-flag-disagreement',()=>bindTerminalBytes(registration,p,mockFreeze,Buffer.from(JSON.stringify(changedReceipt)),bytes));
+ }
+}
+assert.equal(valueSha(DEPENDENCY_ALLOCATION_SOURCE_FILES.map(p=>[p,fs.readFileSync(p,'utf8')])),EXPECTED_SOURCE,'Source changed during readiness controls');
+const actualPanels:any[]=[];
+if(request.mode==='native'){
+ // This branch is unreachable until both exact commit authority and each terminal ID are explicitly set above.
+ assert(request.freeze);exactFrozenBytes(registrationBytes,execFileSync('git',['show',request.freeze+':'+REGISTRATION_PATH]),REGISTRATION_PATH);
+ const controls:[[string,string],...Array<[string,string]>]=[[registration.auditPath,registration.auditSha256],[registration.planPath,registration.planSha256],[registration.controllerCopy,registration.controllerSha256],[registration.controllerReviewPath,registration.controllerReviewSha256],...Object.entries(registration.supplementaryReviewSha256) as [string,string][]];
+ for(const [path,expectedSha] of controls){assert(/^(?:insurance-bench\/results\/meta|specs\/features\/insurance-bench)\/[a-zA-Z0-9.-]+$/.test(path));const bytes=fs.readFileSync(path);assert.equal(sha(bytes),expectedSha);exactFrozenBytes(bytes,execFileSync('git',['show',request.freeze+':'+path]),path);}
+ for(const path of DEPENDENCY_ALLOCATION_SOURCE_FILES)exactFrozenBytes(fs.readFileSync(path),execFileSync('git',['show',request.freeze+':'+path]),path);
+ // No discovery. Open only the exact receipt of the requested and root-notified terminal ID.
+ for(const id of request.ids){assert(ROOT_NOTIFIED_TERMINAL_IDS.includes(id));const p=registration.panels.find((p:any)=>p.id===id);assert(p);const receiptBytes=fs.readFileSync(p.dispatchReceiptPath),header=bindReceiptHeader(registration,p,request.freeze,receiptBytes);const nativeBytes=fs.readFileSync(header.nativeRunPath),bound=bindTerminalBytes(registration,p,request.freeze,receiptBytes,nativeBytes);const selected=p.taskIds.map((id:string)=>{const task=tasks.find(t=>t.id===id);assert(task&&task.split==='dev');return task;});const audited=auditRun(selected,bound.run,p.modelConfiguration,expected);actualPanels.push({...audited,panelId:id,modelAlias:p.modelAlias,split:p.split,repeat:p.repeat,datasetHash:p.datasetHash,harnessHash:p.harnessHash,limits:p.limits,receiptPath:p.dispatchReceiptPath,receiptSha256:bound.receiptSha256,nativeRunPath:bound.receipt.nativeRunPath,nativeRunSha256:bound.nativeRunSha256,freezeCommit:request.freeze,receiptFlags:bound.flags});}
+}
+
+const scriptPath='.tmp/insurance-bench/v12-development-independent-audit.ts',copyPath='insurance-bench/results/meta/v12-development-independent-audit-repro.txt';
+const artifact={schema:'insurance-bench-v12-native-development-independent-audit-v1',preparedAt:new Date().toISOString(),disposition:request.mode==='native'?(actualPanels.length===2?'approve-engineering-only':'incomplete-development-coverage'):'prepared-no-native-panels',status:request.mode==='native'?(actualPanels.length===2?'final':'interim'):'readiness-only',empiricalApproval:request.mode==='native'&&actualPanels.length===2,sourceFingerprint:EXPECTED_SOURCE,fullCorpusHash:EXPECTED_CORPUS,freezeCommit:request.freeze,registrationPath:REGISTRATION_PATH,registrationSha256:EXPECTED_REGISTRATION_SHA,sourceSha256,expectedVectorsSha256,
+ priorReadiness:{artifactSha256:'8ca4539ec6604b4656ab6d1dfb17dc8cc8c0c2c67de6c987d55032be40e23fc3',scriptSha256:'2e99147663cb7a7f0a198a10089771db428fdf877c3197eb7739f4227f749390',scope:'Original source-only zero-registration readiness; this amendment adds authorized prospective metadata and pure binding tests.'},
+ method:(request.mode==='native'?'Explicitly root-notified terminal native audit. ':'Source-only readiness. ')+'Independent v12 signed/current raw package-contract interpreter and exhaustive recursive enumeration fixes all19facts/all18contracteligibilities/feasible optimal ties/8business operands before any author comparison. Per-field sufficient current operand proofs and all48 criteria are independently derived. Mock JSON actions exercise actual three-stage VM and native runner, then exact actions/tool-results/state/config/cost/status/criteria replay. '+(request.mode==='native'?'Only explicitly listed root-notified terminal native panels are read and engineering-audited.':'No real native panels read or admitted.'),
+ independence:'Reuses own previously non-author v12 raw interpreter; old coverage/ledger/receipt formulas were explicitly inherited from non-author v11 source audit. V11 native-auditor evidence and lifecycle criterion structure is reused with added current signed dependency/exclusion/cycle feasibility. Author derive/optimizer/gold is never called for expected truth. Authored case generator internally computes annotations; comparisons occur only after raw vectors are fixed. Reviewer authored the earlier v12 source/runner independent-review artifacts and this audit driver, but did not author engine, cases or core. Actual public VM is reused for replay, not independently reimplemented. Mock completion transport cannot invoke a provider.',
+ counts:{registeredDevelopmentPanels:2,terminalPanelsAudited:actualPanels.length,terminalEpisodesAudited:actualPanels.reduce((n,p)=>n+p.episodes.length,0),pendingPanels:2-actualPanels.length,prospectiveScreenPanels:2,prospectiveEpisodes:6,rawCases:tasks.length,rawStates:expected.size,rawFactsChecked:sourceFactChecks,currentContractProjectionsChecked:sourceContractChecks,terminalSubsetsEnumerated:subsetsExamined,independentGradeControls:gradeChecks,prospectiveBindingControls:bindingControls.length,mockedNativePanels:mockPanels.length,mockedNativeEpisodes:mockPanels.reduce((n,p)=>n+p.episodes.length,0),negativeNativeAndMetadataControls:controls.filter(c=>c.mode!=='all-final-optimal-ties-actual-write').length,optimalTieActualWrites:controls.find(c=>c.mode==='all-final-optimal-ties-actual-write').optimalTieChecks,factsPerEpisode:19,businessFields:8,criterionCountPerEpisode:48,providerCalls:0,nativeOutputsRead:actualPanels.length,receiptsRead:actualPanels.length,registrationsRead:1,registrationReadScope:'prospective-control-metadata-only',realLedgerAuthAccess:0,heldModelOutputsRead:0},
+ prospectiveConditions:{status:'prospective-registration-prepared-conditional-on-committed-freeze',order:['sol-high-dev','luna-high-dev'],perFamily:1,familyOffset:0,repeat:1,split:'dev',taskIds:screen.map(t=>t.id),limits:{maxTurns:20,maxOutputTokens:16384},responseFormat:'json_object',headlineMetric:'macro-task-success',forecastIsAdmissionOnly:true,conditions:'Any paid use still requires independent full v11 terminal admission, a separate cross-provider/controller review, whole remaining-session forecast admission, prospective committed registration and explicitly notified terminal receipts. Readiness establishes no affordability or inference authority.'},
+ empiricalApprovalScope:'Exact notified terminal engineering measurement consistency under the frozen extracted-text adapter condition only; no professional validity, difficulty localization, general model ranking, pure-model protocol attribution or causal claim.',panels:actualPanels,issues:[],observations:actualPanels.map(p=>({panelId:p.panelId,completedTasks:p.episodes.filter((e:any)=>e.status==='completed').length,successfulTasks:p.episodes.filter((e:any)=>e.allPass&&!e.criticalFailure).length,protocolErrors:p.episodes.reduce((n:number,e:any)=>n+e.interfaceErrors,0),failedTasks:p.episodes.filter((e:any)=>!e.allPass).map((e:any)=>({taskId:e.taskId,wrongFactKeys:e.sourceDiagnosis.wrongFacts.map((f:any)=>f.key),failedCriteria:e.sourceDiagnosis.failedCriteria,selectedIneligiblePackageIds:e.sourceDiagnosis.selectedIneligiblePackages.map((x:any)=>x.packageId),planOptimal:e.independent.planOptimal,currentSavedBusinessOptimal:e.independent.actualCurrentOptimalWrite})),interpretation:'Completed workflow and current supplied internal review remain separate from source-correct current packet eligibility and actual feasible optimal saved plan. Protocol recovery is reported independently from truncation and final grading.'})),mockPanels,sourceAndNativeControls:controls,bindingControls,authorizedFreeze:ROOT_AUTHORIZED_FREEZE,rootNotifiedTerminalIds:ROOT_NOTIFIED_TERMINAL_IDS,pending:PANEL_IDS.filter(id=>!actualPanels.some(p=>p.panelId===id)),
+ requiredBeforeNativeApproval:['Exact committed prospective registration/source/corpus/freeze and all planned panel conditions must be bound before native reads.','Each terminal panel must be explicitly authorized by root; no discovery, partial output or holdout reads.','Bind actual receipt SHA/native byte SHA/model/effort/taskorder/split/limits/prompt/harness/format/coverage/cost and independently reconstruct cumulative flags.','Audit all planned terminal episodes/actions/results/final-state/all48criteria/whole-task macro including failures, incomplete episodes and current optimal written plan.','The exact frozen commit and explicit root-notified terminal IDs must be set only after respective authorization; arguments cannot grant authority by themselves.'],
+ limitations:['Source and mock success are engineering controls; no model result, difficulty estimate, ability ranking, expert validity or causal comparison is established.','Three correlated fictional task families and one fixed development case per family limit empirical precision.','Evidence bundles are sufficient formal operands, not minimum references or narrative/prose validation. Correct facts gate evidence and draft criteria.','Current business outcome is measured from actual current saved write with selected current signed contracts, requires/exclusions/cycles and all valid optimal ties, independently of declared optimum.','Native traces retain extracted flattened response text without output-block or response-phase metadata. Parser interface errors are verified at that extracted-text boundary; pure model versus transport/block-concatenation attribution is unresolved and excluded from approval.',
+ 'Native costs recompute successful trace tariffs; failed-call reservations or billing are outside audit. Only temporary disposable mock budget files are used.'],
+ verification:{strictAuditScriptTypecheck:'PASS: direct --ignoreConfig strict/noUncheckedIndexedAccess compile',sourceAndMockExecution:'PASS: raw-only truth before author comparisons, exact replay all mocked episodes and all final tie writes',pureProspectiveBindingControls:'PASS:70 serialized mock registration/receipt/native/notification/freeze controls; no actual paid artifact reads'},
+ reproduction:{command:'npx tsx '+scriptPath+(request.mode==='native'?' --panels '+request.ids.join(',')+' --freeze-commit '+request.freeze:' --prepare'),scriptSha256:sha(fs.readFileSync(scriptPath)),scriptCopy:copyPath}};
+fs.copyFileSync(scriptPath,copyPath);fs.writeFileSync('insurance-bench/results/meta/v12-development-independent-audit.json',JSON.stringify(artifact,null,2)+'\n');
+console.log(JSON.stringify({disposition:artifact.disposition,empiricalApproval:artifact.empiricalApproval,counts:artifact.counts,scriptSha256:artifact.reproduction.scriptSha256}));

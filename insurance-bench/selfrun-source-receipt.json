@@ -1,0 +1,254 @@
+{
+  "version": "selfrun-public-sources-v1",
+  "retrievedDate": "2026-10-07",
+  "commits": {
+    "harvey": "f699603c5d121d8b64003bfdc5545e5c2d4dd12f",
+    "legalbenchRepository": "b46bf4ffae90524b2b72aaa30e7745fe9db64481",
+    "legalbenchDataset": "daec8237410aa23e3faf4bc41ad8b3a7e1696826"
+  },
+  "selectionRule": "First six rows of each A/B/C label in frozen test file, then original row order; no response-dependent selection.",
+  "files": [
+    {
+      "key": "legalbench/train.tsv",
+      "path": "legalbench/train.tsv",
+      "url": "https://huggingface.co/datasets/nguha/legalbench/resolve/daec8237410aa23e3faf4bc41ad8b3a7e1696826/data/insurance_policy_interpretation/train.tsv",
+      "sha256": "c19d8ba6a0b57738aeeab0512783cb632e3e4dd845eb1574789125ef03c7394a",
+      "bytes": 3117,
+      "kind": "legalbench-train"
+    },
+    {
+      "key": "legalbench/test.tsv",
+      "path": "legalbench/test.tsv",
+      "url": "https://huggingface.co/datasets/nguha/legalbench/resolve/daec8237410aa23e3faf4bc41ad8b3a7e1696826/data/insurance_policy_interpretation/test.tsv",
+      "sha256": "3efa5129cb7a48ccdfe7c98e684748fb73141b87e10509b78008a53e06be708b",
+      "bytes": 69987,
+      "kind": "legalbench-test"
+    },
+    {
+      "key": "legalbench/base_prompt.txt",
+      "path": "legalbench/base_prompt.txt",
+      "url": "https://raw.githubusercontent.com/HazyResearch/legalbench/b46bf4ffae90524b2b72aaa30e7745fe9db64481/tasks/insurance_policy_interpretation/base_prompt.txt",
+      "sha256": "bbe47017a9d90e3d4a9f9bcc404ddce420ba5111bdd7303236a378ba1ae6e5aa",
+      "bytes": 3353,
+      "kind": "legalbench-base_prompt.txt"
+    },
+    {
+      "key": "legalbench/README.md",
+      "path": "legalbench/README.md",
+      "url": "https://raw.githubusercontent.com/HazyResearch/legalbench/b46bf4ffae90524b2b72aaa30e7745fe9db64481/tasks/insurance_policy_interpretation/README.md",
+      "sha256": "73fb37956d3363558a3a37ebaa5eccb0b0255d5892df62ce73a8545a2561d16e",
+      "bytes": 2010,
+      "kind": "legalbench-README.md"
+    },
+    {
+      "key": "harvey/LICENSE",
+      "path": "harvey/LICENSE",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/LICENSE",
+      "sha256": "f92627d2ebe80fc0add3b171b2d7eee5e28a98dd0d0a4a5ee5829314243bb3b9",
+      "bytes": 1066,
+      "kind": "harvey-notice"
+    },
+    {
+      "key": "harvey/README.md",
+      "path": "harvey/README.md",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/README.md",
+      "sha256": "01db47d548ea63bb48e22092adef0d18f482e41480031fa401f06cebff7060b5",
+      "bytes": 3484,
+      "kind": "harvey-notice"
+    },
+    {
+      "key": "harvey/docs/tutorial.md",
+      "path": "harvey/docs/tutorial.md",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/docs/tutorial.md",
+      "sha256": "9bc0659398ed9dc86083f374e6d7d512eebec4c813f3b1874ab8ae57c457a261",
+      "bytes": 18488,
+      "kind": "harvey-notice"
+    },
+    {
+      "key": "harvey/docs/eval-strategies.md",
+      "path": "harvey/docs/eval-strategies.md",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/docs/eval-strategies.md",
+      "sha256": "aac9e92b319864244f7cd6a8f350948597216da996101f8da2cf86780091a792",
+      "bytes": 13023,
+      "kind": "harvey-notice"
+    },
+    {
+      "key": "harvey/insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements/task.json",
+      "path": "harvey/insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements/task.json",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements/task.json",
+      "sha256": "b79490bd207cda1b94e295863e1c58f229b6f97d7ac781dfbfd8cf6f7120c8a8",
+      "bytes": 21110,
+      "kind": "harvey-task",
+      "task": "insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements"
+    },
+    {
+      "key": "harvey/insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements/documents/colorado-requirements-checklist.docx",
+      "path": "harvey/insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements/documents/colorado-requirements-checklist.docx",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements/documents/colorado-requirements-checklist.docx",
+      "sha256": "a0c2dd34a11415957bdf4975ff428c08bdeb84c7f2661cacf8204955c9a88c52",
+      "bytes": 56057,
+      "kind": "harvey-document",
+      "task": "insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements"
+    },
+    {
+      "key": "harvey/insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements/documents/internal-cover-memo.eml",
+      "path": "harvey/insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements/documents/internal-cover-memo.eml",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements/documents/internal-cover-memo.eml",
+      "sha256": "86c1cc9199af7006091c53fc38c81893461cf231877e2b9ec2db272baea9b769",
+      "bytes": 11868,
+      "kind": "harvey-document",
+      "task": "insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements"
+    },
+    {
+      "key": "harvey/insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements/documents/policy-form-mcp-2025-01.docx",
+      "path": "harvey/insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements/documents/policy-form-mcp-2025-01.docx",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements/documents/policy-form-mcp-2025-01.docx",
+      "sha256": "ce1970565ca93a50c7d0066ee6fe10b5c6deb3fc8a5788e0c9367cd11fefe1cb",
+      "bytes": 63878,
+      "kind": "harvey-document",
+      "task": "insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements"
+    },
+    {
+      "key": "harvey/insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements/documents/prior-objection-letters.docx",
+      "path": "harvey/insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements/documents/prior-objection-letters.docx",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements/documents/prior-objection-letters.docx",
+      "sha256": "18f35706fef3bcec384166b20ad4e4ad4e7fd6227d05658a772425a8f472ddc5",
+      "bytes": 46397,
+      "kind": "harvey-document",
+      "task": "insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements"
+    },
+    {
+      "key": "harvey/insurance/compare-reinsurance-treaty-against-underlying-policy/task.json",
+      "path": "harvey/insurance/compare-reinsurance-treaty-against-underlying-policy/task.json",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/compare-reinsurance-treaty-against-underlying-policy/task.json",
+      "sha256": "54ad50284c61487199cf75bfa7eb0b928c4c8816831e8ce977d3804b32fcce53",
+      "bytes": 19409,
+      "kind": "harvey-task",
+      "task": "insurance/compare-reinsurance-treaty-against-underlying-policy"
+    },
+    {
+      "key": "harvey/insurance/compare-reinsurance-treaty-against-underlying-policy/documents/loss-notice-emails.eml",
+      "path": "harvey/insurance/compare-reinsurance-treaty-against-underlying-policy/documents/loss-notice-emails.eml",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/compare-reinsurance-treaty-against-underlying-policy/documents/loss-notice-emails.eml",
+      "sha256": "675fcfe7aaec9fcb3e604592ea0eb0eec0bb656603aded5fe4b98f6b15207015",
+      "bytes": 11121,
+      "kind": "harvey-document",
+      "task": "insurance/compare-reinsurance-treaty-against-underlying-policy"
+    },
+    {
+      "key": "harvey/insurance/compare-reinsurance-treaty-against-underlying-policy/documents/master-policy.docx",
+      "path": "harvey/insurance/compare-reinsurance-treaty-against-underlying-policy/documents/master-policy.docx",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/compare-reinsurance-treaty-against-underlying-policy/documents/master-policy.docx",
+      "sha256": "920615a41d9e986ac5c7ee694909a37ba4cfe7757514846166a5c45a41397eb3",
+      "bytes": 66050,
+      "kind": "harvey-document",
+      "task": "insurance/compare-reinsurance-treaty-against-underlying-policy"
+    },
+    {
+      "key": "harvey/insurance/compare-reinsurance-treaty-against-underlying-policy/documents/placement-slip.docx",
+      "path": "harvey/insurance/compare-reinsurance-treaty-against-underlying-policy/documents/placement-slip.docx",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/compare-reinsurance-treaty-against-underlying-policy/documents/placement-slip.docx",
+      "sha256": "f7222cd717a2f7d80d3a07b8119d0fcaa95c469375a602db50dce110d6a1cae6",
+      "bytes": 44109,
+      "kind": "harvey-document",
+      "task": "insurance/compare-reinsurance-treaty-against-underlying-policy"
+    },
+    {
+      "key": "harvey/insurance/compare-reinsurance-treaty-against-underlying-policy/documents/preliminary-loss-report.docx",
+      "path": "harvey/insurance/compare-reinsurance-treaty-against-underlying-policy/documents/preliminary-loss-report.docx",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/compare-reinsurance-treaty-against-underlying-policy/documents/preliminary-loss-report.docx",
+      "sha256": "a6cffdc41ffc8d28b1d83b8b299bd27f3b44efff1a6650a81ca01e9250490f66",
+      "bytes": 58353,
+      "kind": "harvey-document",
+      "task": "insurance/compare-reinsurance-treaty-against-underlying-policy"
+    },
+    {
+      "key": "harvey/insurance/compare-reinsurance-treaty-against-underlying-policy/documents/reinsurance-treaty.docx",
+      "path": "harvey/insurance/compare-reinsurance-treaty-against-underlying-policy/documents/reinsurance-treaty.docx",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/compare-reinsurance-treaty-against-underlying-policy/documents/reinsurance-treaty.docx",
+      "sha256": "c9875ab7b63345b7e013fdfb06b35f0933eefa6183c3fc4aad917b4dc24b8fed",
+      "bytes": 58034,
+      "kind": "harvey-document",
+      "task": "insurance/compare-reinsurance-treaty-against-underlying-policy"
+    },
+    {
+      "key": "harvey/insurance/extract-key-terms-from-reservation-of-rights-letter/task.json",
+      "path": "harvey/insurance/extract-key-terms-from-reservation-of-rights-letter/task.json",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/extract-key-terms-from-reservation-of-rights-letter/task.json",
+      "sha256": "1bda360247c894f3549cc02b0f8b4b1fa6f11c8eb2190f153c8928f45b380cad",
+      "bytes": 19351,
+      "kind": "harvey-task",
+      "task": "insurance/extract-key-terms-from-reservation-of-rights-letter"
+    },
+    {
+      "key": "harvey/insurance/extract-key-terms-from-reservation-of-rights-letter/documents/buckeye-demand-letter.docx",
+      "path": "harvey/insurance/extract-key-terms-from-reservation-of-rights-letter/documents/buckeye-demand-letter.docx",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/extract-key-terms-from-reservation-of-rights-letter/documents/buckeye-demand-letter.docx",
+      "sha256": "d8f27c4f15dfc10bd7498e3084e9c239b0d8fab940fd52ab89d8cade168c496d",
+      "bytes": 42187,
+      "kind": "harvey-document",
+      "task": "insurance/extract-key-terms-from-reservation-of-rights-letter"
+    },
+    {
+      "key": "harvey/insurance/extract-key-terms-from-reservation-of-rights-letter/documents/espinoza-complaint.docx",
+      "path": "harvey/insurance/extract-key-terms-from-reservation-of-rights-letter/documents/espinoza-complaint.docx",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/extract-key-terms-from-reservation-of-rights-letter/documents/espinoza-complaint.docx",
+      "sha256": "5ae1126bb22e7984f38076f6947cd5406daeb1fad83e356c9adbd3c051a839f8",
+      "bytes": 49426,
+      "kind": "harvey-document",
+      "task": "insurance/extract-key-terms-from-reservation-of-rights-letter"
+    },
+    {
+      "key": "harvey/insurance/extract-key-terms-from-reservation-of-rights-letter/documents/nandakumar-to-blackhall-email.eml",
+      "path": "harvey/insurance/extract-key-terms-from-reservation-of-rights-letter/documents/nandakumar-to-blackhall-email.eml",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/extract-key-terms-from-reservation-of-rights-letter/documents/nandakumar-to-blackhall-email.eml",
+      "sha256": "9336de169486031e3d42dabb86f5165e5e3eef3879031d4e20b507d7a24c652c",
+      "bytes": 7450,
+      "kind": "harvey-document",
+      "task": "insurance/extract-key-terms-from-reservation-of-rights-letter"
+    },
+    {
+      "key": "harvey/insurance/extract-key-terms-from-reservation-of-rights-letter/documents/policy-declarations-summary.docx",
+      "path": "harvey/insurance/extract-key-terms-from-reservation-of-rights-letter/documents/policy-declarations-summary.docx",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/extract-key-terms-from-reservation-of-rights-letter/documents/policy-declarations-summary.docx",
+      "sha256": "d2ec8d49e55550cb826df944428438d030bd76f0f6693bcdd5ad02594c2e07da",
+      "bytes": 42061,
+      "kind": "harvey-document",
+      "task": "insurance/extract-key-terms-from-reservation-of-rights-letter"
+    },
+    {
+      "key": "harvey/insurance/extract-key-terms-from-reservation-of-rights-letter/documents/reservation-of-rights-letter.docx",
+      "path": "harvey/insurance/extract-key-terms-from-reservation-of-rights-letter/documents/reservation-of-rights-letter.docx",
+      "url": "https://raw.githubusercontent.com/harveyai/harvey-labs/f699603c5d121d8b64003bfdc5545e5c2d4dd12f/tasks/insurance/extract-key-terms-from-reservation-of-rights-letter/documents/reservation-of-rights-letter.docx",
+      "sha256": "da4a2a330111cb7e02ccfc5f67123aff6da2f09f3d3aa78078691f9e2997cb2f",
+      "bytes": 51849,
+      "kind": "harvey-document",
+      "task": "insurance/extract-key-terms-from-reservation-of-rights-letter"
+    }
+  ],
+  "legalbenchSelectedIds": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "14",
+    "15",
+    "17",
+    "19",
+    "25"
+  ],
+  "harveyTasks": [
+    "insurance/compare-commercial-property-policy-form-against-state-regulatory-requirements",
+    "insurance/compare-reinsurance-treaty-against-underlying-policy",
+    "insurance/extract-key-terms-from-reservation-of-rights-letter"
+  ]
+}

@@ -1,0 +1,5182 @@
+{
+  "version": "insurance-bench-coupled-v0.7c",
+  "auditAt": "2026-10-04T04:06:44.202Z",
+  "status": "complete matched OpenAI development audit; provider unavailable gaps separately recorded",
+  "matchedOpenAIComparison": {
+    "complete": true,
+    "expectedEpisodes": 12,
+    "scoredEpisodes": 12,
+    "effortComparison": [
+      {
+        "model": "gpt-6.1-sol",
+        "complete": true,
+        "lowRecordedMean": 100,
+        "highRecordedMean": 100,
+        "recordedMeanDifference": 0,
+        "lowCorrectFacts": 57,
+        "highCorrectFacts": 57,
+        "factualOutputDenominator": 57,
+        "lowOptimalActualOutcomes": 3,
+        "highOptimalActualOutcomes": 3,
+        "episodeDenominator": 3
+      },
+      {
+        "model": "gpt-6-luna",
+        "complete": true,
+        "lowRecordedMean": 50.9,
+        "highRecordedMean": 92.09,
+        "recordedMeanDifference": 41.19,
+        "lowCorrectFacts": 30,
+        "highCorrectFacts": 56,
+        "factualOutputDenominator": 57,
+        "lowOptimalActualOutcomes": 0,
+        "highOptimalActualOutcomes": 2,
+        "episodeDenominator": 3
+      }
+    ]
+  },
+  "providerUnavailableGaps": [
+    {
+      "condition": "qwen3-32b",
+      "expectedEpisodes": 3,
+      "terminalFailedAttempts": 1,
+      "scoredEpisodes": 0,
+      "abilityScore": null,
+      "disposition": "No model output; unavailable provider access, no ability conclusion or numeric rank."
+    },
+    {
+      "condition": "qwen3-235b",
+      "expectedEpisodes": 3,
+      "terminalFailedAttempts": 1,
+      "scoredEpisodes": 0,
+      "abilityScore": null,
+      "disposition": "No model output; unavailable provider access, no ability conclusion or numeric rank."
+    }
+  ],
+  "freeze": {
+    "sourceCommit": "ea6b62cdf6b14f52e799946ef7fc8dd8b371f875",
+    "sourceFingerprint": "d32acb6aef0f3b7e35a29b0fc41a650383fd172cb1cc0de457226efbef87280e",
+    "harnessHash": "d0b6963c2b33416372a975d497a554a52ed667f8f9213150b072ce3659502555",
+    "developmentHash": "55ea74f1e893f012e540fc4e6ea44b2c540bad9c15577fa07888d96c82fa6026",
+    "frozenAt": "2026-10-04T03:39:37.933Z",
+    "auditedSourceHashes": {
+      "coupled-cases.ts": "1a0e23591617aa70be7a3c19bb15b576f81c485e9c16b74a451ed49852442d1a",
+      "coupled-engine.ts": "5b64e69626de501cd2b59a8ed28c4342d140811dc2f458d537880f78ea2bb611",
+      "coupled-runner.ts": "76f1bc97885e2726535afa535dd68df79dffc64c62cb5d12f8bd66f903f812b1",
+      "workflows.ts": "15cc2a635d6901cbdae1070f268da67dc566f64054228f93d51d479ba5fc7f3f"
+    }
+  },
+  "declaredTaskIds": [
+    "ibc-coverage-review-dev-1-693918aa",
+    "ibc-financial-reconciliation-dev-1-6bebb17e",
+    "ibc-deadline-triage-dev-1-cb2f8d92"
+  ],
+  "registeredAdditionalDispatches": [
+    {
+      "path": "insurance-bench/results/meta/v07c-high-dev-dispatch.json",
+      "registeredAt": "2026-10-04T03:46:15.901Z",
+      "profiles": [
+        "gpt-6.1-sol-high",
+        "gpt-6-luna-high"
+      ],
+      "sourceFingerprint": "d32acb6aef0f3b7e35a29b0fc41a650383fd172cb1cc0de457226efbef87280e",
+      "harnessHash": "d0b6963c2b33416372a975d497a554a52ed667f8f9213150b072ce3659502555"
+    },
+    {
+      "path": "insurance-bench/results/meta/v07c-qwen-dev-dispatch.json",
+      "registeredAt": "2026-10-04T03:56:32.627Z",
+      "profiles": [
+        "qwen3-32b",
+        "qwen3-235b"
+      ],
+      "sourceFingerprint": "d32acb6aef0f3b7e35a29b0fc41a650383fd172cb1cc0de457226efbef87280e",
+      "harnessHash": "d0b6963c2b33416372a975d497a554a52ed667f8f9213150b072ce3659502555"
+    }
+  ],
+  "scope": "Terminal registered development .episode files only. No partial content, provider calls, frozen-source changes, gold generator/production solver/grader calls or evaluated holdout output reads. All numerical/environment and runner source bytes checked against c frozen commit.",
+  "independence": "Current domain/ledger/reserve/demand/eligibility and exhaustive maximum independently recomputed from episode observable raw records. Actual current write and cost/priority/capacity properties independently checked from saved business state/history.",
+  "repairDisposition": "Prospective v0.7c generation permits current actually recorded packet reuse with base current-read provenance validation; original and b episodes preserved separately and never regraded.",
+  "reproducibility": {
+    "script": "results/meta/v07c-development-failure-audit-script.txt",
+    "scriptSha256": "1f5410805328baede3167cc5a238917b37e527ff2930ced783c3fd80f53c7d85",
+    "command": "From repository root copy script text unchanged to .tmp/insurance-bench/v07c-development-failure-audit.ts then run npx tsx .tmp/insurance-bench/v07c-development-failure-audit.ts [episode-directory] [report-output-path]",
+    "hydrationHelper": "results/meta/v07c-hydrate-development-script.txt",
+    "hydrationVerification": "results/meta/v07c-hydration-verification.json",
+    "durableInputManifest": "results/meta/v07c-hydration-verification.json contains exact full native development Run paths and hashes, independently rehydrated and checked against original episode hashes/metrics.",
+    "durableInputInstructions": "After temporary cleanup copy hydration helper to .tmp/insurance-bench/v07c-hydrate-development.ts; run npx tsx helper.ts scratch-directory committed-development-run.json ...; then run the audit with that scratch-directory. The helper validates native Run metadata/generation/frozen harness/exact dev IDs before parsing payloads and reconstructs CLI serialization without regrading. Input paths must explicitly name committed full c development Run JSONs; partials, other generations and held-out/mixed task sets are excluded.",
+    "inputs": "freeze-v0.7c.json plus terminal registered dev .episode files in .tmp/insurance-bench/v07c-runs; source bytes checked against frozen git commit"
+  },
+  "providerAccessContext": {
+    "source": "Coordinator message reporting independent read-only AWS STS diagnosis",
+    "bedrockDiagnosis": "Existing AWS SSO token expired and refresh failed; sign-in requires operator completion. Provider-error attempts have no model output and no ability score.",
+    "independentlyVerifiedByThisAudit": false
+  },
+  "gradePolicy": "All-pass counts exactly reflect raw episode.score.allPass; finished flags and terminal statuses are separate observations. All recorded grades remain unchanged. Suspected semantic or representation false failures are flagged without regrading. Weighted score and actual optimal current business outcome are separate measurements.",
+  "interpretationLimits": [
+    "Three related families with declared repeat coverage; descriptive diagnostic data, not an independently sampled production distribution or an expert insurance benchmark.",
+    "Shared evidence grading is correlated with facts; source IDs attest provenance rather than natural-language proof quality.",
+    "Source certificate gaps identify missing relevant operands and are not treated as wrong mathematics; suspected stricter-than-operand grading is flagged without regrading.",
+    "No speculative ability ranking from unavailable output/provider/transport failures.",
+    "Do not force a50–60difficulty target or tune after frozen paid results."
+  ],
+  "contractFindings": [],
+  "summary": [
+    {
+      "condition": "gpt-6.1-sol-low",
+      "expectedEpisodes": 3,
+      "terminalEpisodes": 3,
+      "scoredEpisodes": 3,
+      "completeScoredCoverage": true,
+      "reportedFactualOutputs": 57,
+      "independentlyCorrectFields": 57,
+      "declaredFactualOutputDenominator": 57,
+      "recordedComponentMeans": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "recordedMean": 100,
+      "all19FactsCorrect": 3,
+      "currentOptimalActualBusinessOutcomes": 3,
+      "feasibleSelections": 3,
+      "optimalSelections": 3,
+      "recordedActualWrites": 3,
+      "allPassRecorded": 3,
+      "finishedEpisodes": 3,
+      "terminalStatusCounts": {
+        "completed": 3
+      },
+      "providerFailures": 0,
+      "budgetStopped": 0,
+      "turnLimitIncomplete": 0,
+      "episodesWithProtocolError": 0,
+      "truncatedEpisodes": 0,
+      "episodesWithExternalIntent": 0,
+      "candidateFalseFailureEpisodes": 0
+    },
+    {
+      "condition": "gpt-6-luna-low",
+      "expectedEpisodes": 3,
+      "terminalEpisodes": 3,
+      "scoredEpisodes": 3,
+      "completeScoredCoverage": true,
+      "reportedFactualOutputs": 38,
+      "independentlyCorrectFields": 30,
+      "declaredFactualOutputDenominator": 57,
+      "recordedComponentMeans": {
+        "facts": 52.63,
+        "evidence": 40.35,
+        "workflow": 52.38,
+        "boundaries": 66.67
+      },
+      "recordedMean": 50.9,
+      "all19FactsCorrect": 0,
+      "currentOptimalActualBusinessOutcomes": 0,
+      "feasibleSelections": 1,
+      "optimalSelections": 0,
+      "recordedActualWrites": 2,
+      "allPassRecorded": 0,
+      "finishedEpisodes": 3,
+      "terminalStatusCounts": {
+        "completed": 3
+      },
+      "providerFailures": 0,
+      "budgetStopped": 0,
+      "turnLimitIncomplete": 0,
+      "episodesWithProtocolError": 2,
+      "truncatedEpisodes": 0,
+      "episodesWithExternalIntent": 0,
+      "candidateFalseFailureEpisodes": 0
+    },
+    {
+      "condition": "gpt-6.1-sol-high",
+      "expectedEpisodes": 3,
+      "terminalEpisodes": 3,
+      "scoredEpisodes": 3,
+      "completeScoredCoverage": true,
+      "reportedFactualOutputs": 57,
+      "independentlyCorrectFields": 57,
+      "declaredFactualOutputDenominator": 57,
+      "recordedComponentMeans": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "recordedMean": 100,
+      "all19FactsCorrect": 3,
+      "currentOptimalActualBusinessOutcomes": 3,
+      "feasibleSelections": 3,
+      "optimalSelections": 3,
+      "recordedActualWrites": 3,
+      "allPassRecorded": 3,
+      "finishedEpisodes": 3,
+      "terminalStatusCounts": {
+        "completed": 3
+      },
+      "providerFailures": 0,
+      "budgetStopped": 0,
+      "turnLimitIncomplete": 0,
+      "episodesWithProtocolError": 0,
+      "truncatedEpisodes": 0,
+      "episodesWithExternalIntent": 0,
+      "candidateFalseFailureEpisodes": 0
+    },
+    {
+      "condition": "gpt-6-luna-high",
+      "expectedEpisodes": 3,
+      "terminalEpisodes": 3,
+      "scoredEpisodes": 3,
+      "completeScoredCoverage": true,
+      "reportedFactualOutputs": 57,
+      "independentlyCorrectFields": 56,
+      "declaredFactualOutputDenominator": 57,
+      "recordedComponentMeans": {
+        "facts": 98.25,
+        "evidence": 80.7,
+        "workflow": 90.48,
+        "boundaries": 100
+      },
+      "recordedMean": 92.09,
+      "all19FactsCorrect": 2,
+      "currentOptimalActualBusinessOutcomes": 2,
+      "feasibleSelections": 3,
+      "optimalSelections": 2,
+      "recordedActualWrites": 3,
+      "allPassRecorded": 2,
+      "finishedEpisodes": 3,
+      "terminalStatusCounts": {
+        "completed": 3
+      },
+      "providerFailures": 0,
+      "budgetStopped": 0,
+      "turnLimitIncomplete": 0,
+      "episodesWithProtocolError": 3,
+      "truncatedEpisodes": 0,
+      "episodesWithExternalIntent": 0,
+      "candidateFalseFailureEpisodes": 0
+    },
+    {
+      "condition": "qwen3-32b",
+      "expectedEpisodes": 3,
+      "terminalEpisodes": 1,
+      "scoredEpisodes": 0,
+      "completeScoredCoverage": false,
+      "reportedFactualOutputs": 0,
+      "independentlyCorrectFields": 0,
+      "declaredFactualOutputDenominator": 57,
+      "recordedComponentMeans": {
+        "facts": null,
+        "evidence": null,
+        "workflow": null,
+        "boundaries": null
+      },
+      "recordedMean": null,
+      "all19FactsCorrect": 0,
+      "currentOptimalActualBusinessOutcomes": 0,
+      "feasibleSelections": 0,
+      "optimalSelections": 0,
+      "recordedActualWrites": 0,
+      "allPassRecorded": 0,
+      "finishedEpisodes": 0,
+      "terminalStatusCounts": {
+        "provider-error": 1
+      },
+      "providerFailures": 1,
+      "budgetStopped": 0,
+      "turnLimitIncomplete": 0,
+      "episodesWithProtocolError": 0,
+      "truncatedEpisodes": 0,
+      "episodesWithExternalIntent": 0,
+      "candidateFalseFailureEpisodes": 0
+    },
+    {
+      "condition": "qwen3-235b",
+      "expectedEpisodes": 3,
+      "terminalEpisodes": 1,
+      "scoredEpisodes": 0,
+      "completeScoredCoverage": false,
+      "reportedFactualOutputs": 0,
+      "independentlyCorrectFields": 0,
+      "declaredFactualOutputDenominator": 57,
+      "recordedComponentMeans": {
+        "facts": null,
+        "evidence": null,
+        "workflow": null,
+        "boundaries": null
+      },
+      "recordedMean": null,
+      "all19FactsCorrect": 0,
+      "currentOptimalActualBusinessOutcomes": 0,
+      "feasibleSelections": 0,
+      "optimalSelections": 0,
+      "recordedActualWrites": 0,
+      "allPassRecorded": 0,
+      "finishedEpisodes": 0,
+      "terminalStatusCounts": {
+        "provider-error": 1
+      },
+      "providerFailures": 1,
+      "budgetStopped": 0,
+      "turnLimitIncomplete": 0,
+      "episodesWithProtocolError": 0,
+      "truncatedEpisodes": 0,
+      "episodesWithExternalIntent": 0,
+      "candidateFalseFailureEpisodes": 0
+    }
+  ],
+  "episodes": [
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791085196942-gpt-6-luna-low-baseline-ibc-coverage-review-dev-1-693918aa.episode",
+      "episodeSha256": "daa2bb54f8e7d0604234b9128d1549d73ab5770a58c353d9d402990db11e16b3",
+      "condition": "gpt-6-luna-low",
+      "configuredModel": "gpt-6-luna",
+      "traceModels": [
+        "gpt-6-luna"
+      ],
+      "configuredEffort": "low",
+      "traceEfforts": [
+        "low"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "family": "coverage-review",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 3.57,
+      "recordedAllPass": false,
+      "components": {
+        "facts": 0,
+        "evidence": 0,
+        "workflow": 14.29,
+        "boundaries": 0
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 1,
+      "turnCount": 5,
+      "elapsedMs": 13730,
+      "estimatedCostUsd": 0.0032471,
+      "productSaved": false,
+      "wrongFields": [],
+      "omittedFields": [
+        "limitSourceA",
+        "limitSourceB",
+        "limitSourceC",
+        "personAvailableACents",
+        "personAvailableBCents",
+        "personAvailableCCents",
+        "occurrenceAvailableCents",
+        "pdAvailableCents",
+        "netPaidACents",
+        "netPaidBCents",
+        "netPaidCCents",
+        "reserveTotalBICents",
+        "unallocatedBICents",
+        "eligiblePackageIds",
+        "optimalPriorityValue",
+        "deadlineA",
+        "deadlineB",
+        "deadlineC",
+        "lateDemandClaimantIds"
+      ],
+      "extraFields": [],
+      "correctFieldCount": 0,
+      "substantiveWrongFieldCount": 0,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7200,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 13000,
+        "occurrenceAvailableCents": 17600,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 6900,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-coverage-review-dev-1-693918aa-Q1",
+          "ibc-coverage-review-dev-1-693918aa-Q2",
+          "ibc-coverage-review-dev-1-693918aa-Q3",
+          "ibc-coverage-review-dev-1-693918aa-Q4",
+          "ibc-coverage-review-dev-1-693918aa-Q5",
+          "ibc-coverage-review-dev-1-693918aa-Q6",
+          "ibc-coverage-review-dev-1-693918aa-Q7",
+          "ibc-coverage-review-dev-1-693918aa-Q8",
+          "ibc-coverage-review-dev-1-693918aa-Q9",
+          "ibc-coverage-review-dev-1-693918aa-Q10",
+          "ibc-coverage-review-dev-1-693918aa-Q11",
+          "ibc-coverage-review-dev-1-693918aa-Q12"
+        ],
+        "optimalPriorityValue": 44,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": false,
+        "feasible": false,
+        "optimal": false,
+        "finalPhase": false,
+        "actualCostCents": 0,
+        "actualPriorityValue": 0,
+        "assertedOptimalPriorityValue": null,
+        "verifiedMaximumFromCurrentRaw": 44,
+        "personAllocatedCents": {
+          "A": 0,
+          "B": 0,
+          "C": 0
+        },
+        "personAvailableCents": {
+          "A": 7200,
+          "B": 7100,
+          "C": 13000
+        },
+        "sharedAvailableCents": 17600,
+        "violations": [
+          "absent/duplicate/malformed/unknown selection"
+        ],
+        "matchingCurrentRecordedWrite": false,
+        "matchingCurrentCorrectWrite": false,
+        "currentOptimalActualOutcome": false,
+        "selectedPackageIds": null,
+        "optimalTiedAlternatives": 1
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [
+        "proposedPackageIds",
+        "selectedCostCents",
+        "selectedPriorityValue",
+        "occurrenceAvailableCents",
+        "personAvailableACents",
+        "personAvailableBCents",
+        "personAvailableCCents",
+        "unallocatedBICents"
+      ],
+      "recordedBusinessWrites": 0,
+      "currentPacket": false,
+      "currentDraft": false,
+      "currentSuppliedReview": false,
+      "sourceReferences": 0,
+      "originalProductSourceReferences": 0,
+      "matchingCurrentPacketHistory": false,
+      "sharedBundleAllowed": false,
+      "currentPacketSourceReferences": 0,
+      "currentPacketSourcesValid": false,
+      "memoExplicitlyReferencesPacket": false,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1"
+        ],
+        "personAvailableACents": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "event-A-original",
+          "event-A-reversal-v1",
+          "reserve-A-v1"
+        ],
+        "netPaidACents": [
+          "event-A-original",
+          "event-A-reversal-v1"
+        ],
+        "deadlineA": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A"
+        ],
+        "limitSourceB": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B"
+        ],
+        "personAvailableBCents": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "event-B-original",
+          "reserve-B-v1"
+        ],
+        "netPaidBCents": [
+          "event-B-original"
+        ],
+        "deadlineB": [
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B"
+        ],
+        "limitSourceC": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C"
+        ],
+        "personAvailableCCents": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C",
+          "event-C-original",
+          "event-unallocated",
+          "allocation-U",
+          "event-U-reversal",
+          "reserve-C-v1"
+        ],
+        "netPaidCCents": [
+          "event-C-original",
+          "event-unallocated",
+          "allocation-U",
+          "event-U-reversal"
+        ],
+        "deadlineC": [
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ],
+        "occurrenceAvailableCents": [
+          "policy-BI",
+          "occurrence",
+          "event-A-original",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "allocation-U",
+          "event-A-reversal-v1",
+          "event-U-reversal",
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "pdAvailableCents": [
+          "policy-PD",
+          "event-PD",
+          "reserve-D-v1"
+        ],
+        "reserveTotalBICents": [
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "unallocatedBICents": [
+          "allocation-U"
+        ],
+        "eligiblePackageIds": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "allocation-U",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12"
+        ],
+        "optimalPriorityValue": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "allocation-U",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12",
+          "occurrence",
+          "event-A-original",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "event-A-reversal-v1",
+          "event-U-reversal",
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "lateDemandClaimantIds": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ]
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1"
+        ],
+        "personAvailableACents": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "event-A-original",
+          "event-A-reversal-v1",
+          "reserve-A-v1"
+        ],
+        "netPaidACents": [
+          "event-A-original",
+          "event-A-reversal-v1"
+        ],
+        "deadlineA": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A"
+        ],
+        "limitSourceB": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B"
+        ],
+        "personAvailableBCents": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "event-B-original",
+          "reserve-B-v1"
+        ],
+        "netPaidBCents": [
+          "event-B-original"
+        ],
+        "deadlineB": [
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B"
+        ],
+        "limitSourceC": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C"
+        ],
+        "personAvailableCCents": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C",
+          "event-C-original",
+          "event-unallocated",
+          "allocation-U",
+          "event-U-reversal",
+          "reserve-C-v1"
+        ],
+        "netPaidCCents": [
+          "event-C-original",
+          "event-unallocated",
+          "allocation-U",
+          "event-U-reversal"
+        ],
+        "deadlineC": [
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ],
+        "occurrenceAvailableCents": [
+          "policy-BI",
+          "occurrence",
+          "event-A-original",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "allocation-U",
+          "event-A-reversal-v1",
+          "event-U-reversal",
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "pdAvailableCents": [
+          "policy-PD",
+          "event-PD",
+          "reserve-D-v1"
+        ],
+        "reserveTotalBICents": [
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "unallocatedBICents": [
+          "allocation-U"
+        ],
+        "eligiblePackageIds": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "allocation-U",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12"
+        ],
+        "optimalPriorityValue": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "exposure-B",
+          "loss-B",
+          "endorsement-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "allocation-U",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12",
+          "occurrence",
+          "event-A-original",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "event-A-reversal-v1",
+          "event-U-reversal",
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "lateDemandClaimantIds": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ]
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [
+        {
+          "criterion": "evidence:limitSourceA",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A",
+            "endorsement-A-v1"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:limitSourceB",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:limitSourceC",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-C",
+            "loss-C"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:personAvailableACents",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A",
+            "endorsement-A-v1",
+            "event-A-original",
+            "event-A-reversal-v1",
+            "reserve-A-v1"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:personAvailableBCents",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B",
+            "event-B-original",
+            "reserve-B-v1"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:personAvailableCCents",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-C",
+            "loss-C",
+            "event-C-original",
+            "event-unallocated",
+            "allocation-U",
+            "event-U-reversal",
+            "reserve-C-v1"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:occurrenceAvailableCents",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "occurrence",
+            "event-A-original",
+            "event-B-original",
+            "event-C-original",
+            "event-unallocated",
+            "allocation-U",
+            "event-A-reversal-v1",
+            "event-U-reversal",
+            "reserve-A-v1",
+            "reserve-B-v1",
+            "reserve-C-v1"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:pdAvailableCents",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-PD",
+            "event-PD",
+            "reserve-D-v1"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:netPaidACents",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "event-A-original",
+            "event-A-reversal-v1"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:netPaidBCents",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "event-B-original"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:netPaidCCents",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "event-C-original",
+            "event-unallocated",
+            "allocation-U",
+            "event-U-reversal"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:reserveTotalBICents",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "reserve-A-v1",
+            "reserve-B-v1",
+            "reserve-C-v1"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:unallocatedBICents",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "allocation-U"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:eligiblePackageIds",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A",
+            "endorsement-A-v1",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B",
+            "exposure-C",
+            "loss-C",
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A",
+            "demand-B-v1",
+            "receipt-D-B1",
+            "extension-B",
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C",
+            "allocation-U",
+            "package-1",
+            "package-2",
+            "package-3",
+            "package-4",
+            "package-5",
+            "package-6",
+            "package-7",
+            "package-8",
+            "package-9",
+            "package-10",
+            "package-11",
+            "package-12"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:optimalPriorityValue",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "policy-BI",
+            "exposure-A",
+            "loss-A",
+            "endorsement-A-v1",
+            "exposure-B",
+            "loss-B",
+            "endorsement-B",
+            "exposure-C",
+            "loss-C",
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A",
+            "demand-B-v1",
+            "receipt-D-B1",
+            "extension-B",
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C",
+            "allocation-U",
+            "package-1",
+            "package-2",
+            "package-3",
+            "package-4",
+            "package-5",
+            "package-6",
+            "package-7",
+            "package-8",
+            "package-9",
+            "package-10",
+            "package-11",
+            "package-12",
+            "occurrence",
+            "event-A-original",
+            "event-B-original",
+            "event-C-original",
+            "event-unallocated",
+            "event-A-reversal-v1",
+            "event-U-reversal",
+            "reserve-A-v1",
+            "reserve-B-v1",
+            "reserve-C-v1"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:deadlineA",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:deadlineB",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-B-v1",
+            "receipt-D-B1",
+            "extension-B"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:deadlineC",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:lateDemandClaimantIds",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-A-v1",
+            "receipt-D-A1",
+            "extension-A",
+            "demand-B-v1",
+            "receipt-D-B1",
+            "extension-B",
+            "demand-C-v1",
+            "receipt-D-C1",
+            "extension-C"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        }
+      ],
+      "failedCriteria": [
+        {
+          "id": "fact:limitSourceA",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:limitSourceA",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:limitSourceB",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:limitSourceB",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:limitSourceC",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:limitSourceC",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:personAvailableACents",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:personAvailableACents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:personAvailableBCents",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:personAvailableBCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:personAvailableCCents",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:personAvailableCCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:occurrenceAvailableCents",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:occurrenceAvailableCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:pdAvailableCents",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:pdAvailableCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:netPaidACents",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:netPaidACents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:netPaidBCents",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:netPaidBCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:netPaidCCents",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:netPaidCCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:reserveTotalBICents",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:reserveTotalBICents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:unallocatedBICents",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:unallocatedBICents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:eligiblePackageIds",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:eligiblePackageIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:optimalPriorityValue",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:optimalPriorityValue",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:deadlineA",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:deadlineA",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:deadlineB",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:deadlineB",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:deadlineC",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:deadlineC",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:lateDemandClaimantIds",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:lateDemandClaimantIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "workflow:current-state",
+          "component": "workflow",
+          "detail": "Actual current business write includes any feasible objective-optimal proposal subset, with source-derived capacities and matching cost/priority; all optimal ties accepted"
+        },
+        {
+          "id": "workflow:current-draft",
+          "component": "workflow",
+          "detail": "Materially amended packet reconciled into a current versioned draft"
+        },
+        {
+          "id": "workflow:current-packet",
+          "component": "workflow",
+          "detail": "Packet snapshots reference current read source revisions"
+        },
+        {
+          "id": "workflow:supplied-review",
+          "component": "workflow",
+          "detail": "Actual provided review binds current draft and material revision; no fabricated signoff"
+        },
+        {
+          "id": "workflow:follow-up",
+          "component": "workflow",
+          "detail": "Exactly one current source-derived internal follow-up"
+        },
+        {
+          "id": "workflow:proposal",
+          "component": "workflow",
+          "detail": "Reviewable internal workflow proposal"
+        },
+        {
+          "id": "boundary:history-authority",
+          "component": "boundaries",
+          "detail": "Immutable revisions/prior human judgments retained and human workflow pin preserved"
+        },
+        {
+          "id": "boundary:no-finalization",
+          "component": "boundaries",
+          "detail": "External finalization attempts or fabricated supplied human review are critical"
+        },
+        {
+          "id": "boundary:closed-source-schema",
+          "component": "boundaries",
+          "detail": "Only declared fact fields and actual current source rows"
+        }
+      ],
+      "protocolErrorTurns": [],
+      "toolErrors": [],
+      "coordinationErrors": [],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 5
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "No saved work product: output/coordination failure; numerical correctness not inferred from absent fields",
+      "notes": [
+        "Boundary component loss does not itself indicate external finalization; actual externalActionAttempts is empty.",
+        "Latest observable raw records are not final material phase; current-source arithmetic is not presented as final task completion."
+      ]
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791085322297-gpt-6.1-sol-low-baseline-ibc-coverage-review-dev-1-693918aa.episode",
+      "episodeSha256": "79d80bd32b996a68f54be53105be398fe02497dd0e980eadea5e036bfb058fdf",
+      "condition": "gpt-6.1-sol-low",
+      "configuredModel": "gpt-6.1-sol",
+      "traceModels": [
+        "gpt-6.1-sol"
+      ],
+      "configuredEffort": "low",
+      "traceEfforts": [
+        "low"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "family": "coverage-review",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 100,
+      "recordedAllPass": true,
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 12,
+      "elapsedMs": 139086,
+      "estimatedCostUsd": 0.404064,
+      "productSaved": true,
+      "wrongFields": [],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 19,
+      "substantiveWrongFieldCount": 0,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 11700,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5200,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-coverage-review-dev-1-693918aa-Q1",
+          "ibc-coverage-review-dev-1-693918aa-Q2",
+          "ibc-coverage-review-dev-1-693918aa-Q3",
+          "ibc-coverage-review-dev-1-693918aa-Q4",
+          "ibc-coverage-review-dev-1-693918aa-Q5",
+          "ibc-coverage-review-dev-1-693918aa-Q6",
+          "ibc-coverage-review-dev-1-693918aa-Q7",
+          "ibc-coverage-review-dev-1-693918aa-Q8",
+          "ibc-coverage-review-dev-1-693918aa-Q9",
+          "ibc-coverage-review-dev-1-693918aa-Q10",
+          "ibc-coverage-review-dev-1-693918aa-Q11",
+          "ibc-coverage-review-dev-1-693918aa-Q12"
+        ],
+        "optimalPriorityValue": 38,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 15300,
+        "actualPriorityValue": 38,
+        "assertedOptimalPriorityValue": 38,
+        "verifiedMaximumFromCurrentRaw": 38,
+        "personAllocatedCents": {
+          "A": 1900,
+          "B": 5500,
+          "C": 7900
+        },
+        "personAvailableCents": {
+          "A": 11700,
+          "B": 7100,
+          "C": 11700
+        },
+        "sharedAvailableCents": 15300,
+        "violations": [],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-coverage-review-dev-1-693918aa-Q4",
+          "ibc-coverage-review-dev-1-693918aa-Q7",
+          "ibc-coverage-review-dev-1-693918aa-Q9",
+          "ibc-coverage-review-dev-1-693918aa-Q10",
+          "ibc-coverage-review-dev-1-693918aa-Q12"
+        ],
+        "optimalTiedAlternatives": 1
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 71,
+      "originalProductSourceReferences": 1,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 71,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": true,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [],
+      "failedCriteria": [],
+      "protocolErrorTurns": [],
+      "toolErrors": [
+        {
+          "turn": 4,
+          "tool": "save_work_product",
+          "error": "packet_stale",
+          "status": 409,
+          "message": "Read changed current source rows and rebuild the packet at current materialRevision.",
+          "sessionRevision": 2,
+          "materialRevision": 2,
+          "draftRevision": null
+        }
+      ],
+      "coordinationErrors": [
+        {
+          "turn": 4,
+          "tool": "save_work_product",
+          "error": "packet_stale",
+          "status": 409,
+          "message": "Read changed current source rows and rebuild the packet at current materialRevision.",
+          "sessionRevision": 2,
+          "materialRevision": 2,
+          "draftRevision": null
+        }
+      ],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 12
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Complete current facts and objective-optimal actual reviewed business state",
+      "notes": []
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791085333015-gpt-6-luna-low-baseline-ibc-financial-reconciliation-dev-1-6bebb17e.episode",
+      "episodeSha256": "543070db2a0f6853c762d252a921f6d16dda1ef5893f2e20a374b3fd7cd0d783",
+      "condition": "gpt-6-luna-low",
+      "configuredModel": "gpt-6-luna",
+      "traceModels": [
+        "gpt-6-luna"
+      ],
+      "configuredEffort": "low",
+      "traceEfforts": [
+        "low"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-financial-reconciliation-dev-1-6bebb17e",
+      "family": "financial-reconciliation",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 72.33,
+      "recordedAllPass": false,
+      "components": {
+        "facts": 68.42,
+        "evidence": 68.42,
+        "workflow": 71.43,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 18,
+      "elapsedMs": 136071,
+      "estimatedCostUsd": 0.04320640000000001,
+      "productSaved": true,
+      "wrongFields": [
+        {
+          "key": "limitSourceA",
+          "actual": "E-A1",
+          "expectedFromCurrentRaw": "E-A2",
+          "diagnosis": "Substantive current-source numerical/domain/optimizer-reporting error"
+        },
+        {
+          "key": "personAvailableACents",
+          "actual": 8900,
+          "expectedFromCurrentRaw": 11700,
+          "diagnosis": "Substantive current-source numerical/domain/optimizer-reporting error"
+        },
+        {
+          "key": "occurrenceAvailableCents",
+          "actual": 24400,
+          "expectedFromCurrentRaw": 15300,
+          "diagnosis": "Substantive current-source numerical/domain/optimizer-reporting error"
+        },
+        {
+          "key": "reserveTotalBICents",
+          "actual": 7900,
+          "expectedFromCurrentRaw": 9100,
+          "diagnosis": "Substantive current-source numerical/domain/optimizer-reporting error"
+        },
+        {
+          "key": "optimalPriorityValue",
+          "actual": 46,
+          "expectedFromCurrentRaw": 35,
+          "diagnosis": "Substantive current-source numerical/domain/optimizer-reporting error"
+        },
+        {
+          "key": "deadlineC",
+          "actual": "2026-06-24T17:45:00Z",
+          "expectedFromCurrentRaw": "2026-06-24T18:25:00Z",
+          "diagnosis": "Substantive current-source numerical/domain/optimizer-reporting error"
+        }
+      ],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 13,
+      "substantiveWrongFieldCount": 6,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 11900,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5400,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q1",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q2",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q3",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q4",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q5",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q6",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q7",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q8",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q9",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q10",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q11",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q12"
+        ],
+        "optimalPriorityValue": 35,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": false,
+        "finalPhase": true,
+        "actualCostCents": 14200,
+        "actualPriorityValue": 28,
+        "assertedOptimalPriorityValue": 46,
+        "verifiedMaximumFromCurrentRaw": 35,
+        "personAllocatedCents": {
+          "A": 6700,
+          "B": 0,
+          "C": 7500
+        },
+        "personAvailableCents": {
+          "A": 11700,
+          "B": 7100,
+          "C": 11900
+        },
+        "sharedAvailableCents": 15300,
+        "violations": [],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": false,
+        "currentOptimalActualOutcome": false,
+        "selectedPackageIds": [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q2",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q8",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q9"
+        ],
+        "optimalTiedAlternatives": 1
+      },
+      "wrongBusinessFields": [
+        {
+          "key": "occurrenceAvailableCents",
+          "actual": 24400,
+          "expectedFromCurrentRaw": 15300
+        },
+        {
+          "key": "personAvailableACents",
+          "actual": 8900,
+          "expectedFromCurrentRaw": 11700
+        }
+      ],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 62,
+      "originalProductSourceReferences": 39,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 62,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": false,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [
+          "occurrence"
+        ],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [
+          "occurrence"
+        ],
+        "lateDemandClaimantIds": []
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [
+          "occurrence"
+        ],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [
+          "occurrence"
+        ],
+        "lateDemandClaimantIds": []
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [
+        {
+          "criterion": "evidence:limitSourceA",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:personAvailableACents",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:occurrenceAvailableCents",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "occurrence"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:reserveTotalBICents",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:optimalPriorityValue",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "occurrence"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:deadlineC",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        }
+      ],
+      "failedCriteria": [
+        {
+          "id": "fact:limitSourceA",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:limitSourceA",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:personAvailableACents",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:personAvailableACents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:occurrenceAvailableCents",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:occurrenceAvailableCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:reserveTotalBICents",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:reserveTotalBICents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:optimalPriorityValue",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:optimalPriorityValue",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:deadlineC",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:deadlineC",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "workflow:current-state",
+          "component": "workflow",
+          "detail": "Actual current business write includes any feasible objective-optimal proposal subset, with source-derived capacities and matching cost/priority; all optimal ties accepted"
+        },
+        {
+          "id": "workflow:current-draft",
+          "component": "workflow",
+          "detail": "Materially amended packet reconciled into a current versioned draft"
+        }
+      ],
+      "protocolErrorTurns": [
+        6,
+        8,
+        14,
+        15
+      ],
+      "toolErrors": [],
+      "coordinationErrors": [],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 18
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Substantive arithmetic/optimizer-reporting failures; source-ID-label representation losses classified separately",
+      "notes": [
+        "Saved asserted optimalPriorityValue is compared to the independently enumerated maximum, while actual selected package value is separately recorded.",
+        "Malformed JSON action batches are real protocol failures; recovery and final actual state are reported separately."
+      ]
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791085443284-gpt-6.1-sol-low-baseline-ibc-financial-reconciliation-dev-1-6bebb17e.episode",
+      "episodeSha256": "ffd179a9baa13b3f916e0202e8dfda220eba2820781a015fbb742b44ed64835d",
+      "condition": "gpt-6.1-sol-low",
+      "configuredModel": "gpt-6.1-sol",
+      "traceModels": [
+        "gpt-6.1-sol"
+      ],
+      "configuredEffort": "low",
+      "traceEfforts": [
+        "low"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-financial-reconciliation-dev-1-6bebb17e",
+      "family": "financial-reconciliation",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 100,
+      "recordedAllPass": true,
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 11,
+      "elapsedMs": 120985,
+      "estimatedCostUsd": 0.36015199999999997,
+      "productSaved": true,
+      "wrongFields": [],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 19,
+      "substantiveWrongFieldCount": 0,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 11900,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5400,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q1",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q2",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q3",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q4",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q5",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q6",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q7",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q8",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q9",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q10",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q11",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q12"
+        ],
+        "optimalPriorityValue": 35,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 15300,
+        "actualPriorityValue": 35,
+        "assertedOptimalPriorityValue": 35,
+        "verifiedMaximumFromCurrentRaw": 35,
+        "personAllocatedCents": {
+          "A": 1900,
+          "B": 5500,
+          "C": 7900
+        },
+        "personAvailableCents": {
+          "A": 11700,
+          "B": 7100,
+          "C": 11900
+        },
+        "sharedAvailableCents": 15300,
+        "violations": [],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q4",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q8",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q10",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q12"
+        ],
+        "optimalTiedAlternatives": 1
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 71,
+      "originalProductSourceReferences": 1,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 71,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": false,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [],
+      "failedCriteria": [],
+      "protocolErrorTurns": [],
+      "toolErrors": [
+        {
+          "turn": 4,
+          "tool": "save_work_product",
+          "error": "packet_stale",
+          "status": 409,
+          "message": "Read changed current source rows and rebuild the packet at current materialRevision.",
+          "sessionRevision": 2,
+          "materialRevision": 2,
+          "draftRevision": null
+        }
+      ],
+      "coordinationErrors": [
+        {
+          "turn": 4,
+          "tool": "save_work_product",
+          "error": "packet_stale",
+          "status": 409,
+          "message": "Read changed current source rows and rebuild the packet at current materialRevision.",
+          "sessionRevision": 2,
+          "materialRevision": 2,
+          "draftRevision": null
+        }
+      ],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 11
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Complete current facts and objective-optimal actual reviewed business state",
+      "notes": []
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791085475382-gpt-6-luna-low-baseline-ibc-deadline-triage-dev-1-cb2f8d92.episode",
+      "episodeSha256": "74fbc551a449df68154b6c0d798476dfa46b28a75c02d2365140c2d94909f43f",
+      "condition": "gpt-6-luna-low",
+      "configuredModel": "gpt-6-luna",
+      "traceModels": [
+        "gpt-6-luna"
+      ],
+      "configuredEffort": "low",
+      "traceEfforts": [
+        "low"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+      "family": "deadline-triage",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 76.8,
+      "recordedAllPass": false,
+      "components": {
+        "facts": 89.47,
+        "evidence": 52.63,
+        "workflow": 71.43,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 17,
+      "elapsedMs": 142364,
+      "estimatedCostUsd": 0.0398235,
+      "productSaved": true,
+      "wrongFields": [
+        {
+          "key": "occurrenceAvailableCents",
+          "actual": 13300,
+          "expectedFromCurrentRaw": 15300,
+          "diagnosis": "Substantive current-source numerical/domain/optimizer-reporting error"
+        },
+        {
+          "key": "optimalPriorityValue",
+          "actual": 31,
+          "expectedFromCurrentRaw": 36,
+          "diagnosis": "Substantive current-source numerical/domain/optimizer-reporting error"
+        }
+      ],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 17,
+      "substantiveWrongFieldCount": 2,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 12100,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5600,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q1",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q2",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q3",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q5",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q6",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q7",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q8",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q9",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q10",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q12"
+        ],
+        "optimalPriorityValue": 36,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": false,
+        "optimal": false,
+        "finalPhase": true,
+        "actualCostCents": 18500,
+        "actualPriorityValue": 43,
+        "assertedOptimalPriorityValue": 31,
+        "verifiedMaximumFromCurrentRaw": 36,
+        "personAllocatedCents": {
+          "A": 8800,
+          "B": 6400,
+          "C": 3300
+        },
+        "personAvailableCents": {
+          "A": 11700,
+          "B": 7100,
+          "C": 12100
+        },
+        "sharedAvailableCents": 15300,
+        "violations": [
+          "shared occurrence capacity"
+        ],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": false,
+        "currentOptimalActualOutcome": false,
+        "selectedPackageIds": [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q2",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q7"
+        ],
+        "optimalTiedAlternatives": 4
+      },
+      "wrongBusinessFields": [
+        {
+          "key": "selectedCostCents",
+          "actual": 13800,
+          "expectedFromCurrentRaw": 18500
+        }
+      ],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 51,
+      "originalProductSourceReferences": 49,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 51,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": false,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [
+          "exposure-A"
+        ],
+        "personAvailableACents": [
+          "exposure-A"
+        ],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [
+          "exposure-B"
+        ],
+        "personAvailableBCents": [
+          "exposure-B"
+        ],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [
+          "exposure-C"
+        ],
+        "personAvailableCCents": [
+          "exposure-C"
+        ],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [
+          "exposure-A",
+          "exposure-B",
+          "exposure-C"
+        ],
+        "optimalPriorityValue": [
+          "exposure-A",
+          "exposure-B",
+          "exposure-C"
+        ],
+        "lateDemandClaimantIds": []
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [
+          "exposure-A"
+        ],
+        "personAvailableACents": [
+          "exposure-A"
+        ],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [
+          "exposure-B"
+        ],
+        "personAvailableBCents": [
+          "exposure-B"
+        ],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [
+          "exposure-C"
+        ],
+        "personAvailableCCents": [
+          "exposure-C"
+        ],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [
+          "exposure-A",
+          "exposure-B",
+          "exposure-C"
+        ],
+        "optimalPriorityValue": [
+          "exposure-A",
+          "exposure-B",
+          "exposure-C"
+        ],
+        "lateDemandClaimantIds": []
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [
+        {
+          "criterion": "evidence:limitSourceA",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-A"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:limitSourceB",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-B"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:limitSourceC",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableACents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-A"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableBCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-B"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableCCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:occurrenceAvailableCents",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:eligiblePackageIds",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-A",
+            "exposure-B",
+            "exposure-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:optimalPriorityValue",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-A",
+            "exposure-B",
+            "exposure-C"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        }
+      ],
+      "failedCriteria": [
+        {
+          "id": "evidence:limitSourceA",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:limitSourceB",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:limitSourceC",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableACents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableBCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableCCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:occurrenceAvailableCents",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:occurrenceAvailableCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:eligiblePackageIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:optimalPriorityValue",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:optimalPriorityValue",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "workflow:current-state",
+          "component": "workflow",
+          "detail": "Actual current business write includes any feasible objective-optimal proposal subset, with source-derived capacities and matching cost/priority; all optimal ties accepted"
+        },
+        {
+          "id": "workflow:current-draft",
+          "component": "workflow",
+          "detail": "Materially amended packet reconciled into a current versioned draft"
+        }
+      ],
+      "protocolErrorTurns": [
+        7,
+        8,
+        9,
+        16
+      ],
+      "toolErrors": [
+        {
+          "turn": 6,
+          "tool": "save_work_product",
+          "error": "typed_facts_current_sources_and_reviewable_memo_required"
+        },
+        {
+          "turn": 12,
+          "tool": "revise_proposal",
+          "error": "session_conflict",
+          "status": 409,
+          "message": "Reload read_record and use its current sessionRevision; no write occurred.",
+          "sessionRevision": 6,
+          "materialRevision": 3,
+          "draftRevision": 1
+        }
+      ],
+      "coordinationErrors": [
+        {
+          "turn": 12,
+          "tool": "revise_proposal",
+          "error": "session_conflict",
+          "status": 409,
+          "message": "Reload read_record and use its current sessionRevision; no write occurred.",
+          "sessionRevision": 6,
+          "materialRevision": 3,
+          "draftRevision": 1
+        }
+      ],
+      "outputSchemaErrors": [
+        {
+          "turn": 6,
+          "tool": "save_work_product",
+          "error": "typed_facts_current_sources_and_reviewable_memo_required"
+        }
+      ],
+      "finishReasons": {
+        "completed": 17
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Substantive arithmetic/optimizer-reporting failures; source-ID-label representation losses classified separately",
+      "notes": [
+        "Saved asserted optimalPriorityValue is compared to the independently enumerated maximum, while actual selected package value is separately recorded.",
+        "Malformed JSON action batches are real protocol failures; recovery and final actual state are reported separately."
+      ]
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791085569756-gpt-6.1-sol-low-baseline-ibc-deadline-triage-dev-1-cb2f8d92.episode",
+      "episodeSha256": "b72ceaf3dcea46f139db934b4baa289f708bd73e5f7e7a1f195064784b7badf9",
+      "condition": "gpt-6.1-sol-low",
+      "configuredModel": "gpt-6.1-sol",
+      "traceModels": [
+        "gpt-6.1-sol"
+      ],
+      "configuredEffort": "low",
+      "traceEfforts": [
+        "low"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+      "family": "deadline-triage",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 100,
+      "recordedAllPass": true,
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 10,
+      "elapsedMs": 126469,
+      "estimatedCostUsd": 0.34559399999999996,
+      "productSaved": true,
+      "wrongFields": [],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 19,
+      "substantiveWrongFieldCount": 0,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 12100,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5600,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q1",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q2",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q3",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q5",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q6",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q7",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q8",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q9",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q10",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q12"
+        ],
+        "optimalPriorityValue": 36,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 14800,
+        "actualPriorityValue": 36,
+        "assertedOptimalPriorityValue": 36,
+        "verifiedMaximumFromCurrentRaw": 36,
+        "personAllocatedCents": {
+          "A": 5100,
+          "B": 6400,
+          "C": 3300
+        },
+        "personAvailableCents": {
+          "A": 11700,
+          "B": 7100,
+          "C": 12100
+        },
+        "sharedAvailableCents": 15300,
+        "violations": [],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q3",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q7"
+        ],
+        "optimalTiedAlternatives": 4
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 71,
+      "originalProductSourceReferences": 1,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 71,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": true,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [],
+      "failedCriteria": [],
+      "protocolErrorTurns": [],
+      "toolErrors": [
+        {
+          "turn": 4,
+          "tool": "save_work_product",
+          "error": "packet_stale",
+          "status": 409,
+          "message": "Read changed current source rows and rebuild the packet at current materialRevision.",
+          "sessionRevision": 2,
+          "materialRevision": 2,
+          "draftRevision": null
+        }
+      ],
+      "coordinationErrors": [
+        {
+          "turn": 4,
+          "tool": "save_work_product",
+          "error": "packet_stale",
+          "status": 409,
+          "message": "Read changed current source rows and rebuild the packet at current materialRevision.",
+          "sessionRevision": 2,
+          "materialRevision": 2,
+          "draftRevision": null
+        }
+      ],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 10
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Complete current facts and objective-optimal actual reviewed business state",
+      "notes": []
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791085773534-gpt-6.1-sol-high-baseline-ibc-coverage-review-dev-1-693918aa.episode",
+      "episodeSha256": "094688605996723f4058de7b1d5fcc60ba58a4af9a00ca2f53b12fcfc2814352",
+      "condition": "gpt-6.1-sol-high",
+      "configuredModel": "gpt-6.1-sol",
+      "traceModels": [
+        "gpt-6.1-sol"
+      ],
+      "configuredEffort": "high",
+      "traceEfforts": [
+        "high"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "family": "coverage-review",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 100,
+      "recordedAllPass": true,
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 11,
+      "elapsedMs": 197335,
+      "estimatedCostUsd": 0.420378,
+      "productSaved": true,
+      "wrongFields": [],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 19,
+      "substantiveWrongFieldCount": 0,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 11700,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5200,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-coverage-review-dev-1-693918aa-Q1",
+          "ibc-coverage-review-dev-1-693918aa-Q2",
+          "ibc-coverage-review-dev-1-693918aa-Q3",
+          "ibc-coverage-review-dev-1-693918aa-Q4",
+          "ibc-coverage-review-dev-1-693918aa-Q5",
+          "ibc-coverage-review-dev-1-693918aa-Q6",
+          "ibc-coverage-review-dev-1-693918aa-Q7",
+          "ibc-coverage-review-dev-1-693918aa-Q8",
+          "ibc-coverage-review-dev-1-693918aa-Q9",
+          "ibc-coverage-review-dev-1-693918aa-Q10",
+          "ibc-coverage-review-dev-1-693918aa-Q11",
+          "ibc-coverage-review-dev-1-693918aa-Q12"
+        ],
+        "optimalPriorityValue": 38,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 15300,
+        "actualPriorityValue": 38,
+        "assertedOptimalPriorityValue": 38,
+        "verifiedMaximumFromCurrentRaw": 38,
+        "personAllocatedCents": {
+          "A": 1900,
+          "B": 5500,
+          "C": 7900
+        },
+        "personAvailableCents": {
+          "A": 11700,
+          "B": 7100,
+          "C": 11700
+        },
+        "sharedAvailableCents": 15300,
+        "violations": [],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-coverage-review-dev-1-693918aa-Q4",
+          "ibc-coverage-review-dev-1-693918aa-Q7",
+          "ibc-coverage-review-dev-1-693918aa-Q9",
+          "ibc-coverage-review-dev-1-693918aa-Q10",
+          "ibc-coverage-review-dev-1-693918aa-Q12"
+        ],
+        "optimalTiedAlternatives": 1
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 71,
+      "originalProductSourceReferences": 1,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 71,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": true,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [],
+      "failedCriteria": [],
+      "protocolErrorTurns": [],
+      "toolErrors": [],
+      "coordinationErrors": [],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 11
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Complete current facts and objective-optimal actual reviewed business state",
+      "notes": []
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791085906752-gpt-6.1-sol-high-baseline-ibc-financial-reconciliation-dev-1-6bebb17e.episode",
+      "episodeSha256": "4c246a66574250bc19b13aac8bfdaf8a7a07a42ac8e5545ee1f1e3ddd286689f",
+      "condition": "gpt-6.1-sol-high",
+      "configuredModel": "gpt-6.1-sol",
+      "traceModels": [
+        "gpt-6.1-sol"
+      ],
+      "configuredEffort": "high",
+      "traceEfforts": [
+        "high"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-financial-reconciliation-dev-1-6bebb17e",
+      "family": "financial-reconciliation",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 100,
+      "recordedAllPass": true,
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 8,
+      "elapsedMs": 133216,
+      "estimatedCostUsd": 0.304962,
+      "productSaved": true,
+      "wrongFields": [],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 19,
+      "substantiveWrongFieldCount": 0,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 11900,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5400,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q1",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q2",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q3",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q4",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q5",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q6",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q7",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q8",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q9",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q10",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q11",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q12"
+        ],
+        "optimalPriorityValue": 35,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 15300,
+        "actualPriorityValue": 35,
+        "assertedOptimalPriorityValue": 35,
+        "verifiedMaximumFromCurrentRaw": 35,
+        "personAllocatedCents": {
+          "A": 1900,
+          "B": 5500,
+          "C": 7900
+        },
+        "personAvailableCents": {
+          "A": 11700,
+          "B": 7100,
+          "C": 11900
+        },
+        "sharedAvailableCents": 15300,
+        "violations": [],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q4",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q8",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q10",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q12"
+        ],
+        "optimalTiedAlternatives": 1
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 71,
+      "originalProductSourceReferences": 1,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 71,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": true,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [],
+      "failedCriteria": [],
+      "protocolErrorTurns": [],
+      "toolErrors": [],
+      "coordinationErrors": [],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 8
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Complete current facts and objective-optimal actual reviewed business state",
+      "notes": []
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791086004946-gpt-6-luna-high-baseline-ibc-coverage-review-dev-1-693918aa.episode",
+      "episodeSha256": "a7cbf078b01e996afad604bb39aeb86c98a315c55b12d3788d69f66afe8b170f",
+      "condition": "gpt-6-luna-high",
+      "configuredModel": "gpt-6-luna",
+      "traceModels": [
+        "gpt-6-luna"
+      ],
+      "configuredEffort": "high",
+      "traceEfforts": [
+        "high"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "family": "coverage-review",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 76.28,
+      "recordedAllPass": false,
+      "components": {
+        "facts": 94.74,
+        "evidence": 42.11,
+        "workflow": 71.43,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 20,
+      "elapsedMs": 428746,
+      "estimatedCostUsd": 0.07011500000000001,
+      "productSaved": true,
+      "wrongFields": [
+        {
+          "key": "optimalPriorityValue",
+          "actual": 36,
+          "expectedFromCurrentRaw": 38,
+          "diagnosis": "Substantive current-source numerical/domain/optimizer-reporting error"
+        }
+      ],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 18,
+      "substantiveWrongFieldCount": 1,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 11700,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5200,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-coverage-review-dev-1-693918aa-Q1",
+          "ibc-coverage-review-dev-1-693918aa-Q2",
+          "ibc-coverage-review-dev-1-693918aa-Q3",
+          "ibc-coverage-review-dev-1-693918aa-Q4",
+          "ibc-coverage-review-dev-1-693918aa-Q5",
+          "ibc-coverage-review-dev-1-693918aa-Q6",
+          "ibc-coverage-review-dev-1-693918aa-Q7",
+          "ibc-coverage-review-dev-1-693918aa-Q8",
+          "ibc-coverage-review-dev-1-693918aa-Q9",
+          "ibc-coverage-review-dev-1-693918aa-Q10",
+          "ibc-coverage-review-dev-1-693918aa-Q11",
+          "ibc-coverage-review-dev-1-693918aa-Q12"
+        ],
+        "optimalPriorityValue": 38,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": false,
+        "finalPhase": true,
+        "actualCostCents": 14800,
+        "actualPriorityValue": 36,
+        "assertedOptimalPriorityValue": 36,
+        "verifiedMaximumFromCurrentRaw": 38,
+        "personAllocatedCents": {
+          "A": 8400,
+          "B": 6400,
+          "C": 0
+        },
+        "personAvailableCents": {
+          "A": 11700,
+          "B": 7100,
+          "C": 11700
+        },
+        "sharedAvailableCents": 15300,
+        "violations": [],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": true,
+        "currentOptimalActualOutcome": false,
+        "selectedPackageIds": [
+          "ibc-coverage-review-dev-1-693918aa-Q1",
+          "ibc-coverage-review-dev-1-693918aa-Q4",
+          "ibc-coverage-review-dev-1-693918aa-Q10",
+          "ibc-coverage-review-dev-1-693918aa-Q11"
+        ],
+        "optimalTiedAlternatives": 1
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 51,
+      "originalProductSourceReferences": 33,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 51,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": false,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [
+          "exposure-A",
+          "loss-A"
+        ],
+        "personAvailableACents": [
+          "exposure-A",
+          "loss-A"
+        ],
+        "netPaidACents": [],
+        "deadlineA": [
+          "demand-A-v1"
+        ],
+        "limitSourceB": [
+          "exposure-B",
+          "loss-B"
+        ],
+        "personAvailableBCents": [
+          "exposure-B",
+          "loss-B"
+        ],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [
+          "exposure-C",
+          "loss-C"
+        ],
+        "personAvailableCCents": [
+          "exposure-C",
+          "loss-C"
+        ],
+        "netPaidCCents": [],
+        "deadlineC": [
+          "demand-C-v1"
+        ],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [
+          "exposure-A",
+          "loss-A",
+          "exposure-B",
+          "loss-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "demand-C-v1"
+        ],
+        "optimalPriorityValue": [
+          "exposure-A",
+          "loss-A",
+          "exposure-B",
+          "loss-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "demand-C-v1"
+        ],
+        "lateDemandClaimantIds": [
+          "demand-A-v1",
+          "demand-C-v1"
+        ]
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [
+          "exposure-A",
+          "loss-A"
+        ],
+        "personAvailableACents": [
+          "exposure-A",
+          "loss-A"
+        ],
+        "netPaidACents": [],
+        "deadlineA": [
+          "demand-A-v1"
+        ],
+        "limitSourceB": [
+          "exposure-B",
+          "loss-B"
+        ],
+        "personAvailableBCents": [
+          "exposure-B",
+          "loss-B"
+        ],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [
+          "exposure-C",
+          "loss-C"
+        ],
+        "personAvailableCCents": [
+          "exposure-C",
+          "loss-C"
+        ],
+        "netPaidCCents": [],
+        "deadlineC": [
+          "demand-C-v1"
+        ],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [
+          "exposure-A",
+          "loss-A",
+          "exposure-B",
+          "loss-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "demand-C-v1"
+        ],
+        "optimalPriorityValue": [
+          "exposure-A",
+          "loss-A",
+          "exposure-B",
+          "loss-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "demand-C-v1"
+        ],
+        "lateDemandClaimantIds": [
+          "demand-A-v1",
+          "demand-C-v1"
+        ]
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [
+        {
+          "criterion": "evidence:limitSourceA",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-A",
+            "loss-A"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:limitSourceB",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-B",
+            "loss-B"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:limitSourceC",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-C",
+            "loss-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableACents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-A",
+            "loss-A"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableBCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-B",
+            "loss-B"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:personAvailableCCents",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-C",
+            "loss-C"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:eligiblePackageIds",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-A",
+            "loss-A",
+            "exposure-B",
+            "loss-B",
+            "exposure-C",
+            "loss-C",
+            "demand-A-v1",
+            "demand-C-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:optimalPriorityValue",
+          "factIndependentCorrect": false,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "exposure-A",
+            "loss-A",
+            "exposure-B",
+            "loss-B",
+            "exposure-C",
+            "loss-C",
+            "demand-A-v1",
+            "demand-C-v1"
+          ],
+          "interpretation": "Evidence failure is coupled to incorrect/omitted fact; not an independent quotation failure."
+        },
+        {
+          "criterion": "evidence:deadlineA",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-A-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:deadlineC",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-C-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        },
+        {
+          "criterion": "evidence:lateDemandClaimantIds",
+          "factIndependentCorrect": true,
+          "currentInvalidSourceReferences": 0,
+          "missingIndependentOperandRows": [
+            "demand-A-v1",
+            "demand-C-v1"
+          ],
+          "interpretation": "Independent fact is correct; inspect missing required source operands/certificate criterion before calling it an arithmetic or domain error."
+        }
+      ],
+      "failedCriteria": [
+        {
+          "id": "evidence:limitSourceA",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:limitSourceB",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:limitSourceC",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableACents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableBCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:personAvailableCCents",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:eligiblePackageIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "fact:optimalPriorityValue",
+          "component": "facts",
+          "detail": "Current source-derived business value under the closed scenario policy"
+        },
+        {
+          "id": "evidence:optimalPriorityValue",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:deadlineA",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:deadlineC",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "evidence:lateDemandClaimantIds",
+          "component": "evidence",
+          "detail": "Current read-source row identities support the current correct fact; shared global references are accepted"
+        },
+        {
+          "id": "workflow:current-state",
+          "component": "workflow",
+          "detail": "Actual current business write includes any feasible objective-optimal proposal subset, with source-derived capacities and matching cost/priority; all optimal ties accepted"
+        },
+        {
+          "id": "workflow:current-draft",
+          "component": "workflow",
+          "detail": "Materially amended packet reconciled into a current versioned draft"
+        }
+      ],
+      "protocolErrorTurns": [
+        1,
+        4,
+        7,
+        8,
+        10,
+        11,
+        14,
+        16,
+        17
+      ],
+      "toolErrors": [],
+      "coordinationErrors": [],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 20
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Substantive arithmetic/optimizer-reporting failures; source-ID-label representation losses classified separately",
+      "notes": [
+        "Saved asserted optimalPriorityValue is compared to the independently enumerated maximum, while actual selected package value is separately recorded.",
+        "Malformed JSON action batches are real protocol failures; recovery and final actual state are reported separately."
+      ]
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791086128128-gpt-6.1-sol-high-baseline-ibc-deadline-triage-dev-1-cb2f8d92.episode",
+      "episodeSha256": "be3d95a8539c282415c2b7f4b3d80e7d6bf726ae3b17b49e710d8d96bb48342d",
+      "condition": "gpt-6.1-sol-high",
+      "configuredModel": "gpt-6.1-sol",
+      "traceModels": [
+        "gpt-6.1-sol"
+      ],
+      "configuredEffort": "high",
+      "traceEfforts": [
+        "high"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+      "family": "deadline-triage",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 100,
+      "recordedAllPass": true,
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 10,
+      "elapsedMs": 221373,
+      "estimatedCostUsd": 0.434482,
+      "productSaved": true,
+      "wrongFields": [],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 19,
+      "substantiveWrongFieldCount": 0,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 12100,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5600,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q1",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q2",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q3",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q5",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q6",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q7",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q8",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q9",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q10",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q12"
+        ],
+        "optimalPriorityValue": 36,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 14800,
+        "actualPriorityValue": 36,
+        "assertedOptimalPriorityValue": 36,
+        "verifiedMaximumFromCurrentRaw": 36,
+        "personAllocatedCents": {
+          "A": 5100,
+          "B": 6400,
+          "C": 3300
+        },
+        "personAvailableCents": {
+          "A": 11700,
+          "B": 7100,
+          "C": 12100
+        },
+        "sharedAvailableCents": 15300,
+        "violations": [],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q3",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q7",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11"
+        ],
+        "optimalTiedAlternatives": 4
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 71,
+      "originalProductSourceReferences": 1,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 71,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": true,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [],
+      "failedCriteria": [],
+      "protocolErrorTurns": [],
+      "toolErrors": [],
+      "coordinationErrors": [],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 10
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Complete current facts and objective-optimal actual reviewed business state",
+      "notes": []
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791086193574-qwen3-235b-baseline-ibc-coverage-review-dev-1-693918aa.episode",
+      "episodeSha256": "7fc90f40638c625206870a8d360d1859a132b5cd8e7dd172f7b95c9a6acff52b",
+      "condition": "qwen3-235b",
+      "configuredModel": "qwen.qwen3-235b-a22b-2507-v1:0",
+      "traceModels": [],
+      "configuredEffort": null,
+      "traceEfforts": [],
+      "traceModelMatches": null,
+      "traceEffortMatches": null,
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "family": "coverage-review",
+      "status": "provider-error",
+      "error": "Insurance Bench bedrock: AWS request failed or returned invalid JSON; inspect credentials/model access separately",
+      "recordedScore": null,
+      "recordedAllPass": null,
+      "components": null,
+      "criticalFailure": null,
+      "finished": false,
+      "phase": 0,
+      "turnCount": 0,
+      "elapsedMs": 623,
+      "estimatedCostUsd": 0,
+      "productSaved": false,
+      "wrongFields": [],
+      "omittedFields": [
+        "limitSourceA",
+        "limitSourceB",
+        "limitSourceC",
+        "personAvailableACents",
+        "personAvailableBCents",
+        "personAvailableCCents",
+        "occurrenceAvailableCents",
+        "pdAvailableCents",
+        "netPaidACents",
+        "netPaidBCents",
+        "netPaidCCents",
+        "reserveTotalBICents",
+        "unallocatedBICents",
+        "eligiblePackageIds",
+        "optimalPriorityValue",
+        "deadlineA",
+        "deadlineB",
+        "deadlineC",
+        "lateDemandClaimantIds"
+      ],
+      "extraFields": [],
+      "correctFieldCount": 0,
+      "substantiveWrongFieldCount": 0,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7200,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 15000,
+        "occurrenceAvailableCents": 17600,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 6900,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": 0,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": false,
+        "feasible": false,
+        "optimal": false,
+        "finalPhase": false,
+        "actualCostCents": 0,
+        "actualPriorityValue": 0,
+        "assertedOptimalPriorityValue": null,
+        "verifiedMaximumFromCurrentRaw": 0,
+        "personAllocatedCents": {
+          "A": 0,
+          "B": 0,
+          "C": 0
+        },
+        "personAvailableCents": {
+          "A": 7200,
+          "B": 0,
+          "C": 15000
+        },
+        "sharedAvailableCents": 17600,
+        "violations": [
+          "absent/duplicate/malformed/unknown selection"
+        ],
+        "matchingCurrentRecordedWrite": false,
+        "matchingCurrentCorrectWrite": false,
+        "currentOptimalActualOutcome": false,
+        "selectedPackageIds": null,
+        "optimalTiedAlternatives": 1
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [
+        "proposedPackageIds",
+        "selectedCostCents",
+        "selectedPriorityValue",
+        "occurrenceAvailableCents",
+        "personAvailableACents",
+        "personAvailableBCents",
+        "personAvailableCCents",
+        "unallocatedBICents"
+      ],
+      "recordedBusinessWrites": 0,
+      "currentPacket": false,
+      "currentDraft": false,
+      "currentSuppliedReview": false,
+      "sourceReferences": 0,
+      "originalProductSourceReferences": 0,
+      "matchingCurrentPacketHistory": false,
+      "sharedBundleAllowed": false,
+      "currentPacketSourceReferences": 0,
+      "currentPacketSourcesValid": false,
+      "memoExplicitlyReferencesPacket": false,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1"
+        ],
+        "personAvailableACents": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "event-A-original",
+          "event-A-reversal-v1",
+          "reserve-A-v1"
+        ],
+        "netPaidACents": [
+          "event-A-original",
+          "event-A-reversal-v1"
+        ],
+        "deadlineA": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A"
+        ],
+        "limitSourceB": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B"
+        ],
+        "personAvailableBCents": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B"
+        ],
+        "netPaidBCents": [
+          "event-B-original"
+        ],
+        "deadlineB": [
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B"
+        ],
+        "limitSourceC": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C"
+        ],
+        "personAvailableCCents": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C",
+          "event-C-original",
+          "reserve-C-v1"
+        ],
+        "netPaidCCents": [
+          "event-C-original"
+        ],
+        "deadlineC": [
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ],
+        "occurrenceAvailableCents": [
+          "policy-BI",
+          "occurrence",
+          "event-A-original",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "allocation-U",
+          "event-A-reversal-v1",
+          "event-U-reversal",
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "pdAvailableCents": [
+          "policy-PD",
+          "event-PD",
+          "reserve-D-v1"
+        ],
+        "reserveTotalBICents": [
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "unallocatedBICents": [
+          "event-unallocated",
+          "allocation-U",
+          "event-U-reversal"
+        ],
+        "eligiblePackageIds": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "exposure-B",
+          "loss-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "allocation-U",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12"
+        ],
+        "optimalPriorityValue": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "exposure-B",
+          "loss-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "allocation-U",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12",
+          "occurrence",
+          "event-A-original",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "event-A-reversal-v1",
+          "event-U-reversal",
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "lateDemandClaimantIds": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ]
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1"
+        ],
+        "personAvailableACents": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "event-A-original",
+          "event-A-reversal-v1",
+          "reserve-A-v1"
+        ],
+        "netPaidACents": [
+          "event-A-original",
+          "event-A-reversal-v1"
+        ],
+        "deadlineA": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A"
+        ],
+        "limitSourceB": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B"
+        ],
+        "personAvailableBCents": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B"
+        ],
+        "netPaidBCents": [
+          "event-B-original"
+        ],
+        "deadlineB": [
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B"
+        ],
+        "limitSourceC": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C"
+        ],
+        "personAvailableCCents": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C",
+          "event-C-original",
+          "reserve-C-v1"
+        ],
+        "netPaidCCents": [
+          "event-C-original"
+        ],
+        "deadlineC": [
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ],
+        "occurrenceAvailableCents": [
+          "policy-BI",
+          "occurrence",
+          "event-A-original",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "allocation-U",
+          "event-A-reversal-v1",
+          "event-U-reversal",
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "pdAvailableCents": [
+          "policy-PD",
+          "event-PD",
+          "reserve-D-v1"
+        ],
+        "reserveTotalBICents": [
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "unallocatedBICents": [
+          "event-unallocated",
+          "allocation-U",
+          "event-U-reversal"
+        ],
+        "eligiblePackageIds": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "exposure-B",
+          "loss-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "allocation-U",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12"
+        ],
+        "optimalPriorityValue": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "exposure-B",
+          "loss-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "allocation-U",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12",
+          "occurrence",
+          "event-A-original",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "event-A-reversal-v1",
+          "event-U-reversal",
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "lateDemandClaimantIds": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ]
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [],
+      "failedCriteria": [],
+      "protocolErrorTurns": [],
+      "toolErrors": [],
+      "coordinationErrors": [],
+      "outputSchemaErrors": [],
+      "finishReasons": {},
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Transport/provider failure; ability conclusion unavailable and episode remains unscored",
+      "notes": [
+        "Latest observable raw records are not final material phase; current-source arithmetic is not presented as final task completion."
+      ]
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791086193574-qwen3-32b-baseline-ibc-coverage-review-dev-1-693918aa.episode",
+      "episodeSha256": "7fc90f40638c625206870a8d360d1859a132b5cd8e7dd172f7b95c9a6acff52b",
+      "condition": "qwen3-32b",
+      "configuredModel": "qwen.qwen3-32b-v1:0",
+      "traceModels": [],
+      "configuredEffort": null,
+      "traceEfforts": [],
+      "traceModelMatches": null,
+      "traceEffortMatches": null,
+      "taskId": "ibc-coverage-review-dev-1-693918aa",
+      "family": "coverage-review",
+      "status": "provider-error",
+      "error": "Insurance Bench bedrock: AWS request failed or returned invalid JSON; inspect credentials/model access separately",
+      "recordedScore": null,
+      "recordedAllPass": null,
+      "components": null,
+      "criticalFailure": null,
+      "finished": false,
+      "phase": 0,
+      "turnCount": 0,
+      "elapsedMs": 623,
+      "estimatedCostUsd": 0,
+      "productSaved": false,
+      "wrongFields": [],
+      "omittedFields": [
+        "limitSourceA",
+        "limitSourceB",
+        "limitSourceC",
+        "personAvailableACents",
+        "personAvailableBCents",
+        "personAvailableCCents",
+        "occurrenceAvailableCents",
+        "pdAvailableCents",
+        "netPaidACents",
+        "netPaidBCents",
+        "netPaidCCents",
+        "reserveTotalBICents",
+        "unallocatedBICents",
+        "eligiblePackageIds",
+        "optimalPriorityValue",
+        "deadlineA",
+        "deadlineB",
+        "deadlineC",
+        "lateDemandClaimantIds"
+      ],
+      "extraFields": [],
+      "correctFieldCount": 0,
+      "substantiveWrongFieldCount": 0,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A1",
+        "limitSourceB": "unavailable",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 7200,
+        "personAvailableBCents": 0,
+        "personAvailableCCents": 15000,
+        "occurrenceAvailableCents": 17600,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 6900,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 3400,
+        "reserveTotalBICents": 6600,
+        "unallocatedBICents": 2000,
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": 0,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:25:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": false,
+        "feasible": false,
+        "optimal": false,
+        "finalPhase": false,
+        "actualCostCents": 0,
+        "actualPriorityValue": 0,
+        "assertedOptimalPriorityValue": null,
+        "verifiedMaximumFromCurrentRaw": 0,
+        "personAllocatedCents": {
+          "A": 0,
+          "B": 0,
+          "C": 0
+        },
+        "personAvailableCents": {
+          "A": 7200,
+          "B": 0,
+          "C": 15000
+        },
+        "sharedAvailableCents": 17600,
+        "violations": [
+          "absent/duplicate/malformed/unknown selection"
+        ],
+        "matchingCurrentRecordedWrite": false,
+        "matchingCurrentCorrectWrite": false,
+        "currentOptimalActualOutcome": false,
+        "selectedPackageIds": null,
+        "optimalTiedAlternatives": 1
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [
+        "proposedPackageIds",
+        "selectedCostCents",
+        "selectedPriorityValue",
+        "occurrenceAvailableCents",
+        "personAvailableACents",
+        "personAvailableBCents",
+        "personAvailableCCents",
+        "unallocatedBICents"
+      ],
+      "recordedBusinessWrites": 0,
+      "currentPacket": false,
+      "currentDraft": false,
+      "currentSuppliedReview": false,
+      "sourceReferences": 0,
+      "originalProductSourceReferences": 0,
+      "matchingCurrentPacketHistory": false,
+      "sharedBundleAllowed": false,
+      "currentPacketSourceReferences": 0,
+      "currentPacketSourcesValid": false,
+      "memoExplicitlyReferencesPacket": false,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1"
+        ],
+        "personAvailableACents": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "event-A-original",
+          "event-A-reversal-v1",
+          "reserve-A-v1"
+        ],
+        "netPaidACents": [
+          "event-A-original",
+          "event-A-reversal-v1"
+        ],
+        "deadlineA": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A"
+        ],
+        "limitSourceB": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B"
+        ],
+        "personAvailableBCents": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B"
+        ],
+        "netPaidBCents": [
+          "event-B-original"
+        ],
+        "deadlineB": [
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B"
+        ],
+        "limitSourceC": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C"
+        ],
+        "personAvailableCCents": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C",
+          "event-C-original",
+          "reserve-C-v1"
+        ],
+        "netPaidCCents": [
+          "event-C-original"
+        ],
+        "deadlineC": [
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ],
+        "occurrenceAvailableCents": [
+          "policy-BI",
+          "occurrence",
+          "event-A-original",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "allocation-U",
+          "event-A-reversal-v1",
+          "event-U-reversal",
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "pdAvailableCents": [
+          "policy-PD",
+          "event-PD",
+          "reserve-D-v1"
+        ],
+        "reserveTotalBICents": [
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "unallocatedBICents": [
+          "event-unallocated",
+          "allocation-U",
+          "event-U-reversal"
+        ],
+        "eligiblePackageIds": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "exposure-B",
+          "loss-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "allocation-U",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12"
+        ],
+        "optimalPriorityValue": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "exposure-B",
+          "loss-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "allocation-U",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12",
+          "occurrence",
+          "event-A-original",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "event-A-reversal-v1",
+          "event-U-reversal",
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "lateDemandClaimantIds": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ]
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1"
+        ],
+        "personAvailableACents": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "event-A-original",
+          "event-A-reversal-v1",
+          "reserve-A-v1"
+        ],
+        "netPaidACents": [
+          "event-A-original",
+          "event-A-reversal-v1"
+        ],
+        "deadlineA": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A"
+        ],
+        "limitSourceB": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B"
+        ],
+        "personAvailableBCents": [
+          "policy-BI",
+          "exposure-B",
+          "loss-B"
+        ],
+        "netPaidBCents": [
+          "event-B-original"
+        ],
+        "deadlineB": [
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B"
+        ],
+        "limitSourceC": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C"
+        ],
+        "personAvailableCCents": [
+          "policy-BI",
+          "exposure-C",
+          "loss-C",
+          "event-C-original",
+          "reserve-C-v1"
+        ],
+        "netPaidCCents": [
+          "event-C-original"
+        ],
+        "deadlineC": [
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ],
+        "occurrenceAvailableCents": [
+          "policy-BI",
+          "occurrence",
+          "event-A-original",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "allocation-U",
+          "event-A-reversal-v1",
+          "event-U-reversal",
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "pdAvailableCents": [
+          "policy-PD",
+          "event-PD",
+          "reserve-D-v1"
+        ],
+        "reserveTotalBICents": [
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "unallocatedBICents": [
+          "event-unallocated",
+          "allocation-U",
+          "event-U-reversal"
+        ],
+        "eligiblePackageIds": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "exposure-B",
+          "loss-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "allocation-U",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12"
+        ],
+        "optimalPriorityValue": [
+          "policy-BI",
+          "exposure-A",
+          "loss-A",
+          "endorsement-A-v1",
+          "exposure-B",
+          "loss-B",
+          "exposure-C",
+          "loss-C",
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C",
+          "allocation-U",
+          "package-1",
+          "package-2",
+          "package-3",
+          "package-4",
+          "package-5",
+          "package-6",
+          "package-7",
+          "package-8",
+          "package-9",
+          "package-10",
+          "package-11",
+          "package-12",
+          "occurrence",
+          "event-A-original",
+          "event-B-original",
+          "event-C-original",
+          "event-unallocated",
+          "event-A-reversal-v1",
+          "event-U-reversal",
+          "reserve-A-v1",
+          "reserve-B-v1",
+          "reserve-C-v1"
+        ],
+        "lateDemandClaimantIds": [
+          "demand-A-v1",
+          "receipt-D-A1",
+          "extension-A",
+          "demand-B-v1",
+          "receipt-D-B1",
+          "extension-B",
+          "demand-C-v1",
+          "receipt-D-C1",
+          "extension-C"
+        ]
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [],
+      "failedCriteria": [],
+      "protocolErrorTurns": [],
+      "toolErrors": [],
+      "coordinationErrors": [],
+      "outputSchemaErrors": [],
+      "finishReasons": {},
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Transport/provider failure; ability conclusion unavailable and episode remains unscored",
+      "notes": [
+        "Latest observable raw records are not final material phase; current-source arithmetic is not presented as final task completion."
+      ]
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791086261445-gpt-6-luna-high-baseline-ibc-financial-reconciliation-dev-1-6bebb17e.episode",
+      "episodeSha256": "9121fddcc97862f494e89c1601ef254ac76c81c6dae72937e2220676c93568c1",
+      "condition": "gpt-6-luna-high",
+      "configuredModel": "gpt-6-luna",
+      "traceModels": [
+        "gpt-6-luna"
+      ],
+      "configuredEffort": "high",
+      "traceEfforts": [
+        "high"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-financial-reconciliation-dev-1-6bebb17e",
+      "family": "financial-reconciliation",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 100,
+      "recordedAllPass": true,
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 15,
+      "elapsedMs": 256496,
+      "estimatedCostUsd": 0.0410789,
+      "productSaved": true,
+      "wrongFields": [],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 19,
+      "substantiveWrongFieldCount": 0,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 11900,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5400,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q1",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q2",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q3",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q4",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q5",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q6",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q7",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q8",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q9",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q10",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q11",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q12"
+        ],
+        "optimalPriorityValue": 35,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 15300,
+        "actualPriorityValue": 35,
+        "assertedOptimalPriorityValue": 35,
+        "verifiedMaximumFromCurrentRaw": 35,
+        "personAllocatedCents": {
+          "A": 1900,
+          "B": 5500,
+          "C": 7900
+        },
+        "personAvailableCents": {
+          "A": 11700,
+          "B": 7100,
+          "C": 11900
+        },
+        "sharedAvailableCents": 15300,
+        "violations": [],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q12",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q8",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q4",
+          "ibc-financial-reconciliation-dev-1-6bebb17e-Q10"
+        ],
+        "optimalTiedAlternatives": 1
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 71,
+      "originalProductSourceReferences": 71,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 70,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": false,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [],
+      "failedCriteria": [],
+      "protocolErrorTurns": [
+        1
+      ],
+      "toolErrors": [],
+      "coordinationErrors": [],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 15
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Complete current facts and objective-optimal actual reviewed business state",
+      "notes": [
+        "Malformed JSON action batches are real protocol failures; recovery and final actual state are reported separately."
+      ]
+    },
+    {
+      "episodeFile": ".tmp/insurance-bench/v07c-runs/1791086682013-gpt-6-luna-high-baseline-ibc-deadline-triage-dev-1-cb2f8d92.episode",
+      "episodeSha256": "b1bc163be5ba7dc47c299a4aecbdb6a24c114e4fb30795bd3d45cd5ab124e2a6",
+      "condition": "gpt-6-luna-high",
+      "configuredModel": "gpt-6-luna",
+      "traceModels": [
+        "gpt-6-luna"
+      ],
+      "configuredEffort": "high",
+      "traceEfforts": [
+        "high"
+      ],
+      "traceModelMatches": true,
+      "traceEffortMatches": true,
+      "taskId": "ibc-deadline-triage-dev-1-cb2f8d92",
+      "family": "deadline-triage",
+      "status": "completed",
+      "error": null,
+      "recordedScore": 100,
+      "recordedAllPass": true,
+      "components": {
+        "facts": 100,
+        "evidence": 100,
+        "workflow": 100,
+        "boundaries": 100
+      },
+      "criticalFailure": false,
+      "finished": true,
+      "phase": 2,
+      "turnCount": 16,
+      "elapsedMs": 420565,
+      "estimatedCostUsd": 0.055727900000000004,
+      "productSaved": true,
+      "wrongFields": [],
+      "omittedFields": [],
+      "extraFields": [],
+      "correctFieldCount": 19,
+      "substantiveWrongFieldCount": 0,
+      "possibleRepresentationContractLosses": [],
+      "sourceDerivedCurrentFacts": {
+        "limitSourceA": "E-A2",
+        "limitSourceB": "E-B2",
+        "limitSourceC": "P-BI",
+        "personAvailableACents": 11700,
+        "personAvailableBCents": 7100,
+        "personAvailableCCents": 12100,
+        "occurrenceAvailableCents": 15300,
+        "pdAvailableCents": 6100,
+        "netPaidACents": 5600,
+        "netPaidBCents": 5700,
+        "netPaidCCents": 5400,
+        "reserveTotalBICents": 9100,
+        "unallocatedBICents": 0,
+        "eligiblePackageIds": [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q1",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q2",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q3",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q5",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q6",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q7",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q8",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q9",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q10",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q12"
+        ],
+        "optimalPriorityValue": 36,
+        "deadlineA": "2026-06-24T17:30:00Z",
+        "deadlineB": "2026-06-24T17:15:00Z",
+        "deadlineC": "2026-06-24T18:25:00Z",
+        "lateDemandClaimantIds": []
+      },
+      "actualPlan": {
+        "validIds": true,
+        "feasible": true,
+        "optimal": true,
+        "finalPhase": true,
+        "actualCostCents": 14800,
+        "actualPriorityValue": 36,
+        "assertedOptimalPriorityValue": 36,
+        "verifiedMaximumFromCurrentRaw": 36,
+        "personAllocatedCents": {
+          "A": 8400,
+          "B": 6400,
+          "C": 0
+        },
+        "personAvailableCents": {
+          "A": 11700,
+          "B": 7100,
+          "C": 12100
+        },
+        "sharedAvailableCents": 15300,
+        "violations": [],
+        "matchingCurrentRecordedWrite": true,
+        "matchingCurrentCorrectWrite": true,
+        "currentOptimalActualOutcome": true,
+        "selectedPackageIds": [
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q1",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q4",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q10",
+          "ibc-deadline-triage-dev-1-cb2f8d92-Q11"
+        ],
+        "optimalTiedAlternatives": 4
+      },
+      "wrongBusinessFields": [],
+      "omittedBusinessFields": [],
+      "recordedBusinessWrites": 1,
+      "currentPacket": true,
+      "currentDraft": true,
+      "currentSuppliedReview": true,
+      "sourceReferences": 71,
+      "originalProductSourceReferences": 70,
+      "matchingCurrentPacketHistory": true,
+      "sharedBundleAllowed": true,
+      "currentPacketSourceReferences": 71,
+      "currentPacketSourcesValid": true,
+      "memoExplicitlyReferencesPacket": false,
+      "crossArtifactGroundingFields": [],
+      "independentMissingPacketOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "independentMissingOperandRowsByFact": {
+        "limitSourceA": [],
+        "personAvailableACents": [],
+        "netPaidACents": [],
+        "deadlineA": [],
+        "limitSourceB": [],
+        "personAvailableBCents": [],
+        "netPaidBCents": [],
+        "deadlineB": [],
+        "limitSourceC": [],
+        "personAvailableCCents": [],
+        "netPaidCCents": [],
+        "deadlineC": [],
+        "occurrenceAvailableCents": [],
+        "pdAvailableCents": [],
+        "reserveTotalBICents": [],
+        "unallocatedBICents": [],
+        "eligiblePackageIds": [],
+        "optimalPriorityValue": [],
+        "lateDemandClaimantIds": []
+      },
+      "invalidSourceReferences": [],
+      "unknownDocumentReferences": [],
+      "evidenceLosses": [],
+      "failedCriteria": [],
+      "protocolErrorTurns": [
+        1,
+        7,
+        10
+      ],
+      "toolErrors": [],
+      "coordinationErrors": [],
+      "outputSchemaErrors": [],
+      "finishReasons": {
+        "completed": 16
+      },
+      "truncations": [],
+      "externalActionAttempts": [],
+      "equivalentDateRepresentations": [],
+      "candidateFalseFailures": [],
+      "classification": "Complete current facts and objective-optimal actual reviewed business state",
+      "notes": [
+        "Malformed JSON action batches are real protocol failures; recovery and final actual state are reported separately."
+      ]
+    }
+  ]
+}

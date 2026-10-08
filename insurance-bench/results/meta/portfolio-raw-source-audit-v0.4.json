@@ -1,0 +1,36 @@
+{
+  "audit": "independent visible-source to normalized portfolio and gold reconciliation",
+  "seed": 1729,
+  "source": "insurance-bench/portfolio-cases.ts",
+  "casesChecked": 24,
+  "jobRowsChecked": 432,
+  "reviewerRowsChecked": 48,
+  "goldFactsChecked": 240,
+  "result": "passed",
+  "method": "Read-only tsx assertions parsed CSV rows from each generated task's visible documents. The parser independently reconstructed job and reviewer constraints, resolved grant replacements and conditions, computed budget and mandatory closure facts, and compared them with normalized planning rows and rubric values. No approved boolean, budget total, critical list or source window was taken from the normalized planning object for reconstruction.",
+  "passedChecks": [
+    "All job IDs, duration, skill, cost, priority value, release/deadline boundaries, dependency lists, mandatory flags and allowed starts match visible source rows",
+    "All reviewer IDs, credentials and available slots match signed source rows; credential validity contains the fixed reading clock",
+    "Current approval independently derives from latest issued signed version, effective instant, family scope and exact job/version evidence received by the reading clock",
+    "Revocation, future-effective replacement gaps, wrong scope, pending proof, unsigned draft and mismatched/future proof correctly block the documented jobs",
+    "Shared review budget independently derives from signed base plus conditional additive record, verified same-family receipt and cap",
+    "Mandatory IDs and distinct transitive prerequisite IDs match visible job rows",
+    "Mandatory closure cost and work slots are independently summed once per source job",
+    "Locked IDs, approved count, review budget and qualified critical reviewer IDs match source-derived values",
+    "Earliest mandatory deadline and internal follow-up due instant match the source completion boundary and half-hour clock conversion",
+    "Every required evidence anchor exists literally in the referenced visible document",
+    "Exact solver run on independently reconstructed raw scenario agrees with hidden optimalPriorityValue and normalized optimalValue"
+  ],
+  "solverTractability": {
+    "casesSolved": 24,
+    "maxSearchNodes": 260,
+    "totalSearchNodes": 4727,
+    "generationAndResolveElapsedMs": 106,
+    "hardSearchCeiling": 2000000
+  },
+  "independenceLimit": "This audit independently reconstructs source facts and normalized constraints. Optimum computation uses the production exact solver; the separate cases-agent MRV/subset checker provides independent optimizer verification. The engine's test oracle independently checks feasibility without evaluatePlan.",
+  "nonblockingEvidenceObservation": "The optimalPriorityValue evidence rubric currently requires only a CSV header and objective-rule anchor. It does not alone prove operand/constraint citations; separate actual schedule grading enforces the optimal result.",
+  "paidModelCalls": 0,
+  "corpusEdits": 0,
+  "timingScope": "One local execution; timing is observational, not a performance guarantee. Later citation-only refinements do not change source job constraints or gold arithmetic."
+}
