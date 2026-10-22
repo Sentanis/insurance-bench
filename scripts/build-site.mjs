@@ -1,5 +1,6 @@
-import { readFileSync, readdirSync, cpSync, rmSync } from 'node:fs';
+import { readFileSync, readdirSync, cpSync, rmSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { build } from 'esbuild';
 import { resolve, relative } from 'node:path';
 
 const root = resolve('public');
@@ -13,4 +14,10 @@ for (const file of files) {
 }
 rmSync('dist', { recursive: true, force: true });
 cpSync('public', 'dist', { recursive: true });
-console.log('Verified and built ' + files.length + ' exact static deployment artifacts.');
+// Verify the frozen publication first; instrumentation is a separate build layer.
+await build({ entryPoints: ['scripts/web-analytics.ts'], outfile: 'dist/assets/web-analytics.js', bundle: true, minify: true, format: 'esm', platform: 'browser' });
+for (const file of files.filter(file => file.endsWith('.html'))) {
+  const path = resolve('dist', file);
+  writeFileSync(path, readFileSync(path, 'utf8').replace('</head>', '<script type="module" src="/assets/web-analytics.js"></script></head>'));
+}
+console.log('Verified ' + files.length + ' frozen publication artifacts and added Web Analytics to the site build.');

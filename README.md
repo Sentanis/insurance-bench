@@ -15,7 +15,7 @@ npm run build
 npm run test:composite
 ```
 
-The default build verifies the SHA-256 manifest and copies the exact published static artifacts from `public/` to `dist/`. It makes no model calls and requires no environment credentials or database. Vercel serves only `dist/`.
+The default build verifies the SHA-256 manifest, copies the frozen published static artifacts from `public/` to `dist/`, then adds the bundled Vercel Web Analytics client to each HTML page. The frozen source artifacts and their provenance manifest remain unchanged. It makes no model calls and requires no environment credentials or database. Vercel serves only `dist/`.
 
 The source builders and synthetic harness remain available under `scripts/` and `insurance-bench/`; running provider evaluations requires separate credentials, access, and a new explicit budget. The historical session budget documented in the imported research is evidence, not authorization to spend.
 
@@ -26,3 +26,7 @@ This standalone export preserves the benchmark files from `Sentanis/sentanis-app
 Historical receipts, hashes, model identities, and migration-era links are preserved as evidence. Credential-shaped synthetic database URLs in three historical verification receipts were redacted for this public export; original receipt hashes refer to the original source, not these sanitized copies. Some links refer to the original private application repository and some frozen replay procedures require its historical commit; this export does not include the application, its Git history, operator credentials, private evaluation caches, or original private cohort directories. The offline website build is fully self-contained.
 
 The workflow cases are fictional. Reported scores are bounded pilot measurements, with coverage and source-equivalence caveats; they do not establish expert-validated insurance accuracy, legal correctness, or a safety certification. Public observations retain their attribution and source links. A public source repository does not change the deployed site's existing Vercel access policy.
+
+## Web Analytics
+
+The build adds `@vercel/analytics` on every page. Only reviewed public route names are sent; unknown routes become `/other`, and queries, fragments, credentials and custom events are excluded. Project enablement plus deployment is required for production collection.
