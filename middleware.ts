@@ -1,3 +1,4 @@
+/// <reference types="node" />
 // Vercel Routing Middleware: every request for the static site passes through here first, so no
 // file in dist/ is served without a Sentanis staff session. Follows the sentanis-crm AuthKit
 // pattern (lib/web-auth.ts, lib/workos-auth.ts): PKCE, the Sentanis organization checked at
