@@ -30,3 +30,16 @@ The workflow cases are fictional. Reported scores are bounded pilot measurements
 ## Web Analytics
 
 The build adds `@vercel/analytics` on every page. Only reviewed public route names are sent; unknown routes become `/other`, and queries, fragments, credentials and custom events are excluded. Project enablement plus deployment is required for production collection.
+
+## Staff sign-in
+
+Every request, including each static file, passes through `middleware.ts` (Vercel Routing Middleware) before anything in `dist/` is served. Visitors sign in with WorkOS AuthKit, and only members of the Sentanis, Inc. WorkOS organization (pinned in code) with a verified email get an eight-hour encrypted session cookie. The pattern follows `Sentanis/sentanis-crm` (`lib/web-auth.ts`, `lib/workos-auth.ts`). If configuration is missing, the site returns 503 and serves nothing.
+
+| Variable | Value |
+| --- | --- |
+| `INSURANCE_BENCH_PUBLIC_URL` | `https://insurancebench.sentanis.ai` |
+| `WORKOS_CLIENT_ID` | the WorkOS application's client ID |
+| `WORKOS_API_KEY` | that application's API key (Sensitive) |
+| `INSURANCE_BENCH_SESSION_SECRET` | 32 or more random characters (Sensitive) |
+
+The WorkOS application needs the redirect URI `https://insurancebench.sentanis.ai/auth/callback`. Sign out at `/auth/logout`.
